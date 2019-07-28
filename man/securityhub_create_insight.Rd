@@ -2,26 +2,25 @@
 % Please edit documentation in R/securityhub_operations.R
 \name{securityhub_create_insight}
 \alias{securityhub_create_insight}
-\title{Creates an insight, which is a consolidation of findings that identifies
-a security area that requires attention or intervention}
+\title{Creates a custom insight in Security Hub}
 \usage{
 securityhub_create_insight(Name, Filters, GroupByAttribute)
 }
 \arguments{
-\item{Name}{[required] The user-defined name that identifies the insight that you want to
-create.}
+\item{Name}{[required] The name of the custom insight to create.}
 
-\item{Filters}{[required] A collection of attributes that are applied to all active Security
-Hub-aggregated findings and that result in a subset of findings that are
-included in this insight.}
+\item{Filters}{[required] One or more attributes used to filter the findings included in the
+insight. Only findings that match the criteria defined in the filters
+are included in the insight.}
 
-\item{GroupByAttribute}{[required] The attribute by which the insight's findings are grouped. This
-attribute is used as a findings aggregator for the purposes of viewing
-and managing multiple related findings under a single operand.}
+\item{GroupByAttribute}{[required] The attribute used as the aggregator to group related findings for the
+insight.}
 }
 \description{
-Creates an insight, which is a consolidation of findings that identifies
-a security area that requires attention or intervention.
+Creates a custom insight in Security Hub. An insight is a consolidation
+of findings that relate to a security issue that requires attention or
+remediation. Use the \code{GroupByAttribute} to group the related findings in
+the insight.
 }
 \section{Request syntax}{
 \preformatted{svc$create_insight(
@@ -30,31 +29,31 @@ a security area that requires attention or intervention.
     ProductArn = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     AwsAccountId = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     Id = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     GeneratorId = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     Type = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     FirstObservedAt = list(
@@ -114,7 +113,7 @@ a security area that requires attention or intervention.
     SeverityLabel = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     Confidence = list(
@@ -134,87 +133,87 @@ a security area that requires attention or intervention.
     Title = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     Description = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     RecommendationText = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     SourceUrl = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     ProductFields = list(
       list(
         Key = "string",
         Value = "string",
-        Comparison = "CONTAINS"
+        Comparison = "EQUALS"
       )
     ),
     ProductName = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     CompanyName = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     UserDefinedFields = list(
       list(
         Key = "string",
         Value = "string",
-        Comparison = "CONTAINS"
+        Comparison = "EQUALS"
       )
     ),
     MalwareName = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     MalwareType = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     MalwarePath = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     MalwareState = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     NetworkDirection = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     NetworkProtocol = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     NetworkSourceIpV4 = list(
@@ -237,13 +236,13 @@ a security area that requires attention or intervention.
     NetworkSourceDomain = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     NetworkSourceMac = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     NetworkDestinationIpV4 = list(
@@ -266,19 +265,19 @@ a security area that requires attention or intervention.
     NetworkDestinationDomain = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     ProcessName = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     ProcessPath = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     ProcessPid = list(
@@ -318,19 +317,19 @@ a security area that requires attention or intervention.
     ThreatIntelIndicatorType = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     ThreatIntelIndicatorValue = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     ThreatIntelIndicatorCategory = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     ThreatIntelIndicatorLastObservedAt = list(
@@ -346,56 +345,56 @@ a security area that requires attention or intervention.
     ThreatIntelIndicatorSource = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     ThreatIntelIndicatorSourceUrl = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     ResourceType = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     ResourceId = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     ResourcePartition = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     ResourceRegion = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     ResourceTags = list(
       list(
         Key = "string",
         Value = "string",
-        Comparison = "CONTAINS"
+        Comparison = "EQUALS"
       )
     ),
     ResourceAwsEc2InstanceType = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     ResourceAwsEc2InstanceImageId = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     ResourceAwsEc2InstanceIpV4Addresses = list(
@@ -411,25 +410,25 @@ a security area that requires attention or intervention.
     ResourceAwsEc2InstanceKeyName = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     ResourceAwsEc2InstanceIamInstanceProfileArn = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     ResourceAwsEc2InstanceVpcId = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     ResourceAwsEc2InstanceSubnetId = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     ResourceAwsEc2InstanceLaunchedAt = list(
@@ -445,25 +444,25 @@ a security area that requires attention or intervention.
     ResourceAwsS3BucketOwnerId = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     ResourceAwsS3BucketOwnerName = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     ResourceAwsIamAccessKeyUserName = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     ResourceAwsIamAccessKeyStatus = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     ResourceAwsIamAccessKeyCreatedAt = list(
@@ -479,19 +478,19 @@ a security area that requires attention or intervention.
     ResourceContainerName = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     ResourceContainerImageId = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     ResourceContainerImageName = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     ResourceContainerLaunchedAt = list(
@@ -508,49 +507,49 @@ a security area that requires attention or intervention.
       list(
         Key = "string",
         Value = "string",
-        Comparison = "CONTAINS"
+        Comparison = "EQUALS"
       )
     ),
     ComplianceStatus = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     VerificationState = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     WorkflowState = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     RecordState = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     RelatedFindingsProductArn = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     RelatedFindingsId = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     NoteText = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     NoteUpdatedAt = list(
@@ -566,7 +565,7 @@ a security area that requires attention or intervention.
     NoteUpdatedBy = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     Keyword = list(

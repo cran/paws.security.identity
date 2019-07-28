@@ -2,18 +2,37 @@
 % Please edit documentation in R/securityhub_operations.R
 \name{securityhub_create_members}
 \alias{securityhub_create_members}
-\title{Creates member Security Hub accounts in the current AWS account (which
-becomes the master Security Hub account) that has Security Hub enabled}
+\title{Creates a member association in Security Hub between the specified
+accounts and the account used to make the request, which is the master
+account}
 \usage{
 securityhub_create_members(AccountDetails)
 }
 \arguments{
-\item{AccountDetails}{A list of account ID and email address pairs of the accounts that you
-want to associate with the master Security Hub account.}
+\item{AccountDetails}{A list of account ID and email address pairs of the accounts to
+associate with the Security Hub master account.}
 }
 \description{
-Creates member Security Hub accounts in the current AWS account (which
-becomes the master Security Hub account) that has Security Hub enabled.
+Creates a member association in Security Hub between the specified
+accounts and the account used to make the request, which is the master
+account. To successfully create a member, you must use this action from
+an account that already has Security Hub enabled. You can use the
+EnableSecurityHub to enable Security Hub.
+}
+\details{
+After you use \code{CreateMembers} to create member account associations in
+Security Hub, you need to use the InviteMembers action, which invites
+the accounts to enable Security Hub and become member accounts in
+Security Hub. If the invitation is accepted by the account owner, the
+account becomes a member account in Security Hub, and a permission
+policy is added that permits the master account to view the findings
+generated in the member account. When Security Hub is enabled in the
+invited account, findings start being sent to both the member and master
+accounts.
+
+You can remove the association between the master and member accounts by
+using the DisassociateFromMasterAccount or DisassociateMembers
+operation.
 }
 \section{Request syntax}{
 \preformatted{svc$create_members(

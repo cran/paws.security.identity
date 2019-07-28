@@ -2,9 +2,8 @@
 % Please edit documentation in R/iam_operations.R
 \name{iam_get_service_last_accessed_details}
 \alias{iam_get_service_last_accessed_details}
-\title{After you generate a user, group, role, or policy report using the
-GenerateServiceLastAccessedDetails operation, you can use the JobId
-parameter in GetServiceLastAccessedDetails}
+\title{Retrieves a service last accessed report that was created using the
+GenerateServiceLastAccessedDetails operation}
 \usage{
 iam_get_service_last_accessed_details(JobId, MaxItems, Marker)
 }
@@ -28,10 +27,11 @@ the value of the \code{Marker} element in the response that you received to
 indicate where the next call should start.}
 }
 \description{
-After you generate a user, group, role, or policy report using the
-\code{GenerateServiceLastAccessedDetails} operation, you can use the \code{JobId}
-parameter in \code{GetServiceLastAccessedDetails}. This operation retrieves
-the status of your report job and a list of AWS services that the
+Retrieves a service last accessed report that was created using the
+\code{GenerateServiceLastAccessedDetails} operation. You can use the \code{JobId}
+parameter in \code{GetServiceLastAccessedDetails} to retrieve the status of
+your report job. When the report is complete, you can retrieve the
+generated report. The report includes a list of AWS services that the
 resource (user, group, role, or managed policy) can access.
 }
 \details{
@@ -40,7 +40,7 @@ determining whether a resource could access a service. These other
 policy types include resource-based policies, access control lists, AWS
 Organizations policies, IAM permissions boundaries, and AWS STS assume
 role policies. It only applies permissions policy logic. For more about
-the evaluation of policy types, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html#policy-eval-basics}{Evaluating Policies}
+the evaluation of policy types, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html#policy-eval-basics}{Evaluating Policies}
 in the \emph{IAM User Guide}.
 
 For each service that the resource could access using permissions
@@ -50,11 +50,11 @@ about the most recent attempt to access the service. If the operation
 fails, the \code{GetServiceLastAccessedDetails} operation returns the reason
 that it failed.
 
-The \code{GetServiceLastAccessedDetails} operation returns a list of services
-that includes the number of entities that have attempted to access the
-service and the date and time of the last attempt. It also returns the
-ARN of the following entity, depending on the resource ARN that you used
-to generate the report:
+The \code{GetServiceLastAccessedDetails} operation returns a list of
+services. This list includes the number of entities that have attempted
+to access the service and the date and time of the last attempt. It also
+returns the ARN of the following entity, depending on the resource ARN
+that you used to generate the report:
 \itemize{
 \item \strong{User} -- Returns the user ARN that you used to generate the
 report

@@ -5,16 +5,18 @@
 \title{Creates a RateBasedRule}
 \usage{
 waf_create_rate_based_rule(Name, MetricName, RateKey, RateLimit,
-  ChangeToken)
+  ChangeToken, Tags)
 }
 \arguments{
 \item{Name}{[required] A friendly name or description of the RateBasedRule. You can't change
 the name of a \code{RateBasedRule} after you create it.}
 
 \item{MetricName}{[required] A friendly name or description for the metrics for this \code{RateBasedRule}.
-The name can contain only alphanumeric characters (A-Z, a-z, 0-9); the
-name can't contain whitespace. You can't change the name of the metric
-after you create the \code{RateBasedRule}.}
+The name can contain only alphanumeric characters (A-Z, a-z, 0-9), with
+maximum length 128 and minimum length one. It can't contain whitespace
+or metric names reserved for AWS WAF, including "All" and
+"Default\_Action." You can't change the name of the metric after you
+create the \code{RateBasedRule}.}
 
 \item{RateKey}{[required] The field that AWS WAF uses to determine if requests are likely arriving
 from a single source and thus subject to rate monitoring. The only valid
@@ -31,6 +33,8 @@ action that is specified for this rule.}
 \item{ChangeToken}{[required] The \code{ChangeToken} that you used to submit the \code{CreateRateBasedRule}
 request. You can also use this value to query the status of the request.
 For more information, see GetChangeTokenStatus.}
+
+\item{Tags}{}
 }
 \description{
 Creates a RateBasedRule. The \code{RateBasedRule} contains a \code{RateLimit},
@@ -101,7 +105,13 @@ HTTP requests, see the \href{https://docs.aws.amazon.com/waf/latest/developergui
   MetricName = "string",
   RateKey = "IP",
   RateLimit = 123,
-  ChangeToken = "string"
+  ChangeToken = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
 )
 }
 }

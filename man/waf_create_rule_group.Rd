@@ -4,18 +4,22 @@
 \alias{waf_create_rule_group}
 \title{Creates a RuleGroup}
 \usage{
-waf_create_rule_group(Name, MetricName, ChangeToken)
+waf_create_rule_group(Name, MetricName, ChangeToken, Tags)
 }
 \arguments{
 \item{Name}{[required] A friendly name or description of the RuleGroup. You can't change
 \code{Name} after you create a \code{RuleGroup}.}
 
 \item{MetricName}{[required] A friendly name or description for the metrics for this \code{RuleGroup}. The
-name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name
-can't contain whitespace. You can't change the name of the metric
-after you create the \code{RuleGroup}.}
+name can contain only alphanumeric characters (A-Z, a-z, 0-9), with
+maximum length 128 and minimum length one. It can't contain whitespace
+or metric names reserved for AWS WAF, including "All" and
+"Default\_Action." You can't change the name of the metric after you
+create the \code{RuleGroup}.}
 
 \item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
+
+\item{Tags}{}
 }
 \description{
 Creates a \code{RuleGroup}. A rule group is a collection of predefined rules
@@ -38,7 +42,13 @@ HTTP requests, see the \href{https://docs.aws.amazon.com/waf/latest/developergui
 \preformatted{svc$create_rule_group(
   Name = "string",
   MetricName = "string",
-  ChangeToken = "string"
+  ChangeToken = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
 )
 }
 }

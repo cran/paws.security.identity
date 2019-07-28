@@ -5,18 +5,22 @@
 \title{Creates a Rule, which contains the IPSet objects, ByteMatchSet objects,
 and other predicates that identify the requests that you want to block}
 \usage{
-waf_create_rule(Name, MetricName, ChangeToken)
+waf_create_rule(Name, MetricName, ChangeToken, Tags)
 }
 \arguments{
 \item{Name}{[required] A friendly name or description of the Rule. You can't change the name
 of a \code{Rule} after you create it.}
 
 \item{MetricName}{[required] A friendly name or description for the metrics for this \code{Rule}. The name
-can contain only alphanumeric characters (A-Z, a-z, 0-9); the name
-can't contain white space. You can't change the name of the metric
-after you create the \code{Rule}.}
+can contain only alphanumeric characters (A-Z, a-z, 0-9), with maximum
+length 128 and minimum length one. It can't contain whitespace or
+metric names reserved for AWS WAF, including "All" and
+"Default\_Action." You can't change the name of the metric after you
+create the \code{Rule}.}
 
 \item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
+
+\item{Tags}{}
 }
 \description{
 Creates a \code{Rule}, which contains the \code{IPSet} objects, \code{ByteMatchSet}
@@ -59,7 +63,13 @@ HTTP requests, see the \href{https://docs.aws.amazon.com/waf/latest/developergui
 \preformatted{svc$create_rule(
   Name = "string",
   MetricName = "string",
-  ChangeToken = "string"
+  ChangeToken = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
 )
 }
 }

@@ -7,7 +7,22 @@
 guardduty()
 }
 \description{
-Assess, monitor, manage, and remediate security issues across your AWS infrastructure, applications, and data.
+Amazon GuardDuty is a continuous security monitoring service that
+analyzes and processes the following data sources: VPC Flow Logs, AWS
+CloudTrail event logs, and DNS logs. It uses threat intelligence feeds,
+such as lists of malicious IPs and domains, and machine learning to
+identify unexpected and potentially unauthorized and malicious activity
+within your AWS environment. This can include issues like escalations of
+privileges, uses of exposed credentials, or communication with malicious
+IPs, URLs, or domains. For example, GuardDuty can detect compromised EC2
+instances serving malware or mining bitcoin. It also monitors AWS
+account access behavior for signs of compromise, such as unauthorized
+infrastructure deployments, like instances deployed in a region that has
+never been used, or unusual API calls, like a password policy change to
+reduce password strength. GuardDuty informs you of the status of your
+AWS environment by producing security findings that you can view in the
+GuardDuty console or through Amazon CloudWatch events. For more
+information, see \href{https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html}{Amazon GuardDuty User Guide}.
 }
 \section{Operations}{
 
@@ -45,10 +60,13 @@ Assess, monitor, manage, and remediate security issues across your AWS infrastru
 \link[=guardduty_list_ip_sets]{list_ip_sets} \tab Lists the IPSets of the GuardDuty service specified by the detector ID \cr
 \link[=guardduty_list_invitations]{list_invitations} \tab Lists all GuardDuty membership invitations that were sent to the current AWS account \cr
 \link[=guardduty_list_members]{list_members} \tab Lists details about all member accounts for the current GuardDuty master account \cr
+\link[=guardduty_list_tags_for_resource]{list_tags_for_resource} \tab Lists tags for a resource \cr
 \link[=guardduty_list_threat_intel_sets]{list_threat_intel_sets} \tab Lists the ThreatIntelSets of the GuardDuty service specified by the detector ID \cr
 \link[=guardduty_start_monitoring_members]{start_monitoring_members} \tab Re-enables GuardDuty to monitor findings of the member accounts specified by the account IDs \cr
 \link[=guardduty_stop_monitoring_members]{stop_monitoring_members} \tab Disables GuardDuty from monitoring findings of the member accounts specified by the account IDs \cr
+\link[=guardduty_tag_resource]{tag_resource} \tab Adds tags to a resource \cr
 \link[=guardduty_unarchive_findings]{unarchive_findings} \tab Unarchives Amazon GuardDuty findings specified by the list of finding IDs \cr
+\link[=guardduty_untag_resource]{untag_resource} \tab Removes tags from a resource \cr
 \link[=guardduty_update_detector]{update_detector} \tab Updates an Amazon GuardDuty detector specified by the detectorId \cr
 \link[=guardduty_update_filter]{update_filter} \tab Updates the filter specified by the filter name \cr
 \link[=guardduty_update_findings_feedback]{update_findings_feedback} \tab Marks specified Amazon GuardDuty findings as useful or not useful \cr

@@ -1131,8 +1131,8 @@ iam_create_policy_version <- function(PolicyArn, PolicyDocument, SetAsDefault = 
 #' -   The special characters tab (`U+0009`), line feed (`U+000A`), and
 #'     carriage return (`U+000D`)
 #' 
-#' Upon success, the response includes the same trust policy as a
-#' URL-encoded JSON string.
+#' Upon success, the response includes the same trust policy in JSON
+#' format.
 #' @param Description A description of the role.
 #' @param MaxSessionDuration The maximum session duration (in seconds) that you want to set for the
 #' specified role. If you do not specify a value for this setting, the
@@ -4266,11 +4266,12 @@ iam_get_policy <- function(PolicyArn) {
 #' Retrieves information about the specified version of the specified
 #' managed policy, including the policy document.
 #' 
-#' Policies returned by this API are URL-encoded compliant with RFC 3986.
-#' You can use a URL decoding method to convert the policy back to plain
-#' JSON text. For example, if you use Java, you can use the `decode` method
-#' of the `java.net.URLDecoder` utility class in the Java SDK. Other
-#' languages and SDKs provide similar functionality.
+#' Policies returned by this API are URL-encoded compliant with [RFC
+#' 3986](https://tools.ietf.org/html/rfc3986). You can use a URL decoding
+#' method to convert the policy back to plain JSON text. For example, if
+#' you use Java, you can use the `decode` method of the
+#' `java.net.URLDecoder` utility class in the Java SDK. Other languages and
+#' SDKs provide similar functionality.
 #' 
 #' To list the available versions for a policy, use ListPolicyVersions.
 #' 
@@ -7843,7 +7844,7 @@ iam_set_security_token_service_preferences <- function(GlobalEndpointTokenVersio
 #' @param ActionNames &#91;required&#93; A list of names of API operations to evaluate in the simulation. Each
 #' operation is evaluated against each resource. Each operation must
 #' include the service identifier, such as `iam:CreateUser`. This operation
-#' does not support using wildcards (\*) in an action name.
+#' does not support using wildcards (*) in an action name.
 #' @param ResourceArns A list of ARNs of AWS resources to include in the simulation. If this
 #' parameter is not provided, then the value defaults to `*` (all
 #' resources). Each API in the `ActionNames` parameter is evaluated for
@@ -8673,7 +8674,7 @@ iam_update_access_key <- function(UserName = NULL, AccessKeyId, Status) {
 #' @param RequireSymbols Specifies whether IAM user passwords must contain at least one of the
 #' following non-alphanumeric characters:
 #' 
-#' ! @ \\# \\$ \% \\^ & \* ( ) \\_ + - = \[ \] \{ \} \\| \'
+#' ! @ \\# \\$ % \\^ & * ( ) \\_ + - = \[ \] \{ \} \\| \'
 #' 
 #' If you do not specify a value for this parameter, then the operation
 #' uses the default value of `false`. The result is that passwords do not
@@ -9502,7 +9503,7 @@ iam_update_signing_certificate <- function(UserName = NULL, CertificateId, Statu
 #' To change a user name, the requester must have appropriate permissions
 #' on both the source object and the target object. For example, to change
 #' Bob to Robert, the entity making the request must have permission on Bob
-#' and Robert, or must have permission on all (\*). For more information
+#' and Robert, or must have permission on all (*). For more information
 #' about permissions, see [Permissions and
 #' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/PermissionsAndPolicies.html).
 #'

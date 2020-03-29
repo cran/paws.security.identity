@@ -45,7 +45,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- acmpca()
+#' \dontrun{svc <- acmpca()
 #' svc$create_certificate_authority(
 #'   Foo = 123
 #' )}
@@ -97,8 +97,7 @@ acmpca <- function(config = list()) {
   target_prefix = "ACMPrivateCA"
 )
 
-.acmpca$handlers <- new_handlers("jsonrpc", "v4")
-
 .acmpca$service <- function(config = list()) {
-  new_service(.acmpca$metadata, .acmpca$handlers, config)
+  handlers <- new_handlers("jsonrpc", "v4")
+  new_service(.acmpca$metadata, handlers, config)
 }

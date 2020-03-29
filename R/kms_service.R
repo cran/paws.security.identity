@@ -111,7 +111,7 @@ NULL
 #'
 #' @examples
 #' # The following example cancels deletion of the specified CMK.
-#' \donttest{svc <- kms()
+#' \dontrun{svc <- kms()
 #' svc$cancel_key_deletion(
 #'   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
 #' )}
@@ -189,8 +189,7 @@ kms <- function(config = list()) {
   target_prefix = "TrentService"
 )
 
-.kms$handlers <- new_handlers("jsonrpc", "v4")
-
 .kms$service <- function(config = list()) {
-  new_service(.kms$metadata, .kms$handlers, config)
+  handlers <- new_handlers("jsonrpc", "v4")
+  new_service(.kms$metadata, handlers, config)
 }

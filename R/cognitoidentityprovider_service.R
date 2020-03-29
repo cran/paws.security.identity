@@ -37,7 +37,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- cognitoidentityprovider()
+#' \dontrun{svc <- cognitoidentityprovider()
 #' svc$add_custom_attributes(
 #'   Foo = 123
 #' )}
@@ -169,8 +169,7 @@ cognitoidentityprovider <- function(config = list()) {
   target_prefix = "AWSCognitoIdentityProviderService"
 )
 
-.cognitoidentityprovider$handlers <- new_handlers("jsonrpc", "v4")
-
 .cognitoidentityprovider$service <- function(config = list()) {
-  new_service(.cognitoidentityprovider$metadata, .cognitoidentityprovider$handlers, config)
+  handlers <- new_handlers("jsonrpc", "v4")
+  new_service(.cognitoidentityprovider$metadata, handlers, config)
 }

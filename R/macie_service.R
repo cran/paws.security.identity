@@ -36,7 +36,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- macie()
+#' \dontrun{svc <- macie()
 #' svc$associate_member_account(
 #'   Foo = 123
 #' )}
@@ -75,8 +75,7 @@ macie <- function(config = list()) {
   target_prefix = "MacieService"
 )
 
-.macie$handlers <- new_handlers("jsonrpc", "v4")
-
 .macie$service <- function(config = list()) {
-  new_service(.macie$metadata, .macie$handlers, config)
+  handlers <- new_handlers("jsonrpc", "v4")
+  new_service(.macie$metadata, handlers, config)
 }

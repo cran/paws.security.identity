@@ -35,7 +35,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- acm()
+#' \dontrun{svc <- acm()
 #' svc$add_tags_to_certificate(
 #'   Foo = 123
 #' )}
@@ -80,8 +80,7 @@ acm <- function(config = list()) {
   target_prefix = "CertificateManager"
 )
 
-.acm$handlers <- new_handlers("jsonrpc", "v4")
-
 .acm$service <- function(config = list()) {
-  new_service(.acm$metadata, .acm$handlers, config)
+  handlers <- new_handlers("jsonrpc", "v4")
+  new_service(.acm$metadata, handlers, config)
 }

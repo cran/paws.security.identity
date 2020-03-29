@@ -45,7 +45,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- directoryservice()
+#' \dontrun{svc <- directoryservice()
 #' svc$accept_shared_directory(
 #'   Foo = 123
 #' )}
@@ -134,8 +134,7 @@ directoryservice <- function(config = list()) {
   target_prefix = "DirectoryService_20150416"
 )
 
-.directoryservice$handlers <- new_handlers("jsonrpc", "v4")
-
 .directoryservice$service <- function(config = list()) {
-  new_service(.directoryservice$metadata, .directoryservice$handlers, config)
+  handlers <- new_handlers("jsonrpc", "v4")
+  new_service(.directoryservice$metadata, handlers, config)
 }

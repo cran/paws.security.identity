@@ -63,7 +63,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- securityhub()
+#' \dontrun{svc <- securityhub()
 #' svc$accept_invitation(
 #'   Foo = 123
 #' )}
@@ -133,8 +133,7 @@ securityhub <- function(config = list()) {
   target_prefix = ""
 )
 
-.securityhub$handlers <- new_handlers("restjson", "v4")
-
 .securityhub$service <- function(config = list()) {
-  new_service(.securityhub$metadata, .securityhub$handlers, config)
+  handlers <- new_handlers("restjson", "v4")
+  new_service(.securityhub$metadata, handlers, config)
 }

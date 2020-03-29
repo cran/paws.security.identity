@@ -1,6 +1,6 @@
 Package: paws.security.identity
 Title: Amazon Web Services Security, Identity, & Compliance APIs
-Version: 0.1.6
+Version: 0.1.7
 Authors@R: 
     c(person(given = "David",
              family = "Kretch",
@@ -17,7 +17,7 @@ Description: Interface to Amazon Web Services security, identity, and
     service for managing access to services and resources, and more
     <https://aws.amazon.com/>.
 License: Apache License (>= 2.0)
-Imports: paws.common (>= 0.2.5)
+Imports: paws.common (>= 0.3.0)
 Suggests: testthat
 Encoding: UTF-8
 LazyData: true
@@ -52,10 +52,10 @@ Collate: 'acm_service.R' 'acm_interfaces.R' 'acm_operations.R'
         'waf_interfaces.R' 'waf_operations.R' 'wafregional_service.R'
         'wafregional_interfaces.R' 'wafregional_operations.R'
 NeedsCompilation: no
-Packaged: 2020-01-14 04:08:34 UTC; david.kretch
+Packaged: 2020-03-29 13:33:39 UTC; david.kretch
 Author: David Kretch [aut, cre],
   Adam Banker [aut],
   Amazon.com, Inc. [cph]
 Maintainer: David Kretch <david.kretch@gmail.com>
 Repository: CRAN
-Date/Publication: 2020-01-14 11:20:12 UTC
+Date/Publication: 2020-03-29 15:10:02 UTC

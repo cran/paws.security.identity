@@ -9,13 +9,13 @@ iam_add_role_to_instance_profile(InstanceProfileName, RoleName)
 \arguments{
 \item{InstanceProfileName}{[required] The name of the instance profile to update.
 
-This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters
+This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: \\_+=,.@-}
 
 \item{RoleName}{[required] The name of the role to add.
 
-This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters
+This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: \\_+=,.@-}
 }
@@ -29,13 +29,12 @@ change to appear across all of AWS because of \href{https://en.wikipedia.org/wik
 force the change, you must \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DisassociateIamInstanceProfile.html}{disassociate the instance profile}
 and then \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AssociateIamInstanceProfile.html}{associate the instance profile},
 or you can stop your instance and then restart it.
-}
-\details{
+
 The caller of this API must be granted the \code{PassRole} permission on the
 IAM role by a permissions policy.
 
-For more information about roles, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/WorkingWithRoles.html}{Working with Roles}.
-For more information about instance profiles, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/AboutInstanceProfiles.html}{About Instance Profiles}.
+For more information about roles, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html}{Working with Roles}.
+For more information about instance profiles, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html}{About Instance Profiles}.
 }
 \section{Request syntax}{
 \preformatted{svc$add_role_to_instance_profile(

@@ -46,14 +46,13 @@ does not include triggers, the ClientMetadata parameter serves no
 purpose.
 \item Amazon Cognito does not validate the ClientMetadata value.
 \item Amazon Cognito does not encrypt the the ClientMetadata value, so
-don\'t use it to provide sensitive information.
+don't use it to provide sensitive information.
 }}
 }
 \description{
-Updates the specified user\'s attributes, including developer
-attributes, as an administrator. Works on any user.
-}
-\details{
+Updates the specified user's attributes, including developer attributes,
+as an administrator. Works on any user.
+
 For custom attributes, you must prepend the \verb{custom:} prefix to the
 attribute name.
 

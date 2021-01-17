@@ -15,8 +15,7 @@ operation.}
 \description{
 Connects or reconnects a \href{https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{custom key store}
 to its associated AWS CloudHSM cluster.
-}
-\details{
+
 The custom key store must be connected before you can create customer
 master keys (CMKs) in the key store or use the CMKs it contains. You can
 disconnect and reconnect a custom key store at any time.
@@ -57,6 +56,22 @@ UpdateCustomKeyStore operation if necessary, and then use
 If you are having trouble connecting or disconnecting a custom key
 store, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/fix-keystore.html}{Troubleshooting a Custom Key Store}
 in the \emph{AWS Key Management Service Developer Guide}.
+
+\strong{Cross-account use}: No. You cannot perform this operation on a custom
+key store in a different AWS account.
+
+\strong{Required permissions}:
+\href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html}{kms:ConnectCustomKeyStore}
+(IAM policy)
+
+\strong{Related operations}
+\itemize{
+\item CreateCustomKeyStore
+\item DeleteCustomKeyStore
+\item DescribeCustomKeyStores
+\item DisconnectCustomKeyStore
+\item UpdateCustomKeyStore
+}
 }
 \section{Request syntax}{
 \preformatted{svc$connect_custom_key_store(

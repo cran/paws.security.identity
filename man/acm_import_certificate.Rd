@@ -32,9 +32,8 @@ certificate is imported into IAM or into ACM. For more information, see
 the documentation for each service. For more information about importing
 certificates into ACM, see \href{https://docs.aws.amazon.com/acm/latest/userguide/import-certificate.html}{Importing Certificates}
 in the \emph{AWS Certificate Manager User Guide}.
-}
-\details{
-ACM does not provide \href{https://docs.aws.amazon.com/acm/latest/userguide/acm-renewal.html}{managed renewal}
+
+ACM does not provide \href{https://docs.aws.amazon.com/acm/latest/userguide/managed-renewal.html}{managed renewal}
 for certificates that you import.
 
 Note the following guidelines when importing third party certificates:
@@ -64,7 +63,7 @@ certificate saved in the \verb{C:\\\\temp} folder as
 HTTP or HTTPS Query request, include these arguments as BLOBs.
 \item When you import a certificate by using an SDK, you must specify the
 certificate, the certificate chain, and the private key files in the
-manner required by the programming language you\'re using.
+manner required by the programming language you're using.
 \item The cryptographic algorithm of an imported certificate must match
 the algorithm of the signing CA. For example, if the signing CA key
 type is RSA, then the certificate key type must also be RSA.

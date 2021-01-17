@@ -11,7 +11,8 @@ cognitoidentityprovider_respond_to_auth_challenge(ClientId,
 \arguments{
 \item{ClientId}{[required] The app client ID.}
 
-\item{ChallengeName}{[required] The challenge name. For more information, see .
+\item{ChallengeName}{[required] The challenge name. For more information, see
+\href{https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_InitiateAuth.html}{InitiateAuth}.
 
 \code{ADMIN_NO_SRP_AUTH} is not a valid value.}
 
@@ -43,7 +44,7 @@ required attributes.
 \item{AnalyticsMetadata}{The Amazon Pinpoint analytics metadata for collecting metrics for
 \code{RespondToAuthChallenge} calls.}
 
-\item{UserContextData}{Contextual data such as the user\'s device fingerprint, IP address, or
+\item{UserContextData}{Contextual data such as the user's device fingerprint, IP address, or
 location used for evaluating the risk of an unexpected event by Amazon
 Cognito advanced security.}
 
@@ -75,7 +76,7 @@ does not include triggers, the ClientMetadata parameter serves no
 purpose.
 \item Amazon Cognito does not validate the ClientMetadata value.
 \item Amazon Cognito does not encrypt the the ClientMetadata value, so
-don\'t use it to provide sensitive information.
+don't use it to provide sensitive information.
 }}
 }
 \description{

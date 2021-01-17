@@ -28,15 +28,19 @@ Use the \code{clusterIds} filter to return only the backups for the specified
 clusters. Specify clusters by their cluster identifier (ID).
 
 Use the \code{states} filter to return only backups that match the specified
-state.}
+state.
+
+Use the \code{neverExpires} filter to return backups filtered by the value in
+the \code{neverExpires} parameter. \code{True} returns all backups exempt from the
+backup retention policy. \code{False} returns all backups with a backup
+retention policy defined at the cluster.}
 
 \item{SortAscending}{Designates whether or not to sort the return backups by ascending
 chronological order of generation.}
 }
 \description{
 Gets information about backups of AWS CloudHSM clusters.
-}
-\details{
+
 This is a paginated operation, which means that each response might
 contain only a subset of all the backups. When the response contains
 only a subset of backups, it includes a \code{NextToken} value. Use this

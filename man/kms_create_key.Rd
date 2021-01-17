@@ -13,7 +13,7 @@ kms_create_key(Policy, Description, KeyUsage, CustomerMasterKeySpec,
 
 If you provide a key policy, it must meet the following criteria:
 \itemize{
-\item If you don\'t set \code{BypassPolicyLockoutSafetyCheck} to true, the key
+\item If you don't set \code{BypassPolicyLockoutSafetyCheck} to true, the key
 policy must allow the principal that is making the \code{CreateKey}
 request to make a subsequent PutKeyPolicy request on the CMK. This
 reduces the risk that the CMK becomes unmanageable. For more
@@ -33,7 +33,10 @@ If you do not provide a key policy, AWS KMS attaches a default key
 policy to the CMK. For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default}{Default Key Policy}
 in the \emph{AWS Key Management Service Developer Guide}.
 
-The key policy size quota is 32 kilobytes (32768 bytes).}
+The key policy size quota is 32 kilobytes (32768 bytes).
+
+For help writing and formatting a JSON policy document, see the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies.html}{IAM JSON Policy Reference}
+in the \strong{IAM User Guide} .}
 
 \item{Description}{A description of the CMK.
 
@@ -42,7 +45,7 @@ for a task.}
 
 \item{KeyUsage}{Determines the \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#cryptographic-operations}{cryptographic operations}
 for which you can use the CMK. The default value is \code{ENCRYPT_DECRYPT}.
-This parameter is required only for asymmetric CMKs. You can\'t change
+This parameter is required only for asymmetric CMKs. You can't change
 the \code{KeyUsage} value after the CMK is created.
 
 Select only one valid value.
@@ -62,14 +65,14 @@ in the \emph{AWS Key Management Service Developer Guide}.
 The \code{CustomerMasterKeySpec} determines whether the CMK contains a
 symmetric key or an asymmetric key pair. It also determines the
 encryption algorithms or signing algorithms that the CMK supports. You
-can\'t change the \code{CustomerMasterKeySpec} after the CMK is created. To
+can't change the \code{CustomerMasterKeySpec} after the CMK is created. To
 further restrict the algorithms that can be used with the CMK, use a
 condition key in its key policy or IAM policy. For more information, see
 \href{https://docs.aws.amazon.com/kms/latest/developerguide/policy-conditions.html#conditions-kms-encryption-algorithm}{kms:EncryptionAlgorithm}
 or \href{https://docs.aws.amazon.com/kms/latest/developerguide/policy-conditions.html#conditions-kms-signing-algorithm}{kms:Signing Algorithm}
 in the \emph{AWS Key Management Service Developer Guide}.
 
-\href{http://aws.amazon.com/kms/features/#AWS_Service_Integration}{AWS services that are integrated with AWS KMS} use
+\href{https://aws.amazon.com/kms/features/#AWS_Service_Integration}{AWS services that are integrated with AWS KMS} use
 symmetric CMKs to protect your data. These services do not support
 asymmetric CMKs. For help determining whether a CMK is symmetric or
 asymmetric, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/find-symm-asymm.html}{Identifying Symmetric and Asymmetric CMKs}
@@ -162,14 +165,16 @@ report with usage and costs aggregated by tags. For information about
 adding, changing, deleting and listing tags for CMKs, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/tagging-keys.html}{Tagging Keys}.
 
 Use this parameter to tag the CMK when it is created. To add tags to an
-existing CMK, use the TagResource operation.}
+existing CMK, use the TagResource operation.
+
+To use this parameter, you must have
+\href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html}{kms:TagResource}
+permission in an IAM policy.}
 }
 \description{
 Creates a unique customer managed \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#master-keys}{customer master key}
-(CMK) in your AWS account and Region. You cannot use this operation to
-create a CMK in a different AWS account.
-}
-\details{
+(CMK) in your AWS account and Region.
+
 You can use the \code{CreateKey} operation to create symmetric or asymmetric
 CMKs.
 \itemize{
@@ -197,13 +202,13 @@ To create different types of CMKs, use the following guidance:
 To create an asymmetric CMK, use the \code{CustomerMasterKeySpec} parameter
 to specify the type of key material in the CMK. Then, use the \code{KeyUsage}
 parameter to determine whether the CMK will be used to encrypt and
-decrypt or sign and verify. You can\'t change these properties after the
+decrypt or sign and verify. You can't change these properties after the
 CMK is created.
 }
 
 \subsection{Symmetric CMKs}{
 
-When creating a symmetric CMK, you don\'t need to specify the
+When creating a symmetric CMK, you don't need to specify the
 \code{CustomerMasterKeySpec} or \code{KeyUsage} parameters. The default value for
 \code{CustomerMasterKeySpec}, \code{SYMMETRIC_DEFAULT}, and the default value for
 \code{KeyUsage}, \code{ENCRYPT_DECRYPT}, are the only valid values for symmetric
@@ -234,6 +239,24 @@ the AWS Region.
 You cannot create an asymmetric CMK in a custom key store. For
 information about custom key stores in AWS KMS see \href{https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{Using Custom Key Stores}
 in the \strong{AWS Key Management Service Developer Guide} .
+
+\strong{Cross-account use}: No. You cannot use this operation to create a CMK
+in a different AWS account.
+
+\strong{Required permissions}:
+\href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html}{kms:CreateKey}
+(IAM policy). To use the \code{Tags} parameter,
+\href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html}{kms:TagResource}
+(IAM policy). For examples and information about related permissions,
+see \href{https://docs.aws.amazon.com/kms/latest/developerguide/iam-policies.html#iam-policy-example-create-key}{Allow a user to create CMKs}
+in the \emph{AWS Key Management Service Developer Guide}.
+
+\strong{Related operations:}
+\itemize{
+\item DescribeKey
+\item ListKeys
+\item ScheduleKeyDeletion
+}
 }
 }
 \section{Request syntax}{

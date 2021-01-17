@@ -17,8 +17,7 @@ from its associated AWS CloudHSM cluster. While a custom key store is
 disconnected, you can manage the custom key store and its customer
 master keys (CMKs), but you cannot create or use CMKs in the custom key
 store. You can reconnect the custom key store at any time.
-}
-\details{
+
 While a custom key store is disconnected, all attempts to create
 customer master keys (CMKs) in the custom key store or to use existing
 CMKs in \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#cryptographic-operations}{cryptographic operations}
@@ -35,6 +34,22 @@ This operation is part of the \href{https://docs.aws.amazon.com/kms/latest/devel
 feature in AWS KMS, which combines the convenience and extensive
 integration of AWS KMS with the isolation and control of a single-tenant
 key store.
+
+\strong{Cross-account use}: No. You cannot perform this operation on a custom
+key store in a different AWS account.
+
+\strong{Required permissions}:
+\href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html}{kms:DisconnectCustomKeyStore}
+(IAM policy)
+
+\strong{Related operations:}
+\itemize{
+\item ConnectCustomKeyStore
+\item CreateCustomKeyStore
+\item DeleteCustomKeyStore
+\item DescribeCustomKeyStores
+\item UpdateCustomKeyStore
+}
 }
 \section{Request syntax}{
 \preformatted{svc$disconnect_custom_key_store(

@@ -7,12 +7,12 @@
 iam_change_password(OldPassword, NewPassword)
 }
 \arguments{
-\item{OldPassword}{[required] The IAM user\'s current password.}
+\item{OldPassword}{[required] The IAM user's current password.}
 
-\item{NewPassword}{[required] The new password. The new password must conform to the AWS account\'s
+\item{NewPassword}{[required] The new password. The new password must conform to the AWS account's
 password policy, if one exists.
 
-The \href{http://wikipedia.org/wiki/regex}{regex pattern} that is used to
+The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} that is used to
 validate this parameter is a string of characters. That string can
 include almost any printable ASCII character from the space (\code{U+0020})
 through the end of the ASCII character range (\verb{U+00FF}). You can also
@@ -25,10 +25,9 @@ within that tool.}
 \description{
 Changes the password of the IAM user who is calling this operation. The
 AWS account root user password is not affected by this operation.
-}
-\details{
+
 To change the password for a different user, see UpdateLoginProfile. For
-more information about modifying passwords, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_ManagingLogins.html}{Managing Passwords}
+more information about modifying passwords, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_admin-change-user.html}{Managing Passwords}
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{

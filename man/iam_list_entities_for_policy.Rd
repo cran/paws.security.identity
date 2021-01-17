@@ -26,7 +26,7 @@ the valid values listed below.}
 \item{PathPrefix}{The path prefix for filtering the results. This parameter is optional.
 If it is not included, it defaults to a slash (/), listing all entities.
 
-This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters
+This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of either a forward slash (/) by itself or a string that must
 begin and end with forward slashes. In addition, it can contain any
 ASCII character from the ! (\code{U+0021}) through the DEL character
@@ -36,9 +36,9 @@ lowercased letters.}
 \item{PolicyUsageFilter}{The policy usage method to use for filtering the results.
 
 To list only permissions policies,
-setÂ \code{PolicyUsageFilter}Â toÂ \code{PermissionsPolicy}. To list only the
-policies used to set permissions boundaries, setÂ the value
-toÂ \code{PermissionsBoundary}.
+set \code{PolicyUsageFilter} to \code{PermissionsPolicy}. To list only the
+policies used to set permissions boundaries, set the value
+to \code{PermissionsBoundary}.
 
 This parameter is optional. If it is not included, all policies are
 returned.}
@@ -61,8 +61,7 @@ subsequent call that tells the service where to continue from.}
 \description{
 Lists all IAM users, groups, and roles that the specified managed policy
 is attached to.
-}
-\details{
+
 You can use the optional \code{EntityFilter} parameter to limit the results
 to a particular type of entity (users, groups, or roles). For example,
 to list only the roles that are attached to the specified policy, set

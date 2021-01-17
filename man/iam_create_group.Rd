@@ -7,13 +7,13 @@
 iam_create_group(Path, GroupName)
 }
 \arguments{
-\item{Path}{The path to the group. For more information about paths, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html}{IAM Identifiers}
+\item{Path}{The path to the group. For more information about paths, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html}{IAM Identifiers}
 in the \emph{IAM User Guide}.
 
 This parameter is optional. If it is not included, it defaults to a
 slash (/).
 
-This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters
+This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of either a forward slash (/) by itself or a string that must
 begin and end with forward slashes. In addition, it can contain any
 ASCII character from the ! (\code{U+0021}) through the DEL character
@@ -24,12 +24,11 @@ lowercased letters.}
 
 IAM user, group, role, and policy names must be unique within the
 account. Names are not distinguished by case. For example, you cannot
-create resources named both \"MyResource\" and \"myresource\".}
+create resources named both "MyResource" and "myresource".}
 }
 \description{
 Creates a new group.
-}
-\details{
+
 The number and size of IAM resources in an AWS account are limited. For
 more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-quotas.html}{IAM and STS Quotas}
 in the \emph{IAM User Guide}.

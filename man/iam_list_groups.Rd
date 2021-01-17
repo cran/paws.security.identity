@@ -12,7 +12,7 @@ iam_list_groups(PathPrefix, Marker, MaxItems)
 \verb{/division_abc/subdivision_xyz/}.
 
 This parameter is optional. If it is not included, it defaults to a
-slash (/), listing all groups. This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters
+slash (/), listing all groups. This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of either a forward slash (/) by itself or a string that must
 begin and end with forward slashes. In addition, it can contain any
 ASCII character from the ! (\code{U+0021}) through the DEL character
@@ -36,8 +36,7 @@ subsequent call that tells the service where to continue from.}
 }
 \description{
 Lists the IAM groups that have the specified path prefix.
-}
-\details{
+
 You can paginate the results using the \code{MaxItems} and \code{Marker}
 parameters.
 }

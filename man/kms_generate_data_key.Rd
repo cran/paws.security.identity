@@ -65,8 +65,7 @@ operation returns a plaintext copy of the data key and a copy that is
 encrypted under a customer master key (CMK) that you specify. You can
 use the plaintext key to encrypt your data outside of AWS KMS and store
 the encrypted data key with the encrypted data.
-}
-\details{
+
 \code{GenerateDataKey} returns a unique data key for each request. The bytes
 in the plaintext key are not related to the caller or the CMK.
 
@@ -120,6 +119,23 @@ To decrypt data outside of AWS KMS:
 operation returns a plaintext copy of the data key.
 \item Use the plaintext data key to decrypt data outside of AWS KMS, then
 erase the plaintext data key from memory.
+}
+
+\strong{Cross-account use}: Yes. To perform this operation with a CMK in a
+different AWS account, specify the key ARN or alias ARN in the value of
+the \code{KeyId} parameter.
+
+\strong{Required permissions}:
+\href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html}{kms:GenerateDataKey}
+(key policy)
+
+\strong{Related operations:}
+\itemize{
+\item Decrypt
+\item Encrypt
+\item GenerateDataKeyPair
+\item GenerateDataKeyPairWithoutPlaintext
+\item GenerateDataKeyWithoutPlaintext
 }
 }
 \section{Request syntax}{

@@ -24,7 +24,7 @@ to us-west-2.
 For listings of the bucket policies, see the Examples section.
 }}
 
-\item{IgnoreUnsupportedType}{[required] Indicates whether to exclude entities that can\'t be migrated or to stop
+\item{IgnoreUnsupportedType}{[required] Indicates whether to exclude entities that can't be migrated or to stop
 the migration. Set this to true to ignore unsupported entities in the
 web ACL during the migration. Otherwise, if AWS WAF encounters
 unsupported entities, it stops the process and throws an exception.}
@@ -35,8 +35,7 @@ in the specified Amazon S3 bucket. Then, in CloudFormation, you create a
 stack from the template, to create the web ACL and its resources in AWS
 WAFV2. Use this to migrate your AWS WAF Classic web ACL to the latest
 version of AWS WAF.
-}
-\details{
+
 This is part of a larger migration procedure for web ACLs from AWS WAF
 Classic to the latest version of AWS WAF. For the full procedure,
 including caveats and manual steps to complete the migration and switch

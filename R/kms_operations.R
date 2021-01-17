@@ -5,10 +5,10 @@ NULL
 
 #' Cancels the deletion of a customer master key (CMK)
 #'
+#' @description
 #' Cancels the deletion of a customer master key (CMK). When this operation
 #' succeeds, the key state of the CMK is `Disabled`. To enable the CMK, use
-#' EnableKey. You cannot perform this operation on a CMK in a different AWS
-#' account.
+#' EnableKey.
 #' 
 #' For more information about scheduling and canceling deletion of a CMK,
 #' see [Deleting Customer Master
@@ -19,6 +19,15 @@ NULL
 #' state. For details, see [How Key State Affects Use of a Customer Master
 #' Key](https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
 #' in the *AWS Key Management Service Developer Guide*.
+#' 
+#' **Cross-account use**: No. You cannot perform this operation on a CMK in
+#' a different AWS account.
+#' 
+#' **Required permissions**:
+#' [kms:CancelKeyDeletion](https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html)
+#' (key policy)
+#' 
+#' **Related operations**: ScheduleKeyDeletion
 #'
 #' @usage
 #' kms_cancel_key_deletion(KeyId)
@@ -75,6 +84,7 @@ kms_cancel_key_deletion <- function(KeyId) {
 #' Connects or reconnects a custom key store to its associated AWS CloudHSM
 #' cluster
 #'
+#' @description
 #' Connects or reconnects a [custom key
 #' store](https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html)
 #' to its associated AWS CloudHSM cluster.
@@ -121,6 +131,25 @@ kms_cancel_key_deletion <- function(KeyId) {
 #' store, see [Troubleshooting a Custom Key
 #' Store](https://docs.aws.amazon.com/kms/latest/developerguide/fix-keystore.html)
 #' in the *AWS Key Management Service Developer Guide*.
+#' 
+#' **Cross-account use**: No. You cannot perform this operation on a custom
+#' key store in a different AWS account.
+#' 
+#' **Required permissions**:
+#' [kms:ConnectCustomKeyStore](https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html)
+#' (IAM policy)
+#' 
+#' **Related operations**
+#' 
+#' -   CreateCustomKeyStore
+#' 
+#' -   DeleteCustomKeyStore
+#' 
+#' -   DescribeCustomKeyStores
+#' 
+#' -   DisconnectCustomKeyStore
+#' 
+#' -   UpdateCustomKeyStore
 #'
 #' @usage
 #' kms_connect_custom_key_store(CustomKeyStoreId)
@@ -156,94 +185,93 @@ kms_connect_custom_key_store <- function(CustomKeyStoreId) {
 }
 .kms$operations$connect_custom_key_store <- kms_connect_custom_key_store
 
-#' Creates a display name for a customer managed customer master key (CMK)
+#' Creates a friendly name for a customer master key (CMK)
 #'
-#' Creates a display name for a customer managed customer master key (CMK).
-#' You can use an alias to identify a CMK in [cryptographic
+#' @description
+#' Creates a friendly name for a customer master key (CMK). You can use an
+#' alias to identify a CMK in the AWS KMS console, in the DescribeKey
+#' operation and in [cryptographic
 #' operations](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#cryptographic-operations),
-#' such as Encrypt and GenerateDataKey. You can change the CMK associated
-#' with the alias at any time.
+#' such as Encrypt and GenerateDataKey.
 #' 
-#' Aliases are easier to remember than key IDs. They can also help to
-#' simplify your applications. For example, if you use an alias in your
-#' code, you can change the CMK your code uses by associating a given alias
-#' with a different CMK.
+#' You can also change the CMK that's associated with the alias
+#' (UpdateAlias) or delete the alias (DeleteAlias) at any time. These
+#' operations don't affect the underlying CMK.
 #' 
-#' To run the same code in multiple AWS regions, use an alias in your code,
-#' such as `alias/ApplicationKey`. Then, in each AWS Region, create an
-#' `alias/ApplicationKey` alias that is associated with a CMK in that
-#' Region. When you run your code, it uses the `alias/ApplicationKey` CMK
-#' for that AWS Region without any Region-specific code.
+#' You can associate the alias with any customer managed CMK in the same
+#' AWS Region. Each alias is associated with only on CMK at a time, but a
+#' CMK can have multiple aliases. A valid CMK is required. You can't create
+#' an alias without a CMK.
+#' 
+#' The alias must be unique in the account and Region, but you can have
+#' aliases with the same name in different Regions. For detailed
+#' information about aliases, see [Using
+#' aliases](https://docs.aws.amazon.com/kms/latest/developerguide/kms-alias.html)
+#' in the *AWS Key Management Service Developer Guide*.
 #' 
 #' This operation does not return a response. To get the alias that you
 #' created, use the ListAliases operation.
-#' 
-#' To use aliases successfully, be aware of the following information.
-#' 
-#' -   Each alias points to only one CMK at a time, although a single CMK
-#'     can have multiple aliases. The alias and its associated CMK must be
-#'     in the same AWS account and Region.
-#' 
-#' -   You can associate an alias with any customer managed CMK in the same
-#'     AWS account and Region. However, you do not have permission to
-#'     associate an alias with an [AWS managed
-#'     CMK](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk)
-#'     or an [AWS owned
-#'     CMK](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-owned-cmk).
-#' 
-#' -   To change the CMK associated with an alias, use the UpdateAlias
-#'     operation. The current CMK and the new CMK must be the same type
-#'     (both symmetric or both asymmetric) and they must have the same key
-#'     usage (`ENCRYPT_DECRYPT` or `SIGN_VERIFY`). This restriction
-#'     prevents cryptographic errors in code that uses aliases.
-#' 
-#' -   The alias name must begin with `alias/` followed by a name, such as
-#'     `alias/ExampleAlias`. It can contain only alphanumeric characters,
-#'     forward slashes (/), underscores (\\_), and dashes (-). The alias
-#'     name cannot begin with `alias/aws/`. The `alias/aws/` prefix is
-#'     reserved for [AWS managed
-#'     CMKs](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk).
-#' 
-#' -   The alias name must be unique within an AWS Region. However, you can
-#'     use the same alias name in multiple Regions of the same AWS account.
-#'     Each instance of the alias is associated with a CMK in its Region.
-#' 
-#' -   After you create an alias, you cannot change its alias name.
-#'     However, you can use the DeleteAlias operation to delete the alias
-#'     and then create a new alias with the desired name.
-#' 
-#' -   You can use an alias name or alias ARN to identify a CMK in AWS KMS
-#'     [cryptographic
-#'     operations](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#cryptographic-operations)
-#'     and in the DescribeKey operation. However, you cannot use alias
-#'     names or alias ARNs in API operations that manage CMKs, such as
-#'     DisableKey or GetKeyPolicy. For information about the valid CMK
-#'     identifiers for each AWS KMS API operation, see the descriptions of
-#'     the `KeyId` parameter in the API operation documentation.
-#' 
-#' Because an alias is not a property of a CMK, you can delete and change
-#' the aliases of a CMK without affecting the CMK. Also, aliases do not
-#' appear in the response from the DescribeKey operation. To get the
-#' aliases and alias ARNs of CMKs in each AWS account and Region, use the
-#' ListAliases operation.
 #' 
 #' The CMK that you use for this operation must be in a compatible key
 #' state. For details, see [How Key State Affects Use of a Customer Master
 #' Key](https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
 #' in the *AWS Key Management Service Developer Guide*.
+#' 
+#' **Cross-account use**: No. You cannot perform this operation on an alias
+#' in a different AWS account.
+#' 
+#' **Required permissions**
+#' 
+#' -   [kms:CreateAlias](https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html)
+#'     on the alias (IAM policy).
+#' 
+#' -   [kms:CreateAlias](https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html)
+#'     on the CMK (key policy).
+#' 
+#' For details, see [Controlling access to
+#' aliases](https://docs.aws.amazon.com/kms/latest/developerguide/kms-alias.html#alias-access)
+#' in the *AWS Key Management Service Developer Guide*.
+#' 
+#' **Related operations:**
+#' 
+#' -   DeleteAlias
+#' 
+#' -   ListAliases
+#' 
+#' -   UpdateAlias
 #'
 #' @usage
 #' kms_create_alias(AliasName, TargetKeyId)
 #'
 #' @param AliasName &#91;required&#93; Specifies the alias name. This value must begin with `alias/` followed
-#' by a name, such as `alias/ExampleAlias`. The alias name cannot begin
-#' with `alias/aws/`. The `alias/aws/` prefix is reserved for AWS managed
-#' CMKs.
-#' @param TargetKeyId &#91;required&#93; Identifies the CMK to which the alias refers. Specify the key ID or the
-#' Amazon Resource Name (ARN) of the CMK. You cannot specify another alias.
+#' by a name, such as `alias/ExampleAlias`.
+#' 
+#' The `AliasName` value must be string of 1-256 characters. It can contain
+#' only alphanumeric characters, forward slashes (/), underscores (\\_), and
+#' dashes (-). The alias name cannot begin with `alias/aws/`. The
+#' `alias/aws/` prefix is reserved for [AWS managed
+#' CMKs](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk).
+#' @param TargetKeyId &#91;required&#93; Associates the alias with the specified [customer managed
+#' CMK](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-cmk).
+#' The CMK must be in the same AWS Region.
+#' 
+#' A valid CMK ID is required. If you supply a null or empty string value,
+#' this operation returns an error.
+#' 
 #' For help finding the key ID and ARN, see [Finding the Key ID and
 #' ARN](https://docs.aws.amazon.com/kms/latest/developerguide/viewing-keys.html#find-cmk-id-arn)
 #' in the *AWS Key Management Service Developer Guide*.
+#' 
+#' Specify the key ID or the Amazon Resource Name (ARN) of the CMK.
+#' 
+#' For example:
+#' 
+#' -   Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
+#' 
+#' -   Key ARN:
+#'     `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
+#' 
+#' To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.
 #'
 #' @section Request syntax:
 #' ```
@@ -286,6 +314,7 @@ kms_create_alias <- function(AliasName, TargetKeyId) {
 #' Creates a custom key store that is associated with an AWS CloudHSM
 #' cluster that you own and manage
 #'
+#' @description
 #' Creates a [custom key
 #' store](https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html)
 #' that is associated with an [AWS CloudHSM
@@ -316,6 +345,25 @@ kms_create_alias <- function(AliasName, TargetKeyId) {
 #' For help with failures, see [Troubleshooting a Custom Key
 #' Store](https://docs.aws.amazon.com/kms/latest/developerguide/fix-keystore.html)
 #' in the *AWS Key Management Service Developer Guide*.
+#' 
+#' **Cross-account use**: No. You cannot perform this operation on a custom
+#' key store in a different AWS account.
+#' 
+#' **Required permissions**:
+#' [kms:CreateCustomKeyStore](https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html)
+#' (IAM policy).
+#' 
+#' **Related operations:**
+#' 
+#' -   ConnectCustomKeyStore
+#' 
+#' -   DeleteCustomKeyStore
+#' 
+#' -   DescribeCustomKeyStores
+#' 
+#' -   DisconnectCustomKeyStore
+#' 
+#' -   UpdateCustomKeyStore
 #'
 #' @usage
 #' kms_create_custom_key_store(CustomKeyStoreName, CloudHsmClusterId,
@@ -375,6 +423,7 @@ kms_create_custom_key_store <- function(CustomKeyStoreName, CloudHsmClusterId, T
 
 #' Adds a grant to a customer master key (CMK)
 #'
+#' @description
 #' Adds a grant to a customer master key (CMK). The grant allows the
 #' grantee principal to use the CMK when the conditions specified in the
 #' grant are met. When setting permissions, grants are an alternative to
@@ -399,9 +448,9 @@ kms_create_custom_key_store <- function(CustomKeyStoreName, CloudHsmClusterId, T
 #' -   Grants for asymmetric CMKs cannot allow operations that are not
 #'     supported for asymmetric CMKs, including operations that [generate
 #'     data
-#'     keys](https://docs.aws.amazon.com/kms/latest/APIReference/API_GenerateDataKey)
+#'     keys](https://docs.aws.amazon.com/kms/latest/APIReference/API_GenerateDataKey.html)
 #'     or [data key
-#'     pairs](https://docs.aws.amazon.com/kms/latest/APIReference/API_GenerateDataKeyPair),
+#'     pairs](https://docs.aws.amazon.com/kms/latest/APIReference/API_GenerateDataKeyPair.html),
 #'     or operations related to [automatic key
 #'     rotation](https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html),
 #'     [imported key
@@ -421,11 +470,8 @@ kms_create_custom_key_store <- function(CustomKeyStoreName, CloudHsmClusterId, T
 #' For information about symmetric and asymmetric CMKs, see [Using
 #' Symmetric and Asymmetric
 #' CMKs](https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html)
-#' in the *AWS Key Management Service Developer Guide*.
-#' 
-#' To perform this operation on a CMK in a different AWS account, specify
-#' the key ARN in the value of the `KeyId` parameter. For more information
-#' about grants, see
+#' in the *AWS Key Management Service Developer Guide*. For more
+#' information about grants, see
 #' [Grants](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html)
 #' in the **AWS Key Management Service Developer Guide** .
 #' 
@@ -433,6 +479,24 @@ kms_create_custom_key_store <- function(CustomKeyStoreName, CloudHsmClusterId, T
 #' state. For details, see [How Key State Affects Use of a Customer Master
 #' Key](https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
 #' in the *AWS Key Management Service Developer Guide*.
+#' 
+#' **Cross-account use**: Yes. To perform this operation on a CMK in a
+#' different AWS account, specify the key ARN in the value of the `KeyId`
+#' parameter.
+#' 
+#' **Required permissions**:
+#' [kms:CreateGrant](https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html)
+#' (key policy)
+#' 
+#' **Related operations:**
+#' 
+#' -   ListGrants
+#' 
+#' -   ListRetirableGrants
+#' 
+#' -   RetireGrant
+#' 
+#' -   RevokeGrant
 #'
 #' @usage
 #' kms_create_grant(KeyId, GranteePrincipal, RetiringPrincipal, Operations,
@@ -482,13 +546,17 @@ kms_create_custom_key_store <- function(CustomKeyStoreName, CloudHsmClusterId, T
 #' encryption context, see [Encryption
 #' Context](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context)
 #' in the **AWS Key Management Service Developer Guide** .
+#' 
+#' Grant constraints are not applied to operations that do not support an
+#' encryption context, such as cryptographic operations with asymmetric
+#' CMKs and management operations, such as DescribeKey or RetireGrant.
 #' @param GrantTokens A list of grant tokens.
 #' 
 #' For more information, see [Grant
 #' Tokens](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token)
 #' in the *AWS Key Management Service Developer Guide*.
-#' @param Name A friendly name for identifying the grant. Use this value to prevent the
-#' unintended creation of duplicate grants when retrying this request.
+#' @param Name A friendly name for the grant. Use this value to prevent the unintended
+#' creation of duplicate grants when retrying this request.
 #' 
 #' When this value is absent, all `CreateGrant` requests result in a new
 #' grant with a unique `GrantId` even if all the supplied parameters are
@@ -499,8 +567,8 @@ kms_create_custom_key_store <- function(CustomKeyStoreName, CloudHsmClusterId, T
 #' identical parameters; if the grant already exists, the original
 #' `GrantId` is returned without creating a new grant. Note that the
 #' returned grant token is unique with every `CreateGrant` request, even
-#' when a duplicate `GrantId` is returned. All grant tokens obtained in
-#' this way can be used interchangeably.
+#' when a duplicate `GrantId` is returned. All grant tokens for the same
+#' grant ID can be used interchangeably.
 #'
 #' @section Request syntax:
 #' ```
@@ -563,10 +631,10 @@ kms_create_grant <- function(KeyId, GranteePrincipal, RetiringPrincipal = NULL, 
 #' Creates a unique customer managed customer master key (CMK) in your AWS
 #' account and Region
 #'
+#' @description
 #' Creates a unique customer managed [customer master
 #' key](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#master-keys)
-#' (CMK) in your AWS account and Region. You cannot use this operation to
-#' create a CMK in a different AWS account.
+#' (CMK) in your AWS account and Region.
 #' 
 #' You can use the `CreateKey` operation to create symmetric or asymmetric
 #' CMKs.
@@ -600,12 +668,12 @@ kms_create_grant <- function(KeyId, GranteePrincipal, RetiringPrincipal = NULL, 
 #' To create an asymmetric CMK, use the `CustomerMasterKeySpec` parameter
 #' to specify the type of key material in the CMK. Then, use the `KeyUsage`
 #' parameter to determine whether the CMK will be used to encrypt and
-#' decrypt or sign and verify. You can\'t change these properties after the
+#' decrypt or sign and verify. You can't change these properties after the
 #' CMK is created.
 #' 
 #' ### Symmetric CMKs
 #' 
-#' When creating a symmetric CMK, you don\'t need to specify the
+#' When creating a symmetric CMK, you don't need to specify the
 #' `CustomerMasterKeySpec` or `KeyUsage` parameters. The default value for
 #' `CustomerMasterKeySpec`, `SYMMETRIC_DEFAULT`, and the default value for
 #' `KeyUsage`, `ENCRYPT_DECRYPT`, are the only valid values for symmetric
@@ -638,6 +706,26 @@ kms_create_grant <- function(KeyId, GranteePrincipal, RetiringPrincipal = NULL, 
 #' information about custom key stores in AWS KMS see [Using Custom Key
 #' Stores](https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html)
 #' in the **AWS Key Management Service Developer Guide** .
+#' 
+#' **Cross-account use**: No. You cannot use this operation to create a CMK
+#' in a different AWS account.
+#' 
+#' **Required permissions**:
+#' [kms:CreateKey](https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html)
+#' (IAM policy). To use the `Tags` parameter,
+#' [kms:TagResource](https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html)
+#' (IAM policy). For examples and information about related permissions,
+#' see [Allow a user to create
+#' CMKs](https://docs.aws.amazon.com/kms/latest/developerguide/iam-policies.html#iam-policy-example-create-key)
+#' in the *AWS Key Management Service Developer Guide*.
+#' 
+#' **Related operations:**
+#' 
+#' -   DescribeKey
+#' 
+#' -   ListKeys
+#' 
+#' -   ScheduleKeyDeletion
 #'
 #' @usage
 #' kms_create_key(Policy, Description, KeyUsage, CustomerMasterKeySpec,
@@ -647,7 +735,7 @@ kms_create_grant <- function(KeyId, GranteePrincipal, RetiringPrincipal = NULL, 
 #' 
 #' If you provide a key policy, it must meet the following criteria:
 #' 
-#' -   If you don\'t set `BypassPolicyLockoutSafetyCheck` to true, the key
+#' -   If you don't set `BypassPolicyLockoutSafetyCheck` to true, the key
 #'     policy must allow the principal that is making the `CreateKey`
 #'     request to make a subsequent PutKeyPolicy request on the CMK. This
 #'     reduces the risk that the CMK becomes unmanageable. For more
@@ -671,6 +759,11 @@ kms_create_grant <- function(KeyId, GranteePrincipal, RetiringPrincipal = NULL, 
 #' in the *AWS Key Management Service Developer Guide*.
 #' 
 #' The key policy size quota is 32 kilobytes (32768 bytes).
+#' 
+#' For help writing and formatting a JSON policy document, see the [IAM
+#' JSON Policy
+#' Reference](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies.html)
+#' in the **IAM User Guide** .
 #' @param Description A description of the CMK.
 #' 
 #' Use a description that helps you decide whether the CMK is appropriate
@@ -678,7 +771,7 @@ kms_create_grant <- function(KeyId, GranteePrincipal, RetiringPrincipal = NULL, 
 #' @param KeyUsage Determines the [cryptographic
 #' operations](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#cryptographic-operations)
 #' for which you can use the CMK. The default value is `ENCRYPT_DECRYPT`.
-#' This parameter is required only for asymmetric CMKs. You can\'t change
+#' This parameter is required only for asymmetric CMKs. You can't change
 #' the `KeyUsage` value after the CMK is created.
 #' 
 #' Select only one valid value.
@@ -699,7 +792,7 @@ kms_create_grant <- function(KeyId, GranteePrincipal, RetiringPrincipal = NULL, 
 #' The `CustomerMasterKeySpec` determines whether the CMK contains a
 #' symmetric key or an asymmetric key pair. It also determines the
 #' encryption algorithms or signing algorithms that the CMK supports. You
-#' can\'t change the `CustomerMasterKeySpec` after the CMK is created. To
+#' can't change the `CustomerMasterKeySpec` after the CMK is created. To
 #' further restrict the algorithms that can be used with the CMK, use a
 #' condition key in its key policy or IAM policy. For more information, see
 #' [kms:EncryptionAlgorithm](https://docs.aws.amazon.com/kms/latest/developerguide/policy-conditions.html#conditions-kms-encryption-algorithm)
@@ -708,7 +801,7 @@ kms_create_grant <- function(KeyId, GranteePrincipal, RetiringPrincipal = NULL, 
 #' in the *AWS Key Management Service Developer Guide*.
 #' 
 #' [AWS services that are integrated with AWS
-#' KMS](http://aws.amazon.com/kms/features/#AWS_Service_Integration) use
+#' KMS](https://aws.amazon.com/kms/features/#AWS_Service_Integration) use
 #' symmetric CMKs to protect your data. These services do not support
 #' asymmetric CMKs. For help determining whether a CMK is symmetric or
 #' asymmetric, see [Identifying Symmetric and Asymmetric
@@ -807,6 +900,10 @@ kms_create_grant <- function(KeyId, GranteePrincipal, RetiringPrincipal = NULL, 
 #' 
 #' Use this parameter to tag the CMK when it is created. To add tags to an
 #' existing CMK, use the TagResource operation.
+#' 
+#' To use this parameter, you must have
+#' [kms:TagResource](https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html)
+#' permission in an IAM policy.
 #'
 #' @section Request syntax:
 #' ```
@@ -867,6 +964,7 @@ kms_create_key <- function(Policy = NULL, Description = NULL, KeyUsage = NULL, C
 #' decrypt ciphertext that was encrypted under a symmetric or asymmetric
 #' CMK
 #'
+#' @description
 #' Decrypts ciphertext that was encrypted by a AWS KMS customer master key
 #' (CMK) using any of the following operations:
 #' 
@@ -898,27 +996,49 @@ kms_create_key <- function(Policy = NULL, Description = NULL, KeyUsage = NULL, C
 #' These libraries return a ciphertext format that is incompatible with AWS
 #' KMS.
 #' 
-#' If the ciphertext was encrypted under a symmetric CMK, you do not need
-#' to specify the CMK or the encryption algorithm. AWS KMS can get this
-#' information from metadata that it adds to the symmetric ciphertext blob.
-#' However, if you prefer, you can specify the `KeyId` to ensure that a
-#' particular CMK is used to decrypt the ciphertext. If you specify a
-#' different CMK than the one used to encrypt the ciphertext, the `Decrypt`
-#' operation fails.
+#' If the ciphertext was encrypted under a symmetric CMK, the `KeyId`
+#' parameter is optional. AWS KMS can get this information from metadata
+#' that it adds to the symmetric ciphertext blob. This feature adds
+#' durability to your implementation by ensuring that authorized users can
+#' decrypt ciphertext decades after it was encrypted, even if they've lost
+#' track of the CMK ID. However, specifying the CMK is always recommended
+#' as a best practice. When you use the `KeyId` parameter to specify a CMK,
+#' AWS KMS only uses the CMK you specify. If the ciphertext was encrypted
+#' under a different CMK, the `Decrypt` operation fails. This practice
+#' ensures that you use the CMK that you intend.
 #' 
 #' Whenever possible, use key policies to give users permission to call the
-#' Decrypt operation on a particular CMK, instead of using IAM policies.
+#' `Decrypt` operation on a particular CMK, instead of using IAM policies.
 #' Otherwise, you might create an IAM user policy that gives the user
-#' Decrypt permission on all CMKs. This user could decrypt ciphertext that
-#' was encrypted by CMKs in other accounts if the key policy for the
+#' `Decrypt` permission on all CMKs. This user could decrypt ciphertext
+#' that was encrypted by CMKs in other accounts if the key policy for the
 #' cross-account CMK permits it. If you must use an IAM policy for
 #' `Decrypt` permissions, limit the user to particular CMKs or particular
-#' trusted accounts.
+#' trusted accounts. For details, see [Best practices for IAM
+#' policies](https://docs.aws.amazon.com/kms/latest/developerguide/iam-policies.html#iam-policies-best-practices)
+#' in the *AWS Key Management Service Developer Guide*.
 #' 
 #' The CMK that you use for this operation must be in a compatible key
 #' state. For details, see [How Key State Affects Use of a Customer Master
 #' Key](https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
 #' in the *AWS Key Management Service Developer Guide*.
+#' 
+#' **Cross-account use**: Yes. You can decrypt a ciphertext using a CMK in
+#' a different AWS account.
+#' 
+#' **Required permissions**:
+#' [kms:Decrypt](https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html)
+#' (key policy)
+#' 
+#' **Related operations:**
+#' 
+#' -   Encrypt
+#' 
+#' -   GenerateDataKey
+#' 
+#' -   GenerateDataKeyPair
+#' 
+#' -   ReEncrypt
 #'
 #' @usage
 #' kms_decrypt(CiphertextBlob, EncryptionContext, GrantTokens, KeyId,
@@ -946,21 +1066,20 @@ kms_create_key <- function(Policy = NULL, Description = NULL, KeyUsage = NULL, C
 #' For more information, see [Grant
 #' Tokens](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token)
 #' in the *AWS Key Management Service Developer Guide*.
-#' @param KeyId Specifies the customer master key (CMK) that AWS KMS will use to decrypt
-#' the ciphertext. Enter a key ID of the CMK that was used to encrypt the
+#' @param KeyId Specifies the customer master key (CMK) that AWS KMS uses to decrypt the
+#' ciphertext. Enter a key ID of the CMK that was used to encrypt the
 #' ciphertext.
 #' 
-#' If you specify a `KeyId` value, the `Decrypt` operation succeeds only if
-#' the specified CMK was used to encrypt the ciphertext.
-#' 
 #' This parameter is required only when the ciphertext was encrypted under
-#' an asymmetric CMK. Otherwise, AWS KMS uses the metadata that it adds to
-#' the ciphertext blob to determine which CMK was used to encrypt the
-#' ciphertext. However, you can use this parameter to ensure that a
-#' particular CMK (of any kind) is used to decrypt the ciphertext.
+#' an asymmetric CMK. If you used a symmetric CMK, AWS KMS can get the CMK
+#' from metadata that it adds to the symmetric ciphertext blob. However, it
+#' is always recommended as a best practice. This practice ensures that you
+#' use the CMK that you intend.
 #' 
 #' To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias
 #' name, or alias ARN. When using an alias name, prefix it with `"alias/"`.
+#' To specify a CMK in a different AWS account, you must use the key ARN or
+#' alias ARN.
 #' 
 #' For example:
 #' 
@@ -1004,7 +1123,8 @@ kms_create_key <- function(Policy = NULL, Description = NULL, KeyUsage = NULL, C
 #' # The following example decrypts data that was encrypted with a customer
 #' # master key (CMK) in AWS KMS.
 #' svc$decrypt(
-#'   CiphertextBlob = "<binary data>"
+#'   CiphertextBlob = "<binary data>",
+#'   KeyId = "arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"
 #' )
 #' }
 #'
@@ -1030,8 +1150,8 @@ kms_decrypt <- function(CiphertextBlob, EncryptionContext = NULL, GrantTokens = 
 
 #' Deletes the specified alias
 #'
-#' Deletes the specified alias. You cannot perform this operation on an
-#' alias in a different AWS account.
+#' @description
+#' Deletes the specified alias.
 #' 
 #' Because an alias is not a property of a CMK, you can delete and change
 #' the aliases of a CMK without affecting the CMK. Also, aliases do not
@@ -1042,6 +1162,29 @@ kms_decrypt <- function(CiphertextBlob, EncryptionContext = NULL, GrantTokens = 
 #' DeleteAlias to delete the current alias and CreateAlias to create a new
 #' alias. To associate an existing alias with a different customer master
 #' key (CMK), call UpdateAlias.
+#' 
+#' **Cross-account use**: No. You cannot perform this operation on an alias
+#' in a different AWS account.
+#' 
+#' **Required permissions**
+#' 
+#' -   [kms:DeleteAlias](https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html)
+#'     on the alias (IAM policy).
+#' 
+#' -   [kms:DeleteAlias](https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html)
+#'     on the CMK (key policy).
+#' 
+#' For details, see [Controlling access to
+#' aliases](https://docs.aws.amazon.com/kms/latest/developerguide/kms-alias.html#alias-access)
+#' in the *AWS Key Management Service Developer Guide*.
+#' 
+#' **Related operations:**
+#' 
+#' -   CreateAlias
+#' 
+#' -   ListAliases
+#' 
+#' -   UpdateAlias
 #'
 #' @usage
 #' kms_delete_alias(AliasName)
@@ -1086,6 +1229,7 @@ kms_delete_alias <- function(AliasName) {
 
 #' Deletes a custom key store
 #'
+#' @description
 #' Deletes a [custom key
 #' store](https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html).
 #' This operation does not delete the AWS CloudHSM cluster that is
@@ -1123,6 +1267,25 @@ kms_delete_alias <- function(AliasName) {
 #' feature in AWS KMS, which combines the convenience and extensive
 #' integration of AWS KMS with the isolation and control of a single-tenant
 #' key store.
+#' 
+#' **Cross-account use**: No. You cannot perform this operation on a custom
+#' key store in a different AWS account.
+#' 
+#' **Required permissions**:
+#' [kms:DeleteCustomKeyStore](https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html)
+#' (IAM policy)
+#' 
+#' **Related operations:**
+#' 
+#' -   ConnectCustomKeyStore
+#' 
+#' -   CreateCustomKeyStore
+#' 
+#' -   DescribeCustomKeyStores
+#' 
+#' -   DisconnectCustomKeyStore
+#' 
+#' -   UpdateCustomKeyStore
 #'
 #' @usage
 #' kms_delete_custom_key_store(CustomKeyStoreId)
@@ -1159,15 +1322,15 @@ kms_delete_custom_key_store <- function(CustomKeyStoreId) {
 
 #' Deletes key material that you previously imported
 #'
+#' @description
 #' Deletes key material that you previously imported. This operation makes
 #' the specified customer master key (CMK) unusable. For more information
 #' about importing key material into AWS KMS, see [Importing Key
 #' Material](https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html)
-#' in the *AWS Key Management Service Developer Guide*. You cannot perform
-#' this operation on a CMK in a different AWS account.
+#' in the *AWS Key Management Service Developer Guide*.
 #' 
 #' When the specified CMK is in the `PendingDeletion` state, this operation
-#' does not change the CMK\'s state. Otherwise, it changes the CMK\'s state
+#' does not change the CMK's state. Otherwise, it changes the CMK's state
 #' to `PendingImport`.
 #' 
 #' After you delete key material, you can use ImportKeyMaterial to reimport
@@ -1177,6 +1340,19 @@ kms_delete_custom_key_store <- function(CustomKeyStoreId) {
 #' state. For details, see [How Key State Affects Use of a Customer Master
 #' Key](https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
 #' in the *AWS Key Management Service Developer Guide*.
+#' 
+#' **Cross-account use**: No. You cannot perform this operation on a CMK in
+#' a different AWS account.
+#' 
+#' **Required permissions**:
+#' [kms:DeleteImportedKeyMaterial](https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html)
+#' (key policy)
+#' 
+#' **Related operations:**
+#' 
+#' -   GetParametersForImport
+#' 
+#' -   ImportKeyMaterial
 #'
 #' @usage
 #' kms_delete_imported_key_material(KeyId)
@@ -1233,6 +1409,7 @@ kms_delete_imported_key_material <- function(KeyId) {
 
 #' Gets information about custom key stores in the account and region
 #'
+#' @description
 #' Gets information about [custom key
 #' stores](https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html)
 #' in the account and region.
@@ -1266,6 +1443,25 @@ kms_delete_imported_key_material <- function(KeyId) {
 #' Custom Key
 #' Stores](https://docs.aws.amazon.com/kms/latest/developerguide/fix-keystore.html)
 #' topic in the *AWS Key Management Service Developer Guide*.
+#' 
+#' **Cross-account use**: No. You cannot perform this operation on a custom
+#' key store in a different AWS account.
+#' 
+#' **Required permissions**:
+#' [kms:DescribeCustomKeyStores](https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html)
+#' (IAM policy)
+#' 
+#' **Related operations:**
+#' 
+#' -   ConnectCustomKeyStore
+#' 
+#' -   CreateCustomKeyStore
+#' 
+#' -   DeleteCustomKeyStore
+#' 
+#' -   DisconnectCustomKeyStore
+#' 
+#' -   UpdateCustomKeyStore
 #'
 #' @usage
 #' kms_describe_custom_key_stores(CustomKeyStoreId, CustomKeyStoreName,
@@ -1324,6 +1520,7 @@ kms_describe_custom_key_stores <- function(CustomKeyStoreId = NULL, CustomKeySto
 
 #' Provides detailed information about a customer master key (CMK)
 #'
+#' @description
 #' Provides detailed information about a customer master key (CMK). You can
 #' run `DescribeKey` on a [customer managed
 #' CMK](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-cmk)
@@ -1363,8 +1560,29 @@ kms_describe_custom_key_stores <- function(CustomKeyStoreId = NULL, CustomKeySto
 #' Then, it associates the alias with the new CMK, and returns the `KeyId`
 #' and `Arn` of the new CMK in the response.
 #' 
-#' To perform this operation on a CMK in a different AWS account, specify
-#' the key ARN or alias ARN in the value of the KeyId parameter.
+#' **Cross-account use**: Yes. To perform this operation with a CMK in a
+#' different AWS account, specify the key ARN or alias ARN in the value of
+#' the `KeyId` parameter.
+#' 
+#' **Required permissions**:
+#' [kms:DescribeKey](https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html)
+#' (key policy)
+#' 
+#' **Related operations:**
+#' 
+#' -   GetKeyPolicy
+#' 
+#' -   GetKeyRotationStatus
+#' 
+#' -   ListAliases
+#' 
+#' -   ListGrants
+#' 
+#' -   ListKeys
+#' 
+#' -   ListResourceTags
+#' 
+#' -   ListRetirableGrants
 #'
 #' @usage
 #' kms_describe_key(KeyId, GrantTokens)
@@ -1439,13 +1657,12 @@ kms_describe_key <- function(KeyId, GrantTokens = NULL) {
 }
 .kms$operations$describe_key <- kms_describe_key
 
-#' Sets the state of a customer master key (CMK) to disabled, thereby
-#' preventing its use for cryptographic operations
+#' Sets the state of a customer master key (CMK) to disabled
 #'
-#' Sets the state of a customer master key (CMK) to disabled, thereby
-#' preventing its use for [cryptographic
+#' @description
+#' Sets the state of a customer master key (CMK) to disabled. This change
+#' temporarily prevents use of the CMK for [cryptographic
 #' operations](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#cryptographic-operations).
-#' You cannot perform this operation on a CMK in a different AWS account.
 #' 
 #' For more information about how key state affects the use of a CMK, see
 #' [How Key State Affects the Use of a Customer Master
@@ -1456,6 +1673,15 @@ kms_describe_key <- function(KeyId, GrantTokens = NULL) {
 #' state. For details, see [How Key State Affects Use of a Customer Master
 #' Key](https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
 #' in the *AWS Key Management Service Developer Guide*.
+#' 
+#' **Cross-account use**: No. You cannot perform this operation on a CMK in
+#' a different AWS account.
+#' 
+#' **Required permissions**:
+#' [kms:DisableKey](https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html)
+#' (key policy)
+#' 
+#' **Related operations**: EnableKey
 #'
 #' @usage
 #' kms_disable_key(KeyId)
@@ -1511,6 +1737,7 @@ kms_disable_key <- function(KeyId) {
 #' Disables automatic rotation of the key material for the specified
 #' symmetric customer master key (CMK)
 #'
+#' @description
 #' Disables [automatic rotation of the key
 #' material](https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html)
 #' for the specified symmetric customer master key (CMK).
@@ -1518,18 +1745,30 @@ kms_disable_key <- function(KeyId) {
 #' You cannot enable automatic rotation of asymmetric CMKs, CMKs with
 #' imported key material, or CMKs in a [custom key
 #' store](https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html).
-#' You cannot perform this operation on a CMK in a different AWS account.
 #' 
 #' The CMK that you use for this operation must be in a compatible key
 #' state. For details, see [How Key State Affects Use of a Customer Master
 #' Key](https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
 #' in the *AWS Key Management Service Developer Guide*.
+#' 
+#' **Cross-account use**: No. You cannot perform this operation on a CMK in
+#' a different AWS account.
+#' 
+#' **Required permissions**:
+#' [kms:DisableKeyRotation](https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html)
+#' (key policy)
+#' 
+#' **Related operations:**
+#' 
+#' -   EnableKeyRotation
+#' 
+#' -   GetKeyRotationStatus
 #'
 #' @usage
 #' kms_disable_key_rotation(KeyId)
 #'
-#' @param KeyId &#91;required&#93; Identifies a symmetric customer master key (CMK). You cannot enable
-#' automatic rotation of [asymmetric
+#' @param KeyId &#91;required&#93; Identifies a symmetric customer master key (CMK). You cannot enable or
+#' disable automatic rotation of [asymmetric
 #' CMKs](https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html#asymmetric-cmks),
 #' CMKs with [imported key
 #' material](https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html),
@@ -1586,6 +1825,7 @@ kms_disable_key_rotation <- function(KeyId) {
 #' Disconnects the custom key store from its associated AWS CloudHSM
 #' cluster
 #'
+#' @description
 #' Disconnects the [custom key
 #' store](https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html)
 #' from its associated AWS CloudHSM cluster. While a custom key store is
@@ -1611,6 +1851,25 @@ kms_disable_key_rotation <- function(KeyId) {
 #' feature in AWS KMS, which combines the convenience and extensive
 #' integration of AWS KMS with the isolation and control of a single-tenant
 #' key store.
+#' 
+#' **Cross-account use**: No. You cannot perform this operation on a custom
+#' key store in a different AWS account.
+#' 
+#' **Required permissions**:
+#' [kms:DisconnectCustomKeyStore](https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html)
+#' (IAM policy)
+#' 
+#' **Related operations:**
+#' 
+#' -   ConnectCustomKeyStore
+#' 
+#' -   CreateCustomKeyStore
+#' 
+#' -   DeleteCustomKeyStore
+#' 
+#' -   DescribeCustomKeyStores
+#' 
+#' -   UpdateCustomKeyStore
 #'
 #' @usage
 #' kms_disconnect_custom_key_store(CustomKeyStoreId)
@@ -1647,15 +1906,24 @@ kms_disconnect_custom_key_store <- function(CustomKeyStoreId) {
 
 #' Sets the key state of a customer master key (CMK) to enabled
 #'
+#' @description
 #' Sets the key state of a customer master key (CMK) to enabled. This
 #' allows you to use the CMK for [cryptographic
 #' operations](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#cryptographic-operations).
-#' You cannot perform this operation on a CMK in a different AWS account.
 #' 
 #' The CMK that you use for this operation must be in a compatible key
 #' state. For details, see [How Key State Affects Use of a Customer Master
 #' Key](https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
 #' in the *AWS Key Management Service Developer Guide*.
+#' 
+#' **Cross-account use**: No. You cannot perform this operation on a CMK in
+#' a different AWS account.
+#' 
+#' **Required permissions**:
+#' [kms:EnableKey](https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html)
+#' (key policy)
+#' 
+#' **Related operations**: DisableKey
 #'
 #' @usage
 #' kms_enable_key(KeyId)
@@ -1711,10 +1979,10 @@ kms_enable_key <- function(KeyId) {
 #' Enables automatic rotation of the key material for the specified
 #' symmetric customer master key (CMK)
 #'
+#' @description
 #' Enables [automatic rotation of the key
 #' material](https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html)
-#' for the specified symmetric customer master key (CMK). You cannot
-#' perform this operation on a CMK in a different AWS account.
+#' for the specified symmetric customer master key (CMK).
 #' 
 #' You cannot enable automatic rotation of asymmetric CMKs, CMKs with
 #' imported key material, or CMKs in a [custom key
@@ -1724,6 +1992,19 @@ kms_enable_key <- function(KeyId) {
 #' state. For details, see [How Key State Affects Use of a Customer Master
 #' Key](https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
 #' in the *AWS Key Management Service Developer Guide*.
+#' 
+#' **Cross-account use**: No. You cannot perform this operation on a CMK in
+#' a different AWS account.
+#' 
+#' **Required permissions**:
+#' [kms:EnableKeyRotation](https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html)
+#' (key policy)
+#' 
+#' **Related operations:**
+#' 
+#' -   DisableKeyRotation
+#' 
+#' -   GetKeyRotationStatus
 #'
 #' @usage
 #' kms_enable_key_rotation(KeyId)
@@ -1782,6 +2063,7 @@ kms_enable_key_rotation <- function(KeyId) {
 
 #' Encrypts plaintext into ciphertext by using a customer master key (CMK)
 #'
+#' @description
 #' Encrypts plaintext into ciphertext by using a customer master key (CMK).
 #' The `Encrypt` operation has two primary use cases:
 #' 
@@ -1797,9 +2079,9 @@ kms_enable_key_rotation <- function(KeyId) {
 #'     encrypted data key and the encrypted data entirely within in
 #'     Region B.
 #' 
-#' You don\'t need to use the `Encrypt` operation to encrypt a data key.
-#' The GenerateDataKey and GenerateDataKeyPair operations return a
-#' plaintext data key and an encrypted copy of that data key.
+#' You don't need to use the `Encrypt` operation to encrypt a data key. The
+#' GenerateDataKey and GenerateDataKeyPair operations return a plaintext
+#' data key and an encrypted copy of that data key.
 #' 
 #' When you encrypt data, you must specify a symmetric or asymmetric CMK to
 #' use in the encryption operation. The CMK must have a `KeyUsage` value of
@@ -1860,8 +2142,21 @@ kms_enable_key_rotation <- function(KeyId) {
 #' Key](https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
 #' in the *AWS Key Management Service Developer Guide*.
 #' 
-#' To perform this operation on a CMK in a different AWS account, specify
-#' the key ARN or alias ARN in the value of the KeyId parameter.
+#' **Cross-account use**: Yes. To perform this operation with a CMK in a
+#' different AWS account, specify the key ARN or alias ARN in the value of
+#' the `KeyId` parameter.
+#' 
+#' **Required permissions**:
+#' [kms:Encrypt](https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html)
+#' (key policy)
+#' 
+#' **Related operations:**
+#' 
+#' -   Decrypt
+#' 
+#' -   GenerateDataKey
+#' 
+#' -   GenerateDataKeyPair
 #'
 #' @usage
 #' kms_encrypt(KeyId, Plaintext, EncryptionContext, GrantTokens,
@@ -1964,6 +2259,7 @@ kms_encrypt <- function(KeyId, Plaintext, EncryptionContext = NULL, GrantTokens 
 
 #' Generates a unique symmetric data key for client-side encryption
 #'
+#' @description
 #' Generates a unique symmetric data key for client-side encryption. This
 #' operation returns a plaintext copy of the data key and a copy that is
 #' encrypted under a customer master key (CMK) that you specify. You can
@@ -2030,6 +2326,26 @@ kms_encrypt <- function(KeyId, Plaintext, EncryptionContext = NULL, GrantTokens 
 #' 
 #' 2.  Use the plaintext data key to decrypt data outside of AWS KMS, then
 #'     erase the plaintext data key from memory.
+#' 
+#' **Cross-account use**: Yes. To perform this operation with a CMK in a
+#' different AWS account, specify the key ARN or alias ARN in the value of
+#' the `KeyId` parameter.
+#' 
+#' **Required permissions**:
+#' [kms:GenerateDataKey](https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html)
+#' (key policy)
+#' 
+#' **Related operations:**
+#' 
+#' -   Decrypt
+#' 
+#' -   Encrypt
+#' 
+#' -   GenerateDataKeyPair
+#' 
+#' -   GenerateDataKeyPairWithoutPlaintext
+#' 
+#' -   GenerateDataKeyWithoutPlaintext
 #'
 #' @usage
 #' kms_generate_data_key(KeyId, EncryptionContext, NumberOfBytes, KeySpec,
@@ -2135,6 +2451,7 @@ kms_generate_data_key <- function(KeyId, EncryptionContext = NULL, NumberOfBytes
 
 #' Generates a unique asymmetric data key pair
 #'
+#' @description
 #' Generates a unique asymmetric data key pair. The `GenerateDataKeyPair`
 #' operation returns a plaintext public key, a plaintext private key, and a
 #' copy of the private key that is encrypted under the symmetric CMK you
@@ -2157,7 +2474,7 @@ kms_generate_data_key <- function(KeyId, EncryptionContext = NULL, NumberOfBytes
 #' type and origin of your CMK, use the DescribeKey operation.
 #' 
 #' If you are using the data key pair to encrypt data, or for any operation
-#' where you don\'t immediately need a private key, consider using the
+#' where you don't immediately need a private key, consider using the
 #' GenerateDataKeyPairWithoutPlaintext operation.
 #' `GenerateDataKeyPairWithoutPlaintext` returns a plaintext public key and
 #' an encrypted private key, but omits the plaintext private key that you
@@ -2178,6 +2495,26 @@ kms_generate_data_key <- function(KeyId, EncryptionContext = NULL, NumberOfBytes
 #' state. For details, see [How Key State Affects Use of a Customer Master
 #' Key](https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
 #' in the *AWS Key Management Service Developer Guide*.
+#' 
+#' **Cross-account use**: Yes. To perform this operation with a CMK in a
+#' different AWS account, specify the key ARN or alias ARN in the value of
+#' the `KeyId` parameter.
+#' 
+#' **Required permissions**:
+#' [kms:GenerateDataKeyPair](https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html)
+#' (key policy)
+#' 
+#' **Related operations:**
+#' 
+#' -   Decrypt
+#' 
+#' -   Encrypt
+#' 
+#' -   GenerateDataKey
+#' 
+#' -   GenerateDataKeyPairWithoutPlaintext
+#' 
+#' -   GenerateDataKeyWithoutPlaintext
 #'
 #' @usage
 #' kms_generate_data_key_pair(EncryptionContext, KeyId, KeyPairSpec,
@@ -2267,6 +2604,7 @@ kms_generate_data_key_pair <- function(EncryptionContext = NULL, KeyId, KeyPairS
 
 #' Generates a unique asymmetric data key pair
 #'
+#' @description
 #' Generates a unique asymmetric data key pair. The
 #' `GenerateDataKeyPairWithoutPlaintext` operation returns a plaintext
 #' public key and a copy of the private key that is encrypted under the
@@ -2302,6 +2640,26 @@ kms_generate_data_key_pair <- function(EncryptionContext = NULL, KeyId, KeyPairS
 #' state. For details, see [How Key State Affects Use of a Customer Master
 #' Key](https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
 #' in the *AWS Key Management Service Developer Guide*.
+#' 
+#' **Cross-account use**: Yes. To perform this operation with a CMK in a
+#' different AWS account, specify the key ARN or alias ARN in the value of
+#' the `KeyId` parameter.
+#' 
+#' **Required permissions**:
+#' [kms:GenerateDataKeyPairWithoutPlaintext](https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html)
+#' (key policy)
+#' 
+#' **Related operations:**
+#' 
+#' -   Decrypt
+#' 
+#' -   Encrypt
+#' 
+#' -   GenerateDataKey
+#' 
+#' -   GenerateDataKeyPair
+#' 
+#' -   GenerateDataKeyWithoutPlaintext
 #'
 #' @usage
 #' kms_generate_data_key_pair_without_plaintext(EncryptionContext, KeyId,
@@ -2327,6 +2685,8 @@ kms_generate_data_key_pair <- function(EncryptionContext = NULL, KeyId, KeyPairS
 #' 
 #' To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias
 #' name, or alias ARN. When using an alias name, prefix it with `"alias/"`.
+#' To specify a CMK in a different AWS account, you must use the key ARN or
+#' alias ARN.
 #' 
 #' For example:
 #' 
@@ -2389,6 +2749,7 @@ kms_generate_data_key_pair_without_plaintext <- function(EncryptionContext = NUL
 
 #' Generates a unique symmetric data key
 #'
+#' @description
 #' Generates a unique symmetric data key. This operation returns a data key
 #' that is encrypted under a customer master key (CMK) that you specify. To
 #' request an asymmetric data key pair, use the GenerateDataKeyPair or
@@ -2400,7 +2761,7 @@ kms_generate_data_key_pair_without_plaintext <- function(EncryptionContext = NUL
 #' point, but not immediately. When you need to encrypt the data, you call
 #' the Decrypt operation on the encrypted copy of the key.
 #' 
-#' It\'s also useful in distributed systems with different levels of trust.
+#' It's also useful in distributed systems with different levels of trust.
 #' For example, you might store encrypted data in containers. One component
 #' of your system creates new containers and stores an encrypted data key
 #' with each container. Then, a different component puts the data into the
@@ -2434,6 +2795,26 @@ kms_generate_data_key_pair_without_plaintext <- function(EncryptionContext = NUL
 #' state. For details, see [How Key State Affects Use of a Customer Master
 #' Key](https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
 #' in the *AWS Key Management Service Developer Guide*.
+#' 
+#' **Cross-account use**: Yes. To perform this operation with a CMK in a
+#' different AWS account, specify the key ARN or alias ARN in the value of
+#' the `KeyId` parameter.
+#' 
+#' **Required permissions**:
+#' [kms:GenerateDataKeyWithoutPlaintext](https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html)
+#' (key policy)
+#' 
+#' **Related operations:**
+#' 
+#' -   Decrypt
+#' 
+#' -   Encrypt
+#' 
+#' -   GenerateDataKey
+#' 
+#' -   GenerateDataKeyPair
+#' 
+#' -   GenerateDataKeyPairWithoutPlaintext
 #'
 #' @usage
 #' kms_generate_data_key_without_plaintext(KeyId, EncryptionContext,
@@ -2533,6 +2914,7 @@ kms_generate_data_key_without_plaintext <- function(KeyId, EncryptionContext = N
 
 #' Returns a random byte string that is cryptographically secure
 #'
+#' @description
 #' Returns a random byte string that is cryptographically secure.
 #' 
 #' By default, the random byte string is generated in AWS KMS. To generate
@@ -2542,9 +2924,11 @@ kms_generate_data_key_without_plaintext <- function(KeyId, EncryptionContext = N
 #' specify the custom key store ID.
 #' 
 #' For more information about entropy and random number generation, see the
-#' [AWS Key Management Service Cryptographic
-#' Details](https://d0.awsstatic.com/whitepapers/KMS-Cryptographic-Details.pdf)
-#' whitepaper.
+#' AWS Key Management Service Cryptographic Details whitepaper.
+#' 
+#' **Required permissions**:
+#' [kms:GenerateRandom](https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html)
+#' (IAM policy)
 #'
 #' @usage
 #' kms_generate_random(NumberOfBytes, CustomKeyStoreId)
@@ -2594,8 +2978,17 @@ kms_generate_random <- function(NumberOfBytes = NULL, CustomKeyStoreId = NULL) {
 
 #' Gets a key policy attached to the specified customer master key (CMK)
 #'
+#' @description
 #' Gets a key policy attached to the specified customer master key (CMK).
-#' You cannot perform this operation on a CMK in a different AWS account.
+#' 
+#' **Cross-account use**: No. You cannot perform this operation on a CMK in
+#' a different AWS account.
+#' 
+#' **Required permissions**:
+#' [kms:GetKeyPolicy](https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html)
+#' (key policy)
+#' 
+#' **Related operations**: PutKeyPolicy
 #'
 #' @usage
 #' kms_get_key_policy(KeyId, PolicyName)
@@ -2656,6 +3049,7 @@ kms_get_key_policy <- function(KeyId, PolicyName) {
 #' Gets a Boolean value that indicates whether automatic rotation of the
 #' key material is enabled for the specified customer master key (CMK)
 #'
+#' @description
 #' Gets a Boolean value that indicates whether [automatic rotation of the
 #' key
 #' material](https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html)
@@ -2680,8 +3074,19 @@ kms_get_key_policy <- function(KeyId, PolicyName) {
 #'     you cancel the deletion, the original key rotation status is
 #'     restored.
 #' 
-#' To perform this operation on a CMK in a different AWS account, specify
-#' the key ARN in the value of the `KeyId` parameter.
+#' **Cross-account use**: Yes. To perform this operation on a CMK in a
+#' different AWS account, specify the key ARN in the value of the `KeyId`
+#' parameter.
+#' 
+#' **Required permissions**:
+#' [kms:GetKeyRotationStatus](https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html)
+#' (key policy)
+#' 
+#' **Related operations:**
+#' 
+#' -   DisableKeyRotation
+#' 
+#' -   EnableKeyRotation
 #'
 #' @usage
 #' kms_get_key_rotation_status(KeyId)
@@ -2739,6 +3144,7 @@ kms_get_key_rotation_status <- function(KeyId) {
 #' Returns the items you need to import key material into a symmetric,
 #' customer managed customer master key (CMK)
 #'
+#' @description
 #' Returns the items you need to import key material into a symmetric,
 #' customer managed customer master key (CMK). For more information about
 #' importing key material into AWS KMS, see [Importing Key
@@ -2750,7 +3156,7 @@ kms_get_key_rotation_status <- function(KeyId) {
 #' send with a subsequent ImportKeyMaterial request.
 #' 
 #' You must specify the key ID of the symmetric CMK into which you will
-#' import key material. This CMK\'s `Origin` must be `EXTERNAL`. You must
+#' import key material. This CMK's `Origin` must be `EXTERNAL`. You must
 #' also specify the wrapping algorithm and type of wrapping key (public
 #' key) that you will use to encrypt the key material. You cannot perform
 #' this operation on an asymmetric CMK or on any CMK in a different AWS
@@ -2767,6 +3173,19 @@ kms_get_key_rotation_status <- function(KeyId) {
 #' state. For details, see [How Key State Affects Use of a Customer Master
 #' Key](https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
 #' in the *AWS Key Management Service Developer Guide*.
+#' 
+#' **Cross-account use**: No. You cannot perform this operation on a CMK in
+#' a different AWS account.
+#' 
+#' **Required permissions**:
+#' [kms:GetParametersForImport](https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html)
+#' (key policy)
+#' 
+#' **Related operations:**
+#' 
+#' -   ImportKeyMaterial
+#' 
+#' -   DeleteImportedKeyMaterial
 #'
 #' @usage
 #' kms_get_parameters_for_import(KeyId, WrappingAlgorithm, WrappingKeySpec)
@@ -2833,6 +3252,7 @@ kms_get_parameters_for_import <- function(KeyId, WrappingAlgorithm, WrappingKeyS
 
 #' Returns the public key of an asymmetric CMK
 #'
+#' @description
 #' Returns the public key of an asymmetric CMK. Unlike the private key of a
 #' asymmetric CMK, which never leaves AWS KMS unencrypted, callers with
 #' `kms:GetPublicKey` permission can download the public key of an
@@ -2881,6 +3301,16 @@ kms_get_parameters_for_import <- function(KeyId, WrappingAlgorithm, WrappingKeyS
 #' state. For details, see [How Key State Affects Use of a Customer Master
 #' Key](https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
 #' in the *AWS Key Management Service Developer Guide*.
+#' 
+#' **Cross-account use**: Yes. To perform this operation with a CMK in a
+#' different AWS account, specify the key ARN or alias ARN in the value of
+#' the `KeyId` parameter.
+#' 
+#' **Required permissions**:
+#' [kms:GetPublicKey](https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html)
+#' (key policy)
+#' 
+#' **Related operations**: CreateKey
 #'
 #' @usage
 #' kms_get_public_key(KeyId, GrantTokens)
@@ -2944,6 +3374,7 @@ kms_get_public_key <- function(KeyId, GrantTokens = NULL) {
 #' Imports key material into an existing symmetric AWS KMS customer master
 #' key (CMK) that was created without key material
 #'
+#' @description
 #' Imports key material into an existing symmetric AWS KMS customer master
 #' key (CMK) that was created without key material. After you successfully
 #' import key material into a CMK, you can [reimport the same key
@@ -2999,13 +3430,26 @@ kms_get_public_key <- function(KeyId, GrantTokens = NULL) {
 #' state. For details, see [How Key State Affects Use of a Customer Master
 #' Key](https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
 #' in the *AWS Key Management Service Developer Guide*.
+#' 
+#' **Cross-account use**: No. You cannot perform this operation on a CMK in
+#' a different AWS account.
+#' 
+#' **Required permissions**:
+#' [kms:ImportKeyMaterial](https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html)
+#' (key policy)
+#' 
+#' **Related operations:**
+#' 
+#' -   DeleteImportedKeyMaterial
+#' 
+#' -   GetParametersForImport
 #'
 #' @usage
 #' kms_import_key_material(KeyId, ImportToken, EncryptedKeyMaterial,
 #'   ValidTo, ExpirationModel)
 #'
 #' @param KeyId &#91;required&#93; The identifier of the symmetric CMK that receives the imported key
-#' material. The CMK\'s `Origin` must be `EXTERNAL`. This must be the same
+#' material. The CMK's `Origin` must be `EXTERNAL`. This must be the same
 #' CMK specified in the `KeyID` parameter of the corresponding
 #' GetParametersForImport request.
 #' 
@@ -3082,13 +3526,13 @@ kms_import_key_material <- function(KeyId, ImportToken, EncryptedKeyMaterial, Va
 
 #' Gets a list of aliases in the caller's AWS account and region
 #'
-#' Gets a list of aliases in the caller\'s AWS account and region. You
-#' cannot list aliases in other accounts. For more information about
-#' aliases, see CreateAlias.
+#' @description
+#' Gets a list of aliases in the caller's AWS account and region. For more
+#' information about aliases, see CreateAlias.
 #' 
-#' By default, the ListAliases command returns all aliases in the account
-#' and region. To get only the aliases that point to a particular customer
-#' master key (CMK), use the `KeyId` parameter.
+#' By default, the `ListAliases` operation returns all aliases in the
+#' account and region. To get only the aliases associated with a particular
+#' customer master key (CMK), use the `KeyId` parameter.
 #' 
 #' The `ListAliases` response can include aliases that you created and
 #' associated with your customer managed CMKs, and aliases that AWS created
@@ -3101,17 +3545,45 @@ kms_import_key_material <- function(KeyId, ImportToken, EncryptedKeyMaterial, Va
 #' associated with a CMK. Aliases that AWS creates in your account,
 #' including predefined aliases, do not count against your [AWS KMS aliases
 #' quota](https://docs.aws.amazon.com/kms/latest/developerguide/limits.html#aliases-limit).
+#' 
+#' **Cross-account use**: No. `ListAliases` does not return aliases in
+#' other AWS accounts.
+#' 
+#' **Required permissions**:
+#' [kms:ListAliases](https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html)
+#' (IAM policy)
+#' 
+#' For details, see [Controlling access to
+#' aliases](https://docs.aws.amazon.com/kms/latest/developerguide/kms-alias.html#alias-access)
+#' in the *AWS Key Management Service Developer Guide*.
+#' 
+#' **Related operations:**
+#' 
+#' -   CreateAlias
+#' 
+#' -   DeleteAlias
+#' 
+#' -   UpdateAlias
 #'
 #' @usage
 #' kms_list_aliases(KeyId, Limit, Marker)
 #'
-#' @param KeyId Lists only aliases that refer to the specified CMK. The value of this
-#' parameter can be the ID or Amazon Resource Name (ARN) of a CMK in the
-#' caller\'s account and region. You cannot use an alias name or alias ARN
-#' in this value.
+#' @param KeyId Lists only aliases that are associated with the specified CMK. Enter a
+#' CMK in your AWS account.
 #' 
 #' This parameter is optional. If you omit it, `ListAliases` returns all
-#' aliases in the account and region.
+#' aliases in the account and Region.
+#' 
+#' Specify the key ID or the Amazon Resource Name (ARN) of the CMK.
+#' 
+#' For example:
+#' 
+#' -   Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
+#' 
+#' -   Key ARN:
+#'     `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
+#' 
+#' To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.
 #' @param Limit Use this parameter to specify the maximum number of items to return.
 #' When this value is present, AWS KMS does not return more than the
 #' specified number of items, but it might return fewer.
@@ -3159,10 +3631,8 @@ kms_list_aliases <- function(KeyId = NULL, Limit = NULL, Marker = NULL) {
 
 #' Gets a list of all grants for the specified customer master key (CMK)
 #'
+#' @description
 #' Gets a list of all grants for the specified customer master key (CMK).
-#' 
-#' To perform this operation on a CMK in a different AWS account, specify
-#' the key ARN in the value of the `KeyId` parameter.
 #' 
 #' The `GranteePrincipal` field in the `ListGrants` response usually
 #' contains the user or role designated as the grantee principal in the
@@ -3170,6 +3640,24 @@ kms_list_aliases <- function(KeyId = NULL, Limit = NULL, Marker = NULL) {
 #' service, the `GranteePrincipal` field contains the [service
 #' principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_principal.html#principal-services),
 #' which might represent several different grantee principals.
+#' 
+#' **Cross-account use**: Yes. To perform this operation on a CMK in a
+#' different AWS account, specify the key ARN in the value of the `KeyId`
+#' parameter.
+#' 
+#' **Required permissions**:
+#' [kms:ListGrants](https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html)
+#' (key policy)
+#' 
+#' **Related operations:**
+#' 
+#' -   CreateGrant
+#' 
+#' -   ListRetirableGrants
+#' 
+#' -   RetireGrant
+#' 
+#' -   RevokeGrant
 #'
 #' @usage
 #' kms_list_grants(Limit, Marker, KeyId)
@@ -3237,11 +3725,24 @@ kms_list_grants <- function(Limit = NULL, Marker = NULL, KeyId) {
 #' Gets the names of the key policies that are attached to a customer
 #' master key (CMK)
 #'
+#' @description
 #' Gets the names of the key policies that are attached to a customer
 #' master key (CMK). This operation is designed to get policy names that
 #' you can use in a GetKeyPolicy operation. However, the only valid policy
-#' name is `default`. You cannot perform this operation on a CMK in a
-#' different AWS account.
+#' name is `default`.
+#' 
+#' **Cross-account use**: No. You cannot perform this operation on a CMK in
+#' a different AWS account.
+#' 
+#' **Required permissions**:
+#' [kms:ListKeyPolicies](https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html)
+#' (key policy)
+#' 
+#' **Related operations:**
+#' 
+#' -   GetKeyPolicy
+#' 
+#' -   PutKeyPolicy
 #'
 #' @usage
 #' kms_list_key_policies(KeyId, Limit, Marker)
@@ -3310,8 +3811,26 @@ kms_list_key_policies <- function(KeyId, Limit = NULL, Marker = NULL) {
 #' Gets a list of all customer master keys (CMKs) in the caller's AWS
 #' account and Region
 #'
-#' Gets a list of all customer master keys (CMKs) in the caller\'s AWS
+#' @description
+#' Gets a list of all customer master keys (CMKs) in the caller's AWS
 #' account and Region.
+#' 
+#' **Cross-account use**: No. You cannot perform this operation on a CMK in
+#' a different AWS account.
+#' 
+#' **Required permissions**:
+#' [kms:ListKeys](https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html)
+#' (IAM policy)
+#' 
+#' **Related operations:**
+#' 
+#' -   CreateKey
+#' 
+#' -   DescribeKey
+#' 
+#' -   ListAliases
+#' 
+#' -   ListResourceTags
 #'
 #' @usage
 #' kms_list_keys(Limit, Marker)
@@ -3360,11 +3879,30 @@ kms_list_keys <- function(Limit = NULL, Marker = NULL) {
 }
 .kms$operations$list_keys <- kms_list_keys
 
-#' Returns a list of all tags for the specified customer master key (CMK)
+#' Returns all tags on the specified customer master key (CMK)
 #'
-#' Returns a list of all tags for the specified customer master key (CMK).
+#' @description
+#' Returns all tags on the specified customer master key (CMK).
 #' 
-#' You cannot perform this operation on a CMK in a different AWS account.
+#' For general information about tags, including the format and syntax, see
+#' [Tagging AWS
+#' resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html)
+#' in the *Amazon Web Services General Reference*. For information about
+#' using tags in AWS KMS, see [Tagging
+#' keys](https://docs.aws.amazon.com/kms/latest/developerguide/tagging-keys.html).
+#' 
+#' **Cross-account use**: No. You cannot perform this operation on a CMK in
+#' a different AWS account.
+#' 
+#' **Required permissions**:
+#' [kms:ListResourceTags](https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html)
+#' (key policy)
+#' 
+#' **Related operations:**
+#' 
+#' -   TagResource
+#' 
+#' -   UntagResource
 #'
 #' @usage
 #' kms_list_resource_tags(KeyId, Limit, Marker)
@@ -3431,14 +3969,38 @@ kms_list_resource_tags <- function(KeyId, Limit = NULL, Marker = NULL) {
 }
 .kms$operations$list_resource_tags <- kms_list_resource_tags
 
-#' Returns a list of all grants for which the grant's RetiringPrincipal
-#' matches the one specified
+#' Returns all grants in which the specified principal is the
+#' RetiringPrincipal in the grant
 #'
-#' Returns a list of all grants for which the grant\'s `RetiringPrincipal`
-#' matches the one specified.
+#' @description
+#' Returns all grants in which the specified principal is the
+#' `RetiringPrincipal` in the grant.
 #' 
-#' A typical use is to list all grants that you are able to retire. To
-#' retire a grant, use RetireGrant.
+#' You can specify any principal in your AWS account. The grants that are
+#' returned include grants for CMKs in your AWS account and other AWS
+#' accounts.
+#' 
+#' You might use this operation to determine which grants you may retire.
+#' To retire a grant, use the RetireGrant operation.
+#' 
+#' **Cross-account use**: You must specify a principal in your AWS account.
+#' However, this operation can return grants in any AWS account. You do not
+#' need `kms:ListRetirableGrants` permission (or any other additional
+#' permission) in any AWS account other than your own.
+#' 
+#' **Required permissions**:
+#' [kms:ListRetirableGrants](https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html)
+#' (IAM policy) in your AWS account.
+#' 
+#' **Related operations:**
+#' 
+#' -   CreateGrant
+#' 
+#' -   ListGrants
+#' 
+#' -   RetireGrant
+#' 
+#' -   RevokeGrant
 #'
 #' @usage
 #' kms_list_retirable_grants(Limit, Marker, RetiringPrincipal)
@@ -3452,7 +4014,8 @@ kms_list_resource_tags <- function(KeyId, Limit = NULL, Marker = NULL) {
 #' @param Marker Use this parameter in a subsequent request after you receive a response
 #' with truncated results. Set it to the value of `NextMarker` from the
 #' truncated response you just received.
-#' @param RetiringPrincipal &#91;required&#93; The retiring principal for which to list grants.
+#' @param RetiringPrincipal &#91;required&#93; The retiring principal for which to list grants. Enter a principal in
+#' your AWS account.
 #' 
 #' To specify the retiring principal, use the [Amazon Resource Name
 #' (ARN)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
@@ -3504,12 +4067,27 @@ kms_list_retirable_grants <- function(Limit = NULL, Marker = NULL, RetiringPrinc
 
 #' Attaches a key policy to the specified customer master key (CMK)
 #'
-#' Attaches a key policy to the specified customer master key (CMK). You
-#' cannot perform this operation on a CMK in a different AWS account.
+#' @description
+#' Attaches a key policy to the specified customer master key (CMK).
 #' 
 #' For more information about key policies, see [Key
 #' Policies](https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html)
+#' in the *AWS Key Management Service Developer Guide*. For help writing
+#' and formatting a JSON policy document, see the [IAM JSON Policy
+#' Reference](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies.html)
+#' in the **IAM User Guide** . For examples of adding a key policy in
+#' multiple programming languages, see [Setting a key
+#' policy](https://docs.aws.amazon.com/kms/latest/developerguide/programming-key-policies.html#put-policy)
 #' in the *AWS Key Management Service Developer Guide*.
+#' 
+#' **Cross-account use**: No. You cannot perform this operation on a CMK in
+#' a different AWS account.
+#' 
+#' **Required permissions**:
+#' [kms:PutKeyPolicy](https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html)
+#' (key policy)
+#' 
+#' **Related operations**: GetKeyPolicy
 #'
 #' @usage
 #' kms_put_key_policy(KeyId, PolicyName, Policy,
@@ -3532,7 +4110,7 @@ kms_list_retirable_grants <- function(Limit = NULL, Marker = NULL, RetiringPrinc
 #' 
 #' The key policy must meet the following criteria:
 #' 
-#' -   If you don\'t set `BypassPolicyLockoutSafetyCheck` to true, the key
+#' -   If you don't set `BypassPolicyLockoutSafetyCheck` to true, the key
 #'     policy must allow the principal that is making the `PutKeyPolicy`
 #'     request to make a subsequent `PutKeyPolicy` request on the CMK. This
 #'     reduces the risk that the CMK becomes unmanageable. For more
@@ -3612,6 +4190,7 @@ kms_put_key_policy <- function(KeyId, PolicyName, Policy, BypassPolicyLockoutSaf
 
 #' Decrypts ciphertext and then reencrypts it entirely within AWS KMS
 #'
+#' @description
 #' Decrypts ciphertext and then reencrypts it entirely within AWS KMS. You
 #' can use this operation to change the customer master key (CMK) under
 #' which data is encrypted, such as when you [manually
@@ -3639,21 +4218,27 @@ kms_put_key_policy <- function(KeyId, PolicyName, Policy, BypassPolicyLockoutSaf
 #' for the decrypt operation and the subsequent encrypt operation.
 #' 
 #' -   If your ciphertext was encrypted under an asymmetric CMK, you must
-#'     identify the *source CMK*, that is, the CMK that encrypted the
-#'     ciphertext. You must also supply the encryption algorithm that was
-#'     used. This information is required to decrypt the data.
+#'     use the `SourceKeyId` parameter to identify the CMK that encrypted
+#'     the ciphertext. You must also supply the encryption algorithm that
+#'     was used. This information is required to decrypt the data.
 #' 
-#' -   It is optional, but you can specify a source CMK even when the
-#'     ciphertext was encrypted under a symmetric CMK. This ensures that
-#'     the ciphertext is decrypted only by using a particular CMK. If the
-#'     CMK that you specify cannot decrypt the ciphertext, the `ReEncrypt`
-#'     operation fails.
+#' -   If your ciphertext was encrypted under a symmetric CMK, the
+#'     `SourceKeyId` parameter is optional. AWS KMS can get this
+#'     information from metadata that it adds to the symmetric ciphertext
+#'     blob. This feature adds durability to your implementation by
+#'     ensuring that authorized users can decrypt ciphertext decades after
+#'     it was encrypted, even if they've lost track of the CMK ID. However,
+#'     specifying the source CMK is always recommended as a best practice.
+#'     When you use the `SourceKeyId` parameter to specify a CMK, AWS KMS
+#'     uses only the CMK you specify. If the ciphertext was encrypted under
+#'     a different CMK, the `ReEncrypt` operation fails. This practice
+#'     ensures that you use the CMK that you intend.
 #' 
-#' -   To reencrypt the data, you must specify the *destination CMK*, that
-#'     is, the CMK that re-encrypts the data after it is decrypted. You can
-#'     select a symmetric or asymmetric CMK. If the destination CMK is an
-#'     asymmetric CMK, you must also provide the encryption algorithm. The
-#'     algorithm that you choose must be compatible with the CMK.
+#' -   To reencrypt the data, you must use the `DestinationKeyId` parameter
+#'     specify the CMK that re-encrypts the data after it is decrypted. You
+#'     can select a symmetric or asymmetric CMK. If the destination CMK is
+#'     an asymmetric CMK, you must also provide the encryption algorithm.
+#'     The algorithm that you choose must be compatible with the CMK.
 #' 
 #'     When you use an asymmetric CMK to encrypt or reencrypt data, be sure
 #'     to record the CMK and encryption algorithm that you choose. You will
@@ -3667,12 +4252,22 @@ kms_put_key_policy <- function(KeyId, PolicyName, Policy, BypassPolicyLockoutSaf
 #'     ciphertext generated with asymmetric keys. The standard format for
 #'     asymmetric key ciphertext does not include configurable fields.
 #' 
-#' Unlike other AWS KMS API operations, `ReEncrypt` callers must have two
-#' permissions:
+#' The CMK that you use for this operation must be in a compatible key
+#' state. For details, see [How Key State Affects Use of a Customer Master
+#' Key](https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
+#' in the *AWS Key Management Service Developer Guide*.
 #' 
-#' -   `kms:ReEncryptFrom` permission on the source CMK
+#' **Cross-account use**: Yes. The source CMK and destination CMK can be in
+#' different AWS accounts. Either or both CMKs can be in a different
+#' account than the caller.
 #' 
-#' -   `kms:ReEncryptTo` permission on the destination CMK
+#' **Required permissions**:
+#' 
+#' -   [kms:ReEncryptFrom](https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html)
+#'     permission on the source CMK (key policy)
+#' 
+#' -   [kms:ReEncryptTo](https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html)
+#'     permission on the destination CMK (key policy)
 #' 
 #' To permit reencryption from or to a CMK, include the `"kms:ReEncrypt*"`
 #' permission in your [key
@@ -3682,10 +4277,15 @@ kms_put_key_policy <- function(KeyId, PolicyName, Policy, BypassPolicyLockoutSaf
 #' create a CMK programmatically or when you use the PutKeyPolicy operation
 #' to set a key policy.
 #' 
-#' The CMK that you use for this operation must be in a compatible key
-#' state. For details, see [How Key State Affects Use of a Customer Master
-#' Key](https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
-#' in the *AWS Key Management Service Developer Guide*.
+#' **Related operations:**
+#' 
+#' -   Decrypt
+#' 
+#' -   Encrypt
+#' 
+#' -   GenerateDataKey
+#' 
+#' -   GenerateDataKeyPair
 #'
 #' @usage
 #' kms_re_encrypt(CiphertextBlob, SourceEncryptionContext, SourceKeyId,
@@ -3706,22 +4306,20 @@ kms_put_key_policy <- function(KeyId, PolicyName, Policy, BypassPolicyLockoutSaf
 #' For more information, see [Encryption
 #' Context](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context)
 #' in the *AWS Key Management Service Developer Guide*.
-#' @param SourceKeyId A unique identifier for the CMK that is used to decrypt the ciphertext
-#' before it reencrypts it using the destination CMK.
+#' @param SourceKeyId Specifies the customer master key (CMK) that AWS KMS will use to decrypt
+#' the ciphertext before it is re-encrypted. Enter a key ID of the CMK that
+#' was used to encrypt the ciphertext.
 #' 
 #' This parameter is required only when the ciphertext was encrypted under
-#' an asymmetric CMK. Otherwise, AWS KMS uses the metadata that it adds to
-#' the ciphertext blob to determine which CMK was used to encrypt the
-#' ciphertext. However, you can use this parameter to ensure that a
-#' particular CMK (of any kind) is used to decrypt the ciphertext before it
-#' is reencrypted.
-#' 
-#' If you specify a `KeyId` value, the decrypt part of the `ReEncrypt`
-#' operation succeeds only if the specified CMK was used to encrypt the
-#' ciphertext.
+#' an asymmetric CMK. If you used a symmetric CMK, AWS KMS can get the CMK
+#' from metadata that it adds to the symmetric ciphertext blob. However, it
+#' is always recommended as a best practice. This practice ensures that you
+#' use the CMK that you intend.
 #' 
 #' To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias
 #' name, or alias ARN. When using an alias name, prefix it with `"alias/"`.
+#' To specify a CMK in a different AWS account, you must use the key ARN or
+#' alias ARN.
 #' 
 #' For example:
 #' 
@@ -3847,7 +4445,8 @@ kms_re_encrypt <- function(CiphertextBlob, SourceEncryptionContext = NULL, Sourc
 
 #' Retires a grant
 #'
-#' Retires a grant. To clean up, you can retire a grant when you\'re done
+#' @description
+#' Retires a grant. To clean up, you can retire a grant when you're done
 #' using it. You should revoke a grant when you intend to actively deny
 #' operations that depend on it. The following are permitted to call this
 #' API:
@@ -3864,6 +4463,25 @@ kms_re_encrypt <- function(CiphertextBlob, SourceEncryptionContext = NULL, Sourc
 #' customer master key (CMK). A grant token is a unique variable-length
 #' base64-encoded string. A grant ID is a 64 character unique identifier of
 #' a grant. The CreateGrant operation returns both.
+#' 
+#' **Cross-account use**: Yes. You can retire a grant on a CMK in a
+#' different AWS account.
+#' 
+#' **Required permissions:**: Permission to retire a grant is specified in
+#' the grant. You cannot control access to this operation in a policy. For
+#' more information, see [Using
+#' grants](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html)
+#' in the *AWS Key Management Service Developer Guide*.
+#' 
+#' **Related operations:**
+#' 
+#' -   CreateGrant
+#' 
+#' -   ListGrants
+#' 
+#' -   ListRetirableGrants
+#' 
+#' -   RevokeGrant
 #'
 #' @usage
 #' kms_retire_grant(GrantToken, KeyId, GrantId)
@@ -3919,11 +4537,27 @@ kms_retire_grant <- function(GrantToken = NULL, KeyId = NULL, GrantId = NULL) {
 
 #' Revokes the specified grant for the specified customer master key (CMK)
 #'
+#' @description
 #' Revokes the specified grant for the specified customer master key (CMK).
 #' You can revoke a grant to actively deny operations that depend on it.
 #' 
-#' To perform this operation on a CMK in a different AWS account, specify
-#' the key ARN in the value of the `KeyId` parameter.
+#' **Cross-account use**: Yes. To perform this operation on a CMK in a
+#' different AWS account, specify the key ARN in the value of the `KeyId`
+#' parameter.
+#' 
+#' **Required permissions**:
+#' [kms:RevokeGrant](https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html)
+#' (key policy)
+#' 
+#' **Related operations:**
+#' 
+#' -   CreateGrant
+#' 
+#' -   ListGrants
+#' 
+#' -   ListRetirableGrants
+#' 
+#' -   RetireGrant
 #'
 #' @usage
 #' kms_revoke_grant(KeyId, GrantId)
@@ -3983,6 +4617,7 @@ kms_revoke_grant <- function(KeyId, GrantId) {
 
 #' Schedules the deletion of a customer master key (CMK)
 #'
+#' @description
 #' Schedules the deletion of a customer master key (CMK). You may provide a
 #' waiting period, specified in days, before deletion occurs. If you do not
 #' provide a waiting period, the default period of 30 days is used. When
@@ -4006,8 +4641,6 @@ kms_revoke_grant <- function(KeyId, GrantId) {
 #' material](https://docs.aws.amazon.com/kms/latest/developerguide/fix-keystore.html#fix-keystore-orphaned-key)
 #' from the cluster and its backups.
 #' 
-#' You cannot perform this operation on a CMK in a different AWS account.
-#' 
 #' For more information about scheduling a CMK for deletion, see [Deleting
 #' Customer Master
 #' Keys](https://docs.aws.amazon.com/kms/latest/developerguide/deleting-keys.html)
@@ -4017,6 +4650,19 @@ kms_revoke_grant <- function(KeyId, GrantId) {
 #' state. For details, see [How Key State Affects Use of a Customer Master
 #' Key](https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
 #' in the *AWS Key Management Service Developer Guide*.
+#' 
+#' **Cross-account use**: No. You cannot perform this operation on a CMK in
+#' a different AWS account.
+#' 
+#' **Required permissions**:
+#' [kms:ScheduleKeyDeletion](https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html)
+#' (key policy)
+#' 
+#' **Related operations**
+#' 
+#' -   CancelKeyDeletion
+#' 
+#' -   DisableKey
 #'
 #' @usage
 #' kms_schedule_key_deletion(KeyId, PendingWindowInDays)
@@ -4079,6 +4725,7 @@ kms_schedule_key_deletion <- function(KeyId, PendingWindowInDays = NULL) {
 #' Creates a digital signature for a message or message digest by using the
 #' private key in an asymmetric CMK
 #'
+#' @description
 #' Creates a [digital
 #' signature](https://en.wikipedia.org/wiki/Digital_signature) for a
 #' message or message digest by using the private key in an asymmetric CMK.
@@ -4093,7 +4740,7 @@ kms_schedule_key_deletion <- function(KeyId, PendingWindowInDays = NULL) {
 #' customer master key (CMK). The key owner (or an authorized user) uses
 #' their private key to sign a message. Anyone with the public key can
 #' verify that the message was signed with that particular private key and
-#' that the message hasn\'t changed since it was signed.
+#' that the message hasn't changed since it was signed.
 #' 
 #' To use the `Sign` operation, provide the following information:
 #' 
@@ -4122,6 +4769,16 @@ kms_schedule_key_deletion <- function(KeyId, PendingWindowInDays = NULL) {
 #' state. For details, see [How Key State Affects Use of a Customer Master
 #' Key](https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
 #' in the *AWS Key Management Service Developer Guide*.
+#' 
+#' **Cross-account use**: Yes. To perform this operation with a CMK in a
+#' different AWS account, specify the key ARN or alias ARN in the value of
+#' the `KeyId` parameter.
+#' 
+#' **Required permissions**:
+#' [kms:Sign](https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html)
+#' (key policy)
+#' 
+#' **Related operations**: Verify
 #'
 #' @usage
 #' kms_sign(KeyId, Message, MessageType, GrantTokens, SigningAlgorithm)
@@ -4200,31 +4857,55 @@ kms_sign <- function(KeyId, Message, MessageType = NULL, GrantTokens = NULL, Sig
 }
 .kms$operations$sign <- kms_sign
 
-#' Adds or edits tags for a customer master key (CMK)
+#' Adds or edits tags on a customer managed CMK
 #'
-#' Adds or edits tags for a customer master key (CMK). You cannot perform
-#' this operation on a CMK in a different AWS account.
+#' @description
+#' Adds or edits tags on a [customer managed
+#' CMK](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-cmk).
 #' 
-#' Each tag consists of a tag key and a tag value. Tag keys and tag values
-#' are both required, but tag values can be empty (null) strings.
+#' Each tag consists of a tag key and a tag value, both of which are
+#' case-sensitive strings. The tag value can be an empty (null) string.
 #' 
-#' You can only use a tag key once for each CMK. If you use the tag key
-#' again, AWS KMS replaces the current tag value with the specified value.
+#' To add a tag, specify a new tag key and a tag value. To edit a tag,
+#' specify an existing tag key and a new tag value.
 #' 
-#' For information about the rules that apply to tag keys and tag values,
-#' see [User-Defined Tag
-#' Restrictions](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/allocation-tag-restrictions.html)
-#' in the *AWS Billing and Cost Management User Guide*.
+#' You can use this operation to tag a [customer managed
+#' CMK](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-cmk),
+#' but you cannot tag an [AWS managed
+#' CMK](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk),
+#' an [AWS owned
+#' CMK](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-owned-cmk),
+#' or an alias.
+#' 
+#' For general information about tags, including the format and syntax, see
+#' [Tagging AWS
+#' resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html)
+#' in the *Amazon Web Services General Reference*. For information about
+#' using tags in AWS KMS, see [Tagging
+#' keys](https://docs.aws.amazon.com/kms/latest/developerguide/tagging-keys.html).
 #' 
 #' The CMK that you use for this operation must be in a compatible key
 #' state. For details, see [How Key State Affects Use of a Customer Master
 #' Key](https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
 #' in the *AWS Key Management Service Developer Guide*.
+#' 
+#' **Cross-account use**: No. You cannot perform this operation on a CMK in
+#' a different AWS account.
+#' 
+#' **Required permissions**:
+#' [kms:TagResource](https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html)
+#' (key policy)
+#' 
+#' **Related operations**
+#' 
+#' -   UntagResource
+#' 
+#' -   ListResourceTags
 #'
 #' @usage
 #' kms_tag_resource(KeyId, Tags)
 #'
-#' @param KeyId &#91;required&#93; A unique identifier for the CMK you are tagging.
+#' @param KeyId &#91;required&#93; Identifies a customer managed CMK in the account and Region.
 #' 
 #' Specify the key ID or the Amazon Resource Name (ARN) of the CMK.
 #' 
@@ -4236,7 +4917,14 @@ kms_sign <- function(KeyId, Message, MessageType = NULL, GrantTokens = NULL, Sig
 #'     `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
 #' To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.
-#' @param Tags &#91;required&#93; One or more tags. Each tag consists of a tag key and a tag value.
+#' @param Tags &#91;required&#93; One or more tags.
+#' 
+#' Each tag consists of a tag key and a tag value. The tag value can be an
+#' empty (null) string.
+#' 
+#' You cannot have more than one tag on a CMK with the same tag key. If you
+#' specify an existing tag key with a different tag value, AWS KMS replaces
+#' the current tag value with the specified one.
 #'
 #' @section Request syntax:
 #' ```
@@ -4285,23 +4973,47 @@ kms_tag_resource <- function(KeyId, Tags) {
 }
 .kms$operations$tag_resource <- kms_tag_resource
 
-#' Removes the specified tags from the specified customer master key (CMK)
+#' Deletes tags from a customer managed CMK
 #'
-#' Removes the specified tags from the specified customer master key (CMK).
-#' You cannot perform this operation on a CMK in a different AWS account.
+#' @description
+#' Deletes tags from a [customer managed
+#' CMK](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-cmk).
+#' To delete a tag, specify the tag key and the CMK.
 #' 
-#' To remove a tag, specify the tag key. To change the tag value of an
-#' existing tag key, use TagResource.
+#' When it succeeds, the `UntagResource` operation doesn't return any
+#' output. Also, if the specified tag key isn't found on the CMK, it
+#' doesn't throw an exception or return a response. To confirm that the
+#' operation worked, use the ListResourceTags operation.
+#' 
+#' For general information about tags, including the format and syntax, see
+#' [Tagging AWS
+#' resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html)
+#' in the *Amazon Web Services General Reference*. For information about
+#' using tags in AWS KMS, see [Tagging
+#' keys](https://docs.aws.amazon.com/kms/latest/developerguide/tagging-keys.html).
 #' 
 #' The CMK that you use for this operation must be in a compatible key
 #' state. For details, see [How Key State Affects Use of a Customer Master
 #' Key](https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
 #' in the *AWS Key Management Service Developer Guide*.
+#' 
+#' **Cross-account use**: No. You cannot perform this operation on a CMK in
+#' a different AWS account.
+#' 
+#' **Required permissions**:
+#' [kms:UntagResource](https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html)
+#' (key policy)
+#' 
+#' **Related operations**
+#' 
+#' -   TagResource
+#' 
+#' -   ListResourceTags
 #'
 #' @usage
 #' kms_untag_resource(KeyId, TagKeys)
 #'
-#' @param KeyId &#91;required&#93; A unique identifier for the CMK from which you are removing tags.
+#' @param KeyId &#91;required&#93; Identifies the CMK from which you are removing tags.
 #' 
 #' Specify the key ID or the Amazon Resource Name (ARN) of the CMK.
 #' 
@@ -4360,11 +5072,11 @@ kms_untag_resource <- function(KeyId, TagKeys) {
 #' Associates an existing AWS KMS alias with a different customer master
 #' key (CMK)
 #'
+#' @description
 #' Associates an existing AWS KMS alias with a different customer master
 #' key (CMK). Each alias is associated with only one CMK at a time,
 #' although a CMK can have multiple aliases. The alias and the CMK must be
-#' in the same AWS account and region. You cannot perform this operation on
-#' an alias in a different AWS account.
+#' in the same AWS account and region.
 #' 
 #' The current and new CMK must be the same type (both symmetric or both
 #' asymmetric), and they must have the same key usage (`ENCRYPT_DECRYPT` or
@@ -4386,6 +5098,32 @@ kms_untag_resource <- function(KeyId, TagKeys) {
 #' state. For details, see [How Key State Affects Use of a Customer Master
 #' Key](https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
 #' in the *AWS Key Management Service Developer Guide*.
+#' 
+#' **Cross-account use**: No. You cannot perform this operation on a CMK in
+#' a different AWS account.
+#' 
+#' **Required permissions**
+#' 
+#' -   [kms:UpdateAlias](https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html)
+#'     on the alias (IAM policy).
+#' 
+#' -   [kms:UpdateAlias](https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html)
+#'     on the current CMK (key policy).
+#' 
+#' -   [kms:UpdateAlias](https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html)
+#'     on the new CMK (key policy).
+#' 
+#' For details, see [Controlling access to
+#' aliases](https://docs.aws.amazon.com/kms/latest/developerguide/kms-alias.html#alias-access)
+#' in the *AWS Key Management Service Developer Guide*.
+#' 
+#' **Related operations:**
+#' 
+#' -   CreateAlias
+#' 
+#' -   DeleteAlias
+#' 
+#' -   ListAliases
 #'
 #' @usage
 #' kms_update_alias(AliasName, TargetKeyId)
@@ -4393,8 +5131,11 @@ kms_untag_resource <- function(KeyId, TagKeys) {
 #' @param AliasName &#91;required&#93; Identifies the alias that is changing its CMK. This value must begin
 #' with `alias/` followed by the alias name, such as `alias/ExampleAlias`.
 #' You cannot use UpdateAlias to change the alias name.
-#' @param TargetKeyId &#91;required&#93; Identifies the CMK to associate with the alias. When the update
-#' operation completes, the alias will point to this CMK.
+#' @param TargetKeyId &#91;required&#93; Identifies the [customer managed
+#' CMK](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-cmk)
+#' to associate with the alias. You don't have permission to associate an
+#' alias with an [AWS managed
+#' CMK](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk).
 #' 
 #' The CMK must be in the same AWS account and Region as the alias. Also,
 #' the new target CMK must be the same type as the current target CMK (both
@@ -4453,6 +5194,7 @@ kms_update_alias <- function(AliasName, TargetKeyId) {
 
 #' Changes the properties of a custom key store
 #'
+#' @description
 #' Changes the properties of a custom key store. Use the `CustomKeyStoreId`
 #' parameter to identify the custom key store you want to edit. Use the
 #' remaining parameters to change the properties of the custom key store.
@@ -4492,6 +5234,25 @@ kms_update_alias <- function(AliasName, TargetKeyId) {
 #' feature in AWS KMS, which combines the convenience and extensive
 #' integration of AWS KMS with the isolation and control of a single-tenant
 #' key store.
+#' 
+#' **Cross-account use**: No. You cannot perform this operation on a custom
+#' key store in a different AWS account.
+#' 
+#' **Required permissions**:
+#' [kms:UpdateCustomKeyStore](https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html)
+#' (IAM policy)
+#' 
+#' **Related operations:**
+#' 
+#' -   ConnectCustomKeyStore
+#' 
+#' -   CreateCustomKeyStore
+#' 
+#' -   DeleteCustomKeyStore
+#' 
+#' -   DescribeCustomKeyStores
+#' 
+#' -   DisconnectCustomKeyStore
 #'
 #' @usage
 #' kms_update_custom_key_store(CustomKeyStoreId, NewCustomKeyStoreName,
@@ -4553,15 +5314,27 @@ kms_update_custom_key_store <- function(CustomKeyStoreId, NewCustomKeyStoreName 
 
 #' Updates the description of a customer master key (CMK)
 #'
+#' @description
 #' Updates the description of a customer master key (CMK). To see the
 #' description of a CMK, use DescribeKey.
-#' 
-#' You cannot perform this operation on a CMK in a different AWS account.
 #' 
 #' The CMK that you use for this operation must be in a compatible key
 #' state. For details, see [How Key State Affects Use of a Customer Master
 #' Key](https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
 #' in the *AWS Key Management Service Developer Guide*.
+#' 
+#' **Cross-account use**: No. You cannot perform this operation on a CMK in
+#' a different AWS account.
+#' 
+#' **Required permissions**:
+#' [kms:UpdateKeyDescription](https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html)
+#' (key policy)
+#' 
+#' **Related operations**
+#' 
+#' -   CreateKey
+#' 
+#' -   DescribeKey
 #'
 #' @usage
 #' kms_update_key_description(KeyId, Description)
@@ -4619,10 +5392,11 @@ kms_update_key_description <- function(KeyId, Description) {
 
 #' Verifies a digital signature that was generated by the Sign operation
 #'
+#' @description
 #' Verifies a digital signature that was generated by the Sign operation.
 #' 
 #' Verification confirms that an authorized user signed the message with
-#' the specified CMK and signing algorithm, and the message hasn\'t changed
+#' the specified CMK and signing algorithm, and the message hasn't changed
 #' since it was signed. If the signature is verified, the value of the
 #' `SignatureValid` field in the response is `True`. If the signature
 #' verification fails, the `Verify` operation fails with an
@@ -4643,8 +5417,8 @@ kms_update_key_description <- function(KeyId, Description) {
 #' CMK outside of AWS KMS. Use the GetPublicKey operation to download the
 #' public key in the asymmetric CMK and then use the public key to verify
 #' the signature outside of AWS KMS. The advantage of using the `Verify`
-#' operation is that it is performed within AWS KMS. As a result, it\'s
-#' easy to call, the operation is performed within the FIPS boundary, it is
+#' operation is that it is performed within AWS KMS. As a result, it's easy
+#' to call, the operation is performed within the FIPS boundary, it is
 #' logged in AWS CloudTrail, and you can use key policy and IAM policy to
 #' determine who is authorized to use the CMK to verify signatures.
 #' 
@@ -4652,6 +5426,16 @@ kms_update_key_description <- function(KeyId, Description) {
 #' state. For details, see [How Key State Affects Use of a Customer Master
 #' Key](https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
 #' in the *AWS Key Management Service Developer Guide*.
+#' 
+#' **Cross-account use**: Yes. To perform this operation with a CMK in a
+#' different AWS account, specify the key ARN or alias ARN in the value of
+#' the `KeyId` parameter.
+#' 
+#' **Required permissions**:
+#' [kms:Verify](https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html)
+#' (key policy)
+#' 
+#' **Related operations**: Sign
 #'
 #' @usage
 #' kms_verify(KeyId, Message, MessageType, Signature, SigningAlgorithm,

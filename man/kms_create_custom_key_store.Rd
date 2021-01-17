@@ -36,8 +36,7 @@ change the password in the AWS CloudHSM cluster.}
 Creates a \href{https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{custom key store}
 that is associated with an \href{https://docs.aws.amazon.com/cloudhsm/latest/userguide/clusters.html}{AWS CloudHSM cluster}
 that you own and manage.
-}
-\details{
+
 This operation is part of the \href{https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{Custom Key Store feature}
 feature in AWS KMS, which combines the convenience and extensive
 integration of AWS KMS with the isolation and control of a single-tenant
@@ -59,6 +58,22 @@ to use it.
 
 For help with failures, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/fix-keystore.html}{Troubleshooting a Custom Key Store}
 in the \emph{AWS Key Management Service Developer Guide}.
+
+\strong{Cross-account use}: No. You cannot perform this operation on a custom
+key store in a different AWS account.
+
+\strong{Required permissions}:
+\href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html}{kms:CreateCustomKeyStore}
+(IAM policy).
+
+\strong{Related operations:}
+\itemize{
+\item ConnectCustomKeyStore
+\item DeleteCustomKeyStore
+\item DescribeCustomKeyStores
+\item DisconnectCustomKeyStore
+\item UpdateCustomKeyStore
+}
 }
 \section{Request syntax}{
 \preformatted{svc$create_custom_key_store(

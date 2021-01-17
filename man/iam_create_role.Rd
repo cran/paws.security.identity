@@ -8,13 +8,13 @@ iam_create_role(Path, RoleName, AssumeRolePolicyDocument, Description,
   MaxSessionDuration, PermissionsBoundary, Tags)
 }
 \arguments{
-\item{Path}{The path to the role. For more information about paths, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html}{IAM Identifiers}
+\item{Path}{The path to the role. For more information about paths, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html}{IAM Identifiers}
 in the \emph{IAM User Guide}.
 
 This parameter is optional. If it is not included, it defaults to a
 slash (/).
 
-This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters
+This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of either a forward slash (/) by itself or a string that must
 begin and end with forward slashes. In addition, it can contain any
 ASCII character from the ! (\code{U+0021}) through the DEL character
@@ -25,7 +25,7 @@ lowercased letters.}
 
 IAM user, group, role, and policy names must be unique within the
 account. Names are not distinguished by case. For example, you cannot
-create resources named both \"MyResource\" and \"myresource\".}
+create resources named both "MyResource" and "myresource".}
 
 \item{AssumeRolePolicyDocument}{[required] The trust relationship policy document that grants an entity permission
 to assume the role.
@@ -35,8 +35,9 @@ string. However, for AWS CloudFormation templates formatted in YAML, you
 can provide the policy in JSON or YAML format. AWS CloudFormation always
 converts a YAML policy to JSON format before submitting it to IAM.
 
-The \href{http://wikipedia.org/wiki/regex}{regex pattern} used to validate
-this parameter is a string of characters consisting of the following:
+The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} used to
+validate this parameter is a string of characters consisting of the
+following:
 \itemize{
 \item Any printable ASCII character ranging from the space character
 (\code{U+0020}) through the end of the ASCII character range
@@ -60,7 +61,7 @@ Anyone who assumes the role from the AWS CLI or API can use the
 \code{DurationSeconds} API parameter or the \code{duration-seconds} CLI parameter
 to request a longer session. The \code{MaxSessionDuration} setting determines
 the maximum duration that can be requested using the \code{DurationSeconds}
-parameter. If users don\'t specify a value for the \code{DurationSeconds}
+parameter. If users don't specify a value for the \code{DurationSeconds}
 parameter, their security credentials are valid for one hour by default.
 This applies when you use the \verb{AssumeRole*} API operations or the
 \verb{assume-role*} CLI operations but does not apply when you use those
@@ -81,7 +82,7 @@ created.}
 }
 \description{
 Creates a new role for your AWS account. For more information about
-roles, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/WorkingWithRoles.html}{IAM Roles}.
+roles, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html}{IAM Roles}.
 The number and size of IAM resources in an AWS account are limited. For
 more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-quotas.html}{IAM and STS Quotas}
 in the \emph{IAM User Guide}.

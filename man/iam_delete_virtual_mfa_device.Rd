@@ -10,15 +10,14 @@ iam_delete_virtual_mfa_device(SerialNumber)
 \item{SerialNumber}{[required] The serial number that uniquely identifies the MFA device. For virtual
 MFA devices, the serial number is the same as the ARN.
 
-This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters
+This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: =,.@:/-}
 }
 \description{
 Deletes a virtual MFA device.
-}
-\details{
-You must deactivate a user\'s virtual MFA device before you can delete
+
+You must deactivate a user's virtual MFA device before you can delete
 it. For information about deactivating MFA devices, see
 DeactivateMFADevice.
 }

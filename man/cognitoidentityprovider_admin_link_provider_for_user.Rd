@@ -15,7 +15,7 @@ cognitoidentityprovider_admin_link_provider_for_user(UserPoolId,
 \item{DestinationUser}{[required] The existing user in the user pool to be linked to the external identity
 provider user account. Can be a native (Username + Password) Cognito
 User Pools user or a federated user (for example, a SAML or Facebook
-user). If the user doesn\'t exist, an exception is thrown. This is the
+user). If the user doesn't exist, an exception is thrown. This is the
 user that is returned when the new user (with the linked identity
 provider attribute) signs in.
 
@@ -58,19 +58,18 @@ This allows you to create a link from the existing user account to an
 external federated user identity that has not yet been used to sign in,
 so that the federated user identity can be used to sign in as the
 existing user account.
-}
-\details{
+
 For example, if there is an existing user with a username and password,
 this API links that user to a federated user identity, so that when the
 federated user identity is used, the user signs in as the existing user
 account.
 
+The maximum number of federated identities linked to a user is 5.
+
 Because this API allows a user with an external federated identity to
 sign in as an existing user in the user pool, it is critical that it
 only be used with external identity providers and provider attributes
 that have been trusted by the application owner.
-
-See also .
 
 This action is enabled only for admin access and requires developer
 credentials.

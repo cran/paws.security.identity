@@ -12,8 +12,8 @@ directoryservice_create_microsoft_ad(Name, ShortName, Password,
 directory, such as \code{corp.example.com}. This name will resolve inside
 your VPC only. It does not need to be publicly resolvable.}
 
-\item{ShortName}{The NetBIOS name for your domain, such as \code{CORP}. If you don\'t specify
-a NetBIOS name, it will default to the first part of your directory DNS.
+\item{ShortName}{The NetBIOS name for your domain, such as \code{CORP}. If you don't specify a
+NetBIOS name, it will default to the first part of your directory DNS.
 For example, \code{CORP} for the directory DNS \code{corp.example.com}.}
 
 \item{Password}{[required] The password for the default administrative user named \code{Admin}.
@@ -36,12 +36,11 @@ operation.}
 Creates a Microsoft AD directory in the AWS Cloud. For more information,
 see \href{https://docs.aws.amazon.com/directoryservice/latest/admin-guide/directory_microsoft_ad.html}{AWS Managed Microsoft AD}
 in the \emph{AWS Directory Service Admin Guide}.
-}
-\details{
+
 Before you call \emph{CreateMicrosoftAD}, ensure that all of the required
 permissions have been explicitly granted through a policy. For details
 about what permissions are required to run the \emph{CreateMicrosoftAD}
-operation, see \href{http://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html}{AWS Directory Service API Permissions: Actions, Resources, and Conditions Reference}.
+operation, see \href{https://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html}{AWS Directory Service API Permissions: Actions, Resources, and Conditions Reference}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_microsoft_ad(

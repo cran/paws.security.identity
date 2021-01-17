@@ -36,8 +36,7 @@ parameter in \code{GetServiceLastAccessedDetails} to retrieve the status of
 your report job. When the report is complete, you can retrieve the
 generated report. The report includes a list of AWS services that the
 resource (user, group, role, or managed policy) can access.
-}
-\details{
+
 Service last accessed data does not use other policy types when
 determining whether a resource could access a service. These other
 policy types include resource-based policies, access control lists, AWS
@@ -59,13 +58,11 @@ to access the service and the date and time of the last attempt. It also
 returns the ARN of the following entity, depending on the resource ARN
 that you used to generate the report:
 \itemize{
-\item \strong{User} -- Returns the user ARN that you used to generate the
-report
-\item \strong{Group} -- Returns the ARN of the group member (user) that last
+\item \strong{User} – Returns the user ARN that you used to generate the report
+\item \strong{Group} – Returns the ARN of the group member (user) that last
 attempted to access the service
-\item \strong{Role} -- Returns the role ARN that you used to generate the
-report
-\item \strong{Policy} -- Returns the ARN of the user or role that last used the
+\item \strong{Role} – Returns the role ARN that you used to generate the report
+\item \strong{Policy} – Returns the ARN of the user or role that last used the
 policy to attempt to access the service
 }
 

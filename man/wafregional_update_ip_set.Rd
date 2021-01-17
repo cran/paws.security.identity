@@ -2,7 +2,7 @@
 % Please edit documentation in R/wafregional_operations.R
 \name{wafregional_update_ip_set}
 \alias{wafregional_update_ip_set}
-\title{This is AWS WAF CLASSIC documentation}
+\title{This is AWS WAF Classic documentation}
 \usage{
 wafregional_update_ip_set(IPSetId, ChangeToken, Updates)
 }
@@ -25,8 +25,7 @@ You can insert a maximum of 1000 addresses in a single request.}
 This is \strong{AWS WAF Classic} documentation. For more information, see
 \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}
 in the developer guide.
-}
-\details{
+
 \strong{For the latest version of AWS WAF}, use the AWS WAFV2 API and see the
 \href{https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html}{AWS WAF Developer Guide}.
 With the latest version, AWS WAF has a single set of endpoints for
@@ -59,7 +58,7 @@ IPv6 addresses can be represented using any of the following formats:
 
 You use an \code{IPSet} to specify which web requests you want to allow or
 block based on the IP addresses that the requests originated from. For
-example, if you\'re receiving a lot of requests from one or a small
+example, if you're receiving a lot of requests from one or a small
 number of IP addresses and you want to block the requests, you can
 create an \code{IPSet} that specifies those IP addresses, and then configure
 AWS WAF to block the requests.

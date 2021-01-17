@@ -61,8 +61,7 @@ operation returns a plaintext public key, a plaintext private key, and a
 copy of the private key that is encrypted under the symmetric CMK you
 specify. You can use the data key pair to perform asymmetric
 cryptography outside of AWS KMS.
-}
-\details{
+
 \code{GenerateDataKeyPair} returns a unique data key pair for each request.
 The bytes in the keys are not related to the caller or the CMK that is
 used to encrypt the private key.
@@ -79,7 +78,7 @@ cannot use an asymmetric CMK or a CMK in a custom key store. To get the
 type and origin of your CMK, use the DescribeKey operation.
 
 If you are using the data key pair to encrypt data, or for any operation
-where you don\'t immediately need a private key, consider using the
+where you don't immediately need a private key, consider using the
 GenerateDataKeyPairWithoutPlaintext operation.
 \code{GenerateDataKeyPairWithoutPlaintext} returns a plaintext public key and
 an encrypted private key, but omits the plaintext private key that you
@@ -98,6 +97,23 @@ in the \emph{AWS Key Management Service Developer Guide}.
 The CMK that you use for this operation must be in a compatible key
 state. For details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key}
 in the \emph{AWS Key Management Service Developer Guide}.
+
+\strong{Cross-account use}: Yes. To perform this operation with a CMK in a
+different AWS account, specify the key ARN or alias ARN in the value of
+the \code{KeyId} parameter.
+
+\strong{Required permissions}:
+\href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html}{kms:GenerateDataKeyPair}
+(key policy)
+
+\strong{Related operations:}
+\itemize{
+\item Decrypt
+\item Encrypt
+\item GenerateDataKey
+\item GenerateDataKeyPairWithoutPlaintext
+\item GenerateDataKeyWithoutPlaintext
+}
 }
 \section{Request syntax}{
 \preformatted{svc$generate_data_key_pair(

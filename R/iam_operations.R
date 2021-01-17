@@ -7,6 +7,7 @@ NULL
 #' already registered for the specified IAM OpenID Connect (OIDC) provider
 #' resource
 #'
+#' @description
 #' Adds a new client ID (also known as audience) to the list of client IDs
 #' already registered for the specified IAM OpenID Connect (OIDC) provider
 #' resource.
@@ -65,6 +66,7 @@ iam_add_client_id_to_open_id_connect_provider <- function(OpenIDConnectProviderA
 
 #' Adds the specified IAM role to the specified instance profile
 #'
+#' @description
 #' Adds the specified IAM role to the specified instance profile. An
 #' instance profile can contain only one role. (The number and size of IAM
 #' resources in an AWS account are limited. For more information, see [IAM
@@ -84,9 +86,9 @@ iam_add_client_id_to_open_id_connect_provider <- function(OpenIDConnectProviderA
 #' IAM role by a permissions policy.
 #' 
 #' For more information about roles, go to [Working with
-#' Roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/WorkingWithRoles.html).
+#' Roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html).
 #' For more information about instance profiles, go to [About Instance
-#' Profiles](https://docs.aws.amazon.com/IAM/latest/UserGuide/AboutInstanceProfiles.html).
+#' Profiles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html).
 #'
 #' @usage
 #' iam_add_role_to_instance_profile(InstanceProfileName, RoleName)
@@ -94,13 +96,13 @@ iam_add_client_id_to_open_id_connect_provider <- function(OpenIDConnectProviderA
 #' @param InstanceProfileName &#91;required&#93; The name of the instance profile to update.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param RoleName &#91;required&#93; The name of the role to add.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #'
@@ -144,6 +146,7 @@ iam_add_role_to_instance_profile <- function(InstanceProfileName, RoleName) {
 
 #' Adds the specified user to the specified group
 #'
+#' @description
 #' Adds the specified user to the specified group.
 #'
 #' @usage
@@ -152,13 +155,13 @@ iam_add_role_to_instance_profile <- function(InstanceProfileName, RoleName) {
 #' @param GroupName &#91;required&#93; The name of the group to update.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param UserName &#91;required&#93; The name of the user to add.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #'
@@ -202,13 +205,14 @@ iam_add_user_to_group <- function(GroupName, UserName) {
 
 #' Attaches the specified managed policy to the specified IAM group
 #'
+#' @description
 #' Attaches the specified managed policy to the specified IAM group.
 #' 
 #' You use this API to attach a managed policy to a group. To embed an
 #' inline policy in a group, use PutGroupPolicy.
 #' 
 #' For more information about policies, see [Managed Policies and Inline
-#' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html)
+#' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html)
 #' in the *IAM User Guide*.
 #'
 #' @usage
@@ -217,7 +221,7 @@ iam_add_user_to_group <- function(GroupName, UserName) {
 #' @param GroupName &#91;required&#93; The name (friendly name, not ARN) of the group to attach the policy to.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param PolicyArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM policy you want to attach.
@@ -267,18 +271,19 @@ iam_attach_group_policy <- function(GroupName, PolicyArn) {
 
 #' Attaches the specified managed policy to the specified IAM role
 #'
+#' @description
 #' Attaches the specified managed policy to the specified IAM role. When
 #' you attach a managed policy to a role, the managed policy becomes part
-#' of the role\'s permission (access) policy.
+#' of the role's permission (access) policy.
 #' 
-#' You cannot use a managed policy as the role\'s trust policy. The role\'s
+#' You cannot use a managed policy as the role's trust policy. The role's
 #' trust policy is created at the same time as the role, using CreateRole.
-#' You can update a role\'s trust policy using UpdateAssumeRolePolicy.
+#' You can update a role's trust policy using UpdateAssumeRolePolicy.
 #' 
 #' Use this API to attach a *managed* policy to a role. To embed an inline
 #' policy in a role, use PutRolePolicy. For more information about
 #' policies, see [Managed Policies and Inline
-#' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html)
+#' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html)
 #' in the *IAM User Guide*.
 #'
 #' @usage
@@ -287,7 +292,7 @@ iam_attach_group_policy <- function(GroupName, PolicyArn) {
 #' @param RoleName &#91;required&#93; The name (friendly name, not ARN) of the role to attach the policy to.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param PolicyArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM policy you want to attach.
@@ -337,13 +342,14 @@ iam_attach_role_policy <- function(RoleName, PolicyArn) {
 
 #' Attaches the specified managed policy to the specified user
 #'
+#' @description
 #' Attaches the specified managed policy to the specified user.
 #' 
 #' You use this API to attach a *managed* policy to a user. To embed an
 #' inline policy in a user, use PutUserPolicy.
 #' 
 #' For more information about policies, see [Managed Policies and Inline
-#' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html)
+#' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html)
 #' in the *IAM User Guide*.
 #'
 #' @usage
@@ -353,7 +359,7 @@ iam_attach_role_policy <- function(RoleName, PolicyArn) {
 #' to.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param PolicyArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM policy you want to attach.
@@ -403,22 +409,23 @@ iam_attach_user_policy <- function(UserName, PolicyArn) {
 
 #' Changes the password of the IAM user who is calling this operation
 #'
+#' @description
 #' Changes the password of the IAM user who is calling this operation. The
 #' AWS account root user password is not affected by this operation.
 #' 
 #' To change the password for a different user, see UpdateLoginProfile. For
 #' more information about modifying passwords, see [Managing
-#' Passwords](https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_ManagingLogins.html)
+#' Passwords](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_admin-change-user.html)
 #' in the *IAM User Guide*.
 #'
 #' @usage
 #' iam_change_password(OldPassword, NewPassword)
 #'
-#' @param OldPassword &#91;required&#93; The IAM user\'s current password.
-#' @param NewPassword &#91;required&#93; The new password. The new password must conform to the AWS account\'s
+#' @param OldPassword &#91;required&#93; The IAM user's current password.
+#' @param NewPassword &#91;required&#93; The new password. The new password must conform to the AWS account's
 #' password policy, if one exists.
 #' 
-#' The [regex pattern](http://wikipedia.org/wiki/regex) that is used to
+#' The [regex pattern](https://en.wikipedia.org/wiki/Regex) that is used to
 #' validate this parameter is a string of characters. That string can
 #' include almost any printable ASCII character from the space (``U+0020``)
 #' through the end of the ASCII character range (``U+00FF``). You can also
@@ -468,6 +475,7 @@ iam_change_password <- function(OldPassword, NewPassword) {
 #' Creates a new AWS secret access key and corresponding AWS access key ID
 #' for the specified user
 #'
+#' @description
 #' Creates a new AWS secret access key and corresponding AWS access key ID
 #' for the specified user. The default status for new keys is `Active`.
 #' 
@@ -494,7 +502,7 @@ iam_change_password <- function(OldPassword, NewPassword) {
 #' @param UserName The name of the IAM user that the new key will belong to.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #'
@@ -536,9 +544,10 @@ iam_create_access_key <- function(UserName = NULL) {
 
 #' Creates an alias for your AWS account
 #'
+#' @description
 #' Creates an alias for your AWS account. For information about using an
 #' AWS account alias, see [Using an Alias for Your AWS Account
-#' ID](https://docs.aws.amazon.com/IAM/latest/UserGuide/AccountAlias.html)
+#' ID](https://docs.aws.amazon.com/IAM/latest/UserGuide/console_account-alias.html)
 #' in the *IAM User Guide*.
 #'
 #' @usage
@@ -547,7 +556,7 @@ iam_create_access_key <- function(UserName = NULL) {
 #' @param AccountAlias &#91;required&#93; The account alias to create.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of lowercase letters, digits, and dashes. You cannot start or
 #' finish with a dash, nor can you have two dashes in a row.
 #'
@@ -589,6 +598,7 @@ iam_create_account_alias <- function(AccountAlias) {
 
 #' Creates a new group
 #'
+#' @description
 #' Creates a new group.
 #' 
 #' The number and size of IAM resources in an AWS account are limited. For
@@ -600,14 +610,14 @@ iam_create_account_alias <- function(AccountAlias) {
 #' iam_create_group(Path, GroupName)
 #'
 #' @param Path The path to the group. For more information about paths, see [IAM
-#' Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
+#' Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html)
 #' in the *IAM User Guide*.
 #' 
 #' This parameter is optional. If it is not included, it defaults to a
 #' slash (/).
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of either a forward slash (/) by itself or a string that must
 #' begin and end with forward slashes. In addition, it can contain any
 #' ASCII character from the ! (``U+0021``) through the DEL character
@@ -617,7 +627,7 @@ iam_create_account_alias <- function(AccountAlias) {
 #' 
 #' IAM user, group, role, and policy names must be unique within the
 #' account. Names are not distinguished by case. For example, you cannot
-#' create resources named both \"MyResource\" and \"myresource\".
+#' create resources named both "MyResource" and "myresource".
 #'
 #' @section Request syntax:
 #' ```
@@ -657,9 +667,10 @@ iam_create_group <- function(Path = NULL, GroupName) {
 
 #' Creates a new instance profile
 #'
+#' @description
 #' Creates a new instance profile. For information about instance profiles,
 #' go to [About Instance
-#' Profiles](https://docs.aws.amazon.com/IAM/latest/UserGuide/AboutInstanceProfiles.html).
+#' Profiles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html).
 #' 
 #' The number and size of IAM resources in an AWS account are limited. For
 #' more information, see [IAM and STS
@@ -672,19 +683,19 @@ iam_create_group <- function(Path = NULL, GroupName) {
 #' @param InstanceProfileName &#91;required&#93; The name of the instance profile to create.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param Path The path to the instance profile. For more information about paths, see
 #' [IAM
-#' Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
+#' Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html)
 #' in the *IAM User Guide*.
 #' 
 #' This parameter is optional. If it is not included, it defaults to a
 #' slash (/).
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of either a forward slash (/) by itself or a string that must
 #' begin and end with forward slashes. In addition, it can contain any
 #' ASCII character from the ! (``U+0021``) through the DEL character
@@ -732,10 +743,11 @@ iam_create_instance_profile <- function(InstanceProfileName, Path = NULL) {
 #' Creates a password for the specified user, giving the user the ability
 #' to access AWS services through the AWS Management Console
 #'
+#' @description
 #' Creates a password for the specified user, giving the user the ability
 #' to access AWS services through the AWS Management Console. For more
 #' information about managing passwords, see [Managing
-#' Passwords](https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_ManagingLogins.html)
+#' Passwords](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_admin-change-user.html)
 #' in the *IAM User Guide*.
 #'
 #' @usage
@@ -745,12 +757,12 @@ iam_create_instance_profile <- function(InstanceProfileName, Path = NULL) {
 #' exist.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param Password &#91;required&#93; The new password for the user.
 #' 
-#' The [regex pattern](http://wikipedia.org/wiki/regex) that is used to
+#' The [regex pattern](https://en.wikipedia.org/wiki/Regex) that is used to
 #' validate this parameter is a string of characters. That string can
 #' include almost any printable ASCII character from the space (``U+0020``)
 #' through the end of the ASCII character range (``U+00FF``). You can also
@@ -805,11 +817,12 @@ iam_create_login_profile <- function(UserName, Password, PasswordResetRequired =
 #' Creates an IAM entity to describe an identity provider (IdP) that
 #' supports OpenID Connect (OIDC)
 #'
+#' @description
 #' Creates an IAM entity to describe an identity provider (IdP) that
-#' supports [OpenID Connect (OIDC)](http://openid.net/connect/).
+#' supports [OpenID Connect (OIDC)](https://openid.net/connect/).
 #' 
 #' The OIDC provider that you create with this operation can be used as a
-#' principal in a role\'s trust policy. Such a policy establishes a trust
+#' principal in a role's trust policy. Such a policy establishes a trust
 #' relationship between AWS and the OIDC provider.
 #' 
 #' When you create the IAM OIDC provider, you specify the following:
@@ -834,8 +847,8 @@ iam_create_login_profile <- function(UserName, Password, PasswordResetRequired =
 #' iam_create_open_id_connect_provider(Url, ClientIDList, ThumbprintList)
 #'
 #' @param Url &#91;required&#93; The URL of the identity provider. The URL must begin with `https://` and
-#' should correspond to the `iss` claim in the provider\'s OpenID Connect
-#' ID tokens. Per the OIDC standard, path components are allowed but query
+#' should correspond to the `iss` claim in the provider's OpenID Connect ID
+#' tokens. Per the OIDC standard, path components are allowed but query
 #' parameters are not. Typically the URL consists of only a hostname, like
 #' `https://server.example.org` or `https://example.com`.
 #' 
@@ -844,7 +857,7 @@ iam_create_login_profile <- function(UserName, Password, PasswordResetRequired =
 #' OpenID Connect provider in the AWS account, you will get an error.
 #' @param ClientIDList A list of client IDs (also known as audiences). When a mobile or web app
 #' registers with an OpenID Connect provider, they establish a value that
-#' identifies the application. (This is the value that\'s sent as the
+#' identifies the application. (This is the value that's sent as the
 #' `client_id` parameter on OAuth requests.)
 #' 
 #' You can register multiple client IDs with the same provider. For
@@ -856,7 +869,7 @@ iam_create_login_profile <- function(UserName, Password, PasswordResetRequired =
 #' `CreateOpenIDConnectProviderRequest` operation accepts client IDs up to
 #' 255 characters long.
 #' @param ThumbprintList &#91;required&#93; A list of server certificate thumbprints for the OpenID Connect (OIDC)
-#' identity provider\'s server certificates. Typically this list includes
+#' identity provider's server certificates. Typically this list includes
 #' only one entry. However, IAM lets you have up to five thumbprints for an
 #' OIDC provider. This lets you maintain multiple thumbprints if the
 #' identity provider is rotating certificates.
@@ -872,9 +885,9 @@ iam_create_login_profile <- function(UserName, Password, PasswordResetRequired =
 #' thumbprint string would be the hex-encoded SHA-1 hash value of the
 #' certificate used by https://keys.server.example.com.
 #' 
-#' For more information about obtaining the OIDC provider\'s thumbprint,
-#' see [Obtaining the Thumbprint for an OpenID Connect
-#' Provider](https://docs.aws.amazon.com/IAM/latest/UserGuide/identity-providers-oidc-obtain-thumbprint.html)
+#' For more information about obtaining the OIDC provider's thumbprint, see
+#' [Obtaining the Thumbprint for an OpenID Connect
+#' Provider](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_create_oidc_verify-thumbprint.html)
 #' in the *IAM User Guide*.
 #'
 #' @section Request syntax:
@@ -928,17 +941,18 @@ iam_create_open_id_connect_provider <- function(Url, ClientIDList = NULL, Thumbp
 
 #' Creates a new managed policy for your AWS account
 #'
+#' @description
 #' Creates a new managed policy for your AWS account.
 #' 
 #' This operation creates a policy version with a version identifier of
-#' `v1` and sets v1 as the policy\'s default version. For more information
+#' `v1` and sets v1 as the policy's default version. For more information
 #' about policy versions, see [Versioning for Managed
-#' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html)
+#' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-versioning.html)
 #' in the *IAM User Guide*.
 #' 
 #' For more information about managed policies in general, see [Managed
 #' Policies and Inline
-#' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html)
+#' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html)
 #' in the *IAM User Guide*.
 #'
 #' @usage
@@ -948,18 +962,18 @@ iam_create_open_id_connect_provider <- function(Url, ClientIDList = NULL, Thumbp
 #' 
 #' IAM user, group, role, and policy names must be unique within the
 #' account. Names are not distinguished by case. For example, you cannot
-#' create resources named both \"MyResource\" and \"myresource\".
+#' create resources named both "MyResource" and "myresource".
 #' @param Path The path for the policy.
 #' 
 #' For more information about paths, see [IAM
-#' Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
+#' Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html)
 #' in the *IAM User Guide*.
 #' 
 #' This parameter is optional. If it is not included, it defaults to a
 #' slash (/).
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of either a forward slash (/) by itself or a string that must
 #' begin and end with forward slashes. In addition, it can contain any
 #' ASCII character from the ! (``U+0021``) through the DEL character
@@ -973,8 +987,9 @@ iam_create_open_id_connect_provider <- function(Url, ClientIDList = NULL, Thumbp
 #' in JSON or YAML format. AWS CloudFormation always converts a YAML policy
 #' to JSON format before submitting it to IAM.
 #' 
-#' The [regex pattern](http://wikipedia.org/wiki/regex) used to validate
-#' this parameter is a string of characters consisting of the following:
+#' The [regex pattern](https://en.wikipedia.org/wiki/Regex) used to
+#' validate this parameter is a string of characters consisting of the
+#' following:
 #' 
 #' -   Any printable ASCII character ranging from the space character
 #'     (``U+0020``) through the end of the ASCII character range
@@ -987,7 +1002,7 @@ iam_create_open_id_connect_provider <- function(Url, ClientIDList = NULL, Thumbp
 #' @param Description A friendly description of the policy.
 #' 
 #' Typically used to store information about the permissions defined in the
-#' policy. For example, \"Grants access to production DynamoDB tables.\"
+#' policy. For example, "Grants access to production DynamoDB tables."
 #' 
 #' The policy description is immutable. After a value is assigned, it
 #' cannot be changed.
@@ -1024,19 +1039,20 @@ iam_create_policy <- function(PolicyName, Path = NULL, PolicyDocument, Descripti
 
 #' Creates a new version of the specified managed policy
 #'
+#' @description
 #' Creates a new version of the specified managed policy. To update a
 #' managed policy, you create a new policy version. A managed policy can
 #' have up to five versions. If the policy has five versions, you must
 #' delete an existing version using DeletePolicyVersion before you create a
 #' new version.
 #' 
-#' Optionally, you can set the new version as the policy\'s default
-#' version. The default version is the version that is in effect for the
-#' IAM users, groups, and roles to which the policy is attached.
+#' Optionally, you can set the new version as the policy's default version.
+#' The default version is the version that is in effect for the IAM users,
+#' groups, and roles to which the policy is attached.
 #' 
 #' For more information about managed policy versions, see [Versioning for
 #' Managed
-#' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html)
+#' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-versioning.html)
 #' in the *IAM User Guide*.
 #'
 #' @usage
@@ -1057,8 +1073,9 @@ iam_create_policy <- function(PolicyName, Path = NULL, PolicyDocument, Descripti
 #' in JSON or YAML format. AWS CloudFormation always converts a YAML policy
 #' to JSON format before submitting it to IAM.
 #' 
-#' The [regex pattern](http://wikipedia.org/wiki/regex) used to validate
-#' this parameter is a string of characters consisting of the following:
+#' The [regex pattern](https://en.wikipedia.org/wiki/Regex) used to
+#' validate this parameter is a string of characters consisting of the
+#' following:
 #' 
 #' -   Any printable ASCII character ranging from the space character
 #'     (``U+0020``) through the end of the ASCII character range
@@ -1068,7 +1085,7 @@ iam_create_policy <- function(PolicyName, Path = NULL, PolicyDocument, Descripti
 #' 
 #' -   The special characters tab (``U+0009``), line feed (``U+000A``), and
 #'     carriage return (``U+000D``)
-#' @param SetAsDefault Specifies whether to set this version as the policy\'s default version.
+#' @param SetAsDefault Specifies whether to set this version as the policy's default version.
 #' 
 #' When this parameter is `true`, the new policy version becomes the
 #' operative version. That is, it becomes the version that is in effect for
@@ -1076,7 +1093,7 @@ iam_create_policy <- function(PolicyName, Path = NULL, PolicyDocument, Descripti
 #' 
 #' For more information about managed policy versions, see [Versioning for
 #' Managed
-#' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html)
+#' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-versioning.html)
 #' in the *IAM User Guide*.
 #'
 #' @section Request syntax:
@@ -1110,9 +1127,10 @@ iam_create_policy_version <- function(PolicyArn, PolicyDocument, SetAsDefault = 
 
 #' Creates a new role for your AWS account
 #'
+#' @description
 #' Creates a new role for your AWS account. For more information about
 #' roles, go to [IAM
-#' Roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/WorkingWithRoles.html).
+#' Roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html).
 #' The number and size of IAM resources in an AWS account are limited. For
 #' more information, see [IAM and STS
 #' Quotas](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-quotas.html)
@@ -1123,14 +1141,14 @@ iam_create_policy_version <- function(PolicyArn, PolicyDocument, SetAsDefault = 
 #'   MaxSessionDuration, PermissionsBoundary, Tags)
 #'
 #' @param Path The path to the role. For more information about paths, see [IAM
-#' Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
+#' Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html)
 #' in the *IAM User Guide*.
 #' 
 #' This parameter is optional. If it is not included, it defaults to a
 #' slash (/).
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of either a forward slash (/) by itself or a string that must
 #' begin and end with forward slashes. In addition, it can contain any
 #' ASCII character from the ! (``U+0021``) through the DEL character
@@ -1140,7 +1158,7 @@ iam_create_policy_version <- function(PolicyArn, PolicyDocument, SetAsDefault = 
 #' 
 #' IAM user, group, role, and policy names must be unique within the
 #' account. Names are not distinguished by case. For example, you cannot
-#' create resources named both \"MyResource\" and \"myresource\".
+#' create resources named both "MyResource" and "myresource".
 #' @param AssumeRolePolicyDocument &#91;required&#93; The trust relationship policy document that grants an entity permission
 #' to assume the role.
 #' 
@@ -1149,8 +1167,9 @@ iam_create_policy_version <- function(PolicyArn, PolicyDocument, SetAsDefault = 
 #' can provide the policy in JSON or YAML format. AWS CloudFormation always
 #' converts a YAML policy to JSON format before submitting it to IAM.
 #' 
-#' The [regex pattern](http://wikipedia.org/wiki/regex) used to validate
-#' this parameter is a string of characters consisting of the following:
+#' The [regex pattern](https://en.wikipedia.org/wiki/Regex) used to
+#' validate this parameter is a string of characters consisting of the
+#' following:
 #' 
 #' -   Any printable ASCII character ranging from the space character
 #'     (``U+0020``) through the end of the ASCII character range
@@ -1173,7 +1192,7 @@ iam_create_policy_version <- function(PolicyArn, PolicyDocument, SetAsDefault = 
 #' `DurationSeconds` API parameter or the `duration-seconds` CLI parameter
 #' to request a longer session. The `MaxSessionDuration` setting determines
 #' the maximum duration that can be requested using the `DurationSeconds`
-#' parameter. If users don\'t specify a value for the `DurationSeconds`
+#' parameter. If users don't specify a value for the `DurationSeconds`
 #' parameter, their security credentials are valid for one hour by default.
 #' This applies when you use the `AssumeRole*` API operations or the
 #' `assume-role*` CLI operations but does not apply when you use those
@@ -1245,22 +1264,23 @@ iam_create_role <- function(Path = NULL, RoleName, AssumeRolePolicyDocument, Des
 #' Creates an IAM resource that describes an identity provider (IdP) that
 #' supports SAML 2
 #'
+#' @description
 #' Creates an IAM resource that describes an identity provider (IdP) that
 #' supports SAML 2.0.
 #' 
 #' The SAML provider resource that you create with this operation can be
-#' used as a principal in an IAM role\'s trust policy. Such a policy can
+#' used as a principal in an IAM role's trust policy. Such a policy can
 #' enable federated users who sign in using the SAML IdP to assume the
 #' role. You can create an IAM role that supports Web-based single sign-on
 #' (SSO) to the AWS Management Console or one that supports API access to
 #' AWS.
 #' 
 #' When you create the SAML provider resource, you upload a SAML metadata
-#' document that you get from your IdP. That document includes the
-#' issuer\'s name, expiration information, and keys that can be used to
-#' validate the SAML authentication response (assertions) that the IdP
-#' sends. You must generate the metadata document using the identity
-#' management software that is used as your organization\'s IdP.
+#' document that you get from your IdP. That document includes the issuer's
+#' name, expiration information, and keys that can be used to validate the
+#' SAML authentication response (assertions) that the IdP sends. You must
+#' generate the metadata document using the identity management software
+#' that is used as your organization's IdP.
 #' 
 #' This operation requires [Signature Version
 #' 4](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
@@ -1276,11 +1296,11 @@ iam_create_role <- function(Path = NULL, RoleName, AssumeRolePolicyDocument, Des
 #' iam_create_saml_provider(SAMLMetadataDocument, Name)
 #'
 #' @param SAMLMetadataDocument &#91;required&#93; An XML document generated by an identity provider (IdP) that supports
-#' SAML 2.0. The document includes the issuer\'s name, expiration
+#' SAML 2.0. The document includes the issuer's name, expiration
 #' information, and keys that can be used to validate the SAML
 #' authentication response (assertions) that are received from the IdP. You
 #' must generate the metadata document using the identity management
-#' software that is used as your organization\'s IdP.
+#' software that is used as your organization's IdP.
 #' 
 #' For more information, see [About SAML 2.0-based
 #' Federation](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_saml.html)
@@ -1288,7 +1308,7 @@ iam_create_role <- function(Path = NULL, RoleName, AssumeRolePolicyDocument, Des
 #' @param Name &#91;required&#93; The name of the provider to create.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #'
@@ -1322,6 +1342,7 @@ iam_create_saml_provider <- function(SAMLMetadataDocument, Name) {
 
 #' Creates an IAM role that is linked to a specific AWS service
 #'
+#' @description
 #' Creates an IAM role that is linked to a specific AWS service. The
 #' service controls the attached policies and when the role can be deleted.
 #' This helps ensure that the service is not broken by an unexpectedly
@@ -1393,6 +1414,7 @@ iam_create_service_linked_role <- function(AWSServiceName, Description = NULL, C
 #' Generates a set of credentials consisting of a user name and password
 #' that can be used to access the service specified in the request
 #'
+#' @description
 #' Generates a set of credentials consisting of a user name and password
 #' that can be used to access the service specified in the request. These
 #' credentials are generated by IAM, and can be used only for the specified
@@ -1420,7 +1442,7 @@ iam_create_service_linked_role <- function(AWSServiceName, Description = NULL, C
 #' specified service.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param ServiceName &#91;required&#93; The name of the AWS service that is to be associated with the
@@ -1457,6 +1479,7 @@ iam_create_service_specific_credential <- function(UserName, ServiceName) {
 
 #' Creates a new IAM user for your AWS account
 #'
+#' @description
 #' Creates a new IAM user for your AWS account.
 #' 
 #' The number and size of IAM resources in an AWS account are limited. For
@@ -1468,14 +1491,14 @@ iam_create_service_specific_credential <- function(UserName, ServiceName) {
 #' iam_create_user(Path, UserName, PermissionsBoundary, Tags)
 #'
 #' @param Path The path for the user name. For more information about paths, see [IAM
-#' Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
+#' Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html)
 #' in the *IAM User Guide*.
 #' 
 #' This parameter is optional. If it is not included, it defaults to a
 #' slash (/).
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of either a forward slash (/) by itself or a string that must
 #' begin and end with forward slashes. In addition, it can contain any
 #' ASCII character from the ! (``U+0021``) through the DEL character
@@ -1485,7 +1508,7 @@ iam_create_service_specific_credential <- function(UserName, ServiceName) {
 #' 
 #' IAM user, group, role, and policy names must be unique within the
 #' account. Names are not distinguished by case. For example, you cannot
-#' create resources named both \"MyResource\" and \"myresource\".
+#' create resources named both "MyResource" and "myresource".
 #' @param PermissionsBoundary The ARN of the policy that is used to set the permissions boundary for
 #' the user.
 #' @param Tags A list of tags that you want to attach to the newly created user. Each
@@ -1544,11 +1567,12 @@ iam_create_user <- function(Path = NULL, UserName, PermissionsBoundary = NULL, T
 
 #' Creates a new virtual MFA device for the AWS account
 #'
+#' @description
 #' Creates a new virtual MFA device for the AWS account. After creating the
 #' virtual MFA, use EnableMFADevice to attach the MFA device to an IAM
 #' user. For more information about creating and working with virtual MFA
 #' devices, go to [Using a Virtual MFA
-#' Device](https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_VirtualMFA.html)
+#' Device](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_enable_virtual.html)
 #' in the *IAM User Guide*.
 #' 
 #' The number and size of IAM resources in an AWS account are limited. For
@@ -1567,14 +1591,14 @@ iam_create_user <- function(Path = NULL, UserName, PermissionsBoundary = NULL, T
 #'
 #' @param Path The path for the virtual MFA device. For more information about paths,
 #' see [IAM
-#' Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
+#' Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html)
 #' in the *IAM User Guide*.
 #' 
 #' This parameter is optional. If it is not included, it defaults to a
 #' slash (/).
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of either a forward slash (/) by itself or a string that must
 #' begin and end with forward slashes. In addition, it can contain any
 #' ASCII character from the ! (``U+0021``) through the DEL character
@@ -1584,7 +1608,7 @@ iam_create_user <- function(Path = NULL, UserName, PermissionsBoundary = NULL, T
 #' virtual MFA device.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #'
@@ -1619,12 +1643,13 @@ iam_create_virtual_mfa_device <- function(Path = NULL, VirtualMFADeviceName) {
 #' Deactivates the specified MFA device and removes it from association
 #' with the user name for which it was originally enabled
 #'
+#' @description
 #' Deactivates the specified MFA device and removes it from association
 #' with the user name for which it was originally enabled.
 #' 
 #' For more information about creating and working with virtual MFA
 #' devices, go to [Enabling a Virtual Multi-factor Authentication (MFA)
-#' Device](https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_VirtualMFA.html)
+#' Device](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_enable_virtual.html)
 #' in the *IAM User Guide*.
 #'
 #' @usage
@@ -1633,14 +1658,14 @@ iam_create_virtual_mfa_device <- function(Path = NULL, VirtualMFADeviceName) {
 #' @param UserName &#91;required&#93; The name of the user whose MFA device you want to deactivate.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param SerialNumber &#91;required&#93; The serial number that uniquely identifies the MFA device. For virtual
 #' MFA devices, the serial number is the device ARN.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: =,.@@:/-
 #'
@@ -1674,6 +1699,7 @@ iam_deactivate_mfa_device <- function(UserName, SerialNumber) {
 
 #' Deletes the access key pair associated with the specified IAM user
 #'
+#' @description
 #' Deletes the access key pair associated with the specified IAM user.
 #' 
 #' If you do not specify a user name, IAM determines the user name
@@ -1688,15 +1714,15 @@ iam_deactivate_mfa_device <- function(UserName, SerialNumber) {
 #' @param UserName The name of the user whose access key pair you want to delete.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param AccessKeyId &#91;required&#93; The access key ID for the access key ID and secret access key you want
 #' to delete.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters that
-#' can consist of any upper or lowercased letter or digit.
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
+#' that can consist of any upper or lowercased letter or digit.
 #'
 #' @section Request syntax:
 #' ```
@@ -1738,9 +1764,10 @@ iam_delete_access_key <- function(UserName = NULL, AccessKeyId) {
 
 #' Deletes the specified AWS account alias
 #'
+#' @description
 #' Deletes the specified AWS account alias. For information about using an
 #' AWS account alias, see [Using an Alias for Your AWS Account
-#' ID](https://docs.aws.amazon.com/IAM/latest/UserGuide/AccountAlias.html)
+#' ID](https://docs.aws.amazon.com/IAM/latest/UserGuide/console_account-alias.html)
 #' in the *IAM User Guide*.
 #'
 #' @usage
@@ -1749,7 +1776,7 @@ iam_delete_access_key <- function(UserName = NULL, AccessKeyId) {
 #' @param AccountAlias &#91;required&#93; The name of the account alias to delete.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of lowercase letters, digits, and dashes. You cannot start or
 #' finish with a dash, nor can you have two dashes in a row.
 #'
@@ -1791,6 +1818,7 @@ iam_delete_account_alias <- function(AccountAlias) {
 
 #' Deletes the password policy for the AWS account
 #'
+#' @description
 #' Deletes the password policy for the AWS account. There are no
 #' parameters.
 #'
@@ -1830,6 +1858,7 @@ iam_delete_account_password_policy <- function() {
 
 #' Deletes the specified IAM group
 #'
+#' @description
 #' Deletes the specified IAM group. The group must not contain any users or
 #' have any attached policies.
 #'
@@ -1839,7 +1868,7 @@ iam_delete_account_password_policy <- function() {
 #' @param GroupName &#91;required&#93; The name of the IAM group to delete.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #'
@@ -1873,13 +1902,14 @@ iam_delete_group <- function(GroupName) {
 #' Deletes the specified inline policy that is embedded in the specified
 #' IAM group
 #'
+#' @description
 #' Deletes the specified inline policy that is embedded in the specified
 #' IAM group.
 #' 
 #' A group can also have managed policies attached to it. To detach a
 #' managed policy from a group, use DetachGroupPolicy. For more information
 #' about policies, refer to [Managed Policies and Inline
-#' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html)
+#' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html)
 #' in the *IAM User Guide*.
 #'
 #' @usage
@@ -1889,13 +1919,13 @@ iam_delete_group <- function(GroupName) {
 #' is embedded in.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param PolicyName &#91;required&#93; The name identifying the policy document to delete.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #'
@@ -1939,6 +1969,7 @@ iam_delete_group_policy <- function(GroupName, PolicyName) {
 
 #' Deletes the specified instance profile
 #'
+#' @description
 #' Deletes the specified instance profile. The instance profile must not
 #' have an associated role.
 #' 
@@ -1948,7 +1979,7 @@ iam_delete_group_policy <- function(GroupName, PolicyName) {
 #' applications running on the instance.
 #' 
 #' For more information about instance profiles, go to [About Instance
-#' Profiles](https://docs.aws.amazon.com/IAM/latest/UserGuide/AboutInstanceProfiles.html).
+#' Profiles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html).
 #'
 #' @usage
 #' iam_delete_instance_profile(InstanceProfileName)
@@ -1956,7 +1987,7 @@ iam_delete_group_policy <- function(GroupName, PolicyName) {
 #' @param InstanceProfileName &#91;required&#93; The name of the instance profile to delete.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #'
@@ -1999,11 +2030,12 @@ iam_delete_instance_profile <- function(InstanceProfileName) {
 #' Deletes the password for the specified IAM user, which terminates the
 #' user's ability to access AWS services through the AWS Management Console
 #'
+#' @description
 #' Deletes the password for the specified IAM user, which terminates the
-#' user\'s ability to access AWS services through the AWS Management
+#' user's ability to access AWS services through the AWS Management
 #' Console.
 #' 
-#' Deleting a user\'s password does not prevent a user from accessing AWS
+#' Deleting a user's password does not prevent a user from accessing AWS
 #' through the command line interface or the API. To prevent all user
 #' access, you must also either make any access keys inactive or delete
 #' them. For more information about making keys inactive or deleting them,
@@ -2015,7 +2047,7 @@ iam_delete_instance_profile <- function(InstanceProfileName) {
 #' @param UserName &#91;required&#93; The name of the user whose password you want to delete.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #'
@@ -2056,6 +2088,7 @@ iam_delete_login_profile <- function(UserName) {
 
 #' Deletes an OpenID Connect identity provider (IdP) resource object in IAM
 #'
+#' @description
 #' Deletes an OpenID Connect identity provider (IdP) resource object in
 #' IAM.
 #' 
@@ -2102,11 +2135,12 @@ iam_delete_open_id_connect_provider <- function(OpenIDConnectProviderArn) {
 
 #' Deletes the specified managed policy
 #'
+#' @description
 #' Deletes the specified managed policy.
 #' 
 #' Before you can delete a managed policy, you must first detach the policy
 #' from all users, groups, and roles that it is attached to. In addition,
-#' you must delete all the policy\'s versions. The following steps describe
+#' you must delete all the policy's versions. The following steps describe
 #' the process for deleting a managed policy:
 #' 
 #' -   Detach the policy from all users, groups, and roles that the policy
@@ -2115,16 +2149,16 @@ iam_delete_open_id_connect_provider <- function(OpenIDConnectProviderArn) {
 #'     roles that a policy is attached to, use ListEntitiesForPolicy.
 #' 
 #' -   Delete all versions of the policy using DeletePolicyVersion. To list
-#'     the policy\'s versions, use ListPolicyVersions. You cannot use
+#'     the policy's versions, use ListPolicyVersions. You cannot use
 #'     DeletePolicyVersion to delete the version that is marked as the
-#'     default version. You delete the policy\'s default version in the
-#'     next step of the process.
+#'     default version. You delete the policy's default version in the next
+#'     step of the process.
 #' 
-#' -   Delete the policy (this automatically deletes the policy\'s default
+#' -   Delete the policy (this automatically deletes the policy's default
 #'     version) using this API.
 #' 
 #' For information about managed policies, see [Managed Policies and Inline
-#' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html)
+#' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html)
 #' in the *IAM User Guide*.
 #'
 #' @usage
@@ -2166,6 +2200,7 @@ iam_delete_policy <- function(PolicyArn) {
 
 #' Deletes the specified version from the specified managed policy
 #'
+#' @description
 #' Deletes the specified version from the specified managed policy.
 #' 
 #' You cannot delete the default version from a policy using this API. To
@@ -2175,7 +2210,7 @@ iam_delete_policy <- function(PolicyArn) {
 #' 
 #' For information about versions for managed policies, see [Versioning for
 #' Managed
-#' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html)
+#' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-versioning.html)
 #' in the *IAM User Guide*.
 #'
 #' @usage
@@ -2191,14 +2226,14 @@ iam_delete_policy <- function(PolicyArn) {
 #' @param VersionId &#91;required&#93; The policy version to delete.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters that
-#' consists of the lowercase letter \'v\' followed by one or two digits,
-#' and optionally followed by a period \'.\' and a string of letters and
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
+#' that consists of the lowercase letter 'v' followed by one or two digits,
+#' and optionally followed by a period '.' and a string of letters and
 #' digits.
 #' 
 #' For more information about managed policy versions, see [Versioning for
 #' Managed
-#' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html)
+#' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-versioning.html)
 #' in the *IAM User Guide*.
 #'
 #' @section Request syntax:
@@ -2231,9 +2266,10 @@ iam_delete_policy_version <- function(PolicyArn, VersionId) {
 
 #' Deletes the specified role
 #'
+#' @description
 #' Deletes the specified role. The role must not have any policies
 #' attached. For more information about roles, go to [Working with
-#' Roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/WorkingWithRoles.html).
+#' Roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html).
 #' 
 #' Make sure that you do not have any Amazon EC2 instances running with the
 #' role you are about to delete. Deleting a role or instance profile that
@@ -2246,7 +2282,7 @@ iam_delete_policy_version <- function(PolicyArn, VersionId) {
 #' @param RoleName &#91;required&#93; The name of the role to delete.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #'
@@ -2287,6 +2323,7 @@ iam_delete_role <- function(RoleName) {
 
 #' Deletes the permissions boundary for the specified IAM role
 #'
+#' @description
 #' Deletes the permissions boundary for the specified IAM role.
 #' 
 #' Deleting the permissions boundary for a role might increase its
@@ -2329,13 +2366,14 @@ iam_delete_role_permissions_boundary <- function(RoleName) {
 #' Deletes the specified inline policy that is embedded in the specified
 #' IAM role
 #'
+#' @description
 #' Deletes the specified inline policy that is embedded in the specified
 #' IAM role.
 #' 
 #' A role can also have managed policies attached to it. To detach a
 #' managed policy from a role, use DetachRolePolicy. For more information
 #' about policies, refer to [Managed Policies and Inline
-#' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html)
+#' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html)
 #' in the *IAM User Guide*.
 #'
 #' @usage
@@ -2345,13 +2383,13 @@ iam_delete_role_permissions_boundary <- function(RoleName) {
 #' is embedded in.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param PolicyName &#91;required&#93; The name of the inline policy to delete from the specified IAM role.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #'
@@ -2395,12 +2433,13 @@ iam_delete_role_policy <- function(RoleName, PolicyName) {
 
 #' Deletes a SAML provider resource in IAM
 #'
+#' @description
 #' Deletes a SAML provider resource in IAM.
 #' 
 #' Deleting the provider resource from IAM does not update any roles that
-#' reference the SAML provider resource\'s ARN as a principal in their
-#' trust policies. Any attempt to assume a role that references a
-#' non-existent provider resource ARN fails.
+#' reference the SAML provider resource's ARN as a principal in their trust
+#' policies. Any attempt to assume a role that references a non-existent
+#' provider resource ARN fails.
 #' 
 #' This operation requires [Signature Version
 #' 4](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
@@ -2439,13 +2478,14 @@ iam_delete_saml_provider <- function(SAMLProviderArn) {
 
 #' Deletes the specified SSH public key
 #'
+#' @description
 #' Deletes the specified SSH public key.
 #' 
 #' The SSH public key deleted by this operation is used only for
 #' authenticating the associated IAM user to an AWS CodeCommit repository.
 #' For more information about using SSH keys to authenticate to an AWS
 #' CodeCommit repository, see [Set up AWS CodeCommit for SSH
-#' Connections](https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-credentials-ssh.html)
+#' Connections](https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up.html)
 #' in the *AWS CodeCommit User Guide*.
 #'
 #' @usage
@@ -2454,14 +2494,14 @@ iam_delete_saml_provider <- function(SAMLProviderArn) {
 #' @param UserName &#91;required&#93; The name of the IAM user associated with the SSH public key.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param SSHPublicKeyId &#91;required&#93; The unique identifier for the SSH public key.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters that
-#' can consist of any upper or lowercased letter or digit.
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
+#' that can consist of any upper or lowercased letter or digit.
 #'
 #' @section Request syntax:
 #' ```
@@ -2493,6 +2533,7 @@ iam_delete_ssh_public_key <- function(UserName, SSHPublicKeyId) {
 
 #' Deletes the specified server certificate
 #'
+#' @description
 #' Deletes the specified server certificate.
 #' 
 #' For more information about working with server certificates, see
@@ -2503,13 +2544,13 @@ iam_delete_ssh_public_key <- function(UserName, SSHPublicKeyId) {
 #' 
 #' If you are using a server certificate with Elastic Load Balancing,
 #' deleting the certificate could have implications for your application.
-#' If Elastic Load Balancing doesn\'t detect the deletion of bound
+#' If Elastic Load Balancing doesn't detect the deletion of bound
 #' certificates, it may continue to use the certificates. This could cause
 #' Elastic Load Balancing to stop accepting traffic. We recommend that you
 #' remove the reference to the certificate from Elastic Load Balancing
 #' before using this command to delete the certificate. For more
 #' information, go to
-#' [DeleteLoadBalancerListeners](https://docs.aws.amazon.com/ElasticLoadBalancing/latest/APIReference/API_DeleteLoadBalancerListeners.html)
+#' [DeleteLoadBalancerListeners](https://docs.aws.amazon.com/elasticloadbalancing/2012-06-01/APIReference/API_DeleteLoadBalancerListeners.html)
 #' in the *Elastic Load Balancing API Reference*.
 #'
 #' @usage
@@ -2518,7 +2559,7 @@ iam_delete_ssh_public_key <- function(UserName, SSHPublicKeyId) {
 #' @param ServerCertificateName &#91;required&#93; The name of the server certificate you want to delete.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #'
@@ -2552,6 +2593,7 @@ iam_delete_server_certificate <- function(ServerCertificateName) {
 #' Submits a service-linked role deletion request and returns a
 #' DeletionTaskId, which you can use to check the status of the deletion
 #'
+#' @description
 #' Submits a service-linked role deletion request and returns a
 #' `DeletionTaskId`, which you can use to check the status of the deletion.
 #' Before you call this operation, confirm that the role has no active
@@ -2568,7 +2610,7 @@ iam_delete_server_certificate <- function(ServerCertificateName) {
 #' resources from the linked service and then submit the deletion request
 #' again. Resources are specific to the service that is linked to the role.
 #' For more information about removing resources from a service, see the
-#' [AWS documentation](http://docs.aws.amazon.com/) for your service.
+#' [AWS documentation](https://docs.aws.amazon.com/) for your service.
 #' 
 #' For more information about service-linked roles, see [Roles Terms and
 #' Concepts: AWS Service-Linked
@@ -2609,6 +2651,7 @@ iam_delete_service_linked_role <- function(RoleName) {
 
 #' Deletes the specified service-specific credential
 #'
+#' @description
 #' Deletes the specified service-specific credential.
 #'
 #' @usage
@@ -2620,15 +2663,15 @@ iam_delete_service_linked_role <- function(RoleName) {
 #' the user whose credentials are used to call the operation.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param ServiceSpecificCredentialId &#91;required&#93; The unique identifier of the service-specific credential. You can get
 #' this value by calling ListServiceSpecificCredentials.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters that
-#' can consist of any upper or lowercased letter or digit.
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
+#' that can consist of any upper or lowercased letter or digit.
 #'
 #' @section Request syntax:
 #' ```
@@ -2660,6 +2703,7 @@ iam_delete_service_specific_credential <- function(UserName = NULL, ServiceSpeci
 
 #' Deletes a signing certificate associated with the specified IAM user
 #'
+#' @description
 #' Deletes a signing certificate associated with the specified IAM user.
 #' 
 #' If you do not specify a user name, IAM determines the user name
@@ -2674,13 +2718,13 @@ iam_delete_service_specific_credential <- function(UserName = NULL, ServiceSpeci
 #' @param UserName The name of the user the signing certificate belongs to.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param CertificateId &#91;required&#93; The ID of the signing certificate to delete.
 #' 
 #' The format of this parameter, as described by its
-#' [regex](http://wikipedia.org/wiki/regex) pattern, is a string of
+#' [regex](https://en.wikipedia.org/wiki/Regex) pattern, is a string of
 #' characters that can be upper- or lower-cased letters or digits.
 #'
 #' @section Request syntax:
@@ -2723,6 +2767,7 @@ iam_delete_signing_certificate <- function(UserName = NULL, CertificateId) {
 
 #' Deletes the specified IAM user
 #'
+#' @description
 #' Deletes the specified IAM user. Unlike the AWS Management Console, when
 #' you delete a user programmatically, you must delete the items attached
 #' to the user manually, or the deletion fails. For more information, see
@@ -2755,7 +2800,7 @@ iam_delete_signing_certificate <- function(UserName = NULL, CertificateId) {
 #' @param UserName &#91;required&#93; The name of the user to delete.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #'
@@ -2797,6 +2842,7 @@ iam_delete_user <- function(UserName) {
 
 #' Deletes the permissions boundary for the specified IAM user
 #'
+#' @description
 #' Deletes the permissions boundary for the specified IAM user.
 #' 
 #' Deleting the permissions boundary for a user might increase its
@@ -2839,13 +2885,14 @@ iam_delete_user_permissions_boundary <- function(UserName) {
 #' Deletes the specified inline policy that is embedded in the specified
 #' IAM user
 #'
+#' @description
 #' Deletes the specified inline policy that is embedded in the specified
 #' IAM user.
 #' 
 #' A user can also have managed policies attached to it. To detach a
 #' managed policy from a user, use DetachUserPolicy. For more information
 #' about policies, refer to [Managed Policies and Inline
-#' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html)
+#' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html)
 #' in the *IAM User Guide*.
 #'
 #' @usage
@@ -2855,13 +2902,13 @@ iam_delete_user_permissions_boundary <- function(UserName) {
 #' is embedded in.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param PolicyName &#91;required&#93; The name identifying the policy document to delete.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #'
@@ -2905,9 +2952,10 @@ iam_delete_user_policy <- function(UserName, PolicyName) {
 
 #' Deletes a virtual MFA device
 #'
+#' @description
 #' Deletes a virtual MFA device.
 #' 
-#' You must deactivate a user\'s virtual MFA device before you can delete
+#' You must deactivate a user's virtual MFA device before you can delete
 #' it. For information about deactivating MFA devices, see
 #' DeactivateMFADevice.
 #'
@@ -2918,7 +2966,7 @@ iam_delete_user_policy <- function(UserName, PolicyName) {
 #' MFA devices, the serial number is the same as the ARN.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: =,.@@:/-
 #'
@@ -2960,12 +3008,13 @@ iam_delete_virtual_mfa_device <- function(SerialNumber) {
 
 #' Removes the specified managed policy from the specified IAM group
 #'
+#' @description
 #' Removes the specified managed policy from the specified IAM group.
 #' 
 #' A group can also have inline policies embedded with it. To delete an
 #' inline policy, use the DeleteGroupPolicy API. For information about
 #' policies, see [Managed Policies and Inline
-#' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html)
+#' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html)
 #' in the *IAM User Guide*.
 #'
 #' @usage
@@ -2975,7 +3024,7 @@ iam_delete_virtual_mfa_device <- function(SerialNumber) {
 #' from.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param PolicyArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM policy you want to detach.
@@ -3015,12 +3064,13 @@ iam_detach_group_policy <- function(GroupName, PolicyArn) {
 
 #' Removes the specified managed policy from the specified role
 #'
+#' @description
 #' Removes the specified managed policy from the specified role.
 #' 
 #' A role can also have inline policies embedded with it. To delete an
 #' inline policy, use the DeleteRolePolicy API. For information about
 #' policies, see [Managed Policies and Inline
-#' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html)
+#' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html)
 #' in the *IAM User Guide*.
 #'
 #' @usage
@@ -3030,7 +3080,7 @@ iam_detach_group_policy <- function(GroupName, PolicyArn) {
 #' from.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param PolicyArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM policy you want to detach.
@@ -3070,12 +3120,13 @@ iam_detach_role_policy <- function(RoleName, PolicyArn) {
 
 #' Removes the specified managed policy from the specified user
 #'
+#' @description
 #' Removes the specified managed policy from the specified user.
 #' 
 #' A user can also have inline policies embedded with it. To delete an
 #' inline policy, use the DeleteUserPolicy API. For information about
 #' policies, see [Managed Policies and Inline
-#' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html)
+#' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html)
 #' in the *IAM User Guide*.
 #'
 #' @usage
@@ -3085,7 +3136,7 @@ iam_detach_role_policy <- function(RoleName, PolicyArn) {
 #' from.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param PolicyArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM policy you want to detach.
@@ -3126,6 +3177,7 @@ iam_detach_user_policy <- function(UserName, PolicyArn) {
 #' Enables the specified MFA device and associates it with the specified
 #' IAM user
 #'
+#' @description
 #' Enables the specified MFA device and associates it with the specified
 #' IAM user. When enabled, the MFA device is required for every subsequent
 #' login by the IAM user associated with the device.
@@ -3137,14 +3189,14 @@ iam_detach_user_policy <- function(UserName, PolicyArn) {
 #' @param UserName &#91;required&#93; The name of the IAM user for whom you want to enable the MFA device.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param SerialNumber &#91;required&#93; The serial number that uniquely identifies the MFA device. For virtual
 #' MFA devices, the serial number is the device ARN.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: =,.@@:/-
 #' @param AuthenticationCode1 &#91;required&#93; An authentication code emitted by the device.
@@ -3202,9 +3254,10 @@ iam_enable_mfa_device <- function(UserName, SerialNumber, AuthenticationCode1, A
 
 #' Generates a credential report for the AWS account
 #'
+#' @description
 #' Generates a credential report for the AWS account. For more information
 #' about the credential report, see [Getting Credential
-#' Reports](https://docs.aws.amazon.com/IAM/latest/UserGuide/credential-reports.html)
+#' Reports](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_getting-report.html)
 #' in the *IAM User Guide*.
 #'
 #' @usage
@@ -3236,6 +3289,7 @@ iam_generate_credential_report <- function() {
 
 #' Generates a report for service last accessed data for AWS Organizations
 #'
+#' @description
 #' Generates a report for service last accessed data for AWS Organizations.
 #' You can generate a report for any entities (organization root,
 #' organizational unit, or account) or policies in your organization.
@@ -3250,31 +3304,31 @@ iam_generate_credential_report <- function() {
 #' in the *IAM User Guide*.
 #' 
 #' You can generate a service last accessed data report for entities by
-#' specifying only the entity\'s path. This data includes a list of
-#' services that are allowed by any service control policies (SCPs) that
-#' apply to the entity.
+#' specifying only the entity's path. This data includes a list of services
+#' that are allowed by any service control policies (SCPs) that apply to
+#' the entity.
 #' 
 #' You can generate a service last accessed data report for a policy by
-#' specifying an entity\'s path and an optional AWS Organizations policy
-#' ID. This data includes a list of services that are allowed by the
-#' specified SCP.
+#' specifying an entity's path and an optional AWS Organizations policy ID.
+#' This data includes a list of services that are allowed by the specified
+#' SCP.
 #' 
 #' For each service in both report types, the data includes the most recent
 #' account activity that the policy allows to account principals in the
-#' entity or the entity\'s children. For important information about the
+#' entity or the entity's children. For important information about the
 #' data, reporting period, permissions required, troubleshooting, and
 #' supported Regions see [Reducing Permissions Using Service Last Accessed
 #' Data](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html)
 #' in the *IAM User Guide*.
 #' 
-#' The data includesÂ allÂ attempts to access AWS, not just the successful
+#' The data includes all attempts to access AWS, not just the successful
 #' ones. This includes all attempts that were made using the AWS Management
 #' Console, the AWS API through any of the SDKs, or any of the command line
 #' tools. An unexpected entry in the service last accessed data does not
 #' mean that an account has been compromised, because the request might
 #' have been denied. Refer to your CloudTrail logs as the authoritative
 #' source for information about all API calls and whether they were
-#' successful or denied access. For more information, seeÂ [Logging IAM
+#' successful or denied access. For more information, see [Logging IAM
 #' Events with
 #' CloudTrail](https://docs.aws.amazon.com/IAM/latest/UserGuide/cloudtrail-integration.html)
 #' in the *IAM User Guide*.
@@ -3291,25 +3345,25 @@ iam_generate_credential_report <- function() {
 #' The type of entity that you specify determines the data returned in the
 #' report.
 #' 
-#' -   **Root** -- When you specify the organizations root as the entity,
+#' -   **Root** – When you specify the organizations root as the entity,
 #'     the resulting report lists all of the services allowed by SCPs that
 #'     are attached to your root. For each service, the report includes
 #'     data for all accounts in your organization except the master
 #'     account, because the master account is not limited by SCPs.
 #' 
-#' -   **OU** -- When you specify an organizational unit (OU) as the
-#'     entity, the resulting report lists all of the services allowed by
-#'     SCPs that are attached to the OU and its parents. For each service,
-#'     the report includes data for all accounts in the OU or its children.
-#'     This data excludes the master account, because the master account is
-#'     not limited by SCPs.
+#' -   **OU** – When you specify an organizational unit (OU) as the entity,
+#'     the resulting report lists all of the services allowed by SCPs that
+#'     are attached to the OU and its parents. For each service, the report
+#'     includes data for all accounts in the OU or its children. This data
+#'     excludes the master account, because the master account is not
+#'     limited by SCPs.
 #' 
-#' -   **Master account** -- When you specify the master account, the
+#' -   **Master account** – When you specify the master account, the
 #'     resulting report lists all AWS services, because the master account
 #'     is not limited by SCPs. For each service, the report includes data
 #'     for only the master account.
 #' 
-#' -   **Account** -- When you specify another account as the entity, the
+#' -   **Account** – When you specify another account as the entity, the
 #'     resulting report lists all of the services allowed by SCPs that are
 #'     attached to the account and its parents. For each service, the
 #'     report includes data for only the specified account.
@@ -3318,7 +3372,7 @@ iam_generate_credential_report <- function() {
 #' entity path and the optional AWS Organizations policy ID. The type of
 #' entity that you specify determines the data returned for each service.
 #' 
-#' -   **Root** -- When you specify the root entity and a policy ID, the
+#' -   **Root** – When you specify the root entity and a policy ID, the
 #'     resulting report lists all of the services that are allowed by the
 #'     specified SCP. For each service, the report includes data for all
 #'     accounts in your organization to which the SCP applies. This data
@@ -3327,7 +3381,7 @@ iam_generate_credential_report <- function() {
 #'     organization, then the report will return a list of services with no
 #'     data.
 #' 
-#' -   **OU** -- When you specify an OU entity and a policy ID, the
+#' -   **OU** – When you specify an OU entity and a policy ID, the
 #'     resulting report lists all of the services that are allowed by the
 #'     specified SCP. For each service, the report includes data for all
 #'     accounts in the OU or its children to which the SCP applies. This
@@ -3337,13 +3391,13 @@ iam_generate_credential_report <- function() {
 #'     SCP is not attached to the OU or one of its children, the report
 #'     will return a list of services with no data.
 #' 
-#' -   **Master account** -- When you specify the master account, the
+#' -   **Master account** – When you specify the master account, the
 #'     resulting report lists all AWS services, because the master account
 #'     is not limited by SCPs. If you specify a policy ID in the CLI or
 #'     API, the policy is ignored. For each service, the report includes
 #'     data for only the master account.
 #' 
-#' -   **Account** -- When you specify another account entity and a policy
+#' -   **Account** – When you specify another account entity and a policy
 #'     ID, the resulting report lists all of the services that are allowed
 #'     by the specified SCP. For each service, the report includes data for
 #'     only the specified account. This means that other accounts in the
@@ -3423,6 +3477,7 @@ iam_generate_organizations_access_report <- function(EntityPath, OrganizationsPo
 #' (user, group, role, or policy) was last used in an attempt to access AWS
 #' services
 #'
+#' @description
 #' Generates a report that includes details about when an IAM resource
 #' (user, group, role, or policy) was last used in an attempt to access AWS
 #' services. Recent activity usually appears within four hours. IAM reports
@@ -3431,7 +3486,7 @@ iam_generate_organizations_access_report <- function(EntityPath, OrganizationsPo
 #' Where Data Is
 #' Tracked](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period).
 #' 
-#' The service last accessed data includesÂ allÂ attempts to access an AWS
+#' The service last accessed data includes all attempts to access an AWS
 #' API, not just the successful ones. This includes all attempts that were
 #' made using the AWS Management Console, the AWS API through any of the
 #' SDKs, or any of the command line tools. An unexpected entry in the
@@ -3439,7 +3494,7 @@ iam_generate_organizations_access_report <- function(EntityPath, OrganizationsPo
 #' compromised, because the request might have been denied. Refer to your
 #' CloudTrail logs as the authoritative source for information about all
 #' API calls and whether they were successful or denied access. For more
-#' information, seeÂ [Logging IAM Events with
+#' information, see [Logging IAM Events with
 #' CloudTrail](https://docs.aws.amazon.com/IAM/latest/UserGuide/cloudtrail-integration.html)
 #' in the *IAM User Guide*.
 #' 
@@ -3447,7 +3502,7 @@ iam_generate_organizations_access_report <- function(EntityPath, OrganizationsPo
 #' Use this parameter in the following operations to retrieve the following
 #' details from your report:
 #' 
-#' -   GetServiceLastAccessedDetails -- Use this operation for users,
+#' -   GetServiceLastAccessedDetails – Use this operation for users,
 #'     groups, roles, or policies to list every AWS service that the
 #'     resource could access using permissions policies. For each service,
 #'     the response includes information about the most recent access
@@ -3457,7 +3512,7 @@ iam_generate_organizations_access_report <- function(EntityPath, OrganizationsPo
 #'     used by the same role within a session, or by the same user when
 #'     used to call `GetServiceLastAccessedDetail`.
 #' 
-#' -   GetServiceLastAccessedDetailsWithEntities -- Use this operation for
+#' -   GetServiceLastAccessedDetailsWithEntities – Use this operation for
 #'     groups and policies to list information about the associated
 #'     entities (users or roles) that attempted to access a specific AWS
 #'     service.
@@ -3494,7 +3549,7 @@ iam_generate_organizations_access_report <- function(EntityPath, OrganizationsPo
 #' you want to generate information about the last attempt to access
 #' services or actions. If you specify service-level granularity, this
 #' operation generates only service data. If you specify action-level
-#' granularity, it generates service and action data. If you don\'t include
+#' granularity, it generates service and action data. If you don't include
 #' this optional parameter, the operation generates service data.
 #'
 #' @section Request syntax:
@@ -3536,6 +3591,7 @@ iam_generate_service_last_accessed_details <- function(Arn, Granularity = NULL) 
 
 #' Retrieves information about when the specified access key was last used
 #'
+#' @description
 #' Retrieves information about when the specified access key was last used.
 #' The information includes the date and time of last use, along with the
 #' AWS service and Region that were specified in the last request made with
@@ -3547,8 +3603,8 @@ iam_generate_service_last_accessed_details <- function(Arn, Granularity = NULL) 
 #' @param AccessKeyId &#91;required&#93; The identifier of an access key.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters that
-#' can consist of any upper or lowercased letter or digit.
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
+#' that can consist of any upper or lowercased letter or digit.
 #'
 #' @section Request syntax:
 #' ```
@@ -3580,6 +3636,7 @@ iam_get_access_key_last_used <- function(AccessKeyId) {
 #' Retrieves information about all IAM users, groups, roles, and policies
 #' in your AWS account, including their relationships to one another
 #'
+#' @description
 #' Retrieves information about all IAM users, groups, roles, and policies
 #' in your AWS account, including their relationships to one another. Use
 #' this API to obtain a snapshot of the configuration of IAM permissions
@@ -3652,9 +3709,10 @@ iam_get_account_authorization_details <- function(Filter = NULL, MaxItems = NULL
 
 #' Retrieves the password policy for the AWS account
 #'
+#' @description
 #' Retrieves the password policy for the AWS account. For more information
 #' about using a password policy, go to [Managing an IAM Password
-#' Policy](https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_ManagingPasswordPolicies.html).
+#' Policy](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_account-policy.html).
 #'
 #' @usage
 #' iam_get_account_password_policy()
@@ -3693,6 +3751,7 @@ iam_get_account_password_policy <- function() {
 #' Retrieves information about IAM entity usage and IAM quotas in the AWS
 #' account
 #'
+#' @description
 #' Retrieves information about IAM entity usage and IAM quotas in the AWS
 #' account.
 #' 
@@ -3737,6 +3796,7 @@ iam_get_account_summary <- function() {
 
 #' Gets a list of all of the context keys referenced in the input policies
 #'
+#' @description
 #' Gets a list of all of the context keys referenced in the input policies.
 #' The policies are supplied as a list of one or more strings. To get the
 #' context keys from policies associated with an IAM user, group, or role,
@@ -3757,8 +3817,9 @@ iam_get_account_summary <- function() {
 #' referenced in those policies. Each document is specified as a string
 #' containing the complete, valid JSON text of an IAM policy.
 #' 
-#' The [regex pattern](http://wikipedia.org/wiki/regex) used to validate
-#' this parameter is a string of characters consisting of the following:
+#' The [regex pattern](https://en.wikipedia.org/wiki/Regex) used to
+#' validate this parameter is a string of characters consisting of the
+#' following:
 #' 
 #' -   Any printable ASCII character ranging from the space character
 #'     (``U+0020``) through the end of the ASCII character range
@@ -3801,6 +3862,7 @@ iam_get_context_keys_for_custom_policy <- function(PolicyInputList) {
 #' Gets a list of all of the context keys referenced in all the IAM
 #' policies that are attached to the specified IAM entity
 #'
+#' @description
 #' Gets a list of all of the context keys referenced in all the IAM
 #' policies that are attached to the specified IAM entity. The entity can
 #' be an IAM user, group, or role. If you specify a user, then the request
@@ -3812,7 +3874,7 @@ iam_get_context_keys_for_custom_policy <- function(PolicyInputList) {
 #' by string, use GetContextKeysForCustomPolicy instead.
 #' 
 #' **Note:** This API discloses information about the permissions granted
-#' to other users. If you do not want users to see other user\'s
+#' to other users. If you do not want users to see other user's
 #' permissions, then consider allowing them to use
 #' GetContextKeysForCustomPolicy instead.
 #' 
@@ -3842,8 +3904,9 @@ iam_get_context_keys_for_custom_policy <- function(PolicyInputList) {
 #' @param PolicyInputList An optional list of additional policies for which you want the list of
 #' context keys that are referenced.
 #' 
-#' The [regex pattern](http://wikipedia.org/wiki/regex) used to validate
-#' this parameter is a string of characters consisting of the following:
+#' The [regex pattern](https://en.wikipedia.org/wiki/Regex) used to
+#' validate this parameter is a string of characters consisting of the
+#' following:
 #' 
 #' -   Any printable ASCII character ranging from the space character
 #'     (``U+0020``) through the end of the ASCII character range
@@ -3886,9 +3949,10 @@ iam_get_context_keys_for_principal_policy <- function(PolicySourceArn, PolicyInp
 
 #' Retrieves a credential report for the AWS account
 #'
+#' @description
 #' Retrieves a credential report for the AWS account. For more information
 #' about the credential report, see [Getting Credential
-#' Reports](https://docs.aws.amazon.com/IAM/latest/UserGuide/credential-reports.html)
+#' Reports](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_getting-report.html)
 #' in the *IAM User Guide*.
 #'
 #' @usage
@@ -3920,6 +3984,7 @@ iam_get_credential_report <- function() {
 
 #' Returns a list of IAM users that are in the specified IAM group
 #'
+#' @description
 #' Returns a list of IAM users that are in the specified IAM group. You can
 #' paginate the results using the `MaxItems` and `Marker` parameters.
 #'
@@ -3929,7 +3994,7 @@ iam_get_credential_report <- function() {
 #' @param GroupName &#91;required&#93; The name of the group.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param Marker Use this parameter only when paginating results and only after you
@@ -3978,6 +4043,7 @@ iam_get_group <- function(GroupName, Marker = NULL, MaxItems = NULL) {
 #' Retrieves the specified inline policy document that is embedded in the
 #' specified IAM group
 #'
+#' @description
 #' Retrieves the specified inline policy document that is embedded in the
 #' specified IAM group.
 #' 
@@ -3990,11 +4056,11 @@ iam_get_group <- function(GroupName, Marker = NULL, MaxItems = NULL) {
 #' 
 #' An IAM group can also have managed policies attached to it. To retrieve
 #' a managed policy document that is attached to a group, use GetPolicy to
-#' determine the policy\'s default version, then use GetPolicyVersion to
+#' determine the policy's default version, then use GetPolicyVersion to
 #' retrieve the policy document.
 #' 
 #' For more information about policies, see [Managed Policies and Inline
-#' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html)
+#' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html)
 #' in the *IAM User Guide*.
 #'
 #' @usage
@@ -4003,13 +4069,13 @@ iam_get_group <- function(GroupName, Marker = NULL, MaxItems = NULL) {
 #' @param GroupName &#91;required&#93; The name of the group the policy is associated with.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param PolicyName &#91;required&#93; The name of the policy document to get.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #'
@@ -4044,10 +4110,11 @@ iam_get_group_policy <- function(GroupName, PolicyName) {
 #' Retrieves information about the specified instance profile, including
 #' the instance profile's path, GUID, ARN, and role
 #'
+#' @description
 #' Retrieves information about the specified instance profile, including
-#' the instance profile\'s path, GUID, ARN, and role. For more information
+#' the instance profile's path, GUID, ARN, and role. For more information
 #' about instance profiles, see [About Instance
-#' Profiles](https://docs.aws.amazon.com/IAM/latest/UserGuide/AboutInstanceProfiles.html)
+#' Profiles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html)
 #' in the *IAM User Guide*.
 #'
 #' @usage
@@ -4056,7 +4123,7 @@ iam_get_group_policy <- function(GroupName, PolicyName) {
 #' @param InstanceProfileName &#91;required&#93; The name of the instance profile to get information about.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #'
@@ -4099,6 +4166,7 @@ iam_get_instance_profile <- function(InstanceProfileName) {
 #' Retrieves the user name and password-creation date for the specified IAM
 #' user
 #'
+#' @description
 #' Retrieves the user name and password-creation date for the specified IAM
 #' user. If the user has not been assigned a password, the operation
 #' returns a 404 (`NoSuchEntity`) error.
@@ -4109,7 +4177,7 @@ iam_get_instance_profile <- function(InstanceProfileName) {
 #' @param UserName &#91;required&#93; The name of the user whose login profile you want to retrieve.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #'
@@ -4152,6 +4220,7 @@ iam_get_login_profile <- function(UserName) {
 #' Returns information about the specified OpenID Connect (OIDC) provider
 #' resource object in IAM
 #'
+#' @description
 #' Returns information about the specified OpenID Connect (OIDC) provider
 #' resource object in IAM.
 #'
@@ -4198,6 +4267,7 @@ iam_get_open_id_connect_provider <- function(OpenIDConnectProviderArn) {
 #' that was previously generated using the
 #' GenerateOrganizationsAccessReport operation
 #'
+#' @description
 #' Retrieves the service last accessed data report for AWS Organizations
 #' that was previously generated using the
 #' ` <a>GenerateOrganizationsAccessReport</a> ` operation. This operation
@@ -4288,8 +4358,9 @@ iam_get_organizations_access_report <- function(JobId, MaxItems = NULL, Marker =
 #' policy's default version and the total number of IAM users, groups, and
 #' roles to which the policy is attached
 #'
+#' @description
 #' Retrieves information about the specified managed policy, including the
-#' policy\'s default version and the total number of IAM users, groups, and
+#' policy's default version and the total number of IAM users, groups, and
 #' roles to which the policy is attached. To retrieve the list of the
 #' specific users, groups, and roles that the policy is attached to, use
 #' the ListEntitiesForPolicy API. This API returns metadata about the
@@ -4302,7 +4373,7 @@ iam_get_organizations_access_report <- function(JobId, MaxItems = NULL, Marker =
 #' API.
 #' 
 #' For more information about policies, see [Managed Policies and Inline
-#' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html)
+#' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html)
 #' in the *IAM User Guide*.
 #'
 #' @usage
@@ -4346,6 +4417,7 @@ iam_get_policy <- function(PolicyArn) {
 #' Retrieves information about the specified version of the specified
 #' managed policy, including the policy document
 #'
+#' @description
 #' Retrieves information about the specified version of the specified
 #' managed policy, including the policy document.
 #' 
@@ -4364,12 +4436,12 @@ iam_get_policy <- function(PolicyArn) {
 #' 
 #' For more information about the types of policies, see [Managed Policies
 #' and Inline
-#' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html)
+#' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html)
 #' in the *IAM User Guide*.
 #' 
 #' For more information about managed policy versions, see [Versioning for
 #' Managed
-#' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html)
+#' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-versioning.html)
 #' in the *IAM User Guide*.
 #'
 #' @usage
@@ -4385,9 +4457,9 @@ iam_get_policy <- function(PolicyArn) {
 #' @param VersionId &#91;required&#93; Identifies the policy version to retrieve.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters that
-#' consists of the lowercase letter \'v\' followed by one or two digits,
-#' and optionally followed by a period \'.\' and a string of letters and
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
+#' that consists of the lowercase letter 'v' followed by one or two digits,
+#' and optionally followed by a period '.' and a string of letters and
 #' digits.
 #'
 #' @section Request syntax:
@@ -4422,10 +4494,11 @@ iam_get_policy_version <- function(PolicyArn, VersionId) {
 #' path, GUID, ARN, and the role's trust policy that grants permission to
 #' assume the role
 #'
-#' Retrieves information about the specified role, including the role\'s
-#' path, GUID, ARN, and the role\'s trust policy that grants permission to
+#' @description
+#' Retrieves information about the specified role, including the role's
+#' path, GUID, ARN, and the role's trust policy that grants permission to
 #' assume the role. For more information about roles, see [Working with
-#' Roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/WorkingWithRoles.html).
+#' Roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html).
 #' 
 #' Policies returned by this API are URL-encoded compliant with [RFC
 #' 3986](https://tools.ietf.org/html/rfc3986). You can use a URL decoding
@@ -4440,7 +4513,7 @@ iam_get_policy_version <- function(PolicyArn, VersionId) {
 #' @param RoleName &#91;required&#93; The name of the IAM role to get information about.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #'
@@ -4482,6 +4555,7 @@ iam_get_role <- function(RoleName) {
 #' Retrieves the specified inline policy document that is embedded with the
 #' specified IAM role
 #'
+#' @description
 #' Retrieves the specified inline policy document that is embedded with the
 #' specified IAM role.
 #' 
@@ -4494,16 +4568,16 @@ iam_get_role <- function(RoleName) {
 #' 
 #' An IAM role can also have managed policies attached to it. To retrieve a
 #' managed policy document that is attached to a role, use GetPolicy to
-#' determine the policy\'s default version, then use GetPolicyVersion to
+#' determine the policy's default version, then use GetPolicyVersion to
 #' retrieve the policy document.
 #' 
 #' For more information about policies, see [Managed Policies and Inline
-#' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html)
+#' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html)
 #' in the *IAM User Guide*.
 #' 
 #' For more information about roles, see [Using Roles to Delegate
 #' Permissions and Federate
-#' Identities](https://docs.aws.amazon.com/IAM/latest/UserGuide/roles-toplevel.html).
+#' Identities](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html).
 #'
 #' @usage
 #' iam_get_role_policy(RoleName, PolicyName)
@@ -4511,13 +4585,13 @@ iam_get_role <- function(RoleName) {
 #' @param RoleName &#91;required&#93; The name of the role associated with the policy.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param PolicyName &#91;required&#93; The name of the policy document to get.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #'
@@ -4552,6 +4626,7 @@ iam_get_role_policy <- function(RoleName, PolicyName) {
 #' Returns the SAML provider metadocument that was uploaded when the IAM
 #' SAML provider resource object was created or updated
 #'
+#' @description
 #' Returns the SAML provider metadocument that was uploaded when the IAM
 #' SAML provider resource object was created or updated.
 #' 
@@ -4598,6 +4673,7 @@ iam_get_saml_provider <- function(SAMLProviderArn) {
 
 #' Retrieves the specified SSH public key, including metadata about the key
 #'
+#' @description
 #' Retrieves the specified SSH public key, including metadata about the
 #' key.
 #' 
@@ -4605,7 +4681,7 @@ iam_get_saml_provider <- function(SAMLProviderArn) {
 #' authenticating the associated IAM user to an AWS CodeCommit repository.
 #' For more information about using SSH keys to authenticate to an AWS
 #' CodeCommit repository, see [Set up AWS CodeCommit for SSH
-#' Connections](https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-credentials-ssh.html)
+#' Connections](https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up.html)
 #' in the *AWS CodeCommit User Guide*.
 #'
 #' @usage
@@ -4614,14 +4690,14 @@ iam_get_saml_provider <- function(SAMLProviderArn) {
 #' @param UserName &#91;required&#93; The name of the IAM user associated with the SSH public key.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param SSHPublicKeyId &#91;required&#93; The unique identifier for the SSH public key.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters that
-#' can consist of any upper or lowercased letter or digit.
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
+#' that can consist of any upper or lowercased letter or digit.
 #' @param Encoding &#91;required&#93; Specifies the public key encoding format to use in the response. To
 #' retrieve the public key in ssh-rsa format, use `SSH`. To retrieve the
 #' public key in PEM format, use `PEM`.
@@ -4658,6 +4734,7 @@ iam_get_ssh_public_key <- function(UserName, SSHPublicKeyId, Encoding) {
 #' Retrieves information about the specified server certificate stored in
 #' IAM
 #'
+#' @description
 #' Retrieves information about the specified server certificate stored in
 #' IAM.
 #' 
@@ -4674,7 +4751,7 @@ iam_get_ssh_public_key <- function(UserName, SSHPublicKeyId, Encoding) {
 #' about.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #'
@@ -4708,6 +4785,7 @@ iam_get_server_certificate <- function(ServerCertificateName) {
 #' Retrieves a service last accessed report that was created using the
 #' GenerateServiceLastAccessedDetails operation
 #'
+#' @description
 #' Retrieves a service last accessed report that was created using the
 #' `GenerateServiceLastAccessedDetails` operation. You can use the `JobId`
 #' parameter in `GetServiceLastAccessedDetails` to retrieve the status of
@@ -4737,16 +4815,14 @@ iam_get_server_certificate <- function(ServerCertificateName) {
 #' returns the ARN of the following entity, depending on the resource ARN
 #' that you used to generate the report:
 #' 
-#' -   **User** -- Returns the user ARN that you used to generate the
-#'     report
+#' -   **User** – Returns the user ARN that you used to generate the report
 #' 
-#' -   **Group** -- Returns the ARN of the group member (user) that last
+#' -   **Group** – Returns the ARN of the group member (user) that last
 #'     attempted to access the service
 #' 
-#' -   **Role** -- Returns the role ARN that you used to generate the
-#'     report
+#' -   **Role** – Returns the role ARN that you used to generate the report
 #' 
-#' -   **Policy** -- Returns the ARN of the user or role that last used the
+#' -   **Policy** – Returns the ARN of the user or role that last used the
 #'     policy to attempt to access the service
 #' 
 #' By default, the list is sorted by service namespace.
@@ -4825,6 +4901,7 @@ iam_get_service_last_accessed_details <- function(JobId, MaxItems = NULL, Marker
 #' GenerateServiceLastAccessedDetails operation, you can use the JobId
 #' parameter in GetServiceLastAccessedDetailsWithEntities
 #'
+#' @description
 #' After you generate a group or policy report using the
 #' `GenerateServiceLastAccessedDetails` operation, you can use the `JobId`
 #' parameter in `GetServiceLastAccessedDetailsWithEntities`. This operation
@@ -4832,11 +4909,11 @@ iam_get_service_last_accessed_details <- function(JobId, MaxItems = NULL, Marker
 #' could have used group or policy permissions to access the specified
 #' service.
 #' 
-#' -   **Group** -- For a group report, this operation returns a list of
-#'     users in the group that could have used the group's policies in an
+#' -   **Group** – For a group report, this operation returns a list of
+#'     users in the group that could have used the group’s policies in an
 #'     attempt to access the service.
 #' 
-#' -   **Policy** -- For a policy report, this operation returns a list of
+#' -   **Policy** – For a policy report, this operation returns a list of
 #'     entities (users or roles) that could have used the policy in an
 #'     attempt to access the service.
 #' 
@@ -4861,13 +4938,13 @@ iam_get_service_last_accessed_details <- function(JobId, MaxItems = NULL, Marker
 #' 
 #' To learn the service namespace for a service, go to [Actions, Resources,
 #' and Condition Keys for AWS
-#' Services](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_actions-resources-contextkeys.html)
+#' Services](https://docs.aws.amazon.com/service-authorization/latest/reference/reference_policies_actions-resources-contextkeys.html)
 #' in the *IAM User Guide*. Choose the name of the service to view details
 #' for that service. In the first paragraph, find the service prefix. For
 #' example, `(service prefix: a4b)`. For more information about service
 #' namespaces, see [AWS Service
 #' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces)
-#' in theÂ *AWS General Reference*.
+#' in the *AWS General Reference*.
 #' @param MaxItems Use this only when paginating results to indicate the maximum number of
 #' items you want in the response. If additional items exist beyond the
 #' maximum you specify, the `IsTruncated` response element is `true`.
@@ -4924,6 +5001,7 @@ iam_get_service_last_accessed_details_with_entities <- function(JobId, ServiceNa
 
 #' Retrieves the status of your service-linked role deletion
 #'
+#' @description
 #' Retrieves the status of your service-linked role deletion. After you use
 #' the DeleteServiceLinkedRole API operation to submit a service-linked
 #' role for deletion, you can use the `DeletionTaskId` parameter in
@@ -4968,8 +5046,9 @@ iam_get_service_linked_role_deletion_status <- function(DeletionTaskId) {
 #' Retrieves information about the specified IAM user, including the user's
 #' creation date, path, unique ID, and ARN
 #'
-#' Retrieves information about the specified IAM user, including the
-#' user\'s creation date, path, unique ID, and ARN.
+#' @description
+#' Retrieves information about the specified IAM user, including the user's
+#' creation date, path, unique ID, and ARN.
 #' 
 #' If you do not specify a user name, IAM determines the user name
 #' implicitly based on the AWS access key ID used to sign the request to
@@ -4982,7 +5061,7 @@ iam_get_service_linked_role_deletion_status <- function(DeletionTaskId) {
 #' 
 #' This parameter is optional. If it is not included, it defaults to the
 #' user making the request. This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #'
@@ -5024,6 +5103,7 @@ iam_get_user <- function(UserName = NULL) {
 #' Retrieves the specified inline policy document that is embedded in the
 #' specified IAM user
 #'
+#' @description
 #' Retrieves the specified inline policy document that is embedded in the
 #' specified IAM user.
 #' 
@@ -5036,11 +5116,11 @@ iam_get_user <- function(UserName = NULL) {
 #' 
 #' An IAM user can also have managed policies attached to it. To retrieve a
 #' managed policy document that is attached to a user, use GetPolicy to
-#' determine the policy\'s default version. Then use GetPolicyVersion to
+#' determine the policy's default version. Then use GetPolicyVersion to
 #' retrieve the policy document.
 #' 
 #' For more information about policies, see [Managed Policies and Inline
-#' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html)
+#' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html)
 #' in the *IAM User Guide*.
 #'
 #' @usage
@@ -5049,13 +5129,13 @@ iam_get_user <- function(UserName = NULL) {
 #' @param UserName &#91;required&#93; The name of the user who the policy is associated with.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param PolicyName &#91;required&#93; The name of the policy document to get.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #'
@@ -5090,6 +5170,7 @@ iam_get_user_policy <- function(UserName, PolicyName) {
 #' Returns information about the access key IDs associated with the
 #' specified IAM user
 #'
+#' @description
 #' Returns information about the access key IDs associated with the
 #' specified IAM user. If there is none, the operation returns an empty
 #' list.
@@ -5112,7 +5193,7 @@ iam_get_user_policy <- function(UserName, PolicyName) {
 #' @param UserName The name of the user.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param Marker Use this parameter only when paginating results and only after you
@@ -5170,10 +5251,11 @@ iam_list_access_keys <- function(UserName = NULL, Marker = NULL, MaxItems = NULL
 #' Lists the account alias associated with the AWS account (Note: you can
 #' have only one)
 #'
+#' @description
 #' Lists the account alias associated with the AWS account (Note: you can
 #' have only one). For information about using an AWS account alias, see
 #' [Using an Alias for Your AWS Account
-#' ID](https://docs.aws.amazon.com/IAM/latest/UserGuide/AccountAlias.html)
+#' ID](https://docs.aws.amazon.com/IAM/latest/UserGuide/console_account-alias.html)
 #' in the *IAM User Guide*.
 #'
 #' @usage
@@ -5229,12 +5311,13 @@ iam_list_account_aliases <- function(Marker = NULL, MaxItems = NULL) {
 
 #' Lists all managed policies that are attached to the specified IAM group
 #'
+#' @description
 #' Lists all managed policies that are attached to the specified IAM group.
 #' 
 #' An IAM group can also have inline policies embedded with it. To list the
 #' inline policies for a group, use the ListGroupPolicies API. For
 #' information about policies, see [Managed Policies and Inline
-#' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html)
+#' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html)
 #' in the *IAM User Guide*.
 #' 
 #' You can paginate the results using the `MaxItems` and `Marker`
@@ -5251,14 +5334,14 @@ iam_list_account_aliases <- function(Marker = NULL, MaxItems = NULL) {
 #' for.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param PathPrefix The path prefix for filtering the results. This parameter is optional.
 #' If it is not included, it defaults to a slash (/), listing all policies.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of either a forward slash (/) by itself or a string that must
 #' begin and end with forward slashes. In addition, it can contain any
 #' ASCII character from the ! (``U+0021``) through the DEL character
@@ -5310,12 +5393,13 @@ iam_list_attached_group_policies <- function(GroupName, PathPrefix = NULL, Marke
 
 #' Lists all managed policies that are attached to the specified IAM role
 #'
+#' @description
 #' Lists all managed policies that are attached to the specified IAM role.
 #' 
 #' An IAM role can also have inline policies embedded with it. To list the
 #' inline policies for a role, use the ListRolePolicies API. For
 #' information about policies, see [Managed Policies and Inline
-#' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html)
+#' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html)
 #' in the *IAM User Guide*.
 #' 
 #' You can paginate the results using the `MaxItems` and `Marker`
@@ -5331,14 +5415,14 @@ iam_list_attached_group_policies <- function(GroupName, PathPrefix = NULL, Marke
 #' for.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param PathPrefix The path prefix for filtering the results. This parameter is optional.
 #' If it is not included, it defaults to a slash (/), listing all policies.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of either a forward slash (/) by itself or a string that must
 #' begin and end with forward slashes. In addition, it can contain any
 #' ASCII character from the ! (``U+0021``) through the DEL character
@@ -5390,12 +5474,13 @@ iam_list_attached_role_policies <- function(RoleName, PathPrefix = NULL, Marker 
 
 #' Lists all managed policies that are attached to the specified IAM user
 #'
+#' @description
 #' Lists all managed policies that are attached to the specified IAM user.
 #' 
 #' An IAM user can also have inline policies embedded with it. To list the
 #' inline policies for a user, use the ListUserPolicies API. For
 #' information about policies, see [Managed Policies and Inline
-#' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html)
+#' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html)
 #' in the *IAM User Guide*.
 #' 
 #' You can paginate the results using the `MaxItems` and `Marker`
@@ -5411,14 +5496,14 @@ iam_list_attached_role_policies <- function(RoleName, PathPrefix = NULL, Marker 
 #' for.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param PathPrefix The path prefix for filtering the results. This parameter is optional.
 #' If it is not included, it defaults to a slash (/), listing all policies.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of either a forward slash (/) by itself or a string that must
 #' begin and end with forward slashes. In addition, it can contain any
 #' ASCII character from the ! (``U+0021``) through the DEL character
@@ -5471,6 +5556,7 @@ iam_list_attached_user_policies <- function(UserName, PathPrefix = NULL, Marker 
 #' Lists all IAM users, groups, and roles that the specified managed policy
 #' is attached to
 #'
+#' @description
 #' Lists all IAM users, groups, and roles that the specified managed policy
 #' is attached to.
 #' 
@@ -5504,7 +5590,7 @@ iam_list_attached_user_policies <- function(UserName, PathPrefix = NULL, Marker 
 #' If it is not included, it defaults to a slash (/), listing all entities.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of either a forward slash (/) by itself or a string that must
 #' begin and end with forward slashes. In addition, it can contain any
 #' ASCII character from the ! (``U+0021``) through the DEL character
@@ -5513,9 +5599,9 @@ iam_list_attached_user_policies <- function(UserName, PathPrefix = NULL, Marker 
 #' @param PolicyUsageFilter The policy usage method to use for filtering the results.
 #' 
 #' To list only permissions policies,
-#' setÂ `PolicyUsageFilter`Â toÂ `PermissionsPolicy`. To list only the
-#' policies used to set permissions boundaries, setÂ the value
-#' toÂ `PermissionsBoundary`.
+#' set `PolicyUsageFilter` to `PermissionsPolicy`. To list only the
+#' policies used to set permissions boundaries, set the value
+#' to `PermissionsBoundary`.
 #' 
 #' This parameter is optional. If it is not included, all policies are
 #' returned.
@@ -5568,6 +5654,7 @@ iam_list_entities_for_policy <- function(PolicyArn, EntityFilter = NULL, PathPre
 #' Lists the names of the inline policies that are embedded in the
 #' specified IAM group
 #'
+#' @description
 #' Lists the names of the inline policies that are embedded in the
 #' specified IAM group.
 #' 
@@ -5575,7 +5662,7 @@ iam_list_entities_for_policy <- function(PolicyArn, EntityFilter = NULL, PathPre
 #' managed policies that are attached to a group, use
 #' ListAttachedGroupPolicies. For more information about policies, see
 #' [Managed Policies and Inline
-#' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html)
+#' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html)
 #' in the *IAM User Guide*.
 #' 
 #' You can paginate the results using the `MaxItems` and `Marker`
@@ -5588,7 +5675,7 @@ iam_list_entities_for_policy <- function(PolicyArn, EntityFilter = NULL, PathPre
 #' @param GroupName &#91;required&#93; The name of the group to list policies for.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param Marker Use this parameter only when paginating results and only after you
@@ -5645,6 +5732,7 @@ iam_list_group_policies <- function(GroupName, Marker = NULL, MaxItems = NULL) {
 
 #' Lists the IAM groups that have the specified path prefix
 #'
+#' @description
 #' Lists the IAM groups that have the specified path prefix.
 #' 
 #' You can paginate the results using the `MaxItems` and `Marker`
@@ -5659,7 +5747,7 @@ iam_list_group_policies <- function(GroupName, Marker = NULL, MaxItems = NULL) {
 #' 
 #' This parameter is optional. If it is not included, it defaults to a
 #' slash (/), listing all groups. This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of either a forward slash (/) by itself or a string that must
 #' begin and end with forward slashes. In addition, it can contain any
 #' ASCII character from the ! (``U+0021``) through the DEL character
@@ -5716,6 +5804,7 @@ iam_list_groups <- function(PathPrefix = NULL, Marker = NULL, MaxItems = NULL) {
 
 #' Lists the IAM groups that the specified IAM user belongs to
 #'
+#' @description
 #' Lists the IAM groups that the specified IAM user belongs to.
 #' 
 #' You can paginate the results using the `MaxItems` and `Marker`
@@ -5727,7 +5816,7 @@ iam_list_groups <- function(PathPrefix = NULL, Marker = NULL, MaxItems = NULL) {
 #' @param UserName &#91;required&#93; The name of the user to list groups for.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param Marker Use this parameter only when paginating results and only after you
@@ -5784,10 +5873,11 @@ iam_list_groups_for_user <- function(UserName, Marker = NULL, MaxItems = NULL) {
 
 #' Lists the instance profiles that have the specified path prefix
 #'
+#' @description
 #' Lists the instance profiles that have the specified path prefix. If
 #' there are none, the operation returns an empty list. For more
 #' information about instance profiles, go to [About Instance
-#' Profiles](https://docs.aws.amazon.com/IAM/latest/UserGuide/AboutInstanceProfiles.html).
+#' Profiles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html).
 #' 
 #' You can paginate the results using the `MaxItems` and `Marker`
 #' parameters.
@@ -5801,7 +5891,7 @@ iam_list_groups_for_user <- function(UserName, Marker = NULL, MaxItems = NULL) {
 #' 
 #' This parameter is optional. If it is not included, it defaults to a
 #' slash (/), listing all instance profiles. This parameter allows (through
-#' its [regex pattern](http://wikipedia.org/wiki/regex)) a string of
+#' its [regex pattern](https://en.wikipedia.org/wiki/Regex)) a string of
 #' characters consisting of either a forward slash (/) by itself or a
 #' string that must begin and end with forward slashes. In addition, it can
 #' contain any ASCII character from the ! (``U+0021``) through the DEL
@@ -5852,10 +5942,11 @@ iam_list_instance_profiles <- function(PathPrefix = NULL, Marker = NULL, MaxItem
 
 #' Lists the instance profiles that have the specified associated IAM role
 #'
+#' @description
 #' Lists the instance profiles that have the specified associated IAM role.
 #' If there are none, the operation returns an empty list. For more
 #' information about instance profiles, go to [About Instance
-#' Profiles](https://docs.aws.amazon.com/IAM/latest/UserGuide/AboutInstanceProfiles.html).
+#' Profiles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html).
 #' 
 #' You can paginate the results using the `MaxItems` and `Marker`
 #' parameters.
@@ -5866,7 +5957,7 @@ iam_list_instance_profiles <- function(PathPrefix = NULL, Marker = NULL, MaxItem
 #' @param RoleName &#91;required&#93; The name of the role to list instance profiles for.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param Marker Use this parameter only when paginating results and only after you
@@ -5914,6 +6005,7 @@ iam_list_instance_profiles_for_role <- function(RoleName, Marker = NULL, MaxItem
 
 #' Lists the MFA devices for an IAM user
 #'
+#' @description
 #' Lists the MFA devices for an IAM user. If the request includes a IAM
 #' user name, then this operation lists all the MFA devices associated with
 #' the specified user. If you do not specify a user name, IAM determines
@@ -5929,7 +6021,7 @@ iam_list_instance_profiles_for_role <- function(RoleName, Marker = NULL, MaxItem
 #' @param UserName The name of the user whose MFA devices you want to list.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param Marker Use this parameter only when paginating results and only after you
@@ -5978,6 +6070,7 @@ iam_list_mfa_devices <- function(UserName = NULL, Marker = NULL, MaxItems = NULL
 #' Lists information about the IAM OpenID Connect (OIDC) provider resource
 #' objects defined in the AWS account
 #'
+#' @description
 #' Lists information about the IAM OpenID Connect (OIDC) provider resource
 #' objects defined in the AWS account.
 #'
@@ -6013,6 +6106,7 @@ iam_list_open_id_connect_providers <- function() {
 #' including your own customer-defined managed policies and all AWS managed
 #' policies
 #'
+#' @description
 #' Lists all the managed policies that are available in your AWS account,
 #' including your own customer-defined managed policies and all AWS managed
 #' policies.
@@ -6027,7 +6121,7 @@ iam_list_open_id_connect_providers <- function() {
 #' 
 #' For more information about managed policies, see [Managed Policies and
 #' Inline
-#' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html)
+#' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html)
 #' in the *IAM User Guide*.
 #'
 #' @usage
@@ -6051,7 +6145,7 @@ iam_list_open_id_connect_providers <- function() {
 #' @param PathPrefix The path prefix for filtering the results. This parameter is optional.
 #' If it is not included, it defaults to a slash (/), listing all policies.
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of either a forward slash (/) by itself or a string that must
 #' begin and end with forward slashes. In addition, it can contain any
 #' ASCII character from the ! (``U+0021``) through the DEL character
@@ -6060,9 +6154,9 @@ iam_list_open_id_connect_providers <- function() {
 #' @param PolicyUsageFilter The policy usage method to use for filtering the results.
 #' 
 #' To list only permissions policies,
-#' setÂ `PolicyUsageFilter`Â toÂ `PermissionsPolicy`. To list only the
-#' policies used to set permissions boundaries, setÂ the value
-#' toÂ `PermissionsBoundary`.
+#' set `PolicyUsageFilter` to `PermissionsPolicy`. To list only the
+#' policies used to set permissions boundaries, set the value
+#' to `PermissionsBoundary`.
 #' 
 #' This parameter is optional. If it is not included, all policies are
 #' returned.
@@ -6115,6 +6209,7 @@ iam_list_policies <- function(Scope = NULL, OnlyAttached = NULL, PathPrefix = NU
 #' Retrieves a list of policies that the IAM identity (user, group, or
 #' role) can use to access each specified service
 #'
+#' @description
 #' Retrieves a list of policies that the IAM identity (user, group, or
 #' role) can use to access each specified service.
 #' 
@@ -6130,17 +6225,17 @@ iam_list_policies <- function(Scope = NULL, OnlyAttached = NULL, PathPrefix = NU
 #' The list of policies returned by the operation depends on the ARN of the
 #' identity that you provide.
 #' 
-#' -   **User** -- The list of policies includes the managed and inline
+#' -   **User** – The list of policies includes the managed and inline
 #'     policies that are attached to the user directly. The list also
 #'     includes any additional managed and inline policies that are
 #'     attached to the group to which the user belongs.
 #' 
-#' -   **Group** -- The list of policies includes only the managed and
+#' -   **Group** – The list of policies includes only the managed and
 #'     inline policies that are attached to the group directly. Policies
-#'     that are attached to the group's user are not included.
+#'     that are attached to the group’s user are not included.
 #' 
-#' -   **Role** -- The list of policies includes only the managed and
-#'     inline policies that are attached to the role.
+#' -   **Role** – The list of policies includes only the managed and inline
+#'     policies that are attached to the role.
 #' 
 #' For each managed policy, this operation returns the ARN and policy name.
 #' For each inline policy, it returns the policy name and the entity to
@@ -6169,13 +6264,13 @@ iam_list_policies <- function(Scope = NULL, OnlyAttached = NULL, PathPrefix = NU
 #' 
 #' To learn the service namespace for a service, go to [Actions, Resources,
 #' and Condition Keys for AWS
-#' Services](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_actions-resources-contextkeys.html)
+#' Services](https://docs.aws.amazon.com/service-authorization/latest/reference/reference_policies_actions-resources-contextkeys.html)
 #' in the *IAM User Guide*. Choose the name of the service to view details
 #' for that service. In the first paragraph, find the service prefix. For
 #' example, `(service prefix: a4b)`. For more information about service
 #' namespaces, see [AWS Service
 #' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces)
-#' in theÂ *AWS General Reference*.
+#' in the *AWS General Reference*.
 #'
 #' @section Request syntax:
 #' ```
@@ -6225,13 +6320,14 @@ iam_list_policies_granting_service_access <- function(Marker = NULL, Arn, Servic
 #' including the version that is currently set as the policy's default
 #' version
 #'
+#' @description
 #' Lists information about the versions of the specified managed policy,
-#' including the version that is currently set as the policy\'s default
+#' including the version that is currently set as the policy's default
 #' version.
 #' 
 #' For more information about managed policies, see [Managed Policies and
 #' Inline
-#' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html)
+#' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html)
 #' in the *IAM User Guide*.
 #'
 #' @usage
@@ -6290,6 +6386,7 @@ iam_list_policy_versions <- function(PolicyArn, Marker = NULL, MaxItems = NULL) 
 #' Lists the names of the inline policies that are embedded in the
 #' specified IAM role
 #'
+#' @description
 #' Lists the names of the inline policies that are embedded in the
 #' specified IAM role.
 #' 
@@ -6297,7 +6394,7 @@ iam_list_policy_versions <- function(PolicyArn, Marker = NULL, MaxItems = NULL) 
 #' managed policies that are attached to a role, use
 #' ListAttachedRolePolicies. For more information about policies, see
 #' [Managed Policies and Inline
-#' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html)
+#' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html)
 #' in the *IAM User Guide*.
 #' 
 #' You can paginate the results using the `MaxItems` and `Marker`
@@ -6310,7 +6407,7 @@ iam_list_policy_versions <- function(PolicyArn, Marker = NULL, MaxItems = NULL) 
 #' @param RoleName &#91;required&#93; The name of the role to list policies for.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param Marker Use this parameter only when paginating results and only after you
@@ -6358,6 +6455,7 @@ iam_list_role_policies <- function(RoleName, Marker = NULL, MaxItems = NULL) {
 
 #' Lists the tags that are attached to the specified role
 #'
+#' @description
 #' Lists the tags that are attached to the specified role. The returned
 #' list of tags is sorted by tag key. For more information about tagging,
 #' see [Tagging IAM
@@ -6370,9 +6468,9 @@ iam_list_role_policies <- function(RoleName, Marker = NULL, MaxItems = NULL) {
 #' @param RoleName &#91;required&#93; The name of the IAM role for which you want to see the list of tags.
 #' 
 #' This parameter accepts (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters that
-#' consist of upper and lowercase alphanumeric characters with no spaces.
-#' You can also include any of the following characters: \\_+=,.@@-
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
+#' that consist of upper and lowercase alphanumeric characters with no
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param Marker Use this parameter only when paginating results and only after you
 #' receive a response indicating that the results are truncated. Set it to
 #' the value of the `Marker` element in the response that you received to
@@ -6427,10 +6525,11 @@ iam_list_role_tags <- function(RoleName, Marker = NULL, MaxItems = NULL) {
 
 #' Lists the IAM roles that have the specified path prefix
 #'
+#' @description
 #' Lists the IAM roles that have the specified path prefix. If there are
 #' none, the operation returns an empty list. For more information about
 #' roles, go to [Working with
-#' Roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/WorkingWithRoles.html).
+#' Roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html).
 #' 
 #' You can paginate the results using the `MaxItems` and `Marker`
 #' parameters.
@@ -6444,7 +6543,7 @@ iam_list_role_tags <- function(RoleName, Marker = NULL, MaxItems = NULL) {
 #' 
 #' This parameter is optional. If it is not included, it defaults to a
 #' slash (/), listing all roles. This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of either a forward slash (/) by itself or a string that must
 #' begin and end with forward slashes. In addition, it can contain any
 #' ASCII character from the ! (``U+0021``) through the DEL character
@@ -6495,6 +6594,7 @@ iam_list_roles <- function(PathPrefix = NULL, Marker = NULL, MaxItems = NULL) {
 
 #' Lists the SAML provider resource objects defined in IAM in the account
 #'
+#' @description
 #' Lists the SAML provider resource objects defined in IAM in the account.
 #' 
 #' This operation requires [Signature Version
@@ -6531,6 +6631,7 @@ iam_list_saml_providers <- function() {
 #' Returns information about the SSH public keys associated with the
 #' specified IAM user
 #'
+#' @description
 #' Returns information about the SSH public keys associated with the
 #' specified IAM user. If none exists, the operation returns an empty list.
 #' 
@@ -6538,7 +6639,7 @@ iam_list_saml_providers <- function() {
 #' authenticating the IAM user to an AWS CodeCommit repository. For more
 #' information about using SSH keys to authenticate to an AWS CodeCommit
 #' repository, see [Set up AWS CodeCommit for SSH
-#' Connections](https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-credentials-ssh.html)
+#' Connections](https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up.html)
 #' in the *AWS CodeCommit User Guide*.
 #' 
 #' Although each user is limited to a small number of keys, you can still
@@ -6552,7 +6653,7 @@ iam_list_saml_providers <- function() {
 #' AWS access key used to sign the request.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param Marker Use this parameter only when paginating results and only after you
@@ -6601,6 +6702,7 @@ iam_list_ssh_public_keys <- function(UserName = NULL, Marker = NULL, MaxItems = 
 #' Lists the server certificates stored in IAM that have the specified path
 #' prefix
 #'
+#' @description
 #' Lists the server certificates stored in IAM that have the specified path
 #' prefix. If none exist, the operation returns an empty list.
 #' 
@@ -6622,10 +6724,10 @@ iam_list_ssh_public_keys <- function(UserName = NULL, Marker = NULL, MaxItems = 
 #' 
 #' This parameter is optional. If it is not included, it defaults to a
 #' slash (/), listing all server certificates. This parameter allows
-#' (through its [regex pattern](http://wikipedia.org/wiki/regex)) a string
-#' of characters consisting of either a forward slash (/) by itself or a
-#' string that must begin and end with forward slashes. In addition, it can
-#' contain any ASCII character from the ! (``U+0021``) through the DEL
+#' (through its [regex pattern](https://en.wikipedia.org/wiki/Regex)) a
+#' string of characters consisting of either a forward slash (/) by itself
+#' or a string that must begin and end with forward slashes. In addition,
+#' it can contain any ASCII character from the ! (``U+0021``) through the DEL
 #' character (``U+007F``), including most punctuation characters, digits, and
 #' upper and lowercased letters.
 #' @param Marker Use this parameter only when paginating results and only after you
@@ -6674,6 +6776,7 @@ iam_list_server_certificates <- function(PathPrefix = NULL, Marker = NULL, MaxIt
 #' Returns information about the service-specific credentials associated
 #' with the specified IAM user
 #'
+#' @description
 #' Returns information about the service-specific credentials associated
 #' with the specified IAM user. If none exists, the operation returns an
 #' empty list. The service-specific credentials returned by this operation
@@ -6691,7 +6794,7 @@ iam_list_server_certificates <- function(PathPrefix = NULL, Marker = NULL, MaxIt
 #' assumes the user whose credentials are used to call the operation.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param ServiceName Filters the returned results to only those for the specified AWS
@@ -6729,6 +6832,7 @@ iam_list_service_specific_credentials <- function(UserName = NULL, ServiceName =
 #' Returns information about the signing certificates associated with the
 #' specified IAM user
 #'
+#' @description
 #' Returns information about the signing certificates associated with the
 #' specified IAM user. If none exists, the operation returns an empty list.
 #' 
@@ -6748,7 +6852,7 @@ iam_list_service_specific_credentials <- function(UserName = NULL, ServiceName =
 #' @param UserName The name of the IAM user whose signing certificates you want to examine.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param Marker Use this parameter only when paginating results and only after you
@@ -6806,6 +6910,7 @@ iam_list_signing_certificates <- function(UserName = NULL, Marker = NULL, MaxIte
 #' Lists the names of the inline policies embedded in the specified IAM
 #' user
 #'
+#' @description
 #' Lists the names of the inline policies embedded in the specified IAM
 #' user.
 #' 
@@ -6813,7 +6918,7 @@ iam_list_signing_certificates <- function(UserName = NULL, Marker = NULL, MaxIte
 #' managed policies that are attached to a user, use
 #' ListAttachedUserPolicies. For more information about policies, see
 #' [Managed Policies and Inline
-#' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html)
+#' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html)
 #' in the *IAM User Guide*.
 #' 
 #' You can paginate the results using the `MaxItems` and `Marker`
@@ -6826,7 +6931,7 @@ iam_list_signing_certificates <- function(UserName = NULL, Marker = NULL, MaxIte
 #' @param UserName &#91;required&#93; The name of the user to list policies for.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param Marker Use this parameter only when paginating results and only after you
@@ -6874,6 +6979,7 @@ iam_list_user_policies <- function(UserName, Marker = NULL, MaxItems = NULL) {
 
 #' Lists the tags that are attached to the specified user
 #'
+#' @description
 #' Lists the tags that are attached to the specified user. The returned
 #' list of tags is sorted by tag key. For more information about tagging,
 #' see [Tagging IAM
@@ -6886,9 +6992,9 @@ iam_list_user_policies <- function(UserName, Marker = NULL, MaxItems = NULL) {
 #' @param UserName &#91;required&#93; The name of the IAM user whose tags you want to see.
 #' 
 #' This parameter accepts (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters that
-#' consist of upper and lowercase alphanumeric characters with no spaces.
-#' You can also include any of the following characters: =,.@@-
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
+#' that consist of upper and lowercase alphanumeric characters with no
+#' spaces. You can also include any of the following characters: =,.@@-
 #' @param Marker Use this parameter only when paginating results and only after you
 #' receive a response indicating that the results are truncated. Set it to
 #' the value of the `Marker` element in the response that you received to
@@ -6943,6 +7049,7 @@ iam_list_user_tags <- function(UserName, Marker = NULL, MaxItems = NULL) {
 
 #' Lists the IAM users that have the specified path prefix
 #'
+#' @description
 #' Lists the IAM users that have the specified path prefix. If no path
 #' prefix is specified, the operation returns all users in the AWS account.
 #' If there are none, the operation returns an empty list.
@@ -6959,12 +7066,12 @@ iam_list_user_tags <- function(UserName, Marker = NULL, MaxItems = NULL) {
 #' 
 #' This parameter is optional. If it is not included, it defaults to a
 #' slash (/), listing all user names. This parameter allows (through its
-#' [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters
-#' consisting of either a forward slash (/) by itself or a string that must
-#' begin and end with forward slashes. In addition, it can contain any
-#' ASCII character from the ! (``U+0021``) through the DEL character
-#' (``U+007F``), including most punctuation characters, digits, and upper and
-#' lowercased letters.
+#' [regex pattern](https://en.wikipedia.org/wiki/Regex)) a string of
+#' characters consisting of either a forward slash (/) by itself or a
+#' string that must begin and end with forward slashes. In addition, it can
+#' contain any ASCII character from the ! (``U+0021``) through the DEL
+#' character (``U+007F``), including most punctuation characters, digits, and
+#' upper and lowercased letters.
 #' @param Marker Use this parameter only when paginating results and only after you
 #' receive a response indicating that the results are truncated. Set it to
 #' the value of the `Marker` element in the response that you received to
@@ -7017,6 +7124,7 @@ iam_list_users <- function(PathPrefix = NULL, Marker = NULL, MaxItems = NULL) {
 #' Lists the virtual MFA devices defined in the AWS account by assignment
 #' status
 #'
+#' @description
 #' Lists the virtual MFA devices defined in the AWS account by assignment
 #' status. If you do not specify an assignment status, the operation
 #' returns a list of all virtual MFA devices. Assignment status can be
@@ -7084,6 +7192,7 @@ iam_list_virtual_mfa_devices <- function(AssignmentStatus = NULL, Marker = NULL,
 #' Adds or updates an inline policy document that is embedded in the
 #' specified IAM group
 #'
+#' @description
 #' Adds or updates an inline policy document that is embedded in the
 #' specified IAM group.
 #' 
@@ -7091,18 +7200,18 @@ iam_list_virtual_mfa_devices <- function(AssignmentStatus = NULL, Marker = NULL,
 #' managed policy to a group, use AttachGroupPolicy. To create a new
 #' managed policy, use CreatePolicy. For information about policies, see
 #' [Managed Policies and Inline
-#' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html)
+#' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html)
 #' in the *IAM User Guide*.
 #' 
 #' For information about limits on the number of inline policies that you
 #' can embed in a group, see [Limitations on IAM
-#' Entities](https://docs.aws.amazon.com/IAM/latest/UserGuide/LimitationsOnEntities.html)
+#' Entities](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-quotas.html)
 #' in the *IAM User Guide*.
 #' 
 #' Because policy documents can be large, you should use POST rather than
 #' GET when calling `PutGroupPolicy`. For general information about using
 #' the Query API with IAM, go to [Making Query
-#' Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/IAM_UsingQueryAPI.html)
+#' Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/programming.html)
 #' in the *IAM User Guide*.
 #'
 #' @usage
@@ -7111,13 +7220,13 @@ iam_list_virtual_mfa_devices <- function(AssignmentStatus = NULL, Marker = NULL,
 #' @param GroupName &#91;required&#93; The name of the group to associate the policy with.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-.
 #' @param PolicyName &#91;required&#93; The name of the policy document.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param PolicyDocument &#91;required&#93; The policy document.
@@ -7127,8 +7236,9 @@ iam_list_virtual_mfa_devices <- function(AssignmentStatus = NULL, Marker = NULL,
 #' in JSON or YAML format. AWS CloudFormation always converts a YAML policy
 #' to JSON format before submitting it to IAM.
 #' 
-#' The [regex pattern](http://wikipedia.org/wiki/regex) used to validate
-#' this parameter is a string of characters consisting of the following:
+#' The [regex pattern](https://en.wikipedia.org/wiki/Regex) used to
+#' validate this parameter is a string of characters consisting of the
+#' following:
 #' 
 #' -   Any printable ASCII character ranging from the space character
 #'     (``U+0020``) through the end of the ASCII character range
@@ -7182,7 +7292,8 @@ iam_put_group_policy <- function(GroupName, PolicyName, PolicyDocument) {
 #' Adds or updates the policy that is specified as the IAM role's
 #' permissions boundary
 #'
-#' Adds or updates the policy that is specified as the IAM role\'s
+#' @description
+#' Adds or updates the policy that is specified as the IAM role's
 #' permissions boundary. You can use an AWS managed policy or a customer
 #' managed policy to set the boundary for a role. Use the boundary to
 #' control the maximum permissions that the role can have. Setting a
@@ -7237,33 +7348,34 @@ iam_put_role_permissions_boundary <- function(RoleName, PermissionsBoundary) {
 #' Adds or updates an inline policy document that is embedded in the
 #' specified IAM role
 #'
+#' @description
 #' Adds or updates an inline policy document that is embedded in the
 #' specified IAM role.
 #' 
 #' When you embed an inline policy in a role, the inline policy is used as
-#' part of the role\'s access (permissions) policy. The role\'s trust
-#' policy is created at the same time as the role, using CreateRole. You
-#' can update a role\'s trust policy using UpdateAssumeRolePolicy. For more
+#' part of the role's access (permissions) policy. The role's trust policy
+#' is created at the same time as the role, using CreateRole. You can
+#' update a role's trust policy using UpdateAssumeRolePolicy. For more
 #' information about IAM roles, go to [Using Roles to Delegate Permissions
 #' and Federate
-#' Identities](https://docs.aws.amazon.com/IAM/latest/UserGuide/roles-toplevel.html).
+#' Identities](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html).
 #' 
 #' A role can also have a managed policy attached to it. To attach a
 #' managed policy to a role, use AttachRolePolicy. To create a new managed
 #' policy, use CreatePolicy. For information about policies, see [Managed
 #' Policies and Inline
-#' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html)
+#' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html)
 #' in the *IAM User Guide*.
 #' 
 #' For information about limits on the number of inline policies that you
 #' can embed with a role, see [Limitations on IAM
-#' Entities](https://docs.aws.amazon.com/IAM/latest/UserGuide/LimitationsOnEntities.html)
+#' Entities](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-quotas.html)
 #' in the *IAM User Guide*.
 #' 
 #' Because policy documents can be large, you should use POST rather than
 #' GET when calling `PutRolePolicy`. For general information about using
 #' the Query API with IAM, go to [Making Query
-#' Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/IAM_UsingQueryAPI.html)
+#' Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/programming.html)
 #' in the *IAM User Guide*.
 #'
 #' @usage
@@ -7272,13 +7384,13 @@ iam_put_role_permissions_boundary <- function(RoleName, PermissionsBoundary) {
 #' @param RoleName &#91;required&#93; The name of the role to associate the policy with.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param PolicyName &#91;required&#93; The name of the policy document.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param PolicyDocument &#91;required&#93; The policy document.
@@ -7288,8 +7400,9 @@ iam_put_role_permissions_boundary <- function(RoleName, PermissionsBoundary) {
 #' in JSON or YAML format. AWS CloudFormation always converts a YAML policy
 #' to JSON format before submitting it to IAM.
 #' 
-#' The [regex pattern](http://wikipedia.org/wiki/regex) used to validate
-#' this parameter is a string of characters consisting of the following:
+#' The [regex pattern](https://en.wikipedia.org/wiki/Regex) used to
+#' validate this parameter is a string of characters consisting of the
+#' following:
 #' 
 #' -   Any printable ASCII character ranging from the space character
 #'     (``U+0020``) through the end of the ASCII character range
@@ -7343,7 +7456,8 @@ iam_put_role_policy <- function(RoleName, PolicyName, PolicyDocument) {
 #' Adds or updates the policy that is specified as the IAM user's
 #' permissions boundary
 #'
-#' Adds or updates the policy that is specified as the IAM user\'s
+#' @description
+#' Adds or updates the policy that is specified as the IAM user's
 #' permissions boundary. You can use an AWS managed policy or a customer
 #' managed policy to set the boundary for a user. Use the boundary to
 #' control the maximum permissions that the user can have. Setting a
@@ -7396,6 +7510,7 @@ iam_put_user_permissions_boundary <- function(UserName, PermissionsBoundary) {
 #' Adds or updates an inline policy document that is embedded in the
 #' specified IAM user
 #'
+#' @description
 #' Adds or updates an inline policy document that is embedded in the
 #' specified IAM user.
 #' 
@@ -7403,18 +7518,18 @@ iam_put_user_permissions_boundary <- function(UserName, PermissionsBoundary) {
 #' managed policy to a user, use AttachUserPolicy. To create a new managed
 #' policy, use CreatePolicy. For information about policies, see [Managed
 #' Policies and Inline
-#' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html)
+#' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html)
 #' in the *IAM User Guide*.
 #' 
 #' For information about limits on the number of inline policies that you
 #' can embed in a user, see [Limitations on IAM
-#' Entities](https://docs.aws.amazon.com/IAM/latest/UserGuide/LimitationsOnEntities.html)
+#' Entities](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-quotas.html)
 #' in the *IAM User Guide*.
 #' 
 #' Because policy documents can be large, you should use POST rather than
 #' GET when calling `PutUserPolicy`. For general information about using
 #' the Query API with IAM, go to [Making Query
-#' Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/IAM_UsingQueryAPI.html)
+#' Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/programming.html)
 #' in the *IAM User Guide*.
 #'
 #' @usage
@@ -7423,13 +7538,13 @@ iam_put_user_permissions_boundary <- function(UserName, PermissionsBoundary) {
 #' @param UserName &#91;required&#93; The name of the user to associate the policy with.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param PolicyName &#91;required&#93; The name of the policy document.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param PolicyDocument &#91;required&#93; The policy document.
@@ -7439,8 +7554,9 @@ iam_put_user_permissions_boundary <- function(UserName, PermissionsBoundary) {
 #' in JSON or YAML format. AWS CloudFormation always converts a YAML policy
 #' to JSON format before submitting it to IAM.
 #' 
-#' The [regex pattern](http://wikipedia.org/wiki/regex) used to validate
-#' this parameter is a string of characters consisting of the following:
+#' The [regex pattern](https://en.wikipedia.org/wiki/Regex) used to
+#' validate this parameter is a string of characters consisting of the
+#' following:
 #' 
 #' -   Any printable ASCII character ranging from the space character
 #'     (``U+0020``) through the end of the ASCII character range
@@ -7494,6 +7610,7 @@ iam_put_user_policy <- function(UserName, PolicyName, PolicyDocument) {
 #' of client IDs registered for the specified IAM OpenID Connect (OIDC)
 #' provider resource object
 #'
+#' @description
 #' Removes the specified client ID (also known as audience) from the list
 #' of client IDs registered for the specified IAM OpenID Connect (OIDC)
 #' provider resource object.
@@ -7547,6 +7664,7 @@ iam_remove_client_id_from_open_id_connect_provider <- function(OpenIDConnectProv
 
 #' Removes the specified IAM role from the specified EC2 instance profile
 #'
+#' @description
 #' Removes the specified IAM role from the specified EC2 instance profile.
 #' 
 #' Make sure that you do not have any Amazon EC2 instances running with the
@@ -7555,9 +7673,9 @@ iam_remove_client_id_from_open_id_connect_provider <- function(OpenIDConnectProv
 #' might break any applications running on the instance.
 #' 
 #' For more information about IAM roles, go to [Working with
-#' Roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/WorkingWithRoles.html).
+#' Roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html).
 #' For more information about instance profiles, go to [About Instance
-#' Profiles](https://docs.aws.amazon.com/IAM/latest/UserGuide/AboutInstanceProfiles.html).
+#' Profiles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html).
 #'
 #' @usage
 #' iam_remove_role_from_instance_profile(InstanceProfileName, RoleName)
@@ -7565,13 +7683,13 @@ iam_remove_client_id_from_open_id_connect_provider <- function(OpenIDConnectProv
 #' @param InstanceProfileName &#91;required&#93; The name of the instance profile to update.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param RoleName &#91;required&#93; The name of the role to remove.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #'
@@ -7615,6 +7733,7 @@ iam_remove_role_from_instance_profile <- function(InstanceProfileName, RoleName)
 
 #' Removes the specified user from the specified group
 #'
+#' @description
 #' Removes the specified user from the specified group.
 #'
 #' @usage
@@ -7623,13 +7742,13 @@ iam_remove_role_from_instance_profile <- function(InstanceProfileName, RoleName)
 #' @param GroupName &#91;required&#93; The name of the group to update.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param UserName &#91;required&#93; The name of the user to remove.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #'
@@ -7673,6 +7792,7 @@ iam_remove_user_from_group <- function(GroupName, UserName) {
 
 #' Resets the password for a service-specific credential
 #'
+#' @description
 #' Resets the password for a service-specific credential. The new password
 #' is AWS generated and cryptographically strong. It cannot be configured
 #' by the user. Resetting the password immediately invalidates the previous
@@ -7687,14 +7807,14 @@ iam_remove_user_from_group <- function(GroupName, UserName) {
 #' the user whose credentials are used to call the operation.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param ServiceSpecificCredentialId &#91;required&#93; The unique identifier of the service-specific credential.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters that
-#' can consist of any upper or lowercased letter or digit.
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
+#' that can consist of any upper or lowercased letter or digit.
 #'
 #' @section Request syntax:
 #' ```
@@ -7727,12 +7847,13 @@ iam_reset_service_specific_credential <- function(UserName = NULL, ServiceSpecif
 #' Synchronizes the specified MFA device with its IAM resource object on
 #' the AWS servers
 #'
+#' @description
 #' Synchronizes the specified MFA device with its IAM resource object on
 #' the AWS servers.
 #' 
 #' For more information about creating and working with virtual MFA
 #' devices, go to [Using a Virtual MFA
-#' Device](https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_VirtualMFA.html)
+#' Device](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_enable_virtual.html)
 #' in the *IAM User Guide*.
 #'
 #' @usage
@@ -7742,13 +7863,13 @@ iam_reset_service_specific_credential <- function(UserName = NULL, ServiceSpecif
 #' @param UserName &#91;required&#93; The name of the user whose MFA device you want to resynchronize.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param SerialNumber &#91;required&#93; Serial number that uniquely identifies the MFA device.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param AuthenticationCode1 &#91;required&#93; An authentication code emitted by the device.
@@ -7791,7 +7912,8 @@ iam_resync_mfa_device <- function(UserName, SerialNumber, AuthenticationCode1, A
 #' Sets the specified version of the specified policy as the policy's
 #' default (operative) version
 #'
-#' Sets the specified version of the specified policy as the policy\'s
+#' @description
+#' Sets the specified version of the specified policy as the policy's
 #' default (operative) version.
 #' 
 #' This operation affects all users, groups, and roles that the policy is
@@ -7799,7 +7921,7 @@ iam_resync_mfa_device <- function(UserName, SerialNumber, AuthenticationCode1, A
 #' attached to, use the ListEntitiesForPolicy API.
 #' 
 #' For information about managed policies, see [Managed Policies and Inline
-#' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html)
+#' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html)
 #' in the *IAM User Guide*.
 #'
 #' @usage
@@ -7816,7 +7938,7 @@ iam_resync_mfa_device <- function(UserName, SerialNumber, AuthenticationCode1, A
 #' 
 #' For more information about managed policy versions, see [Versioning for
 #' Managed
-#' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html)
+#' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-versioning.html)
 #' in the *IAM User Guide*.
 #'
 #' @section Request syntax:
@@ -7850,6 +7972,7 @@ iam_set_default_policy_version <- function(PolicyArn, VersionId) {
 #' Sets the specified version of the global endpoint token as the token
 #' version used for the AWS account
 #'
+#' @description
 #' Sets the specified version of the global endpoint token as the token
 #' version used for the AWS account.
 #' 
@@ -7930,10 +8053,11 @@ iam_set_security_token_service_preferences <- function(GlobalEndpointTokenVersio
 #' policy works with a list of API operations and AWS resources to
 #' determine the policies' effective permissions
 #'
+#' @description
 #' Simulate how a set of IAM policies and optionally a resource-based
 #' policy works with a list of API operations and AWS resources to
-#' determine the policies\' effective permissions. The policies are
-#' provided as strings.
+#' determine the policies' effective permissions. The policies are provided
+#' as strings.
 #' 
 #' The simulation does not perform the API operations; it only checks the
 #' authorization to determine if the simulated policies allow or deny the
@@ -7961,16 +8085,17 @@ iam_set_security_token_service_preferences <- function(GlobalEndpointTokenVersio
 #' is specified as a string containing the complete, valid JSON text of an
 #' IAM policy. Do not include any resource-based policies in this
 #' parameter. Any resource-based policy must be submitted with the
-#' `ResourcePolicy` parameter. The policies cannot be \"scope-down\"
+#' `ResourcePolicy` parameter. The policies cannot be "scope-down"
 #' policies, such as you could include in a call to
-#' [GetFederationToken](https://docs.aws.amazon.com/IAM/latest/APIReference/API_GetFederationToken.html)
+#' [GetFederationToken](https://docs.aws.amazon.com/IAM/latest/APIReference/)
 #' or one of the
-#' [AssumeRole](https://docs.aws.amazon.com/IAM/latest/APIReference/API_AssumeRole.html)
-#' API operations. In other words, do not use policies designed to restrict
+#' [AssumeRole](https://docs.aws.amazon.com/IAM/latest/APIReference/) API
+#' operations. In other words, do not use policies designed to restrict
 #' what a user can do while using the temporary credentials.
 #' 
-#' The [regex pattern](http://wikipedia.org/wiki/regex) used to validate
-#' this parameter is a string of characters consisting of the following:
+#' The [regex pattern](https://en.wikipedia.org/wiki/Regex) used to
+#' validate this parameter is a string of characters consisting of the
+#' following:
 #' 
 #' -   Any printable ASCII character ranging from the space character
 #'     (``U+0020``) through the end of the ASCII character range
@@ -7989,8 +8114,9 @@ iam_set_security_token_service_preferences <- function(GlobalEndpointTokenVersio
 #' in the *IAM User Guide*. The policy input is specified as a string that
 #' contains the complete, valid JSON text of a permissions boundary policy.
 #' 
-#' The [regex pattern](http://wikipedia.org/wiki/regex) used to validate
-#' this parameter is a string of characters consisting of the following:
+#' The [regex pattern](https://en.wikipedia.org/wiki/Regex) used to
+#' validate this parameter is a string of characters consisting of the
+#' following:
 #' 
 #' -   Any printable ASCII character ranging from the space character
 #'     (``U+0020``) through the end of the ASCII character range
@@ -8028,8 +8154,9 @@ iam_set_security_token_service_preferences <- function(GlobalEndpointTokenVersio
 #' policy attached. You can include only one resource-based policy in a
 #' simulation.
 #' 
-#' The [regex pattern](http://wikipedia.org/wiki/regex) used to validate
-#' this parameter is a string of characters consisting of the following:
+#' The [regex pattern](https://en.wikipedia.org/wiki/Regex) used to
+#' validate this parameter is a string of characters consisting of the
+#' following:
 #' 
 #' -   Any printable ASCII character ranging from the space character
 #'     (``U+0020``) through the end of the ASCII character range
@@ -8056,8 +8183,8 @@ iam_set_security_token_service_preferences <- function(GlobalEndpointTokenVersio
 #' `arn:aws:iam::112233445566-ID:root`.
 #' @param CallerArn The ARN of the IAM user that you want to use as the simulated caller of
 #' the API operations. `CallerArn` is required if you include a
-#' `ResourcePolicy` so that the policy\'s `Principal` element has a value
-#' to use in evaluating the policy.
+#' `ResourcePolicy` so that the policy's `Principal` element has a value to
+#' use in evaluating the policy.
 #' 
 #' You can specify only the ARN of an IAM user. You cannot specify the ARN
 #' of an assumed role, federated user, or a service principal.
@@ -8079,7 +8206,7 @@ iam_set_security_token_service_preferences <- function(GlobalEndpointTokenVersio
 #' VPC, then you must supply the network-interface resource. If it includes
 #' an IP subnet, then you must specify the subnet resource. For more
 #' information on the EC2 scenario options, see [Supported
-#' Platforms](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html)
+#' Platforms](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-classic-platform.html)
 #' in the *Amazon EC2 User Guide*.
 #' 
 #' -   **EC2-Classic-InstanceStore**
@@ -8176,8 +8303,9 @@ iam_simulate_custom_policy <- function(PolicyInputList, PermissionsBoundaryPolic
 #' a list of API operations and AWS resources to determine the policies'
 #' effective permissions
 #'
+#' @description
 #' Simulate how a set of IAM policies attached to an IAM entity works with
-#' a list of API operations and AWS resources to determine the policies\'
+#' a list of API operations and AWS resources to determine the policies'
 #' effective permissions. The entity can be an IAM user, group, or role. If
 #' you specify a user, then the simulation also includes all of the
 #' policies that are attached to groups that the user belongs to.
@@ -8195,7 +8323,7 @@ iam_simulate_custom_policy <- function(PolicyInputList, PermissionsBoundaryPolic
 #' operations.
 #' 
 #' **Note:** This API discloses information about the permissions granted
-#' to other users. If you do not want users to see other user\'s
+#' to other users. If you do not want users to see other user's
 #' permissions, then consider allowing them to use SimulateCustomPolicy
 #' instead.
 #' 
@@ -8228,8 +8356,9 @@ iam_simulate_custom_policy <- function(PolicyInputList, PermissionsBoundaryPolic
 #' simulation. Each document is specified as a string containing the
 #' complete, valid JSON text of an IAM policy.
 #' 
-#' The [regex pattern](http://wikipedia.org/wiki/regex) used to validate
-#' this parameter is a string of characters consisting of the following:
+#' The [regex pattern](https://en.wikipedia.org/wiki/Regex) used to
+#' validate this parameter is a string of characters consisting of the
+#' following:
 #' 
 #' -   Any printable ASCII character ranging from the space character
 #'     (``U+0020``) through the end of the ASCII character range
@@ -8253,8 +8382,9 @@ iam_simulate_custom_policy <- function(PolicyInputList, PermissionsBoundaryPolic
 #' containing the complete, valid JSON text of a permissions boundary
 #' policy.
 #' 
-#' The [regex pattern](http://wikipedia.org/wiki/regex) used to validate
-#' this parameter is a string of characters consisting of the following:
+#' The [regex pattern](https://en.wikipedia.org/wiki/Regex) used to
+#' validate this parameter is a string of characters consisting of the
+#' following:
 #' 
 #' -   Any printable ASCII character ranging from the space character
 #'     (``U+0020``) through the end of the ASCII character range
@@ -8287,8 +8417,9 @@ iam_simulate_custom_policy <- function(PolicyInputList, PermissionsBoundaryPolic
 #' policy attached. You can include only one resource-based policy in a
 #' simulation.
 #' 
-#' The [regex pattern](http://wikipedia.org/wiki/regex) used to validate
-#' this parameter is a string of characters consisting of the following:
+#' The [regex pattern](https://en.wikipedia.org/wiki/Regex) used to
+#' validate this parameter is a string of characters consisting of the
+#' following:
 #' 
 #' -   Any printable ASCII character ranging from the space character
 #'     (``U+0020``) through the end of the ASCII character range
@@ -8314,14 +8445,14 @@ iam_simulate_custom_policy <- function(PolicyInputList, PermissionsBoundaryPolic
 #' specified a user. If you include both a `PolicySourceArn` (for example,
 #' `arn:aws:iam::123456789012:user/David`) and a `CallerArn` (for example,
 #' `arn:aws:iam::123456789012:user/Bob`), the result is that you simulate
-#' calling the API operations as Bob, as if Bob had David\'s policies.
+#' calling the API operations as Bob, as if Bob had David's policies.
 #' 
 #' You can specify only the ARN of an IAM user. You cannot specify the ARN
 #' of an assumed role, federated user, or a service principal.
 #' 
 #' `CallerArn` is required if you include a `ResourcePolicy` and the
 #' `PolicySourceArn` is not the ARN for an IAM user. This is required so
-#' that the resource-based policy\'s `Principal` element has a value to use
+#' that the resource-based policy's `Principal` element has a value to use
 #' in evaluating the policy.
 #' 
 #' For more information about ARNs, see [Amazon Resource Names (ARNs) and
@@ -8346,7 +8477,7 @@ iam_simulate_custom_policy <- function(PolicyInputList, PermissionsBoundaryPolic
 #' VPC, then you must supply the network interface resource. If it includes
 #' an IP subnet, then you must specify the subnet resource. For more
 #' information on the EC2 scenario options, see [Supported
-#' Platforms](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html)
+#' Platforms](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-classic-platform.html)
 #' in the *Amazon EC2 User Guide*.
 #' 
 #' -   **EC2-Classic-InstanceStore**
@@ -8442,6 +8573,7 @@ iam_simulate_principal_policy <- function(PolicySourceArn, PolicyInputList = NUL
 
 #' Adds one or more tags to an IAM role
 #'
+#' @description
 #' Adds one or more tags to an IAM role. The role can be a regular role or
 #' a service-linked role. If a tag with the same key name already exists,
 #' then that tag is overwritten with the new value.
@@ -8487,9 +8619,9 @@ iam_simulate_principal_policy <- function(PolicySourceArn, PolicyInputList = NUL
 #' @param RoleName &#91;required&#93; The name of the role that you want to add tags to.
 #' 
 #' This parameter accepts (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters that
-#' consist of upper and lowercase alphanumeric characters with no spaces.
-#' You can also include any of the following characters: \\_+=,.@@-
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
+#' that consist of upper and lowercase alphanumeric characters with no
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param Tags &#91;required&#93; The list of tags that you want to attach to the role. Each tag consists
 #' of a key name and an associated value. You can specify this with a JSON
 #' string.
@@ -8547,6 +8679,7 @@ iam_tag_role <- function(RoleName, Tags) {
 
 #' Adds one or more tags to an IAM user
 #'
+#' @description
 #' Adds one or more tags to an IAM user. If a tag with the same key name
 #' already exists, then that tag is overwritten with the new value.
 #' 
@@ -8591,9 +8724,9 @@ iam_tag_role <- function(RoleName, Tags) {
 #' @param UserName &#91;required&#93; The name of the user that you want to add tags to.
 #' 
 #' This parameter accepts (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters that
-#' consist of upper and lowercase alphanumeric characters with no spaces.
-#' You can also include any of the following characters: =,.@@-
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
+#' that consist of upper and lowercase alphanumeric characters with no
+#' spaces. You can also include any of the following characters: =,.@@-
 #' @param Tags &#91;required&#93; The list of tags that you want to attach to the user. Each tag consists
 #' of a key name and an associated value.
 #'
@@ -8650,6 +8783,7 @@ iam_tag_user <- function(UserName, Tags) {
 
 #' Removes the specified tags from the role
 #'
+#' @description
 #' Removes the specified tags from the role. For more information about
 #' tagging, see [Tagging IAM
 #' Identities](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html)
@@ -8661,9 +8795,9 @@ iam_tag_user <- function(UserName, Tags) {
 #' @param RoleName &#91;required&#93; The name of the IAM role from which you want to remove tags.
 #' 
 #' This parameter accepts (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters that
-#' consist of upper and lowercase alphanumeric characters with no spaces.
-#' You can also include any of the following characters: \\_+=,.@@-
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
+#' that consist of upper and lowercase alphanumeric characters with no
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param TagKeys &#91;required&#93; A list of key names as a simple array of strings. The tags with matching
 #' keys are removed from the specified role.
 #'
@@ -8711,6 +8845,7 @@ iam_untag_role <- function(RoleName, TagKeys) {
 
 #' Removes the specified tags from the user
 #'
+#' @description
 #' Removes the specified tags from the user. For more information about
 #' tagging, see [Tagging IAM
 #' Identities](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html)
@@ -8722,9 +8857,9 @@ iam_untag_role <- function(RoleName, TagKeys) {
 #' @param UserName &#91;required&#93; The name of the IAM user from which you want to remove tags.
 #' 
 #' This parameter accepts (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters that
-#' consist of upper and lowercase alphanumeric characters with no spaces.
-#' You can also include any of the following characters: =,.@@-
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
+#' that consist of upper and lowercase alphanumeric characters with no
+#' spaces. You can also include any of the following characters: =,.@@-
 #' @param TagKeys &#91;required&#93; A list of key names as a simple array of strings. The tags with matching
 #' keys are removed from the specified user.
 #'
@@ -8773,8 +8908,9 @@ iam_untag_user <- function(UserName, TagKeys) {
 #' Changes the status of the specified access key from Active to Inactive,
 #' or vice versa
 #'
+#' @description
 #' Changes the status of the specified access key from Active to Inactive,
-#' or vice versa. This operation can be used to disable a user\'s key as
+#' or vice versa. This operation can be used to disable a user's key as
 #' part of a key rotation workflow.
 #' 
 #' If the `UserName` is not specified, the user name is determined
@@ -8784,7 +8920,7 @@ iam_untag_user <- function(UserName, TagKeys) {
 #' if the AWS account has no associated users.
 #' 
 #' For information about rotating keys, see [Managing Keys and
-#' Certificates](https://docs.aws.amazon.com/IAM/latest/UserGuide/ManagingCredentials.html)
+#' Certificates](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html)
 #' in the *IAM User Guide*.
 #'
 #' @usage
@@ -8793,14 +8929,14 @@ iam_untag_user <- function(UserName, TagKeys) {
 #' @param UserName The name of the user whose key you want to update.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param AccessKeyId &#91;required&#93; The access key ID of the secret access key you want to update.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters that
-#' can consist of any upper or lowercased letter or digit.
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
+#' that can consist of any upper or lowercased letter or digit.
 #' @param Status &#91;required&#93; The status you want to assign to the secret access key. `Active` means
 #' that the key can be used for API calls to AWS, while `Inactive` means
 #' that the key cannot be used.
@@ -8847,19 +8983,20 @@ iam_update_access_key <- function(UserName = NULL, AccessKeyId, Status) {
 
 #' Updates the password policy settings for the AWS account
 #'
+#' @description
 #' Updates the password policy settings for the AWS account.
 #' 
 #' -   This operation does not support partial updates. No parameters are
-#'     required, but if you do not specify a parameter, that parameter\'s
+#'     required, but if you do not specify a parameter, that parameter's
 #'     value reverts to its default value. See the **Request Parameters**
-#'     section for each parameter\'s default value. Also note that some
+#'     section for each parameter's default value. Also note that some
 #'     parameters do not allow the default parameter to be explicitly set.
 #'     Instead, to invoke the default value, do not include that parameter
 #'     when you invoke the operation.
 #' 
 #' For more information about using a password policy, see [Managing an IAM
 #' Password
-#' Policy](https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_ManagingPasswordPolicies.html)
+#' Policy](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_account-policy.html)
 #' in the *IAM User Guide*.
 #'
 #' @usage
@@ -8875,7 +9012,7 @@ iam_update_access_key <- function(UserName = NULL, AccessKeyId, Status) {
 #' @param RequireSymbols Specifies whether IAM user passwords must contain at least one of the
 #' following non-alphanumeric characters:
 #' 
-#' ! @@ \\# \\$ % \\^ & * ( ) \\_ + - = \[ \] \{ \} \\| \'
+#' ! @@ \\# $ % ^ & * ( ) \\_ + - = \[ \] \{ \} | '
 #' 
 #' If you do not specify a value for this parameter, then the operation
 #' uses the default value of `false`. The result is that passwords do not
@@ -8901,7 +9038,7 @@ iam_update_access_key <- function(UserName = NULL, AccessKeyId, Status) {
 #' @param AllowUsersToChangePassword Allows all IAM users in your account to use the AWS Management Console
 #' to change their own passwords. For more information, see [Letting IAM
 #' Users Change Their Own
-#' Passwords](https://docs.aws.amazon.com/IAM/latest/UserGuide/HowToPwdIAMUser.html)
+#' Passwords](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_enable-user-change.html)
 #' in the *IAM User Guide*.
 #' 
 #' If you do not specify a value for this parameter, then the operation
@@ -8976,11 +9113,12 @@ iam_update_account_password_policy <- function(MinimumPasswordLength = NULL, Req
 
 #' Updates the policy that grants an IAM entity permission to assume a role
 #'
+#' @description
 #' Updates the policy that grants an IAM entity permission to assume a
-#' role. This is typically referred to as the \"role trust policy\". For
-#' more information about roles, go to [Using Roles to Delegate Permissions
-#' and Federate
-#' Identities](https://docs.aws.amazon.com/IAM/latest/UserGuide/roles-toplevel.html).
+#' role. This is typically referred to as the "role trust policy". For more
+#' information about roles, go to [Using Roles to Delegate Permissions and
+#' Federate
+#' Identities](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html).
 #'
 #' @usage
 #' iam_update_assume_role_policy(RoleName, PolicyDocument)
@@ -8988,7 +9126,7 @@ iam_update_account_password_policy <- function(MinimumPasswordLength = NULL, Req
 #' @param RoleName &#91;required&#93; The name of the role to update with the new policy.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param PolicyDocument &#91;required&#93; The policy that grants an entity permission to assume the role.
@@ -8998,8 +9136,9 @@ iam_update_account_password_policy <- function(MinimumPasswordLength = NULL, Req
 #' in JSON or YAML format. AWS CloudFormation always converts a YAML policy
 #' to JSON format before submitting it to IAM.
 #' 
-#' The [regex pattern](http://wikipedia.org/wiki/regex) used to validate
-#' this parameter is a string of characters consisting of the following:
+#' The [regex pattern](https://en.wikipedia.org/wiki/Regex) used to
+#' validate this parameter is a string of characters consisting of the
+#' following:
 #' 
 #' -   Any printable ASCII character ranging from the space character
 #'     (``U+0020``) through the end of the ASCII character range
@@ -9050,12 +9189,13 @@ iam_update_assume_role_policy <- function(RoleName, PolicyDocument) {
 
 #' Updates the name and/or the path of the specified IAM group
 #'
+#' @description
 #' Updates the name and/or the path of the specified IAM group.
 #' 
-#' You should understand the implications of changing a group\'s path or
+#' You should understand the implications of changing a group's path or
 #' name. For more information, see [Renaming Users and
-#' Groups](https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_WorkingWithGroupsAndUsers.html)
-#' in the *IAM User Guide*.
+#' Groups](https://docs.aws.amazon.com/IAM/latest/UserGuide/id.html) in the
+#' *IAM User Guide*.
 #' 
 #' The person making the request (the principal), must have permission to
 #' change the role group with the old name and the new name. For example,
@@ -9069,29 +9209,29 @@ iam_update_assume_role_policy <- function(RoleName, PolicyDocument) {
 #' @usage
 #' iam_update_group(GroupName, NewPath, NewGroupName)
 #'
-#' @param GroupName &#91;required&#93; Name of the IAM group to update. If you\'re changing the name of the
+#' @param GroupName &#91;required&#93; Name of the IAM group to update. If you're changing the name of the
 #' group, this is the original name.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
-#' @param NewPath New path for the IAM group. Only include this if changing the group\'s
+#' @param NewPath New path for the IAM group. Only include this if changing the group's
 #' path.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of either a forward slash (/) by itself or a string that must
 #' begin and end with forward slashes. In addition, it can contain any
 #' ASCII character from the ! (``U+0021``) through the DEL character
 #' (``U+007F``), including most punctuation characters, digits, and upper and
 #' lowercased letters.
-#' @param NewGroupName New name for the IAM group. Only include this if changing the group\'s
+#' @param NewGroupName New name for the IAM group. Only include this if changing the group's
 #' name.
 #' 
 #' IAM user, group, role, and policy names must be unique within the
 #' account. Names are not distinguished by case. For example, you cannot
-#' create resources named both \"MyResource\" and \"myresource\".
+#' create resources named both "MyResource" and "myresource".
 #'
 #' @section Request syntax:
 #' ```
@@ -9133,11 +9273,12 @@ iam_update_group <- function(GroupName, NewPath = NULL, NewGroupName = NULL) {
 
 #' Changes the password for the specified IAM user
 #'
+#' @description
 #' Changes the password for the specified IAM user.
 #' 
 #' IAM users can change their own passwords by calling ChangePassword. For
 #' more information about modifying passwords, see [Managing
-#' Passwords](https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_ManagingLogins.html)
+#' Passwords](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_admin-change-user.html)
 #' in the *IAM User Guide*.
 #'
 #' @usage
@@ -9146,13 +9287,14 @@ iam_update_group <- function(GroupName, NewPath = NULL, NewGroupName = NULL) {
 #' @param UserName &#91;required&#93; The name of the user whose password you want to update.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param Password The new password for the specified IAM user.
 #' 
-#' The [regex pattern](http://wikipedia.org/wiki/regex) used to validate
-#' this parameter is a string of characters consisting of the following:
+#' The [regex pattern](https://en.wikipedia.org/wiki/Regex) used to
+#' validate this parameter is a string of characters consisting of the
+#' following:
 #' 
 #' -   Any printable ASCII character ranging from the space character
 #'     (``U+0020``) through the end of the ASCII character range
@@ -9212,6 +9354,7 @@ iam_update_login_profile <- function(UserName, Password = NULL, PasswordResetReq
 #' with an OpenID Connect (OIDC) provider resource object with a new list
 #' of thumbprints
 #'
+#' @description
 #' Replaces the existing list of server certificate thumbprints associated
 #' with an OpenID Connect (OIDC) provider resource object with a new list
 #' of thumbprints.
@@ -9220,12 +9363,12 @@ iam_update_login_profile <- function(UserName, Password = NULL, PasswordResetReq
 #' existing list of thumbprints. (The lists are not merged.)
 #' 
 #' Typically, you need to update a thumbprint only when the identity
-#' provider\'s certificate changes, which occurs rarely. However, if the
-#' provider\'s certificate *does* change, any attempt to assume an IAM role
+#' provider's certificate changes, which occurs rarely. However, if the
+#' provider's certificate *does* change, any attempt to assume an IAM role
 #' that specifies the OIDC provider as a principal fails until the
 #' certificate thumbprint is updated.
 #' 
-#' Trust for the OIDC provider is derived from the provider\'s certificate
+#' Trust for the OIDC provider is derived from the provider's certificate
 #' and is validated by the thumbprint. Therefore, it is best to limit
 #' access to the `UpdateOpenIDConnectProviderThumbprint` operation to
 #' highly privileged users.
@@ -9278,6 +9421,7 @@ iam_update_open_id_connect_provider_thumbprint <- function(OpenIDConnectProvider
 
 #' Updates the description or maximum session duration setting of a role
 #'
+#' @description
 #' Updates the description or maximum session duration setting of a role.
 #'
 #' @usage
@@ -9294,7 +9438,7 @@ iam_update_open_id_connect_provider_thumbprint <- function(OpenIDConnectProvider
 #' `DurationSeconds` API parameter or the `duration-seconds` CLI parameter
 #' to request a longer session. The `MaxSessionDuration` setting determines
 #' the maximum duration that can be requested using the `DurationSeconds`
-#' parameter. If users don\'t specify a value for the `DurationSeconds`
+#' parameter. If users don't specify a value for the `DurationSeconds`
 #' parameter, their security credentials are valid for one hour by default.
 #' This applies when you use the `AssumeRole*` API operations or the
 #' `assume-role*` CLI operations but does not apply when you use those
@@ -9333,6 +9477,7 @@ iam_update_role <- function(RoleName, Description = NULL, MaxSessionDuration = N
 
 #' Use UpdateRole instead
 #'
+#' @description
 #' Use UpdateRole instead.
 #' 
 #' Modifies only the description of a role. This operation performs the
@@ -9376,6 +9521,7 @@ iam_update_role_description <- function(RoleName, Description) {
 #' Updates the metadata document for an existing SAML provider resource
 #' object
 #'
+#' @description
 #' Updates the metadata document for an existing SAML provider resource
 #' object.
 #' 
@@ -9386,11 +9532,11 @@ iam_update_role_description <- function(RoleName, Description) {
 #' iam_update_saml_provider(SAMLMetadataDocument, SAMLProviderArn)
 #'
 #' @param SAMLMetadataDocument &#91;required&#93; An XML document generated by an identity provider (IdP) that supports
-#' SAML 2.0. The document includes the issuer\'s name, expiration
+#' SAML 2.0. The document includes the issuer's name, expiration
 #' information, and keys that can be used to validate the SAML
 #' authentication response (assertions) that are received from the IdP. You
 #' must generate the metadata document using the identity management
-#' software that is used as your organization\'s IdP.
+#' software that is used as your organization's IdP.
 #' @param SAMLProviderArn &#91;required&#93; The Amazon Resource Name (ARN) of the SAML provider to update.
 #' 
 #' For more information about ARNs, see [Amazon Resource Names (ARNs) and
@@ -9428,16 +9574,17 @@ iam_update_saml_provider <- function(SAMLMetadataDocument, SAMLProviderArn) {
 
 #' Sets the status of an IAM user's SSH public key to active or inactive
 #'
-#' Sets the status of an IAM user\'s SSH public key to active or inactive.
+#' @description
+#' Sets the status of an IAM user's SSH public key to active or inactive.
 #' SSH public keys that are inactive cannot be used for authentication.
-#' This operation can be used to disable a user\'s SSH public key as part
-#' of a key rotation work flow.
+#' This operation can be used to disable a user's SSH public key as part of
+#' a key rotation work flow.
 #' 
 #' The SSH public key affected by this operation is used only for
 #' authenticating the associated IAM user to an AWS CodeCommit repository.
 #' For more information about using SSH keys to authenticate to an AWS
 #' CodeCommit repository, see [Set up AWS CodeCommit for SSH
-#' Connections](https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-credentials-ssh.html)
+#' Connections](https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up.html)
 #' in the *AWS CodeCommit User Guide*.
 #'
 #' @usage
@@ -9446,14 +9593,14 @@ iam_update_saml_provider <- function(SAMLMetadataDocument, SAMLProviderArn) {
 #' @param UserName &#91;required&#93; The name of the IAM user associated with the SSH public key.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param SSHPublicKeyId &#91;required&#93; The unique identifier for the SSH public key.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters that
-#' can consist of any upper or lowercased letter or digit.
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
+#' that can consist of any upper or lowercased letter or digit.
 #' @param Status &#91;required&#93; The status to assign to the SSH public key. `Active` means that the key
 #' can be used for authentication with an AWS CodeCommit repository.
 #' `Inactive` means that the key cannot be used.
@@ -9490,6 +9637,7 @@ iam_update_ssh_public_key <- function(UserName, SSHPublicKeyId, Status) {
 #' Updates the name and/or the path of the specified server certificate
 #' stored in IAM
 #'
+#' @description
 #' Updates the name and/or the path of the specified server certificate
 #' stored in IAM.
 #' 
@@ -9500,9 +9648,8 @@ iam_update_ssh_public_key <- function(UserName, SSHPublicKeyId, Status) {
 #' that can use the server certificates that you manage with IAM.
 #' 
 #' You should understand the implications of changing a server
-#' certificate\'s path or name. For more information, see [Renaming a
-#' Server
-#' Certificate](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_server-certs_manage.html#RenamingServerCerts)
+#' certificate's path or name. For more information, see [Renaming a Server
+#' Certificate](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_server-certs.html#RenamingServerCerts)
 #' in the *IAM User Guide*.
 #' 
 #' The person making the request (the principal), must have permission to
@@ -9522,25 +9669,25 @@ iam_update_ssh_public_key <- function(UserName, SSHPublicKeyId, Status) {
 #' @param ServerCertificateName &#91;required&#93; The name of the server certificate that you want to update.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param NewPath The new path for the server certificate. Include this only if you are
-#' updating the server certificate\'s path.
+#' updating the server certificate's path.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of either a forward slash (/) by itself or a string that must
 #' begin and end with forward slashes. In addition, it can contain any
 #' ASCII character from the ! (``U+0021``) through the DEL character
 #' (``U+007F``), including most punctuation characters, digits, and upper and
 #' lowercased letters.
 #' @param NewServerCertificateName The new name for the server certificate. Include this only if you are
-#' updating the server certificate\'s name. The name of the certificate
+#' updating the server certificate's name. The name of the certificate
 #' cannot contain any spaces.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #'
@@ -9575,10 +9722,11 @@ iam_update_server_certificate <- function(ServerCertificateName, NewPath = NULL,
 
 #' Sets the status of a service-specific credential to Active or Inactive
 #'
+#' @description
 #' Sets the status of a service-specific credential to `Active` or
 #' `Inactive`. Service-specific credentials that are inactive cannot be
 #' used for authentication to the service. This operation can be used to
-#' disable a user\'s service-specific credential as part of a credential
+#' disable a user's service-specific credential as part of a credential
 #' rotation work flow.
 #'
 #' @usage
@@ -9590,14 +9738,14 @@ iam_update_server_certificate <- function(ServerCertificateName, NewPath = NULL,
 #' the user whose credentials are used to call the operation.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param ServiceSpecificCredentialId &#91;required&#93; The unique identifier of the service-specific credential.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters that
-#' can consist of any upper or lowercased letter or digit.
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
+#' that can consist of any upper or lowercased letter or digit.
 #' @param Status &#91;required&#93; The status to be assigned to the service-specific credential.
 #'
 #' @section Request syntax:
@@ -9632,9 +9780,10 @@ iam_update_service_specific_credential <- function(UserName = NULL, ServiceSpeci
 #' Changes the status of the specified user signing certificate from active
 #' to disabled, or vice versa
 #'
+#' @description
 #' Changes the status of the specified user signing certificate from active
 #' to disabled, or vice versa. This operation can be used to disable an IAM
-#' user\'s signing certificate as part of a certificate rotation work flow.
+#' user's signing certificate as part of a certificate rotation work flow.
 #' 
 #' If the `UserName` field is not specified, the user name is determined
 #' implicitly based on the AWS access key ID used to sign the request. This
@@ -9648,14 +9797,14 @@ iam_update_service_specific_credential <- function(UserName = NULL, ServiceSpeci
 #' @param UserName The name of the IAM user the signing certificate belongs to.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param CertificateId &#91;required&#93; The ID of the signing certificate you want to update.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters that
-#' can consist of any upper or lowercased letter or digit.
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
+#' that can consist of any upper or lowercased letter or digit.
 #' @param Status &#91;required&#93; The status you want to assign to the certificate. `Active` means that
 #' the certificate can be used for API calls to AWS `Inactive` means that
 #' the certificate cannot be used.
@@ -9702,10 +9851,11 @@ iam_update_signing_certificate <- function(UserName = NULL, CertificateId, Statu
 
 #' Updates the name and/or the path of the specified IAM user
 #'
+#' @description
 #' Updates the name and/or the path of the specified IAM user.
 #' 
-#' You should understand the implications of changing an IAM user\'s path
-#' or name. For more information, see [Renaming an IAM
+#' You should understand the implications of changing an IAM user's path or
+#' name. For more information, see [Renaming an IAM
 #' User](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_manage.html#id_users_renaming)
 #' and [Renaming an IAM
 #' Group](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_groups_manage_rename.html)
@@ -9716,34 +9866,34 @@ iam_update_signing_certificate <- function(UserName = NULL, CertificateId, Statu
 #' Bob to Robert, the entity making the request must have permission on Bob
 #' and Robert, or must have permission on all (*). For more information
 #' about permissions, see [Permissions and
-#' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/PermissionsAndPolicies.html).
+#' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access.html).
 #'
 #' @usage
 #' iam_update_user(UserName, NewPath, NewUserName)
 #'
-#' @param UserName &#91;required&#93; Name of the user to update. If you\'re changing the name of the user,
+#' @param UserName &#91;required&#93; Name of the user to update. If you're changing the name of the user,
 #' this is the original user name.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
-#' @param NewPath New path for the IAM user. Include this parameter only if you\'re
-#' changing the user\'s path.
+#' @param NewPath New path for the IAM user. Include this parameter only if you're
+#' changing the user's path.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of either a forward slash (/) by itself or a string that must
 #' begin and end with forward slashes. In addition, it can contain any
 #' ASCII character from the ! (``U+0021``) through the DEL character
 #' (``U+007F``), including most punctuation characters, digits, and upper and
 #' lowercased letters.
-#' @param NewUserName New name for the user. Include this parameter only if you\'re changing
-#' the user\'s name.
+#' @param NewUserName New name for the user. Include this parameter only if you're changing
+#' the user's name.
 #' 
 #' IAM user, group, role, and policy names must be unique within the
 #' account. Names are not distinguished by case. For example, you cannot
-#' create resources named both \"MyResource\" and \"myresource\".
+#' create resources named both "MyResource" and "myresource".
 #'
 #' @section Request syntax:
 #' ```
@@ -9786,13 +9936,14 @@ iam_update_user <- function(UserName, NewPath = NULL, NewUserName = NULL) {
 
 #' Uploads an SSH public key and associates it with the specified IAM user
 #'
+#' @description
 #' Uploads an SSH public key and associates it with the specified IAM user.
 #' 
 #' The SSH public key uploaded by this operation can be used only for
 #' authenticating the associated IAM user to an AWS CodeCommit repository.
 #' For more information about using SSH keys to authenticate to an AWS
 #' CodeCommit repository, see [Set up AWS CodeCommit for SSH
-#' Connections](https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-credentials-ssh.html)
+#' Connections](https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up.html)
 #' in the *AWS CodeCommit User Guide*.
 #'
 #' @usage
@@ -9801,7 +9952,7 @@ iam_update_user <- function(UserName, NewPath = NULL, NewUserName = NULL) {
 #' @param UserName &#91;required&#93; The name of the IAM user to associate the SSH public key with.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param SSHPublicKeyBody &#91;required&#93; The SSH public key. The public key must be encoded in ssh-rsa format or
@@ -9809,8 +9960,9 @@ iam_update_user <- function(UserName, NewPath = NULL, NewUserName = NULL) {
 #' example, you can generate a 2048-bit key, and the resulting PEM file is
 #' 1679 bytes long.
 #' 
-#' The [regex pattern](http://wikipedia.org/wiki/regex) used to validate
-#' this parameter is a string of characters consisting of the following:
+#' The [regex pattern](https://en.wikipedia.org/wiki/Regex) used to
+#' validate this parameter is a string of characters consisting of the
+#' following:
 #' 
 #' -   Any printable ASCII character ranging from the space character
 #'     (``U+0020``) through the end of the ASCII character range
@@ -9851,6 +10003,7 @@ iam_upload_ssh_public_key <- function(UserName, SSHPublicKeyBody) {
 
 #' Uploads a server certificate entity for the AWS account
 #'
+#' @description
 #' Uploads a server certificate entity for the AWS account. The server
 #' certificate entity includes a public key certificate, a private key, and
 #' an optional certificate chain, which should all be PEM-encoded.
@@ -9871,7 +10024,7 @@ iam_upload_ssh_public_key <- function(UserName, SSHPublicKeyBody) {
 #' 
 #' For information about the number of server certificates you can upload,
 #' see [Limitations on IAM Entities and
-#' Objects](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-limits.html)
+#' Objects](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-quotas.html)
 #' in the *IAM User Guide*.
 #' 
 #' Because the body of the public key certificate, private key, and the
@@ -9890,12 +10043,12 @@ iam_upload_ssh_public_key <- function(UserName, SSHPublicKeyBody) {
 #'
 #' @param Path The path for the server certificate. For more information about paths,
 #' see [IAM
-#' Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
+#' Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html)
 #' in the *IAM User Guide*.
 #' 
 #' This parameter is optional. If it is not included, it defaults to a
 #' slash (/). This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of either a forward slash (/) by itself or a string that must
 #' begin and end with forward slashes. In addition, it can contain any
 #' ASCII character from the ! (``U+0021``) through the DEL character
@@ -9910,13 +10063,14 @@ iam_upload_ssh_public_key <- function(UserName, SSHPublicKeyBody) {
 #' value. The name of the certificate cannot contain any spaces.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param CertificateBody &#91;required&#93; The contents of the public key certificate in PEM-encoded format.
 #' 
-#' The [regex pattern](http://wikipedia.org/wiki/regex) used to validate
-#' this parameter is a string of characters consisting of the following:
+#' The [regex pattern](https://en.wikipedia.org/wiki/Regex) used to
+#' validate this parameter is a string of characters consisting of the
+#' following:
 #' 
 #' -   Any printable ASCII character ranging from the space character
 #'     (``U+0020``) through the end of the ASCII character range
@@ -9928,8 +10082,9 @@ iam_upload_ssh_public_key <- function(UserName, SSHPublicKeyBody) {
 #'     carriage return (``U+000D``)
 #' @param PrivateKey &#91;required&#93; The contents of the private key in PEM-encoded format.
 #' 
-#' The [regex pattern](http://wikipedia.org/wiki/regex) used to validate
-#' this parameter is a string of characters consisting of the following:
+#' The [regex pattern](https://en.wikipedia.org/wiki/Regex) used to
+#' validate this parameter is a string of characters consisting of the
+#' following:
 #' 
 #' -   Any printable ASCII character ranging from the space character
 #'     (``U+0020``) through the end of the ASCII character range
@@ -9942,8 +10097,9 @@ iam_upload_ssh_public_key <- function(UserName, SSHPublicKeyBody) {
 #' @param CertificateChain The contents of the certificate chain. This is typically a concatenation
 #' of the PEM-encoded public key certificates of the chain.
 #' 
-#' The [regex pattern](http://wikipedia.org/wiki/regex) used to validate
-#' this parameter is a string of characters consisting of the following:
+#' The [regex pattern](https://en.wikipedia.org/wiki/Regex) used to
+#' validate this parameter is a string of characters consisting of the
+#' following:
 #' 
 #' -   Any printable ASCII character ranging from the space character
 #'     (``U+0020``) through the end of the ASCII character range
@@ -9999,6 +10155,7 @@ iam_upload_server_certificate <- function(Path = NULL, ServerCertificateName, Ce
 
 #' Uploads an X
 #'
+#' @description
 #' Uploads an X.509 signing certificate and associates it with the
 #' specified IAM user. Some AWS services use X.509 signing certificates to
 #' validate requests that are signed with a corresponding private key. When
@@ -10017,7 +10174,7 @@ iam_upload_server_certificate <- function(Path = NULL, ServerCertificateName, Ce
 #' Requests](https://docs.aws.amazon.com/general/latest/gr/signing_aws_api_requests.html)
 #' in the *AWS General Reference*. For general information about using the
 #' Query API with IAM, go to [Making Query
-#' Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/IAM_UsingQueryAPI.html)
+#' Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/programming.html)
 #' in the *IAM User Guide*.
 #'
 #' @usage
@@ -10026,13 +10183,14 @@ iam_upload_server_certificate <- function(Path = NULL, ServerCertificateName, Ce
 #' @param UserName The name of the user the signing certificate is for.
 #' 
 #' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param CertificateBody &#91;required&#93; The contents of the signing certificate.
 #' 
-#' The [regex pattern](http://wikipedia.org/wiki/regex) used to validate
-#' this parameter is a string of characters consisting of the following:
+#' The [regex pattern](https://en.wikipedia.org/wiki/Regex) used to
+#' validate this parameter is a string of characters consisting of the
+#' following:
 #' 
 #' -   Any printable ASCII character ranging from the space character
 #'     (``U+0020``) through the end of the ASCII character range

@@ -39,8 +39,7 @@ asymmetric CMK. You can share the public key to allow others to encrypt
 messages and verify signatures outside of AWS KMS. For information about
 symmetric and asymmetric CMKs, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html}{Using Symmetric and Asymmetric CMKs}
 in the \emph{AWS Key Management Service Developer Guide}.
-}
-\details{
+
 You do not need to download the public key. Instead, you can use the
 public key within AWS KMS by calling the Encrypt, ReEncrypt, or Verify
 operations with the identifier of an asymmetric CMK. When you use the
@@ -76,6 +75,16 @@ algorithm in a verification operation.
 The CMK that you use for this operation must be in a compatible key
 state. For details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key}
 in the \emph{AWS Key Management Service Developer Guide}.
+
+\strong{Cross-account use}: Yes. To perform this operation with a CMK in a
+different AWS account, specify the key ARN or alias ARN in the value of
+the \code{KeyId} parameter.
+
+\strong{Required permissions}:
+\href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html}{kms:GetPublicKey}
+(key policy)
+
+\strong{Related operations}: CreateKey
 }
 \section{Request syntax}{
 \preformatted{svc$get_public_key(

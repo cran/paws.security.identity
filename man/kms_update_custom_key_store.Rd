@@ -38,8 +38,7 @@ operation.}
 Changes the properties of a custom key store. Use the \code{CustomKeyStoreId}
 parameter to identify the custom key store you want to edit. Use the
 remaining parameters to change the properties of the custom key store.
-}
-\details{
+
 You can only update a custom key store that is disconnected. To
 disconnect the custom key store, use DisconnectCustomKeyStore. To
 reconnect the custom key store after the update completes, use
@@ -71,6 +70,22 @@ This operation is part of the \href{https://docs.aws.amazon.com/kms/latest/devel
 feature in AWS KMS, which combines the convenience and extensive
 integration of AWS KMS with the isolation and control of a single-tenant
 key store.
+
+\strong{Cross-account use}: No. You cannot perform this operation on a custom
+key store in a different AWS account.
+
+\strong{Required permissions}:
+\href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html}{kms:UpdateCustomKeyStore}
+(IAM policy)
+
+\strong{Related operations:}
+\itemize{
+\item ConnectCustomKeyStore
+\item CreateCustomKeyStore
+\item DeleteCustomKeyStore
+\item DescribeCustomKeyStores
+\item DisconnectCustomKeyStore
+}
 }
 \section{Request syntax}{
 \preformatted{svc$update_custom_key_store(

@@ -8,7 +8,7 @@ cognitoidentityprovider_admin_set_user_password(UserPoolId, Username,
   Password, Permanent)
 }
 \arguments{
-\item{UserPoolId}{[required] The user pool ID for the user pool where you want to set the user\'s
+\item{UserPoolId}{[required] The user pool ID for the user pool where you want to set the user's
 password.}
 
 \item{Username}{[required] The user name of the user whose password you wish to set.}
@@ -18,10 +18,9 @@ password.}
 \item{Permanent}{\code{True} if the password is permanent, \code{False} if it is temporary.}
 }
 \description{
-Sets the specified user\'s password in a user pool as an administrator.
+Sets the specified user's password in a user pool as an administrator.
 Works on any user.
-}
-\details{
+
 The password can be temporary or permanent. If it is temporary, the user
 status will be placed into the \code{FORCE_CHANGE_PASSWORD} state. When the
 user next tries to sign in, the InitiateAuth/AdminInitiateAuth response

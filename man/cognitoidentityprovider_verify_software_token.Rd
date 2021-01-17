@@ -14,14 +14,15 @@ cognitoidentityprovider_verify_software_token(AccessToken, Session,
 \item{Session}{The session which should be passed both ways in challenge-response calls
 to the service.}
 
-\item{UserCode}{[required] The one time password computed using the secret code returned by}
+\item{UserCode}{[required] The one time password computed using the secret code returned by
+\href{https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_AssociateSoftwareToken.html}{AssociateSoftwareToken"}.}
 
 \item{FriendlyDeviceName}{The friendly device name.}
 }
 \description{
-Use this API to register a user\'s entered TOTP code and mark the
-user\'s software token MFA status as \"verified\" if successful. The
-request takes an access token or a session string, but not both.
+Use this API to register a user's entered TOTP code and mark the user's
+software token MFA status as "verified" if successful. The request takes
+an access token or a session string, but not both.
 }
 \section{Request syntax}{
 \preformatted{svc$verify_software_token(

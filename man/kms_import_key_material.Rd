@@ -10,7 +10,7 @@ kms_import_key_material(KeyId, ImportToken, EncryptedKeyMaterial,
 }
 \arguments{
 \item{KeyId}{[required] The identifier of the symmetric CMK that receives the imported key
-material. The CMK\'s \code{Origin} must be \code{EXTERNAL}. This must be the same
+material. The CMK's \code{Origin} must be \code{EXTERNAL}. This must be the same
 CMK specified in the \code{KeyID} parameter of the corresponding
 GetParametersForImport request.
 
@@ -50,8 +50,7 @@ Imports key material into an existing symmetric AWS KMS customer master
 key (CMK) that was created without key material. After you successfully
 import key material into a CMK, you can \href{https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html#reimport-key-material}{reimport the same key material}
 into that CMK, but you cannot import different key material.
-}
-\details{
+
 You cannot perform this operation on an asymmetric CMK or on any CMK in
 a different AWS account. For more information about creating CMKs with
 no key material and then importing key material, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html}{Importing Key Material}
@@ -96,6 +95,19 @@ in the \emph{AWS Key Management Service Developer Guide}.
 The CMK that you use for this operation must be in a compatible key
 state. For details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key}
 in the \emph{AWS Key Management Service Developer Guide}.
+
+\strong{Cross-account use}: No. You cannot perform this operation on a CMK in
+a different AWS account.
+
+\strong{Required permissions}:
+\href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html}{kms:ImportKeyMaterial}
+(key policy)
+
+\strong{Related operations:}
+\itemize{
+\item DeleteImportedKeyMaterial
+\item GetParametersForImport
+}
 }
 \section{Request syntax}{
 \preformatted{svc$import_key_material(

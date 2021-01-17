@@ -9,9 +9,9 @@ iam_tag_role(RoleName, Tags)
 \arguments{
 \item{RoleName}{[required] The name of the role that you want to add tags to.
 
-This parameter accepts (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters that
-consist of upper and lowercase alphanumeric characters with no spaces.
-You can also include any of the following characters: \\_+=,.@-}
+This parameter accepts (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
+that consist of upper and lowercase alphanumeric characters with no
+spaces. You can also include any of the following characters: \\_+=,.@-}
 
 \item{Tags}{[required] The list of tags that you want to attach to the role. Each tag consists
 of a key name and an associated value. You can specify this with a JSON
@@ -21,8 +21,7 @@ string.}
 Adds one or more tags to an IAM role. The role can be a regular role or
 a service-linked role. If a tag with the same key name already exists,
 then that tag is overwritten with the new value.
-}
-\details{
+
 A tag consists of a key name and an associated value. By assigning tags
 to your resources, you can do the following:
 \itemize{

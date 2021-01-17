@@ -60,8 +60,6 @@ are using an asymmetric CMK, we recommend RSAES\\_OAEP\\_SHA\\_256.}
 \description{
 Encrypts plaintext into ciphertext by using a customer master key (CMK).
 The \code{Encrypt} operation has two primary use cases:
-}
-\details{
 \itemize{
 \item You can encrypt small amounts of arbitrary data, such as a personal
 identifier or database password, or other sensitive information.
@@ -75,9 +73,9 @@ encrypted data key and the encrypted data entirely within in
 Region B.
 }
 
-You don\'t need to use the \code{Encrypt} operation to encrypt a data key.
-The GenerateDataKey and GenerateDataKeyPair operations return a
-plaintext data key and an encrypted copy of that data key.
+You don't need to use the \code{Encrypt} operation to encrypt a data key. The
+GenerateDataKey and GenerateDataKeyPair operations return a plaintext
+data key and an encrypted copy of that data key.
 
 When you encrypt data, you must specify a symmetric or asymmetric CMK to
 use in the encryption operation. The CMK must have a \code{KeyUsage} value of
@@ -135,8 +133,20 @@ The CMK that you use for this operation must be in a compatible key
 state. For details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key}
 in the \emph{AWS Key Management Service Developer Guide}.
 
-To perform this operation on a CMK in a different AWS account, specify
-the key ARN or alias ARN in the value of the KeyId parameter.
+\strong{Cross-account use}: Yes. To perform this operation with a CMK in a
+different AWS account, specify the key ARN or alias ARN in the value of
+the \code{KeyId} parameter.
+
+\strong{Required permissions}:
+\href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html}{kms:Encrypt}
+(key policy)
+
+\strong{Related operations:}
+\itemize{
+\item Decrypt
+\item GenerateDataKey
+\item GenerateDataKeyPair
+}
 }
 \section{Request syntax}{
 \preformatted{svc$encrypt(

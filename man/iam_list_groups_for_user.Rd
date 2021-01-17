@@ -9,7 +9,7 @@ iam_list_groups_for_user(UserName, Marker, MaxItems)
 \arguments{
 \item{UserName}{[required] The name of the user to list groups for.
 
-This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters
+This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: \\_+=,.@-}
 
@@ -30,8 +30,7 @@ subsequent call that tells the service where to continue from.}
 }
 \description{
 Lists the IAM groups that the specified IAM user belongs to.
-}
-\details{
+
 You can paginate the results using the \code{MaxItems} and \code{Marker}
 parameters.
 }

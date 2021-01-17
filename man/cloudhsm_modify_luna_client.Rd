@@ -2,7 +2,7 @@
 % Please edit documentation in R/cloudhsm_operations.R
 \name{cloudhsm_modify_luna_client}
 \alias{cloudhsm_modify_luna_client}
-\title{This is documentation for AWS CLOUDHSM CLASSIC}
+\title{This is documentation for AWS CloudHSM Classic}
 \usage{
 cloudhsm_modify_luna_client(ClientArn, Certificate)
 }
@@ -13,17 +13,16 @@ cloudhsm_modify_luna_client(ClientArn, Certificate)
 }
 \description{
 This is documentation for \strong{AWS CloudHSM Classic}. For more
-information, see \href{http://aws.amazon.com/cloudhsm/faqs-classic/}{AWS CloudHSM Classic FAQs}, the \href{http://docs.aws.amazon.com/cloudhsm/classic/userguide/}{AWS CloudHSM Classic User Guide}, and the
-\href{http://docs.aws.amazon.com/cloudhsm/classic/APIReference/}{AWS CloudHSM Classic API Reference}.
-}
-\details{
-\strong{For information about the current version of AWS CloudHSM}, see \href{http://aws.amazon.com/cloudhsm/}{AWS CloudHSM}, the \href{http://docs.aws.amazon.com/cloudhsm/latest/userguide/}{AWS CloudHSM User Guide}, and the
-\href{http://docs.aws.amazon.com/cloudhsm/latest/APIReference/}{AWS CloudHSM API Reference}.
+information, see \href{https://aws.amazon.com/cloudhsm/faqs/}{AWS CloudHSM Classic FAQs}, the \href{https://docs.aws.amazon.com/cloudhsm/classic/userguide/}{AWS CloudHSM Classic User Guide},
+and the \href{https://docs.aws.amazon.com/cloudhsm/classic/APIReference/}{AWS CloudHSM Classic API Reference}.
+
+\strong{For information about the current version of AWS CloudHSM}, see \href{https://aws.amazon.com/cloudhsm/}{AWS CloudHSM}, the \href{https://docs.aws.amazon.com/cloudhsm/latest/userguide/}{AWS CloudHSM User Guide}, and the
+\href{https://docs.aws.amazon.com/cloudhsm/latest/APIReference/}{AWS CloudHSM API Reference}.
 
 Modifies the certificate used by the client.
 
 This action can potentially start a workflow to install the new
-certificate on the client\'s HSMs.
+certificate on the client's HSMs.
 }
 \section{Request syntax}{
 \preformatted{svc$modify_luna_client(

@@ -23,6 +23,11 @@ Updates the status or configuration of a private certificate authority
 (CA). Your private CA must be in the \code{ACTIVE} or \code{DISABLED} state before
 you can update it. You can disable a private CA that is in the \code{ACTIVE}
 state or make a CA that is in the \code{DISABLED} state active again.
+
+Both PCA and the IAM principal must have permission to write to the S3
+bucket that you specify. If the IAM principal making the call does not
+have permission to write to the bucket, then an exception is thrown. For
+more information, see \href{https://docs.aws.amazon.com/acm-pca/latest/userguide/}{Configure Access to ACM Private CA}.
 }
 \section{Request syntax}{
 \preformatted{svc$update_certificate_authority(

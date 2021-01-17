@@ -18,8 +18,7 @@ sessions and that any resources used by the role in the linked service
 are deleted. If you call this operation more than once for the same
 service-linked role and an earlier deletion task is not complete, then
 the \code{DeletionTaskId} of the earlier request is returned.
-}
-\details{
+
 If you submit a deletion request for a service-linked role whose linked
 service is still accessing a resource, then the deletion task fails. If
 it fails, the GetServiceLinkedRoleDeletionStatus API operation returns
@@ -28,7 +27,7 @@ deleted. To delete the service-linked role, you must first remove those
 resources from the linked service and then submit the deletion request
 again. Resources are specific to the service that is linked to the role.
 For more information about removing resources from a service, see the
-\href{http://docs.aws.amazon.com/}{AWS documentation} for your service.
+\href{https://docs.aws.amazon.com/}{AWS documentation} for your service.
 
 For more information about service-linked roles, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_terms-and-concepts.html#iam-term-service-linked-role}{Roles Terms and Concepts: AWS Service-Linked Role}
 in the \emph{IAM User Guide}.

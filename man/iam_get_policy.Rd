@@ -17,20 +17,19 @@ in the \emph{AWS General Reference}.}
 }
 \description{
 Retrieves information about the specified managed policy, including the
-policy\'s default version and the total number of IAM users, groups, and
+policy's default version and the total number of IAM users, groups, and
 roles to which the policy is attached. To retrieve the list of the
 specific users, groups, and roles that the policy is attached to, use
 the ListEntitiesForPolicy API. This API returns metadata about the
 policy. To retrieve the actual policy document for a specific version of
 the policy, use GetPolicyVersion.
-}
-\details{
+
 This API retrieves information about managed policies. To retrieve
 information about an inline policy that is embedded with an IAM user,
 group, or role, use the GetUserPolicy, GetGroupPolicy, or GetRolePolicy
 API.
 
-For more information about policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html}{Managed Policies and Inline Policies}
+For more information about policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html}{Managed Policies and Inline Policies}
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{

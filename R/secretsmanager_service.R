@@ -12,7 +12,7 @@ NULL
 #' 
 #' This guide provides descriptions of the Secrets Manager API. For more
 #' information about using this service, see the [AWS Secrets Manager User
-#' Guide](https://docs.aws.amazon.com/secretsmanager/latest/userguide/introduction.html).
+#' Guide](https://docs.aws.amazon.com/secretsmanager/latest/userguide/).
 #' 
 #' **API Version**
 #' 
@@ -26,7 +26,8 @@ NULL
 #' Secrets Manager. For example, the SDKs provide cryptographically signing
 #' requests, managing errors, and retrying requests automatically. For more
 #' information about the AWS SDKs, including downloading and installing
-#' them, see [Tools for Amazon Web Services](http://aws.amazon.com/tools/).
+#' them, see [Tools for Amazon Web
+#' Services](https://aws.amazon.com/tools/).
 #' 
 #' We recommend you use the AWS SDKs to make programmatic API calls to
 #' Secrets Manager. However, you also can use the Secrets Manager HTTP
@@ -36,7 +37,7 @@ NULL
 #' in the *AWS Secrets Manager User Guide*.
 #' 
 #' Secrets Manager API supports GET and POST requests for all actions, and
-#' doesn\'t require you to use GET for some actions and POST for others.
+#' doesn't require you to use GET for some actions and POST for others.
 #' However, GET requests are subject to the limitation size of a URL.
 #' Therefore, for operations that require larger sizes, use a POST request.
 #' 
@@ -45,9 +46,9 @@ NULL
 #' We welcome your feedback. Send your comments to
 #' <awssecretsmanager-feedback@@amazon.com>, or post your feedback and
 #' questions in the [AWS Secrets Manager Discussion
-#' Forum](http://forums.aws.amazon.com/forum.jspa?forumID=296). For more
+#' Forum](https://forums.aws.amazon.com/forum.jspa?forumID=296). For more
 #' information about the AWS Discussion Forums, see [Forums
-#' Help](http://forums.aws.amazon.com/help.jspa).
+#' Help](https://forums.aws.amazon.com:443/help.jspa).
 #' 
 #' **How examples are presented**
 #' 
@@ -64,16 +65,16 @@ NULL
 #' 
 #' AWS Secrets Manager supports AWS CloudTrail, a service that records AWS
 #' API calls for your AWS account and delivers log files to an Amazon S3
-#' bucket. By using information that\'s collected by AWS CloudTrail, you
-#' can determine the requests successfully made to Secrets Manager, who
-#' made the request, when it was made, and so on. For more about AWS
-#' Secrets Manager and support for AWS CloudTrail, see [Logging AWS Secrets
-#' Manager Events with AWS
-#' CloudTrail](http://docs.aws.amazon.com/secretsmanager/latest/userguide/monitoring.html#monitoring_cloudtrail)
+#' bucket. By using information that's collected by AWS CloudTrail, you can
+#' determine the requests successfully made to Secrets Manager, who made
+#' the request, when it was made, and so on. For more about AWS Secrets
+#' Manager and support for AWS CloudTrail, see [Logging AWS Secrets Manager
+#' Events with AWS
+#' CloudTrail](https://docs.aws.amazon.com/secretsmanager/latest/userguide/monitoring.html#monitoring_cloudtrail)
 #' in the *AWS Secrets Manager User Guide*. To learn more about CloudTrail,
 #' including enabling it and find your log files, see the [AWS CloudTrail
 #' User
-#' Guide](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/what_is_cloud_trail_top_level.html).
+#' Guide](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html).
 #'
 #' @param
 #' config
@@ -111,25 +112,25 @@ NULL
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[=secretsmanager_cancel_rotate_secret]{cancel_rotate_secret} \tab Disables automatic scheduled rotation and cancels the rotation of a secret if currently in progress \cr
-#'  \link[=secretsmanager_create_secret]{create_secret} \tab Creates a new secret \cr
-#'  \link[=secretsmanager_delete_resource_policy]{delete_resource_policy} \tab Deletes the resource-based permission policy attached to the secret \cr
-#'  \link[=secretsmanager_delete_secret]{delete_secret} \tab Deletes an entire secret and all of its versions \cr
-#'  \link[=secretsmanager_describe_secret]{describe_secret} \tab Retrieves the details of a secret \cr
-#'  \link[=secretsmanager_get_random_password]{get_random_password} \tab Generates a random password of the specified complexity \cr
-#'  \link[=secretsmanager_get_resource_policy]{get_resource_policy} \tab Retrieves the JSON text of the resource-based policy document attached to the specified secret \cr
+#'  \link[=secretsmanager_cancel_rotate_secret]{cancel_rotate_secret} \tab Disables automatic scheduled rotation and cancels the rotation of a secret if currently in progress\cr
+#'  \link[=secretsmanager_create_secret]{create_secret} \tab Creates a new secret\cr
+#'  \link[=secretsmanager_delete_resource_policy]{delete_resource_policy} \tab Deletes the resource-based permission policy attached to the secret\cr
+#'  \link[=secretsmanager_delete_secret]{delete_secret} \tab Deletes an entire secret and all of its versions\cr
+#'  \link[=secretsmanager_describe_secret]{describe_secret} \tab Retrieves the details of a secret\cr
+#'  \link[=secretsmanager_get_random_password]{get_random_password} \tab Generates a random password of the specified complexity\cr
+#'  \link[=secretsmanager_get_resource_policy]{get_resource_policy} \tab Retrieves the JSON text of the resource-based policy document attached to the specified secret\cr
 #'  \link[=secretsmanager_get_secret_value]{get_secret_value} \tab Retrieves the contents of the encrypted fields SecretString or SecretBinary from the specified version of a secret, whichever contains content\cr
-#'  \link[=secretsmanager_list_secrets]{list_secrets} \tab Lists all of the secrets that are stored by Secrets Manager in the AWS account \cr
-#'  \link[=secretsmanager_list_secret_version_ids]{list_secret_version_ids} \tab Lists all of the versions attached to the specified secret \cr
-#'  \link[=secretsmanager_put_resource_policy]{put_resource_policy} \tab Attaches the contents of the specified resource-based permission policy to a secret \cr
-#'  \link[=secretsmanager_put_secret_value]{put_secret_value} \tab Stores a new encrypted secret value in the specified secret \cr
-#'  \link[=secretsmanager_restore_secret]{restore_secret} \tab Cancels the scheduled deletion of a secret by removing the DeletedDate time stamp \cr
-#'  \link[=secretsmanager_rotate_secret]{rotate_secret} \tab Configures and starts the asynchronous process of rotating this secret \cr
-#'  \link[=secretsmanager_tag_resource]{tag_resource} \tab Attaches one or more tags, each consisting of a key name and a value, to the specified secret \cr
-#'  \link[=secretsmanager_untag_resource]{untag_resource} \tab Removes one or more tags from the specified secret \cr
-#'  \link[=secretsmanager_update_secret]{update_secret} \tab Modifies many of the details of the specified secret \cr
-#'  \link[=secretsmanager_update_secret_version_stage]{update_secret_version_stage} \tab Modifies the staging labels attached to a version of a secret \cr
-#'  \link[=secretsmanager_validate_resource_policy]{validate_resource_policy} \tab Validates the JSON text of the resource-based policy document attached to the specified secret 
+#'  \link[=secretsmanager_list_secrets]{list_secrets} \tab Lists all of the secrets that are stored by Secrets Manager in the AWS account\cr
+#'  \link[=secretsmanager_list_secret_version_ids]{list_secret_version_ids} \tab Lists all of the versions attached to the specified secret\cr
+#'  \link[=secretsmanager_put_resource_policy]{put_resource_policy} \tab Attaches the contents of the specified resource-based permission policy to a secret\cr
+#'  \link[=secretsmanager_put_secret_value]{put_secret_value} \tab Stores a new encrypted secret value in the specified secret\cr
+#'  \link[=secretsmanager_restore_secret]{restore_secret} \tab Cancels the scheduled deletion of a secret by removing the DeletedDate time stamp\cr
+#'  \link[=secretsmanager_rotate_secret]{rotate_secret} \tab Configures and starts the asynchronous process of rotating this secret\cr
+#'  \link[=secretsmanager_tag_resource]{tag_resource} \tab Attaches one or more tags, each consisting of a key name and a value, to the specified secret\cr
+#'  \link[=secretsmanager_untag_resource]{untag_resource} \tab Removes one or more tags from the specified secret\cr
+#'  \link[=secretsmanager_update_secret]{update_secret} \tab Modifies many of the details of the specified secret\cr
+#'  \link[=secretsmanager_update_secret_version_stage]{update_secret_version_stage} \tab Modifies the staging labels attached to a version of a secret\cr
+#'  \link[=secretsmanager_validate_resource_policy]{validate_resource_policy} \tab Validates the JSON text of the resource-based policy document attached to the specified secret
 #' }
 #'
 #' @rdname secretsmanager

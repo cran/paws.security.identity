@@ -18,15 +18,16 @@ message.}
 \item{Username}{[required] The user name of the user for whom you want to enter a code to retrieve
 a forgotten password.}
 
-\item{ConfirmationCode}{[required] The confirmation code sent by a user\'s request to retrieve a forgotten
-password. For more information, see}
+\item{ConfirmationCode}{[required] The confirmation code sent by a user's request to retrieve a forgotten
+password. For more information, see
+\href{https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_ForgotPassword.html}{ForgotPassword}.}
 
-\item{Password}{[required] The password sent by a user\'s request to retrieve a forgotten password.}
+\item{Password}{[required] The password sent by a user's request to retrieve a forgotten password.}
 
 \item{AnalyticsMetadata}{The Amazon Pinpoint analytics metadata for collecting metrics for
 \code{ConfirmForgotPassword} calls.}
 
-\item{UserContextData}{Contextual data such as the user\'s device fingerprint, IP address, or
+\item{UserContextData}{Contextual data such as the user's device fingerprint, IP address, or
 location used for evaluating the risk of an unexpected event by Amazon
 Cognito advanced security.}
 
@@ -56,7 +57,7 @@ does not include triggers, the ClientMetadata parameter serves no
 purpose.
 \item Amazon Cognito does not validate the ClientMetadata value.
 \item Amazon Cognito does not encrypt the the ClientMetadata value, so
-don\'t use it to provide sensitive information.
+don't use it to provide sensitive information.
 }}
 }
 \description{

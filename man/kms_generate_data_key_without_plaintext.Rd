@@ -59,15 +59,14 @@ Generates a unique symmetric data key. This operation returns a data key
 that is encrypted under a customer master key (CMK) that you specify. To
 request an asymmetric data key pair, use the GenerateDataKeyPair or
 GenerateDataKeyPairWithoutPlaintext operations.
-}
-\details{
+
 \code{GenerateDataKeyWithoutPlaintext} is identical to the GenerateDataKey
 operation except that returns only the encrypted copy of the data key.
 This operation is useful for systems that need to encrypt data at some
 point, but not immediately. When you need to encrypt the data, you call
 the Decrypt operation on the encrypted copy of the key.
 
-It\'s also useful in distributed systems with different levels of trust.
+It's also useful in distributed systems with different levels of trust.
 For example, you might store encrypted data in containers. One component
 of your system creates new containers and stores an encrypted data key
 with each container. Then, a different component puts the data into the
@@ -99,6 +98,23 @@ in the \emph{AWS Key Management Service Developer Guide}.
 The CMK that you use for this operation must be in a compatible key
 state. For details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key}
 in the \emph{AWS Key Management Service Developer Guide}.
+
+\strong{Cross-account use}: Yes. To perform this operation with a CMK in a
+different AWS account, specify the key ARN or alias ARN in the value of
+the \code{KeyId} parameter.
+
+\strong{Required permissions}:
+\href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html}{kms:GenerateDataKeyWithoutPlaintext}
+(key policy)
+
+\strong{Related operations:}
+\itemize{
+\item Decrypt
+\item Encrypt
+\item GenerateDataKey
+\item GenerateDataKeyPair
+\item GenerateDataKeyPairWithoutPlaintext
+}
 }
 \section{Request syntax}{
 \preformatted{svc$generate_data_key_without_plaintext(

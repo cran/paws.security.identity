@@ -25,8 +25,9 @@ in the \emph{AWS General Reference}.}
 simulation. Each document is specified as a string containing the
 complete, valid JSON text of an IAM policy.
 
-The \href{http://wikipedia.org/wiki/regex}{regex pattern} used to validate
-this parameter is a string of characters consisting of the following:
+The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} used to
+validate this parameter is a string of characters consisting of the
+following:
 \itemize{
 \item Any printable ASCII character ranging from the space character
 (\code{U+0020}) through the end of the ASCII character range
@@ -49,8 +50,9 @@ in the \emph{IAM User Guide}. The policy input is specified as a string
 containing the complete, valid JSON text of a permissions boundary
 policy.
 
-The \href{http://wikipedia.org/wiki/regex}{regex pattern} used to validate
-this parameter is a string of characters consisting of the following:
+The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} used to
+validate this parameter is a string of characters consisting of the
+following:
 \itemize{
 \item Any printable ASCII character ranging from the space character
 (\code{U+0020}) through the end of the ASCII character range
@@ -83,8 +85,9 @@ string. Each resource in the simulation is treated as if it had this
 policy attached. You can include only one resource-based policy in a
 simulation.
 
-The \href{http://wikipedia.org/wiki/regex}{regex pattern} used to validate
-this parameter is a string of characters consisting of the following:
+The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} used to
+validate this parameter is a string of characters consisting of the
+following:
 \itemize{
 \item Any printable ASCII character ranging from the space character
 (\code{U+0020}) through the end of the ASCII character range
@@ -111,14 +114,14 @@ to the ARN of the user that you specify in \code{PolicySourceArn}, if you
 specified a user. If you include both a \code{PolicySourceArn} (for example,
 \verb{arn:aws:iam::123456789012:user/David}) and a \code{CallerArn} (for example,
 \verb{arn:aws:iam::123456789012:user/Bob}), the result is that you simulate
-calling the API operations as Bob, as if Bob had David\'s policies.
+calling the API operations as Bob, as if Bob had David's policies.
 
 You can specify only the ARN of an IAM user. You cannot specify the ARN
 of an assumed role, federated user, or a service principal.
 
 \code{CallerArn} is required if you include a \code{ResourcePolicy} and the
 \code{PolicySourceArn} is not the ARN for an IAM user. This is required so
-that the resource-based policy\'s \code{Principal} element has a value to use
+that the resource-based policy's \code{Principal} element has a value to use
 in evaluating the policy.
 
 For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}
@@ -142,7 +145,7 @@ security group resources. If your scenario includes an EBS volume, then
 you must specify that volume as a resource. If the EC2 scenario includes
 VPC, then you must supply the network interface resource. If it includes
 an IP subnet, then you must specify the subnet resource. For more
-information on the EC2 scenario options, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html}{Supported Platforms}
+information on the EC2 scenario options, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-classic-platform.html}{Supported Platforms}
 in the \emph{Amazon EC2 User Guide}.
 \itemize{
 \item \strong{EC2-Classic-InstanceStore}
@@ -182,12 +185,11 @@ indicate where the next call should start.}
 }
 \description{
 Simulate how a set of IAM policies attached to an IAM entity works with
-a list of API operations and AWS resources to determine the policies\'
+a list of API operations and AWS resources to determine the policies'
 effective permissions. The entity can be an IAM user, group, or role. If
 you specify a user, then the simulation also includes all of the
 policies that are attached to groups that the user belongs to.
-}
-\details{
+
 You can optionally include a list of one or more additional policies
 specified as strings to include in the simulation. If you want to
 simulate only policies specified as strings, use SimulateCustomPolicy
@@ -201,7 +203,7 @@ authorization to determine if the simulated policies allow or deny the
 operations.
 
 \strong{Note:} This API discloses information about the permissions granted
-to other users. If you do not want users to see other user\'s
+to other users. If you do not want users to see other user's
 permissions, then consider allowing them to use SimulateCustomPolicy
 instead.
 

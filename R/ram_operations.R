@@ -5,6 +5,7 @@ NULL
 
 #' Accepts an invitation to a resource share from another AWS account
 #'
+#' @description
 #' Accepts an invitation to a resource share from another AWS account.
 #'
 #' @usage
@@ -46,6 +47,7 @@ ram_accept_resource_share_invitation <- function(resourceShareInvitationArn, cli
 #' Associates the specified resource share with the specified principals
 #' and resources
 #'
+#' @description
 #' Associates the specified resource share with the specified principals
 #' and resources.
 #'
@@ -95,6 +97,7 @@ ram_associate_resource_share <- function(resourceShareArn, resourceArns = NULL, 
 
 #' Associates a permission with a resource share
 #'
+#' @description
 #' Associates a permission with a resource share.
 #'
 #' @usage
@@ -142,6 +145,7 @@ ram_associate_resource_share_permission <- function(resourceShareArn, permission
 
 #' Creates a resource share
 #'
+#' @description
 #' Creates a resource share.
 #'
 #' @usage
@@ -209,6 +213,7 @@ ram_create_resource_share <- function(name, resourceArns = NULL, principals = NU
 
 #' Deletes the specified resource share
 #'
+#' @description
 #' Deletes the specified resource share.
 #'
 #' @usage
@@ -249,6 +254,7 @@ ram_delete_resource_share <- function(resourceShareArn, clientToken = NULL) {
 #' Disassociates the specified principals or resources from the specified
 #' resource share
 #'
+#' @description
 #' Disassociates the specified principals or resources from the specified
 #' resource share.
 #'
@@ -298,6 +304,7 @@ ram_disassociate_resource_share <- function(resourceShareArn, resourceArns = NUL
 
 #' Disassociates an AWS RAM permission from a resource share
 #'
+#' @description
 #' Disassociates an AWS RAM permission from a resource share.
 #'
 #' @usage
@@ -340,6 +347,7 @@ ram_disassociate_resource_share_permission <- function(resourceShareArn, permiss
 
 #' Enables resource sharing within your AWS Organization
 #'
+#' @description
 #' Enables resource sharing within your AWS Organization.
 #' 
 #' The caller must be the master account for the AWS Organization.
@@ -374,6 +382,7 @@ ram_enable_sharing_with_aws_organization <- function() {
 
 #' Gets the contents of an AWS RAM permission in JSON format
 #'
+#' @description
 #' Gets the contents of an AWS RAM permission in JSON format.
 #'
 #' @usage
@@ -413,6 +422,7 @@ ram_get_permission <- function(permissionArn, permissionVersion = NULL) {
 #' Gets the policies for the specified resources that you own and have
 #' shared
 #'
+#' @description
 #' Gets the policies for the specified resources that you own and have
 #' shared.
 #'
@@ -461,6 +471,7 @@ ram_get_resource_policies <- function(resourceArns, principal = NULL, nextToken 
 
 #' Gets the resources or principals for the resource shares that you own
 #'
+#' @description
 #' Gets the resources or principals for the resource shares that you own.
 #'
 #' @usage
@@ -519,7 +530,8 @@ ram_get_resource_share_associations <- function(associationType, resourceShareAr
 
 #' Gets the invitations for resource sharing that you've received
 #'
-#' Gets the invitations for resource sharing that you\'ve received.
+#' @description
+#' Gets the invitations for resource sharing that you've received.
 #'
 #' @usage
 #' ram_get_resource_share_invitations(resourceShareInvitationArns,
@@ -569,6 +581,7 @@ ram_get_resource_share_invitations <- function(resourceShareInvitationArns = NUL
 #' Gets the resource shares that you own or the resource shares that are
 #' shared with you
 #'
+#' @description
 #' Gets the resource shares that you own or the resource shares that are
 #' shared with you.
 #'
@@ -631,6 +644,7 @@ ram_get_resource_shares <- function(resourceShareArns = NULL, resourceShareStatu
 #' Lists the resources in a resource share that is shared with you but that
 #' the invitation is still pending for
 #'
+#' @description
 #' Lists the resources in a resource share that is shared with you but that
 #' the invitation is still pending for.
 #'
@@ -675,6 +689,7 @@ ram_list_pending_invitation_resources <- function(resourceShareInvitationArn, ne
 
 #' Lists the AWS RAM permissions
 #'
+#' @description
 #' Lists the AWS RAM permissions.
 #'
 #' @usage
@@ -720,6 +735,7 @@ ram_list_permissions <- function(resourceType = NULL, nextToken = NULL, maxResul
 #' Lists the principals that you have shared resources with or that have
 #' shared resources with you
 #'
+#' @description
 #' Lists the principals that you have shared resources with or that have
 #' shared resources with you.
 #'
@@ -732,13 +748,12 @@ ram_list_permissions <- function(resourceType = NULL, nextToken = NULL, maxResul
 #' @param principals The principals.
 #' @param resourceType The resource type.
 #' 
-#' Valid values: `codebuild:Project` \\| `codebuild:ReportGroup` \\|
-#' `ec2:CapacityReservation` \\| `ec2:DedicatedHost` \\| `ec2:Subnet` \\|
-#' `ec2:TrafficMirrorTarget` \\| `ec2:TransitGateway` \\|
-#' `imagebuilder:Component` \\| `imagebuilder:Image` \\|
-#' `imagebuilder:ImageRecipe` \\| `license-manager:LicenseConfiguration` I
-#' `resource-groups:Group` \\| `rds:Cluster` \\|
-#' `route53resolver:ResolverRule`
+#' Valid values: `codebuild:Project` | `codebuild:ReportGroup` |
+#' `ec2:CapacityReservation` | `ec2:DedicatedHost` | `ec2:Subnet` |
+#' `ec2:TrafficMirrorTarget` | `ec2:TransitGateway` |
+#' `imagebuilder:Component` | `imagebuilder:Image` |
+#' `imagebuilder:ImageRecipe` | `license-manager:LicenseConfiguration` I
+#' `resource-groups:Group` | `rds:Cluster` | `route53resolver:ResolverRule`
 #' @param resourceShareArns The Amazon Resource Names (ARN) of the resource shares.
 #' @param nextToken The token for the next page of results.
 #' @param maxResults The maximum number of results to return with a single call. To retrieve
@@ -784,6 +799,7 @@ ram_list_principals <- function(resourceOwner, resourceArn = NULL, principals = 
 
 #' Lists the AWS RAM permissions that are associated with a resource share
 #'
+#' @description
 #' Lists the AWS RAM permissions that are associated with a resource share.
 #'
 #' @usage
@@ -827,6 +843,7 @@ ram_list_resource_share_permissions <- function(resourceShareArn, nextToken = NU
 
 #' Lists the shareable resource types supported by AWS RAM
 #'
+#' @description
 #' Lists the shareable resource types supported by AWS RAM.
 #'
 #' @usage
@@ -868,6 +885,7 @@ ram_list_resource_types <- function(nextToken = NULL, maxResults = NULL) {
 #' Lists the resources that you added to a resource shares or the resources
 #' that are shared with you
 #'
+#' @description
 #' Lists the resources that you added to a resource shares or the resources
 #' that are shared with you.
 #'
@@ -879,13 +897,12 @@ ram_list_resource_types <- function(nextToken = NULL, maxResults = NULL) {
 #' @param principal The principal.
 #' @param resourceType The resource type.
 #' 
-#' Valid values: `codebuild:Project` \\| `codebuild:ReportGroup` \\|
-#' `ec2:CapacityReservation` \\| `ec2:DedicatedHost` \\| `ec2:Subnet` \\|
-#' `ec2:TrafficMirrorTarget` \\| `ec2:TransitGateway` \\|
-#' `imagebuilder:Component` \\| `imagebuilder:Image` \\|
-#' `imagebuilder:ImageRecipe` \\| `license-manager:LicenseConfiguration` I
-#' `resource-groups:Group` \\| `rds:Cluster` \\|
-#' `route53resolver:ResolverRule`
+#' Valid values: `codebuild:Project` | `codebuild:ReportGroup` |
+#' `ec2:CapacityReservation` | `ec2:DedicatedHost` | `ec2:Subnet` |
+#' `ec2:TrafficMirrorTarget` | `ec2:TransitGateway` |
+#' `imagebuilder:Component` | `imagebuilder:Image` |
+#' `imagebuilder:ImageRecipe` | `license-manager:LicenseConfiguration` I
+#' `resource-groups:Group` | `rds:Cluster` | `route53resolver:ResolverRule`
 #' @param resourceArns The Amazon Resource Names (ARN) of the resources.
 #' @param resourceShareArns The Amazon Resource Names (ARN) of the resource shares.
 #' @param nextToken The token for the next page of results.
@@ -934,6 +951,7 @@ ram_list_resources <- function(resourceOwner, principal = NULL, resourceType = N
 #' are visible only to the resource share owner, and the resource share
 #' cannot be modified in AWS RAM
 #'
+#' @description
 #' Resource shares that were created by attaching a policy to a resource
 #' are visible only to the resource share owner, and the resource share
 #' cannot be modified in AWS RAM.
@@ -979,6 +997,7 @@ ram_promote_resource_share_created_from_policy <- function(resourceShareArn) {
 
 #' Rejects an invitation to a resource share from another AWS account
 #'
+#' @description
 #' Rejects an invitation to a resource share from another AWS account.
 #'
 #' @usage
@@ -1019,6 +1038,7 @@ ram_reject_resource_share_invitation <- function(resourceShareInvitationArn, cli
 
 #' Adds the specified tags to the specified resource share that you own
 #'
+#' @description
 #' Adds the specified tags to the specified resource share that you own.
 #'
 #' @usage
@@ -1063,6 +1083,7 @@ ram_tag_resource <- function(resourceShareArn, tags) {
 #' Removes the specified tags from the specified resource share that you
 #' own
 #'
+#' @description
 #' Removes the specified tags from the specified resource share that you
 #' own.
 #'
@@ -1104,6 +1125,7 @@ ram_untag_resource <- function(resourceShareArn, tagKeys) {
 
 #' Updates the specified resource share that you own
 #'
+#' @description
 #' Updates the specified resource share that you own.
 #'
 #' @usage

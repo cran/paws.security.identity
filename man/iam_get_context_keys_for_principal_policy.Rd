@@ -24,8 +24,9 @@ in the \emph{AWS General Reference}.}
 \item{PolicyInputList}{An optional list of additional policies for which you want the list of
 context keys that are referenced.
 
-The \href{http://wikipedia.org/wiki/regex}{regex pattern} used to validate
-this parameter is a string of characters consisting of the following:
+The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} used to
+validate this parameter is a string of characters consisting of the
+following:
 \itemize{
 \item Any printable ASCII character ranging from the space character
 (\code{U+0020}) through the end of the ASCII character range
@@ -41,14 +42,13 @@ policies that are attached to the specified IAM entity. The entity can
 be an IAM user, group, or role. If you specify a user, then the request
 also includes all of the policies attached to groups that the user is a
 member of.
-}
-\details{
+
 You can optionally include a list of one or more additional policies,
 specified as strings. If you want to include \emph{only} a list of policies
 by string, use GetContextKeysForCustomPolicy instead.
 
 \strong{Note:} This API discloses information about the permissions granted
-to other users. If you do not want users to see other user\'s
+to other users. If you do not want users to see other user's
 permissions, then consider allowing them to use
 GetContextKeysForCustomPolicy instead.
 

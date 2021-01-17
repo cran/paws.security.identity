@@ -24,12 +24,12 @@ of the finding provider.}
 
 The available values for \code{VerificationState} are as follows.
 \itemize{
-\item \code{UNKNOWN} -- The default disposition of a security finding
-\item \code{TRUE_POSITIVE} -- The security finding is confirmed
-\item \code{FALSE_POSITIVE} -- The security finding was determined to be a
-false alarm
-\item \code{BENIGN_POSITIVE} -- A special case of \code{TRUE_POSITIVE} where the
-finding doesn\'t pose any threat, is expected, or both
+\item \code{UNKNOWN} – The default disposition of a security finding
+\item \code{TRUE_POSITIVE} – The security finding is confirmed
+\item \code{FALSE_POSITIVE} – The security finding was determined to be a false
+alarm
+\item \code{BENIGN_POSITIVE} – A special case of \code{TRUE_POSITIVE} where the
+finding doesn't pose any threat, is expected, or both
 }}
 
 \item{Confidence}{The updated value for the finding confidence. Confidence is defined as
@@ -73,13 +73,12 @@ investigation into a finding. Requested by master accounts or member
 accounts. Master accounts can update findings for their account and
 their member accounts. Member accounts can update findings for their
 account.
-}
-\details{
+
 Updates from \code{BatchUpdateFindings} do not affect the value of
 \code{UpdatedAt} for a finding.
 
-Master accounts can use \code{BatchUpdateFindings} to update the following
-finding fields and objects.
+Master and member accounts can use \code{BatchUpdateFindings} to update the
+following finding fields and objects.
 \itemize{
 \item \code{Confidence}
 \item \code{Criticality}
@@ -92,8 +91,10 @@ finding fields and objects.
 \item \code{Workflow}
 }
 
-Member accounts can only use \code{BatchUpdateFindings} to update the Note
-object.
+You can configure IAM policies to restrict access to fields and field
+values. For example, you might not want member accounts to be able to
+suppress findings or change the finding severity. See \href{https://docs.aws.amazon.com/securityhub/latest/userguide/finding-update-batchupdatefindings.html#batchupdatefindings-configure-access}{Configuring access to BatchUpdateFindings}
+in the \emph{AWS Security Hub User Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$batch_update_findings(

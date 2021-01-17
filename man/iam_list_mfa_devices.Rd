@@ -9,7 +9,7 @@ iam_list_mfa_devices(UserName, Marker, MaxItems)
 \arguments{
 \item{UserName}{The name of the user whose MFA devices you want to list.
 
-This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters
+This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: \\_+=,.@-}
 
@@ -34,8 +34,7 @@ user name, then this operation lists all the MFA devices associated with
 the specified user. If you do not specify a user name, IAM determines
 the user name implicitly based on the AWS access key ID signing the
 request for this API.
-}
-\details{
+
 You can paginate the results using the \code{MaxItems} and \code{Marker}
 parameters.
 }

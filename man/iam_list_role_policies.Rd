@@ -10,7 +10,7 @@ iam_list_role_policies(RoleName, Marker, MaxItems)
 \arguments{
 \item{RoleName}{[required] The name of the role to list policies for.
 
-This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters
+This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: \\_+=,.@-}
 
@@ -32,12 +32,11 @@ subsequent call that tells the service where to continue from.}
 \description{
 Lists the names of the inline policies that are embedded in the
 specified IAM role.
-}
-\details{
+
 An IAM role can also have managed policies attached to it. To list the
 managed policies that are attached to a role, use
 ListAttachedRolePolicies. For more information about policies, see
-\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html}{Managed Policies and Inline Policies}
+\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html}{Managed Policies and Inline Policies}
 in the \emph{IAM User Guide}.
 
 You can paginate the results using the \code{MaxItems} and \code{Marker}

@@ -22,7 +22,7 @@ developer user identifiers, in keeping with the number of users.}
 
 \item{NextToken}{A pagination token. The first call you make will have \code{NextToken} set to
 null. After that the service will return \code{NextToken} values as needed.
-For example, let\'s say you make a request with \code{MaxResults} set to 10,
+For example, let's say you make a request with \code{MaxResults} set to 10,
 and there are 20 matches in the database. The service will return a
 pagination token as a part of the response. This token can be used to
 call the API again and get results starting from the 11th match.}
@@ -38,8 +38,7 @@ returned as a part of the response. If you supply both,
 values are verified against the database, the response returns both
 values and is the same as the request. Otherwise a
 \code{ResourceConflictException} is thrown.
-}
-\details{
+
 \code{LookupDeveloperIdentity} is intended for low-throughput control plane
 operations: for example, to enable customer service to locate an
 identity ID by username. If you are using it for higher-volume

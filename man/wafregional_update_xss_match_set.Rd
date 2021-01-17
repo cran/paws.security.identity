@@ -2,7 +2,7 @@
 % Please edit documentation in R/wafregional_operations.R
 \name{wafregional_update_xss_match_set}
 \alias{wafregional_update_xss_match_set}
-\title{This is AWS WAF CLASSIC documentation}
+\title{This is AWS WAF Classic documentation}
 \usage{
 wafregional_update_xss_match_set(XssMatchSetId, ChangeToken, Updates)
 }
@@ -26,8 +26,7 @@ data types:
 This is \strong{AWS WAF Classic} documentation. For more information, see
 \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}
 in the developer guide.
-}
-\details{
+
 \strong{For the latest version of AWS WAF}, use the AWS WAFV2 API and see the
 \href{https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html}{AWS WAF Developer Guide}.
 With the latest version, AWS WAF has a single set of endpoints for
@@ -50,7 +49,7 @@ You can only specify a single type of TextTransformation.
 }
 
 You use \code{XssMatchSet} objects to specify which CloudFront requests that
-you want to allow, block, or count. For example, if you\'re receiving
+you want to allow, block, or count. For example, if you're receiving
 requests that contain cross-site scripting attacks in the request body
 and you want to block the requests, you can create an \code{XssMatchSet} with
 the applicable settings, and then configure AWS WAF to block the

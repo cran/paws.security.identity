@@ -11,15 +11,15 @@ cognitoidentity_get_credentials_for_identity(IdentityId, Logins,
 \item{IdentityId}{[required] A unique identifier in the format REGION:GUID.}
 
 \item{Logins}{A set of optional name-value pairs that map provider names to provider
-tokens. The name-value pair will follow the syntax \"provider\\_name\":
-\"provider\\_user\\_identifier\".
+tokens. The name-value pair will follow the syntax "provider\\_name":
+"provider\\_user\\_identifier".
 
 Logins should not be specified when trying to get credentials for an
 unauthenticated identity.
 
 The Logins parameter is required when using identities associated with
 external identity providers such as FaceBook. For examples of \code{Logins}
-maps, see the code examples in the \href{http://docs.aws.amazon.com/cognito/latest/developerguide/external-identity-providers.html}{External Identity Providers}
+maps, see the code examples in the \href{https://docs.aws.amazon.com/cognito/latest/developerguide/external-identity-providers.html}{External Identity Providers}
 section of the Amazon Cognito Developer Guide.}
 
 \item{CustomRoleArn}{The Amazon Resource Name (ARN) of the role to be assumed when multiple
@@ -32,8 +32,7 @@ Returns credentials for the provided identity ID. Any provided logins
 will be validated against supported login providers. If the token is for
 cognito-identity.amazonaws.com, it will be passed through to AWS
 Security Token Service with the appropriate role for the token.
-}
-\details{
+
 This is a public API. You do not need any credentials to call this API.
 }
 \section{Request syntax}{

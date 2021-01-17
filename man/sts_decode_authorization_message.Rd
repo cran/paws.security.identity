@@ -13,8 +13,7 @@ sts_decode_authorization_message(EncodedMessage)
 \description{
 Decodes additional information about the authorization status of a
 request from an encoded message returned in response to an AWS request.
-}
-\details{
+
 For example, if a user is not authorized to perform an operation that he
 or she has requested, the request returns a
 \code{Client.UnauthorizedOperation} response (an HTTP 403 response). Some AWS
@@ -40,7 +39,7 @@ in the \emph{IAM User Guide}.
 \item The principal who made the request.
 \item The requested action.
 \item The requested resource.
-\item The values of condition keys in the context of the user\'s request.
+\item The values of condition keys in the context of the user's request.
 }
 }
 \section{Request syntax}{

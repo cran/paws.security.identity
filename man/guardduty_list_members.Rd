@@ -2,8 +2,8 @@
 % Please edit documentation in R/guardduty_operations.R
 \name{guardduty_list_members}
 \alias{guardduty_list_members}
-\title{Lists details about all member accounts for the current GuardDuty master
-account}
+\title{Lists details about all member accounts for the current GuardDuty
+administrator account}
 \usage{
 guardduty_list_members(DetectorId, MaxResults, NextToken,
   OnlyAssociated)
@@ -20,12 +20,12 @@ subsequent calls to the action, fill nextToken in the request with the
 value of NextToken from the previous response to continue listing data.}
 
 \item{OnlyAssociated}{Specifies whether to only return associated members or to return all
-members (including members who haven\'t been invited yet or have been
+members (including members who haven't been invited yet or have been
 disassociated).}
 }
 \description{
-Lists details about all member accounts for the current GuardDuty master
-account.
+Lists details about all member accounts for the current GuardDuty
+administrator account.
 }
 \section{Request syntax}{
 \preformatted{svc$list_members(

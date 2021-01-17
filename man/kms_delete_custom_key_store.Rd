@@ -15,8 +15,7 @@ Deletes a \href{https://docs.aws.amazon.com/kms/latest/developerguide/custom-key
 This operation does not delete the AWS CloudHSM cluster that is
 associated with the custom key store, or affect any users or keys in the
 cluster.
-}
-\details{
+
 The custom key store that you delete cannot contain any AWS KMS
 \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#master_keys}{customer master keys (CMKs)}.
 Before deleting the key store, verify that you will never need to use
@@ -44,6 +43,22 @@ This operation is part of the \href{https://docs.aws.amazon.com/kms/latest/devel
 feature in AWS KMS, which combines the convenience and extensive
 integration of AWS KMS with the isolation and control of a single-tenant
 key store.
+
+\strong{Cross-account use}: No. You cannot perform this operation on a custom
+key store in a different AWS account.
+
+\strong{Required permissions}:
+\href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html}{kms:DeleteCustomKeyStore}
+(IAM policy)
+
+\strong{Related operations:}
+\itemize{
+\item ConnectCustomKeyStore
+\item CreateCustomKeyStore
+\item DescribeCustomKeyStores
+\item DisconnectCustomKeyStore
+\item UpdateCustomKeyStore
+}
 }
 \section{Request syntax}{
 \preformatted{svc$delete_custom_key_store(

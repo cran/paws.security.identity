@@ -57,14 +57,13 @@ To verify the signature, use the Verify operation, or use the public key
 in the same asymmetric CMK outside of AWS KMS. For information about
 symmetric and asymmetric CMKs, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html}{Using Symmetric and Asymmetric CMKs}
 in the \emph{AWS Key Management Service Developer Guide}.
-}
-\details{
+
 Digital signatures are generated and verified by using asymmetric key
 pair, such as an RSA or ECC pair that is represented by an asymmetric
 customer master key (CMK). The key owner (or an authorized user) uses
 their private key to sign a message. Anyone with the public key can
 verify that the message was signed with that particular private key and
-that the message hasn\'t changed since it was signed.
+that the message hasn't changed since it was signed.
 
 To use the \code{Sign} operation, provide the following information:
 \itemize{
@@ -91,6 +90,16 @@ and then use the public key to verify the signature outside of AWS KMS.
 The CMK that you use for this operation must be in a compatible key
 state. For details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key}
 in the \emph{AWS Key Management Service Developer Guide}.
+
+\strong{Cross-account use}: Yes. To perform this operation with a CMK in a
+different AWS account, specify the key ARN or alias ARN in the value of
+the \code{KeyId} parameter.
+
+\strong{Required permissions}:
+\href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html}{kms:Sign}
+(key policy)
+
+\strong{Related operations}: Verify
 }
 \section{Request syntax}{
 \preformatted{svc$sign(

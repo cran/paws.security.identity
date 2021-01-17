@@ -16,19 +16,18 @@ in the \emph{AWS General Reference}.}
 
 \item{VersionId}{[required] The version of the policy to set as the default (operative) version.
 
-For more information about managed policy versions, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html}{Versioning for Managed Policies}
+For more information about managed policy versions, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-versioning.html}{Versioning for Managed Policies}
 in the \emph{IAM User Guide}.}
 }
 \description{
-Sets the specified version of the specified policy as the policy\'s
+Sets the specified version of the specified policy as the policy's
 default (operative) version.
-}
-\details{
+
 This operation affects all users, groups, and roles that the policy is
 attached to. To list the users, groups, and roles that the policy is
 attached to, use the ListEntitiesForPolicy API.
 
-For information about managed policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html}{Managed Policies and Inline Policies}
+For information about managed policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html}{Managed Policies and Inline Policies}
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{

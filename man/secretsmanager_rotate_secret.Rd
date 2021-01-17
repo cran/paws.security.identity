@@ -12,20 +12,20 @@ secretsmanager_rotate_secret(SecretId, ClientRequestToken,
 Amazon Resource Name (ARN) or the friendly name of the secret.
 
 If you specify an ARN, we generally recommend that you specify a
-complete ARN. You can specify a partial ARN too---for example, if you
-don't include the final hyphen and six random characters that Secrets
+complete ARN. You can specify a partial ARN too—for example, if you
+don’t include the final hyphen and six random characters that Secrets
 Manager adds at the end of the ARN when you created the secret. A
 partial ARN match can work as long as it uniquely matches only one
 secret. However, if your secret has a name that ends in a hyphen
 followed by six characters (before Secrets Manager adds the hyphen and
 six characters to the ARN) and you try to use that as a partial ARN,
-then those characters cause Secrets Manager to assume that you're
+then those characters cause Secrets Manager to assume that you’re
 specifying a complete ARN. This confusion can cause unexpected results.
-To avoid this situation, we recommend that you don't create secret names
+To avoid this situation, we recommend that you don’t create secret names
 ending with a hyphen followed by six characters.
 
 If you specify an incomplete ARN without the random suffix, and instead
-provide the \'friendly name\', you \emph{must} not include the random suffix.
+provide the 'friendly name', you \emph{must} not include the random suffix.
 If you do include the random suffix added by Secrets Manager, you
 receive either a \emph{ResourceNotFoundException} or an
 \emph{AccessDeniedException} error, depending on your permissions.}
@@ -36,7 +36,7 @@ secret that helps ensure idempotency.
 If you use the AWS CLI or one of the AWS SDK to call this operation,
 then you can leave this parameter empty. The CLI or SDK generates a
 random UUID for you and includes that in the request for this parameter.
-If you don\'t use the SDK and instead generate a raw HTTP request to the
+If you don't use the SDK and instead generate a raw HTTP request to the
 Secrets Manager service endpoint, then you must generate a
 \code{ClientRequestToken} yourself for new versions and include that value in
 the request.
@@ -44,12 +44,12 @@ the request.
 You only need to specify your own value if you implement your own retry
 logic and want to ensure that a given secret is not created twice. We
 recommend that you generate a
-\href{https://wikipedia.org/wiki/Universally_unique_identifier}{UUID-type}
+\href{https://en.wikipedia.org/wiki/Universally_unique_identifier}{UUID-type}
 value to ensure uniqueness within the specified secret.
 
 Secrets Manager uses this value to prevent the accidental creation of
 duplicate versions if there are failures and retries during the
-function\'s processing. This value becomes the \code{VersionId} of the new
+function's processing. This value becomes the \code{VersionId} of the new
 version.}
 
 \item{RotationLambdaARN}{(Optional) Specifies the ARN of the Lambda function that can rotate the
@@ -65,8 +65,7 @@ not include the configuration parameters, the operation starts a
 rotation with the values already stored in the secret. After the
 rotation completes, the protected service and its clients all use the
 new version of the secret.
-}
-\details{
+
 This required configuration information includes the ARN of an AWS
 Lambda function and the time between scheduled rotations. The Lambda
 rotation function creates a new version of the secret and creates or
@@ -105,7 +104,7 @@ returns an error.
 To run this command, you must have the following permissions:
 \itemize{
 \item secretsmanager:RotateSecret
-\item lambda:InvokeFunction (on the function specified in the secret\'s
+\item lambda:InvokeFunction (on the function specified in the secret's
 metadata)
 }
 

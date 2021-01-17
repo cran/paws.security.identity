@@ -10,14 +10,14 @@ iam_update_access_key(UserName, AccessKeyId, Status)
 \arguments{
 \item{UserName}{The name of the user whose key you want to update.
 
-This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters
+This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: \\_+=,.@-}
 
 \item{AccessKeyId}{[required] The access key ID of the secret access key you want to update.
 
-This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters that
-can consist of any upper or lowercased letter or digit.}
+This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
+that can consist of any upper or lowercased letter or digit.}
 
 \item{Status}{[required] The status you want to assign to the secret access key. \code{Active} means
 that the key can be used for API calls to AWS, while \code{Inactive} means
@@ -25,17 +25,16 @@ that the key cannot be used.}
 }
 \description{
 Changes the status of the specified access key from Active to Inactive,
-or vice versa. This operation can be used to disable a user\'s key as
+or vice versa. This operation can be used to disable a user's key as
 part of a key rotation workflow.
-}
-\details{
+
 If the \code{UserName} is not specified, the user name is determined
 implicitly based on the AWS access key ID used to sign the request. This
 operation works for access keys under the AWS account. Consequently, you
 can use this operation to manage AWS account root user credentials even
 if the AWS account has no associated users.
 
-For information about rotating keys, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/ManagingCredentials.html}{Managing Keys and Certificates}
+For information about rotating keys, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html}{Managing Keys and Certificates}
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{

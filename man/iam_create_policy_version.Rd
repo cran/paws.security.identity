@@ -21,8 +21,9 @@ CloudFormation templates formatted in YAML, you can provide the policy
 in JSON or YAML format. AWS CloudFormation always converts a YAML policy
 to JSON format before submitting it to IAM.
 
-The \href{http://wikipedia.org/wiki/regex}{regex pattern} used to validate
-this parameter is a string of characters consisting of the following:
+The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} used to
+validate this parameter is a string of characters consisting of the
+following:
 \itemize{
 \item Any printable ASCII character ranging from the space character
 (\code{U+0020}) through the end of the ASCII character range
@@ -32,13 +33,13 @@ character set (through \verb{U+00FF})
 carriage return (\verb{U+000D})
 }}
 
-\item{SetAsDefault}{Specifies whether to set this version as the policy\'s default version.
+\item{SetAsDefault}{Specifies whether to set this version as the policy's default version.
 
 When this parameter is \code{true}, the new policy version becomes the
 operative version. That is, it becomes the version that is in effect for
 the IAM users, groups, and roles that the policy is attached to.
 
-For more information about managed policy versions, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html}{Versioning for Managed Policies}
+For more information about managed policy versions, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-versioning.html}{Versioning for Managed Policies}
 in the \emph{IAM User Guide}.}
 }
 \description{
@@ -47,13 +48,12 @@ managed policy, you create a new policy version. A managed policy can
 have up to five versions. If the policy has five versions, you must
 delete an existing version using DeletePolicyVersion before you create a
 new version.
-}
-\details{
-Optionally, you can set the new version as the policy\'s default
-version. The default version is the version that is in effect for the
-IAM users, groups, and roles to which the policy is attached.
 
-For more information about managed policy versions, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html}{Versioning for Managed Policies}
+Optionally, you can set the new version as the policy's default version.
+The default version is the version that is in effect for the IAM users,
+groups, and roles to which the policy is attached.
+
+For more information about managed policy versions, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-versioning.html}{Versioning for Managed Policies}
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{

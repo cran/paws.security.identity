@@ -2,7 +2,7 @@
 % Please edit documentation in R/waf_operations.R
 \name{waf_get_sampled_requests}
 \alias{waf_get_sampled_requests}
-\title{This is AWS WAF CLASSIC documentation}
+\title{This is AWS WAF Classic documentation}
 \usage{
 waf_get_sampled_requests(WebAclId, RuleId, TimeWindow, MaxItems)
 }
@@ -16,7 +16,7 @@ to return a sample of requests.}
 for which you want \code{GetSampledRequests} to return a sample of
 requests.
 \item \code{Default_Action}, which causes \code{GetSampledRequests} to return a
-sample of the requests that didn\'t match any of the rules in the
+sample of the requests that didn't match any of the rules in the
 specified \code{WebACL}.
 }}
 
@@ -36,15 +36,14 @@ range. If your resource received fewer requests than the value of
 This is \strong{AWS WAF Classic} documentation. For more information, see
 \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}
 in the developer guide.
-}
-\details{
+
 \strong{For the latest version of AWS WAF}, use the AWS WAFV2 API and see the
 \href{https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html}{AWS WAF Developer Guide}.
 With the latest version, AWS WAF has a single set of endpoints for
 regional and global use.
 
-Gets detailed information about a specified number of requests\\--a
-sample\\--that AWS WAF randomly selects from among the first 5,000
+Gets detailed information about a specified number of requests--a
+sample--that AWS WAF randomly selects from among the first 5,000
 requests that your AWS resource received during a time range that you
 choose. You can specify a sample size of up to 500 requests, and you can
 specify any time range in the previous three hours.

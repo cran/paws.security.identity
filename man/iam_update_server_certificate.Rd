@@ -11,14 +11,14 @@ iam_update_server_certificate(ServerCertificateName, NewPath,
 \arguments{
 \item{ServerCertificateName}{[required] The name of the server certificate that you want to update.
 
-This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters
+This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: \\_+=,.@-}
 
 \item{NewPath}{The new path for the server certificate. Include this only if you are
-updating the server certificate\'s path.
+updating the server certificate's path.
 
-This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters
+This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of either a forward slash (/) by itself or a string that must
 begin and end with forward slashes. In addition, it can contain any
 ASCII character from the ! (\code{U+0021}) through the DEL character
@@ -26,25 +26,24 @@ ASCII character from the ! (\code{U+0021}) through the DEL character
 lowercased letters.}
 
 \item{NewServerCertificateName}{The new name for the server certificate. Include this only if you are
-updating the server certificate\'s name. The name of the certificate
+updating the server certificate's name. The name of the certificate
 cannot contain any spaces.
 
-This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters
+This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: \\_+=,.@-}
 }
 \description{
 Updates the name and/or the path of the specified server certificate
 stored in IAM.
-}
-\details{
+
 For more information about working with server certificates, see
 \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_server-certs.html}{Working with Server Certificates}
 in the \emph{IAM User Guide}. This topic also includes a list of AWS services
 that can use the server certificates that you manage with IAM.
 
 You should understand the implications of changing a server
-certificate\'s path or name. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_server-certs_manage.html#RenamingServerCerts}{Renaming a Server Certificate}
+certificate's path or name. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_server-certs.html#RenamingServerCerts}{Renaming a Server Certificate}
 in the \emph{IAM User Guide}.
 
 The person making the request (the principal), must have permission to

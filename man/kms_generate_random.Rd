@@ -16,16 +16,18 @@ operation.}
 }
 \description{
 Returns a random byte string that is cryptographically secure.
-}
-\details{
+
 By default, the random byte string is generated in AWS KMS. To generate
 the byte string in the AWS CloudHSM cluster that is associated with a
 \href{https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{custom key store},
 specify the custom key store ID.
 
 For more information about entropy and random number generation, see the
-\href{https://d0.awsstatic.com/whitepapers/KMS-Cryptographic-Details.pdf}{AWS Key Management Service Cryptographic Details}
-whitepaper.
+AWS Key Management Service Cryptographic Details whitepaper.
+
+\strong{Required permissions}:
+\href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html}{kms:GenerateRandom}
+(IAM policy)
 }
 \section{Request syntax}{
 \preformatted{svc$generate_random(

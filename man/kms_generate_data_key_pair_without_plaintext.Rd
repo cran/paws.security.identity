@@ -28,6 +28,8 @@ the DescribeKey operation.
 
 To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias
 name, or alias ARN. When using an alias name, prefix it with \code{"alias/"}.
+To specify a CMK in a different AWS account, you must use the key ARN or
+alias ARN.
 
 For example:
 \itemize{
@@ -59,8 +61,7 @@ Generates a unique asymmetric data key pair. The
 public key and a copy of the private key that is encrypted under the
 symmetric CMK you specify. Unlike GenerateDataKeyPair, this operation
 does not return a plaintext private key.
-}
-\details{
+
 To generate a data key pair, you must specify a symmetric customer
 master key (CMK) to encrypt the private key in the data key pair. You
 cannot use an asymmetric CMK or a CMK in a custom key store. To get the
@@ -88,6 +89,23 @@ in the \emph{AWS Key Management Service Developer Guide}.
 The CMK that you use for this operation must be in a compatible key
 state. For details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key}
 in the \emph{AWS Key Management Service Developer Guide}.
+
+\strong{Cross-account use}: Yes. To perform this operation with a CMK in a
+different AWS account, specify the key ARN or alias ARN in the value of
+the \code{KeyId} parameter.
+
+\strong{Required permissions}:
+\href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html}{kms:GenerateDataKeyPairWithoutPlaintext}
+(key policy)
+
+\strong{Related operations:}
+\itemize{
+\item Decrypt
+\item Encrypt
+\item GenerateDataKey
+\item GenerateDataKeyPair
+\item GenerateDataKeyWithoutPlaintext
+}
 }
 \section{Request syntax}{
 \preformatted{svc$generate_data_key_pair_without_plaintext(

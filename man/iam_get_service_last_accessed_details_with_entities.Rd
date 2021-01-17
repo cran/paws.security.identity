@@ -17,12 +17,12 @@ iam_get_service_last_accessed_details_with_entities(JobId,
 to learn when the IAM entity last attempted to access the specified
 service.
 
-To learn the service namespace for a service, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_actions-resources-contextkeys.html}{Actions, Resources, and Condition Keys for AWS Services}
+To learn the service namespace for a service, go to \href{https://docs.aws.amazon.com/service-authorization/latest/reference/reference_policies_actions-resources-contextkeys.html}{Actions, Resources, and Condition Keys for AWS Services}
 in the \emph{IAM User Guide}. Choose the name of the service to view details
 for that service. In the first paragraph, find the service prefix. For
 example, \verb{(service prefix: a4b)}. For more information about service
 namespaces, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces}{AWS Service Namespaces}
-in theÂ \emph{AWS General Reference}.}
+in the \emph{AWS General Reference}.}
 
 \item{MaxItems}{Use this only when paginating results to indicate the maximum number of
 items you want in the response. If additional items exist beyond the
@@ -46,13 +46,11 @@ parameter in \code{GetServiceLastAccessedDetailsWithEntities}. This operation
 retrieves the status of your report job and a list of entities that
 could have used group or policy permissions to access the specified
 service.
-}
-\details{
 \itemize{
-\item \strong{Group} -- For a group report, this operation returns a list of
-users in the group that could have used the group's policies in an
+\item \strong{Group} – For a group report, this operation returns a list of
+users in the group that could have used the group’s policies in an
 attempt to access the service.
-\item \strong{Policy} -- For a policy report, this operation returns a list of
+\item \strong{Policy} – For a policy report, this operation returns a list of
 entities (users or roles) that could have used the policy in an
 attempt to access the service.
 }

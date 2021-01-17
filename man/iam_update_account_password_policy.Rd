@@ -18,7 +18,7 @@ uses the default value of \code{6}.}
 \item{RequireSymbols}{Specifies whether IAM user passwords must contain at least one of the
 following non-alphanumeric characters:
 
-! @ \\# \\$ \% \\^ & * ( ) \\_ + - = [ ] \{ \} \\| \'
+! @ \\# $ \% ^ & * ( ) \\_ + - = [ ] \{ \} | '
 
 If you do not specify a value for this parameter, then the operation
 uses the default value of \code{false}. The result is that passwords do not
@@ -46,7 +46,7 @@ uses the default value of \code{false}. The result is that passwords do not
 require at least one lowercase character.}
 
 \item{AllowUsersToChangePassword}{Allows all IAM users in your account to use the AWS Management Console
-to change their own passwords. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/HowToPwdIAMUser.html}{Letting IAM Users Change Their Own Passwords}
+to change their own passwords. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_enable-user-change.html}{Letting IAM Users Change Their Own Passwords}
 in the \emph{IAM User Guide}.
 
 If you do not specify a value for this parameter, then the operation
@@ -78,19 +78,17 @@ user.}
 }
 \description{
 Updates the password policy settings for the AWS account.
-}
-\details{
 \itemize{
 \item This operation does not support partial updates. No parameters are
-required, but if you do not specify a parameter, that parameter\'s
+required, but if you do not specify a parameter, that parameter's
 value reverts to its default value. See the \strong{Request Parameters}
-section for each parameter\'s default value. Also note that some
+section for each parameter's default value. Also note that some
 parameters do not allow the default parameter to be explicitly set.
 Instead, to invoke the default value, do not include that parameter
 when you invoke the operation.
 }
 
-For more information about using a password policy, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_ManagingPasswordPolicies.html}{Managing an IAM Password Policy}
+For more information about using a password policy, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_account-policy.html}{Managing an IAM Password Policy}
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{

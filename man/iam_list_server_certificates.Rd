@@ -14,10 +14,10 @@ path starts with \verb{/company/servercerts}.
 
 This parameter is optional. If it is not included, it defaults to a
 slash (/), listing all server certificates. This parameter allows
-(through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string
-of characters consisting of either a forward slash (/) by itself or a
-string that must begin and end with forward slashes. In addition, it can
-contain any ASCII character from the ! (\code{U+0021}) through the DEL
+(through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a
+string of characters consisting of either a forward slash (/) by itself
+or a string that must begin and end with forward slashes. In addition,
+it can contain any ASCII character from the ! (\code{U+0021}) through the DEL
 character (\verb{U+007F}), including most punctuation characters, digits, and
 upper and lowercased letters.}
 
@@ -39,8 +39,7 @@ subsequent call that tells the service where to continue from.}
 \description{
 Lists the server certificates stored in IAM that have the specified path
 prefix. If none exist, the operation returns an empty list.
-}
-\details{
+
 You can paginate the results using the \code{MaxItems} and \code{Marker}
 parameters.
 

@@ -15,7 +15,7 @@ cognitoidentity_merge_developer_identities(SourceUserIdentifier,
 \item{DestinationUserIdentifier}{[required] User identifier for the destination user. The value should be a
 \code{DeveloperUserIdentifier}.}
 
-\item{DeveloperProviderName}{[required] The \"domain\" by which Cognito will refer to your users. This is a
+\item{DeveloperProviderName}{[required] The "domain" by which Cognito will refer to your users. This is a
 (pseudo) domain name that you provide while creating an identity pool.
 This name acts as a placeholder that allows your backend and the Cognito
 service to communicate about the developer provider. For the
@@ -33,8 +33,7 @@ given source user (\code{SourceUserIdentifier}) with the \code{IdentityId} of th
 \code{DestinationUserIdentifier}. Only developer-authenticated users can be
 merged. If the users to be merged are associated with the same public
 provider, but as two different users, an exception will be thrown.
-}
-\details{
+
 The number of linked logins is limited to 20. So, the number of linked
 logins for the source user, \code{SourceUserIdentifier}, and the destination
 user, \code{DestinationUserIdentifier}, together should not be larger than

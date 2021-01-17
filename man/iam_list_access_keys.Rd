@@ -10,7 +10,7 @@ iam_list_access_keys(UserName, Marker, MaxItems)
 \arguments{
 \item{UserName}{The name of the user.
 
-This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters
+This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: \\_+=,.@-}
 
@@ -33,8 +33,7 @@ subsequent call that tells the service where to continue from.}
 Returns information about the access key IDs associated with the
 specified IAM user. If there is none, the operation returns an empty
 list.
-}
-\details{
+
 Although each user is limited to a small number of keys, you can still
 paginate the results using the \code{MaxItems} and \code{Marker} parameters.
 

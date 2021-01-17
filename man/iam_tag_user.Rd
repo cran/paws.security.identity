@@ -9,9 +9,9 @@ iam_tag_user(UserName, Tags)
 \arguments{
 \item{UserName}{[required] The name of the user that you want to add tags to.
 
-This parameter accepts (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters that
-consist of upper and lowercase alphanumeric characters with no spaces.
-You can also include any of the following characters: =,.@-}
+This parameter accepts (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
+that consist of upper and lowercase alphanumeric characters with no
+spaces. You can also include any of the following characters: =,.@-}
 
 \item{Tags}{[required] The list of tags that you want to attach to the user. Each tag consists
 of a key name and an associated value.}
@@ -19,8 +19,7 @@ of a key name and an associated value.}
 \description{
 Adds one or more tags to an IAM user. If a tag with the same key name
 already exists, then that tag is overwritten with the new value.
-}
-\details{
+
 A tag consists of a key name and an associated value. By assigning tags
 to your resources, you can do the following:
 \itemize{

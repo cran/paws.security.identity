@@ -106,7 +106,7 @@ format a JSON parameter for the various command line tool environments,
 see \href{https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters.html#cli-using-param-json}{Using JSON for Parameters}
 in the \emph{AWS CLI User Guide}. For example:
 
-\verb{\\\[\\\{"username":"bob"\\\},\\\{"password":"abc123xyz456"\\\}\\\]}
+\verb{[\{"username":"bob"\},\{"password":"abc123xyz456"\}]}
 
 If your command-line tool or SDK requires quotation marks around the
 parameter, you should use single quotes to avoid confusion with the
@@ -115,15 +115,23 @@ double quote character in the embedded JSON text by prefacing each with
 a backslash. For example, the following string is surrounded by
 double-quotes. All of the embedded double quotes are escaped:
 
-\verb{"\\\[\\\{\\"username\\":\\"bob\\"\\\},\\\{\\"password\\":\\"abc123xyz456\\"\\\}\\\]"}}
+\verb{"[\{\\"username\\":\\"bob\\"\},\{\\"password\\":\\"abc123xyz456\\"\}]"}}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  ARN = "string",
+  Name = "string",
+  VersionId = "string"
+)
+}
 }
 \description{
 Modifies many of the details of the specified secret. If you include a
 \code{ClientRequestToken} and \emph{either} \code{SecretString} or \code{SecretBinary} then
 it also creates a new version attached to the secret.
 
-To modify the rotation configuration of a secret, use RotateSecret
-instead.
+To modify the rotation configuration of a secret, use
+\code{\link[=secretsmanager_rotate_secret]{rotate_secret}} instead.
 
 The Secrets Manager console uses only the \code{SecretString} parameter and
 therefore limits you to encrypting and storing only a text string. To
@@ -137,9 +145,6 @@ create a new version.
 \item If you include \code{SecretString} or \code{SecretBinary} to create a new
 secret version, Secrets Manager automatically attaches the staging
 label \code{AWSCURRENT} to the new version.
-}<!-- -->
-
-\itemize{
 \item If you call an operation to encrypt or decrypt the \code{SecretString} or
 \code{SecretBinary} for a secret in the same account as the calling user
 and that secret doesn't specify a AWS KMS encryption key, Secrets
@@ -179,11 +184,14 @@ managed CMK for Secrets Manager.
 
 \strong{Related operations}
 \itemize{
-\item To create a new secret, use CreateSecret.
-\item To add only a new version to an existing secret, use PutSecretValue.
-\item To get the details for a secret, use DescribeSecret.
+\item To create a new secret, use
+\code{\link[=secretsmanager_create_secret]{create_secret}}.
+\item To add only a new version to an existing secret, use
+\code{\link[=secretsmanager_put_secret_value]{put_secret_value}}.
+\item To get the details for a secret, use
+\code{\link[=secretsmanager_describe_secret]{describe_secret}}.
 \item To list the versions contained in a secret, use
-ListSecretVersionIds.
+\code{\link[=secretsmanager_list_secret_version_ids]{list_secret_version_ids}}.
 }
 }
 \section{Request syntax}{
@@ -220,7 +228,7 @@ svc$update_secret(
 # put-secret-value operation.
 svc$update_secret(
   SecretId = "MyTestDatabaseSecret",
-  SecretString = "\{JSON STRING WITH CREDENTIALS\}"
+  SecretString = "{JSON STRING WITH CREDENTIALS}"
 )
 }
 

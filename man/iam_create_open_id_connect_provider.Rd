@@ -53,6 +53,12 @@ For more information about obtaining the OIDC provider's thumbprint, see
 \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_create_oidc_verify-thumbprint.html}{Obtaining the Thumbprint for an OpenID Connect Provider}
 in the \emph{IAM User Guide}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  OpenIDConnectProviderArn = "string"
+)
+}
+}
 \description{
 Creates an IAM entity to describe an identity provider (IdP) that
 supports \href{https://openid.net/connect/}{OpenID Connect (OIDC)}.
@@ -76,7 +82,8 @@ to access AWS.
 
 The trust for the OIDC provider is derived from the IAM provider that
 this operation creates. Therefore, it is best to limit access to the
-CreateOpenIDConnectProvider operation to highly privileged users.
+\code{\link[=iam_create_open_id_connect_provider]{create_open_id_connect_provider}}
+operation to highly privileged users.
 }
 \section{Request syntax}{
 \preformatted{svc$create_open_id_connect_provider(

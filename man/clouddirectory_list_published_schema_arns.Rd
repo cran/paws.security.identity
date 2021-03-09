@@ -8,12 +8,23 @@ clouddirectory_list_published_schema_arns(SchemaArn, NextToken,
   MaxResults)
 }
 \arguments{
-\item{SchemaArn}{The response for \code{ListPublishedSchemaArns} when this parameter is used
-will list all minor version ARNs for a major version.}
+\item{SchemaArn}{The response for
+\code{\link[=clouddirectory_list_published_schema_arns]{list_published_schema_arns}}
+when this parameter is used will list all minor version ARNs for a major
+version.}
 
 \item{NextToken}{The pagination token.}
 
 \item{MaxResults}{The maximum number of results to retrieve.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  SchemaArns = list(
+    "string"
+  ),
+  NextToken = "string"
+)
+}
 }
 \description{
 Lists the major version families of each published schema. If a major

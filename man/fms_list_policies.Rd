@@ -11,15 +11,32 @@ fms_list_policies(NextToken, MaxResults)
 \code{PolicySummary} objects than the number that you specify for
 \code{MaxResults}, AWS Firewall Manager returns a \code{NextToken} value in the
 response that allows you to list another group of \code{PolicySummary}
-objects. For the second and subsequent \code{ListPolicies} requests, specify
-the value of \code{NextToken} from the previous response to get information
-about another batch of \code{PolicySummary} objects.}
+objects. For the second and subsequent
+\code{\link[=fms_list_policies]{list_policies}} requests, specify the value of
+\code{NextToken} from the previous response to get information about another
+batch of \code{PolicySummary} objects.}
 
 \item{MaxResults}{Specifies the number of \code{PolicySummary} objects that you want AWS
 Firewall Manager to return for this request. If you have more
 \code{PolicySummary} objects than the number that you specify for
 \code{MaxResults}, the response includes a \code{NextToken} value that you can use
 to get another batch of \code{PolicySummary} objects.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  PolicyList = list(
+    list(
+      PolicyArn = "string",
+      PolicyId = "string",
+      PolicyName = "string",
+      ResourceType = "string",
+      SecurityServiceType = "WAF"|"WAFV2"|"SHIELD_ADVANCED"|"SECURITY_GROUPS_COMMON"|"SECURITY_GROUPS_CONTENT_AUDIT"|"SECURITY_GROUPS_USAGE_AUDIT"|"NETWORK_FIREWALL",
+      RemediationEnabled = TRUE|FALSE
+    )
+  ),
+  NextToken = "string"
+)
+}
 }
 \description{
 Returns an array of \code{PolicySummary} objects.

@@ -11,15 +11,27 @@ waf_list_regex_pattern_sets(NextMarker, Limit)
 objects than the value of \code{Limit}, AWS WAF returns a \code{NextMarker} value
 in the response that allows you to list another group of
 \code{RegexPatternSet} objects. For the second and subsequent
-\code{ListRegexPatternSets} requests, specify the value of \code{NextMarker} from
-the previous response to get information about another batch of
-\code{RegexPatternSet} objects.}
+\code{\link[=waf_list_regex_pattern_sets]{list_regex_pattern_sets}} requests,
+specify the value of \code{NextMarker} from the previous response to get
+information about another batch of \code{RegexPatternSet} objects.}
 
 \item{Limit}{Specifies the number of \code{RegexPatternSet} objects that you want AWS WAF
 to return for this request. If you have more \code{RegexPatternSet} objects
 than the number you specify for \code{Limit}, the response includes a
 \code{NextMarker} value that you can use to get another batch of
 \code{RegexPatternSet} objects.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  NextMarker = "string",
+  RegexPatternSets = list(
+    list(
+      RegexPatternSetId = "string",
+      Name = "string"
+    )
+  )
+)
+}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see

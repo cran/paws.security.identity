@@ -12,15 +12,19 @@ cognitoidentityprovider_respond_to_auth_challenge(ClientId,
 \item{ClientId}{[required] The app client ID.}
 
 \item{ChallengeName}{[required] The challenge name. For more information, see
-\href{https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_InitiateAuth.html}{InitiateAuth}.
+\code{\link[=cognitoidentityprovider_initiate_auth]{initiate_auth}}.
 
 \code{ADMIN_NO_SRP_AUTH} is not a valid value.}
 
 \item{Session}{The session which should be passed both ways in challenge-response calls
-to the service. If \code{InitiateAuth} or \code{RespondToAuthChallenge} API call
-determines that the caller needs to go through another challenge, they
-return a session with other challenge parameters. This session should be
-passed as it is to the next \code{RespondToAuthChallenge} API call.}
+to the service. If
+\code{\link[=cognitoidentityprovider_initiate_auth]{initiate_auth}} or
+\code{\link[=cognitoidentityprovider_respond_to_auth_challenge]{respond_to_auth_challenge}}
+API call determines that the caller needs to go through another
+challenge, they return a session with other challenge parameters. This
+session should be passed as it is to the next
+\code{\link[=cognitoidentityprovider_respond_to_auth_challenge]{respond_to_auth_challenge}}
+API call.}
 
 \item{ChallengeResponses}{The challenge responses. These are inputs corresponding to the value of
 \code{ChallengeName}, for example:
@@ -42,7 +46,8 @@ required attributes.
 }}
 
 \item{AnalyticsMetadata}{The Amazon Pinpoint analytics metadata for collecting metrics for
-\code{RespondToAuthChallenge} calls.}
+\code{\link[=cognitoidentityprovider_respond_to_auth_challenge]{respond_to_auth_challenge}}
+calls.}
 
 \item{UserContextData}{Contextual data such as the user's device fingerprint, IP address, or
 location used for evaluating the risk of an unexpected event by Amazon
@@ -78,6 +83,27 @@ purpose.
 \item Amazon Cognito does not encrypt the the ClientMetadata value, so
 don't use it to provide sensitive information.
 }}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  ChallengeName = "SMS_MFA"|"SOFTWARE_TOKEN_MFA"|"SELECT_MFA_TYPE"|"MFA_SETUP"|"PASSWORD_VERIFIER"|"CUSTOM_CHALLENGE"|"DEVICE_SRP_AUTH"|"DEVICE_PASSWORD_VERIFIER"|"ADMIN_NO_SRP_AUTH"|"NEW_PASSWORD_REQUIRED",
+  Session = "string",
+  ChallengeParameters = list(
+    "string"
+  ),
+  AuthenticationResult = list(
+    AccessToken = "string",
+    ExpiresIn = 123,
+    TokenType = "string",
+    RefreshToken = "string",
+    IdToken = "string",
+    NewDeviceMetadata = list(
+      DeviceKey = "string",
+      DeviceGroupKey = "string"
+    )
+  )
+)
+}
 }
 \description{
 Responds to the authentication challenge.

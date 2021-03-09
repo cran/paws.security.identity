@@ -31,6 +31,13 @@ If you do include the random suffix added by Secrets Manager, you
 receive either a \emph{ResourceNotFoundException} or an
 \emph{AccessDeniedException} error, depending on your permissions.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ARN = "string",
+  Name = "string"
+)
+}
+}
 \description{
 Cancels the scheduled deletion of a secret by removing the \code{DeletedDate}
 time stamp. This makes the secret accessible to query once again.
@@ -44,7 +51,8 @@ To run this command, you must have the following permissions:
 
 \strong{Related operations}
 \itemize{
-\item To delete a secret, use DeleteSecret.
+\item To delete a secret, use
+\code{\link[=secretsmanager_delete_secret]{delete_secret}}.
 }
 }
 \section{Request syntax}{

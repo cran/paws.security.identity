@@ -8,9 +8,11 @@ wafregional_update_rule(RuleId, ChangeToken, Updates)
 }
 \arguments{
 \item{RuleId}{[required] The \code{RuleId} of the \code{Rule} that you want to update. \code{RuleId} is returned
-by \code{CreateRule} and by ListRules.}
+by \code{\link[=wafregional_create_rule]{create_rule}} and by
+\code{\link[=wafregional_list_rules]{list_rules}}.}
 
-\item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
+\item{ChangeToken}{[required] The value returned by the most recent call to
+\code{\link[=wafregional_get_change_token]{get_change_token}}.}
 
 \item{Updates}{[required] An array of \code{RuleUpdate} objects that you want to insert into or delete
 from a Rule. For more information, see the applicable data types:
@@ -19,6 +21,12 @@ from a Rule. For more information, see the applicable data types:
 \item Predicate: Contains \code{DataId}, \code{Negated}, and \code{Type}
 \item FieldToMatch: Contains \code{Data} and \code{Type}
 }}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  ChangeToken = "string"
+)
+}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
@@ -51,12 +59,14 @@ To create and configure a \code{Rule}, perform the following steps:
 \enumerate{
 \item Create and update the predicates that you want to include in the
 \code{Rule}.
-\item Create the \code{Rule}. See CreateRule.
-\item Use \code{GetChangeToken} to get the change token that you provide in the
-\code{ChangeToken} parameter of an UpdateRule request.
-\item Submit an \code{UpdateRule} request to add predicates to the \code{Rule}.
+\item Create the \code{Rule}. See \code{\link[=wafregional_create_rule]{create_rule}}.
+\item Use \code{\link[=wafregional_get_change_token]{get_change_token}} to get the
+change token that you provide in the \code{ChangeToken} parameter of an
+\code{\link[=wafregional_update_rule]{update_rule}} request.
+\item Submit an \code{\link[=wafregional_update_rule]{update_rule}} request to add
+predicates to the \code{Rule}.
 \item Create and update a \code{WebACL} that contains the \code{Rule}. See
-CreateWebACL.
+\code{\link[=wafregional_create_web_acl]{create_web_acl}}.
 }
 
 If you want to replace one \code{ByteMatchSet} or \code{IPSet} with another, you

@@ -14,20 +14,24 @@ password policy, if one exists.
 
 The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} that is used to
 validate this parameter is a string of characters. That string can
-include almost any printable ASCII character from the space (\code{U+0020})
-through the end of the ASCII character range (\verb{U+00FF}). You can also
-include the tab (\code{U+0009}), line feed (\verb{U+000A}), and carriage return
-(\verb{U+000D}) characters. Any of these characters are valid in a password.
+include almost any printable ASCII character from the space (\verb{\\u0020})
+through the end of the ASCII character range (\verb{\\u00FF}). You can also
+include the tab (\verb{\\u0009}), line feed (\verb{\\u000A}), and carriage return
+(\verb{\\u000D}) characters. Any of these characters are valid in a password.
 However, many tools, such as the AWS Management Console, might restrict
 the ability to type certain characters because they have special meaning
 within that tool.}
+}
+\value{
+An empty list.
 }
 \description{
 Changes the password of the IAM user who is calling this operation. The
 AWS account root user password is not affected by this operation.
 
-To change the password for a different user, see UpdateLoginProfile. For
-more information about modifying passwords, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_admin-change-user.html}{Managing Passwords}
+To change the password for a different user, see
+\code{\link[=iam_update_login_profile]{update_login_profile}}. For more information
+about modifying passwords, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_admin-change-user.html}{Managing Passwords}
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{

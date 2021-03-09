@@ -30,6 +30,13 @@ If you do include the random suffix added by Secrets Manager, you
 receive either a \emph{ResourceNotFoundException} or an
 \emph{AccessDeniedException} error, depending on your permissions.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ARN = "string",
+  Name = "string"
+)
+}
+}
 \description{
 Deletes the resource-based permission policy attached to the secret.
 
@@ -42,10 +49,13 @@ To run this command, you must have the following permissions:
 
 \strong{Related operations}
 \itemize{
-\item To attach a resource policy to a secret, use PutResourcePolicy.
+\item To attach a resource policy to a secret, use
+\code{\link[=secretsmanager_put_resource_policy]{put_resource_policy}}.
 \item To retrieve the current resource-based policy that's attached to a
-secret, use GetResourcePolicy.
-\item To list all of the currently available secrets, use ListSecrets.
+secret, use
+\code{\link[=secretsmanager_get_resource_policy]{get_resource_policy}}.
+\item To list all of the currently available secrets, use
+\code{\link[=secretsmanager_list_secrets]{list_secrets}}.
 }
 }
 \section{Request syntax}{

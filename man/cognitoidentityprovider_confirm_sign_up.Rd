@@ -28,7 +28,7 @@ alias from the previous user to the newly created user being confirmed.
 If set to \code{False}, the API will throw an \strong{AliasExistsException} error.}
 
 \item{AnalyticsMetadata}{The Amazon Pinpoint analytics metadata for collecting metrics for
-\code{ConfirmSignUp} calls.}
+\code{\link[=cognitoidentityprovider_confirm_sign_up]{confirm_sign_up}} calls.}
 
 \item{UserContextData}{Contextual data such as the user's device fingerprint, IP address, or
 location used for evaluating the risk of an unexpected event by Amazon
@@ -62,6 +62,9 @@ purpose.
 \item Amazon Cognito does not encrypt the the ClientMetadata value, so
 don't use it to provide sensitive information.
 }}
+}
+\value{
+An empty list.
 }
 \description{
 Confirms registration of a user and handles the existing alias from a

@@ -10,7 +10,7 @@ cloudhsmv2_initialize_cluster(ClusterId, SignedCert, TrustAnchor)
 }
 \arguments{
 \item{ClusterId}{[required] The identifier (ID) of the cluster that you are claiming. To find the
-cluster ID, use DescribeClusters.}
+cluster ID, use \code{\link[=cloudhsmv2_describe_clusters]{describe_clusters}}.}
 
 \item{SignedCert}{[required] The cluster certificate issued (signed) by your issuing certificate
 authority (CA). The certificate must be in PEM format and can contain a
@@ -22,12 +22,19 @@ certificate. The certificate used to sign the HSM CSR must be directly
 available, and thus must be the root certificate. The certificate must
 be in PEM format and can contain a maximum of 5000 characters.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  State = "CREATE_IN_PROGRESS"|"UNINITIALIZED"|"INITIALIZE_IN_PROGRESS"|"INITIALIZED"|"ACTIVE"|"UPDATE_IN_PROGRESS"|"DELETE_IN_PROGRESS"|"DELETED"|"DEGRADED",
+  StateMessage = "string"
+)
+}
+}
 \description{
 Claims an AWS CloudHSM cluster by submitting the cluster certificate
 issued by your issuing certificate authority (CA) and the CA's root
 certificate. Before you can claim a cluster, you must sign the cluster's
 certificate signing request (CSR) with your issuing CA. To get the
-cluster's CSR, use DescribeClusters.
+cluster's CSR, use \code{\link[=cloudhsmv2_describe_clusters]{describe_clusters}}.
 }
 \section{Request syntax}{
 \preformatted{svc$initialize_cluster(

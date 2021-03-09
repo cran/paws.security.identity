@@ -10,6 +10,12 @@ sts_decode_authorization_message(EncodedMessage)
 \arguments{
 \item{EncodedMessage}{[required] The encoded message that was returned with the response.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DecodedMessage = "string"
+)
+}
+}
 \description{
 Decodes additional information about the authorization status of a
 request from an encoded message returned in response to an AWS request.
@@ -29,7 +35,8 @@ The message is encoded because the details of the authorization status
 can constitute privileged information that the user who requested the
 operation should not see. To decode an authorization status message, a
 user must be granted permissions via an IAM policy to request the
-\code{DecodeAuthorizationMessage} (\code{sts:DecodeAuthorizationMessage}) action.
+\code{\link[=sts_decode_authorization_message]{decode_authorization_message}}
+(\code{sts:DecodeAuthorizationMessage}) action.
 
 The decoded message includes the following type of information:
 \itemize{

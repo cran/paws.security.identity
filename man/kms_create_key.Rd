@@ -14,8 +14,9 @@ kms_create_key(Policy, Description, KeyUsage, CustomerMasterKeySpec,
 If you provide a key policy, it must meet the following criteria:
 \itemize{
 \item If you don't set \code{BypassPolicyLockoutSafetyCheck} to true, the key
-policy must allow the principal that is making the \code{CreateKey}
-request to make a subsequent PutKeyPolicy request on the CMK. This
+policy must allow the principal that is making the
+\code{\link[=kms_create_key]{create_key}} request to make a subsequent
+\code{\link[=kms_put_key_policy]{put_key_policy}} request on the CMK. This
 reduces the risk that the CMK becomes unmanageable. For more
 information, refer to the scenario in the \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam}{Default Key Policy}
 section of the \strong{AWS Key Management Service Developer Guide} .
@@ -130,7 +131,8 @@ each in a different Availability Zone in the Region.
 This parameter is valid only for symmetric CMKs. You cannot create an
 asymmetric CMK in a custom key store.
 
-To find the ID of a custom key store, use the DescribeCustomKeyStores
+To find the ID of a custom key store, use the
+\code{\link[=kms_describe_custom_key_stores]{describe_custom_key_stores}}
 operation.
 
 The response includes the custom key store ID and the ID of the AWS
@@ -152,7 +154,7 @@ section in the \strong{AWS Key Management Service Developer Guide} .
 
 Use this parameter only when you include a policy in the request and you
 intend to prevent the principal that is making the request from making a
-subsequent PutKeyPolicy request on the CMK.
+subsequent \code{\link[=kms_put_key_policy]{put_key_policy}} request on the CMK.
 
 The default value is false.}
 
@@ -165,32 +167,69 @@ report with usage and costs aggregated by tags. For information about
 adding, changing, deleting and listing tags for CMKs, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/tagging-keys.html}{Tagging Keys}.
 
 Use this parameter to tag the CMK when it is created. To add tags to an
-existing CMK, use the TagResource operation.
+existing CMK, use the \code{\link[=kms_tag_resource]{tag_resource}} operation.
 
 To use this parameter, you must have
 \href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html}{kms:TagResource}
 permission in an IAM policy.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  KeyMetadata = list(
+    AWSAccountId = "string",
+    KeyId = "string",
+    Arn = "string",
+    CreationDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    Enabled = TRUE|FALSE,
+    Description = "string",
+    KeyUsage = "SIGN_VERIFY"|"ENCRYPT_DECRYPT",
+    KeyState = "Enabled"|"Disabled"|"PendingDeletion"|"PendingImport"|"Unavailable",
+    DeletionDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    ValidTo = as.POSIXct(
+      "2015-01-01"
+    ),
+    Origin = "AWS_KMS"|"EXTERNAL"|"AWS_CLOUDHSM",
+    CustomKeyStoreId = "string",
+    CloudHsmClusterId = "string",
+    ExpirationModel = "KEY_MATERIAL_EXPIRES"|"KEY_MATERIAL_DOES_NOT_EXPIRE",
+    KeyManager = "AWS"|"CUSTOMER",
+    CustomerMasterKeySpec = "RSA_2048"|"RSA_3072"|"RSA_4096"|"ECC_NIST_P256"|"ECC_NIST_P384"|"ECC_NIST_P521"|"ECC_SECG_P256K1"|"SYMMETRIC_DEFAULT",
+    EncryptionAlgorithms = list(
+      "SYMMETRIC_DEFAULT"|"RSAES_OAEP_SHA_1"|"RSAES_OAEP_SHA_256"
+    ),
+    SigningAlgorithms = list(
+      "RSASSA_PSS_SHA_256"|"RSASSA_PSS_SHA_384"|"RSASSA_PSS_SHA_512"|"RSASSA_PKCS1_V1_5_SHA_256"|"RSASSA_PKCS1_V1_5_SHA_384"|"RSASSA_PKCS1_V1_5_SHA_512"|"ECDSA_SHA_256"|"ECDSA_SHA_384"|"ECDSA_SHA_512"
+    )
+  )
+)
+}
+}
 \description{
 Creates a unique customer managed \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#master-keys}{customer master key}
 (CMK) in your AWS account and Region.
 
-You can use the \code{CreateKey} operation to create symmetric or asymmetric
-CMKs.
+You can use the \code{\link[=kms_create_key]{create_key}} operation to create
+symmetric or asymmetric CMKs.
 \itemize{
 \item \strong{Symmetric CMKs} contain a 256-bit symmetric key that never leaves
 AWS KMS unencrypted. To use the CMK, you must call AWS KMS. You can
 use a symmetric CMK to encrypt and decrypt small amounts of data,
 but they are typically used to generate \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#data-keys}{data keys}
 and \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#data-key-pairs}{data keys pairs}.
-For details, see GenerateDataKey and GenerateDataKeyPair.
+For details, see \code{\link[=kms_generate_data_key]{generate_data_key}} and
+\code{\link[=kms_generate_data_key_pair]{generate_data_key_pair}}.
 \item \strong{Asymmetric CMKs} can contain an RSA key pair or an Elliptic Curve
 (ECC) key pair. The private key in an asymmetric CMK never leaves
-AWS KMS unencrypted. However, you can use the GetPublicKey operation
-to download the public key so it can be used outside of AWS KMS.
-CMKs with RSA key pairs can be used to encrypt or decrypt data or
-sign and verify messages (but not both). CMKs with ECC key pairs can
-be used only to sign and verify messages.
+AWS KMS unencrypted. However, you can use the
+\code{\link[=kms_get_public_key]{get_public_key}} operation to download the
+public key so it can be used outside of AWS KMS. CMKs with RSA key
+pairs can be used to encrypt or decrypt data or sign and verify
+messages (but not both). CMKs with ECC key pairs can be used only to
+sign and verify messages.
 }
 
 For information about symmetric and asymmetric CMKs, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html}{Using Symmetric and Asymmetric CMKs}
@@ -218,11 +257,14 @@ CMKs.
 \subsection{Imported Key Material}{
 
 To import your own key material, begin by creating a symmetric CMK with
-no key material. To do this, use the \code{Origin} parameter of \code{CreateKey}
-with a value of \code{EXTERNAL}. Next, use GetParametersForImport operation
+no key material. To do this, use the \code{Origin} parameter of
+\code{\link[=kms_create_key]{create_key}} with a value of \code{EXTERNAL}. Next, use
+\code{\link[=kms_get_parameters_for_import]{get_parameters_for_import}} operation
 to get a public key and import token, and use the public key to encrypt
-your key material. Then, use ImportKeyMaterial with your import token to
-import the key material. For step-by-step instructions, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html}{Importing Key Material}
+your key material. Then, use
+\code{\link[=kms_import_key_material]{import_key_material}} with your import token
+to import the key material. For step-by-step instructions, see
+\href{https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html}{Importing Key Material}
 in the \strong{AWS Key Management Service Developer Guide} . You cannot
 import the key material into an asymmetric CMK.
 }
@@ -253,9 +295,9 @@ in the \emph{AWS Key Management Service Developer Guide}.
 
 \strong{Related operations:}
 \itemize{
-\item DescribeKey
-\item ListKeys
-\item ScheduleKeyDeletion
+\item \code{\link[=kms_describe_key]{describe_key}}
+\item \code{\link[=kms_list_keys]{list_keys}}
+\item \code{\link[=kms_schedule_key_deletion]{schedule_key_deletion}}
 }
 }
 }

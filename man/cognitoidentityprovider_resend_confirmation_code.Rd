@@ -23,7 +23,8 @@ Cognito advanced security.}
 code.}
 
 \item{AnalyticsMetadata}{The Amazon Pinpoint analytics metadata for collecting metrics for
-\code{ResendConfirmationCode} calls.}
+\code{\link[=cognitoidentityprovider_resend_confirmation_code]{resend_confirmation_code}}
+calls.}
 
 \item{ClientMetadata}{A map of custom key-value pairs that you can provide as input for any
 custom workflows that this action triggers.
@@ -53,6 +54,16 @@ purpose.
 \item Amazon Cognito does not encrypt the the ClientMetadata value, so
 don't use it to provide sensitive information.
 }}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  CodeDeliveryDetails = list(
+    Destination = "string",
+    DeliveryMedium = "SMS"|"EMAIL",
+    AttributeName = "string"
+  )
+)
+}
 }
 \description{
 Resends the confirmation (for confirmation of registration) to a

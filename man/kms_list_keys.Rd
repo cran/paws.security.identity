@@ -19,6 +19,19 @@ This value is optional. If you include a value, it must be between 1 and
 with truncated results. Set it to the value of \code{NextMarker} from the
 truncated response you just received.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Keys = list(
+    list(
+      KeyId = "string",
+      KeyArn = "string"
+    )
+  ),
+  NextMarker = "string",
+  Truncated = TRUE|FALSE
+)
+}
+}
 \description{
 Gets a list of all customer master keys (CMKs) in the caller's AWS
 account and Region.
@@ -32,10 +45,10 @@ a different AWS account.
 
 \strong{Related operations:}
 \itemize{
-\item CreateKey
-\item DescribeKey
-\item ListAliases
-\item ListResourceTags
+\item \code{\link[=kms_create_key]{create_key}}
+\item \code{\link[=kms_describe_key]{describe_key}}
+\item \code{\link[=kms_list_aliases]{list_aliases}}
+\item \code{\link[=kms_list_resource_tags]{list_resource_tags}}
 }
 }
 \section{Request syntax}{

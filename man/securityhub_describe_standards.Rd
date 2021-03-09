@@ -8,14 +8,28 @@ securityhub_describe_standards(NextToken, MaxResults)
 }
 \arguments{
 \item{NextToken}{The token that is required for pagination. On your first call to the
-\code{DescribeStandards} operation, set the value of this parameter to
-\code{NULL}.
+\code{\link[=securityhub_describe_standards]{describe_standards}} operation, set
+the value of this parameter to \code{NULL}.
 
 For subsequent calls to the operation, to continue listing data, set the
 value of this parameter to the value returned from the previous
 response.}
 
 \item{MaxResults}{The maximum number of standards to return.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Standards = list(
+    list(
+      StandardsArn = "string",
+      Name = "string",
+      Description = "string",
+      EnabledByDefault = TRUE|FALSE
+    )
+  ),
+  NextToken = "string"
+)
+}
 }
 \description{
 Returns a list of the available standards in Security Hub.

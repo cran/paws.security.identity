@@ -28,12 +28,59 @@ In a subsequent call, set it to the value of the previous call
 
 \item{SortOrder}{Lists secrets in the requested order.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SecretList = list(
+    list(
+      ARN = "string",
+      Name = "string",
+      Description = "string",
+      KmsKeyId = "string",
+      RotationEnabled = TRUE|FALSE,
+      RotationLambdaARN = "string",
+      RotationRules = list(
+        AutomaticallyAfterDays = 123
+      ),
+      LastRotatedDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastChangedDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastAccessedDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      DeletedDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      ),
+      SecretVersionsToStages = list(
+        list(
+          "string"
+        )
+      ),
+      OwningService = "string",
+      CreatedDate = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists all of the secrets that are stored by Secrets Manager in the AWS
 account. To list the versions currently stored for a specific secret,
-use ListSecretVersionIds. The encrypted fields \code{SecretString} and
-\code{SecretBinary} are not included in the output. To get that information,
-call the GetSecretValue operation.
+use \code{\link[=secretsmanager_list_secret_version_ids]{list_secret_version_ids}}.
+The encrypted fields \code{SecretString} and \code{SecretBinary} are not included
+in the output. To get that information, call the
+\code{\link[=secretsmanager_get_secret_value]{get_secret_value}} operation.
 
 Always check the \code{NextToken} response parameter when calling any of the
 \verb{List*} operations. These operations can occasionally return an empty or
@@ -51,7 +98,8 @@ To run this command, you must have the following permissions:
 
 \strong{Related operations}
 \itemize{
-\item To list the versions attached to a secret, use ListSecretVersionIds.
+\item To list the versions attached to a secret, use
+\code{\link[=secretsmanager_list_secret_version_ids]{list_secret_version_ids}}.
 }
 }
 \section{Request syntax}{

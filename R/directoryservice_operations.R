@@ -16,6 +16,28 @@ NULL
 #' @param SharedDirectoryId &#91;required&#93; Identifier of the shared directory in the directory consumer account.
 #' This identifier is different for each directory owner account.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SharedDirectory = list(
+#'     OwnerAccountId = "string",
+#'     OwnerDirectoryId = "string",
+#'     ShareMethod = "ORGANIZATIONS"|"HANDSHAKE",
+#'     SharedAccountId = "string",
+#'     SharedDirectoryId = "string",
+#'     ShareStatus = "Shared"|"PendingAcceptance"|"Rejected"|"Rejecting"|"RejectFailed"|"Sharing"|"ShareFailed"|"Deleted"|"Deleting",
+#'     ShareNotes = "string",
+#'     CreatedDateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastUpdatedDateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$accept_shared_directory(
@@ -119,6 +141,9 @@ directoryservice_accept_shared_directory <- function(SharedDirectoryId) {
 #' These security rules impact an internal network interface that is not
 #' exposed publicly.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$add_ip_routes(
@@ -169,6 +194,9 @@ directoryservice_add_ip_routes <- function(DirectoryId, IpRoutes, UpdateSecurity
 #' replication. For example, `us-east-1`.
 #' @param VPCSettings &#91;required&#93; 
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$add_region(
@@ -215,6 +243,9 @@ directoryservice_add_region <- function(DirectoryId, RegionName, VPCSettings) {
 #'
 #' @param ResourceId &#91;required&#93; Identifier (ID) for the directory to which to add the tag.
 #' @param Tags &#91;required&#93; The tags to be assigned to the directory.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -264,6 +295,9 @@ directoryservice_add_tags_to_resource <- function(ResourceId, Tags) {
 #' @param DirectoryId &#91;required&#93; The identifier of the directory whose schema extension will be canceled.
 #' @param SchemaExtensionId &#91;required&#93; The identifier of the schema extension that will be canceled.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$cancel_schema_extension(
@@ -297,11 +331,13 @@ directoryservice_cancel_schema_extension <- function(DirectoryId, SchemaExtensio
 #' @description
 #' Creates an AD Connector to connect to an on-premises directory.
 #' 
-#' Before you call `ConnectDirectory`, ensure that all of the required
-#' permissions have been explicitly granted through a policy. For details
-#' about what permissions are required to run the `ConnectDirectory`
-#' operation, see [AWS Directory Service API Permissions: Actions,
-#' Resources, and Conditions
+#' Before you call
+#' [`connect_directory`][directoryservice_connect_directory], ensure that
+#' all of the required permissions have been explicitly granted through a
+#' policy. For details about what permissions are required to run the
+#' [`connect_directory`][directoryservice_connect_directory] operation, see
+#' [AWS Directory Service API Permissions: Actions, Resources, and
+#' Conditions
 #' Reference](https://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html).
 #'
 #' @usage
@@ -317,6 +353,14 @@ directoryservice_cancel_schema_extension <- function(DirectoryId, SchemaExtensio
 #' @param ConnectSettings &#91;required&#93; A DirectoryConnectSettings object that contains additional information
 #' for the operation.
 #' @param Tags The tags to be assigned to AD Connector.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DirectoryId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -370,7 +414,7 @@ directoryservice_connect_directory <- function(Name, ShortName = NULL, Password,
 #' @description
 #' Creates an alias for a directory and assigns the alias to the directory.
 #' The alias is used to construct the access URL for the directory, such as
-#' `http://&lt;alias&gt;.awsapps.com`.
+#' `http://<alias>.awsapps.com`.
 #' 
 #' After an alias has been created, it cannot be deleted or reused, so this
 #' operation should only be used when absolutely necessary.
@@ -384,6 +428,15 @@ directoryservice_connect_directory <- function(Name, ShortName = NULL, Password,
 #' The alias must be unique amongst all aliases in AWS. This operation
 #' throws an `EntityAlreadyExistsException` error if the alias already
 #' exists.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DirectoryId = "string",
+#'   Alias = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -430,6 +483,23 @@ directoryservice_create_alias <- function(DirectoryId, Alias) {
 #' place the computer account in.
 #' @param ComputerAttributes An array of Attribute objects that contain any LDAP attributes to apply
 #' to the computer account.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Computer = list(
+#'     ComputerId = "string",
+#'     ComputerName = "string",
+#'     ComputerAttributes = list(
+#'       list(
+#'         Name = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -486,6 +556,9 @@ directoryservice_create_computer <- function(DirectoryId, ComputerName, Password
 #' @param DnsIpAddrs &#91;required&#93; The IP addresses of the remote DNS server associated with
 #' RemoteDomainName.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_conditional_forwarder(
@@ -524,11 +597,12 @@ directoryservice_create_conditional_forwarder <- function(DirectoryId, RemoteDom
 #' Directory](https://docs.aws.amazon.com/directoryservice/latest/admin-guide/directory_simple_ad.html)
 #' in the *AWS Directory Service Admin Guide*.
 #' 
-#' Before you call `CreateDirectory`, ensure that all of the required
-#' permissions have been explicitly granted through a policy. For details
-#' about what permissions are required to run the `CreateDirectory`
-#' operation, see [AWS Directory Service API Permissions: Actions,
-#' Resources, and Conditions
+#' Before you call [`create_directory`][directoryservice_create_directory],
+#' ensure that all of the required permissions have been explicitly granted
+#' through a policy. For details about what permissions are required to run
+#' the [`create_directory`][directoryservice_create_directory] operation,
+#' see [AWS Directory Service API Permissions: Actions, Resources, and
+#' Conditions
 #' Reference](https://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html).
 #'
 #' @usage
@@ -542,7 +616,8 @@ directoryservice_create_conditional_forwarder <- function(DirectoryId, RemoteDom
 #' `Administrator` and this password.
 #' 
 #' If you need to change the password for the administrator account, you
-#' can use the ResetUserPassword API call.
+#' can use the
+#' [`reset_user_password`][directoryservice_reset_user_password] API call.
 #' 
 #' The regex pattern for this string is made up of the following
 #' conditions:
@@ -553,16 +628,16 @@ directoryservice_create_conditional_forwarder <- function(DirectoryId, RemoteDom
 #' Directory:
 #' 
 #' -   Numbers and upper case and lowercase
-#'     (?=.*`\\d`)(?=.*\[A-Z\])(?=.*\[a-z\])
+#'     (?=.*\\d)(?=.*\[A-Z\])(?=.*\[a-z\])
 #' 
 #' -   Numbers and special characters and lower case
-#'     (?=.*`\\d`)(?=.*\[^A-Za-z0-9`\\s`\])(?=.*\[a-z\])
+#'     (?=.*\\d)(?=.*\[^A-Za-z0-9\\s\])(?=.*\[a-z\])
 #' 
 #' -   Special characters and upper case and lower case
-#'     (?=.*\[^A-Za-z0-9`\\s`\])(?=.*\[A-Z\])(?=.*\[a-z\])
+#'     (?=.*\[^A-Za-z0-9\\s\])(?=.*\[A-Z\])(?=.*\[a-z\])
 #' 
 #' -   Numbers and upper case and special characters
-#'     (?=.*`\\d`)(?=.*\[A-Z\])(?=.*\[^A-Za-z0-9`\\s`\])
+#'     (?=.*\\d)(?=.*\[A-Z\])(?=.*\[^A-Za-z0-9\\s\])
 #' 
 #' For additional information about how Active Directory passwords are
 #' enforced, see [Password must meet complexity
@@ -573,6 +648,14 @@ directoryservice_create_conditional_forwarder <- function(DirectoryId, RemoteDom
 #' @param VpcSettings A DirectoryVpcSettings object that contains additional information for
 #' the operation.
 #' @param Tags The tags to be assigned to the Simple AD directory.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DirectoryId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -634,6 +717,9 @@ directoryservice_create_directory <- function(Name, ShortName = NULL, Password, 
 #' @param LogGroupName &#91;required&#93; The name of the CloudWatch log group where the real-time domain
 #' controller logs are forwarded.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_log_subscription(
@@ -690,14 +776,24 @@ directoryservice_create_log_subscription <- function(DirectoryId, LogGroupName) 
 #' @param Password &#91;required&#93; The password for the default administrative user named `Admin`.
 #' 
 #' If you need to change the password for the administrator account, you
-#' can use the ResetUserPassword API call.
+#' can use the
+#' [`reset_user_password`][directoryservice_reset_user_password] API call.
 #' @param Description A description for the directory. This label will appear on the AWS
 #' console `Directory Details` page after the directory is created.
-#' @param VpcSettings &#91;required&#93; Contains VPC information for the CreateDirectory or CreateMicrosoftAD
-#' operation.
+#' @param VpcSettings &#91;required&#93; Contains VPC information for the
+#' [`create_directory`][directoryservice_create_directory] or
+#' [`create_microsoft_ad`][directoryservice_create_microsoft_ad] operation.
 #' @param Edition AWS Managed Microsoft AD is available in two editions: `Standard` and
 #' `Enterprise`. `Enterprise` is the default.
 #' @param Tags The tags to be assigned to the AWS Managed Microsoft AD directory.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DirectoryId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -756,6 +852,14 @@ directoryservice_create_microsoft_ad <- function(Name, ShortName = NULL, Passwor
 #'
 #' @param DirectoryId &#91;required&#93; The identifier of the directory of which to take a snapshot.
 #' @param Name The descriptive name to apply to the snapshot.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SnapshotId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -818,6 +922,14 @@ directoryservice_create_snapshot <- function(DirectoryId, Name = NULL) {
 #' RemoteDomainName.
 #' @param SelectiveAuth Optional parameter to enable selective authentication for the trust.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TrustId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_trust(
@@ -868,6 +980,9 @@ directoryservice_create_trust <- function(DirectoryId, RemoteDomainName, TrustPa
 #' @param RemoteDomainName &#91;required&#93; The fully qualified domain name (FQDN) of the remote domain with which
 #' you are deleting the conditional forwarder.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_conditional_forwarder(
@@ -901,17 +1016,26 @@ directoryservice_delete_conditional_forwarder <- function(DirectoryId, RemoteDom
 #' @description
 #' Deletes an AWS Directory Service directory.
 #' 
-#' Before you call `DeleteDirectory`, ensure that all of the required
-#' permissions have been explicitly granted through a policy. For details
-#' about what permissions are required to run the `DeleteDirectory`
-#' operation, see [AWS Directory Service API Permissions: Actions,
-#' Resources, and Conditions
+#' Before you call [`delete_directory`][directoryservice_delete_directory],
+#' ensure that all of the required permissions have been explicitly granted
+#' through a policy. For details about what permissions are required to run
+#' the [`delete_directory`][directoryservice_delete_directory] operation,
+#' see [AWS Directory Service API Permissions: Actions, Resources, and
+#' Conditions
 #' Reference](https://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html).
 #'
 #' @usage
 #' directoryservice_delete_directory(DirectoryId)
 #'
 #' @param DirectoryId &#91;required&#93; The identifier of the directory to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DirectoryId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -950,6 +1074,9 @@ directoryservice_delete_directory <- function(DirectoryId) {
 #'
 #' @param DirectoryId &#91;required&#93; Identifier of the directory whose log subscription you want to delete.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_log_subscription(
@@ -986,6 +1113,14 @@ directoryservice_delete_log_subscription <- function(DirectoryId) {
 #' directoryservice_delete_snapshot(SnapshotId)
 #'
 #' @param SnapshotId &#91;required&#93; The identifier of the directory snapshot to be deleted.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SnapshotId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1028,6 +1163,14 @@ directoryservice_delete_snapshot <- function(SnapshotId) {
 #' @param TrustId &#91;required&#93; The Trust ID of the trust relationship to be deleted.
 #' @param DeleteAssociatedConditionalForwarder Delete a conditional forwarder as part of a DeleteTrustRequest.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TrustId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_trust(
@@ -1068,6 +1211,9 @@ directoryservice_delete_trust <- function(TrustId, DeleteAssociatedConditionalFo
 #'
 #' @param DirectoryId &#91;required&#93; The identifier of the directory.
 #' @param CertificateId &#91;required&#93; The identifier of the certificate.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1112,6 +1258,9 @@ directoryservice_deregister_certificate <- function(DirectoryId, CertificateId) 
 #' @param TopicName &#91;required&#93; The name of the SNS topic from which to remove the directory as a
 #' publisher.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$deregister_event_topic(
@@ -1152,6 +1301,29 @@ directoryservice_deregister_event_topic <- function(DirectoryId, TopicName) {
 #'
 #' @param DirectoryId &#91;required&#93; The identifier of the directory.
 #' @param CertificateId &#91;required&#93; The identifier of the certificate.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Certificate = list(
+#'     CertificateId = "string",
+#'     State = "Registering"|"Registered"|"RegisterFailed"|"Deregistering"|"Deregistered"|"DeregisterFailed",
+#'     StateReason = "string",
+#'     CommonName = "string",
+#'     RegisteredDateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ExpiryDateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Type = "ClientCertAuth"|"ClientLDAPS",
+#'     ClientCertAuthSettings = list(
+#'       OCSPUrl = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1199,6 +1371,22 @@ directoryservice_describe_certificate <- function(DirectoryId, CertificateId) {
 #' to get the list of associated conditional forwarders. If this member is
 #' null, all conditional forwarders are returned.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConditionalForwarders = list(
+#'     list(
+#'       RemoteDomainName = "string",
+#'       DnsIpAddrs = list(
+#'         "string"
+#'       ),
+#'       ReplicationScope = "Domain"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_conditional_forwarders(
@@ -1241,8 +1429,9 @@ directoryservice_describe_conditional_forwarders <- function(DirectoryId, Remote
 #' This operation supports pagination with the use of the `NextToken`
 #' request and response parameters. If more results are available, the
 #' `DescribeDirectoriesResult.NextToken` member contains a token that you
-#' pass in the next call to DescribeDirectories to retrieve the next set of
-#' items.
+#' pass in the next call to
+#' [`describe_directories`][directoryservice_describe_directories] to
+#' retrieve the next set of items.
 #' 
 #' You can also specify a maximum number of return results with the `Limit`
 #' parameter.
@@ -1256,10 +1445,121 @@ directoryservice_describe_conditional_forwarders <- function(DirectoryId, Remote
 #' 
 #' An empty list results in an `InvalidParameterException` being thrown.
 #' @param NextToken The `DescribeDirectoriesResult.NextToken` value from a previous call to
-#' DescribeDirectories. Pass null if this is the first call.
+#' [`describe_directories`][directoryservice_describe_directories]. Pass
+#' null if this is the first call.
 #' @param Limit The maximum number of items to return. If this value is zero, the
 #' maximum number of items is specified by the limitations of the
 #' operation.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DirectoryDescriptions = list(
+#'     list(
+#'       DirectoryId = "string",
+#'       Name = "string",
+#'       ShortName = "string",
+#'       Size = "Small"|"Large",
+#'       Edition = "Enterprise"|"Standard",
+#'       Alias = "string",
+#'       AccessUrl = "string",
+#'       Description = "string",
+#'       DnsIpAddrs = list(
+#'         "string"
+#'       ),
+#'       Stage = "Requested"|"Creating"|"Created"|"Active"|"Inoperable"|"Impaired"|"Restoring"|"RestoreFailed"|"Deleting"|"Deleted"|"Failed",
+#'       ShareStatus = "Shared"|"PendingAcceptance"|"Rejected"|"Rejecting"|"RejectFailed"|"Sharing"|"ShareFailed"|"Deleted"|"Deleting",
+#'       ShareMethod = "ORGANIZATIONS"|"HANDSHAKE",
+#'       ShareNotes = "string",
+#'       LaunchTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       StageLastUpdatedDateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Type = "SimpleAD"|"ADConnector"|"MicrosoftAD"|"SharedMicrosoftAD",
+#'       VpcSettings = list(
+#'         VpcId = "string",
+#'         SubnetIds = list(
+#'           "string"
+#'         ),
+#'         SecurityGroupId = "string",
+#'         AvailabilityZones = list(
+#'           "string"
+#'         )
+#'       ),
+#'       ConnectSettings = list(
+#'         VpcId = "string",
+#'         SubnetIds = list(
+#'           "string"
+#'         ),
+#'         CustomerUserName = "string",
+#'         SecurityGroupId = "string",
+#'         AvailabilityZones = list(
+#'           "string"
+#'         ),
+#'         ConnectIps = list(
+#'           "string"
+#'         )
+#'       ),
+#'       RadiusSettings = list(
+#'         RadiusServers = list(
+#'           "string"
+#'         ),
+#'         RadiusPort = 123,
+#'         RadiusTimeout = 123,
+#'         RadiusRetries = 123,
+#'         SharedSecret = "string",
+#'         AuthenticationProtocol = "PAP"|"CHAP"|"MS-CHAPv1"|"MS-CHAPv2",
+#'         DisplayLabel = "string",
+#'         UseSameUsername = TRUE|FALSE
+#'       ),
+#'       RadiusStatus = "Creating"|"Completed"|"Failed",
+#'       StageReason = "string",
+#'       SsoEnabled = TRUE|FALSE,
+#'       DesiredNumberOfDomainControllers = 123,
+#'       OwnerDirectoryDescription = list(
+#'         DirectoryId = "string",
+#'         AccountId = "string",
+#'         DnsIpAddrs = list(
+#'           "string"
+#'         ),
+#'         VpcSettings = list(
+#'           VpcId = "string",
+#'           SubnetIds = list(
+#'             "string"
+#'           ),
+#'           SecurityGroupId = "string",
+#'           AvailabilityZones = list(
+#'             "string"
+#'           )
+#'         ),
+#'         RadiusSettings = list(
+#'           RadiusServers = list(
+#'             "string"
+#'           ),
+#'           RadiusPort = 123,
+#'           RadiusTimeout = 123,
+#'           RadiusRetries = 123,
+#'           SharedSecret = "string",
+#'           AuthenticationProtocol = "PAP"|"CHAP"|"MS-CHAPv1"|"MS-CHAPv2",
+#'           DisplayLabel = "string",
+#'           UseSameUsername = TRUE|FALSE
+#'         ),
+#'         RadiusStatus = "Creating"|"Completed"|"Failed"
+#'       ),
+#'       RegionsInfo = list(
+#'         PrimaryRegion = "string",
+#'         AdditionalRegions = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1306,8 +1606,35 @@ directoryservice_describe_directories <- function(DirectoryIds = NULL, NextToken
 #' @param DomainControllerIds A list of identifiers for the domain controllers whose information will
 #' be provided.
 #' @param NextToken The *DescribeDomainControllers.NextToken* value from a previous call to
-#' DescribeDomainControllers. Pass null if this is the first call.
+#' [`describe_domain_controllers`][directoryservice_describe_domain_controllers].
+#' Pass null if this is the first call.
 #' @param Limit The maximum number of items to return.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DomainControllers = list(
+#'     list(
+#'       DirectoryId = "string",
+#'       DomainControllerId = "string",
+#'       DnsIpAddr = "string",
+#'       VpcId = "string",
+#'       SubnetId = "string",
+#'       AvailabilityZone = "string",
+#'       Status = "Creating"|"Active"|"Impaired"|"Restoring"|"Deleting"|"Deleted"|"Failed",
+#'       StatusReason = "string",
+#'       LaunchTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       StatusLastUpdatedDateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1362,6 +1689,24 @@ directoryservice_describe_domain_controllers <- function(DirectoryId, DomainCont
 #' 
 #' An empty list results in an `InvalidParameterException` being thrown.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EventTopics = list(
+#'     list(
+#'       DirectoryId = "string",
+#'       TopicName = "string",
+#'       TopicArn = "string",
+#'       CreatedDateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Status = "Registered"|"Topic not found"|"Failed"|"Deleted"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_event_topics(
@@ -1407,6 +1752,23 @@ directoryservice_describe_event_topics <- function(DirectoryId = NULL, TopicName
 #' @param NextToken The type of next token used for pagination.
 #' @param Limit Specifies the number of items that should be displayed on one page.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LDAPSSettingsInfo = list(
+#'     list(
+#'       LDAPSStatus = "Enabling"|"Enabled"|"EnableFailed"|"Disabled",
+#'       LDAPSStatusReason = "string",
+#'       LastUpdatedDateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_ldaps_settings(
@@ -1450,7 +1812,40 @@ directoryservice_describe_ldaps_settings <- function(DirectoryId, Type = NULL, N
 #' @param DirectoryId &#91;required&#93; The identifier of the directory.
 #' @param RegionName The name of the Region. For example, `us-east-1`.
 #' @param NextToken The `DescribeRegionsResult.NextToken` value from a previous call to
-#' DescribeRegions. Pass null if this is the first call.
+#' [`describe_regions`][directoryservice_describe_regions]. Pass null if
+#' this is the first call.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RegionsDescription = list(
+#'     list(
+#'       DirectoryId = "string",
+#'       RegionName = "string",
+#'       RegionType = "Primary"|"Additional",
+#'       Status = "Requested"|"Creating"|"Created"|"Active"|"Inoperable"|"Impaired"|"Restoring"|"RestoreFailed"|"Deleting"|"Deleted"|"Failed",
+#'       VpcSettings = list(
+#'         VpcId = "string",
+#'         SubnetIds = list(
+#'           "string"
+#'         )
+#'       ),
+#'       DesiredNumberOfDomainControllers = 123,
+#'       LaunchTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       StatusLastUpdatedDateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastUpdatedDateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1493,8 +1888,35 @@ directoryservice_describe_regions <- function(DirectoryId, RegionName = NULL, Ne
 #' @param OwnerDirectoryId &#91;required&#93; Returns the identifier of the directory in the directory owner account.
 #' @param SharedDirectoryIds A list of identifiers of all shared directories in your account.
 #' @param NextToken The `DescribeSharedDirectoriesResult.NextToken` value from a previous
-#' call to DescribeSharedDirectories. Pass null if this is the first call.
+#' call to
+#' [`describe_shared_directories`][directoryservice_describe_shared_directories].
+#' Pass null if this is the first call.
 #' @param Limit The number of shared directories to return in the response object.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SharedDirectories = list(
+#'     list(
+#'       OwnerAccountId = "string",
+#'       OwnerDirectoryId = "string",
+#'       ShareMethod = "ORGANIZATIONS"|"HANDSHAKE",
+#'       SharedAccountId = "string",
+#'       SharedDirectoryId = "string",
+#'       ShareStatus = "Shared"|"PendingAcceptance"|"Rejected"|"Rejecting"|"RejectFailed"|"Sharing"|"ShareFailed"|"Deleted"|"Deleting",
+#'       ShareNotes = "string",
+#'       CreatedDateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastUpdatedDateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1538,7 +1960,9 @@ directoryservice_describe_shared_directories <- function(OwnerDirectoryId, Share
 #' This operation supports pagination with the use of the *NextToken*
 #' request and response parameters. If more results are available, the
 #' *DescribeSnapshots.NextToken* member contains a token that you pass in
-#' the next call to DescribeSnapshots to retrieve the next set of items.
+#' the next call to
+#' [`describe_snapshots`][directoryservice_describe_snapshots] to retrieve
+#' the next set of items.
 #' 
 #' You can also specify a maximum number of return results with the *Limit*
 #' parameter.
@@ -1553,8 +1977,29 @@ directoryservice_describe_shared_directories <- function(OwnerDirectoryId, Share
 #' this member is null or empty, all snapshots are returned using the
 #' *Limit* and *NextToken* members.
 #' @param NextToken The *DescribeSnapshotsResult.NextToken* value from a previous call to
-#' DescribeSnapshots. Pass null if this is the first call.
+#' [`describe_snapshots`][directoryservice_describe_snapshots]. Pass null
+#' if this is the first call.
 #' @param Limit The maximum number of objects to return.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Snapshots = list(
+#'     list(
+#'       DirectoryId = "string",
+#'       SnapshotId = "string",
+#'       Type = "Auto"|"Manual",
+#'       Name = "string",
+#'       Status = "Creating"|"Completed"|"Failed",
+#'       StartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1609,8 +2054,38 @@ directoryservice_describe_snapshots <- function(DirectoryId = NULL, SnapshotIds 
 #' 
 #' An empty list results in an `InvalidParameterException` being thrown.
 #' @param NextToken The *DescribeTrustsResult.NextToken* value from a previous call to
-#' DescribeTrusts. Pass null if this is the first call.
+#' [`describe_trusts`][directoryservice_describe_trusts]. Pass null if this
+#' is the first call.
 #' @param Limit The maximum number of objects to return.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Trusts = list(
+#'     list(
+#'       DirectoryId = "string",
+#'       TrustId = "string",
+#'       RemoteDomainName = "string",
+#'       TrustType = "Forest"|"External",
+#'       TrustDirection = "One-Way: Outgoing"|"One-Way: Incoming"|"Two-Way",
+#'       TrustState = "Creating"|"Created"|"Verifying"|"VerifyFailed"|"Verified"|"Updating"|"UpdateFailed"|"Updated"|"Deleting"|"Deleted"|"Failed",
+#'       CreatedDateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastUpdatedDateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       StateLastUpdatedDateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       TrustStateReason = "string",
+#'       SelectiveAuth = "Enabled"|"Disabled"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1658,6 +2133,9 @@ directoryservice_describe_trusts <- function(DirectoryId = NULL, TrustIds = NULL
 #' @param Type &#91;required&#93; The type of client authentication to disable. Currently, only the
 #' parameter, `SmartCard` is supported.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$disable_client_authentication(
@@ -1697,6 +2175,9 @@ directoryservice_disable_client_authentication <- function(DirectoryId, Type) {
 #' @param DirectoryId &#91;required&#93; The identifier of the directory.
 #' @param Type &#91;required&#93; The type of LDAP security to enable. Currently only the value `Client`
 #' is supported.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1739,6 +2220,9 @@ directoryservice_disable_ldaps <- function(DirectoryId, Type) {
 #' directoryservice_disable_radius(DirectoryId)
 #'
 #' @param DirectoryId &#91;required&#93; The identifier of the directory for which to disable MFA.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1789,6 +2273,9 @@ directoryservice_disable_radius <- function(DirectoryId) {
 #' This is only used for AD Connector directories. For more information,
 #' see the *UserName* parameter.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$disable_sso(
@@ -1834,6 +2321,9 @@ directoryservice_disable_sso <- function(DirectoryId, UserName = NULL, Password 
 #' requires that you enable Kerberos Constrained Delegation for the Service
 #' User to the LDAP service in the on-premises AD.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$enable_client_authentication(
@@ -1875,6 +2365,9 @@ directoryservice_enable_client_authentication <- function(DirectoryId, Type) {
 #' @param DirectoryId &#91;required&#93; The identifier of the directory.
 #' @param Type &#91;required&#93; The type of LDAP security to enable. Currently only the value `Client`
 #' is supported.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1919,6 +2412,9 @@ directoryservice_enable_ldaps <- function(DirectoryId, Type) {
 #' @param DirectoryId &#91;required&#93; The identifier of the directory for which to enable MFA.
 #' @param RadiusSettings &#91;required&#93; A RadiusSettings object that contains information about the RADIUS
 #' server.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1983,6 +2479,9 @@ directoryservice_enable_radius <- function(DirectoryId, RadiusSettings) {
 #' This is only used for AD Connector directories. For more information,
 #' see the *UserName* parameter.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$enable_sso(
@@ -2020,6 +2519,24 @@ directoryservice_enable_sso <- function(DirectoryId, UserName = NULL, Password =
 #' @usage
 #' directoryservice_get_directory_limits()
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DirectoryLimits = list(
+#'     CloudOnlyDirectoriesLimit = 123,
+#'     CloudOnlyDirectoriesCurrentCount = 123,
+#'     CloudOnlyDirectoriesLimitReached = TRUE|FALSE,
+#'     CloudOnlyMicrosoftADLimit = 123,
+#'     CloudOnlyMicrosoftADCurrentCount = 123,
+#'     CloudOnlyMicrosoftADLimitReached = TRUE|FALSE,
+#'     ConnectedDirectoriesLimit = 123,
+#'     ConnectedDirectoriesCurrentCount = 123,
+#'     ConnectedDirectoriesLimitReached = TRUE|FALSE
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_directory_limits()
@@ -2054,6 +2571,18 @@ directoryservice_get_directory_limits <- function() {
 #' directoryservice_get_snapshot_limits(DirectoryId)
 #'
 #' @param DirectoryId &#91;required&#93; Contains the identifier of the directory to obtain the limits for.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SnapshotLimits = list(
+#'     ManualSnapshotsLimit = 123,
+#'     ManualSnapshotsCurrentCount = 123,
+#'     ManualSnapshotsLimitReached = TRUE|FALSE
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2099,6 +2628,25 @@ directoryservice_get_snapshot_limits <- function(DirectoryId) {
 #' token comes back as `null`. Pass `null` if this is the first call.
 #' @param Limit The number of items that should show up on one page
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   CertificatesInfo = list(
+#'     list(
+#'       CertificateId = "string",
+#'       CommonName = "string",
+#'       State = "Registering"|"Registered"|"RegisterFailed"|"Deregistering"|"Deregistered"|"DeregisterFailed",
+#'       ExpiryDateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Type = "ClientCertAuth"|"ClientLDAPS"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_certificates(
@@ -2138,10 +2686,31 @@ directoryservice_list_certificates <- function(DirectoryId, NextToken = NULL, Li
 #'
 #' @param DirectoryId &#91;required&#93; Identifier (ID) of the directory for which you want to retrieve the IP
 #' addresses.
-#' @param NextToken The *ListIpRoutes.NextToken* value from a previous call to ListIpRoutes.
-#' Pass null if this is the first call.
+#' @param NextToken The *ListIpRoutes.NextToken* value from a previous call to
+#' [`list_ip_routes`][directoryservice_list_ip_routes]. Pass null if this
+#' is the first call.
 #' @param Limit Maximum number of items to return. If this value is zero, the maximum
 #' number of items is specified by the limitations of the operation.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   IpRoutesInfo = list(
+#'     list(
+#'       DirectoryId = "string",
+#'       CidrIp = "string",
+#'       IpRouteStatusMsg = "Adding"|"Added"|"Removing"|"Removed"|"AddFailed"|"RemoveFailed",
+#'       AddedDateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       IpRouteStatusReason = "string",
+#'       Description = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2188,6 +2757,23 @@ directoryservice_list_ip_routes <- function(DirectoryId, NextToken = NULL, Limit
 #' @param NextToken The token for the next set of items to return.
 #' @param Limit The maximum number of items returned.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LogSubscriptions = list(
+#'     list(
+#'       DirectoryId = "string",
+#'       LogGroupName = "string",
+#'       SubscriptionCreatedDateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_log_subscriptions(
@@ -2228,8 +2814,32 @@ directoryservice_list_log_subscriptions <- function(DirectoryId = NULL, NextToke
 #' @param DirectoryId &#91;required&#93; The identifier of the directory from which to retrieve the schema
 #' extension information.
 #' @param NextToken The `ListSchemaExtensions.NextToken` value from a previous call to
-#' `ListSchemaExtensions`. Pass null if this is the first call.
+#' [`list_schema_extensions`][directoryservice_list_schema_extensions].
+#' Pass null if this is the first call.
 #' @param Limit The maximum number of items to return.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SchemaExtensionsInfo = list(
+#'     list(
+#'       DirectoryId = "string",
+#'       SchemaExtensionId = "string",
+#'       Description = "string",
+#'       SchemaExtensionStatus = "Initializing"|"CreatingSnapshot"|"UpdatingSchema"|"Replicating"|"CancelInProgress"|"RollbackInProgress"|"Cancelled"|"Failed"|"Completed",
+#'       SchemaExtensionStatusReason = "string",
+#'       StartDateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EndDateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2271,6 +2881,20 @@ directoryservice_list_schema_extensions <- function(DirectoryId, NextToken = NUL
 #' @param ResourceId &#91;required&#93; Identifier (ID) of the directory for which you want to retrieve tags.
 #' @param NextToken Reserved for future use.
 #' @param Limit Reserved for future use.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2319,6 +2943,14 @@ directoryservice_list_tags_for_resource <- function(ResourceId, NextToken = NULL
 #' `ClientLDAPS`.
 #' @param ClientCertAuthSettings A `ClientCertAuthSettings` object that contains client certificate
 #' authentication settings.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CertificateId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2369,6 +3001,9 @@ directoryservice_register_certificate <- function(DirectoryId, CertificateData, 
 #' @param TopicName &#91;required&#93; The SNS topic name to which the directory will publish status messages.
 #' This SNS topic must be in the same region as the specified Directory ID.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$register_event_topic(
@@ -2410,6 +3045,14 @@ directoryservice_register_event_topic <- function(DirectoryId, TopicName) {
 #' @param SharedDirectoryId &#91;required&#93; Identifier of the shared directory in the directory consumer account.
 #' This identifier is different for each directory owner account.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SharedDirectoryId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$reject_shared_directory(
@@ -2449,6 +3092,9 @@ directoryservice_reject_shared_directory <- function(SharedDirectoryId) {
 #' addresses.
 #' @param CidrIps &#91;required&#93; IP address blocks that you want to remove.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$remove_ip_routes(
@@ -2485,13 +3131,17 @@ directoryservice_remove_ip_routes <- function(DirectoryId, CidrIps) {
 #' @description
 #' Stops all replication and removes the domain controllers from the
 #' specified Region. You cannot remove the primary Region with this
-#' operation. Instead, use the `DeleteDirectory` API.
+#' operation. Instead, use the
+#' [`delete_directory`][directoryservice_delete_directory] API.
 #'
 #' @usage
 #' directoryservice_remove_region(DirectoryId)
 #'
 #' @param DirectoryId &#91;required&#93; The identifier of the directory for which you want to remove Region
 #' replication.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -2530,6 +3180,9 @@ directoryservice_remove_region <- function(DirectoryId) {
 #'
 #' @param ResourceId &#91;required&#93; Identifier (ID) of the directory from which to remove the tag.
 #' @param TagKeys &#91;required&#93; The tag key (name) of the tag to be removed.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -2592,6 +3245,9 @@ directoryservice_remove_tags_from_resource <- function(ResourceId, TagKeys) {
 #' @param UserName &#91;required&#93; The user name of the user whose password will be reset.
 #' @param NewPassword &#91;required&#93; The new password that will be reset.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$reset_user_password(
@@ -2631,7 +3287,8 @@ directoryservice_reset_user_password <- function(DirectoryId, UserName, NewPassw
 #' 
 #' This action returns as soon as the restore operation is initiated. You
 #' can monitor the progress of the restore operation by calling the
-#' DescribeDirectories operation with the directory identifier. When the
+#' [`describe_directories`][directoryservice_describe_directories]
+#' operation with the directory identifier. When the
 #' **DirectoryDescription.Stage** value changes to `Active`, the restore
 #' operation is complete.
 #'
@@ -2639,6 +3296,9 @@ directoryservice_reset_user_password <- function(DirectoryId, UserName, NewPassw
 #' directoryservice_restore_from_snapshot(SnapshotId)
 #'
 #' @param SnapshotId &#91;required&#93; The identifier of the snapshot to restore from.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -2708,6 +3368,14 @@ directoryservice_restore_from_snapshot <- function(SnapshotId) {
 #' (`ORGANIZATIONS`) or with any AWS account by sending a directory sharing
 #' request (`HANDSHAKE`).
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SharedDirectoryId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$share_directory(
@@ -2756,9 +3424,17 @@ directoryservice_share_directory <- function(DirectoryId, ShareNotes = NULL, Sha
 #' extension.
 #' @param LdifContent &#91;required&#93; The LDIF file represented as a string. To construct the LdifContent
 #' string, precede each line as it would be formatted in an ldif file with
-#' `\\n`. See the example request below for more details. The file size can
+#' \\n. See the example request below for more details. The file size can
 #' be no larger than 1MB.
 #' @param Description &#91;required&#93; A description of the schema extension.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SchemaExtensionId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2804,6 +3480,14 @@ directoryservice_start_schema_extension <- function(DirectoryId, CreateSnapshotB
 #' to stop sharing.
 #' @param UnshareTarget &#91;required&#93; Identifier for the directory consumer account with whom the directory
 #' has to be unshared.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SharedDirectoryId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2854,6 +3538,9 @@ directoryservice_unshare_directory <- function(DirectoryId, UnshareTarget) {
 #' @param DnsIpAddrs &#91;required&#93; The updated IP addresses of the remote DNS server associated with the
 #' conditional forwarder.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_conditional_forwarder(
@@ -2903,6 +3590,9 @@ directoryservice_update_conditional_forwarder <- function(DirectoryId, RemoteDom
 #' added or removed.
 #' @param DesiredNumber &#91;required&#93; The number of domain controllers desired in the directory.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_number_of_domain_controllers(
@@ -2945,6 +3635,9 @@ directoryservice_update_number_of_domain_controllers <- function(DirectoryId, De
 #' information.
 #' @param RadiusSettings &#91;required&#93; A RadiusSettings object that contains information about the RADIUS
 #' server.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -2998,6 +3691,15 @@ directoryservice_update_radius <- function(DirectoryId, RadiusSettings) {
 #' @param TrustId &#91;required&#93; Identifier of the trust relationship.
 #' @param SelectiveAuth Updates selective authentication for the trust.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RequestId = "string",
+#'   TrustId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_trust(
@@ -3040,6 +3742,14 @@ directoryservice_update_trust <- function(TrustId, SelectiveAuth = NULL) {
 #' directoryservice_verify_trust(TrustId)
 #'
 #' @param TrustId &#91;required&#93; The unique Trust ID of the trust relationship to verify.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TrustId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

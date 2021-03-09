@@ -14,11 +14,25 @@ to list the tags. This must have the following form:
 
 For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
+}
+}
 \description{
 Lists the tags that have been applied to the ACM certificate. Use the
 certificate's Amazon Resource Name (ARN) to specify the certificate. To
-add a tag to an ACM certificate, use the AddTagsToCertificate action. To
-delete a tag, use the RemoveTagsFromCertificate action.
+add a tag to an ACM certificate, use the
+\code{\link[=acm_add_tags_to_certificate]{add_tags_to_certificate}} action. To
+delete a tag, use the
+\code{\link[=acm_remove_tags_from_certificate]{remove_tags_from_certificate}}
+action.
 }
 \section{Request syntax}{
 \preformatted{svc$list_tags_for_certificate(

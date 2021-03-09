@@ -16,6 +16,9 @@ For more information about ARNs, see \href{https://docs.aws.amazon.com/general/l
 
 \item{Tags}{[required] The key-value pair that defines the tag. The tag value is optional.}
 }
+\value{
+An empty list.
+}
 \description{
 Adds one or more tags to an ACM certificate. Tags are labels that you
 can use to identify and organize your AWS resources. Each tag consists
@@ -33,9 +36,11 @@ certificate and an Elastic Load Balancing load balancer to indicate that
 they are both used by the same website. For more information, see
 \href{https://docs.aws.amazon.com/acm/latest/userguide/tags.html}{Tagging ACM certificates}.
 
-To remove one or more tags, use the RemoveTagsFromCertificate action. To
-view all of the tags that have been applied to the certificate, use the
-ListTagsForCertificate action.
+To remove one or more tags, use the
+\code{\link[=acm_remove_tags_from_certificate]{remove_tags_from_certificate}}
+action. To view all of the tags that have been applied to the
+certificate, use the
+\code{\link[=acm_list_tags_for_certificate]{list_tags_for_certificate}} action.
 }
 \section{Request syntax}{
 \preformatted{svc$add_tags_to_certificate(

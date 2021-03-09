@@ -17,7 +17,8 @@ process creates a directory administrator account with the user name
 \code{Administrator} and this password.
 
 If you need to change the password for the administrator account, you
-can use the ResetUserPassword API call.
+can use the
+\code{\link[=directoryservice_reset_user_password]{reset_user_password}} API call.
 
 The regex pattern for this string is made up of the following
 conditions:
@@ -29,13 +30,13 @@ AND any 3 of the following password complexity rules required by Active
 Directory:
 \itemize{
 \item Numbers and upper case and lowercase
-(?=.\emph{\verb{\\\\d})(?=.}[A-Z])(?=.*[a-z])
+(?=.\emph{\\d)(?=.}[A-Z])(?=.*[a-z])
 \item Numbers and special characters and lower case
-(?=.\emph{\verb{\\\\d})(?=.}[^A-Za-z0-9\verb{\\\\s}])(?=.*[a-z])
+(?=.\emph{\\d)(?=.}[^A-Za-z0-9\\s])(?=.*[a-z])
 \item Special characters and upper case and lower case
-(?=.\emph{[^A-Za-z0-9\verb{\\\\s}])(?=.}[A-Z])(?=.*[a-z])
+(?=.\emph{[^A-Za-z0-9\\s])(?=.}[A-Z])(?=.*[a-z])
 \item Numbers and upper case and special characters
-(?=.\emph{\verb{\\\\d})(?=.}[A-Z])(?=.*[^A-Za-z0-9\verb{\\\\s}])
+(?=.\emph{\\d)(?=.}[A-Z])(?=.*[^A-Za-z0-9\\s])
 }
 
 For additional information about how Active Directory passwords are
@@ -51,14 +52,21 @@ the operation.}
 
 \item{Tags}{The tags to be assigned to the Simple AD directory.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DirectoryId = "string"
+)
+}
+}
 \description{
 Creates a Simple AD directory. For more information, see \href{https://docs.aws.amazon.com/directoryservice/latest/admin-guide/directory_simple_ad.html}{Simple Active Directory}
 in the \emph{AWS Directory Service Admin Guide}.
 
-Before you call \code{CreateDirectory}, ensure that all of the required
-permissions have been explicitly granted through a policy. For details
-about what permissions are required to run the \code{CreateDirectory}
-operation, see \href{https://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html}{AWS Directory Service API Permissions: Actions, Resources, and Conditions Reference}.
+Before you call \code{\link[=directoryservice_create_directory]{create_directory}},
+ensure that all of the required permissions have been explicitly granted
+through a policy. For details about what permissions are required to run
+the \code{\link[=directoryservice_create_directory]{create_directory}} operation,
+see \href{https://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html}{AWS Directory Service API Permissions: Actions, Resources, and Conditions Reference}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_directory(

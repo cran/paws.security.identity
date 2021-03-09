@@ -10,12 +10,23 @@ clouddirectory_list_applied_schema_arns(DirectoryArn, SchemaArn,
 \arguments{
 \item{DirectoryArn}{[required] The ARN of the directory you are listing.}
 
-\item{SchemaArn}{The response for \code{ListAppliedSchemaArns} when this parameter is used
-will list all minor version ARNs for a major version.}
+\item{SchemaArn}{The response for
+\code{\link[=clouddirectory_list_applied_schema_arns]{list_applied_schema_arns}}
+when this parameter is used will list all minor version ARNs for a major
+version.}
 
 \item{NextToken}{The pagination token.}
 
 \item{MaxResults}{The maximum number of results to retrieve.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  SchemaArns = list(
+    "string"
+  ),
+  NextToken = "string"
+)
+}
 }
 \description{
 Lists schema major versions applied to a directory. If \code{SchemaArn} is

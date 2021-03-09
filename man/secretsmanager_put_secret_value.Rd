@@ -90,7 +90,7 @@ in the \emph{AWS CLI User Guide}.
 
 For example:
 
-\verb{\\\[\\\{"username":"bob"\\\},\\\{"password":"abc123xyz456"\\\}\\\]}
+\verb{[\{"username":"bob"\},\{"password":"abc123xyz456"\}]}
 
 If your command-line tool or SDK requires quotation marks around the
 parameter, you should use single quotes to avoid confusion with the
@@ -107,6 +107,17 @@ removed from the other version and attached to this version.
 
 If you do not specify a value for \code{VersionStages} then Secrets Manager
 automatically moves the staging label \code{AWSCURRENT} to this new version.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  ARN = "string",
+  Name = "string",
+  VersionId = "string",
+  VersionStages = list(
+    "string"
+  )
+)
+}
 }
 \description{
 Stores a new encrypted secret value in the specified secret. To do this,
@@ -136,9 +147,6 @@ and you specify the same secret data, the operation succeeds but
 does nothing. However, if the secret data is different, then the
 operation fails because you cannot modify an existing version; you
 can only create new ones.
-}<!-- -->
-
-\itemize{
 \item If you call an operation to encrypt or decrypt the \code{SecretString} or
 \code{SecretBinary} for a secret in the same account as the calling user
 and that secret doesn't specify a AWS KMS encryption key, Secrets
@@ -176,10 +184,13 @@ use the account's default AWS managed CMK for Secrets Manager.
 \strong{Related operations}
 \itemize{
 \item To retrieve the encrypted value you store in the version of a
-secret, use GetSecretValue.
-\item To create a secret, use CreateSecret.
-\item To get the details for a secret, use DescribeSecret.
-\item To list the versions attached to a secret, use ListSecretVersionIds.
+secret, use \code{\link[=secretsmanager_get_secret_value]{get_secret_value}}.
+\item To create a secret, use
+\code{\link[=secretsmanager_create_secret]{create_secret}}.
+\item To get the details for a secret, use
+\code{\link[=secretsmanager_describe_secret]{describe_secret}}.
+\item To list the versions attached to a secret, use
+\code{\link[=secretsmanager_list_secret_version_ids]{list_secret_version_ids}}.
 }
 }
 \section{Request syntax}{
@@ -202,7 +213,7 @@ secret, use GetSecretValue.
 svc$put_secret_value(
   ClientRequestToken = "EXAMPLE2-90ab-cdef-fedc-ba987EXAMPLE",
   SecretId = "MyTestDatabaseSecret",
-  SecretString = "\{\"username\":\"david\",\"password\":\"BnQw!XDWgaEeT9XGTT29\"\}"
+  SecretString = "{"username":"david","password":"BnQw!XDWgaEeT9XGTT29"}"
 )
 }
 

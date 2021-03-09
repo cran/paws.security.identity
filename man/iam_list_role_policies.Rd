@@ -12,7 +12,7 @@ iam_list_role_policies(RoleName, Marker, MaxItems)
 
 This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: \\_+=,.@-}
+spaces. You can also include any of the following characters: _+=,.@-}
 
 \item{Marker}{Use this parameter only when paginating results and only after you
 receive a response indicating that the results are truncated. Set it to
@@ -29,14 +29,24 @@ results available. In that case, the \code{IsTruncated} response element
 returns \code{true}, and \code{Marker} contains a value to include in the
 subsequent call that tells the service where to continue from.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PolicyNames = list(
+    "string"
+  ),
+  IsTruncated = TRUE|FALSE,
+  Marker = "string"
+)
+}
+}
 \description{
 Lists the names of the inline policies that are embedded in the
 specified IAM role.
 
 An IAM role can also have managed policies attached to it. To list the
 managed policies that are attached to a role, use
-ListAttachedRolePolicies. For more information about policies, see
-\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html}{Managed Policies and Inline Policies}
+\code{\link[=iam_list_attached_role_policies]{list_attached_role_policies}}. For
+more information about policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html}{Managed Policies and Inline Policies}
 in the \emph{IAM User Guide}.
 
 You can paginate the results using the \code{MaxItems} and \code{Marker}

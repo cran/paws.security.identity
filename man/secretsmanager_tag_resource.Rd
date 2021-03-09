@@ -38,15 +38,17 @@ This parameter to the API requires a JSON text string argument. For
 information on how to format a JSON parameter for the various command
 line tool environments, see \href{https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters.html#cli-using-param-json}{Using JSON for Parameters}
 in the \emph{AWS CLI User Guide}. For the AWS CLI, you can also use the
-syntax:
-\verb{--Tags Key="Key1",Value="Value1",Key="Key2",Value="Value2"\\\[,…\\\]}}
+syntax: \verb{--Tags Key="Key1",Value="Value1",Key="Key2",Value="Value2"[,…]}}
+}
+\value{
+An empty list.
 }
 \description{
 Attaches one or more tags, each consisting of a key name and a value, to
 the specified secret. Tags are part of the secret's overall metadata,
 and are not associated with any specific version of the secret. This
 operation only appends tags to the existing list of tags. To remove
-tags, you must use UntagResource.
+tags, you must use \code{\link[=secretsmanager_untag_resource]{untag_resource}}.
 
 The following basic restrictions apply to tags:
 \itemize{
@@ -62,7 +64,7 @@ your tags per secret limit.
 resources, remember other services might have restrictions on
 allowed characters. Generally allowed characters: letters, spaces,
 and numbers representable in UTF-8, plus the following special
-characters: + - = . \\_ : / @.
+characters: + - = . _ : / @.
 }
 
 If you use tags as part of your security strategy, then adding or
@@ -80,8 +82,9 @@ To run this command, you must have the following permissions:
 \strong{Related operations}
 \itemize{
 \item To remove one or more tags from the collection attached to a secret,
-use UntagResource.
-\item To view the list of tags attached to a secret, use DescribeSecret.
+use \code{\link[=secretsmanager_untag_resource]{untag_resource}}.
+\item To view the list of tags attached to a secret, use
+\code{\link[=secretsmanager_describe_secret]{describe_secret}}.
 }
 }
 \section{Request syntax}{

@@ -10,7 +10,8 @@ NULL
 #' Disables automatic scheduled rotation and cancels the rotation of a
 #' secret if currently in progress.
 #' 
-#' To re-enable scheduled rotation, call RotateSecret with
+#' To re-enable scheduled rotation, call
+#' [`rotate_secret`][secretsmanager_rotate_secret] with
 #' `AutomaticallyRotateAfterDays` set to a value greater than 0. This
 #' immediately rotates your secret and then enables the automatic schedule.
 #' 
@@ -41,15 +42,16 @@ NULL
 #' **Related operations**
 #' 
 #' -   To configure rotation for a secret or to manually trigger a
-#'     rotation, use RotateSecret.
+#'     rotation, use [`rotate_secret`][secretsmanager_rotate_secret].
 #' 
 #' -   To get the rotation configuration details for a secret, use
-#'     DescribeSecret.
+#'     [`describe_secret`][secretsmanager_describe_secret].
 #' 
-#' -   To list all of the currently available secrets, use ListSecrets.
+#' -   To list all of the currently available secrets, use
+#'     [`list_secrets`][secretsmanager_list_secrets].
 #' 
 #' -   To list all of the versions currently associated with a secret, use
-#'     ListSecretVersionIds.
+#'     [`list_secret_version_ids`][secretsmanager_list_secret_version_ids].
 #'
 #' @usage
 #' secretsmanager_cancel_rotate_secret(SecretId)
@@ -76,6 +78,16 @@ NULL
 #' If you do include the random suffix added by Secrets Manager, you
 #' receive either a *ResourceNotFoundException* or an
 #' *AccessDeniedException* error, depending on your permissions.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ARN = "string",
+#'   Name = "string",
+#'   VersionId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -181,22 +193,25 @@ secretsmanager_cancel_rotate_secret <- function(SecretId) {
 #' 
 #' **Related operations**
 #' 
-#' -   To delete a secret, use DeleteSecret.
+#' -   To delete a secret, use
+#'     [`delete_secret`][secretsmanager_delete_secret].
 #' 
-#' -   To modify an existing secret, use UpdateSecret.
+#' -   To modify an existing secret, use
+#'     [`update_secret`][secretsmanager_update_secret].
 #' 
-#' -   To create a new version of a secret, use PutSecretValue.
+#' -   To create a new version of a secret, use
+#'     [`put_secret_value`][secretsmanager_put_secret_value].
 #' 
 #' -   To retrieve the encrypted secure string and secure binary values,
-#'     use GetSecretValue.
+#'     use [`get_secret_value`][secretsmanager_get_secret_value].
 #' 
-#' -   To retrieve all other details for a secret, use DescribeSecret. This
-#'     does not include the encrypted secure string and secure binary
-#'     values.
+#' -   To retrieve all other details for a secret, use
+#'     [`describe_secret`][secretsmanager_describe_secret]. This does not
+#'     include the encrypted secure string and secure binary values.
 #' 
 #' -   To retrieve the list of secret versions associated with the current
-#'     secret, use DescribeSecret and examine the `SecretVersionsToStages`
-#'     response value.
+#'     secret, use [`describe_secret`][secretsmanager_describe_secret] and
+#'     examine the `SecretVersionsToStages` response value.
 #'
 #' @usage
 #' secretsmanager_create_secret(Name, ClientRequestToken, Description,
@@ -205,7 +220,7 @@ secretsmanager_cancel_rotate_secret <- function(SecretId) {
 #' @param Name &#91;required&#93; Specifies the friendly name of the new secret.
 #' 
 #' The secret name must be ASCII letters, digits, or the following
-#' characters : /\\_+=.@@-
+#' characters : /_+=.@@-
 #' 
 #' Do not end your secret name with a hyphen followed by six characters. If
 #' you do so, you risk confusion and unexpected results when searching for
@@ -239,8 +254,9 @@ secretsmanager_cancel_rotate_secret <- function(SecretId) {
 #' -   If a version with this value already exists and that version's
 #'     `SecretString` and `SecretBinary` values are different from those in
 #'     the request then the request fails because you cannot modify an
-#'     existing version. Instead, use PutSecretValue to create a new
-#'     version.
+#'     existing version. Instead, use
+#'     [`put_secret_value`][secretsmanager_put_secret_value] to create a
+#'     new version.
 #' 
 #' This value becomes the `VersionId` of the new version.
 #' @param Description (Optional) Specifies a user-provided description of the secret.
@@ -292,7 +308,7 @@ secretsmanager_cancel_rotate_secret <- function(SecretId) {
 #' Parameters](https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters.html#cli-using-param-json)
 #' in the *AWS CLI User Guide*. For example:
 #' 
-#' `\{"username":"bob","password":"abc123xyz456"\}`
+#' `{"username":"bob","password":"abc123xyz456"}`
 #' 
 #' If your command-line tool or SDK requires quotation marks around the
 #' parameter, you should use single quotes to avoid confusion with the
@@ -300,7 +316,7 @@ secretsmanager_cancel_rotate_secret <- function(SecretId) {
 #' @param Tags (Optional) Specifies a list of user-defined tags that are attached to
 #' the secret. Each tag is a "Key" and "Value" pair of strings. This
 #' operation only appends tags to the existing list of tags. To remove
-#' tags, you must use UntagResource.
+#' tags, you must use [`untag_resource`][secretsmanager_untag_resource].
 #' 
 #' -   Secrets Manager tag key names are case sensitive. A tag with the key
 #'     "ABC" is a different tag from one with key "abc".
@@ -317,7 +333,7 @@ secretsmanager_cancel_rotate_secret <- function(SecretId) {
 #' Parameters](https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters.html#cli-using-param-json)
 #' in the *AWS CLI User Guide*. For example:
 #' 
-#' `\\[\{"Key":"CostCenter","Value":"12345"\},\{"Key":"environment","Value":"production"\}\\]`
+#' `[{"Key":"CostCenter","Value":"12345"},{"Key":"environment","Value":"production"}]`
 #' 
 #' If your command-line tool or SDK requires quotation marks around the
 #' parameter, you should use single quotes to avoid confusion with the
@@ -342,7 +358,17 @@ secretsmanager_cancel_rotate_secret <- function(SecretId) {
 #'     resources, remember other services might have restrictions on
 #'     allowed characters. Generally allowed characters: letters, spaces,
 #'     and numbers representable in UTF-8, plus the following special
-#'     characters: + - = . \\_ : / @@.
+#'     characters: + - = . _ : / @@.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ARN = "string",
+#'   Name = "string",
+#'   VersionId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -371,7 +397,7 @@ secretsmanager_cancel_rotate_secret <- function(SecretId) {
 #'   ClientRequestToken = "EXAMPLE1-90ab-cdef-fedc-ba987SECRET1",
 #'   Description = "My test database secret created with the CLI",
 #'   Name = "MyTestDatabaseSecret",
-#'   SecretString = "\{\"username\":\"david\",\"password\":\"BnQw!XDWgaEeT9XGTT29\"\}"
+#'   SecretString = "{"username":"david","password":"BnQw!XDWgaEeT9XGTT29"}"
 #' )
 #' }
 #'
@@ -408,12 +434,15 @@ secretsmanager_create_secret <- function(Name, ClientRequestToken = NULL, Descri
 #' 
 #' **Related operations**
 #' 
-#' -   To attach a resource policy to a secret, use PutResourcePolicy.
+#' -   To attach a resource policy to a secret, use
+#'     [`put_resource_policy`][secretsmanager_put_resource_policy].
 #' 
 #' -   To retrieve the current resource-based policy that's attached to a
-#'     secret, use GetResourcePolicy.
+#'     secret, use
+#'     [`get_resource_policy`][secretsmanager_get_resource_policy].
 #' 
-#' -   To list all of the currently available secrets, use ListSecrets.
+#' -   To list all of the currently available secrets, use
+#'     [`list_secrets`][secretsmanager_list_secrets].
 #'
 #' @usage
 #' secretsmanager_delete_resource_policy(SecretId)
@@ -440,6 +469,15 @@ secretsmanager_create_secret <- function(Name, ClientRequestToken = NULL, Descri
 #' If you do include the random suffix added by Secrets Manager, you
 #' receive either a *ResourceNotFoundException* or an
 #' *AccessDeniedException* error, depending on your permissions.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ARN = "string",
+#'   Name = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -487,20 +525,23 @@ secretsmanager_delete_resource_policy <- function(SecretId) {
 #' specifies the end of the recovery window. At the end of the recovery
 #' window, Secrets Manager deletes the secret permanently.
 #' 
-#' At any time before recovery window ends, you can use RestoreSecret to
-#' remove the `DeletionDate` and cancel the deletion of the secret.
+#' At any time before recovery window ends, you can use
+#' [`restore_secret`][secretsmanager_restore_secret] to remove the
+#' `DeletionDate` and cancel the deletion of the secret.
 #' 
 #' You cannot access the encrypted secret information in any secret that is
 #' scheduled for deletion. If you need to access that information, you must
-#' cancel the deletion with RestoreSecret and then retrieve the
+#' cancel the deletion with
+#' [`restore_secret`][secretsmanager_restore_secret] and then retrieve the
 #' information.
 #' 
 #' -   There is no explicit operation to delete a version of a secret.
 #'     Instead, remove all staging labels from the `VersionStage` field of
 #'     a version. That marks the version as deprecated and allows Secrets
 #'     Manager to delete it as needed. Versions that do not have any
-#'     staging labels do not show up in ListSecretVersionIds unless you
-#'     specify `IncludeDeprecated`.
+#'     staging labels do not show up in
+#'     [`list_secret_version_ids`][secretsmanager_list_secret_version_ids]
+#'     unless you specify `IncludeDeprecated`.
 #' 
 #' -   The permanent secret deletion at the end of the waiting period is
 #'     performed as a background task with low priority. There is no
@@ -515,10 +556,12 @@ secretsmanager_delete_resource_policy <- function(SecretId) {
 #' 
 #' **Related operations**
 #' 
-#' -   To create a secret, use CreateSecret.
+#' -   To create a secret, use
+#'     [`create_secret`][secretsmanager_create_secret].
 #' 
 #' -   To cancel deletion of a version of a secret before the recovery
-#'     window has expired, use RestoreSecret.
+#'     window has expired, use
+#'     [`restore_secret`][secretsmanager_restore_secret].
 #'
 #' @usage
 #' secretsmanager_delete_secret(SecretId, RecoveryWindowInDays,
@@ -565,6 +608,18 @@ secretsmanager_delete_resource_policy <- function(SecretId) {
 #' would normally impose with the `RecoveryWindowInDays` parameter. If you
 #' delete a secret with the `ForceDeleteWithouRecovery` parameter, then you
 #' have no opportunity to recover the secret. It is permanently lost.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ARN = "string",
+#'   Name = "string",
+#'   DeletionDate = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -622,14 +677,17 @@ secretsmanager_delete_secret <- function(SecretId, RecoveryWindowInDays = NULL, 
 #' 
 #' **Related operations**
 #' 
-#' -   To create a secret, use CreateSecret.
+#' -   To create a secret, use
+#'     [`create_secret`][secretsmanager_create_secret].
 #' 
-#' -   To modify a secret, use UpdateSecret.
+#' -   To modify a secret, use
+#'     [`update_secret`][secretsmanager_update_secret].
 #' 
 #' -   To retrieve the encrypted secret information in a version of the
-#'     secret, use GetSecretValue.
+#'     secret, use [`get_secret_value`][secretsmanager_get_secret_value].
 #' 
-#' -   To list all of the secrets in the AWS account, use ListSecrets.
+#' -   To list all of the secrets in the AWS account, use
+#'     [`list_secrets`][secretsmanager_list_secrets].
 #'
 #' @usage
 #' secretsmanager_describe_secret(SecretId)
@@ -656,6 +714,49 @@ secretsmanager_delete_secret <- function(SecretId, RecoveryWindowInDays = NULL, 
 #' If you do include the random suffix added by Secrets Manager, you
 #' receive either a *ResourceNotFoundException* or an
 #' *AccessDeniedException* error, depending on your permissions.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ARN = "string",
+#'   Name = "string",
+#'   Description = "string",
+#'   KmsKeyId = "string",
+#'   RotationEnabled = TRUE|FALSE,
+#'   RotationLambdaARN = "string",
+#'   RotationRules = list(
+#'     AutomaticallyAfterDays = 123
+#'   ),
+#'   LastRotatedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastChangedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastAccessedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   DeletedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   VersionIdsToStages = list(
+#'     list(
+#'       "string"
+#'     )
+#'   ),
+#'   OwningService = "string",
+#'   CreatedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -728,7 +829,7 @@ secretsmanager_describe_secret <- function(SecretId) {
 #' the generated password if you don't explicitly exclude them with
 #' `ExcludeCharacters` or `ExcludePunctuation`:
 #' 
-#' `` ! \" # $ % &amp; \' ( ) * + , - . / : ; &lt; = &gt; ? @@ \\[ \\ \\] ^ _ \` \{ | \} ~ ``
+#' `` ! \" # $ % & \' ( ) * + , - . / : ; < = > ? @@ [ \ ] ^ _ \` { | } ~ ``
 #' @param ExcludeUppercase Specifies that the generated password should not include uppercase
 #' letters. The default if you do not include this switch parameter is that
 #' uppercase letters can be included.
@@ -742,6 +843,14 @@ secretsmanager_describe_secret <- function(SecretId) {
 #' include at least one of every allowed character type. The default value
 #' is `True` and the operation requires at least one of every character
 #' type.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RandomPassword = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -807,12 +916,14 @@ secretsmanager_get_random_password <- function(PasswordLength = NULL, ExcludeCha
 #' 
 #' **Related operations**
 #' 
-#' -   To attach a resource policy to a secret, use PutResourcePolicy.
+#' -   To attach a resource policy to a secret, use
+#'     [`put_resource_policy`][secretsmanager_put_resource_policy].
 #' 
 #' -   To delete the resource-based policy attached to a secret, use
-#'     DeleteResourcePolicy.
+#'     [`delete_resource_policy`][secretsmanager_delete_resource_policy].
 #' 
-#' -   To list all of the currently available secrets, use ListSecrets.
+#' -   To list all of the currently available secrets, use
+#'     [`list_secrets`][secretsmanager_list_secrets].
 #'
 #' @usage
 #' secretsmanager_get_resource_policy(SecretId)
@@ -839,6 +950,16 @@ secretsmanager_get_random_password <- function(PasswordLength = NULL, ExcludeCha
 #' If you do include the random suffix added by Secrets Manager, you
 #' receive either a *ResourceNotFoundException* or an
 #' *AccessDeniedException* error, depending on your permissions.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ARN = "string",
+#'   Name = "string",
+#'   ResourcePolicy = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -898,10 +1019,11 @@ secretsmanager_get_resource_policy <- function(SecretId) {
 #' **Related operations**
 #' 
 #' -   To create a new version of the secret with different encrypted
-#'     information, use PutSecretValue.
+#'     information, use
+#'     [`put_secret_value`][secretsmanager_put_secret_value].
 #' 
 #' -   To retrieve the non-encrypted details for the secret, use
-#'     DescribeSecret.
+#'     [`describe_secret`][secretsmanager_describe_secret].
 #'
 #' @usage
 #' secretsmanager_get_secret_value(SecretId, VersionId, VersionStage)
@@ -945,6 +1067,24 @@ secretsmanager_get_resource_policy <- function(SecretId) {
 #' `VersionId`. If you don't specify either a `VersionStage` or
 #' `VersionId`, then the default is to perform the operation on the version
 #' with the `VersionStage` value of `AWSCURRENT`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ARN = "string",
+#'   Name = "string",
+#'   VersionId = "string",
+#'   SecretBinary = raw,
+#'   SecretString = "string",
+#'   VersionStages = list(
+#'     "string"
+#'   ),
+#'   CreatedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1011,7 +1151,8 @@ secretsmanager_get_secret_value <- function(SecretId, VersionId = NULL, VersionS
 #' 
 #' **Related operations**
 #' 
-#' -   To list the secrets in an account, use ListSecrets.
+#' -   To list the secrets in an account, use
+#'     [`list_secrets`][secretsmanager_list_secrets].
 #'
 #' @usage
 #' secretsmanager_list_secret_version_ids(SecretId, MaxResults, NextToken,
@@ -1057,6 +1198,30 @@ secretsmanager_get_secret_value <- function(SecretId, VersionId = NULL, VersionS
 #' do not have any staging labels attached to them. Such versions are
 #' considered deprecated and are subject to deletion by Secrets Manager as
 #' needed.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Versions = list(
+#'     list(
+#'       VersionId = "string",
+#'       VersionStages = list(
+#'         "string"
+#'       ),
+#'       LastAccessedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       CreatedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string",
+#'   ARN = "string",
+#'   Name = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1104,9 +1269,10 @@ secretsmanager_list_secret_version_ids <- function(SecretId, MaxResults = NULL, 
 #' @description
 #' Lists all of the secrets that are stored by Secrets Manager in the AWS
 #' account. To list the versions currently stored for a specific secret,
-#' use ListSecretVersionIds. The encrypted fields `SecretString` and
-#' `SecretBinary` are not included in the output. To get that information,
-#' call the GetSecretValue operation.
+#' use [`list_secret_version_ids`][secretsmanager_list_secret_version_ids].
+#' The encrypted fields `SecretString` and `SecretBinary` are not included
+#' in the output. To get that information, call the
+#' [`get_secret_value`][secretsmanager_get_secret_value] operation.
 #' 
 #' Always check the `NextToken` response parameter when calling any of the
 #' `List*` operations. These operations can occasionally return an empty or
@@ -1123,7 +1289,8 @@ secretsmanager_list_secret_version_ids <- function(SecretId, MaxResults = NULL, 
 #' 
 #' **Related operations**
 #' 
-#' -   To list the versions attached to a secret, use ListSecretVersionIds.
+#' -   To list the versions attached to a secret, use
+#'     [`list_secret_version_ids`][secretsmanager_list_secret_version_ids].
 #'
 #' @usage
 #' secretsmanager_list_secrets(MaxResults, NextToken, Filters, SortOrder)
@@ -1144,6 +1311,54 @@ secretsmanager_list_secret_version_ids <- function(SecretId, MaxResults = NULL, 
 #' `NextToken` response to indicate where the output should continue from.
 #' @param Filters Lists the secret request filters.
 #' @param SortOrder Lists secrets in the requested order.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SecretList = list(
+#'     list(
+#'       ARN = "string",
+#'       Name = "string",
+#'       Description = "string",
+#'       KmsKeyId = "string",
+#'       RotationEnabled = TRUE|FALSE,
+#'       RotationLambdaARN = "string",
+#'       RotationRules = list(
+#'         AutomaticallyAfterDays = 123
+#'       ),
+#'       LastRotatedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastChangedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastAccessedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       DeletedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       SecretVersionsToStages = list(
+#'         list(
+#'           "string"
+#'         )
+#'       ),
+#'       OwningService = "string",
+#'       CreatedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1216,12 +1431,13 @@ secretsmanager_list_secrets <- function(MaxResults = NULL, NextToken = NULL, Fil
 #' **Related operations**
 #' 
 #' -   To retrieve the resource policy attached to a secret, use
-#'     GetResourcePolicy.
+#'     [`get_resource_policy`][secretsmanager_get_resource_policy].
 #' 
 #' -   To delete the resource-based policy that's attached to a secret, use
-#'     DeleteResourcePolicy.
+#'     [`delete_resource_policy`][secretsmanager_delete_resource_policy].
 #' 
-#' -   To list all of the currently available secrets, use ListSecrets.
+#' -   To list all of the currently available secrets, use
+#'     [`list_secrets`][secretsmanager_list_secrets].
 #'
 #' @usage
 #' secretsmanager_put_resource_policy(SecretId, ResourcePolicy,
@@ -1258,6 +1474,15 @@ secretsmanager_list_secrets <- function(MaxResults = NULL, NextToken = NULL, Fil
 #' @param BlockPublicPolicy Makes an optional API call to Zelkova to validate the Resource Policy to
 #' prevent broad access to your secret.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ARN = "string",
+#'   Name = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_resource_policy(
@@ -1272,7 +1497,7 @@ secretsmanager_list_secrets <- function(MaxResults = NULL, NextToken = NULL, Fil
 #' # The following example shows how to add a resource-based policy to a
 #' # secret.
 #' svc$put_resource_policy(
-#'   ResourcePolicy = "\{\n\"Version\":\"2012-10-17\",\n\"Statement\":[\{\n\"Effect\":\"Allow\",...",
+#'   ResourcePolicy = "\{\n\"Version\":\"2012-10-17\",\n\"Statement\":[\{\n\"Effect\":\"A...",
 #'   SecretId = "MyTestDatabaseSecret"
 #' )
 #' }
@@ -1331,7 +1556,6 @@ secretsmanager_put_resource_policy <- function(SecretId, ResourcePolicy, BlockPu
 #'     operation fails because you cannot modify an existing version; you
 #'     can only create new ones.
 #' 
-#' <!-- -->
 #' 
 #' -   If you call an operation to encrypt or decrypt the `SecretString` or
 #'     `SecretBinary` for a secret in the same account as the calling user
@@ -1370,13 +1594,16 @@ secretsmanager_put_resource_policy <- function(SecretId, ResourcePolicy, BlockPu
 #' **Related operations**
 #' 
 #' -   To retrieve the encrypted value you store in the version of a
-#'     secret, use GetSecretValue.
+#'     secret, use [`get_secret_value`][secretsmanager_get_secret_value].
 #' 
-#' -   To create a secret, use CreateSecret.
+#' -   To create a secret, use
+#'     [`create_secret`][secretsmanager_create_secret].
 #' 
-#' -   To get the details for a secret, use DescribeSecret.
+#' -   To get the details for a secret, use
+#'     [`describe_secret`][secretsmanager_describe_secret].
 #' 
-#' -   To list the versions attached to a secret, use ListSecretVersionIds.
+#' -   To list the versions attached to a secret, use
+#'     [`list_secret_version_ids`][secretsmanager_list_secret_version_ids].
 #'
 #' @usage
 #' secretsmanager_put_secret_value(SecretId, ClientRequestToken,
@@ -1463,7 +1690,7 @@ secretsmanager_put_resource_policy <- function(SecretId, ResourcePolicy, BlockPu
 #' 
 #' For example:
 #' 
-#' `\\[\{"username":"bob"\},\{"password":"abc123xyz456"\}\\]`
+#' `[{"username":"bob"},{"password":"abc123xyz456"}]`
 #' 
 #' If your command-line tool or SDK requires quotation marks around the
 #' parameter, you should use single quotes to avoid confusion with the
@@ -1479,6 +1706,19 @@ secretsmanager_put_resource_policy <- function(SecretId, ResourcePolicy, BlockPu
 #' 
 #' If you do not specify a value for `VersionStages` then Secrets Manager
 #' automatically moves the staging label `AWSCURRENT` to this new version.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ARN = "string",
+#'   Name = "string",
+#'   VersionId = "string",
+#'   VersionStages = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1500,7 +1740,7 @@ secretsmanager_put_resource_policy <- function(SecretId, ResourcePolicy, BlockPu
 #' svc$put_secret_value(
 #'   ClientRequestToken = "EXAMPLE2-90ab-cdef-fedc-ba987EXAMPLE",
 #'   SecretId = "MyTestDatabaseSecret",
-#'   SecretString = "\{\"username\":\"david\",\"password\":\"BnQw!XDWgaEeT9XGTT29\"\}"
+#'   SecretString = "{"username":"david","password":"BnQw!XDWgaEeT9XGTT29"}"
 #' )
 #' }
 #'
@@ -1539,7 +1779,8 @@ secretsmanager_put_secret_value <- function(SecretId, ClientRequestToken = NULL,
 #' 
 #' **Related operations**
 #' 
-#' -   To delete a secret, use DeleteSecret.
+#' -   To delete a secret, use
+#'     [`delete_secret`][secretsmanager_delete_secret].
 #'
 #' @usage
 #' secretsmanager_restore_secret(SecretId)
@@ -1566,6 +1807,15 @@ secretsmanager_put_secret_value <- function(SecretId, ClientRequestToken = NULL,
 #' If you do include the random suffix added by Secrets Manager, you
 #' receive either a *ResourceNotFoundException* or an
 #' *AccessDeniedException* error, depending on your permissions.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ARN = "string",
+#'   Name = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1644,9 +1894,9 @@ secretsmanager_restore_secret <- function(SecretId) {
 #'     secret.
 #' 
 #' If the `AWSPENDING` staging label is present but not attached to the
-#' same version as `AWSCURRENT` then any later invocation of `RotateSecret`
-#' assumes that a previous rotation request is still in progress and
-#' returns an error.
+#' same version as `AWSCURRENT` then any later invocation of
+#' [`rotate_secret`][secretsmanager_rotate_secret] assumes that a previous
+#' rotation request is still in progress and returns an error.
 #' 
 #' **Minimum permissions**
 #' 
@@ -1659,14 +1909,18 @@ secretsmanager_restore_secret <- function(SecretId) {
 #' 
 #' **Related operations**
 #' 
-#' -   To list the secrets in your account, use ListSecrets.
+#' -   To list the secrets in your account, use
+#'     [`list_secrets`][secretsmanager_list_secrets].
 #' 
-#' -   To get the details for a version of a secret, use DescribeSecret.
+#' -   To get the details for a version of a secret, use
+#'     [`describe_secret`][secretsmanager_describe_secret].
 #' 
-#' -   To create a new version of a secret, use CreateSecret.
+#' -   To create a new version of a secret, use
+#'     [`create_secret`][secretsmanager_create_secret].
 #' 
 #' -   To attach staging labels to or remove staging labels from a version
-#'     of a secret, use UpdateSecretVersionStage.
+#'     of a secret, use
+#'     [`update_secret_version_stage`][secretsmanager_update_secret_version_stage].
 #'
 #' @usage
 #' secretsmanager_rotate_secret(SecretId, ClientRequestToken,
@@ -1718,6 +1972,16 @@ secretsmanager_restore_secret <- function(SecretId) {
 #' secret.
 #' @param RotationRules A structure that defines the rotation configuration for this secret.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ARN = "string",
+#'   Name = "string",
+#'   VersionId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$rotate_secret(
@@ -1738,7 +2002,7 @@ secretsmanager_restore_secret <- function(SecretId) {
 #' # upon completion of this command. The rotation function runs
 #' # asynchronously in the background.
 #' svc$rotate_secret(
-#'   RotationLambdaARN = "arn:aws:lambda:us-west-2:123456789012:function:MyTestDatabaseRotation...",
+#'   RotationLambdaARN = "arn:aws:lambda:us-west-2:123456789012:function:MyTes...",
 #'   RotationRules = list(
 #'     AutomaticallyAfterDays = 30L
 #'   ),
@@ -1782,7 +2046,7 @@ secretsmanager_rotate_secret <- function(SecretId, ClientRequestToken = NULL, Ro
 #' the specified secret. Tags are part of the secret's overall metadata,
 #' and are not associated with any specific version of the secret. This
 #' operation only appends tags to the existing list of tags. To remove
-#' tags, you must use UntagResource.
+#' tags, you must use [`untag_resource`][secretsmanager_untag_resource].
 #' 
 #' The following basic restrictions apply to tags:
 #' 
@@ -1803,7 +2067,7 @@ secretsmanager_rotate_secret <- function(SecretId, ClientRequestToken = NULL, Ro
 #'     resources, remember other services might have restrictions on
 #'     allowed characters. Generally allowed characters: letters, spaces,
 #'     and numbers representable in UTF-8, plus the following special
-#'     characters: + - = . \\_ : / @@.
+#'     characters: + - = . _ : / @@.
 #' 
 #' If you use tags as part of your security strategy, then adding or
 #' removing a tag can change permissions. If successfully completing this
@@ -1819,9 +2083,10 @@ secretsmanager_rotate_secret <- function(SecretId, ClientRequestToken = NULL, Ro
 #' **Related operations**
 #' 
 #' -   To remove one or more tags from the collection attached to a secret,
-#'     use UntagResource.
+#'     use [`untag_resource`][secretsmanager_untag_resource].
 #' 
-#' -   To view the list of tags attached to a secret, use DescribeSecret.
+#' -   To view the list of tags attached to a secret, use
+#'     [`describe_secret`][secretsmanager_describe_secret].
 #'
 #' @usage
 #' secretsmanager_tag_resource(SecretId, Tags)
@@ -1856,8 +2121,10 @@ secretsmanager_rotate_secret <- function(SecretId, ClientRequestToken = NULL, Ro
 #' line tool environments, see [Using JSON for
 #' Parameters](https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters.html#cli-using-param-json)
 #' in the *AWS CLI User Guide*. For the AWS CLI, you can also use the
-#' syntax:
-#' `--Tags Key="Key1",Value="Value1",Key="Key2",Value="Value2"\\[,…\\]`
+#' syntax: `--Tags Key="Key1",Value="Value1",Key="Key2",Value="Value2"[,…]`
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1934,9 +2201,10 @@ secretsmanager_tag_resource <- function(SecretId, Tags) {
 #' **Related operations**
 #' 
 #' -   To add one or more tags to the collection attached to a secret, use
-#'     TagResource.
+#'     [`tag_resource`][secretsmanager_tag_resource].
 #' 
-#' -   To view the list of tags attached to a secret, use DescribeSecret.
+#' -   To view the list of tags attached to a secret, use
+#'     [`describe_secret`][secretsmanager_describe_secret].
 #'
 #' @usage
 #' secretsmanager_untag_resource(SecretId, TagKeys)
@@ -1971,6 +2239,9 @@ secretsmanager_tag_resource <- function(SecretId, Tags) {
 #' line tool environments, see [Using JSON for
 #' Parameters](https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters.html#cli-using-param-json)
 #' in the *AWS CLI User Guide*.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -2024,8 +2295,8 @@ secretsmanager_untag_resource <- function(SecretId, TagKeys) {
 #' `ClientRequestToken` and *either* `SecretString` or `SecretBinary` then
 #' it also creates a new version attached to the secret.
 #' 
-#' To modify the rotation configuration of a secret, use RotateSecret
-#' instead.
+#' To modify the rotation configuration of a secret, use
+#' [`rotate_secret`][secretsmanager_rotate_secret] instead.
 #' 
 #' The Secrets Manager console uses only the `SecretString` parameter and
 #' therefore limits you to encrypting and storing only a text string. To
@@ -2041,7 +2312,6 @@ secretsmanager_untag_resource <- function(SecretId, TagKeys) {
 #'     secret version, Secrets Manager automatically attaches the staging
 #'     label `AWSCURRENT` to the new version.
 #' 
-#' <!-- -->
 #' 
 #' -   If you call an operation to encrypt or decrypt the `SecretString` or
 #'     `SecretBinary` for a secret in the same account as the calling user
@@ -2083,14 +2353,17 @@ secretsmanager_untag_resource <- function(SecretId, TagKeys) {
 #' 
 #' **Related operations**
 #' 
-#' -   To create a new secret, use CreateSecret.
+#' -   To create a new secret, use
+#'     [`create_secret`][secretsmanager_create_secret].
 #' 
-#' -   To add only a new version to an existing secret, use PutSecretValue.
+#' -   To add only a new version to an existing secret, use
+#'     [`put_secret_value`][secretsmanager_put_secret_value].
 #' 
-#' -   To get the details for a secret, use DescribeSecret.
+#' -   To get the details for a secret, use
+#'     [`describe_secret`][secretsmanager_describe_secret].
 #' 
 #' -   To list the versions contained in a secret, use
-#'     ListSecretVersionIds.
+#'     [`list_secret_version_ids`][secretsmanager_list_secret_version_ids].
 #'
 #' @usage
 #' secretsmanager_update_secret(SecretId, ClientRequestToken, Description,
@@ -2191,7 +2464,7 @@ secretsmanager_untag_resource <- function(SecretId, TagKeys) {
 #' Parameters](https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters.html#cli-using-param-json)
 #' in the *AWS CLI User Guide*. For example:
 #' 
-#' `\\[\{"username":"bob"\},\{"password":"abc123xyz456"\}\\]`
+#' `[{"username":"bob"},{"password":"abc123xyz456"}]`
 #' 
 #' If your command-line tool or SDK requires quotation marks around the
 #' parameter, you should use single quotes to avoid confusion with the
@@ -2200,7 +2473,17 @@ secretsmanager_untag_resource <- function(SecretId, TagKeys) {
 #' a backslash. For example, the following string is surrounded by
 #' double-quotes. All of the embedded double quotes are escaped:
 #' 
-#' `"\\[\{\"username\":\"bob\"\},\{\"password\":\"abc123xyz456\"\}\\]"`
+#' `"[{\"username\":\"bob\"},{\"password\":\"abc123xyz456\"}]"`
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ARN = "string",
+#'   Name = "string",
+#'   VersionId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2236,7 +2519,7 @@ secretsmanager_untag_resource <- function(SecretId, TagKeys) {
 #' # put-secret-value operation.
 #' svc$update_secret(
 #'   SecretId = "MyTestDatabaseSecret",
-#'   SecretString = "\{JSON STRING WITH CREDENTIALS\}"
+#'   SecretString = "{JSON STRING WITH CREDENTIALS}"
 #' )
 #' }
 #'
@@ -2295,7 +2578,8 @@ secretsmanager_update_secret <- function(SecretId, ClientRequestToken = NULL, De
 #' **Related operations**
 #' 
 #' -   To get the list of staging labels that are currently associated with
-#'     a version of a secret, use ` <a>DescribeSecret</a> ` and examine the
+#'     a version of a secret, use
+#'     [`describe_secret`][secretsmanager_describe_secret] and examine the
 #'     `SecretVersionsToStages` response value.
 #'
 #' @usage
@@ -2338,6 +2622,15 @@ secretsmanager_update_secret <- function(SecretId, ClientRequestToken = NULL, De
 #' 
 #' If the staging label is already attached to a different version of the
 #' secret, then you must also specify the `RemoveFromVersionId` parameter.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ARN = "string",
+#'   Name = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2440,6 +2733,20 @@ secretsmanager_update_secret_version_stage <- function(SecretId, VersionStage, R
 #' *AccessDeniedException* error, depending on your permissions.
 #' @param ResourcePolicy &#91;required&#93; Identifies the Resource Policy attached to the secret.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PolicyValidationPassed = TRUE|FALSE,
+#'   ValidationErrors = list(
+#'     list(
+#'       CheckName = "string",
+#'       ErrorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$validate_resource_policy(
@@ -2453,7 +2760,7 @@ secretsmanager_update_secret_version_stage <- function(SecretId, VersionStage, R
 #' # The following example shows how to validate a resource-based policy to a
 #' # secret.
 #' svc$validate_resource_policy(
-#'   ResourcePolicy = "\{\n\"Version\":\"2012-10-17\",\n\"Statement\":[\{\n\"Effect\":\"Allow\",...",
+#'   ResourcePolicy = "\{\n\"Version\":\"2012-10-17\",\n\"Statement\":[\{\n\"Effect\":\"A...",
 #'   SecretId = "MyTestDatabaseSecret"
 #' )
 #' }

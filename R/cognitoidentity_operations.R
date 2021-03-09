@@ -52,6 +52,37 @@ NULL
 #' to identity pools to categorize and manage them in different ways, such
 #' as by purpose, owner, environment, or other criteria.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   IdentityPoolId = "string",
+#'   IdentityPoolName = "string",
+#'   AllowUnauthenticatedIdentities = TRUE|FALSE,
+#'   AllowClassicFlow = TRUE|FALSE,
+#'   SupportedLoginProviders = list(
+#'     "string"
+#'   ),
+#'   DeveloperProviderName = "string",
+#'   OpenIdConnectProviderARNs = list(
+#'     "string"
+#'   ),
+#'   CognitoIdentityProviders = list(
+#'     list(
+#'       ProviderName = "string",
+#'       ClientId = "string",
+#'       ServerSideTokenCheck = TRUE|FALSE
+#'     )
+#'   ),
+#'   SamlProviderARNs = list(
+#'     "string"
+#'   ),
+#'   IdentityPoolTags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_identity_pool(
@@ -114,6 +145,19 @@ cognitoidentity_create_identity_pool <- function(IdentityPoolName, AllowUnauthen
 #'
 #' @param IdentityIdsToDelete &#91;required&#93; A list of 1-60 identities that you want to delete.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   UnprocessedIdentityIds = list(
+#'     list(
+#'       IdentityId = "string",
+#'       ErrorCode = "AccessDenied"|"InternalServerError"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_identities(
@@ -156,6 +200,9 @@ cognitoidentity_delete_identities <- function(IdentityIdsToDelete) {
 #'
 #' @param IdentityPoolId &#91;required&#93; An identity pool ID in the format REGION:GUID.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_identity_pool(
@@ -197,6 +244,23 @@ cognitoidentity_delete_identity_pool <- function(IdentityPoolId) {
 #'
 #' @param IdentityId &#91;required&#93; A unique identifier in the format REGION:GUID.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   IdentityId = "string",
+#'   Logins = list(
+#'     "string"
+#'   ),
+#'   CreationDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastModifiedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_identity(
@@ -237,6 +301,37 @@ cognitoidentity_describe_identity <- function(IdentityId) {
 #' cognitoidentity_describe_identity_pool(IdentityPoolId)
 #'
 #' @param IdentityPoolId &#91;required&#93; An identity pool ID in the format REGION:GUID.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   IdentityPoolId = "string",
+#'   IdentityPoolName = "string",
+#'   AllowUnauthenticatedIdentities = TRUE|FALSE,
+#'   AllowClassicFlow = TRUE|FALSE,
+#'   SupportedLoginProviders = list(
+#'     "string"
+#'   ),
+#'   DeveloperProviderName = "string",
+#'   OpenIdConnectProviderARNs = list(
+#'     "string"
+#'   ),
+#'   CognitoIdentityProviders = list(
+#'     list(
+#'       ProviderName = "string",
+#'       ClientId = "string",
+#'       ServerSideTokenCheck = TRUE|FALSE
+#'     )
+#'   ),
+#'   SamlProviderARNs = list(
+#'     "string"
+#'   ),
+#'   IdentityPoolTags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -281,8 +376,8 @@ cognitoidentity_describe_identity_pool <- function(IdentityPoolId) {
 #'
 #' @param IdentityId &#91;required&#93; A unique identifier in the format REGION:GUID.
 #' @param Logins A set of optional name-value pairs that map provider names to provider
-#' tokens. The name-value pair will follow the syntax "provider\\_name":
-#' "provider\\_user\\_identifier".
+#' tokens. The name-value pair will follow the syntax "provider_name":
+#' "provider_user_identifier".
 #' 
 #' Logins should not be specified when trying to get credentials for an
 #' unauthenticated identity.
@@ -296,6 +391,22 @@ cognitoidentity_describe_identity_pool <- function(IdentityPoolId) {
 #' roles were received in the token from the identity provider. For
 #' example, a SAML-based identity provider. This parameter is optional for
 #' identity providers that do not support role customization.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   IdentityId = "string",
+#'   Credentials = list(
+#'     AccessKeyId = "string",
+#'     SecretKey = "string",
+#'     SessionToken = "string",
+#'     Expiration = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -347,9 +458,8 @@ cognitoidentity_get_credentials_for_identity <- function(IdentityId, Logins = NU
 #' -   Facebook: `graph.facebook.com`
 #' 
 #' -   Amazon Cognito user pool:
-#'     `cognito-idp.&lt;region&gt;.amazonaws.com/&lt;YOUR_USER_POOL_ID&gt;`,
-#'     for example,
-#'     `cognito-idp.us-east-1.amazonaws.com/us-east-1_123456789`.
+#'     `cognito-idp.<region>.amazonaws.com/<YOUR_USER_POOL_ID>`, for
+#'     example, `cognito-idp.us-east-1.amazonaws.com/us-east-1_123456789`.
 #' 
 #' -   Google: `accounts.google.com`
 #' 
@@ -358,6 +468,14 @@ cognitoidentity_get_credentials_for_identity <- function(IdentityId, Logins = NU
 #' -   Twitter: `api.twitter.com`
 #' 
 #' -   Digits: `www.digits.com`
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   IdentityId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -402,6 +520,33 @@ cognitoidentity_get_id <- function(AccountId = NULL, IdentityPoolId, Logins = NU
 #'
 #' @param IdentityPoolId &#91;required&#93; An identity pool ID in the format REGION:GUID.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   IdentityPoolId = "string",
+#'   Roles = list(
+#'     "string"
+#'   ),
+#'   RoleMappings = list(
+#'     list(
+#'       Type = "Token"|"Rules",
+#'       AmbiguousRoleResolution = "AuthenticatedRole"|"Deny",
+#'       RulesConfiguration = list(
+#'         Rules = list(
+#'           list(
+#'             Claim = "string",
+#'             MatchType = "Equals"|"Contains"|"StartsWith"|"NotEqual",
+#'             Value = "string",
+#'             RoleARN = "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_identity_pool_roles(
@@ -433,8 +578,9 @@ cognitoidentity_get_identity_pool_roles <- function(IdentityPoolId) {
 #'
 #' @description
 #' Gets an OpenID token, using a known Cognito ID. This known Cognito ID is
-#' returned by GetId. You can optionally add additional logins for the
-#' identity. Supplying multiple logins creates an implicit link.
+#' returned by [`get_id`][cognitoidentity_get_id]. You can optionally add
+#' additional logins for the identity. Supplying multiple logins creates an
+#' implicit link.
 #' 
 #' The OpenId token is valid for 10 minutes.
 #' 
@@ -446,9 +592,18 @@ cognitoidentity_get_identity_pool_roles <- function(IdentityPoolId) {
 #' @param IdentityId &#91;required&#93; A unique identifier in the format REGION:GUID.
 #' @param Logins A set of optional name-value pairs that map provider names to provider
 #' tokens. When using graph.facebook.com and www.amazon.com, supply the
-#' access\\_token returned from the provider's authflow. For
+#' access_token returned from the provider's authflow. For
 #' accounts.google.com, an Amazon Cognito user pool provider, or any other
 #' OpenId Connect provider, always include the `id_token`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   IdentityId = "string",
+#'   Token = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -491,14 +646,15 @@ cognitoidentity_get_open_id_token <- function(IdentityId, Logins = NULL) {
 #' which is linked to the identity pool. The developer provider is the
 #' "domain" by which Cognito will refer to your users.
 #' 
-#' You can use `GetOpenIdTokenForDeveloperIdentity` to create a new
-#' identity and to link new logins (that is, user credentials issued by a
-#' public provider or developer provider) to an existing identity. When you
-#' want to create a new identity, the `IdentityId` should be null. When you
-#' want to associate a new login with an existing
-#' authenticated/unauthenticated identity, you can do so by providing the
-#' existing `IdentityId`. This API will create the identity in the
-#' specified `IdentityPoolId`.
+#' You can use
+#' [`get_open_id_token_for_developer_identity`][cognitoidentity_get_open_id_token_for_developer_identity]
+#' to create a new identity and to link new logins (that is, user
+#' credentials issued by a public provider or developer provider) to an
+#' existing identity. When you want to create a new identity, the
+#' `IdentityId` should be null. When you want to associate a new login with
+#' an existing authenticated/unauthenticated identity, you can do so by
+#' providing the existing `IdentityId`. This API will create the identity
+#' in the specified `IdentityPoolId`.
 #' 
 #' You must use AWS Developer credentials to call this API.
 #'
@@ -530,6 +686,15 @@ cognitoidentity_get_open_id_token <- function(IdentityId, Logins = NULL) {
 #' 
 #' Please provide for a small grace period, usually no more than 5 minutes,
 #' to account for clock skew.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   IdentityId = "string",
+#'   Token = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -581,6 +746,29 @@ cognitoidentity_get_open_id_token_for_developer_identity <- function(IdentityPoo
 #' identities. If omitted, the ListIdentities API will include disabled
 #' identities in the response.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   IdentityPoolId = "string",
+#'   Identities = list(
+#'     list(
+#'       IdentityId = "string",
+#'       Logins = list(
+#'         "string"
+#'       ),
+#'       CreationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastModifiedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_identities(
@@ -623,6 +811,20 @@ cognitoidentity_list_identities <- function(IdentityPoolId, MaxResults, NextToke
 #'
 #' @param MaxResults &#91;required&#93; The maximum number of identities to return.
 #' @param NextToken A pagination token.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   IdentityPools = list(
+#'     list(
+#'       IdentityPoolId = "string",
+#'       IdentityPoolName = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -669,6 +871,16 @@ cognitoidentity_list_identity_pools <- function(MaxResults, NextToken = NULL) {
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the identity pool that the tags are
 #' assigned to.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_tags_for_resource(
@@ -712,12 +924,13 @@ cognitoidentity_list_tags_for_resource <- function(ResourceArn) {
 #' values and is the same as the request. Otherwise a
 #' `ResourceConflictException` is thrown.
 #' 
-#' `LookupDeveloperIdentity` is intended for low-throughput control plane
-#' operations: for example, to enable customer service to locate an
-#' identity ID by username. If you are using it for higher-volume
-#' operations such as user authentication, your requests are likely to be
-#' throttled. GetOpenIdTokenForDeveloperIdentity is a better option for
-#' higher-volume operations for user authentication.
+#' [`lookup_developer_identity`][cognitoidentity_lookup_developer_identity]
+#' is intended for low-throughput control plane operations: for example, to
+#' enable customer service to locate an identity ID by username. If you are
+#' using it for higher-volume operations such as user authentication, your
+#' requests are likely to be throttled.
+#' [`get_open_id_token_for_developer_identity`][cognitoidentity_get_open_id_token_for_developer_identity]
+#' is a better option for higher-volume operations for user authentication.
 #' 
 #' You must use AWS Developer credentials to call this API.
 #'
@@ -737,6 +950,18 @@ cognitoidentity_list_tags_for_resource <- function(ResourceArn) {
 #' and there are 20 matches in the database. The service will return a
 #' pagination token as a part of the response. This token can be used to
 #' call the API again and get results starting from the 11th match.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   IdentityId = "string",
+#'   DeveloperUserIdentifierList = list(
+#'     "string"
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -802,8 +1027,16 @@ cognitoidentity_lookup_developer_identity <- function(IdentityPoolId, IdentityId
 #' This name acts as a placeholder that allows your backend and the Cognito
 #' service to communicate about the developer provider. For the
 #' `DeveloperProviderName`, you can use letters as well as period (.),
-#' underscore (\\_), and dash (-).
+#' underscore (_), and dash (-).
 #' @param IdentityPoolId &#91;required&#93; An identity pool ID in the format REGION:GUID.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   IdentityId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -839,7 +1072,9 @@ cognitoidentity_merge_developer_identities <- function(SourceUserIdentifier, Des
 #'
 #' @description
 #' Sets the roles for an identity pool. These roles are used when making
-#' calls to GetCredentialsForIdentity action.
+#' calls to
+#' [`get_credentials_for_identity`][cognitoidentity_get_credentials_for_identity]
+#' action.
 #' 
 #' You must use AWS Developer credentials to call this API.
 #'
@@ -854,9 +1089,12 @@ cognitoidentity_merge_developer_identities <- function(SourceUserIdentifier, Des
 #' @param RoleMappings How users for a specific identity provider are to mapped to roles. This
 #' is a string to RoleMapping object map. The string identifies the
 #' identity provider, for example, "graph.facebook.com" or
-#' "cognito-idp-east-1.amazonaws.com/us-east-1\\_abcdefghi:app\\_client\\_id".
+#' "cognito-idp-east-1.amazonaws.com/us-east-1_abcdefghi:app_client_id".
 #' 
 #' Up to 25 rules can be specified per identity provider.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -935,6 +1173,9 @@ cognitoidentity_set_identity_pool_roles <- function(IdentityPoolId, Roles, RoleM
 #' to.
 #' @param Tags &#91;required&#93; The tags to assign to the identity pool.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$tag_resource(
@@ -986,6 +1227,9 @@ cognitoidentity_tag_resource <- function(ResourceArn, Tags) {
 #' @param DeveloperUserIdentifier &#91;required&#93; A unique ID used by your backend authentication process to identify a
 #' user.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$unlink_developer_identity(
@@ -1033,6 +1277,9 @@ cognitoidentity_unlink_developer_identity <- function(IdentityId, IdentityPoolId
 #' tokens.
 #' @param LoginsToRemove &#91;required&#93; Provider names to unlink from this identity.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$unlink_identity(
@@ -1078,6 +1325,9 @@ cognitoidentity_unlink_identity <- function(IdentityId, Logins, LoginsToRemove) 
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the identity pool that the tags are
 #' assigned to.
 #' @param TagKeys &#91;required&#93; The keys of the tags to remove from the user pool.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1140,6 +1390,37 @@ cognitoidentity_untag_resource <- function(ResourceArn, TagKeys) {
 #' you can apply to identity pools to categorize and manage them in
 #' different ways, such as by purpose, owner, environment, or other
 #' criteria.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   IdentityPoolId = "string",
+#'   IdentityPoolName = "string",
+#'   AllowUnauthenticatedIdentities = TRUE|FALSE,
+#'   AllowClassicFlow = TRUE|FALSE,
+#'   SupportedLoginProviders = list(
+#'     "string"
+#'   ),
+#'   DeveloperProviderName = "string",
+#'   OpenIdConnectProviderARNs = list(
+#'     "string"
+#'   ),
+#'   CognitoIdentityProviders = list(
+#'     list(
+#'       ProviderName = "string",
+#'       ClientId = "string",
+#'       ServerSideTokenCheck = TRUE|FALSE
+#'     )
+#'   ),
+#'   SamlProviderARNs = list(
+#'     "string"
+#'   ),
+#'   IdentityPoolTags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

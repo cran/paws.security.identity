@@ -13,20 +13,24 @@ is embedded in.
 
 This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: \\_+=,.@-}
+spaces. You can also include any of the following characters: _+=,.@-}
 
 \item{PolicyName}{[required] The name identifying the policy document to delete.
 
 This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: \\_+=,.@-}
+spaces. You can also include any of the following characters: _+=,.@-}
+}
+\value{
+An empty list.
 }
 \description{
 Deletes the specified inline policy that is embedded in the specified
 IAM group.
 
 A group can also have managed policies attached to it. To detach a
-managed policy from a group, use DetachGroupPolicy. For more information
+managed policy from a group, use
+\code{\link[=iam_detach_group_policy]{detach_group_policy}}. For more information
 about policies, refer to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html}{Managed Policies and Inline Policies}
 in the \emph{IAM User Guide}.
 }

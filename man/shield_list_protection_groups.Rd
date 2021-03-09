@@ -7,8 +7,9 @@
 shield_list_protection_groups(NextToken, MaxResults)
 }
 \arguments{
-\item{NextToken}{The next token value from a previous call to \code{ListProtectionGroups}.
-Pass null if this is the first call.}
+\item{NextToken}{The next token value from a previous call to
+\code{\link[=shield_list_protection_groups]{list_protection_groups}}. Pass null if
+this is the first call.}
 
 \item{MaxResults}{The maximum number of ProtectionGroup objects to return. If you leave
 this blank, Shield Advanced returns the first 20 results.
@@ -19,6 +20,23 @@ than \code{MaxResults}, even if there are still more objects yet to return.
 If there are more objects to return, Shield Advanced returns a value in
 \code{NextToken} that you can use in your next request, to get the next batch
 of objects.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  ProtectionGroups = list(
+    list(
+      ProtectionGroupId = "string",
+      Aggregation = "SUM"|"MEAN"|"MAX",
+      Pattern = "ALL"|"ARBITRARY"|"BY_RESOURCE_TYPE",
+      ResourceType = "CLOUDFRONT_DISTRIBUTION"|"ROUTE_53_HOSTED_ZONE"|"ELASTIC_IP_ALLOCATION"|"CLASSIC_LOAD_BALANCER"|"APPLICATION_LOAD_BALANCER"|"GLOBAL_ACCELERATOR",
+      Members = list(
+        "string"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
 }
 \description{
 Retrieves the ProtectionGroup objects for the account.

@@ -21,12 +21,21 @@ Manager to return for this request. If you have more IDs than the number
 that you specify for \code{MaxResults}, the response includes a \code{NextToken}
 value that you can use to get another batch of member account IDs.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  MemberAccounts = list(
+    "string"
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns a \code{MemberAccounts} object that lists the member accounts in the
 administrator's AWS organization.
 
-The \code{ListMemberAccounts} must be submitted by the account that is set as
-the AWS Firewall Manager administrator.
+The \code{\link[=fms_list_member_accounts]{list_member_accounts}} must be submitted
+by the account that is set as the AWS Firewall Manager administrator.
 }
 \section{Request syntax}{
 \preformatted{svc$list_member_accounts(

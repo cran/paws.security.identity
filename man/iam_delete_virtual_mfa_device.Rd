@@ -14,12 +14,15 @@ This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{re
 consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: =,.@:/-}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a virtual MFA device.
 
 You must deactivate a user's virtual MFA device before you can delete
 it. For information about deactivating MFA devices, see
-DeactivateMFADevice.
+\code{\link[=iam_deactivate_mfa_device]{deactivate_mfa_device}}.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_virtual_mfa_device(

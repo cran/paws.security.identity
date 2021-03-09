@@ -10,13 +10,17 @@ shield_associate_drt_log_bucket(LogBucket)
 \arguments{
 \item{LogBucket}{[required] The Amazon S3 bucket that contains your AWS WAF logs.}
 }
+\value{
+An empty list.
+}
 \description{
 Authorizes the DDoS Response Team (DRT) to access the specified Amazon
 S3 bucket containing your AWS WAF logs. You can associate up to 10
 Amazon S3 buckets with your subscription.
 
-To use the services of the DRT and make an \code{AssociateDRTLogBucket}
-request, you must be subscribed to the \href{https://aws.amazon.com/premiumsupport/plans/business/}{Business Support plan} or the
+To use the services of the DRT and make an
+\code{\link[=shield_associate_drt_log_bucket]{associate_drt_log_bucket}} request,
+you must be subscribed to the \href{https://aws.amazon.com/premiumsupport/plans/business/}{Business Support plan} or the
 \href{https://aws.amazon.com/premiumsupport/plans/enterprise/}{Enterprise Support plan}.
 }
 \section{Request syntax}{

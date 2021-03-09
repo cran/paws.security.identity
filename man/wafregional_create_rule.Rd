@@ -13,12 +13,31 @@ a \code{Rule} after you create it.}
 \item{MetricName}{[required] A friendly name or description for the metrics for this \code{Rule}. The name
 can contain only alphanumeric characters (A-Z, a-z, 0-9), with maximum
 length 128 and minimum length one. It can't contain whitespace or metric
-names reserved for AWS WAF, including "All" and "Default\\_Action." You
+names reserved for AWS WAF, including "All" and "Default_Action." You
 can't change the name of the metric after you create the \code{Rule}.}
 
-\item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
+\item{ChangeToken}{[required] The value returned by the most recent call to
+\code{\link[=wafregional_get_change_token]{get_change_token}}.}
 
 \item{Tags}{}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Rule = list(
+    RuleId = "string",
+    Name = "string",
+    MetricName = "string",
+    Predicates = list(
+      list(
+        Negated = TRUE|FALSE,
+        Type = "IPMatch"|"ByteMatch"|"SqlInjectionMatch"|"GeoMatch"|"SizeConstraint"|"XssMatch"|"RegexMatch",
+        DataId = "string"
+      )
+    )
+  ),
+  ChangeToken = "string"
+)
+}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
@@ -48,17 +67,21 @@ in the request must contain the value \code{BadBot}.
 To create and configure a \code{Rule}, perform the following steps:
 \enumerate{
 \item Create and update the predicates that you want to include in the
-\code{Rule}. For more information, see CreateByteMatchSet, CreateIPSet,
-and CreateSqlInjectionMatchSet.
-\item Use GetChangeToken to get the change token that you provide in the
-\code{ChangeToken} parameter of a \code{CreateRule} request.
-\item Submit a \code{CreateRule} request.
-\item Use \code{GetChangeToken} to get the change token that you provide in the
-\code{ChangeToken} parameter of an UpdateRule request.
-\item Submit an \code{UpdateRule} request to specify the predicates that you
-want to include in the \code{Rule}.
+\code{Rule}. For more information, see
+\code{\link[=wafregional_create_byte_match_set]{create_byte_match_set}},
+\code{\link[=wafregional_create_ip_set]{create_ip_set}}, and
+\code{\link[=wafregional_create_sql_injection_match_set]{create_sql_injection_match_set}}.
+\item Use \code{\link[=wafregional_get_change_token]{get_change_token}} to get the
+change token that you provide in the \code{ChangeToken} parameter of a
+\code{\link[=wafregional_create_rule]{create_rule}} request.
+\item Submit a \code{\link[=wafregional_create_rule]{create_rule}} request.
+\item Use \code{\link[=wafregional_get_change_token]{get_change_token}} to get the
+change token that you provide in the \code{ChangeToken} parameter of an
+\code{\link[=wafregional_update_rule]{update_rule}} request.
+\item Submit an \code{\link[=wafregional_update_rule]{update_rule}} request to
+specify the predicates that you want to include in the \code{Rule}.
 \item Create and update a \code{WebACL} that contains the \code{Rule}. For more
-information, see CreateWebACL.
+information, see \code{\link[=wafregional_create_web_acl]{create_web_acl}}.
 }
 
 For more information about how to use the AWS WAF API to allow or block

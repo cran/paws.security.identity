@@ -19,13 +19,17 @@ in the \emph{AWS General Reference}.}
 For more information about managed policy versions, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-versioning.html}{Versioning for Managed Policies}
 in the \emph{IAM User Guide}.}
 }
+\value{
+An empty list.
+}
 \description{
 Sets the specified version of the specified policy as the policy's
 default (operative) version.
 
 This operation affects all users, groups, and roles that the policy is
 attached to. To list the users, groups, and roles that the policy is
-attached to, use the ListEntitiesForPolicy API.
+attached to, use the
+\code{\link[=iam_list_entities_for_policy]{list_entities_for_policy}} API.
 
 For information about managed policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html}{Managed Policies and Inline Policies}
 in the \emph{IAM User Guide}.

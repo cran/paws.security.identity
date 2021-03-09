@@ -8,8 +8,28 @@ waf_get_regex_match_set(RegexMatchSetId)
 }
 \arguments{
 \item{RegexMatchSetId}{[required] The \code{RegexMatchSetId} of the RegexMatchSet that you want to get.
-\code{RegexMatchSetId} is returned by CreateRegexMatchSet and by
-ListRegexMatchSets.}
+\code{RegexMatchSetId} is returned by
+\code{\link[=waf_create_regex_match_set]{create_regex_match_set}} and by
+\code{\link[=waf_list_regex_match_sets]{list_regex_match_sets}}.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  RegexMatchSet = list(
+    RegexMatchSetId = "string",
+    Name = "string",
+    RegexMatchTuples = list(
+      list(
+        FieldToMatch = list(
+          Type = "URI"|"QUERY_STRING"|"HEADER"|"METHOD"|"BODY"|"SINGLE_QUERY_ARG"|"ALL_QUERY_ARGS",
+          Data = "string"
+        ),
+        TextTransformation = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE",
+        RegexPatternSetId = "string"
+      )
+    )
+  )
+)
+}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see

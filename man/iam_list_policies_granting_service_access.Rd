@@ -27,6 +27,27 @@ example, \verb{(service prefix: a4b)}. For more information about service
 namespaces, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces}{AWS Service Namespaces}
 in the \emph{AWS General Reference}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PoliciesGrantingServiceAccess = list(
+    list(
+      ServiceNamespace = "string",
+      Policies = list(
+        list(
+          PolicyName = "string",
+          PolicyType = "INLINE"|"MANAGED",
+          PolicyArn = "string",
+          EntityType = "USER"|"ROLE"|"GROUP",
+          EntityName = "string"
+        )
+      )
+    )
+  ),
+  IsTruncated = TRUE|FALSE,
+  Marker = "string"
+)
+}
+}
 \description{
 Retrieves a list of policies that the IAM identity (user, group, or
 role) can use to access each specified service.
@@ -61,8 +82,8 @@ in the \emph{IAM User Guide}.
 
 Policies that are attached to users and roles as permissions boundaries
 are not returned. To view which managed policy is currently used to set
-the permissions boundary for a user or role, use the GetUser or GetRole
-operations.
+the permissions boundary for a user or role, use the
+\code{\link[=iam_get_user]{get_user}} or \code{\link[=iam_get_role]{get_role}} operations.
 }
 \section{Request syntax}{
 \preformatted{svc$list_policies_granting_service_access(

@@ -12,10 +12,21 @@ administrator account that is monitoring member accounts.}
 
 \item{AccountIds}{[required] A list of account IDs for the member accounts to stop monitoring.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  UnprocessedAccounts = list(
+    list(
+      AccountId = "string",
+      Result = "string"
+    )
+  )
+)
+}
+}
 \description{
 Stops GuardDuty monitoring for the specified member accounts. Use the
-\code{StartMonitoringMembers} operation to restart monitoring for those
-accounts.
+\code{\link[=guardduty_start_monitoring_members]{start_monitoring_members}}
+operation to restart monitoring for those accounts.
 }
 \section{Request syntax}{
 \preformatted{svc$stop_monitoring_members(

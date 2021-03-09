@@ -16,6 +16,9 @@ NULL
 #' attributes.
 #' @param CustomAttributes &#91;required&#93; An array of custom attributes, such as Mutable and Name.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$add_custom_attributes(
@@ -74,6 +77,9 @@ cognitoidentityprovider_add_custom_attributes <- function(UserPoolId, CustomAttr
 #' @param UserPoolId &#91;required&#93; The user pool ID for the user pool.
 #' @param Username &#91;required&#93; The username for the user.
 #' @param GroupName &#91;required&#93; The group name.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -149,6 +155,9 @@ cognitoidentityprovider_admin_add_user_to_group <- function(UserPoolId, Username
 #' -   Amazon Cognito does not encrypt the the ClientMetadata value, so
 #'     don't use it to provide sensitive information.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$admin_confirm_sign_up(
@@ -192,13 +201,16 @@ cognitoidentityprovider_admin_confirm_sign_up <- function(UserPoolId, Username, 
 #' create or update a user pool. This template includes your custom sign-up
 #' instructions and placeholders for user name and temporary password.
 #' 
-#' Alternatively, you can call `AdminCreateUser` with “SUPPRESS” for the
-#' `MessageAction` parameter, and Amazon Cognito will not send any email.
+#' Alternatively, you can call
+#' [`admin_create_user`][cognitoidentityprovider_admin_create_user] with
+#' “SUPPRESS” for the `MessageAction` parameter, and Amazon Cognito will
+#' not send any email.
 #' 
 #' In either case, the user will be in the `FORCE_CHANGE_PASSWORD` state
 #' until they sign in and change their password.
 #' 
-#' `AdminCreateUser` requires developer credentials.
+#' [`admin_create_user`][cognitoidentityprovider_admin_create_user]
+#' requires developer credentials.
 #'
 #' @usage
 #' cognitoidentityprovider_admin_create_user(UserPoolId, Username,
@@ -214,8 +226,9 @@ cognitoidentityprovider_admin_confirm_sign_up <- function(UserPoolId, Username, 
 #' without specifying any attributes other than `Username`. However, any
 #' attributes that you specify as required (when creating a user pool or in
 #' the **Attributes** tab of the console) must be supplied either by you
-#' (in your call to `AdminCreateUser`) or by the user (when he or she signs
-#' up in response to your welcome message).
+#' (in your call to
+#' [`admin_create_user`][cognitoidentityprovider_admin_create_user]) or by
+#' the user (when he or she signs up in response to your welcome message).
 #' 
 #' For custom attributes, you must prepend the `custom:` prefix to the
 #' attribute name.
@@ -225,17 +238,19 @@ cognitoidentityprovider_admin_confirm_sign_up <- function(UserPoolId, Username, 
 #' AdminCreateUser or in the **Users** tab of the Amazon Cognito console
 #' for managing your user pools.
 #' 
-#' In your call to `AdminCreateUser`, you can set the `email_verified`
-#' attribute to `True`, and you can set the `phone_number_verified`
-#' attribute to `True`. (You can also do this by calling
-#' [AdminUpdateUserAttributes](https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_AdminUpdateUserAttributes.html).)
+#' In your call to
+#' [`admin_create_user`][cognitoidentityprovider_admin_create_user], you
+#' can set the `email_verified` attribute to `True`, and you can set the
+#' `phone_number_verified` attribute to `True`. (You can also do this by
+#' calling
+#' [`admin_update_user_attributes`][cognitoidentityprovider_admin_update_user_attributes].)
 #' 
 #' -   **email**: The email address of the user to whom the message that
 #'     contains the code and username will be sent. Required if the
 #'     `email_verified` attribute is set to `True`, or if `"EMAIL"` is
 #'     specified in the `DesiredDeliveryMediums` parameter.
 #' 
-#' -   **phone\\_number**: The phone number of the user to whom the message
+#' -   **phone_number**: The phone number of the user to whom the message
 #'     that contains the code and username will be sent. Required if the
 #'     `phone_number_verified` attribute is set to `True`, or if `"SMS"` is
 #'     specified in the `DesiredDeliveryMediums` parameter.
@@ -263,8 +278,9 @@ cognitoidentityprovider_admin_confirm_sign_up <- function(UserPoolId, Username, 
 #' 
 #' The temporary password can only be used until the user account
 #' expiration limit that you specified when you created the user pool. To
-#' reset the account after that time limit, you must call `AdminCreateUser`
-#' again, specifying `"RESEND"` for the `MessageAction` parameter.
+#' reset the account after that time limit, you must call
+#' [`admin_create_user`][cognitoidentityprovider_admin_create_user] again,
+#' specifying `"RESEND"` for the `MessageAction` parameter.
 #' @param ForceAliasCreation This parameter is only used if the `phone_number_verified` or
 #' `email_verified` attribute is set to `True`. Otherwise, it is ignored.
 #' 
@@ -314,6 +330,36 @@ cognitoidentityprovider_admin_confirm_sign_up <- function(UserPoolId, Username, 
 #' 
 #' -   Amazon Cognito does not encrypt the the ClientMetadata value, so
 #'     don't use it to provide sensitive information.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   User = list(
+#'     Username = "string",
+#'     Attributes = list(
+#'       list(
+#'         Name = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     UserCreateDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     UserLastModifiedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Enabled = TRUE|FALSE,
+#'     UserStatus = "UNCONFIRMED"|"CONFIRMED"|"ARCHIVED"|"COMPROMISED"|"UNKNOWN"|"RESET_REQUIRED"|"FORCE_CHANGE_PASSWORD",
+#'     MFAOptions = list(
+#'       list(
+#'         DeliveryMedium = "SMS"|"EMAIL",
+#'         AttributeName = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -377,6 +423,9 @@ cognitoidentityprovider_admin_create_user <- function(UserPoolId, Username, User
 #' @param UserPoolId &#91;required&#93; The user pool ID for the user pool where you want to delete the user.
 #' @param Username &#91;required&#93; The user name of the user you wish to delete.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$admin_delete_user(
@@ -427,6 +476,9 @@ cognitoidentityprovider_admin_delete_user <- function(UserPoolId, Username) {
 #' For custom attributes, you must prepend the `custom:` prefix to the
 #' attribute name.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$admin_delete_user_attributes(
@@ -470,7 +522,7 @@ cognitoidentityprovider_admin_delete_user_attributes <- function(UserPoolId, Use
 #' The next time the external user (no longer attached to the previously
 #' linked `DestinationUser`) signs in, they must create a new user account.
 #' See
-#' [AdminLinkProviderForUser](https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_AdminLinkProviderForUser.html).
+#' [`admin_link_provider_for_user`][cognitoidentityprovider_admin_link_provider_for_user].
 #' 
 #' This action is enabled only for admin access and requires developer
 #' credentials.
@@ -492,11 +544,11 @@ cognitoidentityprovider_admin_delete_user_attributes <- function(UserPoolId, Use
 #' identity has not yet been used to sign-in, the `ProviderAttributeName`
 #' and `ProviderAttributeValue` must be the same values that were used for
 #' the `SourceUser` when the identities were originally linked using
-#' ` AdminLinkProviderForUser` call. (If the linking was done with
-#' `ProviderAttributeName` set to `Cognito_Subject`, the same applies
-#' here). However, if the user has already signed in, the
-#' `ProviderAttributeName` must be `Cognito_Subject` and
-#' `ProviderAttributeValue` must be the subject of the SAML assertion.
+#' [`admin_link_provider_for_user`][cognitoidentityprovider_admin_link_provider_for_user]
+#' call. (If the linking was done with `ProviderAttributeName` set to
+#' `Cognito_Subject`, the same applies here). However, if the user has
+#' already signed in, the `ProviderAttributeName` must be `Cognito_Subject`
+#' and `ProviderAttributeValue` must be the subject of the SAML assertion.
 #'
 #' @usage
 #' cognitoidentityprovider_admin_disable_provider_for_user(UserPoolId,
@@ -504,6 +556,9 @@ cognitoidentityprovider_admin_delete_user_attributes <- function(UserPoolId, Use
 #'
 #' @param UserPoolId &#91;required&#93; The user pool ID for the user pool.
 #' @param User &#91;required&#93; The user to be disabled.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -550,6 +605,9 @@ cognitoidentityprovider_admin_disable_provider_for_user <- function(UserPoolId, 
 #' @param UserPoolId &#91;required&#93; The user pool ID for the user pool where you want to disable the user.
 #' @param Username &#91;required&#93; The user name of the user you wish to disable.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$admin_disable_user(
@@ -590,6 +648,9 @@ cognitoidentityprovider_admin_disable_user <- function(UserPoolId, Username) {
 #'
 #' @param UserPoolId &#91;required&#93; The user pool ID for the user pool where you want to enable the user.
 #' @param Username &#91;required&#93; The user name of the user you wish to enable.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -633,6 +694,9 @@ cognitoidentityprovider_admin_enable_user <- function(UserPoolId, Username) {
 #' @param UserPoolId &#91;required&#93; The user pool ID.
 #' @param Username &#91;required&#93; The user name.
 #' @param DeviceKey &#91;required&#93; The device key.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -678,6 +742,31 @@ cognitoidentityprovider_admin_forget_device <- function(UserPoolId, Username, De
 #' @param UserPoolId &#91;required&#93; The user pool ID.
 #' @param Username &#91;required&#93; The user name.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Device = list(
+#'     DeviceKey = "string",
+#'     DeviceAttributes = list(
+#'       list(
+#'         Name = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     DeviceCreateDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     DeviceLastModifiedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     DeviceLastAuthenticatedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$admin_get_device(
@@ -721,6 +810,38 @@ cognitoidentityprovider_admin_get_device <- function(DeviceKey, UserPoolId, User
 #' @param UserPoolId &#91;required&#93; The user pool ID for the user pool where you want to get information
 #' about the user.
 #' @param Username &#91;required&#93; The user name of the user you wish to retrieve.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Username = "string",
+#'   UserAttributes = list(
+#'     list(
+#'       Name = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   UserCreateDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   UserLastModifiedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Enabled = TRUE|FALSE,
+#'   UserStatus = "UNCONFIRMED"|"CONFIRMED"|"ARCHIVED"|"COMPROMISED"|"UNKNOWN"|"RESET_REQUIRED"|"FORCE_CHANGE_PASSWORD",
+#'   MFAOptions = list(
+#'     list(
+#'       DeliveryMedium = "SMS"|"EMAIL",
+#'       AttributeName = "string"
+#'     )
+#'   ),
+#'   PreferredMfaSetting = "string",
+#'   UserMFASettingList = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -876,10 +997,34 @@ cognitoidentityprovider_admin_get_user <- function(UserPoolId, Username) {
 #' -   Amazon Cognito does not encrypt the the ClientMetadata value, so
 #'     don't use it to provide sensitive information.
 #' @param AnalyticsMetadata The analytics metadata for collecting Amazon Pinpoint metrics for
-#' `AdminInitiateAuth` calls.
+#' [`admin_initiate_auth`][cognitoidentityprovider_admin_initiate_auth]
+#' calls.
 #' @param ContextData Contextual data such as the user's device fingerprint, IP address, or
 #' location used for evaluating the risk of an unexpected event by Amazon
 #' Cognito advanced security.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ChallengeName = "SMS_MFA"|"SOFTWARE_TOKEN_MFA"|"SELECT_MFA_TYPE"|"MFA_SETUP"|"PASSWORD_VERIFIER"|"CUSTOM_CHALLENGE"|"DEVICE_SRP_AUTH"|"DEVICE_PASSWORD_VERIFIER"|"ADMIN_NO_SRP_AUTH"|"NEW_PASSWORD_REQUIRED",
+#'   Session = "string",
+#'   ChallengeParameters = list(
+#'     "string"
+#'   ),
+#'   AuthenticationResult = list(
+#'     AccessToken = "string",
+#'     ExpiresIn = 123,
+#'     TokenType = "string",
+#'     RefreshToken = "string",
+#'     IdToken = "string",
+#'     NewDeviceMetadata = list(
+#'       DeviceKey = "string",
+#'       DeviceGroupKey = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1001,6 +1146,9 @@ cognitoidentityprovider_admin_initiate_auth <- function(UserPoolId, ClientId, Au
 #' `Cognito_Subject`, Cognito will automatically parse the default unique
 #' identifier found in the subject from the SAML token.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$admin_link_provider_for_user(
@@ -1054,6 +1202,34 @@ cognitoidentityprovider_admin_link_provider_for_user <- function(UserPoolId, Des
 #' @param Limit The limit of the devices request.
 #' @param PaginationToken The pagination token.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Devices = list(
+#'     list(
+#'       DeviceKey = "string",
+#'       DeviceAttributes = list(
+#'         list(
+#'           Name = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       DeviceCreateDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       DeviceLastModifiedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       DeviceLastAuthenticatedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   PaginationToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$admin_list_devices(
@@ -1102,6 +1278,29 @@ cognitoidentityprovider_admin_list_devices <- function(UserPoolId, Username, Lim
 #' operation, which can be used to return the next set of items in the
 #' list.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Groups = list(
+#'     list(
+#'       GroupName = "string",
+#'       UserPoolId = "string",
+#'       Description = "string",
+#'       RoleArn = "string",
+#'       Precedence = 123,
+#'       LastModifiedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       CreationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$admin_list_groups_for_user(
@@ -1148,6 +1347,49 @@ cognitoidentityprovider_admin_list_groups_for_user <- function(Username, UserPoo
 #' @param MaxResults The maximum number of authentication events to return.
 #' @param NextToken A pagination token.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AuthEvents = list(
+#'     list(
+#'       EventId = "string",
+#'       EventType = "SignIn"|"SignUp"|"ForgotPassword",
+#'       CreationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EventResponse = "Success"|"Failure",
+#'       EventRisk = list(
+#'         RiskDecision = "NoRisk"|"AccountTakeover"|"Block",
+#'         RiskLevel = "Low"|"Medium"|"High",
+#'         CompromisedCredentialsDetected = TRUE|FALSE
+#'       ),
+#'       ChallengeResponses = list(
+#'         list(
+#'           ChallengeName = "Password"|"Mfa",
+#'           ChallengeResponse = "Success"|"Failure"
+#'         )
+#'       ),
+#'       EventContextData = list(
+#'         IpAddress = "string",
+#'         DeviceName = "string",
+#'         Timezone = "string",
+#'         City = "string",
+#'         Country = "string"
+#'       ),
+#'       EventFeedback = list(
+#'         FeedbackValue = "Valid"|"Invalid",
+#'         Provider = "string",
+#'         FeedbackDate = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$admin_list_user_auth_events(
@@ -1192,6 +1434,9 @@ cognitoidentityprovider_admin_list_user_auth_events <- function(UserPoolId, User
 #' @param UserPoolId &#91;required&#93; The user pool ID for the user pool.
 #' @param Username &#91;required&#93; The username for the user.
 #' @param GroupName &#91;required&#93; The group name.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1278,6 +1523,9 @@ cognitoidentityprovider_admin_remove_user_from_group <- function(UserPoolId, Use
 #' -   Amazon Cognito does not encrypt the the ClientMetadata value, so
 #'     don't use it to provide sensitive information.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$admin_reset_user_password(
@@ -1324,7 +1572,7 @@ cognitoidentityprovider_admin_reset_user_password <- function(UserPoolId, Userna
 #' @param UserPoolId &#91;required&#93; The ID of the Amazon Cognito user pool.
 #' @param ClientId &#91;required&#93; The app client ID.
 #' @param ChallengeName &#91;required&#93; The challenge name. For more information, see
-#' [AdminInitiateAuth](https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_AdminInitiateAuth.html).
+#' [`admin_initiate_auth`][cognitoidentityprovider_admin_initiate_auth].
 #' @param ChallengeResponses The challenge responses. These are inputs corresponding to the value of
 #' `ChallengeName`, for example:
 #' 
@@ -1344,16 +1592,24 @@ cognitoidentityprovider_admin_reset_user_password <- function(UserPoolId, Userna
 #' 
 #' The value of the `USERNAME` attribute must be the user's actual
 #' username, not an alias (such as email address or phone number). To make
-#' this easier, the `AdminInitiateAuth` response includes the actual
-#' username value in the `USERNAMEUSER_ID_FOR_SRP` attribute, even if you
-#' specified an alias in your call to `AdminInitiateAuth`.
+#' this easier, the
+#' [`admin_initiate_auth`][cognitoidentityprovider_admin_initiate_auth]
+#' response includes the actual username value in the
+#' `USERNAMEUSER_ID_FOR_SRP` attribute, even if you specified an alias in
+#' your call to
+#' [`admin_initiate_auth`][cognitoidentityprovider_admin_initiate_auth].
 #' @param Session The session which should be passed both ways in challenge-response calls
-#' to the service. If `InitiateAuth` or `RespondToAuthChallenge` API call
-#' determines that the caller needs to go through another challenge, they
-#' return a session with other challenge parameters. This session should be
-#' passed as it is to the next `RespondToAuthChallenge` API call.
+#' to the service. If
+#' [`initiate_auth`][cognitoidentityprovider_initiate_auth] or
+#' [`respond_to_auth_challenge`][cognitoidentityprovider_respond_to_auth_challenge]
+#' API call determines that the caller needs to go through another
+#' challenge, they return a session with other challenge parameters. This
+#' session should be passed as it is to the next
+#' [`respond_to_auth_challenge`][cognitoidentityprovider_respond_to_auth_challenge]
+#' API call.
 #' @param AnalyticsMetadata The analytics metadata for collecting Amazon Pinpoint metrics for
-#' `AdminRespondToAuthChallenge` calls.
+#' [`admin_respond_to_auth_challenge`][cognitoidentityprovider_admin_respond_to_auth_challenge]
+#' calls.
 #' @param ContextData Contextual data such as the user's device fingerprint, IP address, or
 #' location used for evaluating the risk of an unexpected event by Amazon
 #' Cognito advanced security.
@@ -1390,6 +1646,29 @@ cognitoidentityprovider_admin_reset_user_password <- function(UserPoolId, Userna
 #' 
 #' -   Amazon Cognito does not encrypt the the ClientMetadata value, so
 #'     don't use it to provide sensitive information.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ChallengeName = "SMS_MFA"|"SOFTWARE_TOKEN_MFA"|"SELECT_MFA_TYPE"|"MFA_SETUP"|"PASSWORD_VERIFIER"|"CUSTOM_CHALLENGE"|"DEVICE_SRP_AUTH"|"DEVICE_PASSWORD_VERIFIER"|"ADMIN_NO_SRP_AUTH"|"NEW_PASSWORD_REQUIRED",
+#'   Session = "string",
+#'   ChallengeParameters = list(
+#'     "string"
+#'   ),
+#'   AuthenticationResult = list(
+#'     AccessToken = "string",
+#'     ExpiresIn = 123,
+#'     TokenType = "string",
+#'     RefreshToken = "string",
+#'     IdToken = "string",
+#'     NewDeviceMetadata = list(
+#'       DeviceKey = "string",
+#'       DeviceGroupKey = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1462,6 +1741,9 @@ cognitoidentityprovider_admin_respond_to_auth_challenge <- function(UserPoolId, 
 #' @param Username &#91;required&#93; The user pool username or alias.
 #' @param UserPoolId &#91;required&#93; The user pool ID.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$admin_set_user_mfa_preference(
@@ -1524,6 +1806,9 @@ cognitoidentityprovider_admin_set_user_mfa_preference <- function(SMSMfaSettings
 #' @param Password &#91;required&#93; The password for the user.
 #' @param Permanent `True` if the password is permanent, `False` if it is temporary.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$admin_set_user_password(
@@ -1560,7 +1845,7 @@ cognitoidentityprovider_admin_set_user_password <- function(UserPoolId, Username
 #' *This action is no longer supported.* You can use it to configure only
 #' SMS MFA. You can't use it to configure TOTP software token MFA. To
 #' configure either type of MFA, use
-#' [AdminSetUserMFAPreference](https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_AdminSetUserMFAPreference.html)
+#' [`admin_set_user_mfa_preference`][cognitoidentityprovider_admin_set_user_mfa_preference]
 #' instead.
 #'
 #' @usage
@@ -1572,6 +1857,9 @@ cognitoidentityprovider_admin_set_user_password <- function(UserPoolId, Username
 #' @param Username &#91;required&#93; The user name of the user that you are setting options for.
 #' @param MFAOptions &#91;required&#93; You can use this parameter only to set an SMS configuration that uses
 #' SMS for delivery.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1624,6 +1912,9 @@ cognitoidentityprovider_admin_set_user_settings <- function(UserPoolId, Username
 #' @param EventId &#91;required&#93; The authentication event ID.
 #' @param FeedbackValue &#91;required&#93; The authentication event feedback value.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$admin_update_auth_event_feedback(
@@ -1669,6 +1960,9 @@ cognitoidentityprovider_admin_update_auth_event_feedback <- function(UserPoolId,
 #' @param Username &#91;required&#93; The user name.
 #' @param DeviceKey &#91;required&#93; The device key.
 #' @param DeviceRememberedStatus The status indicating whether a device has been remembered or not.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1758,6 +2052,9 @@ cognitoidentityprovider_admin_update_device_status <- function(UserPoolId, Usern
 #' -   Amazon Cognito does not encrypt the the ClientMetadata value, so
 #'     don't use it to provide sensitive information.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$admin_update_user_attributes(
@@ -1811,6 +2108,9 @@ cognitoidentityprovider_admin_update_user_attributes <- function(UserPoolId, Use
 #' @param UserPoolId &#91;required&#93; The user pool ID.
 #' @param Username &#91;required&#93; The user name.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$admin_user_global_sign_out(
@@ -1853,6 +2153,15 @@ cognitoidentityprovider_admin_user_global_sign_out <- function(UserPoolId, Usern
 #' to the service. This allows authentication of the user as part of the
 #' MFA setup process.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SecretCode = "string",
+#'   Session = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$associate_software_token(
@@ -1893,6 +2202,9 @@ cognitoidentityprovider_associate_software_token <- function(AccessToken = NULL,
 #' @param PreviousPassword &#91;required&#93; The old password.
 #' @param ProposedPassword &#91;required&#93; The new password.
 #' @param AccessToken &#91;required&#93; The access token.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1937,6 +2249,14 @@ cognitoidentityprovider_change_password <- function(PreviousPassword, ProposedPa
 #' @param DeviceKey &#91;required&#93; The device key.
 #' @param DeviceSecretVerifierConfig The configuration of the device secret verifier.
 #' @param DeviceName The device name.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   UserConfirmationNecessary = TRUE|FALSE
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1990,10 +2310,11 @@ cognitoidentityprovider_confirm_device <- function(AccessToken, DeviceKey, Devic
 #' a forgotten password.
 #' @param ConfirmationCode &#91;required&#93; The confirmation code sent by a user's request to retrieve a forgotten
 #' password. For more information, see
-#' [ForgotPassword](https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_ForgotPassword.html).
+#' [`forgot_password`][cognitoidentityprovider_forgot_password].
 #' @param Password &#91;required&#93; The password sent by a user's request to retrieve a forgotten password.
 #' @param AnalyticsMetadata The Amazon Pinpoint analytics metadata for collecting metrics for
-#' `ConfirmForgotPassword` calls.
+#' [`confirm_forgot_password`][cognitoidentityprovider_confirm_forgot_password]
+#' calls.
 #' @param UserContextData Contextual data such as the user's device fingerprint, IP address, or
 #' location used for evaluating the risk of an unexpected event by Amazon
 #' Cognito advanced security.
@@ -2027,6 +2348,9 @@ cognitoidentityprovider_confirm_device <- function(AccessToken, DeviceKey, Devic
 #' 
 #' -   Amazon Cognito does not encrypt the the ClientMetadata value, so
 #'     don't use it to provide sensitive information.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -2093,7 +2417,7 @@ cognitoidentityprovider_confirm_forgot_password <- function(ClientId, SecretHash
 #' alias from the previous user to the newly created user being confirmed.
 #' If set to `False`, the API will throw an **AliasExistsException** error.
 #' @param AnalyticsMetadata The Amazon Pinpoint analytics metadata for collecting metrics for
-#' `ConfirmSignUp` calls.
+#' [`confirm_sign_up`][cognitoidentityprovider_confirm_sign_up] calls.
 #' @param UserContextData Contextual data such as the user's device fingerprint, IP address, or
 #' location used for evaluating the risk of an unexpected event by Amazon
 #' Cognito advanced security.
@@ -2127,6 +2451,9 @@ cognitoidentityprovider_confirm_forgot_password <- function(ClientId, SecretHash
 #' 
 #' -   Amazon Cognito does not encrypt the the ClientMetadata value, so
 #'     don't use it to provide sensitive information.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -2201,6 +2528,26 @@ cognitoidentityprovider_confirm_sign_up <- function(ClientId, SecretHash = NULL,
 #' 
 #' The default `Precedence` value is null.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Group = list(
+#'     GroupName = "string",
+#'     UserPoolId = "string",
+#'     Description = "string",
+#'     RoleArn = "string",
+#'     Precedence = 123,
+#'     LastModifiedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     CreationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_group(
@@ -2250,57 +2597,57 @@ cognitoidentityprovider_create_group <- function(GroupName, UserPoolId, Descript
 #' 
 #' -   For Google and Login with Amazon:
 #' 
-#'     -   client\\_id
+#'     -   client_id
 #' 
-#'     -   client\\_secret
+#'     -   client_secret
 #' 
-#'     -   authorize\\_scopes
+#'     -   authorize_scopes
 #' 
 #' -   For Facebook:
 #' 
-#'     -   client\\_id
+#'     -   client_id
 #' 
-#'     -   client\\_secret
+#'     -   client_secret
 #' 
-#'     -   authorize\\_scopes
+#'     -   authorize_scopes
 #' 
-#'     -   api\\_version
+#'     -   api_version
 #' 
 #' -   For Sign in with Apple:
 #' 
-#'     -   client\\_id
+#'     -   client_id
 #' 
-#'     -   team\\_id
+#'     -   team_id
 #' 
-#'     -   key\\_id
+#'     -   key_id
 #' 
-#'     -   private\\_key
+#'     -   private_key
 #' 
-#'     -   authorize\\_scopes
+#'     -   authorize_scopes
 #' 
 #' -   For OIDC providers:
 #' 
-#'     -   client\\_id
+#'     -   client_id
 #' 
-#'     -   client\\_secret
+#'     -   client_secret
 #' 
-#'     -   attributes\\_request\\_method
+#'     -   attributes_request_method
 #' 
-#'     -   oidc\\_issuer
+#'     -   oidc_issuer
 #' 
-#'     -   authorize\\_scopes
+#'     -   authorize_scopes
 #' 
-#'     -   authorize\\_url *if not available from discovery URL specified by
-#'         oidc\\_issuer key*
+#'     -   authorize_url *if not available from discovery URL specified by
+#'         oidc_issuer key*
 #' 
-#'     -   token\\_url *if not available from discovery URL specified by
-#'         oidc\\_issuer key*
+#'     -   token_url *if not available from discovery URL specified by
+#'         oidc_issuer key*
 #' 
-#'     -   attributes\\_url *if not available from discovery URL specified
-#'         by oidc\\_issuer key*
+#'     -   attributes_url *if not available from discovery URL specified
+#'         by oidc_issuer key*
 #' 
-#'     -   jwks\\_uri *if not available from discovery URL specified by
-#'         oidc\\_issuer key*
+#'     -   jwks_uri *if not available from discovery URL specified by
+#'         oidc_issuer key*
 #' 
 #' -   For SAML providers:
 #' 
@@ -2310,6 +2657,33 @@ cognitoidentityprovider_create_group <- function(GroupName, UserPoolId, Descript
 #' @param AttributeMapping A mapping of identity provider attributes to standard and custom user
 #' pool attributes.
 #' @param IdpIdentifiers A list of identity provider identifiers.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   IdentityProvider = list(
+#'     UserPoolId = "string",
+#'     ProviderName = "string",
+#'     ProviderType = "SAML"|"Facebook"|"Google"|"LoginWithAmazon"|"SignInWithApple"|"OIDC",
+#'     ProviderDetails = list(
+#'       "string"
+#'     ),
+#'     AttributeMapping = list(
+#'       "string"
+#'     ),
+#'     IdpIdentifiers = list(
+#'       "string"
+#'     ),
+#'     LastModifiedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     CreationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2366,6 +2740,24 @@ cognitoidentityprovider_create_identity_provider <- function(UserPoolId, Provide
 #' @param Scopes A list of scopes. Each scope is map, where the keys are `name` and
 #' `description`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResourceServer = list(
+#'     UserPoolId = "string",
+#'     Identifier = "string",
+#'     Name = "string",
+#'     Scopes = list(
+#'       list(
+#'         ScopeName = "string",
+#'         ScopeDescription = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_resource_server(
@@ -2415,6 +2807,34 @@ cognitoidentityprovider_create_resource_server <- function(UserPoolId, Identifie
 #' into.
 #' @param CloudWatchLogsRoleArn &#91;required&#93; The role ARN for the Amazon CloudWatch Logging role for the user import
 #' job.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   UserImportJob = list(
+#'     JobName = "string",
+#'     JobId = "string",
+#'     UserPoolId = "string",
+#'     PreSignedUrl = "string",
+#'     CreationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     StartDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     CompletionDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Status = "Created"|"Pending"|"InProgress"|"Stopping"|"Expired"|"Stopped"|"Failed"|"Succeeded",
+#'     CloudWatchLogsRoleArn = "string",
+#'     ImportedUsers = 123,
+#'     SkippedUsers = 123,
+#'     FailedUsers = 123,
+#'     CompletionMessage = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2479,9 +2899,9 @@ cognitoidentityprovider_create_user_import_job <- function(JobName, UserPoolId, 
 #' [add-permission](https://docs.aws.amazon.com/cli/latest/reference/lambda/add-permission.html)
 #' .
 #' @param AutoVerifiedAttributes The attributes to be auto-verified. Possible values: **email**,
-#' **phone\\_number**.
+#' **phone_number**.
 #' @param AliasAttributes Attributes supported as an alias for this user pool. Possible values:
-#' **phone\\_number**, **email**, or **preferred\\_username**.
+#' **phone_number**, **email**, or **preferred_username**.
 #' @param UsernameAttributes Specifies whether email addresses or phone numbers can be specified as
 #' usernames when a user signs up.
 #' @param SmsVerificationMessage A string representing the SMS verification message.
@@ -2503,7 +2923,9 @@ cognitoidentityprovider_create_user_import_job <- function(JobName, UserPoolId, 
 #' @param UserPoolTags The tag keys and values to assign to the user pool. A tag is a label
 #' that you can use to categorize and manage user pools in different ways,
 #' such as by purpose, owner, environment, or other criteria.
-#' @param AdminCreateUserConfig The configuration for `AdminCreateUser` requests.
+#' @param AdminCreateUserConfig The configuration for
+#' [`admin_create_user`][cognitoidentityprovider_admin_create_user]
+#' requests.
 #' @param Schema An array of schema attributes for the new user pool. These attributes
 #' can be standard or custom attributes.
 #' @param UserPoolAddOns Used to enable advanced security risk detection. Set the key
@@ -2515,12 +2937,148 @@ cognitoidentityprovider_create_user_import_job <- function(JobName, UserPoolId, 
 #' see
 #' [UsernameConfigurationType](https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_UsernameConfigurationType.html).
 #' @param AccountRecoverySetting Use this setting to define which verified available method a user can
-#' use to recover their password when they call `ForgotPassword`. It allows
+#' use to recover their password when they call
+#' [`forgot_password`][cognitoidentityprovider_forgot_password]. It allows
 #' you to define a preferred method when a user has more than one method
 #' available. With this setting, SMS does not qualify for a valid password
 #' recovery mechanism if the user also has SMS MFA enabled. In the absence
 #' of this setting, Cognito uses the legacy behavior to determine the
 #' recovery method where SMS is preferred over email.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   UserPool = list(
+#'     Id = "string",
+#'     Name = "string",
+#'     Policies = list(
+#'       PasswordPolicy = list(
+#'         MinimumLength = 123,
+#'         RequireUppercase = TRUE|FALSE,
+#'         RequireLowercase = TRUE|FALSE,
+#'         RequireNumbers = TRUE|FALSE,
+#'         RequireSymbols = TRUE|FALSE,
+#'         TemporaryPasswordValidityDays = 123
+#'       )
+#'     ),
+#'     LambdaConfig = list(
+#'       PreSignUp = "string",
+#'       CustomMessage = "string",
+#'       PostConfirmation = "string",
+#'       PreAuthentication = "string",
+#'       PostAuthentication = "string",
+#'       DefineAuthChallenge = "string",
+#'       CreateAuthChallenge = "string",
+#'       VerifyAuthChallengeResponse = "string",
+#'       PreTokenGeneration = "string",
+#'       UserMigration = "string",
+#'       CustomSMSSender = list(
+#'         LambdaVersion = "V1_0",
+#'         LambdaArn = "string"
+#'       ),
+#'       CustomEmailSender = list(
+#'         LambdaVersion = "V1_0",
+#'         LambdaArn = "string"
+#'       ),
+#'       KMSKeyID = "string"
+#'     ),
+#'     Status = "Enabled"|"Disabled",
+#'     LastModifiedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     CreationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     SchemaAttributes = list(
+#'       list(
+#'         Name = "string",
+#'         AttributeDataType = "String"|"Number"|"DateTime"|"Boolean",
+#'         DeveloperOnlyAttribute = TRUE|FALSE,
+#'         Mutable = TRUE|FALSE,
+#'         Required = TRUE|FALSE,
+#'         NumberAttributeConstraints = list(
+#'           MinValue = "string",
+#'           MaxValue = "string"
+#'         ),
+#'         StringAttributeConstraints = list(
+#'           MinLength = "string",
+#'           MaxLength = "string"
+#'         )
+#'       )
+#'     ),
+#'     AutoVerifiedAttributes = list(
+#'       "phone_number"|"email"
+#'     ),
+#'     AliasAttributes = list(
+#'       "phone_number"|"email"|"preferred_username"
+#'     ),
+#'     UsernameAttributes = list(
+#'       "phone_number"|"email"
+#'     ),
+#'     SmsVerificationMessage = "string",
+#'     EmailVerificationMessage = "string",
+#'     EmailVerificationSubject = "string",
+#'     VerificationMessageTemplate = list(
+#'       SmsMessage = "string",
+#'       EmailMessage = "string",
+#'       EmailSubject = "string",
+#'       EmailMessageByLink = "string",
+#'       EmailSubjectByLink = "string",
+#'       DefaultEmailOption = "CONFIRM_WITH_LINK"|"CONFIRM_WITH_CODE"
+#'     ),
+#'     SmsAuthenticationMessage = "string",
+#'     MfaConfiguration = "OFF"|"ON"|"OPTIONAL",
+#'     DeviceConfiguration = list(
+#'       ChallengeRequiredOnNewDevice = TRUE|FALSE,
+#'       DeviceOnlyRememberedOnUserPrompt = TRUE|FALSE
+#'     ),
+#'     EstimatedNumberOfUsers = 123,
+#'     EmailConfiguration = list(
+#'       SourceArn = "string",
+#'       ReplyToEmailAddress = "string",
+#'       EmailSendingAccount = "COGNITO_DEFAULT"|"DEVELOPER",
+#'       From = "string",
+#'       ConfigurationSet = "string"
+#'     ),
+#'     SmsConfiguration = list(
+#'       SnsCallerArn = "string",
+#'       ExternalId = "string"
+#'     ),
+#'     UserPoolTags = list(
+#'       "string"
+#'     ),
+#'     SmsConfigurationFailure = "string",
+#'     EmailConfigurationFailure = "string",
+#'     Domain = "string",
+#'     CustomDomain = "string",
+#'     AdminCreateUserConfig = list(
+#'       AllowAdminCreateUserOnly = TRUE|FALSE,
+#'       UnusedAccountValidityDays = 123,
+#'       InviteMessageTemplate = list(
+#'         SMSMessage = "string",
+#'         EmailMessage = "string",
+#'         EmailSubject = "string"
+#'       )
+#'     ),
+#'     UserPoolAddOns = list(
+#'       AdvancedSecurityMode = "OFF"|"AUDIT"|"ENFORCED"
+#'     ),
+#'     UsernameConfiguration = list(
+#'       CaseSensitive = TRUE|FALSE
+#'     ),
+#'     Arn = "string",
+#'     AccountRecoverySetting = list(
+#'       RecoveryMechanisms = list(
+#'         list(
+#'           Priority = 123,
+#'           Name = "verified_email"|"verified_phone_number"|"admin_only"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2772,7 +3330,7 @@ cognitoidentityprovider_create_user_pool <- function(PoolName, Policies = NULL, 
 #' 
 #' Set to `client_credentials` to specify that the client should get the
 #' access token (and, optionally, ID token, based on scopes) from the token
-#' endpoint using a combination of client and client\\_secret.
+#' endpoint using a combination of client and client_secret.
 #' @param AllowedOAuthScopes The allowed OAuth scopes. Possible values provided by OAuth are:
 #' `phone`, `email`, `openid`, and `profile`. Possible values provided by
 #' AWS are: `aws.cognito.signin.user.admin`. Custom scopes created in
@@ -2806,6 +3364,67 @@ cognitoidentityprovider_create_user_pool <- function(PoolName, Policies = NULL, 
 #' After February 15th 2020, the value of `PreventUserExistenceErrors` will
 #' default to `ENABLED` for newly created user pool clients if no value is
 #' provided.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   UserPoolClient = list(
+#'     UserPoolId = "string",
+#'     ClientName = "string",
+#'     ClientId = "string",
+#'     ClientSecret = "string",
+#'     LastModifiedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     CreationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     RefreshTokenValidity = 123,
+#'     AccessTokenValidity = 123,
+#'     IdTokenValidity = 123,
+#'     TokenValidityUnits = list(
+#'       AccessToken = "seconds"|"minutes"|"hours"|"days",
+#'       IdToken = "seconds"|"minutes"|"hours"|"days",
+#'       RefreshToken = "seconds"|"minutes"|"hours"|"days"
+#'     ),
+#'     ReadAttributes = list(
+#'       "string"
+#'     ),
+#'     WriteAttributes = list(
+#'       "string"
+#'     ),
+#'     ExplicitAuthFlows = list(
+#'       "ADMIN_NO_SRP_AUTH"|"CUSTOM_AUTH_FLOW_ONLY"|"USER_PASSWORD_AUTH"|"ALLOW_ADMIN_USER_PASSWORD_AUTH"|"ALLOW_CUSTOM_AUTH"|"ALLOW_USER_PASSWORD_AUTH"|"ALLOW_USER_SRP_AUTH"|"ALLOW_REFRESH_TOKEN_AUTH"
+#'     ),
+#'     SupportedIdentityProviders = list(
+#'       "string"
+#'     ),
+#'     CallbackURLs = list(
+#'       "string"
+#'     ),
+#'     LogoutURLs = list(
+#'       "string"
+#'     ),
+#'     DefaultRedirectURI = "string",
+#'     AllowedOAuthFlows = list(
+#'       "code"|"implicit"|"client_credentials"
+#'     ),
+#'     AllowedOAuthScopes = list(
+#'       "string"
+#'     ),
+#'     AllowedOAuthFlowsUserPoolClient = TRUE|FALSE,
+#'     AnalyticsConfiguration = list(
+#'       ApplicationId = "string",
+#'       ApplicationArn = "string",
+#'       RoleArn = "string",
+#'       ExternalId = "string",
+#'       UserDataShared = TRUE|FALSE
+#'     ),
+#'     PreventUserExistenceErrors = "LEGACY"|"ENABLED"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2900,6 +3519,14 @@ cognitoidentityprovider_create_user_pool_client <- function(UserPoolId, ClientNa
 #' [Configuring a User Pool
 #' Domain](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-assign-domain.html).
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CloudFrontDomain = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_user_pool_domain(
@@ -2944,6 +3571,9 @@ cognitoidentityprovider_create_user_pool_domain <- function(Domain, UserPoolId, 
 #' @param GroupName &#91;required&#93; The name of the group.
 #' @param UserPoolId &#91;required&#93; The user pool ID for the user pool.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_group(
@@ -2984,6 +3614,9 @@ cognitoidentityprovider_delete_group <- function(GroupName, UserPoolId) {
 #' @param UserPoolId &#91;required&#93; The user pool ID.
 #' @param ProviderName &#91;required&#93; The identity provider name.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_identity_provider(
@@ -3023,6 +3656,9 @@ cognitoidentityprovider_delete_identity_provider <- function(UserPoolId, Provide
 #' @param UserPoolId &#91;required&#93; The user pool ID for the user pool that hosts the resource server.
 #' @param Identifier &#91;required&#93; The identifier for the resource server.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_resource_server(
@@ -3060,6 +3696,9 @@ cognitoidentityprovider_delete_resource_server <- function(UserPoolId, Identifie
 #' cognitoidentityprovider_delete_user(AccessToken)
 #'
 #' @param AccessToken &#91;required&#93; The access token from a request to delete a user.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -3104,6 +3743,9 @@ cognitoidentityprovider_delete_user <- function(AccessToken) {
 #' attribute name.
 #' @param AccessToken &#91;required&#93; The access token used in the request to delete user attributes.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_user_attributes(
@@ -3144,6 +3786,9 @@ cognitoidentityprovider_delete_user_attributes <- function(UserAttributeNames, A
 #'
 #' @param UserPoolId &#91;required&#93; The user pool ID for the user pool you want to delete.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_user_pool(
@@ -3181,6 +3826,9 @@ cognitoidentityprovider_delete_user_pool <- function(UserPoolId) {
 #'
 #' @param UserPoolId &#91;required&#93; The user pool ID for the user pool where you want to delete the client.
 #' @param ClientId &#91;required&#93; The app client ID of the app associated with the user pool.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -3220,6 +3868,9 @@ cognitoidentityprovider_delete_user_pool_client <- function(UserPoolId, ClientId
 #'
 #' @param Domain &#91;required&#93; The domain string.
 #' @param UserPoolId &#91;required&#93; The user pool ID.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -3261,6 +3912,33 @@ cognitoidentityprovider_delete_user_pool_domain <- function(Domain, UserPoolId) 
 #' @param UserPoolId &#91;required&#93; The user pool ID.
 #' @param ProviderName &#91;required&#93; The identity provider name.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   IdentityProvider = list(
+#'     UserPoolId = "string",
+#'     ProviderName = "string",
+#'     ProviderType = "SAML"|"Facebook"|"Google"|"LoginWithAmazon"|"SignInWithApple"|"OIDC",
+#'     ProviderDetails = list(
+#'       "string"
+#'     ),
+#'     AttributeMapping = list(
+#'       "string"
+#'     ),
+#'     IdpIdentifiers = list(
+#'       "string"
+#'     ),
+#'     LastModifiedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     CreationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_identity_provider(
@@ -3299,6 +3977,24 @@ cognitoidentityprovider_describe_identity_provider <- function(UserPoolId, Provi
 #'
 #' @param UserPoolId &#91;required&#93; The user pool ID for the user pool that hosts the resource server.
 #' @param Identifier &#91;required&#93; The identifier for the resource server
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResourceServer = list(
+#'     UserPoolId = "string",
+#'     Identifier = "string",
+#'     Name = "string",
+#'     Scopes = list(
+#'       list(
+#'         ScopeName = "string",
+#'         ScopeDescription = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3340,6 +4036,72 @@ cognitoidentityprovider_describe_resource_server <- function(UserPoolId, Identif
 #' @param UserPoolId &#91;required&#93; The user pool ID.
 #' @param ClientId The app client ID.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RiskConfiguration = list(
+#'     UserPoolId = "string",
+#'     ClientId = "string",
+#'     CompromisedCredentialsRiskConfiguration = list(
+#'       EventFilter = list(
+#'         "SIGN_IN"|"PASSWORD_CHANGE"|"SIGN_UP"
+#'       ),
+#'       Actions = list(
+#'         EventAction = "BLOCK"|"NO_ACTION"
+#'       )
+#'     ),
+#'     AccountTakeoverRiskConfiguration = list(
+#'       NotifyConfiguration = list(
+#'         From = "string",
+#'         ReplyTo = "string",
+#'         SourceArn = "string",
+#'         BlockEmail = list(
+#'           Subject = "string",
+#'           HtmlBody = "string",
+#'           TextBody = "string"
+#'         ),
+#'         NoActionEmail = list(
+#'           Subject = "string",
+#'           HtmlBody = "string",
+#'           TextBody = "string"
+#'         ),
+#'         MfaEmail = list(
+#'           Subject = "string",
+#'           HtmlBody = "string",
+#'           TextBody = "string"
+#'         )
+#'       ),
+#'       Actions = list(
+#'         LowAction = list(
+#'           Notify = TRUE|FALSE,
+#'           EventAction = "BLOCK"|"MFA_IF_CONFIGURED"|"MFA_REQUIRED"|"NO_ACTION"
+#'         ),
+#'         MediumAction = list(
+#'           Notify = TRUE|FALSE,
+#'           EventAction = "BLOCK"|"MFA_IF_CONFIGURED"|"MFA_REQUIRED"|"NO_ACTION"
+#'         ),
+#'         HighAction = list(
+#'           Notify = TRUE|FALSE,
+#'           EventAction = "BLOCK"|"MFA_IF_CONFIGURED"|"MFA_REQUIRED"|"NO_ACTION"
+#'         )
+#'       )
+#'     ),
+#'     RiskExceptionConfiguration = list(
+#'       BlockedIPRangeList = list(
+#'         "string"
+#'       ),
+#'       SkippedIPRangeList = list(
+#'         "string"
+#'       )
+#'     ),
+#'     LastModifiedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_risk_configuration(
@@ -3379,6 +4141,34 @@ cognitoidentityprovider_describe_risk_configuration <- function(UserPoolId, Clie
 #' @param UserPoolId &#91;required&#93; The user pool ID for the user pool that the users are being imported
 #' into.
 #' @param JobId &#91;required&#93; The job ID for the user import job.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   UserImportJob = list(
+#'     JobName = "string",
+#'     JobId = "string",
+#'     UserPoolId = "string",
+#'     PreSignedUrl = "string",
+#'     CreationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     StartDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     CompletionDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Status = "Created"|"Pending"|"InProgress"|"Stopping"|"Expired"|"Stopped"|"Failed"|"Succeeded",
+#'     CloudWatchLogsRoleArn = "string",
+#'     ImportedUsers = 123,
+#'     SkippedUsers = 123,
+#'     FailedUsers = 123,
+#'     CompletionMessage = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3420,6 +4210,141 @@ cognitoidentityprovider_describe_user_import_job <- function(UserPoolId, JobId) 
 #'
 #' @param UserPoolId &#91;required&#93; The user pool ID for the user pool you want to describe.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   UserPool = list(
+#'     Id = "string",
+#'     Name = "string",
+#'     Policies = list(
+#'       PasswordPolicy = list(
+#'         MinimumLength = 123,
+#'         RequireUppercase = TRUE|FALSE,
+#'         RequireLowercase = TRUE|FALSE,
+#'         RequireNumbers = TRUE|FALSE,
+#'         RequireSymbols = TRUE|FALSE,
+#'         TemporaryPasswordValidityDays = 123
+#'       )
+#'     ),
+#'     LambdaConfig = list(
+#'       PreSignUp = "string",
+#'       CustomMessage = "string",
+#'       PostConfirmation = "string",
+#'       PreAuthentication = "string",
+#'       PostAuthentication = "string",
+#'       DefineAuthChallenge = "string",
+#'       CreateAuthChallenge = "string",
+#'       VerifyAuthChallengeResponse = "string",
+#'       PreTokenGeneration = "string",
+#'       UserMigration = "string",
+#'       CustomSMSSender = list(
+#'         LambdaVersion = "V1_0",
+#'         LambdaArn = "string"
+#'       ),
+#'       CustomEmailSender = list(
+#'         LambdaVersion = "V1_0",
+#'         LambdaArn = "string"
+#'       ),
+#'       KMSKeyID = "string"
+#'     ),
+#'     Status = "Enabled"|"Disabled",
+#'     LastModifiedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     CreationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     SchemaAttributes = list(
+#'       list(
+#'         Name = "string",
+#'         AttributeDataType = "String"|"Number"|"DateTime"|"Boolean",
+#'         DeveloperOnlyAttribute = TRUE|FALSE,
+#'         Mutable = TRUE|FALSE,
+#'         Required = TRUE|FALSE,
+#'         NumberAttributeConstraints = list(
+#'           MinValue = "string",
+#'           MaxValue = "string"
+#'         ),
+#'         StringAttributeConstraints = list(
+#'           MinLength = "string",
+#'           MaxLength = "string"
+#'         )
+#'       )
+#'     ),
+#'     AutoVerifiedAttributes = list(
+#'       "phone_number"|"email"
+#'     ),
+#'     AliasAttributes = list(
+#'       "phone_number"|"email"|"preferred_username"
+#'     ),
+#'     UsernameAttributes = list(
+#'       "phone_number"|"email"
+#'     ),
+#'     SmsVerificationMessage = "string",
+#'     EmailVerificationMessage = "string",
+#'     EmailVerificationSubject = "string",
+#'     VerificationMessageTemplate = list(
+#'       SmsMessage = "string",
+#'       EmailMessage = "string",
+#'       EmailSubject = "string",
+#'       EmailMessageByLink = "string",
+#'       EmailSubjectByLink = "string",
+#'       DefaultEmailOption = "CONFIRM_WITH_LINK"|"CONFIRM_WITH_CODE"
+#'     ),
+#'     SmsAuthenticationMessage = "string",
+#'     MfaConfiguration = "OFF"|"ON"|"OPTIONAL",
+#'     DeviceConfiguration = list(
+#'       ChallengeRequiredOnNewDevice = TRUE|FALSE,
+#'       DeviceOnlyRememberedOnUserPrompt = TRUE|FALSE
+#'     ),
+#'     EstimatedNumberOfUsers = 123,
+#'     EmailConfiguration = list(
+#'       SourceArn = "string",
+#'       ReplyToEmailAddress = "string",
+#'       EmailSendingAccount = "COGNITO_DEFAULT"|"DEVELOPER",
+#'       From = "string",
+#'       ConfigurationSet = "string"
+#'     ),
+#'     SmsConfiguration = list(
+#'       SnsCallerArn = "string",
+#'       ExternalId = "string"
+#'     ),
+#'     UserPoolTags = list(
+#'       "string"
+#'     ),
+#'     SmsConfigurationFailure = "string",
+#'     EmailConfigurationFailure = "string",
+#'     Domain = "string",
+#'     CustomDomain = "string",
+#'     AdminCreateUserConfig = list(
+#'       AllowAdminCreateUserOnly = TRUE|FALSE,
+#'       UnusedAccountValidityDays = 123,
+#'       InviteMessageTemplate = list(
+#'         SMSMessage = "string",
+#'         EmailMessage = "string",
+#'         EmailSubject = "string"
+#'       )
+#'     ),
+#'     UserPoolAddOns = list(
+#'       AdvancedSecurityMode = "OFF"|"AUDIT"|"ENFORCED"
+#'     ),
+#'     UsernameConfiguration = list(
+#'       CaseSensitive = TRUE|FALSE
+#'     ),
+#'     Arn = "string",
+#'     AccountRecoverySetting = list(
+#'       RecoveryMechanisms = list(
+#'         list(
+#'           Priority = 123,
+#'           Name = "verified_email"|"verified_phone_number"|"admin_only"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_user_pool(
@@ -3460,6 +4385,67 @@ cognitoidentityprovider_describe_user_pool <- function(UserPoolId) {
 #' @param UserPoolId &#91;required&#93; The user pool ID for the user pool you want to describe.
 #' @param ClientId &#91;required&#93; The app client ID of the app associated with the user pool.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   UserPoolClient = list(
+#'     UserPoolId = "string",
+#'     ClientName = "string",
+#'     ClientId = "string",
+#'     ClientSecret = "string",
+#'     LastModifiedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     CreationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     RefreshTokenValidity = 123,
+#'     AccessTokenValidity = 123,
+#'     IdTokenValidity = 123,
+#'     TokenValidityUnits = list(
+#'       AccessToken = "seconds"|"minutes"|"hours"|"days",
+#'       IdToken = "seconds"|"minutes"|"hours"|"days",
+#'       RefreshToken = "seconds"|"minutes"|"hours"|"days"
+#'     ),
+#'     ReadAttributes = list(
+#'       "string"
+#'     ),
+#'     WriteAttributes = list(
+#'       "string"
+#'     ),
+#'     ExplicitAuthFlows = list(
+#'       "ADMIN_NO_SRP_AUTH"|"CUSTOM_AUTH_FLOW_ONLY"|"USER_PASSWORD_AUTH"|"ALLOW_ADMIN_USER_PASSWORD_AUTH"|"ALLOW_CUSTOM_AUTH"|"ALLOW_USER_PASSWORD_AUTH"|"ALLOW_USER_SRP_AUTH"|"ALLOW_REFRESH_TOKEN_AUTH"
+#'     ),
+#'     SupportedIdentityProviders = list(
+#'       "string"
+#'     ),
+#'     CallbackURLs = list(
+#'       "string"
+#'     ),
+#'     LogoutURLs = list(
+#'       "string"
+#'     ),
+#'     DefaultRedirectURI = "string",
+#'     AllowedOAuthFlows = list(
+#'       "code"|"implicit"|"client_credentials"
+#'     ),
+#'     AllowedOAuthScopes = list(
+#'       "string"
+#'     ),
+#'     AllowedOAuthFlowsUserPoolClient = TRUE|FALSE,
+#'     AnalyticsConfiguration = list(
+#'       ApplicationId = "string",
+#'       ApplicationArn = "string",
+#'       RoleArn = "string",
+#'       ExternalId = "string",
+#'       UserDataShared = TRUE|FALSE
+#'     ),
+#'     PreventUserExistenceErrors = "LEGACY"|"ENABLED"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_user_pool_client(
@@ -3498,6 +4484,25 @@ cognitoidentityprovider_describe_user_pool_client <- function(UserPoolId, Client
 #'
 #' @param Domain &#91;required&#93; The domain string.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DomainDescription = list(
+#'     UserPoolId = "string",
+#'     AWSAccountId = "string",
+#'     Domain = "string",
+#'     S3Bucket = "string",
+#'     CloudFrontDistribution = "string",
+#'     Version = "string",
+#'     Status = "CREATING"|"DELETING"|"UPDATING"|"ACTIVE"|"FAILED",
+#'     CustomDomainConfig = list(
+#'       CertificateArn = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_user_pool_domain(
@@ -3535,6 +4540,9 @@ cognitoidentityprovider_describe_user_pool_domain <- function(Domain) {
 #'
 #' @param AccessToken The access token for the forgotten device request.
 #' @param DeviceKey &#91;required&#93; The device key.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -3578,7 +4586,7 @@ cognitoidentityprovider_forget_device <- function(AccessToken = NULL, DeviceKey)
 #' in the *Amazon Cognito Developer Guide*. If neither a verified phone
 #' number nor a verified email exists, an `InvalidParameterException` is
 #' thrown. To use the confirmation code for resetting the password, call
-#' [ConfirmForgotPassword](https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_ConfirmForgotPassword.html).
+#' [`confirm_forgot_password`][cognitoidentityprovider_confirm_forgot_password].
 #'
 #' @usage
 #' cognitoidentityprovider_forgot_password(ClientId, SecretHash,
@@ -3594,7 +4602,7 @@ cognitoidentityprovider_forget_device <- function(AccessToken = NULL, DeviceKey)
 #' @param Username &#91;required&#93; The user name of the user for whom you want to enter a code to reset a
 #' forgotten password.
 #' @param AnalyticsMetadata The Amazon Pinpoint analytics metadata for collecting metrics for
-#' `ForgotPassword` calls.
+#' [`forgot_password`][cognitoidentityprovider_forgot_password] calls.
 #' @param ClientMetadata A map of custom key-value pairs that you can provide as input for any
 #' custom workflows that this action triggers.
 #' 
@@ -3626,6 +4634,18 @@ cognitoidentityprovider_forget_device <- function(AccessToken = NULL, DeviceKey)
 #' 
 #' -   Amazon Cognito does not encrypt the the ClientMetadata value, so
 #'     don't use it to provide sensitive information.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CodeDeliveryDetails = list(
+#'     Destination = "string",
+#'     DeliveryMedium = "SMS"|"EMAIL",
+#'     AttributeName = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3677,6 +4697,17 @@ cognitoidentityprovider_forgot_password <- function(ClientId, SecretHash = NULL,
 #' @param UserPoolId &#91;required&#93; The user pool ID for the user pool that the users are to be imported
 #' into.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   UserPoolId = "string",
+#'   CSVHeader = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_csv_header(
@@ -3714,6 +4745,31 @@ cognitoidentityprovider_get_csv_header <- function(UserPoolId) {
 #'
 #' @param DeviceKey &#91;required&#93; The device key.
 #' @param AccessToken The access token.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Device = list(
+#'     DeviceKey = "string",
+#'     DeviceAttributes = list(
+#'       list(
+#'         Name = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     DeviceCreateDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     DeviceLastModifiedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     DeviceLastAuthenticatedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3756,6 +4812,26 @@ cognitoidentityprovider_get_device <- function(DeviceKey, AccessToken = NULL) {
 #' @param GroupName &#91;required&#93; The name of the group.
 #' @param UserPoolId &#91;required&#93; The user pool ID for the user pool.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Group = list(
+#'     GroupName = "string",
+#'     UserPoolId = "string",
+#'     Description = "string",
+#'     RoleArn = "string",
+#'     Precedence = 123,
+#'     LastModifiedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     CreationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_group(
@@ -3796,6 +4872,33 @@ cognitoidentityprovider_get_group <- function(GroupName, UserPoolId) {
 #' @param UserPoolId &#91;required&#93; The user pool ID.
 #' @param IdpIdentifier &#91;required&#93; The identity provider ID.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   IdentityProvider = list(
+#'     UserPoolId = "string",
+#'     ProviderName = "string",
+#'     ProviderType = "SAML"|"Facebook"|"Google"|"LoginWithAmazon"|"SignInWithApple"|"OIDC",
+#'     ProviderDetails = list(
+#'       "string"
+#'     ),
+#'     AttributeMapping = list(
+#'       "string"
+#'     ),
+#'     IdpIdentifiers = list(
+#'       "string"
+#'     ),
+#'     LastModifiedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     CreationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_identity_provider_by_identifier(
@@ -3833,6 +4936,14 @@ cognitoidentityprovider_get_identity_provider_by_identifier <- function(UserPool
 #' cognitoidentityprovider_get_signing_certificate(UserPoolId)
 #'
 #' @param UserPoolId &#91;required&#93; The user pool ID.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Certificate = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3877,6 +4988,26 @@ cognitoidentityprovider_get_signing_certificate <- function(UserPoolId) {
 #' @param UserPoolId &#91;required&#93; The user pool ID for the user pool.
 #' @param ClientId The client ID for the client app.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   UICustomization = list(
+#'     UserPoolId = "string",
+#'     ClientId = "string",
+#'     ImageUrl = "string",
+#'     CSS = "string",
+#'     CSSVersion = "string",
+#'     LastModifiedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     CreationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_ui_customization(
@@ -3915,6 +5046,30 @@ cognitoidentityprovider_get_ui_customization <- function(UserPoolId, ClientId = 
 #'
 #' @param AccessToken &#91;required&#93; The access token returned by the server response to get information
 #' about the user.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Username = "string",
+#'   UserAttributes = list(
+#'     list(
+#'       Name = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   MFAOptions = list(
+#'     list(
+#'       DeliveryMedium = "SMS"|"EMAIL",
+#'       AttributeName = "string"
+#'     )
+#'   ),
+#'   PreferredMfaSetting = "string",
+#'   UserMFASettingList = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3990,6 +5145,18 @@ cognitoidentityprovider_get_user <- function(AccessToken) {
 #' -   Amazon Cognito does not encrypt the the ClientMetadata value, so
 #'     don't use it to provide sensitive information.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CodeDeliveryDetails = list(
+#'     Destination = "string",
+#'     DeliveryMedium = "SMS"|"EMAIL",
+#'     AttributeName = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_user_attribute_verification_code(
@@ -4031,6 +5198,24 @@ cognitoidentityprovider_get_user_attribute_verification_code <- function(AccessT
 #'
 #' @param UserPoolId &#91;required&#93; The user pool ID.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SmsMfaConfiguration = list(
+#'     SmsAuthenticationMessage = "string",
+#'     SmsConfiguration = list(
+#'       SnsCallerArn = "string",
+#'       ExternalId = "string"
+#'     )
+#'   ),
+#'   SoftwareTokenMfaConfiguration = list(
+#'     Enabled = TRUE|FALSE
+#'   ),
+#'   MfaConfiguration = "OFF"|"ON"|"OPTIONAL"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_user_pool_mfa_config(
@@ -4070,6 +5255,9 @@ cognitoidentityprovider_get_user_pool_mfa_config <- function(UserPoolId) {
 #' cognitoidentityprovider_global_sign_out(AccessToken)
 #'
 #' @param AccessToken &#91;required&#93; The access token.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -4214,10 +5402,33 @@ cognitoidentityprovider_global_sign_out <- function(AccessToken) {
 #'     don't use it to provide sensitive information.
 #' @param ClientId &#91;required&#93; The app client ID.
 #' @param AnalyticsMetadata The Amazon Pinpoint analytics metadata for collecting metrics for
-#' `InitiateAuth` calls.
+#' [`initiate_auth`][cognitoidentityprovider_initiate_auth] calls.
 #' @param UserContextData Contextual data such as the user's device fingerprint, IP address, or
 #' location used for evaluating the risk of an unexpected event by Amazon
 #' Cognito advanced security.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ChallengeName = "SMS_MFA"|"SOFTWARE_TOKEN_MFA"|"SELECT_MFA_TYPE"|"MFA_SETUP"|"PASSWORD_VERIFIER"|"CUSTOM_CHALLENGE"|"DEVICE_SRP_AUTH"|"DEVICE_PASSWORD_VERIFIER"|"ADMIN_NO_SRP_AUTH"|"NEW_PASSWORD_REQUIRED",
+#'   Session = "string",
+#'   ChallengeParameters = list(
+#'     "string"
+#'   ),
+#'   AuthenticationResult = list(
+#'     AccessToken = "string",
+#'     ExpiresIn = 123,
+#'     TokenType = "string",
+#'     RefreshToken = "string",
+#'     IdToken = "string",
+#'     NewDeviceMetadata = list(
+#'       DeviceKey = "string",
+#'       DeviceGroupKey = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4272,6 +5483,34 @@ cognitoidentityprovider_initiate_auth <- function(AuthFlow, AuthParameters = NUL
 #' @param Limit The limit of the device request.
 #' @param PaginationToken The pagination token for the list request.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Devices = list(
+#'     list(
+#'       DeviceKey = "string",
+#'       DeviceAttributes = list(
+#'         list(
+#'           Name = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       DeviceCreateDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       DeviceLastModifiedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       DeviceLastAuthenticatedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   PaginationToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_devices(
@@ -4317,6 +5556,29 @@ cognitoidentityprovider_list_devices <- function(AccessToken, Limit = NULL, Pagi
 #' operation, which can be used to return the next set of items in the
 #' list.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Groups = list(
+#'     list(
+#'       GroupName = "string",
+#'       UserPoolId = "string",
+#'       Description = "string",
+#'       RoleArn = "string",
+#'       Precedence = 123,
+#'       LastModifiedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       CreationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_groups(
@@ -4359,6 +5621,26 @@ cognitoidentityprovider_list_groups <- function(UserPoolId, Limit = NULL, NextTo
 #' @param MaxResults The maximum number of identity providers to return.
 #' @param NextToken A pagination token.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Providers = list(
+#'     list(
+#'       ProviderName = "string",
+#'       ProviderType = "SAML"|"Facebook"|"Google"|"LoginWithAmazon"|"SignInWithApple"|"OIDC",
+#'       LastModifiedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       CreationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_identity_providers(
@@ -4400,6 +5682,27 @@ cognitoidentityprovider_list_identity_providers <- function(UserPoolId, MaxResul
 #' @param UserPoolId &#91;required&#93; The user pool ID for the user pool.
 #' @param MaxResults The maximum number of resource servers to return.
 #' @param NextToken A pagination token.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResourceServers = list(
+#'     list(
+#'       UserPoolId = "string",
+#'       Identifier = "string",
+#'       Name = "string",
+#'       Scopes = list(
+#'         list(
+#'           ScopeName = "string",
+#'           ScopeDescription = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4447,6 +5750,16 @@ cognitoidentityprovider_list_resource_servers <- function(UserPoolId, MaxResults
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the user pool that the tags are
 #' assigned to.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_tags_for_resource(
@@ -4487,8 +5800,39 @@ cognitoidentityprovider_list_tags_for_resource <- function(ResourceArn) {
 #' into.
 #' @param MaxResults &#91;required&#93; The maximum number of import jobs you want the request to return.
 #' @param PaginationToken An identifier that was returned from the previous call to
-#' `ListUserImportJobs`, which can be used to return the next set of import
-#' jobs in the list.
+#' [`list_user_import_jobs`][cognitoidentityprovider_list_user_import_jobs],
+#' which can be used to return the next set of import jobs in the list.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   UserImportJobs = list(
+#'     list(
+#'       JobName = "string",
+#'       JobId = "string",
+#'       UserPoolId = "string",
+#'       PreSignedUrl = "string",
+#'       CreationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       StartDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       CompletionDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Status = "Created"|"Pending"|"InProgress"|"Stopping"|"Expired"|"Stopped"|"Failed"|"Succeeded",
+#'       CloudWatchLogsRoleArn = "string",
+#'       ImportedUsers = 123,
+#'       SkippedUsers = 123,
+#'       FailedUsers = 123,
+#'       CompletionMessage = "string"
+#'     )
+#'   ),
+#'   PaginationToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4536,6 +5880,21 @@ cognitoidentityprovider_list_user_import_jobs <- function(UserPoolId, MaxResults
 #' operation, which can be used to return the next set of items in the
 #' list.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   UserPoolClients = list(
+#'     list(
+#'       ClientId = "string",
+#'       UserPoolId = "string",
+#'       ClientName = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_user_pool_clients(
@@ -4578,6 +5937,48 @@ cognitoidentityprovider_list_user_pool_clients <- function(UserPoolId, MaxResult
 #' list.
 #' @param MaxResults &#91;required&#93; The maximum number of results you want the request to return when
 #' listing the user pools.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   UserPools = list(
+#'     list(
+#'       Id = "string",
+#'       Name = "string",
+#'       LambdaConfig = list(
+#'         PreSignUp = "string",
+#'         CustomMessage = "string",
+#'         PostConfirmation = "string",
+#'         PreAuthentication = "string",
+#'         PostAuthentication = "string",
+#'         DefineAuthChallenge = "string",
+#'         CreateAuthChallenge = "string",
+#'         VerifyAuthChallengeResponse = "string",
+#'         PreTokenGeneration = "string",
+#'         UserMigration = "string",
+#'         CustomSMSSender = list(
+#'           LambdaVersion = "V1_0",
+#'           LambdaArn = "string"
+#'         ),
+#'         CustomEmailSender = list(
+#'           LambdaVersion = "V1_0",
+#'           LambdaArn = "string"
+#'         ),
+#'         KMSKeyID = "string"
+#'       ),
+#'       Status = "Enabled"|"Disabled",
+#'       LastModifiedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       CreationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4640,8 +6041,9 @@ cognitoidentityprovider_list_user_pools <- function(NextToken = NULL, MaxResults
 #' -   *AttributeValue*: The attribute value that must be matched for each
 #'     user.
 #' 
-#' If the filter string is empty, `ListUsers` returns all users in the user
-#' pool.
+#' If the filter string is empty,
+#' [`list_users`][cognitoidentityprovider_list_users] returns all users in
+#' the user pool.
 #' 
 #' You can only search for the following standard attributes:
 #' 
@@ -4662,7 +6064,7 @@ cognitoidentityprovider_list_user_pools <- function(NextToken = NULL, MaxResults
 #' -   `cognito:user_status` (called **Status** in the Console)
 #'     (case-insensitive)
 #' 
-#' -   `status (called <b>Enabled</b> in the Console) (case-sensitive)`
+#' -   `status (called Enabled in the Console) (case-sensitive)`
 #' 
 #' -   `sub`
 #' 
@@ -4673,6 +6075,39 @@ cognitoidentityprovider_list_user_pools <- function(NextToken = NULL, MaxResults
 #' and [Examples of Using the ListUsers
 #' API](https://docs.aws.amazon.com/cognito/latest/developerguide/how-to-manage-user-accounts.html#cognito-user-pools-searching-for-users-listusers-api-examples)
 #' in the *Amazon Cognito Developer Guide*.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Users = list(
+#'     list(
+#'       Username = "string",
+#'       Attributes = list(
+#'         list(
+#'           Name = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       UserCreateDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UserLastModifiedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Enabled = TRUE|FALSE,
+#'       UserStatus = "UNCONFIRMED"|"CONFIRMED"|"ARCHIVED"|"COMPROMISED"|"UNKNOWN"|"RESET_REQUIRED"|"FORCE_CHANGE_PASSWORD",
+#'       MFAOptions = list(
+#'         list(
+#'           DeliveryMedium = "SMS"|"EMAIL",
+#'           AttributeName = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   PaginationToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4725,6 +6160,39 @@ cognitoidentityprovider_list_users <- function(UserPoolId, AttributesToGet = NUL
 #' operation, which can be used to return the next set of items in the
 #' list.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Users = list(
+#'     list(
+#'       Username = "string",
+#'       Attributes = list(
+#'         list(
+#'           Name = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       UserCreateDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UserLastModifiedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Enabled = TRUE|FALSE,
+#'       UserStatus = "UNCONFIRMED"|"CONFIRMED"|"ARCHIVED"|"COMPROMISED"|"UNKNOWN"|"RESET_REQUIRED"|"FORCE_CHANGE_PASSWORD",
+#'       MFAOptions = list(
+#'         list(
+#'           DeliveryMedium = "SMS"|"EMAIL",
+#'           AttributeName = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_users_in_group(
@@ -4776,7 +6244,8 @@ cognitoidentityprovider_list_users_in_group <- function(UserPoolId, GroupName, L
 #' @param Username &#91;required&#93; The user name of the user to whom you wish to resend a confirmation
 #' code.
 #' @param AnalyticsMetadata The Amazon Pinpoint analytics metadata for collecting metrics for
-#' `ResendConfirmationCode` calls.
+#' [`resend_confirmation_code`][cognitoidentityprovider_resend_confirmation_code]
+#' calls.
 #' @param ClientMetadata A map of custom key-value pairs that you can provide as input for any
 #' custom workflows that this action triggers.
 #' 
@@ -4807,6 +6276,18 @@ cognitoidentityprovider_list_users_in_group <- function(UserPoolId, GroupName, L
 #' 
 #' -   Amazon Cognito does not encrypt the the ClientMetadata value, so
 #'     don't use it to provide sensitive information.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CodeDeliveryDetails = list(
+#'     Destination = "string",
+#'     DeliveryMedium = "SMS"|"EMAIL",
+#'     AttributeName = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4858,14 +6339,18 @@ cognitoidentityprovider_resend_confirmation_code <- function(ClientId, SecretHas
 #'
 #' @param ClientId &#91;required&#93; The app client ID.
 #' @param ChallengeName &#91;required&#93; The challenge name. For more information, see
-#' [InitiateAuth](https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_InitiateAuth.html).
+#' [`initiate_auth`][cognitoidentityprovider_initiate_auth].
 #' 
 #' `ADMIN_NO_SRP_AUTH` is not a valid value.
 #' @param Session The session which should be passed both ways in challenge-response calls
-#' to the service. If `InitiateAuth` or `RespondToAuthChallenge` API call
-#' determines that the caller needs to go through another challenge, they
-#' return a session with other challenge parameters. This session should be
-#' passed as it is to the next `RespondToAuthChallenge` API call.
+#' to the service. If
+#' [`initiate_auth`][cognitoidentityprovider_initiate_auth] or
+#' [`respond_to_auth_challenge`][cognitoidentityprovider_respond_to_auth_challenge]
+#' API call determines that the caller needs to go through another
+#' challenge, they return a session with other challenge parameters. This
+#' session should be passed as it is to the next
+#' [`respond_to_auth_challenge`][cognitoidentityprovider_respond_to_auth_challenge]
+#' API call.
 #' @param ChallengeResponses The challenge responses. These are inputs corresponding to the value of
 #' `ChallengeName`, for example:
 #' 
@@ -4889,7 +6374,8 @@ cognitoidentityprovider_resend_confirmation_code <- function(ClientId, SecretHas
 #' -   `DEVICE_PASSWORD_VERIFIER` requires everything that
 #'     `PASSWORD_VERIFIER` requires plus `DEVICE_KEY`.
 #' @param AnalyticsMetadata The Amazon Pinpoint analytics metadata for collecting metrics for
-#' `RespondToAuthChallenge` calls.
+#' [`respond_to_auth_challenge`][cognitoidentityprovider_respond_to_auth_challenge]
+#' calls.
 #' @param UserContextData Contextual data such as the user's device fingerprint, IP address, or
 #' location used for evaluating the risk of an unexpected event by Amazon
 #' Cognito advanced security.
@@ -4925,6 +6411,29 @@ cognitoidentityprovider_resend_confirmation_code <- function(ClientId, SecretHas
 #' 
 #' -   Amazon Cognito does not encrypt the the ClientMetadata value, so
 #'     don't use it to provide sensitive information.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ChallengeName = "SMS_MFA"|"SOFTWARE_TOKEN_MFA"|"SELECT_MFA_TYPE"|"MFA_SETUP"|"PASSWORD_VERIFIER"|"CUSTOM_CHALLENGE"|"DEVICE_SRP_AUTH"|"DEVICE_PASSWORD_VERIFIER"|"ADMIN_NO_SRP_AUTH"|"NEW_PASSWORD_REQUIRED",
+#'   Session = "string",
+#'   ChallengeParameters = list(
+#'     "string"
+#'   ),
+#'   AuthenticationResult = list(
+#'     AccessToken = "string",
+#'     ExpiresIn = 123,
+#'     TokenType = "string",
+#'     RefreshToken = "string",
+#'     IdToken = "string",
+#'     NewDeviceMetadata = list(
+#'       DeviceKey = "string",
+#'       DeviceGroupKey = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4993,6 +6502,72 @@ cognitoidentityprovider_respond_to_auth_challenge <- function(ClientId, Challeng
 #' @param CompromisedCredentialsRiskConfiguration The compromised credentials risk configuration.
 #' @param AccountTakeoverRiskConfiguration The account takeover risk configuration.
 #' @param RiskExceptionConfiguration The configuration to override the risk decision.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RiskConfiguration = list(
+#'     UserPoolId = "string",
+#'     ClientId = "string",
+#'     CompromisedCredentialsRiskConfiguration = list(
+#'       EventFilter = list(
+#'         "SIGN_IN"|"PASSWORD_CHANGE"|"SIGN_UP"
+#'       ),
+#'       Actions = list(
+#'         EventAction = "BLOCK"|"NO_ACTION"
+#'       )
+#'     ),
+#'     AccountTakeoverRiskConfiguration = list(
+#'       NotifyConfiguration = list(
+#'         From = "string",
+#'         ReplyTo = "string",
+#'         SourceArn = "string",
+#'         BlockEmail = list(
+#'           Subject = "string",
+#'           HtmlBody = "string",
+#'           TextBody = "string"
+#'         ),
+#'         NoActionEmail = list(
+#'           Subject = "string",
+#'           HtmlBody = "string",
+#'           TextBody = "string"
+#'         ),
+#'         MfaEmail = list(
+#'           Subject = "string",
+#'           HtmlBody = "string",
+#'           TextBody = "string"
+#'         )
+#'       ),
+#'       Actions = list(
+#'         LowAction = list(
+#'           Notify = TRUE|FALSE,
+#'           EventAction = "BLOCK"|"MFA_IF_CONFIGURED"|"MFA_REQUIRED"|"NO_ACTION"
+#'         ),
+#'         MediumAction = list(
+#'           Notify = TRUE|FALSE,
+#'           EventAction = "BLOCK"|"MFA_IF_CONFIGURED"|"MFA_REQUIRED"|"NO_ACTION"
+#'         ),
+#'         HighAction = list(
+#'           Notify = TRUE|FALSE,
+#'           EventAction = "BLOCK"|"MFA_IF_CONFIGURED"|"MFA_REQUIRED"|"NO_ACTION"
+#'         )
+#'       )
+#'     ),
+#'     RiskExceptionConfiguration = list(
+#'       BlockedIPRangeList = list(
+#'         "string"
+#'       ),
+#'       SkippedIPRangeList = list(
+#'         "string"
+#'       )
+#'     ),
+#'     LastModifiedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -5099,6 +6674,26 @@ cognitoidentityprovider_set_risk_configuration <- function(UserPoolId, ClientId 
 #' @param CSS The CSS values in the UI customization.
 #' @param ImageFile The uploaded logo image for the UI customization.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   UICustomization = list(
+#'     UserPoolId = "string",
+#'     ClientId = "string",
+#'     ImageUrl = "string",
+#'     CSS = "string",
+#'     CSSVersion = "string",
+#'     LastModifiedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     CreationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$set_ui_customization(
@@ -5152,6 +6747,9 @@ cognitoidentityprovider_set_ui_customization <- function(UserPoolId, ClientId = 
 #' @param SMSMfaSettings The SMS text message multi-factor authentication (MFA) settings.
 #' @param SoftwareTokenMfaSettings The time-based one-time password software token MFA settings.
 #' @param AccessToken &#91;required&#93; The access token for the user.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -5209,6 +6807,24 @@ cognitoidentityprovider_set_user_mfa_preference <- function(SMSMfaSettings = NUL
 #' -   `OPTIONAL` MFA will be required only for individual users who have
 #'     an MFA factor enabled.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SmsMfaConfiguration = list(
+#'     SmsAuthenticationMessage = "string",
+#'     SmsConfiguration = list(
+#'       SnsCallerArn = "string",
+#'       ExternalId = "string"
+#'     )
+#'   ),
+#'   SoftwareTokenMfaConfiguration = list(
+#'     Enabled = TRUE|FALSE
+#'   ),
+#'   MfaConfiguration = "OFF"|"ON"|"OPTIONAL"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$set_user_pool_mfa_config(
@@ -5253,7 +6869,7 @@ cognitoidentityprovider_set_user_pool_mfa_config <- function(UserPoolId, SmsMfaC
 #' *This action is no longer supported.* You can use it to configure only
 #' SMS MFA. You can't use it to configure TOTP software token MFA. To
 #' configure either type of MFA, use
-#' [SetUserMFAPreference](https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_SetUserMFAPreference.html)
+#' [`set_user_mfa_preference`][cognitoidentityprovider_set_user_mfa_preference]
 #' instead.
 #'
 #' @usage
@@ -5262,6 +6878,9 @@ cognitoidentityprovider_set_user_pool_mfa_config <- function(UserPoolId, SmsMfaC
 #' @param AccessToken &#91;required&#93; The access token for the set user settings request.
 #' @param MFAOptions &#91;required&#93; You can use this parameter only to set an SMS configuration that uses
 #' SMS for delivery.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -5320,7 +6939,7 @@ cognitoidentityprovider_set_user_settings <- function(AccessToken, MFAOptions) {
 #' attribute name.
 #' @param ValidationData The validation data in the request to register a user.
 #' @param AnalyticsMetadata The Amazon Pinpoint analytics metadata for collecting metrics for
-#' `SignUp` calls.
+#' [`sign_up`][cognitoidentityprovider_sign_up] calls.
 #' @param UserContextData Contextual data such as the user's device fingerprint, IP address, or
 #' location used for evaluating the risk of an unexpected event by Amazon
 #' Cognito advanced security.
@@ -5355,6 +6974,20 @@ cognitoidentityprovider_set_user_settings <- function(AccessToken, MFAOptions) {
 #' 
 #' -   Amazon Cognito does not encrypt the the ClientMetadata value, so
 #'     don't use it to provide sensitive information.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   UserConfirmed = TRUE|FALSE,
+#'   CodeDeliveryDetails = list(
+#'     Destination = "string",
+#'     DeliveryMedium = "SMS"|"EMAIL",
+#'     AttributeName = "string"
+#'   ),
+#'   UserSub = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -5419,6 +7052,34 @@ cognitoidentityprovider_sign_up <- function(ClientId, SecretHash = NULL, Usernam
 #' into.
 #' @param JobId &#91;required&#93; The job ID for the user import job.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   UserImportJob = list(
+#'     JobName = "string",
+#'     JobId = "string",
+#'     UserPoolId = "string",
+#'     PreSignedUrl = "string",
+#'     CreationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     StartDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     CompletionDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Status = "Created"|"Pending"|"InProgress"|"Stopping"|"Expired"|"Stopped"|"Failed"|"Succeeded",
+#'     CloudWatchLogsRoleArn = "string",
+#'     ImportedUsers = 123,
+#'     SkippedUsers = 123,
+#'     FailedUsers = 123,
+#'     CompletionMessage = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$start_user_import_job(
@@ -5458,6 +7119,34 @@ cognitoidentityprovider_start_user_import_job <- function(UserPoolId, JobId) {
 #' @param UserPoolId &#91;required&#93; The user pool ID for the user pool that the users are being imported
 #' into.
 #' @param JobId &#91;required&#93; The job ID for the user import job.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   UserImportJob = list(
+#'     JobName = "string",
+#'     JobId = "string",
+#'     UserPoolId = "string",
+#'     PreSignedUrl = "string",
+#'     CreationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     StartDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     CompletionDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Status = "Created"|"Pending"|"InProgress"|"Stopping"|"Expired"|"Stopped"|"Failed"|"Succeeded",
+#'     CloudWatchLogsRoleArn = "string",
+#'     ImportedUsers = 123,
+#'     SkippedUsers = 123,
+#'     FailedUsers = 123,
+#'     CompletionMessage = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -5516,6 +7205,9 @@ cognitoidentityprovider_stop_user_import_job <- function(UserPoolId, JobId) {
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the user pool to assign the tags to.
 #' @param Tags &#91;required&#93; The tags to assign to the user pool.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$tag_resource(
@@ -5558,6 +7250,9 @@ cognitoidentityprovider_tag_resource <- function(ResourceArn, Tags) {
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the user pool that the tags are
 #' assigned to.
 #' @param TagKeys &#91;required&#93; The keys of the tags to remove from the user pool.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -5608,6 +7303,9 @@ cognitoidentityprovider_untag_resource <- function(ResourceArn, TagKeys) {
 #' @param FeedbackToken &#91;required&#93; The feedback token.
 #' @param FeedbackValue &#91;required&#93; The authentication event feedback value.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_auth_event_feedback(
@@ -5651,6 +7349,9 @@ cognitoidentityprovider_update_auth_event_feedback <- function(UserPoolId, Usern
 #' @param AccessToken &#91;required&#93; The access token.
 #' @param DeviceKey &#91;required&#93; The device key.
 #' @param DeviceRememberedStatus The status of whether a device is remembered.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -5701,8 +7402,27 @@ cognitoidentityprovider_update_device_status <- function(AccessToken, DeviceKey,
 #' @param RoleArn The new role ARN for the group. This is used for setting the
 #' `cognito:roles` and `cognito:preferred_role` claims in the token.
 #' @param Precedence The new precedence value for the group. For more information about this
-#' parameter, see
-#' [CreateGroup](https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_CreateGroup.html).
+#' parameter, see [`create_group`][cognitoidentityprovider_create_group].
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Group = list(
+#'     GroupName = "string",
+#'     UserPoolId = "string",
+#'     Description = "string",
+#'     RoleArn = "string",
+#'     Precedence = 123,
+#'     LastModifiedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     CreationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -5750,6 +7470,33 @@ cognitoidentityprovider_update_group <- function(GroupName, UserPoolId, Descript
 #' `MetadataFile`.
 #' @param AttributeMapping The identity provider attribute mapping to be changed.
 #' @param IdpIdentifiers A list of identity provider identifiers.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   IdentityProvider = list(
+#'     UserPoolId = "string",
+#'     ProviderName = "string",
+#'     ProviderType = "SAML"|"Facebook"|"Google"|"LoginWithAmazon"|"SignInWithApple"|"OIDC",
+#'     ProviderDetails = list(
+#'       "string"
+#'     ),
+#'     AttributeMapping = list(
+#'       "string"
+#'     ),
+#'     IdpIdentifiers = list(
+#'       "string"
+#'     ),
+#'     LastModifiedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     CreationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -5805,6 +7552,24 @@ cognitoidentityprovider_update_identity_provider <- function(UserPoolId, Provide
 #' @param Identifier &#91;required&#93; The identifier for the resource server.
 #' @param Name &#91;required&#93; The name of the resource server.
 #' @param Scopes The scope values to be set for the resource server.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResourceServer = list(
+#'     UserPoolId = "string",
+#'     Identifier = "string",
+#'     Name = "string",
+#'     Scopes = list(
+#'       list(
+#'         ScopeName = "string",
+#'         ScopeDescription = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -5886,6 +7651,20 @@ cognitoidentityprovider_update_resource_server <- function(UserPoolId, Identifie
 #' -   Amazon Cognito does not encrypt the the ClientMetadata value, so
 #'     don't use it to provide sensitive information.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CodeDeliveryDetailsList = list(
+#'     list(
+#'       Destination = "string",
+#'       DeliveryMedium = "SMS"|"EMAIL",
+#'       AttributeName = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_user_attributes(
@@ -5927,7 +7706,7 @@ cognitoidentityprovider_update_user_attributes <- function(UserAttributes, Acces
 #' @description
 #' Updates the specified user pool with the specified attributes. You can
 #' get a list of the current user pool settings using
-#' [DescribeUserPool](https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_DescribeUserPool.html).
+#' [`describe_user_pool`][cognitoidentityprovider_describe_user_pool].
 #' 
 #' If you don't provide a value for an attribute, it will be set to the
 #' default value.
@@ -5967,16 +7746,22 @@ cognitoidentityprovider_update_user_attributes <- function(UserAttributes, Acces
 #' @param UserPoolTags The tag keys and values to assign to the user pool. A tag is a label
 #' that you can use to categorize and manage user pools in different ways,
 #' such as by purpose, owner, environment, or other criteria.
-#' @param AdminCreateUserConfig The configuration for `AdminCreateUser` requests.
+#' @param AdminCreateUserConfig The configuration for
+#' [`admin_create_user`][cognitoidentityprovider_admin_create_user]
+#' requests.
 #' @param UserPoolAddOns Used to enable advanced security risk detection. Set the key
 #' `AdvancedSecurityMode` to the value "AUDIT".
 #' @param AccountRecoverySetting Use this setting to define which verified available method a user can
-#' use to recover their password when they call `ForgotPassword`. It allows
+#' use to recover their password when they call
+#' [`forgot_password`][cognitoidentityprovider_forgot_password]. It allows
 #' you to define a preferred method when a user has more than one method
 #' available. With this setting, SMS does not qualify for a valid password
 #' recovery mechanism if the user also has SMS MFA enabled. In the absence
 #' of this setting, Cognito uses the legacy behavior to determine the
 #' recovery method where SMS is preferred over email.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -6096,7 +7881,7 @@ cognitoidentityprovider_update_user_pool <- function(UserPoolId, Policies = NULL
 #' Updates the specified user pool app client with the specified
 #' attributes. You can get a list of the current user pool app client
 #' settings using
-#' [DescribeUserPoolClient](https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_DescribeUserPoolClient.html).
+#' [`describe_user_pool_client`][cognitoidentityprovider_describe_user_pool_client].
 #' 
 #' If you don't provide a value for an attribute, it will be set to the
 #' default value.
@@ -6195,7 +7980,7 @@ cognitoidentityprovider_update_user_pool <- function(UserPoolId, Policies = NULL
 #' 
 #' Set to `client_credentials` to specify that the client should get the
 #' access token (and, optionally, ID token, based on scopes) from the token
-#' endpoint using a combination of client and client\\_secret.
+#' endpoint using a combination of client and client_secret.
 #' @param AllowedOAuthScopes The allowed OAuth scopes. Possible values provided by OAuth are:
 #' `phone`, `email`, `openid`, and `profile`. Possible values provided by
 #' AWS are: `aws.cognito.signin.user.admin`. Custom scopes created in
@@ -6229,6 +8014,67 @@ cognitoidentityprovider_update_user_pool <- function(UserPoolId, Policies = NULL
 #' After February 15th 2020, the value of `PreventUserExistenceErrors` will
 #' default to `ENABLED` for newly created user pool clients if no value is
 #' provided.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   UserPoolClient = list(
+#'     UserPoolId = "string",
+#'     ClientName = "string",
+#'     ClientId = "string",
+#'     ClientSecret = "string",
+#'     LastModifiedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     CreationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     RefreshTokenValidity = 123,
+#'     AccessTokenValidity = 123,
+#'     IdTokenValidity = 123,
+#'     TokenValidityUnits = list(
+#'       AccessToken = "seconds"|"minutes"|"hours"|"days",
+#'       IdToken = "seconds"|"minutes"|"hours"|"days",
+#'       RefreshToken = "seconds"|"minutes"|"hours"|"days"
+#'     ),
+#'     ReadAttributes = list(
+#'       "string"
+#'     ),
+#'     WriteAttributes = list(
+#'       "string"
+#'     ),
+#'     ExplicitAuthFlows = list(
+#'       "ADMIN_NO_SRP_AUTH"|"CUSTOM_AUTH_FLOW_ONLY"|"USER_PASSWORD_AUTH"|"ALLOW_ADMIN_USER_PASSWORD_AUTH"|"ALLOW_CUSTOM_AUTH"|"ALLOW_USER_PASSWORD_AUTH"|"ALLOW_USER_SRP_AUTH"|"ALLOW_REFRESH_TOKEN_AUTH"
+#'     ),
+#'     SupportedIdentityProviders = list(
+#'       "string"
+#'     ),
+#'     CallbackURLs = list(
+#'       "string"
+#'     ),
+#'     LogoutURLs = list(
+#'       "string"
+#'     ),
+#'     DefaultRedirectURI = "string",
+#'     AllowedOAuthFlows = list(
+#'       "code"|"implicit"|"client_credentials"
+#'     ),
+#'     AllowedOAuthScopes = list(
+#'       "string"
+#'     ),
+#'     AllowedOAuthFlowsUserPoolClient = TRUE|FALSE,
+#'     AnalyticsConfiguration = list(
+#'       ApplicationId = "string",
+#'       ApplicationArn = "string",
+#'       RoleArn = "string",
+#'       ExternalId = "string",
+#'       UserDataShared = TRUE|FALSE
+#'     ),
+#'     PreventUserExistenceErrors = "LEGACY"|"ENABLED"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -6353,6 +8199,14 @@ cognitoidentityprovider_update_user_pool_client <- function(UserPoolId, ClientId
 #' pages for your application. Use this object to specify an SSL
 #' certificate that is managed by ACM.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CloudFrontDomain = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_user_pool_domain(
@@ -6403,6 +8257,15 @@ cognitoidentityprovider_update_user_pool_domain <- function(Domain, UserPoolId, 
 #' [AssociateSoftwareToken"](https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_AssociateSoftwareToken.html).
 #' @param FriendlyDeviceName The friendly device name.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Status = "SUCCESS"|"ERROR",
+#'   Session = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$verify_software_token(
@@ -6445,6 +8308,9 @@ cognitoidentityprovider_verify_software_token <- function(AccessToken = NULL, Se
 #' @param AccessToken &#91;required&#93; Represents the access token of the request to verify user attributes.
 #' @param AttributeName &#91;required&#93; The attribute name in the request to verify user attributes.
 #' @param Code &#91;required&#93; The verification code in the request to verify user attributes.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```

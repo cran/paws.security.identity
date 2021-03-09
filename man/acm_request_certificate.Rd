@@ -20,9 +20,8 @@ periods. Each subsequent Subject Alternative Name (SAN), however, can be
 up to 253 octets in length.}
 
 \item{ValidationMethod}{The method you want to use if you are requesting a public certificate to
-validate that you own or control domain. You can \href{https://docs.aws.amazon.com/acm/latest/userguide/gs-acm-validate-dns.html}{validate with DNS}
-or \href{https://docs.aws.amazon.com/acm/latest/userguide/gs-acm-validate-email.html}{validate with email}.
-We recommend that you use DNS validation.}
+validate that you own or control domain. You can \href{https://docs.aws.amazon.com/acm/latest/userguide/}{validate with DNS} or \href{https://docs.aws.amazon.com/acm/latest/userguide/}{validate with email}. We
+recommend that you use DNS validation.}
 
 \item{SubjectAlternativeNames}{Additional FQDNs to be included in the Subject Alternative Name
 extension of the ACM certificate. For example, add the name
@@ -50,9 +49,10 @@ because the total length of the DNS name (63+1+63+1+63+1+62) exceeds
 }}
 
 \item{IdempotencyToken}{Customer chosen string that can be used to distinguish between calls to
-\code{RequestCertificate}. Idempotency tokens time out after one hour.
-Therefore, if you call \code{RequestCertificate} multiple times with the same
-idempotency token within one hour, ACM recognizes that you are
+\code{\link[=acm_request_certificate]{request_certificate}}. Idempotency tokens
+time out after one hour. Therefore, if you call
+\code{\link[=acm_request_certificate]{request_certificate}} multiple times with the
+same idempotency token within one hour, ACM recognizes that you are
 requesting only one certificate and will issue only one. If you change
 the idempotency token for each call, ACM recognizes that you are
 requesting multiple certificates.}
@@ -78,6 +78,12 @@ user guide. The ARN must have the following form:
 
 \item{Tags}{One or more resource tags to associate with the certificate.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CertificateArn = "string"
+)
+}
+}
 \description{
 Requests an ACM certificate for use with other AWS services. To request
 an ACM certificate, you must specify a fully qualified domain name
@@ -87,9 +93,8 @@ FQDNs in the \code{SubjectAlternativeNames} parameter.
 If you are requesting a private certificate, domain validation is not
 required. If you are requesting a public certificate, each domain name
 that you specify must be validated to verify that you own or control the
-domain. You can use \href{https://docs.aws.amazon.com/acm/latest/userguide/gs-acm-validate-dns.html}{DNS validation}
-or \href{https://docs.aws.amazon.com/acm/latest/userguide/gs-acm-validate-email.html}{email validation}.
-We recommend that you use DNS validation. ACM issues public certificates
+domain. You can use \href{https://docs.aws.amazon.com/acm/latest/userguide/}{DNS validation} or \href{https://docs.aws.amazon.com/acm/latest/userguide/}{email validation}. We
+recommend that you use DNS validation. ACM issues public certificates
 after receiving approval from the domain owner.
 }
 \section{Request syntax}{

@@ -8,7 +8,40 @@ waf_get_web_acl(WebACLId)
 }
 \arguments{
 \item{WebACLId}{[required] The \code{WebACLId} of the WebACL that you want to get. \code{WebACLId} is
-returned by CreateWebACL and by ListWebACLs.}
+returned by \code{\link[=waf_create_web_acl]{create_web_acl}} and by
+\code{\link[=waf_list_web_ac_ls]{list_web_ac_ls}}.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  WebACL = list(
+    WebACLId = "string",
+    Name = "string",
+    MetricName = "string",
+    DefaultAction = list(
+      Type = "BLOCK"|"ALLOW"|"COUNT"
+    ),
+    Rules = list(
+      list(
+        Priority = 123,
+        RuleId = "string",
+        Action = list(
+          Type = "BLOCK"|"ALLOW"|"COUNT"
+        ),
+        OverrideAction = list(
+          Type = "NONE"|"COUNT"
+        ),
+        Type = "REGULAR"|"RATE_BASED"|"GROUP",
+        ExcludedRules = list(
+          list(
+            RuleId = "string"
+          )
+        )
+      )
+    ),
+    WebACLArn = "string"
+  )
+)
+}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see

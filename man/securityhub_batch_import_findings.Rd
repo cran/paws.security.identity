@@ -12,6 +12,20 @@ securityhub_batch_import_findings(Findings)
 follow the \href{https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-findings-format.html}{AWS Security Finding Format}.
 Maximum of 100 findings per request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  FailedCount = 123,
+  SuccessCount = 123,
+  FailedFindings = list(
+    list(
+      Id = "string",
+      ErrorCode = "string",
+      ErrorMessage = "string"
+    )
+  )
+)
+}
+}
 \description{
 Imports security findings generated from an integrated third-party
 product into Security Hub. This action is requested by the integrated
@@ -20,9 +34,10 @@ product to import its findings into Security Hub.
 The maximum allowed size for a finding is 240 Kb. An error is returned
 for any finding larger than 240 Kb.
 
-After a finding is created, \code{BatchImportFindings} cannot be used to
-update the following finding fields and objects, which Security Hub
-customers use to manage their investigation workflow.
+After a finding is created,
+\code{\link[=securityhub_batch_import_findings]{batch_import_findings}} cannot be
+used to update the following finding fields and objects, which Security
+Hub customers use to manage their investigation workflow.
 \itemize{
 \item \code{Note}
 \item \code{UserDefinedFields}
@@ -30,11 +45,14 @@ customers use to manage their investigation workflow.
 \item \code{Workflow}
 }
 
-\code{BatchImportFindings} can be used to update the following finding fields
-and objects only if they have not been updated using
-\code{BatchUpdateFindings}. After they are updated using
-\code{BatchUpdateFindings}, these fields cannot be updated using
-\code{BatchImportFindings}.
+\code{\link[=securityhub_batch_import_findings]{batch_import_findings}} can be used
+to update the following finding fields and objects only if they have not
+been updated using
+\code{\link[=securityhub_batch_update_findings]{batch_update_findings}}. After they
+are updated using
+\code{\link[=securityhub_batch_update_findings]{batch_update_findings}}, these
+fields cannot be updated using
+\code{\link[=securityhub_batch_import_findings]{batch_import_findings}}.
 \itemize{
 \item \code{Confidence}
 \item \code{Criticality}

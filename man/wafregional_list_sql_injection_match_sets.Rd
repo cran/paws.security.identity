@@ -11,14 +11,26 @@ wafregional_list_sql_injection_match_sets(NextMarker, Limit)
 SqlInjectionMatchSet objects than the value of \code{Limit}, AWS WAF returns
 a \code{NextMarker} value in the response that allows you to list another
 group of \code{SqlInjectionMatchSets}. For the second and subsequent
-\code{ListSqlInjectionMatchSets} requests, specify the value of \code{NextMarker}
-from the previous response to get information about another batch of
-\code{SqlInjectionMatchSets}.}
+\code{\link[=wafregional_list_sql_injection_match_sets]{list_sql_injection_match_sets}}
+requests, specify the value of \code{NextMarker} from the previous response
+to get information about another batch of \code{SqlInjectionMatchSets}.}
 
 \item{Limit}{Specifies the number of SqlInjectionMatchSet objects that you want AWS
 WAF to return for this request. If you have more \code{SqlInjectionMatchSet}
 objects than the number you specify for \code{Limit}, the response includes a
 \code{NextMarker} value that you can use to get another batch of \code{Rules}.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  NextMarker = "string",
+  SqlInjectionMatchSets = list(
+    list(
+      SqlInjectionMatchSetId = "string",
+      Name = "string"
+    )
+  )
+)
+}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see

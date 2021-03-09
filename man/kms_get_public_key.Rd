@@ -23,13 +23,30 @@ For example:
 \item Alias ARN: \code{arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias}
 }
 
-To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey. To
-get the alias name and alias ARN, use ListAliases.}
+To get the key ID and key ARN for a CMK, use
+\code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}. To
+get the alias name and alias ARN, use
+\code{\link[=kms_list_aliases]{list_aliases}}.}
 
 \item{GrantTokens}{A list of grant tokens.
 
 For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token}{Grant Tokens}
 in the \emph{AWS Key Management Service Developer Guide}.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  KeyId = "string",
+  PublicKey = raw,
+  CustomerMasterKeySpec = "RSA_2048"|"RSA_3072"|"RSA_4096"|"ECC_NIST_P256"|"ECC_NIST_P384"|"ECC_NIST_P521"|"ECC_SECG_P256K1"|"SYMMETRIC_DEFAULT",
+  KeyUsage = "SIGN_VERIFY"|"ENCRYPT_DECRYPT",
+  EncryptionAlgorithms = list(
+    "SYMMETRIC_DEFAULT"|"RSAES_OAEP_SHA_1"|"RSAES_OAEP_SHA_256"
+  ),
+  SigningAlgorithms = list(
+    "RSASSA_PSS_SHA_256"|"RSASSA_PSS_SHA_384"|"RSASSA_PSS_SHA_512"|"RSASSA_PKCS1_V1_5_SHA_256"|"RSASSA_PKCS1_V1_5_SHA_384"|"RSASSA_PKCS1_V1_5_SHA_512"|"ECDSA_SHA_256"|"ECDSA_SHA_384"|"ECDSA_SHA_512"
+  )
+)
+}
 }
 \description{
 Returns the public key of an asymmetric CMK. Unlike the private key of a
@@ -41,16 +58,17 @@ symmetric and asymmetric CMKs, see \href{https://docs.aws.amazon.com/kms/latest/
 in the \emph{AWS Key Management Service Developer Guide}.
 
 You do not need to download the public key. Instead, you can use the
-public key within AWS KMS by calling the Encrypt, ReEncrypt, or Verify
-operations with the identifier of an asymmetric CMK. When you use the
-public key within AWS KMS, you benefit from the authentication,
-authorization, and logging that are part of every AWS KMS operation. You
-also reduce of risk of encrypting data that cannot be decrypted. These
-features are not effective outside of AWS KMS. For details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/download-public-key.html#download-public-key-considerations}{Special Considerations for Downloading Public Keys}.
+public key within AWS KMS by calling the \code{\link[=kms_encrypt]{encrypt}},
+\code{\link[=kms_re_encrypt]{re_encrypt}}, or \code{\link[=kms_verify]{verify}} operations
+with the identifier of an asymmetric CMK. When you use the public key
+within AWS KMS, you benefit from the authentication, authorization, and
+logging that are part of every AWS KMS operation. You also reduce of
+risk of encrypting data that cannot be decrypted. These features are not
+effective outside of AWS KMS. For details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/download-public-key.html#download-public-key-considerations}{Special Considerations for Downloading Public Keys}.
 
-To help you use the public key safely outside of AWS KMS, \code{GetPublicKey}
-returns important information about the public key in the response,
-including:
+To help you use the public key safely outside of AWS KMS,
+\code{\link[=kms_get_public_key]{get_public_key}} returns important information
+about the public key in the response, including:
 \itemize{
 \item \href{https://docs.aws.amazon.com/kms/latest/APIReference/API_GetPublicKey.html#KMS-GetPublicKey-response-CustomerMasterKeySpec}{CustomerMasterKeySpec}:
 The type of key material in the public key, such as \code{RSA_4096} or
@@ -84,7 +102,7 @@ the \code{KeyId} parameter.
 \href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html}{kms:GetPublicKey}
 (key policy)
 
-\strong{Related operations}: CreateKey
+\strong{Related operations}: \code{\link[=kms_create_key]{create_key}}
 }
 \section{Request syntax}{
 \preformatted{svc$get_public_key(

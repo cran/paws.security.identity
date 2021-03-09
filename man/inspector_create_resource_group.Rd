@@ -14,12 +14,19 @@ inspector_create_resource_group(resourceGroupTags)
 
 For example,'[\{"key":"Name","values":["TestEC2Instance"]\}]'.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  resourceGroupArn = "string"
+)
+}
+}
 \description{
 Creates a resource group using the specified set of tags (key and value
 pairs) that are used to select the EC2 instances to be included in an
 Amazon Inspector assessment target. The created resource group is then
 used to create an Amazon Inspector assessment target. For more
-information, see CreateAssessmentTarget.
+information, see
+\code{\link[=inspector_create_assessment_target]{create_assessment_target}}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_resource_group(

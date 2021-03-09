@@ -10,11 +10,30 @@ directoryservice_list_ip_routes(DirectoryId, NextToken, Limit)
 \item{DirectoryId}{[required] Identifier (ID) of the directory for which you want to retrieve the IP
 addresses.}
 
-\item{NextToken}{The \emph{ListIpRoutes.NextToken} value from a previous call to ListIpRoutes.
-Pass null if this is the first call.}
+\item{NextToken}{The \emph{ListIpRoutes.NextToken} value from a previous call to
+\code{\link[=directoryservice_list_ip_routes]{list_ip_routes}}. Pass null if this
+is the first call.}
 
 \item{Limit}{Maximum number of items to return. If this value is zero, the maximum
 number of items is specified by the limitations of the operation.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  IpRoutesInfo = list(
+    list(
+      DirectoryId = "string",
+      CidrIp = "string",
+      IpRouteStatusMsg = "Adding"|"Added"|"Removing"|"Removed"|"AddFailed"|"RemoveFailed",
+      AddedDateTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      IpRouteStatusReason = "string",
+      Description = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
 }
 \description{
 Lists the address blocks that you have added to a directory.

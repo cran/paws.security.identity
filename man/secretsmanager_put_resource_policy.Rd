@@ -41,6 +41,13 @@ in the \emph{AWS CLI User Guide}.}
 \item{BlockPublicPolicy}{Makes an optional API call to Zelkova to validate the Resource Policy to
 prevent broad access to your secret.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ARN = "string",
+  Name = "string"
+)
+}
+}
 \description{
 Attaches the contents of the specified resource-based permission policy
 to a secret. A resource-based policy is optional. Alternatively, you can
@@ -64,10 +71,11 @@ To run this command, you must have the following permissions:
 \strong{Related operations}
 \itemize{
 \item To retrieve the resource policy attached to a secret, use
-GetResourcePolicy.
+\code{\link[=secretsmanager_get_resource_policy]{get_resource_policy}}.
 \item To delete the resource-based policy that's attached to a secret, use
-DeleteResourcePolicy.
-\item To list all of the currently available secrets, use ListSecrets.
+\code{\link[=secretsmanager_delete_resource_policy]{delete_resource_policy}}.
+\item To list all of the currently available secrets, use
+\code{\link[=secretsmanager_list_secrets]{list_secrets}}.
 }
 }
 \section{Request syntax}{
@@ -84,7 +92,7 @@ DeleteResourcePolicy.
 # The following example shows how to add a resource-based policy to a
 # secret.
 svc$put_resource_policy(
-  ResourcePolicy = "\{\n\"Version\":\"2012-10-17\",\n\"Statement\":[\{\n\"Effect\":\"Allow\",...",
+  ResourcePolicy = "\{\n\"Version\":\"2012-10-17\",\n\"Statement\":[\{\n\"Effect\":\"A...",
   SecretId = "MyTestDatabaseSecret"
 )
 }

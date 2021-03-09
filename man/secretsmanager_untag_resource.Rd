@@ -38,6 +38,9 @@ information on how to format a JSON parameter for the various command
 line tool environments, see \href{https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters.html#cli-using-param-json}{Using JSON for Parameters}
 in the \emph{AWS CLI User Guide}.}
 }
+\value{
+An empty list.
+}
 \description{
 Removes one or more tags from the specified secret.
 
@@ -59,8 +62,9 @@ To run this command, you must have the following permissions:
 \strong{Related operations}
 \itemize{
 \item To add one or more tags to the collection attached to a secret, use
-TagResource.
-\item To view the list of tags attached to a secret, use DescribeSecret.
+\code{\link[=secretsmanager_tag_resource]{tag_resource}}.
+\item To view the list of tags attached to a secret, use
+\code{\link[=secretsmanager_describe_secret]{describe_secret}}.
 }
 }
 \section{Request syntax}{

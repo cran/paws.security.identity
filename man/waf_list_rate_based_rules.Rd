@@ -10,14 +10,26 @@ waf_list_rate_based_rules(NextMarker, Limit)
 \item{NextMarker}{If you specify a value for \code{Limit} and you have more \code{Rules} than the
 value of \code{Limit}, AWS WAF returns a \code{NextMarker} value in the response
 that allows you to list another group of \code{Rules}. For the second and
-subsequent \code{ListRateBasedRules} requests, specify the value of
-\code{NextMarker} from the previous response to get information about another
-batch of \code{Rules}.}
+subsequent \code{\link[=waf_list_rate_based_rules]{list_rate_based_rules}}
+requests, specify the value of \code{NextMarker} from the previous response
+to get information about another batch of \code{Rules}.}
 
 \item{Limit}{Specifies the number of \code{Rules} that you want AWS WAF to return for this
 request. If you have more \code{Rules} than the number that you specify for
 \code{Limit}, the response includes a \code{NextMarker} value that you can use to
 get another batch of \code{Rules}.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  NextMarker = "string",
+  Rules = list(
+    list(
+      RuleId = "string",
+      Name = "string"
+    )
+  )
+)
+}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see

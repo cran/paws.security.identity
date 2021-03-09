@@ -22,6 +22,12 @@ This parameter is optional.
 This ID is used to generate information about when an account principal
 that is limited by the SCP attempted to access an AWS service.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  JobId = "string"
+)
+}
+}
 \description{
 Generates a report for service last accessed data for AWS Organizations.
 You can generate a report for any entities (organization root,
@@ -63,9 +69,10 @@ successful or denied access. For more information, see \href{https://docs.aws.a
 in the \emph{IAM User Guide}.
 
 This operation returns a \code{JobId}. Use this parameter in the
-\verb{<a>GetOrganizationsAccessReport</a>} operation to check the status of
-the report generation. To check the status of this request, use the
-\code{JobId} parameter in the \verb{<a>GetOrganizationsAccessReport</a>}
+\code{\link[=iam_get_organizations_access_report]{get_organizations_access_report}}
+operation to check the status of the report generation. To check the
+status of this request, use the \code{JobId} parameter in the
+\code{\link[=iam_get_organizations_access_report]{get_organizations_access_report}}
 operation and test the \code{JobStatus} response parameter. When the job is
 complete, you can retrieve the report.
 

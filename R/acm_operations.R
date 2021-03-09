@@ -23,9 +23,11 @@ NULL
 #' [Tagging ACM
 #' certificates](https://docs.aws.amazon.com/acm/latest/userguide/tags.html).
 #' 
-#' To remove one or more tags, use the RemoveTagsFromCertificate action. To
-#' view all of the tags that have been applied to the certificate, use the
-#' ListTagsForCertificate action.
+#' To remove one or more tags, use the
+#' [`remove_tags_from_certificate`][acm_remove_tags_from_certificate]
+#' action. To view all of the tags that have been applied to the
+#' certificate, use the
+#' [`list_tags_for_certificate`][acm_list_tags_for_certificate] action.
 #'
 #' @usage
 #' acm_add_tags_to_certificate(CertificateArn, Tags)
@@ -39,6 +41,9 @@ NULL
 #' AWS Service
 #' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
 #' @param Tags &#91;required&#93; The key-value pair that defines the tag. The tag value is optional.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -78,9 +83,10 @@ acm_add_tags_to_certificate <- function(CertificateArn, Tags) {
 #' @description
 #' Deletes a certificate and its associated private key. If this action
 #' succeeds, the certificate no longer appears in the list that can be
-#' displayed by calling the ListCertificates action or be retrieved by
-#' calling the GetCertificate action. The certificate will not be available
-#' for use by AWS services integrated with ACM.
+#' displayed by calling the [`list_certificates`][acm_list_certificates]
+#' action or be retrieved by calling the
+#' [`get_certificate`][acm_get_certificate] action. The certificate will
+#' not be available for use by AWS services integrated with ACM.
 #' 
 #' You cannot delete an ACM certificate that is being used by another AWS
 #' service. To delete a certificate that is in use, the certificate
@@ -97,6 +103,9 @@ acm_add_tags_to_certificate <- function(CertificateArn, Tags) {
 #' For more information about ARNs, see [Amazon Resource Names (ARNs) and
 #' AWS Service
 #' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -141,6 +150,105 @@ acm_delete_certificate <- function(CertificateArn) {
 #' For more information about ARNs, see [Amazon Resource Names (ARNs) and
 #' AWS Service
 #' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Certificate = list(
+#'     CertificateArn = "string",
+#'     DomainName = "string",
+#'     SubjectAlternativeNames = list(
+#'       "string"
+#'     ),
+#'     DomainValidationOptions = list(
+#'       list(
+#'         DomainName = "string",
+#'         ValidationEmails = list(
+#'           "string"
+#'         ),
+#'         ValidationDomain = "string",
+#'         ValidationStatus = "PENDING_VALIDATION"|"SUCCESS"|"FAILED",
+#'         ResourceRecord = list(
+#'           Name = "string",
+#'           Type = "CNAME",
+#'           Value = "string"
+#'         ),
+#'         ValidationMethod = "EMAIL"|"DNS"
+#'       )
+#'     ),
+#'     Serial = "string",
+#'     Subject = "string",
+#'     Issuer = "string",
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     IssuedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ImportedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Status = "PENDING_VALIDATION"|"ISSUED"|"INACTIVE"|"EXPIRED"|"VALIDATION_TIMED_OUT"|"REVOKED"|"FAILED",
+#'     RevokedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     RevocationReason = "UNSPECIFIED"|"KEY_COMPROMISE"|"CA_COMPROMISE"|"AFFILIATION_CHANGED"|"SUPERCEDED"|"CESSATION_OF_OPERATION"|"CERTIFICATE_HOLD"|"REMOVE_FROM_CRL"|"PRIVILEGE_WITHDRAWN"|"A_A_COMPROMISE",
+#'     NotBefore = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     NotAfter = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     KeyAlgorithm = "RSA_2048"|"RSA_1024"|"RSA_4096"|"EC_prime256v1"|"EC_secp384r1"|"EC_secp521r1",
+#'     SignatureAlgorithm = "string",
+#'     InUseBy = list(
+#'       "string"
+#'     ),
+#'     FailureReason = "NO_AVAILABLE_CONTACTS"|"ADDITIONAL_VERIFICATION_REQUIRED"|"DOMAIN_NOT_ALLOWED"|"INVALID_PUBLIC_DOMAIN"|"DOMAIN_VALIDATION_DENIED"|"CAA_ERROR"|"PCA_LIMIT_EXCEEDED"|"PCA_INVALID_ARN"|"PCA_INVALID_STATE"|"PCA_REQUEST_FAILED"|"PCA_NAME_CONSTRAINTS_VALIDATION"|"PCA_RESOURCE_NOT_FOUND"|"PCA_INVALID_ARGS"|"PCA_INVALID_DURATION"|"PCA_ACCESS_DENIED"|"SLR_NOT_FOUND"|"OTHER",
+#'     Type = "IMPORTED"|"AMAZON_ISSUED"|"PRIVATE",
+#'     RenewalSummary = list(
+#'       RenewalStatus = "PENDING_AUTO_RENEWAL"|"PENDING_VALIDATION"|"SUCCESS"|"FAILED",
+#'       DomainValidationOptions = list(
+#'         list(
+#'           DomainName = "string",
+#'           ValidationEmails = list(
+#'             "string"
+#'           ),
+#'           ValidationDomain = "string",
+#'           ValidationStatus = "PENDING_VALIDATION"|"SUCCESS"|"FAILED",
+#'           ResourceRecord = list(
+#'             Name = "string",
+#'             Type = "CNAME",
+#'             Value = "string"
+#'           ),
+#'           ValidationMethod = "EMAIL"|"DNS"
+#'         )
+#'       ),
+#'       RenewalStatusReason = "NO_AVAILABLE_CONTACTS"|"ADDITIONAL_VERIFICATION_REQUIRED"|"DOMAIN_NOT_ALLOWED"|"INVALID_PUBLIC_DOMAIN"|"DOMAIN_VALIDATION_DENIED"|"CAA_ERROR"|"PCA_LIMIT_EXCEEDED"|"PCA_INVALID_ARN"|"PCA_INVALID_STATE"|"PCA_REQUEST_FAILED"|"PCA_NAME_CONSTRAINTS_VALIDATION"|"PCA_RESOURCE_NOT_FOUND"|"PCA_INVALID_ARGS"|"PCA_INVALID_DURATION"|"PCA_ACCESS_DENIED"|"SLR_NOT_FOUND"|"OTHER",
+#'       UpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     ),
+#'     KeyUsages = list(
+#'       list(
+#'         Name = "DIGITAL_SIGNATURE"|"NON_REPUDIATION"|"KEY_ENCIPHERMENT"|"DATA_ENCIPHERMENT"|"KEY_AGREEMENT"|"CERTIFICATE_SIGNING"|"CRL_SIGNING"|"ENCIPHER_ONLY"|"DECIPHER_ONLY"|"ANY"|"CUSTOM"
+#'       )
+#'     ),
+#'     ExtendedKeyUsages = list(
+#'       list(
+#'         Name = "TLS_WEB_SERVER_AUTHENTICATION"|"TLS_WEB_CLIENT_AUTHENTICATION"|"CODE_SIGNING"|"EMAIL_PROTECTION"|"TIME_STAMPING"|"OCSP_SIGNING"|"IPSEC_END_SYSTEM"|"IPSEC_TUNNEL"|"IPSEC_USER"|"ANY"|"NONE"|"CUSTOM",
+#'         OID = "string"
+#'       )
+#'     ),
+#'     CertificateAuthorityArn = "string",
+#'     RenewalEligibility = "ELIGIBLE"|"INELIGIBLE",
+#'     Options = list(
+#'       CertificateTransparencyLoggingPreference = "ENABLED"|"DISABLED"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -196,6 +304,16 @@ acm_describe_certificate <- function(CertificateArn) {
 #' 
 #' `openssl rsa -in encrypted_key.pem -out decrypted_key.pem`
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Certificate = "string",
+#'   CertificateChain = "string",
+#'   PrivateKey = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$export_certificate(
@@ -244,6 +362,15 @@ acm_export_certificate <- function(CertificateArn, Passphrase) {
 #' For more information about ARNs, see [Amazon Resource Names (ARNs) and
 #' AWS Service
 #' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Certificate = "string",
+#'   CertificateChain = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -322,8 +449,8 @@ acm_get_certificate <- function(CertificateArn) {
 #' -   When you import a certificate by using the CLI, you must specify the
 #'     certificate, the certificate chain, and the private key by their
 #'     file names preceded by `file://`. For example, you can specify a
-#'     certificate saved in the `C:\\temp` folder as
-#'     `file://C:\\temp\\certificate_to_import.pem`. If you are making an
+#'     certificate saved in the `C:\temp` folder as
+#'     `file://C:\temp\certificate_to_import.pem`. If you are making an
 #'     HTTP or HTTPS Query request, include these arguments as BLOBs.
 #' 
 #' -   When you import a certificate by using an SDK, you must specify the
@@ -352,6 +479,14 @@ acm_get_certificate <- function(CertificateArn) {
 #' @param Tags One or more resource tags to associate with the imported certificate.
 #' 
 #' Note: You cannot apply tags when reimporting a certificate.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CertificateArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -413,6 +548,20 @@ acm_import_certificate <- function(CertificateArn = NULL, Certificate, PrivateKe
 #' this `NextToken` value in a subsequent request to retrieve additional
 #' items.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   CertificateSummaryList = list(
+#'     list(
+#'       CertificateArn = "string",
+#'       DomainName = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_certificates(
@@ -460,8 +609,11 @@ acm_list_certificates <- function(CertificateStatuses = NULL, Includes = NULL, N
 #' @description
 #' Lists the tags that have been applied to the ACM certificate. Use the
 #' certificate's Amazon Resource Name (ARN) to specify the certificate. To
-#' add a tag to an ACM certificate, use the AddTagsToCertificate action. To
-#' delete a tag, use the RemoveTagsFromCertificate action.
+#' add a tag to an ACM certificate, use the
+#' [`add_tags_to_certificate`][acm_add_tags_to_certificate] action. To
+#' delete a tag, use the
+#' [`remove_tags_from_certificate`][acm_remove_tags_from_certificate]
+#' action.
 #'
 #' @usage
 #' acm_list_tags_for_certificate(CertificateArn)
@@ -474,6 +626,19 @@ acm_list_certificates <- function(CertificateStatuses = NULL, Includes = NULL, N
 #' For more information about ARNs, see [Amazon Resource Names (ARNs) and
 #' AWS Service
 #' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -511,9 +676,11 @@ acm_list_tags_for_certificate <- function(CertificateArn) {
 #' you specify a value, the tag is removed only if it is associated with
 #' the specified value.
 #' 
-#' To add tags to a certificate, use the AddTagsToCertificate action. To
-#' view all of the tags that have been applied to a specific ACM
-#' certificate, use the ListTagsForCertificate action.
+#' To add tags to a certificate, use the
+#' [`add_tags_to_certificate`][acm_add_tags_to_certificate] action. To view
+#' all of the tags that have been applied to a specific ACM certificate,
+#' use the [`list_tags_for_certificate`][acm_list_tags_for_certificate]
+#' action.
 #'
 #' @usage
 #' acm_remove_tags_from_certificate(CertificateArn, Tags)
@@ -527,6 +694,9 @@ acm_list_tags_for_certificate <- function(CertificateArn) {
 #' AWS Service
 #' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
 #' @param Tags &#91;required&#93; The key-value pair that defines the tag to remove.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -585,6 +755,9 @@ acm_remove_tags_from_certificate <- function(CertificateArn, Tags) {
 #' AWS Service
 #' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$renew_certificate(
@@ -624,10 +797,9 @@ acm_renew_certificate <- function(CertificateArn) {
 #' required. If you are requesting a public certificate, each domain name
 #' that you specify must be validated to verify that you own or control the
 #' domain. You can use [DNS
-#' validation](https://docs.aws.amazon.com/acm/latest/userguide/gs-acm-validate-dns.html)
-#' or [email
-#' validation](https://docs.aws.amazon.com/acm/latest/userguide/gs-acm-validate-email.html).
-#' We recommend that you use DNS validation. ACM issues public certificates
+#' validation](https://docs.aws.amazon.com/acm/latest/userguide/) or [email
+#' validation](https://docs.aws.amazon.com/acm/latest/userguide/). We
+#' recommend that you use DNS validation. ACM issues public certificates
 #' after receiving approval from the domain owner.
 #'
 #' @usage
@@ -646,10 +818,9 @@ acm_renew_certificate <- function(CertificateArn) {
 #' up to 253 octets in length.
 #' @param ValidationMethod The method you want to use if you are requesting a public certificate to
 #' validate that you own or control domain. You can [validate with
-#' DNS](https://docs.aws.amazon.com/acm/latest/userguide/gs-acm-validate-dns.html)
-#' or [validate with
-#' email](https://docs.aws.amazon.com/acm/latest/userguide/gs-acm-validate-email.html).
-#' We recommend that you use DNS validation.
+#' DNS](https://docs.aws.amazon.com/acm/latest/userguide/) or [validate
+#' with email](https://docs.aws.amazon.com/acm/latest/userguide/). We
+#' recommend that you use DNS validation.
 #' @param SubjectAlternativeNames Additional FQDNs to be included in the Subject Alternative Name
 #' extension of the ACM certificate. For example, add the name
 #' www.example.net to a certificate for which the `DomainName` field is
@@ -676,9 +847,10 @@ acm_renew_certificate <- function(CertificateArn) {
 #'     because the total length of the DNS name (63+1+63+1+63+1+62) exceeds
 #'     253 octets.
 #' @param IdempotencyToken Customer chosen string that can be used to distinguish between calls to
-#' `RequestCertificate`. Idempotency tokens time out after one hour.
-#' Therefore, if you call `RequestCertificate` multiple times with the same
-#' idempotency token within one hour, ACM recognizes that you are
+#' [`request_certificate`][acm_request_certificate]. Idempotency tokens
+#' time out after one hour. Therefore, if you call
+#' [`request_certificate`][acm_request_certificate] multiple times with the
+#' same idempotency token within one hour, ACM recognizes that you are
 #' requesting only one certificate and will issue only one. If you change
 #' the idempotency token for each call, ACM recognizes that you are
 #' requesting multiple certificates.
@@ -701,6 +873,14 @@ acm_renew_certificate <- function(CertificateArn) {
 #' 
 #' `arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012`
 #' @param Tags One or more resource tags to associate with the certificate.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CertificateArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -770,10 +950,11 @@ acm_request_certificate <- function(DomainName, ValidationMethod = NULL, Subject
 #' acm_resend_validation_email(CertificateArn, Domain, ValidationDomain)
 #'
 #' @param CertificateArn &#91;required&#93; String that contains the ARN of the requested certificate. The
-#' certificate ARN is generated and returned by the RequestCertificate
-#' action as soon as the request is made. By default, using this parameter
-#' causes email to be sent to all top-level domains you specified in the
-#' certificate request. The ARN must be of the form:
+#' certificate ARN is generated and returned by the
+#' [`request_certificate`][acm_request_certificate] action as soon as the
+#' request is made. By default, using this parameter causes email to be
+#' sent to all top-level domains you specified in the certificate request.
+#' The ARN must be of the form:
 #' 
 #' `arn:aws:acm:us-east-1:123456789012:certificate/12345678-1234-1234-1234-123456789012`
 #' @param Domain &#91;required&#93; The fully qualified domain name (FQDN) of the certificate that needs to
@@ -795,6 +976,9 @@ acm_request_certificate <- function(DomainName, ValidationMethod = NULL, Subject
 #' -   postmaster@@subdomain.example.com
 #' 
 #' -   webmaster@@subdomain.example.com
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -839,13 +1023,16 @@ acm_resend_validation_email <- function(CertificateArn, Domain, ValidationDomain
 #'
 #' @param CertificateArn &#91;required&#93; ARN of the requested certificate to update. This must be of the form:
 #' 
-#' `arn:aws:acm:us-east-1:<i>account</i>:certificate/<i>12345678-1234-1234-1234-123456789012</i> `
+#' `arn:aws:acm:us-east-1:account:certificate/12345678-1234-1234-1234-123456789012 `
 #' @param Options &#91;required&#93; Use to update the options for your certificate. Currently, you can
 #' specify whether to add your certificate to a transparency log.
 #' Certificate transparency makes it possible to detect SSL/TLS
 #' certificates that have been mistakenly or maliciously issued.
 #' Certificates that have not been logged typically produce an error
 #' message in a browser.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```

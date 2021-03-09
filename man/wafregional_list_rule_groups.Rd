@@ -10,14 +10,26 @@ wafregional_list_rule_groups(NextMarker, Limit)
 \item{NextMarker}{If you specify a value for \code{Limit} and you have more \code{RuleGroups} than
 the value of \code{Limit}, AWS WAF returns a \code{NextMarker} value in the
 response that allows you to list another group of \code{RuleGroups}. For the
-second and subsequent \code{ListRuleGroups} requests, specify the value of
-\code{NextMarker} from the previous response to get information about another
-batch of \code{RuleGroups}.}
+second and subsequent \code{\link[=wafregional_list_rule_groups]{list_rule_groups}}
+requests, specify the value of \code{NextMarker} from the previous response
+to get information about another batch of \code{RuleGroups}.}
 
 \item{Limit}{Specifies the number of \code{RuleGroups} that you want AWS WAF to return for
 this request. If you have more \code{RuleGroups} than the number that you
 specify for \code{Limit}, the response includes a \code{NextMarker} value that you
 can use to get another batch of \code{RuleGroups}.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  NextMarker = "string",
+  RuleGroups = list(
+    list(
+      RuleGroupId = "string",
+      Name = "string"
+    )
+  )
+)
+}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see

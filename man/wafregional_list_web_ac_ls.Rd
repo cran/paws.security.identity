@@ -10,14 +10,27 @@ wafregional_list_web_ac_ls(NextMarker, Limit)
 \item{NextMarker}{If you specify a value for \code{Limit} and you have more \code{WebACL} objects
 than the number that you specify for \code{Limit}, AWS WAF returns a
 \code{NextMarker} value in the response that allows you to list another group
-of \code{WebACL} objects. For the second and subsequent \code{ListWebACLs}
-requests, specify the value of \code{NextMarker} from the previous response
-to get information about another batch of \code{WebACL} objects.}
+of \code{WebACL} objects. For the second and subsequent
+\code{\link[=wafregional_list_web_ac_ls]{list_web_ac_ls}} requests, specify the
+value of \code{NextMarker} from the previous response to get information
+about another batch of \code{WebACL} objects.}
 
 \item{Limit}{Specifies the number of \code{WebACL} objects that you want AWS WAF to return
 for this request. If you have more \code{WebACL} objects than the number that
 you specify for \code{Limit}, the response includes a \code{NextMarker} value that
 you can use to get another batch of \code{WebACL} objects.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  NextMarker = "string",
+  WebACLs = list(
+    list(
+      WebACLId = "string",
+      Name = "string"
+    )
+  )
+)
+}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see

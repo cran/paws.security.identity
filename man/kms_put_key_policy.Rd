@@ -19,7 +19,8 @@ For example:
 \verb{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
 }
 
-To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.}
+To get the key ID and key ARN for a CMK, use
+\code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
 
 \item{PolicyName}{[required] The name of the key policy. The only valid value is \code{default}.}
 
@@ -28,8 +29,9 @@ To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.}
 The key policy must meet the following criteria:
 \itemize{
 \item If you don't set \code{BypassPolicyLockoutSafetyCheck} to true, the key
-policy must allow the principal that is making the \code{PutKeyPolicy}
-request to make a subsequent \code{PutKeyPolicy} request on the CMK. This
+policy must allow the principal that is making the
+\code{\link[=kms_put_key_policy]{put_key_policy}} request to make a subsequent
+\code{\link[=kms_put_key_policy]{put_key_policy}} request on the CMK. This
 reduces the risk that the CMK becomes unmanageable. For more
 information, refer to the scenario in the \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam}{Default Key Policy}
 section of the \emph{AWS Key Management Service Developer Guide}.
@@ -57,10 +59,13 @@ For more information, refer to the scenario in the \href{https://docs.aws.amazon
 section in the \emph{AWS Key Management Service Developer Guide}.
 
 Use this parameter only when you intend to prevent the principal that is
-making the request from making a subsequent \code{PutKeyPolicy} request on
-the CMK.
+making the request from making a subsequent
+\code{\link[=kms_put_key_policy]{put_key_policy}} request on the CMK.
 
 The default value is false.}
+}
+\value{
+An empty list.
 }
 \description{
 Attaches a key policy to the specified customer master key (CMK).
@@ -79,7 +84,7 @@ a different AWS account.
 \href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html}{kms:PutKeyPolicy}
 (key policy)
 
-\strong{Related operations}: GetKeyPolicy
+\strong{Related operations}: \code{\link[=kms_get_key_policy]{get_key_policy}}
 }
 \section{Request syntax}{
 \preformatted{svc$put_key_policy(
@@ -96,7 +101,7 @@ a different AWS account.
 # The following example attaches a key policy to the specified CMK.
 svc$put_key_policy(
   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab",
-  Policy = "\{\n    \"Version\": \"2012-10-17\",\n    \"Id\": \"custom-policy-2016-12-07\",\n...",
+  Policy = "\{\n    \"Version\": \"2012-10-17\",\n    \"Id\": \"custom-policy-2016-...",
   PolicyName = "default"
 )
 }

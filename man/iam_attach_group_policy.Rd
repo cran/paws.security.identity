@@ -11,18 +11,22 @@ iam_attach_group_policy(GroupName, PolicyArn)
 
 This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: \\_+=,.@-}
+spaces. You can also include any of the following characters: _+=,.@-}
 
 \item{PolicyArn}{[required] The Amazon Resource Name (ARN) of the IAM policy you want to attach.
 
 For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}
 in the \emph{AWS General Reference}.}
 }
+\value{
+An empty list.
+}
 \description{
 Attaches the specified managed policy to the specified IAM group.
 
 You use this API to attach a managed policy to a group. To embed an
-inline policy in a group, use PutGroupPolicy.
+inline policy in a group, use
+\code{\link[=iam_put_group_policy]{put_group_policy}}.
 
 For more information about policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html}{Managed Policies and Inline Policies}
 in the \emph{IAM User Guide}.

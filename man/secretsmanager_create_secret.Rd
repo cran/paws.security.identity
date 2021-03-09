@@ -11,7 +11,7 @@ secretsmanager_create_secret(Name, ClientRequestToken, Description,
 \item{Name}{[required] Specifies the friendly name of the new secret.
 
 The secret name must be ASCII letters, digits, or the following
-characters : /\\_+=.@-
+characters : /_+=.@-
 
 Do not end your secret name with a hyphen followed by six characters. If
 you do so, you risk confusion and unexpected results when searching for
@@ -44,8 +44,9 @@ the request, then the request is ignored.
 \item If a version with this value already exists and that version's
 \code{SecretString} and \code{SecretBinary} values are different from those in
 the request then the request fails because you cannot modify an
-existing version. Instead, use PutSecretValue to create a new
-version.
+existing version. Instead, use
+\code{\link[=secretsmanager_put_secret_value]{put_secret_value}} to create a
+new version.
 }
 
 This value becomes the \code{VersionId} of the new version.}
@@ -101,7 +102,7 @@ format a JSON parameter for the various command line tool environments,
 see \href{https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters.html#cli-using-param-json}{Using JSON for Parameters}
 in the \emph{AWS CLI User Guide}. For example:
 
-\verb{\\\{"username":"bob","password":"abc123xyz456"\\\}}
+\verb{\{"username":"bob","password":"abc123xyz456"\}}
 
 If your command-line tool or SDK requires quotation marks around the
 parameter, you should use single quotes to avoid confusion with the
@@ -110,7 +111,7 @@ double quotes required in the JSON text.}
 \item{Tags}{(Optional) Specifies a list of user-defined tags that are attached to
 the secret. Each tag is a "Key" and "Value" pair of strings. This
 operation only appends tags to the existing list of tags. To remove
-tags, you must use UntagResource.
+tags, you must use \code{\link[=secretsmanager_untag_resource]{untag_resource}}.
 \itemize{
 \item Secrets Manager tag key names are case sensitive. A tag with the key
 "ABC" is a different tag from one with key "abc".
@@ -126,7 +127,7 @@ how to format a JSON parameter for the various command line tool
 environments, see \href{https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters.html#cli-using-param-json}{Using JSON for Parameters}
 in the \emph{AWS CLI User Guide}. For example:
 
-\verb{\\\[\\\{"Key":"CostCenter","Value":"12345"\\\},\\\{"Key":"environment","Value":"production"\\\}\\\]}
+\verb{[\{"Key":"CostCenter","Value":"12345"\},\{"Key":"environment","Value":"production"\}]}
 
 If your command-line tool or SDK requires quotation marks around the
 parameter, you should use single quotes to avoid confusion with the
@@ -146,8 +147,16 @@ your tags per secret limit.
 resources, remember other services might have restrictions on
 allowed characters. Generally allowed characters: letters, spaces,
 and numbers representable in UTF-8, plus the following special
-characters: + - = . \\_ : / @.
+characters: + - = . _ : / @.
 }}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  ARN = "string",
+  Name = "string",
+  VersionId = "string"
+)
+}
 }
 \description{
 Creates a new secret. A secret in Secrets Manager consists of both the
@@ -211,17 +220,20 @@ parameter.
 
 \strong{Related operations}
 \itemize{
-\item To delete a secret, use DeleteSecret.
-\item To modify an existing secret, use UpdateSecret.
-\item To create a new version of a secret, use PutSecretValue.
+\item To delete a secret, use
+\code{\link[=secretsmanager_delete_secret]{delete_secret}}.
+\item To modify an existing secret, use
+\code{\link[=secretsmanager_update_secret]{update_secret}}.
+\item To create a new version of a secret, use
+\code{\link[=secretsmanager_put_secret_value]{put_secret_value}}.
 \item To retrieve the encrypted secure string and secure binary values,
-use GetSecretValue.
-\item To retrieve all other details for a secret, use DescribeSecret. This
-does not include the encrypted secure string and secure binary
-values.
+use \code{\link[=secretsmanager_get_secret_value]{get_secret_value}}.
+\item To retrieve all other details for a secret, use
+\code{\link[=secretsmanager_describe_secret]{describe_secret}}. This does not
+include the encrypted secure string and secure binary values.
 \item To retrieve the list of secret versions associated with the current
-secret, use DescribeSecret and examine the \code{SecretVersionsToStages}
-response value.
+secret, use \code{\link[=secretsmanager_describe_secret]{describe_secret}} and
+examine the \code{SecretVersionsToStages} response value.
 }
 }
 \section{Request syntax}{
@@ -251,7 +263,7 @@ svc$create_secret(
   ClientRequestToken = "EXAMPLE1-90ab-cdef-fedc-ba987SECRET1",
   Description = "My test database secret created with the CLI",
   Name = "MyTestDatabaseSecret",
-  SecretString = "\{\"username\":\"david\",\"password\":\"BnQw!XDWgaEeT9XGTT29\"\}"
+  SecretString = "{"username":"david","password":"BnQw!XDWgaEeT9XGTT29"}"
 )
 }
 

@@ -10,10 +10,22 @@ securityhub_list_organization_admin_accounts(MaxResults, NextToken)
 \item{MaxResults}{The maximum number of items to return in the response.}
 
 \item{NextToken}{The token that is required for pagination. On your first call to the
-\code{ListOrganizationAdminAccounts} operation, set the value of this
-parameter to \code{NULL}. For subsequent calls to the operation, to continue
-listing data, set the value of this parameter to the value returned from
-the previous response.}
+\code{\link[=securityhub_list_organization_admin_accounts]{list_organization_admin_accounts}}
+operation, set the value of this parameter to \code{NULL}. For subsequent
+calls to the operation, to continue listing data, set the value of this
+parameter to the value returned from the previous response.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  AdminAccounts = list(
+    list(
+      AccountId = "string",
+      Status = "ENABLED"|"DISABLE_IN_PROGRESS"
+    )
+  ),
+  NextToken = "string"
+)
+}
 }
 \description{
 Lists the Security Hub administrator accounts. Can only be called by the

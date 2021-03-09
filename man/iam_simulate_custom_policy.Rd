@@ -29,11 +29,11 @@ validate this parameter is a string of characters consisting of the
 following:
 \itemize{
 \item Any printable ASCII character ranging from the space character
-(\code{U+0020}) through the end of the ASCII character range
+(\verb{\\u0020}) through the end of the ASCII character range
 \item The printable characters in the Basic Latin and Latin-1 Supplement
-character set (through \verb{U+00FF})
-\item The special characters tab (\code{U+0009}), line feed (\verb{U+000A}), and
-carriage return (\verb{U+000D})
+character set (through \verb{\\u00FF})
+\item The special characters tab (\verb{\\u0009}), line feed (\verb{\\u000A}), and
+carriage return (\verb{\\u000D})
 }}
 
 \item{PermissionsBoundaryPolicyInputList}{The IAM permissions boundary policy to simulate. The permissions
@@ -49,11 +49,11 @@ validate this parameter is a string of characters consisting of the
 following:
 \itemize{
 \item Any printable ASCII character ranging from the space character
-(\code{U+0020}) through the end of the ASCII character range
+(\verb{\\u0020}) through the end of the ASCII character range
 \item The printable characters in the Basic Latin and Latin-1 Supplement
-character set (through \verb{U+00FF})
-\item The special characters tab (\code{U+0009}), line feed (\verb{U+000A}), and
-carriage return (\verb{U+000D})
+character set (through \verb{\\u00FF})
+\item The special characters tab (\verb{\\u0009}), line feed (\verb{\\u000A}), and
+carriage return (\verb{\\u000D})
 }}
 
 \item{ActionNames}{[required] A list of names of API operations to evaluate in the simulation. Each
@@ -89,11 +89,11 @@ validate this parameter is a string of characters consisting of the
 following:
 \itemize{
 \item Any printable ASCII character ranging from the space character
-(\code{U+0020}) through the end of the ASCII character range
+(\verb{\\u0020}) through the end of the ASCII character range
 \item The printable characters in the Basic Latin and Latin-1 Supplement
-character set (through \verb{U+00FF})
-\item The special characters tab (\code{U+0009}), line feed (\verb{U+000A}), and
-carriage return (\verb{U+000D})
+character set (through \verb{\\u00FF})
+\item The special characters tab (\verb{\\u0009}), line feed (\verb{\\u000A}), and
+carriage return (\verb{\\u000D})
 }}
 
 \item{ResourceOwner}{An ARN representing the AWS account ID that specifies the owner of any
@@ -108,7 +108,7 @@ resource-based policy and account that owns the resource is different
 from the account that owns the simulated calling user \code{CallerArn}.
 
 The ARN for an account uses the following syntax:
-\verb{arn:aws:iam::<i>AWS-account-ID</i>:root}. For example, to represent the
+\code{arn:aws:iam::AWS-account-ID:root}. For example, to represent the
 account with the 112233445566 ID, use the following ARN:
 \verb{arn:aws:iam::112233445566-ID:root}.}
 
@@ -176,6 +176,75 @@ receive a response indicating that the results are truncated. Set it to
 the value of the \code{Marker} element in the response that you received to
 indicate where the next call should start.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  EvaluationResults = list(
+    list(
+      EvalActionName = "string",
+      EvalResourceName = "string",
+      EvalDecision = "allowed"|"explicitDeny"|"implicitDeny",
+      MatchedStatements = list(
+        list(
+          SourcePolicyId = "string",
+          SourcePolicyType = "user"|"group"|"role"|"aws-managed"|"user-managed"|"resource"|"none",
+          StartPosition = list(
+            Line = 123,
+            Column = 123
+          ),
+          EndPosition = list(
+            Line = 123,
+            Column = 123
+          )
+        )
+      ),
+      MissingContextValues = list(
+        "string"
+      ),
+      OrganizationsDecisionDetail = list(
+        AllowedByOrganizations = TRUE|FALSE
+      ),
+      PermissionsBoundaryDecisionDetail = list(
+        AllowedByPermissionsBoundary = TRUE|FALSE
+      ),
+      EvalDecisionDetails = list(
+        "allowed"|"explicitDeny"|"implicitDeny"
+      ),
+      ResourceSpecificResults = list(
+        list(
+          EvalResourceName = "string",
+          EvalResourceDecision = "allowed"|"explicitDeny"|"implicitDeny",
+          MatchedStatements = list(
+            list(
+              SourcePolicyId = "string",
+              SourcePolicyType = "user"|"group"|"role"|"aws-managed"|"user-managed"|"resource"|"none",
+              StartPosition = list(
+                Line = 123,
+                Column = 123
+              ),
+              EndPosition = list(
+                Line = 123,
+                Column = 123
+              )
+            )
+          ),
+          MissingContextValues = list(
+            "string"
+          ),
+          EvalDecisionDetails = list(
+            "allowed"|"explicitDeny"|"implicitDeny"
+          ),
+          PermissionsBoundaryDecisionDetail = list(
+            AllowedByPermissionsBoundary = TRUE|FALSE
+          )
+        )
+      )
+    )
+  ),
+  IsTruncated = TRUE|FALSE,
+  Marker = "string"
+)
+}
+}
 \description{
 Simulate how a set of IAM policies and optionally a resource-based
 policy works with a list of API operations and AWS resources to
@@ -187,13 +256,15 @@ authorization to determine if the simulated policies allow or deny the
 operations.
 
 If you want to simulate existing policies that are attached to an IAM
-user, group, or role, use SimulatePrincipalPolicy instead.
+user, group, or role, use
+\code{\link[=iam_simulate_principal_policy]{simulate_principal_policy}} instead.
 
 Context keys are variables that are maintained by AWS and its services
 and which provide details about the context of an API query request. You
 can use the \code{Condition} element of an IAM policy to evaluate context
 keys. To get the list of context keys that the policies require for
-correct simulation, use GetContextKeysForCustomPolicy.
+correct simulation, use
+\code{\link[=iam_get_context_keys_for_custom_policy]{get_context_keys_for_custom_policy}}.
 
 If the output is long, you can use \code{MaxItems} and \code{Marker} parameters to
 paginate the results.

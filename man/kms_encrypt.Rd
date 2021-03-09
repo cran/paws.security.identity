@@ -24,8 +24,10 @@ For example:
 \item Alias ARN: \code{arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias}
 }
 
-To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey. To
-get the alias name and alias ARN, use ListAliases.}
+To get the key ID and key ARN for a CMK, use
+\code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}. To
+get the alias name and alias ARN, use
+\code{\link[=kms_list_aliases]{list_aliases}}.}
 
 \item{Plaintext}{[required] Data to be encrypted.}
 
@@ -55,32 +57,41 @@ you specify.
 
 This parameter is required only for asymmetric CMKs. The default value,
 \code{SYMMETRIC_DEFAULT}, is the algorithm used for symmetric CMKs. If you
-are using an asymmetric CMK, we recommend RSAES\\_OAEP\\_SHA\\_256.}
+are using an asymmetric CMK, we recommend RSAES_OAEP_SHA_256.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  CiphertextBlob = raw,
+  KeyId = "string",
+  EncryptionAlgorithm = "SYMMETRIC_DEFAULT"|"RSAES_OAEP_SHA_1"|"RSAES_OAEP_SHA_256"
+)
+}
 }
 \description{
 Encrypts plaintext into ciphertext by using a customer master key (CMK).
-The \code{Encrypt} operation has two primary use cases:
+The \code{\link[=kms_encrypt]{encrypt}} operation has two primary use cases:
 \itemize{
 \item You can encrypt small amounts of arbitrary data, such as a personal
 identifier or database password, or other sensitive information.
-\item You can use the \code{Encrypt} operation to move encrypted data from one
-AWS Region to another. For example, in Region A, generate a data key
-and use the plaintext key to encrypt your data. Then, in Region A,
-use the \code{Encrypt} operation to encrypt the plaintext data key under
-a CMK in Region B. Now, you can move the encrypted data and the
-encrypted data key to Region B. When necessary, you can decrypt the
-encrypted data key and the encrypted data entirely within in
-Region B.
+\item You can use the \code{\link[=kms_encrypt]{encrypt}} operation to move encrypted
+data from one AWS Region to another. For example, in Region A,
+generate a data key and use the plaintext key to encrypt your data.
+Then, in Region A, use the \code{\link[=kms_encrypt]{encrypt}} operation to
+encrypt the plaintext data key under a CMK in Region B. Now, you can
+move the encrypted data and the encrypted data key to Region B. When
+necessary, you can decrypt the encrypted data key and the encrypted
+data entirely within in Region B.
 }
 
-You don't need to use the \code{Encrypt} operation to encrypt a data key. The
-GenerateDataKey and GenerateDataKeyPair operations return a plaintext
-data key and an encrypted copy of that data key.
+You don't need to use the \code{\link[=kms_encrypt]{encrypt}} operation to encrypt
+a data key. The \code{\link[=kms_generate_data_key]{generate_data_key}} and
+\code{\link[=kms_generate_data_key_pair]{generate_data_key_pair}} operations return
+a plaintext data key and an encrypted copy of that data key.
 
 When you encrypt data, you must specify a symmetric or asymmetric CMK to
 use in the encryption operation. The CMK must have a \code{KeyUsage} value of
-\code{ENCRYPT_DECRYPT.} To find the \code{KeyUsage} of a CMK, use the DescribeKey
-operation.
+\code{ENCRYPT_DECRYPT.} To find the \code{KeyUsage} of a CMK, use the
+\code{\link[=kms_describe_key]{describe_key}} operation.
 
 If you use a symmetric CMK, you can use an encryption context to add
 additional security to your encryption operation. If you specify an
@@ -143,9 +154,9 @@ the \code{KeyId} parameter.
 
 \strong{Related operations:}
 \itemize{
-\item Decrypt
-\item GenerateDataKey
-\item GenerateDataKeyPair
+\item \code{\link[=kms_decrypt]{decrypt}}
+\item \code{\link[=kms_generate_data_key]{generate_data_key}}
+\item \code{\link[=kms_generate_data_key_pair]{generate_data_key_pair}}
 }
 }
 \section{Request syntax}{

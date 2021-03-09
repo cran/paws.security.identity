@@ -27,6 +27,16 @@ and there are 20 matches in the database. The service will return a
 pagination token as a part of the response. This token can be used to
 call the API again and get results starting from the 11th match.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  IdentityId = "string",
+  DeveloperUserIdentifierList = list(
+    "string"
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Retrieves the \code{IdentityID} associated with a \code{DeveloperUserIdentifier}
 or the list of \code{DeveloperUserIdentifier} values associated with an
@@ -39,12 +49,13 @@ values are verified against the database, the response returns both
 values and is the same as the request. Otherwise a
 \code{ResourceConflictException} is thrown.
 
-\code{LookupDeveloperIdentity} is intended for low-throughput control plane
-operations: for example, to enable customer service to locate an
-identity ID by username. If you are using it for higher-volume
-operations such as user authentication, your requests are likely to be
-throttled. GetOpenIdTokenForDeveloperIdentity is a better option for
-higher-volume operations for user authentication.
+\code{\link[=cognitoidentity_lookup_developer_identity]{lookup_developer_identity}}
+is intended for low-throughput control plane operations: for example, to
+enable customer service to locate an identity ID by username. If you are
+using it for higher-volume operations such as user authentication, your
+requests are likely to be throttled.
+\code{\link[=cognitoidentity_get_open_id_token_for_developer_identity]{get_open_id_token_for_developer_identity}}
+is a better option for higher-volume operations for user authentication.
 
 You must use AWS Developer credentials to call this API.
 }

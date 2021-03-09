@@ -10,10 +10,10 @@ acmpca_issue_certificate(CertificateAuthorityArn, Csr, SigningAlgorithm,
 }
 \arguments{
 \item{CertificateAuthorityArn}{[required] The Amazon Resource Name (ARN) that was returned when you called
-\href{https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_CreateCertificateAuthority.html}{CreateCertificateAuthority}.
+\code{\link[=acmpca_create_certificate_authority]{create_certificate_authority}}.
 This must be of the form:
 
-\verb{arn:aws:acm-pca:<i>region</i>:<i>account</i>:certificate-authority/<i>12345678-1234-1234-1234-123456789012</i> }}
+\code{arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 }}
 
 \item{Csr}{[required] The certificate signing request (CSR) for the certificate you want to
 issue. You can use the following OpenSSL command to create the CSR and a
@@ -50,20 +50,20 @@ The following service-owned \code{TemplateArn} values are supported by ACM
 Private CA:
 \itemize{
 \item arn:aws:acm-pca:::template/CodeSigningCertificate/V1
-\item arn:aws:acm-pca:::template/CodeSigningCertificate\\_CSRPassthrough/V1
+\item arn:aws:acm-pca:::template/CodeSigningCertificate_CSRPassthrough/V1
 \item arn:aws:acm-pca:::template/EndEntityCertificate/V1
-\item arn:aws:acm-pca:::template/EndEntityCertificate\\_CSRPassthrough/V1
+\item arn:aws:acm-pca:::template/EndEntityCertificate_CSRPassthrough/V1
 \item arn:aws:acm-pca:::template/EndEntityClientAuthCertificate/V1
-\item arn:aws:acm-pca:::template/EndEntityClientAuthCertificate\\_CSRPassthrough/V1
+\item arn:aws:acm-pca:::template/EndEntityClientAuthCertificate_CSRPassthrough/V1
 \item arn:aws:acm-pca:::template/EndEntityServerAuthCertificate/V1
-\item arn:aws:acm-pca:::template/EndEntityServerAuthCertificate\\_CSRPassthrough/V1
+\item arn:aws:acm-pca:::template/EndEntityServerAuthCertificate_CSRPassthrough/V1
 \item arn:aws:acm-pca:::template/OCSPSigningCertificate/V1
-\item arn:aws:acm-pca:::template/OCSPSigningCertificate\\_CSRPassthrough/V1
+\item arn:aws:acm-pca:::template/OCSPSigningCertificate_CSRPassthrough/V1
 \item arn:aws:acm-pca:::template/RootCACertificate/V1
-\item arn:aws:acm-pca:::template/SubordinateCACertificate\\_PathLen0/V1
-\item arn:aws:acm-pca:::template/SubordinateCACertificate\\_PathLen1/V1
-\item arn:aws:acm-pca:::template/SubordinateCACertificate\\_PathLen2/V1
-\item arn:aws:acm-pca:::template/SubordinateCACertificate\\_PathLen3/V1
+\item arn:aws:acm-pca:::template/SubordinateCACertificate_PathLen0/V1
+\item arn:aws:acm-pca:::template/SubordinateCACertificate_PathLen1/V1
+\item arn:aws:acm-pca:::template/SubordinateCACertificate_PathLen2/V1
+\item arn:aws:acm-pca:::template/SubordinateCACertificate_PathLen3/V1
 }
 
 For more information, see \href{https://docs.aws.amazon.com/acm-pca/latest/userguide/UsingTemplates.html}{Using Templates}.}
@@ -86,12 +86,17 @@ are requesting only one certificate and will issue only one. If you
 change the idempotency token for each call, PCA recognizes that you are
 requesting multiple certificates.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CertificateArn = "string"
+)
+}
+}
 \description{
 Uses your private certificate authority (CA), or one that has been
 shared with you, to issue a client certificate. This action returns the
 Amazon Resource Name (ARN) of the certificate. You can retrieve the
-certificate by calling the
-\href{https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_GetCertificate.html}{GetCertificate}
+certificate by calling the \code{\link[=acmpca_get_certificate]{get_certificate}}
 action and specifying the ARN.
 
 You cannot use the ACM \strong{ListCertificateAuthorities} action to retrieve

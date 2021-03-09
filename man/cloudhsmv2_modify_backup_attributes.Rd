@@ -8,12 +8,41 @@ cloudhsmv2_modify_backup_attributes(BackupId, NeverExpires)
 }
 \arguments{
 \item{BackupId}{[required] The identifier (ID) of the backup to modify. To find the ID of a backup,
-use the DescribeBackups operation.}
+use the \code{\link[=cloudhsmv2_describe_backups]{describe_backups}} operation.}
 
 \item{NeverExpires}{[required] Specifies whether the service should exempt a backup from the retention
 policy for the cluster. \code{True} exempts a backup from the retention
 policy. \code{False} means the service applies the backup retention policy
 defined at the cluster.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Backup = list(
+    BackupId = "string",
+    BackupState = "CREATE_IN_PROGRESS"|"READY"|"DELETED"|"PENDING_DELETION",
+    ClusterId = "string",
+    CreateTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    CopyTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    NeverExpires = TRUE|FALSE,
+    SourceRegion = "string",
+    SourceBackup = "string",
+    SourceCluster = "string",
+    DeleteTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    TagList = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    )
+  )
+)
+}
 }
 \description{
 Modifies attributes for AWS CloudHSM backup.

@@ -8,7 +8,28 @@ wafregional_get_rate_based_rule(RuleId)
 }
 \arguments{
 \item{RuleId}{[required] The \code{RuleId} of the RateBasedRule that you want to get. \code{RuleId} is
-returned by CreateRateBasedRule and by ListRateBasedRules.}
+returned by
+\code{\link[=wafregional_create_rate_based_rule]{create_rate_based_rule}} and by
+\code{\link[=wafregional_list_rate_based_rules]{list_rate_based_rules}}.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Rule = list(
+    RuleId = "string",
+    Name = "string",
+    MetricName = "string",
+    MatchPredicates = list(
+      list(
+        Negated = TRUE|FALSE,
+        Type = "IPMatch"|"ByteMatch"|"SqlInjectionMatch"|"GeoMatch"|"SizeConstraint"|"XssMatch"|"RegexMatch",
+        DataId = "string"
+      )
+    ),
+    RateKey = "IP",
+    RateLimit = 123
+  )
+)
+}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
@@ -21,7 +42,8 @@ With the latest version, AWS WAF has a single set of endpoints for
 regional and global use.
 
 Returns the RateBasedRule that is specified by the \code{RuleId} that you
-included in the \code{GetRateBasedRule} request.
+included in the \code{\link[=wafregional_get_rate_based_rule]{get_rate_based_rule}}
+request.
 }
 \section{Request syntax}{
 \preformatted{svc$get_rate_based_rule(

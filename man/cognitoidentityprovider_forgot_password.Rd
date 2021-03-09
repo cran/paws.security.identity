@@ -23,7 +23,7 @@ Cognito advanced security.}
 forgotten password.}
 
 \item{AnalyticsMetadata}{The Amazon Pinpoint analytics metadata for collecting metrics for
-\code{ForgotPassword} calls.}
+\code{\link[=cognitoidentityprovider_forgot_password]{forgot_password}} calls.}
 
 \item{ClientMetadata}{A map of custom key-value pairs that you can provide as input for any
 custom workflows that this action triggers.
@@ -55,6 +55,16 @@ purpose.
 don't use it to provide sensitive information.
 }}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CodeDeliveryDetails = list(
+    Destination = "string",
+    DeliveryMedium = "SMS"|"EMAIL",
+    AttributeName = "string"
+  )
+)
+}
+}
 \description{
 Calling this API causes a message to be sent to the end user with a
 confirmation code that is required to change the user's password. For
@@ -64,7 +74,7 @@ specified AccountRecoverySetting. For more information, see \href{https://docs.a
 in the \emph{Amazon Cognito Developer Guide}. If neither a verified phone
 number nor a verified email exists, an \code{InvalidParameterException} is
 thrown. To use the confirmation code for resetting the password, call
-\href{https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_ConfirmForgotPassword.html}{ConfirmForgotPassword}.
+\code{\link[=cognitoidentityprovider_confirm_forgot_password]{confirm_forgot_password}}.
 }
 \section{Request syntax}{
 \preformatted{svc$forgot_password(

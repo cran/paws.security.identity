@@ -16,11 +16,14 @@ options for.}
 \item{MFAOptions}{[required] You can use this parameter only to set an SMS configuration that uses
 SMS for delivery.}
 }
+\value{
+An empty list.
+}
 \description{
 \emph{This action is no longer supported.} You can use it to configure only
 SMS MFA. You can't use it to configure TOTP software token MFA. To
 configure either type of MFA, use
-\href{https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_AdminSetUserMFAPreference.html}{AdminSetUserMFAPreference}
+\code{\link[=cognitoidentityprovider_admin_set_user_mfa_preference]{admin_set_user_mfa_preference}}
 instead.
 }
 \section{Request syntax}{

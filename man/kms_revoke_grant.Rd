@@ -20,9 +20,13 @@ For example:
 \verb{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
 }
 
-To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.}
+To get the key ID and key ARN for a CMK, use
+\code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
 
 \item{GrantId}{[required] Identifier of the grant to be revoked.}
+}
+\value{
+An empty list.
 }
 \description{
 Revokes the specified grant for the specified customer master key (CMK).
@@ -38,10 +42,10 @@ parameter.
 
 \strong{Related operations:}
 \itemize{
-\item CreateGrant
-\item ListGrants
-\item ListRetirableGrants
-\item RetireGrant
+\item \code{\link[=kms_create_grant]{create_grant}}
+\item \code{\link[=kms_list_grants]{list_grants}}
+\item \code{\link[=kms_list_retirable_grants]{list_retirable_grants}}
+\item \code{\link[=kms_retire_grant]{retire_grant}}
 }
 }
 \section{Request syntax}{

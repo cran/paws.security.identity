@@ -9,13 +9,37 @@ securityhub_describe_products(NextToken, MaxResults)
 }
 \arguments{
 \item{NextToken}{The token that is required for pagination. On your first call to the
-\code{DescribeProducts} operation, set the value of this parameter to \code{NULL}.
+\code{\link[=securityhub_describe_products]{describe_products}} operation, set the
+value of this parameter to \code{NULL}.
 
 For subsequent calls to the operation, to continue listing data, set the
 value of this parameter to the value returned from the previous
 response.}
 
 \item{MaxResults}{The maximum number of results to return.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Products = list(
+    list(
+      ProductArn = "string",
+      ProductName = "string",
+      CompanyName = "string",
+      Description = "string",
+      Categories = list(
+        "string"
+      ),
+      IntegrationTypes = list(
+        "SEND_FINDINGS_TO_SECURITY_HUB"|"RECEIVE_FINDINGS_FROM_SECURITY_HUB"
+      ),
+      MarketplaceUrl = "string",
+      ActivationUrl = "string",
+      ProductSubscriptionResourcePolicy = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
 }
 \description{
 Returns information about the available products that you can subscribe

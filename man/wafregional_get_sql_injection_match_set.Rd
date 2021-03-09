@@ -9,7 +9,27 @@ wafregional_get_sql_injection_match_set(SqlInjectionMatchSetId)
 \arguments{
 \item{SqlInjectionMatchSetId}{[required] The \code{SqlInjectionMatchSetId} of the SqlInjectionMatchSet that you want
 to get. \code{SqlInjectionMatchSetId} is returned by
-CreateSqlInjectionMatchSet and by ListSqlInjectionMatchSets.}
+\code{\link[=wafregional_create_sql_injection_match_set]{create_sql_injection_match_set}}
+and by
+\code{\link[=wafregional_list_sql_injection_match_sets]{list_sql_injection_match_sets}}.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  SqlInjectionMatchSet = list(
+    SqlInjectionMatchSetId = "string",
+    Name = "string",
+    SqlInjectionMatchTuples = list(
+      list(
+        FieldToMatch = list(
+          Type = "URI"|"QUERY_STRING"|"HEADER"|"METHOD"|"BODY"|"SINGLE_QUERY_ARG"|"ALL_QUERY_ARGS",
+          Data = "string"
+        ),
+        TextTransformation = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+      )
+    )
+  )
+)
+}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see

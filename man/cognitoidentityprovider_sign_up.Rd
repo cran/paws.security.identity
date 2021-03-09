@@ -28,7 +28,7 @@ attribute name.}
 \item{ValidationData}{The validation data in the request to register a user.}
 
 \item{AnalyticsMetadata}{The Amazon Pinpoint analytics metadata for collecting metrics for
-\code{SignUp} calls.}
+\code{\link[=cognitoidentityprovider_sign_up]{sign_up}} calls.}
 
 \item{UserContextData}{Contextual data such as the user's device fingerprint, IP address, or
 location used for evaluating the risk of an unexpected event by Amazon
@@ -63,6 +63,18 @@ purpose.
 \item Amazon Cognito does not encrypt the the ClientMetadata value, so
 don't use it to provide sensitive information.
 }}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  UserConfirmed = TRUE|FALSE,
+  CodeDeliveryDetails = list(
+    Destination = "string",
+    DeliveryMedium = "SMS"|"EMAIL",
+    AttributeName = "string"
+  ),
+  UserSub = "string"
+)
+}
 }
 \description{
 Registers the user in the specified user pool and creates a user name,

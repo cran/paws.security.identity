@@ -15,11 +15,27 @@ specified service.
 
 This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: \\_+=,.@-}
+spaces. You can also include any of the following characters: _+=,.@-}
 
 \item{ServiceName}{[required] The name of the AWS service that is to be associated with the
 credentials. The service you specify here is the only service that can
 be accessed using these credentials.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  ServiceSpecificCredential = list(
+    CreateDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    ServiceName = "string",
+    ServiceUserName = "string",
+    ServicePassword = "string",
+    ServiceSpecificCredentialId = "string",
+    UserName = "string",
+    Status = "Active"|"Inactive"
+  )
+)
+}
 }
 \description{
 Generates a set of credentials consisting of a user name and password
@@ -33,7 +49,7 @@ each supported service per user.
 The only supported service at this time is AWS CodeCommit.
 
 You can reset the password to a new service-generated value by calling
-ResetServiceSpecificCredential.
+\code{\link[=iam_reset_service_specific_credential]{reset_service_specific_credential}}.
 
 For more information about service-specific credentials, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_ssh-keys.html}{Using IAM with AWS CodeCommit: Git Credentials, SSH Keys, and AWS Access Keys}
 in the \emph{IAM User Guide}.

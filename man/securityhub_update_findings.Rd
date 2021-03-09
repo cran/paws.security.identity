@@ -14,9 +14,13 @@ update.}
 
 \item{RecordState}{The updated record state for the finding.}
 }
+\value{
+An empty list.
+}
 \description{
-\code{UpdateFindings} is deprecated. Instead of \code{UpdateFindings}, use
-\code{BatchUpdateFindings}.
+\code{\link[=securityhub_update_findings]{update_findings}} is deprecated. Instead
+of \code{\link[=securityhub_update_findings]{update_findings}}, use
+\code{\link[=securityhub_batch_update_findings]{batch_update_findings}}.
 
 Updates the \code{Note} and \code{RecordState} of the Security Hub-aggregated
 findings that the filter attributes specify. Any member account that can

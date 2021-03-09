@@ -26,15 +26,70 @@ this value to get more clusters.}
 more clusters than the number you specify, the response contains a
 \code{NextToken} value.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Clusters = list(
+    list(
+      BackupPolicy = "DEFAULT",
+      BackupRetentionPolicy = list(
+        Type = "DAYS",
+        Value = "string"
+      ),
+      ClusterId = "string",
+      CreateTimestamp = as.POSIXct(
+        "2015-01-01"
+      ),
+      Hsms = list(
+        list(
+          AvailabilityZone = "string",
+          ClusterId = "string",
+          SubnetId = "string",
+          EniId = "string",
+          EniIp = "string",
+          HsmId = "string",
+          State = "CREATE_IN_PROGRESS"|"ACTIVE"|"DEGRADED"|"DELETE_IN_PROGRESS"|"DELETED",
+          StateMessage = "string"
+        )
+      ),
+      HsmType = "string",
+      PreCoPassword = "string",
+      SecurityGroup = "string",
+      SourceBackupId = "string",
+      State = "CREATE_IN_PROGRESS"|"UNINITIALIZED"|"INITIALIZE_IN_PROGRESS"|"INITIALIZED"|"ACTIVE"|"UPDATE_IN_PROGRESS"|"DELETE_IN_PROGRESS"|"DELETED"|"DEGRADED",
+      StateMessage = "string",
+      SubnetMapping = list(
+        "string"
+      ),
+      VpcId = "string",
+      Certificates = list(
+        ClusterCsr = "string",
+        HsmCertificate = "string",
+        AwsHardwareCertificate = "string",
+        ManufacturerHardwareCertificate = "string",
+        ClusterCertificate = "string"
+      ),
+      TagList = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Gets information about AWS CloudHSM clusters.
 
 This is a paginated operation, which means that each response might
 contain only a subset of all the clusters. When the response contains
 only a subset of clusters, it includes a \code{NextToken} value. Use this
-value in a subsequent \code{DescribeClusters} request to get more clusters.
-When you receive a response with no \code{NextToken} (or an empty or null
-value), that means there are no more clusters to get.
+value in a subsequent
+\code{\link[=cloudhsmv2_describe_clusters]{describe_clusters}} request to get more
+clusters. When you receive a response with no \code{NextToken} (or an empty
+or null value), that means there are no more clusters to get.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_clusters(

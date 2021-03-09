@@ -7,8 +7,17 @@
 cloudhsm_list_hsms(NextToken)
 }
 \arguments{
-\item{NextToken}{The \code{NextToken} value from a previous call to \code{ListHsms}. Pass null if
-this is the first call.}
+\item{NextToken}{The \code{NextToken} value from a previous call to
+\code{\link[=cloudhsm_list_hsms]{list_hsms}}. Pass null if this is the first call.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  HsmList = list(
+    "string"
+  ),
+  NextToken = "string"
+)
+}
 }
 \description{
 This is documentation for \strong{AWS CloudHSM Classic}. For more
@@ -23,8 +32,8 @@ customer.
 
 This operation supports pagination with the use of the \code{NextToken}
 member. If more results are available, the \code{NextToken} member of the
-response contains a token that you pass in the next call to \code{ListHsms}
-to retrieve the next set of items.
+response contains a token that you pass in the next call to
+\code{\link[=cloudhsm_list_hsms]{list_hsms}} to retrieve the next set of items.
 }
 \section{Request syntax}{
 \preformatted{svc$list_hsms(

@@ -48,6 +48,13 @@ parameter.
 If the staging label is already attached to a different version of the
 secret, then you must also specify the \code{RemoveFromVersionId} parameter.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ARN = "string",
+  Name = "string"
+)
+}
+}
 \description{
 Modifies the staging labels attached to a version of a secret. Staging
 labels are used to track a version as it progresses through the secret
@@ -81,7 +88,8 @@ To run this command, you must have the following permissions:
 \strong{Related operations}
 \itemize{
 \item To get the list of staging labels that are currently associated with
-a version of a secret, use \verb{<a>DescribeSecret</a>} and examine the
+a version of a secret, use
+\code{\link[=secretsmanager_describe_secret]{describe_secret}} and examine the
 \code{SecretVersionsToStages} response value.
 }
 }

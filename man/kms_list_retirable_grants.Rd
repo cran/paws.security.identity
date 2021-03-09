@@ -29,6 +29,37 @@ ARN syntax for specifying a principal, see \href{https://docs.aws.amazon.com/gen
 in the Example ARNs section of the \emph{Amazon Web Services General
 Reference}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Grants = list(
+    list(
+      KeyId = "string",
+      GrantId = "string",
+      Name = "string",
+      CreationDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      GranteePrincipal = "string",
+      RetiringPrincipal = "string",
+      IssuingAccount = "string",
+      Operations = list(
+        "Decrypt"|"Encrypt"|"GenerateDataKey"|"GenerateDataKeyWithoutPlaintext"|"ReEncryptFrom"|"ReEncryptTo"|"Sign"|"Verify"|"GetPublicKey"|"CreateGrant"|"RetireGrant"|"DescribeKey"|"GenerateDataKeyPair"|"GenerateDataKeyPairWithoutPlaintext"
+      ),
+      Constraints = list(
+        EncryptionContextSubset = list(
+          "string"
+        ),
+        EncryptionContextEquals = list(
+          "string"
+        )
+      )
+    )
+  ),
+  NextMarker = "string",
+  Truncated = TRUE|FALSE
+)
+}
+}
 \description{
 Returns all grants in which the specified principal is the
 \code{RetiringPrincipal} in the grant.
@@ -38,7 +69,7 @@ returned include grants for CMKs in your AWS account and other AWS
 accounts.
 
 You might use this operation to determine which grants you may retire.
-To retire a grant, use the RetireGrant operation.
+To retire a grant, use the \code{\link[=kms_retire_grant]{retire_grant}} operation.
 
 \strong{Cross-account use}: You must specify a principal in your AWS account.
 However, this operation can return grants in any AWS account. You do not
@@ -51,10 +82,10 @@ permission) in any AWS account other than your own.
 
 \strong{Related operations:}
 \itemize{
-\item CreateGrant
-\item ListGrants
-\item RetireGrant
-\item RevokeGrant
+\item \code{\link[=kms_create_grant]{create_grant}}
+\item \code{\link[=kms_list_grants]{list_grants}}
+\item \code{\link[=kms_retire_grant]{retire_grant}}
+\item \code{\link[=kms_revoke_grant]{revoke_grant}}
 }
 }
 \section{Request syntax}{

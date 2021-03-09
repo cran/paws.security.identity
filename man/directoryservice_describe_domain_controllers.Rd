@@ -15,9 +15,34 @@ information.}
 be provided.}
 
 \item{NextToken}{The \emph{DescribeDomainControllers.NextToken} value from a previous call to
-DescribeDomainControllers. Pass null if this is the first call.}
+\code{\link[=directoryservice_describe_domain_controllers]{describe_domain_controllers}}.
+Pass null if this is the first call.}
 
 \item{Limit}{The maximum number of items to return.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  DomainControllers = list(
+    list(
+      DirectoryId = "string",
+      DomainControllerId = "string",
+      DnsIpAddr = "string",
+      VpcId = "string",
+      SubnetId = "string",
+      AvailabilityZone = "string",
+      Status = "Creating"|"Active"|"Impaired"|"Restoring"|"Deleting"|"Deleted"|"Failed",
+      StatusReason = "string",
+      LaunchTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      StatusLastUpdatedDateTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
 }
 \description{
 Provides information about any domain controllers in your directory.

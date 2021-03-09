@@ -12,19 +12,22 @@ from.
 
 This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: \\_+=,.@-}
+spaces. You can also include any of the following characters: _+=,.@-}
 
 \item{PolicyArn}{[required] The Amazon Resource Name (ARN) of the IAM policy you want to detach.
 
 For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}
 in the \emph{AWS General Reference}.}
 }
+\value{
+An empty list.
+}
 \description{
 Removes the specified managed policy from the specified IAM group.
 
 A group can also have inline policies embedded with it. To delete an
-inline policy, use the DeleteGroupPolicy API. For information about
-policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html}{Managed Policies and Inline Policies}
+inline policy, use the \code{\link[=iam_delete_group_policy]{delete_group_policy}}
+API. For information about policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html}{Managed Policies and Inline Policies}
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{

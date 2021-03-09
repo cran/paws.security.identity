@@ -19,7 +19,8 @@ For example:
 \verb{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
 }
 
-To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.}
+To get the key ID and key ARN for a CMK, use
+\code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
 
 \item{Limit}{Use this parameter to specify the maximum number of items to return.
 When this value is present, AWS KMS does not return more than the
@@ -34,11 +35,21 @@ Only one policy can be attached to a key.}
 with truncated results. Set it to the value of \code{NextMarker} from the
 truncated response you just received.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PolicyNames = list(
+    "string"
+  ),
+  NextMarker = "string",
+  Truncated = TRUE|FALSE
+)
+}
+}
 \description{
 Gets the names of the key policies that are attached to a customer
 master key (CMK). This operation is designed to get policy names that
-you can use in a GetKeyPolicy operation. However, the only valid policy
-name is \code{default}.
+you can use in a \code{\link[=kms_get_key_policy]{get_key_policy}} operation.
+However, the only valid policy name is \code{default}.
 
 \strong{Cross-account use}: No. You cannot perform this operation on a CMK in
 a different AWS account.
@@ -49,8 +60,8 @@ a different AWS account.
 
 \strong{Related operations:}
 \itemize{
-\item GetKeyPolicy
-\item PutKeyPolicy
+\item \code{\link[=kms_get_key_policy]{get_key_policy}}
+\item \code{\link[=kms_put_key_policy]{put_key_policy}}
 }
 }
 \section{Request syntax}{

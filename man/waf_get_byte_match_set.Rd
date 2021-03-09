@@ -8,8 +8,29 @@ waf_get_byte_match_set(ByteMatchSetId)
 }
 \arguments{
 \item{ByteMatchSetId}{[required] The \code{ByteMatchSetId} of the ByteMatchSet that you want to get.
-\code{ByteMatchSetId} is returned by CreateByteMatchSet and by
-ListByteMatchSets.}
+\code{ByteMatchSetId} is returned by
+\code{\link[=waf_create_byte_match_set]{create_byte_match_set}} and by
+\code{\link[=waf_list_byte_match_sets]{list_byte_match_sets}}.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  ByteMatchSet = list(
+    ByteMatchSetId = "string",
+    Name = "string",
+    ByteMatchTuples = list(
+      list(
+        FieldToMatch = list(
+          Type = "URI"|"QUERY_STRING"|"HEADER"|"METHOD"|"BODY"|"SINGLE_QUERY_ARG"|"ALL_QUERY_ARGS",
+          Data = "string"
+        ),
+        TargetString = raw,
+        TextTransformation = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE",
+        PositionalConstraint = "EXACTLY"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CONTAINS_WORD"
+      )
+    )
+  )
+)
+}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see

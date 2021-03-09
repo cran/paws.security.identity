@@ -12,7 +12,10 @@ iam_delete_login_profile(UserName)
 
 This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: \\_+=,.@-}
+spaces. You can also include any of the following characters: _+=,.@-}
+}
+\value{
+An empty list.
 }
 \description{
 Deletes the password for the specified IAM user, which terminates the
@@ -23,7 +26,8 @@ Deleting a user's password does not prevent a user from accessing AWS
 through the command line interface or the API. To prevent all user
 access, you must also either make any access keys inactive or delete
 them. For more information about making keys inactive or deleting them,
-see UpdateAccessKey and DeleteAccessKey.
+see \code{\link[=iam_update_access_key]{update_access_key}} and
+\code{\link[=iam_delete_access_key]{delete_access_key}}.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_login_profile(

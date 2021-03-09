@@ -11,7 +11,7 @@ iam_update_login_profile(UserName, Password, PasswordResetRequired)
 
 This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: \\_+=,.@-}
+spaces. You can also include any of the following characters: _+=,.@-}
 
 \item{Password}{The new password for the specified IAM user.
 
@@ -20,25 +20,30 @@ validate this parameter is a string of characters consisting of the
 following:
 \itemize{
 \item Any printable ASCII character ranging from the space character
-(\code{U+0020}) through the end of the ASCII character range
+(\verb{\\u0020}) through the end of the ASCII character range
 \item The printable characters in the Basic Latin and Latin-1 Supplement
-character set (through \verb{U+00FF})
-\item The special characters tab (\code{U+0009}), line feed (\verb{U+000A}), and
-carriage return (\verb{U+000D})
+character set (through \verb{\\u00FF})
+\item The special characters tab (\verb{\\u0009}), line feed (\verb{\\u000A}), and
+carriage return (\verb{\\u000D})
 }
 
 However, the format can be further restricted by the account
 administrator by setting a password policy on the AWS account. For more
-information, see UpdateAccountPasswordPolicy.}
+information, see
+\code{\link[=iam_update_account_password_policy]{update_account_password_policy}}.}
 
 \item{PasswordResetRequired}{Allows this new password to be used only once by requiring the specified
 IAM user to set a new password on next sign-in.}
 }
+\value{
+An empty list.
+}
 \description{
 Changes the password for the specified IAM user.
 
-IAM users can change their own passwords by calling ChangePassword. For
-more information about modifying passwords, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_admin-change-user.html}{Managing Passwords}
+IAM users can change their own passwords by calling
+\code{\link[=iam_change_password]{change_password}}. For more information about
+modifying passwords, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_admin-change-user.html}{Managing Passwords}
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{

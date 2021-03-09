@@ -31,6 +31,14 @@ NULL
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the AWS CloudHSM resource to tag.
 #' @param TagList &#91;required&#93; One or more tags.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Status = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$add_tags_to_resource(
@@ -89,6 +97,14 @@ cloudhsm_add_tags_to_resource <- function(ResourceArn, TagList) {
 #'
 #' @param Label &#91;required&#93; The label of the new high-availability partition group.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   HapgArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_hapg(
@@ -135,14 +151,16 @@ cloudhsm_create_hapg <- function(Label) {
 #' Creates an uninitialized HSM instance.
 #' 
 #' There is an upfront fee charged for each HSM instance that you create
-#' with the `CreateHsm` operation. If you accidentally provision an HSM and
-#' want to request a refund, delete the instance using the DeleteHsm
-#' operation, go to the AWS Support Center, create a new case, and select
-#' **Account and Billing Support**.
+#' with the [`create_hsm`][cloudhsm_create_hsm] operation. If you
+#' accidentally provision an HSM and want to request a refund, delete the
+#' instance using the [`delete_hsm`][cloudhsm_delete_hsm] operation, go to
+#' the AWS Support Center, create a new case, and select **Account and
+#' Billing Support**.
 #' 
 #' It can take up to 20 minutes to create and provision an HSM. You can
-#' monitor the status of the HSM with the DescribeHsm operation. The HSM is
-#' ready to be initialized when the status changes to `RUNNING`.
+#' monitor the status of the HSM with the
+#' [`describe_hsm`][cloudhsm_describe_hsm] operation. The HSM is ready to
+#' be initialized when the status changes to `RUNNING`.
 #'
 #' @usage
 #' cloudhsm_create_hsm(SubnetId, SshKey, EniIp, IamRoleArn, ExternalId,
@@ -162,6 +180,14 @@ cloudhsm_create_hapg <- function(Label) {
 #' operation with the same token will be ignored.
 #' @param SyslogIp The IP address for the syslog monitoring server. The AWS CloudHSM
 #' service only supports one syslog monitoring server.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   HsmArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -222,6 +248,14 @@ cloudhsm_create_hsm <- function(SubnetId, SshKey, EniIp = NULL, IamRoleArn, Exte
 #' @param Certificate &#91;required&#93; The contents of a Base64-Encoded X.509 v3 certificate to be installed on
 #' the HSMs used by this client.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ClientArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_luna_client(
@@ -272,6 +306,14 @@ cloudhsm_create_luna_client <- function(Label = NULL, Certificate) {
 #' cloudhsm_delete_hapg(HapgArn)
 #'
 #' @param HapgArn &#91;required&#93; The ARN of the high-availability partition group to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Status = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -324,6 +366,14 @@ cloudhsm_delete_hapg <- function(HapgArn) {
 #'
 #' @param HsmArn &#91;required&#93; The ARN of the HSM to delete.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Status = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_hsm(
@@ -374,6 +424,14 @@ cloudhsm_delete_hsm <- function(HsmArn) {
 #'
 #' @param ClientArn &#91;required&#93; The ARN of the client to delete.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Status = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_luna_client(
@@ -423,6 +481,30 @@ cloudhsm_delete_luna_client <- function(ClientArn) {
 #' cloudhsm_describe_hapg(HapgArn)
 #'
 #' @param HapgArn &#91;required&#93; The ARN of the high-availability partition group to describe.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   HapgArn = "string",
+#'   HapgSerial = "string",
+#'   HsmsLastActionFailed = list(
+#'     "string"
+#'   ),
+#'   HsmsPendingDeletion = list(
+#'     "string"
+#'   ),
+#'   HsmsPendingRegistration = list(
+#'     "string"
+#'   ),
+#'   Label = "string",
+#'   LastModifiedTimestamp = "string",
+#'   PartitionSerialList = list(
+#'     "string"
+#'   ),
+#'   State = "READY"|"UPDATING"|"DEGRADED"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -478,6 +560,36 @@ cloudhsm_describe_hapg <- function(HapgArn) {
 #' @param HsmSerialNumber The serial number of the HSM. Either the `HsmArn` or the
 #' `HsmSerialNumber` parameter must be specified.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   HsmArn = "string",
+#'   Status = "PENDING"|"RUNNING"|"UPDATING"|"SUSPENDED"|"TERMINATING"|"TERMINATED"|"DEGRADED",
+#'   StatusDetails = "string",
+#'   AvailabilityZone = "string",
+#'   EniId = "string",
+#'   EniIp = "string",
+#'   SubscriptionType = "PRODUCTION",
+#'   SubscriptionStartDate = "string",
+#'   SubscriptionEndDate = "string",
+#'   VpcId = "string",
+#'   SubnetId = "string",
+#'   IamRoleArn = "string",
+#'   SerialNumber = "string",
+#'   VendorName = "string",
+#'   HsmType = "string",
+#'   SoftwareVersion = "string",
+#'   SshPublicKey = "string",
+#'   SshKeyLastUpdated = "string",
+#'   ServerCertUri = "string",
+#'   ServerCertLastUpdated = "string",
+#'   Partitions = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_hsm(
@@ -529,6 +641,18 @@ cloudhsm_describe_hsm <- function(HsmArn = NULL, HsmSerialNumber = NULL) {
 #'
 #' @param ClientArn The ARN of the client.
 #' @param CertificateFingerprint The certificate fingerprint.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ClientArn = "string",
+#'   Certificate = "string",
+#'   CertificateFingerprint = "string",
+#'   LastModifiedTimestamp = "string",
+#'   Label = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -585,6 +709,16 @@ cloudhsm_describe_luna_client <- function(ClientArn = NULL, CertificateFingerpri
 #' @param HapgList &#91;required&#93; A list of ARNs that identify the high-availability partition groups that
 #' are associated with the client.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConfigType = "string",
+#'   ConfigFile = "string",
+#'   ConfigCred = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_config(
@@ -637,6 +771,16 @@ cloudhsm_get_config <- function(ClientArn, ClientVersion, HapgList) {
 #' @usage
 #' cloudhsm_list_available_zones()
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AZList = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_available_zones()
@@ -682,14 +826,26 @@ cloudhsm_list_available_zones <- function() {
 #' 
 #' This operation supports pagination with the use of the `NextToken`
 #' member. If more results are available, the `NextToken` member of the
-#' response contains a token that you pass in the next call to `ListHapgs`
-#' to retrieve the next set of items.
+#' response contains a token that you pass in the next call to
+#' [`list_hapgs`][cloudhsm_list_hapgs] to retrieve the next set of items.
 #'
 #' @usage
 #' cloudhsm_list_hapgs(NextToken)
 #'
-#' @param NextToken The `NextToken` value from a previous call to `ListHapgs`. Pass null if
-#' this is the first call.
+#' @param NextToken The `NextToken` value from a previous call to
+#' [`list_hapgs`][cloudhsm_list_hapgs]. Pass null if this is the first
+#' call.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   HapgList = list(
+#'     "string"
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -739,14 +895,25 @@ cloudhsm_list_hapgs <- function(NextToken = NULL) {
 #' 
 #' This operation supports pagination with the use of the `NextToken`
 #' member. If more results are available, the `NextToken` member of the
-#' response contains a token that you pass in the next call to `ListHsms`
-#' to retrieve the next set of items.
+#' response contains a token that you pass in the next call to
+#' [`list_hsms`][cloudhsm_list_hsms] to retrieve the next set of items.
 #'
 #' @usage
 #' cloudhsm_list_hsms(NextToken)
 #'
-#' @param NextToken The `NextToken` value from a previous call to `ListHsms`. Pass null if
-#' this is the first call.
+#' @param NextToken The `NextToken` value from a previous call to
+#' [`list_hsms`][cloudhsm_list_hsms]. Pass null if this is the first call.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   HsmList = list(
+#'     "string"
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -796,13 +963,26 @@ cloudhsm_list_hsms <- function(NextToken = NULL) {
 #' This operation supports pagination with the use of the `NextToken`
 #' member. If more results are available, the `NextToken` member of the
 #' response contains a token that you pass in the next call to
-#' `ListLunaClients` to retrieve the next set of items.
+#' [`list_luna_clients`][cloudhsm_list_luna_clients] to retrieve the next
+#' set of items.
 #'
 #' @usage
 #' cloudhsm_list_luna_clients(NextToken)
 #'
-#' @param NextToken The `NextToken` value from a previous call to `ListLunaClients`. Pass
-#' null if this is the first call.
+#' @param NextToken The `NextToken` value from a previous call to
+#' [`list_luna_clients`][cloudhsm_list_luna_clients]. Pass null if this is
+#' the first call.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ClientList = list(
+#'     "string"
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -853,6 +1033,19 @@ cloudhsm_list_luna_clients <- function(NextToken = NULL) {
 #' cloudhsm_list_tags_for_resource(ResourceArn)
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the AWS CloudHSM resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TagList = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -906,6 +1099,14 @@ cloudhsm_list_tags_for_resource <- function(ResourceArn) {
 #' @param Label The new label for the high-availability partition group.
 #' @param PartitionSerialList The list of partition serial numbers to make members of the
 #' high-availability partition group.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   HapgArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -980,6 +1181,14 @@ cloudhsm_modify_hapg <- function(HapgArn, Label = NULL, PartitionSerialList = NU
 #' @param SyslogIp The new IP address for the syslog monitoring server. The AWS CloudHSM
 #' service only supports one syslog monitoring server.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   HsmArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$modify_hsm(
@@ -1039,6 +1248,14 @@ cloudhsm_modify_hsm <- function(HsmArn, SubnetId = NULL, EniIp = NULL, IamRoleAr
 #' @param ClientArn &#91;required&#93; The ARN of the client.
 #' @param Certificate &#91;required&#93; The new certificate for the client.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ClientArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$modify_luna_client(
@@ -1086,7 +1303,8 @@ cloudhsm_modify_luna_client <- function(ClientArn, Certificate) {
 #' Removes one or more tags from the specified AWS CloudHSM resource.
 #' 
 #' To remove a tag, specify only the tag key to remove (not the value). To
-#' overwrite the value for an existing tag, use AddTagsToResource.
+#' overwrite the value for an existing tag, use
+#' [`add_tags_to_resource`][cloudhsm_add_tags_to_resource].
 #'
 #' @usage
 #' cloudhsm_remove_tags_from_resource(ResourceArn, TagKeyList)
@@ -1095,7 +1313,16 @@ cloudhsm_modify_luna_client <- function(ClientArn, Certificate) {
 #' @param TagKeyList &#91;required&#93; The tag key or keys to remove.
 #' 
 #' Specify only the tag key to remove (not the value). To overwrite the
-#' value for an existing tag, use AddTagsToResource.
+#' value for an existing tag, use
+#' [`add_tags_to_resource`][cloudhsm_add_tags_to_resource].
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Status = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

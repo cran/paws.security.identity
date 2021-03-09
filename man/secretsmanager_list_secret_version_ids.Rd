@@ -52,6 +52,28 @@ do not have any staging labels attached to them. Such versions are
 considered deprecated and are subject to deletion by Secrets Manager as
 needed.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Versions = list(
+    list(
+      VersionId = "string",
+      VersionStages = list(
+        "string"
+      ),
+      LastAccessedDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      CreatedDate = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string",
+  ARN = "string",
+  Name = "string"
+)
+}
+}
 \description{
 Lists all of the versions attached to the specified secret. The output
 does not include the \code{SecretString} or \code{SecretBinary} fields. By
@@ -74,7 +96,8 @@ To run this command, you must have the following permissions:
 
 \strong{Related operations}
 \itemize{
-\item To list the secrets in an account, use ListSecrets.
+\item To list the secrets in an account, use
+\code{\link[=secretsmanager_list_secrets]{list_secrets}}.
 }
 }
 \section{Request syntax}{

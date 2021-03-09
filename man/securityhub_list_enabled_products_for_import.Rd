@@ -9,14 +9,23 @@ securityhub_list_enabled_products_for_import(NextToken, MaxResults)
 }
 \arguments{
 \item{NextToken}{The token that is required for pagination. On your first call to the
-\code{ListEnabledProductsForImport} operation, set the value of this
-parameter to \code{NULL}.
+\code{\link[=securityhub_list_enabled_products_for_import]{list_enabled_products_for_import}}
+operation, set the value of this parameter to \code{NULL}.
 
 For subsequent calls to the operation, to continue listing data, set the
 value of this parameter to the value returned from the previous
 response.}
 
 \item{MaxResults}{The maximum number of items to return in the response.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  ProductSubscriptions = list(
+    "string"
+  ),
+  NextToken = "string"
+)
+}
 }
 \description{
 Lists all findings-generating solutions (products) that you are

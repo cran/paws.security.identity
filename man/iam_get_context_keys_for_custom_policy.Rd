@@ -16,45 +16,16 @@ validate this parameter is a string of characters consisting of the
 following:
 \itemize{
 \item Any printable ASCII character ranging from the space character
-(\verb{\\u0020}) through the end of the ASCII character range
+(\code{U+0020}) through the end of the ASCII character range
 \item The printable characters in the Basic Latin and Latin-1 Supplement
-character set (through \verb{\\u00FF})
-\item The special characters tab (\verb{\\u0009}), line feed (\verb{\\u000A}), and
-carriage return (\verb{\\u000D})
+character set (through \verb{U+00FF})
+\item The special characters tab (\code{U+0009}), line feed (\verb{U+000A}), and
+carriage return (\verb{U+000D})
 }}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ContextKeyNames = list(
-    "string"
-  )
-)
-}
-}
 \description{
-Gets a list of all of the context keys referenced in the input policies.
-The policies are supplied as a list of one or more strings. To get the
-context keys from policies associated with an IAM user, group, or role,
-use
-\code{\link[=iam_get_context_keys_for_principal_policy]{get_context_keys_for_principal_policy}}.
+Gets a list of all of the context keys referenced in the input policies. The policies are supplied as a list of one or more strings. To get the context keys from policies associated with an IAM user, group, or role, use \code{\link[=iam_get_context_keys_for_principal_policy]{get_context_keys_for_principal_policy}}.
 
-Context keys are variables maintained by AWS and its services that
-provide details about the context of an API query request. Context keys
-can be evaluated by testing against a value specified in an IAM policy.
-Use
-\code{\link[=iam_get_context_keys_for_custom_policy]{get_context_keys_for_custom_policy}}
-to understand what key names and values you must supply when you call
-\code{\link[=iam_simulate_custom_policy]{simulate_custom_policy}}. Note that all
-parameters are shown in unencoded form here for clarity but must be URL
-encoded to be included as a part of a real HTML request.
+See \url{https://paws-r.github.io/docs/iam/get_context_keys_for_custom_policy.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_context_keys_for_custom_policy(
-  PolicyInputList = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

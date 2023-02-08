@@ -4,7 +4,11 @@
 \alias{iam_update_login_profile}
 \title{Changes the password for the specified IAM user}
 \usage{
-iam_update_login_profile(UserName, Password, PasswordResetRequired)
+iam_update_login_profile(
+  UserName,
+  Password = NULL,
+  PasswordResetRequired = NULL
+)
 }
 \arguments{
 \item{UserName}{[required] The name of the user whose password you want to update.
@@ -20,50 +24,24 @@ validate this parameter is a string of characters consisting of the
 following:
 \itemize{
 \item Any printable ASCII character ranging from the space character
-(\verb{\\u0020}) through the end of the ASCII character range
+(\code{U+0020}) through the end of the ASCII character range
 \item The printable characters in the Basic Latin and Latin-1 Supplement
-character set (through \verb{\\u00FF})
-\item The special characters tab (\verb{\\u0009}), line feed (\verb{\\u000A}), and
-carriage return (\verb{\\u000D})
+character set (through \verb{U+00FF})
+\item The special characters tab (\code{U+0009}), line feed (\verb{U+000A}), and
+carriage return (\verb{U+000D})
 }
 
 However, the format can be further restricted by the account
-administrator by setting a password policy on the AWS account. For more
-information, see
+administrator by setting a password policy on the Amazon Web Services
+account. For more information, see
 \code{\link[=iam_update_account_password_policy]{update_account_password_policy}}.}
 
 \item{PasswordResetRequired}{Allows this new password to be used only once by requiring the specified
 IAM user to set a new password on next sign-in.}
 }
-\value{
-An empty list.
-}
 \description{
-Changes the password for the specified IAM user.
+Changes the password for the specified IAM user. You can use the CLI, the Amazon Web Services API, or the \strong{Users} page in the IAM console to change the password for any IAM user. Use \code{\link[=iam_change_password]{change_password}} to change your own password in the \strong{My Security Credentials} page in the Amazon Web Services Management Console.
 
-IAM users can change their own passwords by calling
-\code{\link[=iam_change_password]{change_password}}. For more information about
-modifying passwords, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_admin-change-user.html}{Managing Passwords}
-in the \emph{IAM User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$update_login_profile(
-  UserName = "string",
-  Password = "string",
-  PasswordResetRequired = TRUE|FALSE
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following command creates or changes the password for the IAM user
-# named Bob.
-svc$update_login_profile(
-  Password = "SomeKindOfPassword123!@#",
-  UserName = "Bob"
-)
-}
-
+See \url{https://paws-r.github.io/docs/iam/update_login_profile.html} for full documentation.
 }
 \keyword{internal}

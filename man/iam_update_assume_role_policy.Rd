@@ -15,48 +15,26 @@ spaces. You can also include any of the following characters: _+=,.@-}
 
 \item{PolicyDocument}{[required] The policy that grants an entity permission to assume the role.
 
-You must provide policies in JSON format in IAM. However, for AWS
+You must provide policies in JSON format in IAM. However, for
 CloudFormation templates formatted in YAML, you can provide the policy
-in JSON or YAML format. AWS CloudFormation always converts a YAML policy
-to JSON format before submitting it to IAM.
+in JSON or YAML format. CloudFormation always converts a YAML policy to
+JSON format before submitting it to IAM.
 
 The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} used to
 validate this parameter is a string of characters consisting of the
 following:
 \itemize{
 \item Any printable ASCII character ranging from the space character
-(\verb{\\u0020}) through the end of the ASCII character range
+(\code{U+0020}) through the end of the ASCII character range
 \item The printable characters in the Basic Latin and Latin-1 Supplement
-character set (through \verb{\\u00FF})
-\item The special characters tab (\verb{\\u0009}), line feed (\verb{\\u000A}), and
-carriage return (\verb{\\u000D})
+character set (through \verb{U+00FF})
+\item The special characters tab (\code{U+0009}), line feed (\verb{U+000A}), and
+carriage return (\verb{U+000D})
 }}
 }
-\value{
-An empty list.
-}
 \description{
-Updates the policy that grants an IAM entity permission to assume a
-role. This is typically referred to as the "role trust policy". For more
-information about roles, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html}{Using Roles to Delegate Permissions and Federate Identities}.
-}
-\section{Request syntax}{
-\preformatted{svc$update_assume_role_policy(
-  RoleName = "string",
-  PolicyDocument = "string"
-)
-}
-}
+Updates the policy that grants an IAM entity permission to assume a role. This is typically referred to as the "role trust policy". For more information about roles, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html}{Using roles to delegate permissions and federate identities}.
 
-\examples{
-\dontrun{
-# The following command updates the role trust policy for the role named
-# Test-Role:
-svc$update_assume_role_policy(
-  PolicyDocument = "\{"Version":"2012-10-17","Statement":[\{"Effect":"Allow",...",
-  RoleName = "S3AccessForEC2Instances"
-)
-}
-
+See \url{https://paws-r.github.io/docs/iam/update_assume_role_policy.html} for full documentation.
 }
 \keyword{internal}

@@ -4,7 +4,7 @@
 \alias{iam_list_roles}
 \title{Lists the IAM roles that have the specified path prefix}
 \usage{
-iam_list_roles(PathPrefix, Marker, MaxItems)
+iam_list_roles(PathPrefix = NULL, Marker = NULL, MaxItems = NULL)
 }
 \arguments{
 \item{PathPrefix}{The path prefix for filtering the results. For example, the prefix
@@ -15,8 +15,8 @@ This parameter is optional. If it is not included, it defaults to a
 slash (/), listing all roles. This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of either a forward slash (/) by itself or a string that must
 begin and end with forward slashes. In addition, it can contain any
-ASCII character from the ! (\verb{\\u0021}) through the DEL character
-(\verb{\\u007F}), including most punctuation characters, digits, and upper and
+ASCII character from the ! (\code{U+0021}) through the DEL character
+(\verb{U+007F}), including most punctuation characters, digits, and upper and
 lowercased letters.}
 
 \item{Marker}{Use this parameter only when paginating results and only after you
@@ -34,58 +34,9 @@ results available. In that case, the \code{IsTruncated} response element
 returns \code{true}, and \code{Marker} contains a value to include in the
 subsequent call that tells the service where to continue from.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Roles = list(
-    list(
-      Path = "string",
-      RoleName = "string",
-      RoleId = "string",
-      Arn = "string",
-      CreateDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      AssumeRolePolicyDocument = "string",
-      Description = "string",
-      MaxSessionDuration = 123,
-      PermissionsBoundary = list(
-        PermissionsBoundaryType = "PermissionsBoundaryPolicy",
-        PermissionsBoundaryArn = "string"
-      ),
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      ),
-      RoleLastUsed = list(
-        LastUsedDate = as.POSIXct(
-          "2015-01-01"
-        ),
-        Region = "string"
-      )
-    )
-  ),
-  IsTruncated = TRUE|FALSE,
-  Marker = "string"
-)
-}
-}
 \description{
-Lists the IAM roles that have the specified path prefix. If there are
-none, the operation returns an empty list. For more information about
-roles, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html}{Working with Roles}.
+Lists the IAM roles that have the specified path prefix. If there are none, the operation returns an empty list. For more information about roles, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html}{Working with roles}.
 
-You can paginate the results using the \code{MaxItems} and \code{Marker}
-parameters.
+See \url{https://paws-r.github.io/docs/iam/list_roles.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_roles(
-  PathPrefix = "string",
-  Marker = "string",
-  MaxItems = 123
-)
-}
-}
-
 \keyword{internal}

@@ -4,7 +4,7 @@
 \alias{iam_list_users}
 \title{Lists the IAM users that have the specified path prefix}
 \usage{
-iam_list_users(PathPrefix, Marker, MaxItems)
+iam_list_users(PathPrefix = NULL, Marker = NULL, MaxItems = NULL)
 }
 \arguments{
 \item{PathPrefix}{The path prefix for filtering the results. For example:
@@ -16,8 +16,8 @@ slash (/), listing all user names. This parameter allows (through its
 \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of
 characters consisting of either a forward slash (/) by itself or a
 string that must begin and end with forward slashes. In addition, it can
-contain any ASCII character from the ! (\verb{\\u0021}) through the DEL
-character (\verb{\\u007F}), including most punctuation characters, digits, and
+contain any ASCII character from the ! (\code{U+0021}) through the DEL
+character (\verb{U+007F}), including most punctuation characters, digits, and
 upper and lowercased letters.}
 
 \item{Marker}{Use this parameter only when paginating results and only after you
@@ -35,59 +35,9 @@ results available. In that case, the \code{IsTruncated} response element
 returns \code{true}, and \code{Marker} contains a value to include in the
 subsequent call that tells the service where to continue from.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Users = list(
-    list(
-      Path = "string",
-      UserName = "string",
-      UserId = "string",
-      Arn = "string",
-      CreateDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      PasswordLastUsed = as.POSIXct(
-        "2015-01-01"
-      ),
-      PermissionsBoundary = list(
-        PermissionsBoundaryType = "PermissionsBoundaryPolicy",
-        PermissionsBoundaryArn = "string"
-      ),
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  ),
-  IsTruncated = TRUE|FALSE,
-  Marker = "string"
-)
-}
-}
 \description{
-Lists the IAM users that have the specified path prefix. If no path
-prefix is specified, the operation returns all users in the AWS account.
-If there are none, the operation returns an empty list.
+Lists the IAM users that have the specified path prefix. If no path prefix is specified, the operation returns all users in the Amazon Web Services account. If there are none, the operation returns an empty list.
 
-You can paginate the results using the \code{MaxItems} and \code{Marker}
-parameters.
-}
-\section{Request syntax}{
-\preformatted{svc$list_users(
-  PathPrefix = "string",
-  Marker = "string",
-  MaxItems = 123
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following command lists the IAM users in the current account.
-svc$list_users()
-}
-
+See \url{https://paws-r.github.io/docs/iam/list_users.html} for full documentation.
 }
 \keyword{internal}

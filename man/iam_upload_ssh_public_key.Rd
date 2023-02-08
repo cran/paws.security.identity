@@ -23,43 +23,16 @@ validate this parameter is a string of characters consisting of the
 following:
 \itemize{
 \item Any printable ASCII character ranging from the space character
-(\verb{\\u0020}) through the end of the ASCII character range
+(\code{U+0020}) through the end of the ASCII character range
 \item The printable characters in the Basic Latin and Latin-1 Supplement
-character set (through \verb{\\u00FF})
-\item The special characters tab (\verb{\\u0009}), line feed (\verb{\\u000A}), and
-carriage return (\verb{\\u000D})
+character set (through \verb{U+00FF})
+\item The special characters tab (\code{U+0009}), line feed (\verb{U+000A}), and
+carriage return (\verb{U+000D})
 }}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  SSHPublicKey = list(
-    UserName = "string",
-    SSHPublicKeyId = "string",
-    Fingerprint = "string",
-    SSHPublicKeyBody = "string",
-    Status = "Active"|"Inactive",
-    UploadDate = as.POSIXct(
-      "2015-01-01"
-    )
-  )
-)
-}
 }
 \description{
 Uploads an SSH public key and associates it with the specified IAM user.
 
-The SSH public key uploaded by this operation can be used only for
-authenticating the associated IAM user to an AWS CodeCommit repository.
-For more information about using SSH keys to authenticate to an AWS
-CodeCommit repository, see \href{https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up.html}{Set up AWS CodeCommit for SSH Connections}
-in the \emph{AWS CodeCommit User Guide}.
+See \url{https://paws-r.github.io/docs/iam/upload_ssh_public_key.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$upload_ssh_public_key(
-  UserName = "string",
-  SSHPublicKeyBody = "string"
-)
-}
-}
-
 \keyword{internal}

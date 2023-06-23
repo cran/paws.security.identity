@@ -13,7 +13,8 @@ after you create it.}
 \item{Scope}{Specifies whether this is for an Amazon CloudFront distribution or for a
 regional application. A regional application can be an Application Load
 Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
-or an Amazon Cognito user pool.
+an Amazon Cognito user pool, an App Runner service, or an Amazon Web
+Services Verified Access instance.
 
 To work with CloudFront, you must also specify the Region US East (N.
 Virginia) as follows:
@@ -32,6 +33,6 @@ update and delete.}
 \description{
 Retrieves the specified RuleGroup.
 
-See \url{https://paws-r.github.io/docs/wafv2/get_rule_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/wafv2_get_rule_group/} for full documentation.
 }
 \keyword{internal}

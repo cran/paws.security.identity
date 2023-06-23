@@ -12,12 +12,12 @@ iam_get_policy(PolicyArn)
 \item{PolicyArn}{[required] The Amazon Resource Name (ARN) of the managed policy that you want
 information about.
 
-For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
 in the \emph{Amazon Web Services General Reference}.}
 }
 \description{
 Retrieves information about the specified managed policy, including the policy's default version and the total number of IAM users, groups, and roles to which the policy is attached. To retrieve the list of the specific users, groups, and roles that the policy is attached to, use \code{\link[=iam_list_entities_for_policy]{list_entities_for_policy}}. This operation returns metadata about the policy. To retrieve the actual policy document for a specific version of the policy, use \code{\link[=iam_get_policy_version]{get_policy_version}}.
 
-See \url{https://paws-r.github.io/docs/iam/get_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_get_policy/} for full documentation.
 }
 \keyword{internal}

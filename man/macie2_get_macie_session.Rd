@@ -2,14 +2,14 @@
 % Please edit documentation in R/macie2_operations.R
 \name{macie2_get_macie_session}
 \alias{macie2_get_macie_session}
-\title{Retrieves the current status and configuration settings for an Amazon
-Macie account}
+\title{Retrieves the status and configuration settings for an Amazon Macie
+account}
 \usage{
 macie2_get_macie_session()
 }
 \description{
-Retrieves the current status and configuration settings for an Amazon Macie account.
+Retrieves the status and configuration settings for an Amazon Macie account.
 
-See \url{https://paws-r.github.io/docs/macie2/get_macie_session.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/macie2_get_macie_session/} for full documentation.
 }
 \keyword{internal}

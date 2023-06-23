@@ -10,7 +10,10 @@ kms_update_alias(AliasName, TargetKeyId)
 \item{AliasName}{[required] Identifies the alias that is changing its KMS key. This value must begin
 with \verb{alias/} followed by the alias name, such as \code{alias/ExampleAlias}.
 You cannot use \code{\link[=kms_update_alias]{update_alias}} to change the alias
-name.}
+name.
+
+Do not include confidential or sensitive information in this field. This
+field may be displayed in plaintext in CloudTrail logs and other output.}
 
 \item{TargetKeyId}{[required] Identifies the \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-cmk}{customer managed key}
 to associate with the alias. You don't have permission to associate an
@@ -18,8 +21,8 @@ alias with an \href{https://docs.aws.amazon.com/kms/latest/developerguide/concep
 
 The KMS key must be in the same Amazon Web Services account and Region
 as the alias. Also, the new target KMS key must be the same type as the
-current target KMS key (both symmetric or both asymmetric) and they must
-have the same key usage.
+current target KMS key (both symmetric or both asymmetric or both HMAC)
+and they must have the same key usage.
 
 Specify the key ID or key ARN of the KMS key.
 
@@ -39,6 +42,6 @@ To verify that the alias is mapped to the correct KMS key, use
 \description{
 Associates an existing KMS alias with a different KMS key. Each alias is associated with only one KMS key at a time, although a KMS key can have multiple aliases. The alias and the KMS key must be in the same Amazon Web Services account and Region.
 
-See \url{https://paws-r.github.io/docs/kms/update_alias.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kms_update_alias/} for full documentation.
 }
 \keyword{internal}

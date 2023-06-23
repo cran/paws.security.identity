@@ -2,7 +2,8 @@
 % Please edit documentation in R/iamrolesanywhere_operations.R
 \name{iamrolesanywhere_get_subject}
 \alias{iamrolesanywhere_get_subject}
-\title{Gets a Subject}
+\title{Gets a subject, which associates a certificate identity with
+authentication attempts}
 \usage{
 iamrolesanywhere_get_subject(subjectId)
 }
@@ -10,8 +11,8 @@ iamrolesanywhere_get_subject(subjectId)
 \item{subjectId}{[required] The unique identifier of the subject.}
 }
 \description{
-Gets a Subject. A Subject associates a certificate identity with authentication attempts by CreateSession. The Subject resources stores audit information such as status of the last authentication attempt, the certificate data used in the attempt, and the last time the associated identity attempted authentication.
+Gets a \emph{subject}, which associates a certificate identity with authentication attempts. The subject stores auditing information such as the status of the last authentication attempt, the certificate data used in the attempt, and the last time the associated identity attempted authentication.
 
-See \url{https://paws-r.github.io/docs/iamrolesanywhere/get_subject.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iamrolesanywhere_get_subject/} for full documentation.
 }
 \keyword{internal}

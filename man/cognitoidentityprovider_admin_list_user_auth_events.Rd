@@ -17,13 +17,15 @@ cognitoidentityprovider_admin_list_user_auth_events(
 
 \item{Username}{[required] The user pool username or an alias.}
 
-\item{MaxResults}{The maximum number of authentication events to return.}
+\item{MaxResults}{The maximum number of authentication events to return. Returns 60 events
+if you set \code{MaxResults} to 0, or if you don't include a \code{MaxResults}
+parameter.}
 
 \item{NextToken}{A pagination token.}
 }
 \description{
 A history of user activity and any risks detected as part of Amazon Cognito advanced security.
 
-See \url{https://paws-r.github.io/docs/cognitoidentityprovider/admin_list_user_auth_events.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_list_user_auth_events/} for full documentation.
 }
 \keyword{internal}

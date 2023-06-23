@@ -16,7 +16,8 @@ your customers can access and use.}
 \item{Scope}{[required] Specifies whether this is for an Amazon CloudFront distribution or for a
 regional application. A regional application can be an Application Load
 Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
-or an Amazon Cognito user pool.
+an Amazon Cognito user pool, an App Runner service, or an Amazon Web
+Services Verified Access instance.
 
 To work with CloudFront, you must also specify the Region US East (N.
 Virginia) as follows:
@@ -33,6 +34,6 @@ responses to commands like \code{list}. You provide it to operations like
 \description{
 Retrieves the specified managed rule set.
 
-See \url{https://paws-r.github.io/docs/wafv2/get_managed_rule_set.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/wafv2_get_managed_rule_set/} for full documentation.
 }
 \keyword{internal}

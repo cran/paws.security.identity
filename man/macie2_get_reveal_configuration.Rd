@@ -3,13 +3,13 @@
 \name{macie2_get_reveal_configuration}
 \alias{macie2_get_reveal_configuration}
 \title{Retrieves the status and configuration settings for retrieving
-(revealing) occurrences of sensitive data reported by findings}
+occurrences of sensitive data reported by findings}
 \usage{
 macie2_get_reveal_configuration()
 }
 \description{
-Retrieves the status and configuration settings for retrieving (revealing) occurrences of sensitive data reported by findings.
+Retrieves the status and configuration settings for retrieving occurrences of sensitive data reported by findings.
 
-See \url{https://paws-r.github.io/docs/macie2/get_reveal_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/macie2_get_reveal_configuration/} for full documentation.
 }
 \keyword{internal}

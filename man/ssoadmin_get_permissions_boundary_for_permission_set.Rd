@@ -10,14 +10,14 @@ ssoadmin_get_permissions_boundary_for_permission_set(
 )
 }
 \arguments{
-\item{InstanceArn}{[required] The ARN of the Amazon Web Services SSO instance under which the
-operation will be executed.}
+\item{InstanceArn}{[required] The ARN of the IAM Identity Center instance under which the operation
+will be executed.}
 
 \item{PermissionSetArn}{[required] The ARN of the \code{PermissionSet}.}
 }
 \description{
 Obtains the permissions boundary for a specified PermissionSet.
 
-See \url{https://paws-r.github.io/docs/ssoadmin/get_permissions_boundary_for_permission_set.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssoadmin_get_permissions_boundary_for_permission_set/} for full documentation.
 }
 \keyword{internal}

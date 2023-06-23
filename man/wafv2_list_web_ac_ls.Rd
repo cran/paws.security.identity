@@ -11,7 +11,8 @@ wafv2_list_web_ac_ls(Scope, NextMarker = NULL, Limit = NULL)
 \item{Scope}{[required] Specifies whether this is for an Amazon CloudFront distribution or for a
 regional application. A regional application can be an Application Load
 Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
-or an Amazon Cognito user pool.
+an Amazon Cognito user pool, an App Runner service, or an Amazon Web
+Services Verified Access instance.
 
 To work with CloudFront, you must also specify the Region US East (N.
 Virginia) as follows:
@@ -34,6 +35,6 @@ batch of objects.}
 \description{
 Retrieves an array of WebACLSummary objects for the web ACLs that you manage.
 
-See \url{https://paws-r.github.io/docs/wafv2/list_web_ac_ls.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/wafv2_list_web_ac_ls/} for full documentation.
 }
 \keyword{internal}

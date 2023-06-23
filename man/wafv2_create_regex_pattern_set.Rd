@@ -21,7 +21,8 @@ set.}
 \item{Scope}{[required] Specifies whether this is for an Amazon CloudFront distribution or for a
 regional application. A regional application can be an Application Load
 Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
-or an Amazon Cognito user pool.
+an Amazon Cognito user pool, an App Runner service, or an Amazon Web
+Services Verified Access instance.
 
 To work with CloudFront, you must also specify the Region US East (N.
 Virginia) as follows:
@@ -40,6 +41,6 @@ Virginia) as follows:
 \description{
 Creates a RegexPatternSet, which you reference in a RegexPatternSetReferenceStatement, to have WAF inspect a web request component for the specified patterns.
 
-See \url{https://paws-r.github.io/docs/wafv2/create_regex_pattern_set.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/wafv2_create_regex_pattern_set/} for full documentation.
 }
 \keyword{internal}

@@ -9,7 +9,7 @@ NULL
 #' @description
 #' Turns off automatic rotation, and if a rotation is currently in progress, cancels the rotation.
 #'
-#' See [https://paws-r.github.io/docs/secretsmanager/cancel_rotate_secret.html](https://paws-r.github.io/docs/secretsmanager/cancel_rotate_secret.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/secretsmanager_cancel_rotate_secret/](https://www.paws-r-sdk.com/docs/secretsmanager_cancel_rotate_secret/) for full documentation.
 #'
 #' @param SecretId &#91;required&#93; The ARN or name of the secret.
 #' 
@@ -42,7 +42,7 @@ secretsmanager_cancel_rotate_secret <- function(SecretId) {
 #' @description
 #' Creates a new secret. A *secret* can be a password, a set of credentials such as a user name and password, an OAuth token, or other secret information that you store in an encrypted form in Secrets Manager. The secret also includes the connection information to access a database or other service, which Secrets Manager doesn't encrypt. A secret in Secrets Manager consists of both the protected secret data and the important information needed to manage the secret.
 #'
-#' See [https://paws-r.github.io/docs/secretsmanager/create_secret.html](https://paws-r.github.io/docs/secretsmanager/create_secret.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/secretsmanager_create_secret/](https://www.paws-r-sdk.com/docs/secretsmanager_create_secret/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the new secret.
 #' 
@@ -88,7 +88,10 @@ secretsmanager_cancel_rotate_secret <- function(SecretId) {
 #' This value becomes the `VersionId` of the new version.
 #' @param Description The description of the secret.
 #' @param KmsKeyId The ARN, key ID, or alias of the KMS key that Secrets Manager uses to
-#' encrypt the secret value in the secret.
+#' encrypt the secret value in the secret. An alias is always prefixed by
+#' `alias/`, for example `alias/aws/secretsmanager`. For more information,
+#' see [About
+#' aliases](https://docs.aws.amazon.com/kms/latest/developerguide/alias-about.html).
 #' 
 #' To use a KMS key in a different account, use the key ARN or the alias
 #' ARN.
@@ -166,7 +169,7 @@ secretsmanager_cancel_rotate_secret <- function(SecretId) {
 #'     characters: + - = . _ : / @@.
 #' @param AddReplicaRegions A list of Regions and KMS keys to replicate secrets.
 #' @param ForceOverwriteReplicaSecret Specifies whether to overwrite a secret with the same name in the
-#' destination Region.
+#' destination Region. By default, secrets aren't overwritten.
 #'
 #' @keywords internal
 #'
@@ -193,7 +196,7 @@ secretsmanager_create_secret <- function(Name, ClientRequestToken = NULL, Descri
 #' @description
 #' Deletes the resource-based permission policy attached to the secret. To attach a policy to a secret, use [`put_resource_policy`][secretsmanager_put_resource_policy].
 #'
-#' See [https://paws-r.github.io/docs/secretsmanager/delete_resource_policy.html](https://paws-r.github.io/docs/secretsmanager/delete_resource_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/secretsmanager_delete_resource_policy/](https://www.paws-r-sdk.com/docs/secretsmanager_delete_resource_policy/) for full documentation.
 #'
 #' @param SecretId &#91;required&#93; The ARN or name of the secret to delete the attached resource-based
 #' policy for.
@@ -227,7 +230,7 @@ secretsmanager_delete_resource_policy <- function(SecretId) {
 #' @description
 #' Deletes a secret and all of its versions. You can specify a recovery window during which you can restore the secret. The minimum recovery window is 7 days. The default recovery window is 30 days. Secrets Manager attaches a `DeletionDate` stamp to the secret that specifies the end of the recovery window. At the end of the recovery window, Secrets Manager deletes the secret permanently.
 #'
-#' See [https://paws-r.github.io/docs/secretsmanager/delete_secret.html](https://paws-r.github.io/docs/secretsmanager/delete_secret.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/secretsmanager_delete_secret/](https://www.paws-r-sdk.com/docs/secretsmanager_delete_secret/) for full documentation.
 #'
 #' @param SecretId &#91;required&#93; The ARN or name of the secret to delete.
 #' 
@@ -237,21 +240,24 @@ secretsmanager_delete_resource_policy <- function(SecretId) {
 #' @param RecoveryWindowInDays The number of days from 7 to 30 that Secrets Manager waits before
 #' permanently deleting the secret. You can't use both this parameter and
 #' `ForceDeleteWithoutRecovery` in the same call. If you don't use either,
-#' then Secrets Manager defaults to a 30 day recovery window.
+#' then by default Secrets Manager uses a 30 day recovery window.
 #' @param ForceDeleteWithoutRecovery Specifies whether to delete the secret without any recovery window. You
 #' can't use both this parameter and `RecoveryWindowInDays` in the same
-#' call. If you don't use either, then Secrets Manager defaults to a 30 day
-#' recovery window.
+#' call. If you don't use either, then by default Secrets Manager uses a 30
+#' day recovery window.
 #' 
 #' Secrets Manager performs the actual deletion with an asynchronous
 #' background process, so there might be a short delay before the secret is
 #' permanently deleted. If you delete a secret and then immediately create
 #' a secret with the same name, use appropriate back off and retry logic.
 #' 
+#' If you forcibly delete an already deleted or nonexistent secret, the
+#' operation does not return `ResourceNotFoundException`.
+#' 
 #' Use this parameter with caution. This parameter causes the operation to
 #' skip the normal recovery window before the permanent deletion that
 #' Secrets Manager would normally impose with the `RecoveryWindowInDays`
-#' parameter. If you delete a secret with the `ForceDeleteWithouRecovery`
+#' parameter. If you delete a secret with the `ForceDeleteWithoutRecovery`
 #' parameter, then you have no opportunity to recover the secret. You lose
 #' the secret permanently.
 #'
@@ -280,7 +286,7 @@ secretsmanager_delete_secret <- function(SecretId, RecoveryWindowInDays = NULL, 
 #' @description
 #' Retrieves the details of a secret. It does not include the encrypted secret value. Secrets Manager only returns fields that have a value in the response.
 #'
-#' See [https://paws-r.github.io/docs/secretsmanager/describe_secret.html](https://paws-r.github.io/docs/secretsmanager/describe_secret.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/secretsmanager_describe_secret/](https://www.paws-r-sdk.com/docs/secretsmanager_describe_secret/) for full documentation.
 #'
 #' @param SecretId &#91;required&#93; The ARN or name of the secret.
 #' 
@@ -313,7 +319,7 @@ secretsmanager_describe_secret <- function(SecretId) {
 #' @description
 #' Generates a random password. We recommend that you specify the maximum length and include every character type that the system you are generating a password for can support.
 #'
-#' See [https://paws-r.github.io/docs/secretsmanager/get_random_password.html](https://paws-r.github.io/docs/secretsmanager/get_random_password.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/secretsmanager_get_random_password/](https://www.paws-r-sdk.com/docs/secretsmanager_get_random_password/) for full documentation.
 #'
 #' @param PasswordLength The length of the password. If you don't include this parameter, the
 #' default length is 32 characters.
@@ -360,7 +366,7 @@ secretsmanager_get_random_password <- function(PasswordLength = NULL, ExcludeCha
 #' @description
 #' Retrieves the JSON text of the resource-based policy document attached to the secret. For more information about permissions policies attached to a secret, see [Permissions policies attached to a secret](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_resource-policies.html).
 #'
-#' See [https://paws-r.github.io/docs/secretsmanager/get_resource_policy.html](https://paws-r.github.io/docs/secretsmanager/get_resource_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/secretsmanager_get_resource_policy/](https://www.paws-r-sdk.com/docs/secretsmanager_get_resource_policy/) for full documentation.
 #'
 #' @param SecretId &#91;required&#93; The ARN or name of the secret to retrieve the attached resource-based
 #' policy for.
@@ -396,7 +402,7 @@ secretsmanager_get_resource_policy <- function(SecretId) {
 #' @description
 #' Retrieves the contents of the encrypted fields `SecretString` or `SecretBinary` from the specified version of a secret, whichever contains content.
 #'
-#' See [https://paws-r.github.io/docs/secretsmanager/get_secret_value.html](https://paws-r.github.io/docs/secretsmanager/get_secret_value.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/secretsmanager_get_secret_value/](https://www.paws-r-sdk.com/docs/secretsmanager_get_secret_value/) for full documentation.
 #'
 #' @param SecretId &#91;required&#93; The ARN or name of the secret to retrieve.
 #' 
@@ -445,7 +451,7 @@ secretsmanager_get_secret_value <- function(SecretId, VersionId = NULL, VersionS
 #' @description
 #' Lists the versions of a secret. Secrets Manager uses staging labels to indicate the different versions of a secret. For more information, see [Secrets Manager concepts: Versions](https://docs.aws.amazon.com/secretsmanager/latest/userguide/getting-started.html#term_version).
 #'
-#' See [https://paws-r.github.io/docs/secretsmanager/list_secret_version_ids.html](https://paws-r.github.io/docs/secretsmanager/list_secret_version_ids.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/secretsmanager_list_secret_version_ids/](https://www.paws-r-sdk.com/docs/secretsmanager_list_secret_version_ids/) for full documentation.
 #'
 #' @param SecretId &#91;required&#93; The ARN or name of the secret whose versions you want to list.
 #' 
@@ -464,7 +470,8 @@ secretsmanager_get_secret_value <- function(SecretId, VersionId = NULL, VersionS
 #' again with this value.
 #' @param IncludeDeprecated Specifies whether to include versions of secrets that don't have any
 #' staging labels attached to them. Versions without staging labels are
-#' considered deprecated and are subject to deletion by Secrets Manager.
+#' considered deprecated and are subject to deletion by Secrets Manager. By
+#' default, versions without staging labels aren't included.
 #'
 #' @keywords internal
 #'
@@ -492,8 +499,10 @@ secretsmanager_list_secret_version_ids <- function(SecretId, MaxResults = NULL, 
 #' @description
 #' Lists the secrets that are stored by Secrets Manager in the Amazon Web Services account, not including secrets that are marked for deletion. To see secrets marked for deletion, use the Secrets Manager console.
 #'
-#' See [https://paws-r.github.io/docs/secretsmanager/list_secrets.html](https://paws-r.github.io/docs/secretsmanager/list_secrets.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/secretsmanager_list_secrets/](https://www.paws-r-sdk.com/docs/secretsmanager_list_secrets/) for full documentation.
 #'
+#' @param IncludePlannedDeletion Specifies whether to include secrets scheduled for deletion. By default,
+#' secrets scheduled for deletion aren't included.
 #' @param MaxResults The number of results to include in the response.
 #' 
 #' If there are more results available, in the response, Secrets Manager
@@ -504,19 +513,19 @@ secretsmanager_list_secret_version_ids <- function(SecretId, MaxResults = NULL, 
 #' previous call did not show all results. To get the next results, call
 #' [`list_secrets`][secretsmanager_list_secrets] again with this value.
 #' @param Filters The filters to apply to the list of secrets.
-#' @param SortOrder Lists secrets in the requested order.
+#' @param SortOrder Secrets are listed by `CreatedDate`.
 #'
 #' @keywords internal
 #'
 #' @rdname secretsmanager_list_secrets
-secretsmanager_list_secrets <- function(MaxResults = NULL, NextToken = NULL, Filters = NULL, SortOrder = NULL) {
+secretsmanager_list_secrets <- function(IncludePlannedDeletion = NULL, MaxResults = NULL, NextToken = NULL, Filters = NULL, SortOrder = NULL) {
   op <- new_operation(
     name = "ListSecrets",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .secretsmanager$list_secrets_input(MaxResults = MaxResults, NextToken = NextToken, Filters = Filters, SortOrder = SortOrder)
+  input <- .secretsmanager$list_secrets_input(IncludePlannedDeletion = IncludePlannedDeletion, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters, SortOrder = SortOrder)
   output <- .secretsmanager$list_secrets_output()
   config <- get_config()
   svc <- .secretsmanager$service(config)
@@ -531,7 +540,7 @@ secretsmanager_list_secrets <- function(MaxResults = NULL, NextToken = NULL, Fil
 #' @description
 #' Attaches a resource-based permission policy to a secret. A resource-based policy is optional. For more information, see [Authentication and access control for Secrets Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html)
 #'
-#' See [https://paws-r.github.io/docs/secretsmanager/put_resource_policy.html](https://paws-r.github.io/docs/secretsmanager/put_resource_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/secretsmanager_put_resource_policy/](https://www.paws-r-sdk.com/docs/secretsmanager_put_resource_policy/) for full documentation.
 #'
 #' @param SecretId &#91;required&#93; The ARN or name of the secret to attach the resource-based policy.
 #' 
@@ -543,7 +552,7 @@ secretsmanager_list_secrets <- function(MaxResults = NULL, NextToken = NULL, Fil
 #' examples](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_examples.html).
 #' @param BlockPublicPolicy Specifies whether to block resource-based policies that allow broad
 #' access to the secret, for example those that use a wildcard for the
-#' principal.
+#' principal. By default, public policies aren't blocked.
 #'
 #' @keywords internal
 #'
@@ -571,7 +580,7 @@ secretsmanager_put_resource_policy <- function(SecretId, ResourcePolicy, BlockPu
 #' @description
 #' Creates a new version with a new encrypted secret value and attaches it to the secret. The version can contain a new `SecretString` value or a new `SecretBinary` value.
 #'
-#' See [https://paws-r.github.io/docs/secretsmanager/put_secret_value.html](https://paws-r.github.io/docs/secretsmanager/put_secret_value.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/secretsmanager_put_secret_value/](https://www.paws-r-sdk.com/docs/secretsmanager_put_secret_value/) for full documentation.
 #'
 #' @param SecretId &#91;required&#93; The ARN or name of the secret to add a new version to.
 #' 
@@ -665,7 +674,7 @@ secretsmanager_put_secret_value <- function(SecretId, ClientRequestToken = NULL,
 #' @description
 #' For a secret that is replicated to other Regions, deletes the secret replicas from the Regions you specify.
 #'
-#' See [https://paws-r.github.io/docs/secretsmanager/remove_regions_from_replication.html](https://paws-r.github.io/docs/secretsmanager/remove_regions_from_replication.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/secretsmanager_remove_regions_from_replication/](https://www.paws-r-sdk.com/docs/secretsmanager_remove_regions_from_replication/) for full documentation.
 #'
 #' @param SecretId &#91;required&#93; The ARN or name of the secret.
 #' @param RemoveReplicaRegions &#91;required&#93; The Regions of the replicas to remove.
@@ -695,12 +704,12 @@ secretsmanager_remove_regions_from_replication <- function(SecretId, RemoveRepli
 #' @description
 #' Replicates the secret to a new Regions. See [Multi-Region secrets](https://docs.aws.amazon.com/secretsmanager/latest/userguide/create-manage-multi-region-secrets.html).
 #'
-#' See [https://paws-r.github.io/docs/secretsmanager/replicate_secret_to_regions.html](https://paws-r.github.io/docs/secretsmanager/replicate_secret_to_regions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/secretsmanager_replicate_secret_to_regions/](https://www.paws-r-sdk.com/docs/secretsmanager_replicate_secret_to_regions/) for full documentation.
 #'
 #' @param SecretId &#91;required&#93; The ARN or name of the secret to replicate.
 #' @param AddReplicaRegions &#91;required&#93; A list of Regions in which to replicate the secret.
 #' @param ForceOverwriteReplicaSecret Specifies whether to overwrite a secret with the same name in the
-#' destination Region.
+#' destination Region. By default, secrets aren't overwritten.
 #'
 #' @keywords internal
 #'
@@ -728,7 +737,7 @@ secretsmanager_replicate_secret_to_regions <- function(SecretId, AddReplicaRegio
 #' @description
 #' Cancels the scheduled deletion of a secret by removing the `DeletedDate` time stamp. You can access a secret again after it has been restored.
 #'
-#' See [https://paws-r.github.io/docs/secretsmanager/restore_secret.html](https://paws-r.github.io/docs/secretsmanager/restore_secret.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/secretsmanager_restore_secret/](https://www.paws-r-sdk.com/docs/secretsmanager_restore_secret/) for full documentation.
 #'
 #' @param SecretId &#91;required&#93; The ARN or name of the secret to restore.
 #' 
@@ -759,9 +768,9 @@ secretsmanager_restore_secret <- function(SecretId) {
 #' Configures and starts the asynchronous process of rotating the secret
 #'
 #' @description
-#' Configures and starts the asynchronous process of rotating the secret. For more information about rotation, see [Rotate secrets](https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets.html).
+#' Configures and starts the asynchronous process of rotating the secret. For information about rotation, see [Rotate secrets](https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets.html) in the *Secrets Manager User Guide*. If you include the configuration parameters, the operation sets the values for the secret and then immediately starts a rotation. If you don't include the configuration parameters, the operation starts a rotation with the values already stored in the secret.
 #'
-#' See [https://paws-r.github.io/docs/secretsmanager/rotate_secret.html](https://paws-r.github.io/docs/secretsmanager/rotate_secret.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/secretsmanager_rotate_secret/](https://www.paws-r-sdk.com/docs/secretsmanager_rotate_secret/) for full documentation.
 #'
 #' @param SecretId &#91;required&#93; The ARN or name of the secret to rotate.
 #' 
@@ -786,20 +795,26 @@ secretsmanager_restore_secret <- function(SecretId) {
 #' create a secret version twice. We recommend that you generate a
 #' [UUID-type](https://en.wikipedia.org/wiki/Universally_unique_identifier)
 #' value to ensure uniqueness within the specified secret.
-#' @param RotationLambdaARN The ARN of the Lambda rotation function that can rotate the secret.
+#' @param RotationLambdaARN For secrets that use a Lambda rotation function to rotate, the ARN of
+#' the Lambda rotation function.
+#' 
+#' For secrets that use *managed rotation*, omit this field. For more
+#' information, see [Managed
+#' rotation](https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotate-secrets_managed.html)
+#' in the *Secrets Manager User Guide*.
 #' @param RotationRules A structure that defines the rotation configuration for this secret.
 #' @param RotateImmediately Specifies whether to rotate the secret immediately or wait until the
 #' next scheduled rotation window. The rotation schedule is defined in
 #' RotateSecretRequest$RotationRules.
 #' 
-#' If you don't immediately rotate the secret, Secrets Manager tests the
-#' rotation configuration by running the [`testSecret`
+#' For secrets that use a Lambda rotation function to rotate, if you don't
+#' immediately rotate the secret, Secrets Manager tests the rotation
+#' configuration by running the [`testSecret`
 #' step](https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets.html#rotate-secrets_how)
 #' of the Lambda rotation function. The test creates an `AWSPENDING`
 #' version of the secret and then removes it.
 #' 
-#' If you don't specify this value, then by default, Secrets Manager
-#' rotates the secret immediately.
+#' By default, Secrets Manager rotates the secret immediately.
 #'
 #' @keywords internal
 #'
@@ -827,7 +842,7 @@ secretsmanager_rotate_secret <- function(SecretId, ClientRequestToken = NULL, Ro
 #' @description
 #' Removes the link between the replica secret and the primary secret and promotes the replica to a primary secret in the replica Region.
 #'
-#' See [https://paws-r.github.io/docs/secretsmanager/stop_replication_to_replica.html](https://paws-r.github.io/docs/secretsmanager/stop_replication_to_replica.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/secretsmanager_stop_replication_to_replica/](https://www.paws-r-sdk.com/docs/secretsmanager_stop_replication_to_replica/) for full documentation.
 #'
 #' @param SecretId &#91;required&#93; The ARN of the primary secret.
 #'
@@ -856,7 +871,7 @@ secretsmanager_stop_replication_to_replica <- function(SecretId) {
 #' @description
 #' Attaches tags to a secret. Tags consist of a key name and a value. Tags are part of the secret's metadata. They are not associated with specific versions of the secret. This operation appends tags to the existing list of tags.
 #'
-#' See [https://paws-r.github.io/docs/secretsmanager/tag_resource.html](https://paws-r.github.io/docs/secretsmanager/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/secretsmanager_tag_resource/](https://www.paws-r-sdk.com/docs/secretsmanager_tag_resource/) for full documentation.
 #'
 #' @param SecretId &#91;required&#93; The identifier for the secret to attach tags to. You can specify either
 #' the Amazon Resource Name (ARN) or the friendly name of the secret.
@@ -898,7 +913,7 @@ secretsmanager_tag_resource <- function(SecretId, Tags) {
 #' @description
 #' Removes specific tags from a secret.
 #'
-#' See [https://paws-r.github.io/docs/secretsmanager/untag_resource.html](https://paws-r.github.io/docs/secretsmanager/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/secretsmanager_untag_resource/](https://www.paws-r-sdk.com/docs/secretsmanager_untag_resource/) for full documentation.
 #'
 #' @param SecretId &#91;required&#93; The ARN or name of the secret.
 #' 
@@ -942,7 +957,7 @@ secretsmanager_untag_resource <- function(SecretId, TagKeys) {
 #' @description
 #' Modifies the details of a secret, including metadata and the secret value. To change the secret value, you can also use [`put_secret_value`][secretsmanager_put_secret_value].
 #'
-#' See [https://paws-r.github.io/docs/secretsmanager/update_secret.html](https://paws-r.github.io/docs/secretsmanager/update_secret.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/secretsmanager_update_secret/](https://www.paws-r-sdk.com/docs/secretsmanager_update_secret/) for full documentation.
 #'
 #' @param SecretId &#91;required&#93; The ARN or name of the secret.
 #' 
@@ -964,10 +979,22 @@ secretsmanager_untag_resource <- function(SecretId, TagKeys) {
 #' This value becomes the `VersionId` of the new version.
 #' @param Description The description of the secret.
 #' @param KmsKeyId The ARN, key ID, or alias of the KMS key that Secrets Manager uses to
-#' encrypt new secret versions as well as any existing versions the staging
-#' labels `AWSCURRENT`, `AWSPENDING`, or `AWSPREVIOUS`. For more
+#' encrypt new secret versions as well as any existing versions with the
+#' staging labels `AWSCURRENT`, `AWSPENDING`, or `AWSPREVIOUS`. For more
 #' information about versions and staging labels, see [Concepts:
 #' Version](https://docs.aws.amazon.com/secretsmanager/latest/userguide/getting-started.html#term_version).
+#' 
+#' A key alias is always prefixed by `alias/`, for example
+#' `alias/aws/secretsmanager`. For more information, see [About
+#' aliases](https://docs.aws.amazon.com/kms/latest/developerguide/alias-about.html).
+#' 
+#' If you set this to an empty string, Secrets Manager uses the Amazon Web
+#' Services managed key `aws/secretsmanager`. If this key doesn't already
+#' exist in your account, then Secrets Manager creates it for you
+#' automatically. All users and roles in the Amazon Web Services account
+#' automatically have access to use `aws/secretsmanager`. Creating
+#' `aws/secretsmanager` can result in a one-time significant delay in
+#' returning the result.
 #' 
 #' You can only use the Amazon Web Services managed key
 #' `aws/secretsmanager` if you call this operation using credentials from
@@ -1014,7 +1041,7 @@ secretsmanager_update_secret <- function(SecretId, ClientRequestToken = NULL, De
 #' @description
 #' Modifies the staging labels attached to a version of a secret. Secrets Manager uses staging labels to track a version as it progresses through the secret rotation process. Each staging label can be attached to only one version at a time. To add a staging label to a version when it is already attached to another version, Secrets Manager first removes it from the other version first and then attaches it to this one. For more information about versions and staging labels, see [Concepts: Version](https://docs.aws.amazon.com/secretsmanager/latest/userguide/getting-started.html#term_version).
 #'
-#' See [https://paws-r.github.io/docs/secretsmanager/update_secret_version_stage.html](https://paws-r.github.io/docs/secretsmanager/update_secret_version_stage.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/secretsmanager_update_secret_version_stage/](https://www.paws-r-sdk.com/docs/secretsmanager_update_secret_version_stage/) for full documentation.
 #'
 #' @param SecretId &#91;required&#93; The ARN or the name of the secret with the version and staging labelsto
 #' modify.
@@ -1061,7 +1088,7 @@ secretsmanager_update_secret_version_stage <- function(SecretId, VersionStage, R
 #' @description
 #' Validates that a resource policy does not grant a wide range of principals access to your secret. A resource-based policy is optional for secrets.
 #'
-#' See [https://paws-r.github.io/docs/secretsmanager/validate_resource_policy.html](https://paws-r.github.io/docs/secretsmanager/validate_resource_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/secretsmanager_validate_resource_policy/](https://www.paws-r-sdk.com/docs/secretsmanager_validate_resource_policy/) for full documentation.
 #'
 #' @param SecretId This field is reserved for internal use.
 #' @param ResourcePolicy &#91;required&#93; A JSON-formatted string that contains an Amazon Web Services

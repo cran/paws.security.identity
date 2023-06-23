@@ -5,6 +5,7 @@
 \title{Creates and defines the settings for a classification job}
 \usage{
 macie2_create_classification_job(
+  allowListIds = NULL,
   clientToken,
   customDataIdentifierIds = NULL,
   description = NULL,
@@ -20,6 +21,9 @@ macie2_create_classification_job(
 )
 }
 \arguments{
+\item{allowListIds}{An array of unique identifiers, one for each allow list for the job to
+use when it analyzes data.}
+
 \item{clientToken}{[required] A unique, case-sensitive token that you provide to ensure the
 idempotency of the request.}
 
@@ -104,6 +108,6 @@ characters. The maximum length of a tag value is 256 characters.}
 \description{
 Creates and defines the settings for a classification job.
 
-See \url{https://paws-r.github.io/docs/macie2/create_classification_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/macie2_create_classification_job/} for full documentation.
 }
 \keyword{internal}

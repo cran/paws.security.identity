@@ -21,7 +21,7 @@ create an IPSet for.}
 
 \item{Name}{[required] The user-friendly name to identify the IPSet.
 
-Allowed characters are alphanumerics, spaces, hyphens (-), and
+Allowed characters are alphanumeric, whitespace, dash (-), and
 underscores (_).}
 
 \item{Format}{[required] The format of the file that contains the IPSet.}
@@ -38,6 +38,6 @@ uploaded IPSet.}
 \description{
 Creates a new IPSet, which is called a trusted IP list in the console user interface. An IPSet is a list of IP addresses that are trusted for secure communication with Amazon Web Services infrastructure and applications. GuardDuty doesn't generate findings for IP addresses that are included in IPSets. Only users from the administrator account can use this operation.
 
-See \url{https://paws-r.github.io/docs/guardduty/create_ip_set.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/guardduty_create_ip_set/} for full documentation.
 }
 \keyword{internal}

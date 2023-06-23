@@ -10,10 +10,9 @@ ssoadmin_describe_permission_set_provisioning_status(
 )
 }
 \arguments{
-\item{InstanceArn}{[required] The ARN of the Amazon Web Services SSO instance under which the
-operation will be executed. For more information about ARNs, see Amazon
-Resource Names (ARNs) and Amazon Web Services Service Namespaces in the
-\emph{Amazon Web Services General Reference}.}
+\item{InstanceArn}{[required] The ARN of the IAM Identity Center instance under which the operation
+will be executed. For more information about ARNs, see Amazon Resource
+Names (ARNs) and AWS Service Namespaces in the \emph{AWS General Reference}.}
 
 \item{ProvisionPermissionSetRequestId}{[required] The identifier that is provided by the
 \code{\link[=ssoadmin_provision_permission_set]{provision_permission_set}} call to
@@ -22,6 +21,6 @@ retrieve the current status of the provisioning workflow.}
 \description{
 Describes the status for the given permission set provisioning request.
 
-See \url{https://paws-r.github.io/docs/ssoadmin/describe_permission_set_provisioning_status.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssoadmin_describe_permission_set_provisioning_status/} for full documentation.
 }
 \keyword{internal}

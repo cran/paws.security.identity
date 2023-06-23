@@ -9,7 +9,7 @@ wafv2_describe_managed_rule_group(VendorName, Name, Scope, VersionName = NULL)
 }
 \arguments{
 \item{VendorName}{[required] The name of the managed rule group vendor. You use this, along with the
-rule group name, to identify the rule group.}
+rule group name, to identify a rule group.}
 
 \item{Name}{[required] The name of the managed rule group. You use this, along with the vendor
 name, to identify the rule group.}
@@ -17,7 +17,8 @@ name, to identify the rule group.}
 \item{Scope}{[required] Specifies whether this is for an Amazon CloudFront distribution or for a
 regional application. A regional application can be an Application Load
 Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
-or an Amazon Cognito user pool.
+an Amazon Cognito user pool, an App Runner service, or an Amazon Web
+Services Verified Access instance.
 
 To work with CloudFront, you must also specify the Region US East (N.
 Virginia) as follows:
@@ -34,6 +35,6 @@ vendor's default version.}
 \description{
 Provides high-level information for a managed rule group, including descriptions of the rules.
 
-See \url{https://paws-r.github.io/docs/wafv2/describe_managed_rule_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/wafv2_describe_managed_rule_group/} for full documentation.
 }
 \keyword{internal}

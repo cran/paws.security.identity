@@ -34,7 +34,7 @@ Key Management Service (KMS) is an encryption and key management web
 service. This guide describes the KMS operations that you can call
 programmatically. For general information about KMS, see the \href{https://docs.aws.amazon.com/kms/latest/developerguide/}{\emph{Key Management Service Developer Guide}} .
 
-KMS is replacing the term \emph{customer master key (CMK)} with \emph{KMS key} and
+KMS has replaced the term \emph{customer master key (CMK)} with \emph{KMS key} and
 \emph{KMS key}. The concept has not changed. To prevent breaking changes, KMS
 is keeping some variations of this term.
 
@@ -66,15 +66,14 @@ Curve Ephemeral Diffie-Hellman (ECDHE). Most modern systems such as Java
 
 \strong{Signing Requests}
 
-Requests must be signed by using an access key ID and a secret access
-key. We strongly recommend that you \emph{do not} use your Amazon Web
-Services account (root) access key ID and secret key for everyday work
-with KMS. Instead, use the access key ID and secret access key for an
-IAM user. You can also use the Amazon Web Services Security Token
-Service to generate temporary security credentials that you can use to
-sign requests.
+Requests must be signed using an access key ID and a secret access key.
+We strongly recommend that you do not use your Amazon Web Services
+account root access key ID and secret access key for everyday work. You
+can use the access key ID and secret access key for an IAM user or you
+can use the Security Token Service (STS) to generate temporary security
+credentials and use those to sign requests.
 
-All KMS operations require \href{https://docs.aws.amazon.com/general/latest/gr/signing-aws-api-requests.html}{Signature Version 4}.
+All KMS requests must be signed with \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html}{Signature Version 4}.
 
 \strong{Logging API Requests}
 
@@ -91,13 +90,13 @@ log files, see the \href{https://docs.aws.amazon.com/awscloudtrail/latest/usergu
 For more information about credentials and request signing, see the
 following:
 \itemize{
-\item \href{https://docs.aws.amazon.com/general/latest/gr/aws-security-credentials.html}{Amazon Web Services Security Credentials} -
+\item \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/security-creds.html}{Amazon Web Services Security Credentials} -
 This topic provides general information about the types of
 credentials used to access Amazon Web Services.
 \item \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html}{Temporary Security Credentials} -
 This section of the \emph{IAM User Guide} describes how to create and use
 temporary security credentials.
-\item \href{https://docs.aws.amazon.com/general/latest/gr/signing-aws-api-requests.html}{Signature Version 4 Signing Process} -
+\item \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html}{Signature Version 4 Signing Process} -
 This set of topics walks you through the process of signing a
 request using an access key ID and a secret access key.
 }
@@ -143,20 +142,20 @@ policies, by using the console.
 
 \tabular{ll}{
 \link[=kms_cancel_key_deletion]{cancel_key_deletion} \tab Cancels the deletion of a KMS key\cr
-\link[=kms_connect_custom_key_store]{connect_custom_key_store} \tab Connects or reconnects a custom key store to its associated CloudHSM cluster\cr
+\link[=kms_connect_custom_key_store]{connect_custom_key_store} \tab Connects or reconnects a custom key store to its backing key store\cr
 \link[=kms_create_alias]{create_alias} \tab Creates a friendly name for a KMS key\cr
-\link[=kms_create_custom_key_store]{create_custom_key_store} \tab Creates a custom key store that is associated with an CloudHSM cluster that you own and manage\cr
+\link[=kms_create_custom_key_store]{create_custom_key_store} \tab Creates a custom key store backed by a key store that you own and manage\cr
 \link[=kms_create_grant]{create_grant} \tab Adds a grant to a KMS key\cr
 \link[=kms_create_key]{create_key} \tab Creates a unique customer managed KMS key in your Amazon Web Services account and Region\cr
 \link[=kms_decrypt]{decrypt} \tab Decrypts ciphertext that was encrypted by a KMS key using any of the following operations:\cr
 \link[=kms_delete_alias]{delete_alias} \tab Deletes the specified alias\cr
 \link[=kms_delete_custom_key_store]{delete_custom_key_store} \tab Deletes a custom key store\cr
-\link[=kms_delete_imported_key_material]{delete_imported_key_material} \tab Deletes key material that you previously imported\cr
+\link[=kms_delete_imported_key_material]{delete_imported_key_material} \tab Deletes key material that was previously imported\cr
 \link[=kms_describe_custom_key_stores]{describe_custom_key_stores} \tab Gets information about custom key stores in the account and Region\cr
 \link[=kms_describe_key]{describe_key} \tab Provides detailed information about a KMS key\cr
 \link[=kms_disable_key]{disable_key} \tab Sets the state of a KMS key to disabled\cr
 \link[=kms_disable_key_rotation]{disable_key_rotation} \tab Disables automatic rotation of the key material of the specified symmetric encryption KMS key\cr
-\link[=kms_disconnect_custom_key_store]{disconnect_custom_key_store} \tab Disconnects the custom key store from its associated CloudHSM cluster\cr
+\link[=kms_disconnect_custom_key_store]{disconnect_custom_key_store} \tab Disconnects the custom key store from its backing key store\cr
 \link[=kms_enable_key]{enable_key} \tab Sets the key state of a KMS key to enabled\cr
 \link[=kms_enable_key_rotation]{enable_key_rotation} \tab Enables automatic rotation of the key material of the specified symmetric encryption KMS key\cr
 \link[=kms_encrypt]{encrypt} \tab Encrypts plaintext of up to 4,096 bytes using a KMS key\cr
@@ -168,9 +167,9 @@ policies, by using the console.
 \link[=kms_generate_random]{generate_random} \tab Returns a random byte string that is cryptographically secure\cr
 \link[=kms_get_key_policy]{get_key_policy} \tab Gets a key policy attached to the specified KMS key\cr
 \link[=kms_get_key_rotation_status]{get_key_rotation_status} \tab Gets a Boolean value that indicates whether automatic rotation of the key material is enabled for the specified KMS key\cr
-\link[=kms_get_parameters_for_import]{get_parameters_for_import} \tab Returns the items you need to import key material into a symmetric encryption KMS key\cr
+\link[=kms_get_parameters_for_import]{get_parameters_for_import} \tab Returns the public key and an import token you need to import or reimport key material for a KMS key\cr
 \link[=kms_get_public_key]{get_public_key} \tab Returns the public key of an asymmetric KMS key\cr
-\link[=kms_import_key_material]{import_key_material} \tab Imports key material into an existing symmetric encryption KMS key that was created without key material\cr
+\link[=kms_import_key_material]{import_key_material} \tab Imports or reimports key material into an existing KMS key that was created without key material\cr
 \link[=kms_list_aliases]{list_aliases} \tab Gets a list of aliases in the caller's Amazon Web Services account and region\cr
 \link[=kms_list_grants]{list_grants} \tab Gets a list of all grants for the specified KMS key\cr
 \link[=kms_list_key_policies]{list_key_policies} \tab Gets the names of the key policies that are attached to a KMS key\cr

@@ -20,14 +20,14 @@ extension.}
 
 \item{LdifContent}{[required] The LDIF file represented as a string. To construct the LdifContent
 string, precede each line as it would be formatted in an ldif file with
-\\n. See the example request below for more details. The file size can be
-no larger than 1MB.}
+\\n. See the example request below for more details. The file size can
+be no larger than 1MB.}
 
 \item{Description}{[required] A description of the schema extension.}
 }
 \description{
 Applies a schema extension to a Microsoft AD directory.
 
-See \url{https://paws-r.github.io/docs/directoryservice/start_schema_extension.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directoryservice_start_schema_extension/} for full documentation.
 }
 \keyword{internal}

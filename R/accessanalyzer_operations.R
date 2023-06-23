@@ -9,23 +9,23 @@ NULL
 #' @description
 #' Retroactively applies the archive rule to existing findings that meet the archive rule criteria.
 #'
-#' See [https://paws-r.github.io/docs/accessanalyzer/apply_archive_rule.html](https://paws-r.github.io/docs/accessanalyzer/apply_archive_rule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/accessanalyzer_apply_archive_rule/](https://www.paws-r-sdk.com/docs/accessanalyzer_apply_archive_rule/) for full documentation.
 #'
 #' @param analyzerArn &#91;required&#93; The Amazon resource name (ARN) of the analyzer.
-#' @param clientToken A client token.
 #' @param ruleName &#91;required&#93; The name of the rule to apply.
+#' @param clientToken A client token.
 #'
 #' @keywords internal
 #'
 #' @rdname accessanalyzer_apply_archive_rule
-accessanalyzer_apply_archive_rule <- function(analyzerArn, clientToken = NULL, ruleName) {
+accessanalyzer_apply_archive_rule <- function(analyzerArn, ruleName, clientToken = NULL) {
   op <- new_operation(
     name = "ApplyArchiveRule",
     http_method = "PUT",
     http_path = "/archive-rule",
     paginator = list()
   )
-  input <- .accessanalyzer$apply_archive_rule_input(analyzerArn = analyzerArn, clientToken = clientToken, ruleName = ruleName)
+  input <- .accessanalyzer$apply_archive_rule_input(analyzerArn = analyzerArn, ruleName = ruleName, clientToken = clientToken)
   output <- .accessanalyzer$apply_archive_rule_output()
   config <- get_config()
   svc <- .accessanalyzer$service(config)
@@ -40,7 +40,7 @@ accessanalyzer_apply_archive_rule <- function(analyzerArn, clientToken = NULL, r
 #' @description
 #' Cancels the requested policy generation.
 #'
-#' See [https://paws-r.github.io/docs/accessanalyzer/cancel_policy_generation.html](https://paws-r.github.io/docs/accessanalyzer/cancel_policy_generation.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/accessanalyzer_cancel_policy_generation/](https://www.paws-r-sdk.com/docs/accessanalyzer_cancel_policy_generation/) for full documentation.
 #'
 #' @param jobId &#91;required&#93; The `JobId` that is returned by the
 #' [`start_policy_generation`][accessanalyzer_start_policy_generation]
@@ -76,29 +76,29 @@ accessanalyzer_cancel_policy_generation <- function(jobId) {
 #' @description
 #' Creates an access preview that allows you to preview IAM Access Analyzer findings for your resource before deploying resource permissions.
 #'
-#' See [https://paws-r.github.io/docs/accessanalyzer/create_access_preview.html](https://paws-r.github.io/docs/accessanalyzer/create_access_preview.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/accessanalyzer_create_access_preview/](https://www.paws-r-sdk.com/docs/accessanalyzer_create_access_preview/) for full documentation.
 #'
 #' @param analyzerArn &#91;required&#93; The [ARN of the account
 #' analyzer](https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources)
 #' used to generate the access preview. You can only create an access
 #' preview for analyzers with an `Account` type and `Active` status.
-#' @param clientToken A client token.
 #' @param configurations &#91;required&#93; Access control configuration for your resource that is used to generate
 #' the access preview. The access preview includes findings for external
 #' access allowed to the resource with the proposed access control
 #' configuration. The configuration must contain exactly one element.
+#' @param clientToken A client token.
 #'
 #' @keywords internal
 #'
 #' @rdname accessanalyzer_create_access_preview
-accessanalyzer_create_access_preview <- function(analyzerArn, clientToken = NULL, configurations) {
+accessanalyzer_create_access_preview <- function(analyzerArn, configurations, clientToken = NULL) {
   op <- new_operation(
     name = "CreateAccessPreview",
     http_method = "PUT",
     http_path = "/access-preview",
     paginator = list()
   )
-  input <- .accessanalyzer$create_access_preview_input(analyzerArn = analyzerArn, clientToken = clientToken, configurations = configurations)
+  input <- .accessanalyzer$create_access_preview_input(analyzerArn = analyzerArn, configurations = configurations, clientToken = clientToken)
   output <- .accessanalyzer$create_access_preview_output()
   config <- get_config()
   svc <- .accessanalyzer$service(config)
@@ -113,29 +113,29 @@ accessanalyzer_create_access_preview <- function(analyzerArn, clientToken = NULL
 #' @description
 #' Creates an analyzer for your account.
 #'
-#' See [https://paws-r.github.io/docs/accessanalyzer/create_analyzer.html](https://paws-r.github.io/docs/accessanalyzer/create_analyzer.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/accessanalyzer_create_analyzer/](https://www.paws-r-sdk.com/docs/accessanalyzer_create_analyzer/) for full documentation.
 #'
 #' @param analyzerName &#91;required&#93; The name of the analyzer to create.
-#' @param archiveRules Specifies the archive rules to add for the analyzer. Archive rules
-#' automatically archive findings that meet the criteria you define for the
-#' rule.
-#' @param clientToken A client token.
-#' @param tags The tags to apply to the analyzer.
 #' @param type &#91;required&#93; The type of analyzer to create. Only ACCOUNT and ORGANIZATION analyzers
 #' are supported. You can create only one analyzer per account per Region.
 #' You can create up to 5 analyzers per organization per Region.
+#' @param archiveRules Specifies the archive rules to add for the analyzer. Archive rules
+#' automatically archive findings that meet the criteria you define for the
+#' rule.
+#' @param tags The tags to apply to the analyzer.
+#' @param clientToken A client token.
 #'
 #' @keywords internal
 #'
 #' @rdname accessanalyzer_create_analyzer
-accessanalyzer_create_analyzer <- function(analyzerName, archiveRules = NULL, clientToken = NULL, tags = NULL, type) {
+accessanalyzer_create_analyzer <- function(analyzerName, type, archiveRules = NULL, tags = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "CreateAnalyzer",
     http_method = "PUT",
     http_path = "/analyzer",
     paginator = list()
   )
-  input <- .accessanalyzer$create_analyzer_input(analyzerName = analyzerName, archiveRules = archiveRules, clientToken = clientToken, tags = tags, type = type)
+  input <- .accessanalyzer$create_analyzer_input(analyzerName = analyzerName, type = type, archiveRules = archiveRules, tags = tags, clientToken = clientToken)
   output <- .accessanalyzer$create_analyzer_output()
   config <- get_config()
   svc <- .accessanalyzer$service(config)
@@ -150,24 +150,24 @@ accessanalyzer_create_analyzer <- function(analyzerName, archiveRules = NULL, cl
 #' @description
 #' Creates an archive rule for the specified analyzer. Archive rules automatically archive new findings that meet the criteria you define when you create the rule.
 #'
-#' See [https://paws-r.github.io/docs/accessanalyzer/create_archive_rule.html](https://paws-r.github.io/docs/accessanalyzer/create_archive_rule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/accessanalyzer_create_archive_rule/](https://www.paws-r-sdk.com/docs/accessanalyzer_create_archive_rule/) for full documentation.
 #'
 #' @param analyzerName &#91;required&#93; The name of the created analyzer.
-#' @param clientToken A client token.
-#' @param filter &#91;required&#93; The criteria for the rule.
 #' @param ruleName &#91;required&#93; The name of the rule to create.
+#' @param filter &#91;required&#93; The criteria for the rule.
+#' @param clientToken A client token.
 #'
 #' @keywords internal
 #'
 #' @rdname accessanalyzer_create_archive_rule
-accessanalyzer_create_archive_rule <- function(analyzerName, clientToken = NULL, filter, ruleName) {
+accessanalyzer_create_archive_rule <- function(analyzerName, ruleName, filter, clientToken = NULL) {
   op <- new_operation(
     name = "CreateArchiveRule",
     http_method = "PUT",
     http_path = "/analyzer/{analyzerName}/archive-rule",
     paginator = list()
   )
-  input <- .accessanalyzer$create_archive_rule_input(analyzerName = analyzerName, clientToken = clientToken, filter = filter, ruleName = ruleName)
+  input <- .accessanalyzer$create_archive_rule_input(analyzerName = analyzerName, ruleName = ruleName, filter = filter, clientToken = clientToken)
   output <- .accessanalyzer$create_archive_rule_output()
   config <- get_config()
   svc <- .accessanalyzer$service(config)
@@ -182,7 +182,7 @@ accessanalyzer_create_archive_rule <- function(analyzerName, clientToken = NULL,
 #' @description
 #' Deletes the specified analyzer. When you delete an analyzer, IAM Access Analyzer is disabled for the account or organization in the current or specific Region. All findings that were generated by the analyzer are deleted. You cannot undo this action.
 #'
-#' See [https://paws-r.github.io/docs/accessanalyzer/delete_analyzer.html](https://paws-r.github.io/docs/accessanalyzer/delete_analyzer.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/accessanalyzer_delete_analyzer/](https://www.paws-r-sdk.com/docs/accessanalyzer_delete_analyzer/) for full documentation.
 #'
 #' @param analyzerName &#91;required&#93; The name of the analyzer to delete.
 #' @param clientToken A client token.
@@ -212,24 +212,24 @@ accessanalyzer_delete_analyzer <- function(analyzerName, clientToken = NULL) {
 #' @description
 #' Deletes the specified archive rule.
 #'
-#' See [https://paws-r.github.io/docs/accessanalyzer/delete_archive_rule.html](https://paws-r.github.io/docs/accessanalyzer/delete_archive_rule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/accessanalyzer_delete_archive_rule/](https://www.paws-r-sdk.com/docs/accessanalyzer_delete_archive_rule/) for full documentation.
 #'
 #' @param analyzerName &#91;required&#93; The name of the analyzer that associated with the archive rule to
 #' delete.
-#' @param clientToken A client token.
 #' @param ruleName &#91;required&#93; The name of the rule to delete.
+#' @param clientToken A client token.
 #'
 #' @keywords internal
 #'
 #' @rdname accessanalyzer_delete_archive_rule
-accessanalyzer_delete_archive_rule <- function(analyzerName, clientToken = NULL, ruleName) {
+accessanalyzer_delete_archive_rule <- function(analyzerName, ruleName, clientToken = NULL) {
   op <- new_operation(
     name = "DeleteArchiveRule",
     http_method = "DELETE",
     http_path = "/analyzer/{analyzerName}/archive-rule/{ruleName}",
     paginator = list()
   )
-  input <- .accessanalyzer$delete_archive_rule_input(analyzerName = analyzerName, clientToken = clientToken, ruleName = ruleName)
+  input <- .accessanalyzer$delete_archive_rule_input(analyzerName = analyzerName, ruleName = ruleName, clientToken = clientToken)
   output <- .accessanalyzer$delete_archive_rule_output()
   config <- get_config()
   svc <- .accessanalyzer$service(config)
@@ -244,7 +244,7 @@ accessanalyzer_delete_archive_rule <- function(analyzerName, clientToken = NULL,
 #' @description
 #' Retrieves information about an access preview for the specified analyzer.
 #'
-#' See [https://paws-r.github.io/docs/accessanalyzer/get_access_preview.html](https://paws-r.github.io/docs/accessanalyzer/get_access_preview.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/accessanalyzer_get_access_preview/](https://www.paws-r-sdk.com/docs/accessanalyzer_get_access_preview/) for full documentation.
 #'
 #' @param accessPreviewId &#91;required&#93; The unique ID for the access preview.
 #' @param analyzerArn &#91;required&#93; The [ARN of the
@@ -276,7 +276,7 @@ accessanalyzer_get_access_preview <- function(accessPreviewId, analyzerArn) {
 #' @description
 #' Retrieves information about a resource that was analyzed.
 #'
-#' See [https://paws-r.github.io/docs/accessanalyzer/get_analyzed_resource.html](https://paws-r.github.io/docs/accessanalyzer/get_analyzed_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/accessanalyzer_get_analyzed_resource/](https://www.paws-r-sdk.com/docs/accessanalyzer_get_analyzed_resource/) for full documentation.
 #'
 #' @param analyzerArn &#91;required&#93; The [ARN of the
 #' analyzer](https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources)
@@ -308,7 +308,7 @@ accessanalyzer_get_analyzed_resource <- function(analyzerArn, resourceArn) {
 #' @description
 #' Retrieves information about the specified analyzer.
 #'
-#' See [https://paws-r.github.io/docs/accessanalyzer/get_analyzer.html](https://paws-r.github.io/docs/accessanalyzer/get_analyzer.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/accessanalyzer_get_analyzer/](https://www.paws-r-sdk.com/docs/accessanalyzer_get_analyzer/) for full documentation.
 #'
 #' @param analyzerName &#91;required&#93; The name of the analyzer retrieved.
 #'
@@ -337,7 +337,7 @@ accessanalyzer_get_analyzer <- function(analyzerName) {
 #' @description
 #' Retrieves information about an archive rule.
 #'
-#' See [https://paws-r.github.io/docs/accessanalyzer/get_archive_rule.html](https://paws-r.github.io/docs/accessanalyzer/get_archive_rule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/accessanalyzer_get_archive_rule/](https://www.paws-r-sdk.com/docs/accessanalyzer_get_archive_rule/) for full documentation.
 #'
 #' @param analyzerName &#91;required&#93; The name of the analyzer to retrieve rules from.
 #' @param ruleName &#91;required&#93; The name of the rule to retrieve.
@@ -367,7 +367,7 @@ accessanalyzer_get_archive_rule <- function(analyzerName, ruleName) {
 #' @description
 #' Retrieves information about the specified finding.
 #'
-#' See [https://paws-r.github.io/docs/accessanalyzer/get_finding.html](https://paws-r.github.io/docs/accessanalyzer/get_finding.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/accessanalyzer_get_finding/](https://www.paws-r-sdk.com/docs/accessanalyzer_get_finding/) for full documentation.
 #'
 #' @param analyzerArn &#91;required&#93; The [ARN of the
 #' analyzer](https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources)
@@ -399,8 +399,15 @@ accessanalyzer_get_finding <- function(analyzerArn, id) {
 #' @description
 #' Retrieves the policy that was generated using [`start_policy_generation`][accessanalyzer_start_policy_generation].
 #'
-#' See [https://paws-r.github.io/docs/accessanalyzer/get_generated_policy.html](https://paws-r.github.io/docs/accessanalyzer/get_generated_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/accessanalyzer_get_generated_policy/](https://www.paws-r-sdk.com/docs/accessanalyzer_get_generated_policy/) for full documentation.
 #'
+#' @param jobId &#91;required&#93; The `JobId` that is returned by the
+#' [`start_policy_generation`][accessanalyzer_start_policy_generation]
+#' operation. The `JobId` can be used with
+#' [`get_generated_policy`][accessanalyzer_get_generated_policy] to
+#' retrieve the generated policies or used with
+#' [`cancel_policy_generation`][accessanalyzer_cancel_policy_generation] to
+#' cancel the policy generation request.
 #' @param includeResourcePlaceholders The level of detail that you want to generate. You can specify whether
 #' to generate policies with placeholders for resource ARNs for actions
 #' that support resource level granularity in policies.
@@ -413,25 +420,18 @@ accessanalyzer_get_finding <- function(analyzerArn, id) {
 #' 
 #' IAM Access Analyzer uses `iam:servicelastaccessed` to identify services
 #' that have been used recently to create this service-level template.
-#' @param jobId &#91;required&#93; The `JobId` that is returned by the
-#' [`start_policy_generation`][accessanalyzer_start_policy_generation]
-#' operation. The `JobId` can be used with
-#' [`get_generated_policy`][accessanalyzer_get_generated_policy] to
-#' retrieve the generated policies or used with
-#' [`cancel_policy_generation`][accessanalyzer_cancel_policy_generation] to
-#' cancel the policy generation request.
 #'
 #' @keywords internal
 #'
 #' @rdname accessanalyzer_get_generated_policy
-accessanalyzer_get_generated_policy <- function(includeResourcePlaceholders = NULL, includeServiceLevelTemplate = NULL, jobId) {
+accessanalyzer_get_generated_policy <- function(jobId, includeResourcePlaceholders = NULL, includeServiceLevelTemplate = NULL) {
   op <- new_operation(
     name = "GetGeneratedPolicy",
     http_method = "GET",
     http_path = "/policy/generation/{jobId}",
     paginator = list()
   )
-  input <- .accessanalyzer$get_generated_policy_input(includeResourcePlaceholders = includeResourcePlaceholders, includeServiceLevelTemplate = includeServiceLevelTemplate, jobId = jobId)
+  input <- .accessanalyzer$get_generated_policy_input(jobId = jobId, includeResourcePlaceholders = includeResourcePlaceholders, includeServiceLevelTemplate = includeServiceLevelTemplate)
   output <- .accessanalyzer$get_generated_policy_output()
   config <- get_config()
   svc <- .accessanalyzer$service(config)
@@ -447,27 +447,27 @@ accessanalyzer_get_generated_policy <- function(includeResourcePlaceholders = NU
 #' @description
 #' Retrieves a list of access preview findings generated by the specified access preview.
 #'
-#' See [https://paws-r.github.io/docs/accessanalyzer/list_access_preview_findings.html](https://paws-r.github.io/docs/accessanalyzer/list_access_preview_findings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/accessanalyzer_list_access_preview_findings/](https://www.paws-r-sdk.com/docs/accessanalyzer_list_access_preview_findings/) for full documentation.
 #'
 #' @param accessPreviewId &#91;required&#93; The unique ID for the access preview.
 #' @param analyzerArn &#91;required&#93; The [ARN of the
 #' analyzer](https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources)
 #' used to generate the access.
 #' @param filter Criteria to filter the returned findings.
-#' @param maxResults The maximum number of results to return in the response.
 #' @param nextToken A token used for pagination of results returned.
+#' @param maxResults The maximum number of results to return in the response.
 #'
 #' @keywords internal
 #'
 #' @rdname accessanalyzer_list_access_preview_findings
-accessanalyzer_list_access_preview_findings <- function(accessPreviewId, analyzerArn, filter = NULL, maxResults = NULL, nextToken = NULL) {
+accessanalyzer_list_access_preview_findings <- function(accessPreviewId, analyzerArn, filter = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListAccessPreviewFindings",
     http_method = "POST",
     http_path = "/access-preview/{accessPreviewId}",
     paginator = list()
   )
-  input <- .accessanalyzer$list_access_preview_findings_input(accessPreviewId = accessPreviewId, analyzerArn = analyzerArn, filter = filter, maxResults = maxResults, nextToken = nextToken)
+  input <- .accessanalyzer$list_access_preview_findings_input(accessPreviewId = accessPreviewId, analyzerArn = analyzerArn, filter = filter, nextToken = nextToken, maxResults = maxResults)
   output <- .accessanalyzer$list_access_preview_findings_output()
   config <- get_config()
   svc <- .accessanalyzer$service(config)
@@ -482,25 +482,25 @@ accessanalyzer_list_access_preview_findings <- function(accessPreviewId, analyze
 #' @description
 #' Retrieves a list of access previews for the specified analyzer.
 #'
-#' See [https://paws-r.github.io/docs/accessanalyzer/list_access_previews.html](https://paws-r.github.io/docs/accessanalyzer/list_access_previews.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/accessanalyzer_list_access_previews/](https://www.paws-r-sdk.com/docs/accessanalyzer_list_access_previews/) for full documentation.
 #'
 #' @param analyzerArn &#91;required&#93; The [ARN of the
 #' analyzer](https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources)
 #' used to generate the access preview.
-#' @param maxResults The maximum number of results to return in the response.
 #' @param nextToken A token used for pagination of results returned.
+#' @param maxResults The maximum number of results to return in the response.
 #'
 #' @keywords internal
 #'
 #' @rdname accessanalyzer_list_access_previews
-accessanalyzer_list_access_previews <- function(analyzerArn, maxResults = NULL, nextToken = NULL) {
+accessanalyzer_list_access_previews <- function(analyzerArn, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListAccessPreviews",
     http_method = "GET",
     http_path = "/access-preview",
     paginator = list()
   )
-  input <- .accessanalyzer$list_access_previews_input(analyzerArn = analyzerArn, maxResults = maxResults, nextToken = nextToken)
+  input <- .accessanalyzer$list_access_previews_input(analyzerArn = analyzerArn, nextToken = nextToken, maxResults = maxResults)
   output <- .accessanalyzer$list_access_previews_output()
   config <- get_config()
   svc <- .accessanalyzer$service(config)
@@ -516,26 +516,26 @@ accessanalyzer_list_access_previews <- function(analyzerArn, maxResults = NULL, 
 #' @description
 #' Retrieves a list of resources of the specified type that have been analyzed by the specified analyzer..
 #'
-#' See [https://paws-r.github.io/docs/accessanalyzer/list_analyzed_resources.html](https://paws-r.github.io/docs/accessanalyzer/list_analyzed_resources.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/accessanalyzer_list_analyzed_resources/](https://www.paws-r-sdk.com/docs/accessanalyzer_list_analyzed_resources/) for full documentation.
 #'
 #' @param analyzerArn &#91;required&#93; The [ARN of the
 #' analyzer](https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources)
 #' to retrieve a list of analyzed resources from.
-#' @param maxResults The maximum number of results to return in the response.
-#' @param nextToken A token used for pagination of results returned.
 #' @param resourceType The type of resource.
+#' @param nextToken A token used for pagination of results returned.
+#' @param maxResults The maximum number of results to return in the response.
 #'
 #' @keywords internal
 #'
 #' @rdname accessanalyzer_list_analyzed_resources
-accessanalyzer_list_analyzed_resources <- function(analyzerArn, maxResults = NULL, nextToken = NULL, resourceType = NULL) {
+accessanalyzer_list_analyzed_resources <- function(analyzerArn, resourceType = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListAnalyzedResources",
     http_method = "POST",
     http_path = "/analyzed-resource",
     paginator = list()
   )
-  input <- .accessanalyzer$list_analyzed_resources_input(analyzerArn = analyzerArn, maxResults = maxResults, nextToken = nextToken, resourceType = resourceType)
+  input <- .accessanalyzer$list_analyzed_resources_input(analyzerArn = analyzerArn, resourceType = resourceType, nextToken = nextToken, maxResults = maxResults)
   output <- .accessanalyzer$list_analyzed_resources_output()
   config <- get_config()
   svc <- .accessanalyzer$service(config)
@@ -550,23 +550,23 @@ accessanalyzer_list_analyzed_resources <- function(analyzerArn, maxResults = NUL
 #' @description
 #' Retrieves a list of analyzers.
 #'
-#' See [https://paws-r.github.io/docs/accessanalyzer/list_analyzers.html](https://paws-r.github.io/docs/accessanalyzer/list_analyzers.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/accessanalyzer_list_analyzers/](https://www.paws-r-sdk.com/docs/accessanalyzer_list_analyzers/) for full documentation.
 #'
-#' @param maxResults The maximum number of results to return in the response.
 #' @param nextToken A token used for pagination of results returned.
+#' @param maxResults The maximum number of results to return in the response.
 #' @param type The type of analyzer.
 #'
 #' @keywords internal
 #'
 #' @rdname accessanalyzer_list_analyzers
-accessanalyzer_list_analyzers <- function(maxResults = NULL, nextToken = NULL, type = NULL) {
+accessanalyzer_list_analyzers <- function(nextToken = NULL, maxResults = NULL, type = NULL) {
   op <- new_operation(
     name = "ListAnalyzers",
     http_method = "GET",
     http_path = "/analyzer",
     paginator = list()
   )
-  input <- .accessanalyzer$list_analyzers_input(maxResults = maxResults, nextToken = nextToken, type = type)
+  input <- .accessanalyzer$list_analyzers_input(nextToken = nextToken, maxResults = maxResults, type = type)
   output <- .accessanalyzer$list_analyzers_output()
   config <- get_config()
   svc <- .accessanalyzer$service(config)
@@ -581,23 +581,23 @@ accessanalyzer_list_analyzers <- function(maxResults = NULL, nextToken = NULL, t
 #' @description
 #' Retrieves a list of archive rules created for the specified analyzer.
 #'
-#' See [https://paws-r.github.io/docs/accessanalyzer/list_archive_rules.html](https://paws-r.github.io/docs/accessanalyzer/list_archive_rules.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/accessanalyzer_list_archive_rules/](https://www.paws-r-sdk.com/docs/accessanalyzer_list_archive_rules/) for full documentation.
 #'
 #' @param analyzerName &#91;required&#93; The name of the analyzer to retrieve rules from.
-#' @param maxResults The maximum number of results to return in the request.
 #' @param nextToken A token used for pagination of results returned.
+#' @param maxResults The maximum number of results to return in the request.
 #'
 #' @keywords internal
 #'
 #' @rdname accessanalyzer_list_archive_rules
-accessanalyzer_list_archive_rules <- function(analyzerName, maxResults = NULL, nextToken = NULL) {
+accessanalyzer_list_archive_rules <- function(analyzerName, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListArchiveRules",
     http_method = "GET",
     http_path = "/analyzer/{analyzerName}/archive-rule",
     paginator = list()
   )
-  input <- .accessanalyzer$list_archive_rules_input(analyzerName = analyzerName, maxResults = maxResults, nextToken = nextToken)
+  input <- .accessanalyzer$list_archive_rules_input(analyzerName = analyzerName, nextToken = nextToken, maxResults = maxResults)
   output <- .accessanalyzer$list_archive_rules_output()
   config <- get_config()
   svc <- .accessanalyzer$service(config)
@@ -612,27 +612,27 @@ accessanalyzer_list_archive_rules <- function(analyzerName, maxResults = NULL, n
 #' @description
 #' Retrieves a list of findings generated by the specified analyzer.
 #'
-#' See [https://paws-r.github.io/docs/accessanalyzer/list_findings.html](https://paws-r.github.io/docs/accessanalyzer/list_findings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/accessanalyzer_list_findings/](https://www.paws-r-sdk.com/docs/accessanalyzer_list_findings/) for full documentation.
 #'
 #' @param analyzerArn &#91;required&#93; The [ARN of the
 #' analyzer](https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources)
 #' to retrieve findings from.
 #' @param filter A filter to match for the findings to return.
-#' @param maxResults The maximum number of results to return in the response.
-#' @param nextToken A token used for pagination of results returned.
 #' @param sort The sort order for the findings returned.
+#' @param nextToken A token used for pagination of results returned.
+#' @param maxResults The maximum number of results to return in the response.
 #'
 #' @keywords internal
 #'
 #' @rdname accessanalyzer_list_findings
-accessanalyzer_list_findings <- function(analyzerArn, filter = NULL, maxResults = NULL, nextToken = NULL, sort = NULL) {
+accessanalyzer_list_findings <- function(analyzerArn, filter = NULL, sort = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListFindings",
     http_method = "POST",
     http_path = "/finding",
     paginator = list()
   )
-  input <- .accessanalyzer$list_findings_input(analyzerArn = analyzerArn, filter = filter, maxResults = maxResults, nextToken = nextToken, sort = sort)
+  input <- .accessanalyzer$list_findings_input(analyzerArn = analyzerArn, filter = filter, sort = sort, nextToken = nextToken, maxResults = maxResults)
   output <- .accessanalyzer$list_findings_output()
   config <- get_config()
   svc <- .accessanalyzer$service(config)
@@ -647,25 +647,25 @@ accessanalyzer_list_findings <- function(analyzerArn, filter = NULL, maxResults 
 #' @description
 #' Lists all of the policy generations requested in the last seven days.
 #'
-#' See [https://paws-r.github.io/docs/accessanalyzer/list_policy_generations.html](https://paws-r.github.io/docs/accessanalyzer/list_policy_generations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/accessanalyzer_list_policy_generations/](https://www.paws-r-sdk.com/docs/accessanalyzer_list_policy_generations/) for full documentation.
 #'
-#' @param maxResults The maximum number of results to return in the response.
-#' @param nextToken A token used for pagination of results returned.
 #' @param principalArn The ARN of the IAM entity (user or role) for which you are generating a
 #' policy. Use this with `ListGeneratedPolicies` to filter the results to
 #' only include results for a specific principal.
+#' @param maxResults The maximum number of results to return in the response.
+#' @param nextToken A token used for pagination of results returned.
 #'
 #' @keywords internal
 #'
 #' @rdname accessanalyzer_list_policy_generations
-accessanalyzer_list_policy_generations <- function(maxResults = NULL, nextToken = NULL, principalArn = NULL) {
+accessanalyzer_list_policy_generations <- function(principalArn = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListPolicyGenerations",
     http_method = "GET",
     http_path = "/policy/generation",
     paginator = list()
   )
-  input <- .accessanalyzer$list_policy_generations_input(maxResults = maxResults, nextToken = nextToken, principalArn = principalArn)
+  input <- .accessanalyzer$list_policy_generations_input(principalArn = principalArn, maxResults = maxResults, nextToken = nextToken)
   output <- .accessanalyzer$list_policy_generations_output()
   config <- get_config()
   svc <- .accessanalyzer$service(config)
@@ -680,7 +680,7 @@ accessanalyzer_list_policy_generations <- function(maxResults = NULL, nextToken 
 #' @description
 #' Retrieves a list of tags applied to the specified resource.
 #'
-#' See [https://paws-r.github.io/docs/accessanalyzer/list_tags_for_resource.html](https://paws-r.github.io/docs/accessanalyzer/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/accessanalyzer_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/accessanalyzer_list_tags_for_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The ARN of the resource to retrieve tags from.
 #'
@@ -709,8 +709,12 @@ accessanalyzer_list_tags_for_resource <- function(resourceArn) {
 #' @description
 #' Starts the policy generation request.
 #'
-#' See [https://paws-r.github.io/docs/accessanalyzer/start_policy_generation.html](https://paws-r.github.io/docs/accessanalyzer/start_policy_generation.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/accessanalyzer_start_policy_generation/](https://www.paws-r-sdk.com/docs/accessanalyzer_start_policy_generation/) for full documentation.
 #'
+#' @param policyGenerationDetails &#91;required&#93; Contains the ARN of the IAM entity (user or role) for which you are
+#' generating a policy.
+#' @param cloudTrailDetails A `CloudTrailDetails` object that contains details about a `Trail` that
+#' you want to analyze to generate policies.
 #' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. Idempotency ensures that an API request
 #' completes only once. With an idempotent request, if the original request
@@ -720,22 +724,18 @@ accessanalyzer_list_tags_for_resource <- function(resourceArn) {
 #' 
 #' If you do not specify a client token, one is automatically generated by
 #' the Amazon Web Services SDK.
-#' @param cloudTrailDetails A `CloudTrailDetails` object that contains details about a `Trail` that
-#' you want to analyze to generate policies.
-#' @param policyGenerationDetails &#91;required&#93; Contains the ARN of the IAM entity (user or role) for which you are
-#' generating a policy.
 #'
 #' @keywords internal
 #'
 #' @rdname accessanalyzer_start_policy_generation
-accessanalyzer_start_policy_generation <- function(clientToken = NULL, cloudTrailDetails = NULL, policyGenerationDetails) {
+accessanalyzer_start_policy_generation <- function(policyGenerationDetails, cloudTrailDetails = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "StartPolicyGeneration",
     http_method = "PUT",
     http_path = "/policy/generation",
     paginator = list()
   )
-  input <- .accessanalyzer$start_policy_generation_input(clientToken = clientToken, cloudTrailDetails = cloudTrailDetails, policyGenerationDetails = policyGenerationDetails)
+  input <- .accessanalyzer$start_policy_generation_input(policyGenerationDetails = policyGenerationDetails, cloudTrailDetails = cloudTrailDetails, clientToken = clientToken)
   output <- .accessanalyzer$start_policy_generation_output()
   config <- get_config()
   svc <- .accessanalyzer$service(config)
@@ -751,24 +751,27 @@ accessanalyzer_start_policy_generation <- function(clientToken = NULL, cloudTrai
 #' @description
 #' Immediately starts a scan of the policies applied to the specified resource.
 #'
-#' See [https://paws-r.github.io/docs/accessanalyzer/start_resource_scan.html](https://paws-r.github.io/docs/accessanalyzer/start_resource_scan.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/accessanalyzer_start_resource_scan/](https://www.paws-r-sdk.com/docs/accessanalyzer_start_resource_scan/) for full documentation.
 #'
 #' @param analyzerArn &#91;required&#93; The [ARN of the
 #' analyzer](https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources)
 #' to use to scan the policies applied to the specified resource.
 #' @param resourceArn &#91;required&#93; The ARN of the resource to scan.
+#' @param resourceOwnerAccount The Amazon Web Services account ID that owns the resource. For most
+#' Amazon Web Services resources, the owning account is the account in
+#' which the resource was created.
 #'
 #' @keywords internal
 #'
 #' @rdname accessanalyzer_start_resource_scan
-accessanalyzer_start_resource_scan <- function(analyzerArn, resourceArn) {
+accessanalyzer_start_resource_scan <- function(analyzerArn, resourceArn, resourceOwnerAccount = NULL) {
   op <- new_operation(
     name = "StartResourceScan",
     http_method = "POST",
     http_path = "/resource/scan",
     paginator = list()
   )
-  input <- .accessanalyzer$start_resource_scan_input(analyzerArn = analyzerArn, resourceArn = resourceArn)
+  input <- .accessanalyzer$start_resource_scan_input(analyzerArn = analyzerArn, resourceArn = resourceArn, resourceOwnerAccount = resourceOwnerAccount)
   output <- .accessanalyzer$start_resource_scan_output()
   config <- get_config()
   svc <- .accessanalyzer$service(config)
@@ -783,7 +786,7 @@ accessanalyzer_start_resource_scan <- function(analyzerArn, resourceArn) {
 #' @description
 #' Adds a tag to the specified resource.
 #'
-#' See [https://paws-r.github.io/docs/accessanalyzer/tag_resource.html](https://paws-r.github.io/docs/accessanalyzer/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/accessanalyzer_tag_resource/](https://www.paws-r-sdk.com/docs/accessanalyzer_tag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The ARN of the resource to add the tag to.
 #' @param tags &#91;required&#93; The tags to add to the resource.
@@ -813,7 +816,7 @@ accessanalyzer_tag_resource <- function(resourceArn, tags) {
 #' @description
 #' Removes a tag from the specified resource.
 #'
-#' See [https://paws-r.github.io/docs/accessanalyzer/untag_resource.html](https://paws-r.github.io/docs/accessanalyzer/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/accessanalyzer_untag_resource/](https://www.paws-r-sdk.com/docs/accessanalyzer_untag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The ARN of the resource to remove the tag from.
 #' @param tagKeys &#91;required&#93; The key for the tag to add.
@@ -843,25 +846,25 @@ accessanalyzer_untag_resource <- function(resourceArn, tagKeys) {
 #' @description
 #' Updates the criteria and values for the specified archive rule.
 #'
-#' See [https://paws-r.github.io/docs/accessanalyzer/update_archive_rule.html](https://paws-r.github.io/docs/accessanalyzer/update_archive_rule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/accessanalyzer_update_archive_rule/](https://www.paws-r-sdk.com/docs/accessanalyzer_update_archive_rule/) for full documentation.
 #'
 #' @param analyzerName &#91;required&#93; The name of the analyzer to update the archive rules for.
-#' @param clientToken A client token.
+#' @param ruleName &#91;required&#93; The name of the rule to update.
 #' @param filter &#91;required&#93; A filter to match for the rules to update. Only rules that match the
 #' filter are updated.
-#' @param ruleName &#91;required&#93; The name of the rule to update.
+#' @param clientToken A client token.
 #'
 #' @keywords internal
 #'
 #' @rdname accessanalyzer_update_archive_rule
-accessanalyzer_update_archive_rule <- function(analyzerName, clientToken = NULL, filter, ruleName) {
+accessanalyzer_update_archive_rule <- function(analyzerName, ruleName, filter, clientToken = NULL) {
   op <- new_operation(
     name = "UpdateArchiveRule",
     http_method = "PUT",
     http_path = "/analyzer/{analyzerName}/archive-rule/{ruleName}",
     paginator = list()
   )
-  input <- .accessanalyzer$update_archive_rule_input(analyzerName = analyzerName, clientToken = clientToken, filter = filter, ruleName = ruleName)
+  input <- .accessanalyzer$update_archive_rule_input(analyzerName = analyzerName, ruleName = ruleName, filter = filter, clientToken = clientToken)
   output <- .accessanalyzer$update_archive_rule_output()
   config <- get_config()
   svc <- .accessanalyzer$service(config)
@@ -876,29 +879,29 @@ accessanalyzer_update_archive_rule <- function(analyzerName, clientToken = NULL,
 #' @description
 #' Updates the status for the specified findings.
 #'
-#' See [https://paws-r.github.io/docs/accessanalyzer/update_findings.html](https://paws-r.github.io/docs/accessanalyzer/update_findings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/accessanalyzer_update_findings/](https://www.paws-r-sdk.com/docs/accessanalyzer_update_findings/) for full documentation.
 #'
 #' @param analyzerArn &#91;required&#93; The [ARN of the
 #' analyzer](https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources)
 #' that generated the findings to update.
-#' @param clientToken A client token.
-#' @param ids The IDs of the findings to update.
-#' @param resourceArn The ARN of the resource identified in the finding.
 #' @param status &#91;required&#93; The state represents the action to take to update the finding Status.
 #' Use `ARCHIVE` to change an Active finding to an Archived finding. Use
 #' `ACTIVE` to change an Archived finding to an Active finding.
+#' @param ids The IDs of the findings to update.
+#' @param resourceArn The ARN of the resource identified in the finding.
+#' @param clientToken A client token.
 #'
 #' @keywords internal
 #'
 #' @rdname accessanalyzer_update_findings
-accessanalyzer_update_findings <- function(analyzerArn, clientToken = NULL, ids = NULL, resourceArn = NULL, status) {
+accessanalyzer_update_findings <- function(analyzerArn, status, ids = NULL, resourceArn = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "UpdateFindings",
     http_method = "PUT",
     http_path = "/finding",
     paginator = list()
   )
-  input <- .accessanalyzer$update_findings_input(analyzerArn = analyzerArn, clientToken = clientToken, ids = ids, resourceArn = resourceArn, status = status)
+  input <- .accessanalyzer$update_findings_input(analyzerArn = analyzerArn, status = status, ids = ids, resourceArn = resourceArn, clientToken = clientToken)
   output <- .accessanalyzer$update_findings_output()
   config <- get_config()
   svc <- .accessanalyzer$service(config)
@@ -913,7 +916,7 @@ accessanalyzer_update_findings <- function(analyzerArn, clientToken = NULL, ids 
 #' @description
 #' Requests the validation of a policy and returns a list of findings. The findings help you identify issues and provide actionable recommendations to resolve the issue and enable you to author functional policies that meet security best practices.
 #'
-#' See [https://paws-r.github.io/docs/accessanalyzer/validate_policy.html](https://paws-r.github.io/docs/accessanalyzer/validate_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/accessanalyzer_validate_policy/](https://www.paws-r-sdk.com/docs/accessanalyzer_validate_policy/) for full documentation.
 #'
 #' @param locale The locale to use for localizing the findings.
 #' @param maxResults The maximum number of results to return in the response.

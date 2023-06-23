@@ -31,11 +31,12 @@ again with this value.}
 
 \item{IncludeDeprecated}{Specifies whether to include versions of secrets that don't have any
 staging labels attached to them. Versions without staging labels are
-considered deprecated and are subject to deletion by Secrets Manager.}
+considered deprecated and are subject to deletion by Secrets Manager. By
+default, versions without staging labels aren't included.}
 }
 \description{
 Lists the versions of a secret. Secrets Manager uses staging labels to indicate the different versions of a secret. For more information, see \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/getting-started.html#term_version}{Secrets Manager concepts: Versions}.
 
-See \url{https://paws-r.github.io/docs/secretsmanager/list_secret_version_ids.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/secretsmanager_list_secret_version_ids/} for full documentation.
 }
 \keyword{internal}

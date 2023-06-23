@@ -13,7 +13,7 @@ ram_get_resource_policies(
 )
 }
 \arguments{
-\item{resourceArns}{[required] Specifies the \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}
+\item{resourceArns}{[required] Specifies the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
 of the resources whose policies you want to retrieve.}
 
 \item{principal}{Specifies the principal.}
@@ -38,6 +38,6 @@ receive all of the results.}
 \description{
 Retrieves the resource policies for the specified resources that you own and have shared.
 
-See \url{https://paws-r.github.io/docs/ram/get_resource_policies.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ram_get_resource_policies/} for full documentation.
 }
 \keyword{internal}

@@ -10,7 +10,7 @@ iam_delete_policy_version(PolicyArn, VersionId)
 \item{PolicyArn}{[required] The Amazon Resource Name (ARN) of the IAM policy from which you want to
 delete a version.
 
-For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
 in the \emph{Amazon Web Services General Reference}.}
 
 \item{VersionId}{[required] The policy version to delete.
@@ -26,6 +26,6 @@ in the \emph{IAM User Guide}.}
 \description{
 Deletes the specified version from the specified managed policy.
 
-See \url{https://paws-r.github.io/docs/iam/delete_policy_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_delete_policy_version/} for full documentation.
 }
 \keyword{internal}

@@ -13,11 +13,11 @@ ram_get_resource_share_invitations(
 )
 }
 \arguments{
-\item{resourceShareInvitationArns}{Specifies the \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}
+\item{resourceShareInvitationArns}{Specifies the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
 of the resource share invitations you want information about.}
 
 \item{resourceShareArns}{Specifies that you want details about invitations only for the resource
-shares described by this list of \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}}
+shares described by this list of \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}}
 
 \item{nextToken}{Specifies that you want to receive the next page of results. Valid only
 if you received a \code{NextToken} response in the previous request. If you
@@ -39,6 +39,6 @@ receive all of the results.}
 \description{
 Retrieves details about invitations that you have received for resource shares.
 
-See \url{https://paws-r.github.io/docs/ram/get_resource_share_invitations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ram_get_resource_share_invitations/} for full documentation.
 }
 \keyword{internal}

@@ -10,8 +10,8 @@ iamrolesanywhere_disable_profile(profileId)
 \item{profileId}{[required] The unique identifier of the profile.}
 }
 \description{
-Disables a profile. When disabled, \href{https://docs.aws.amazon.com/rolesanywhere/latest/APIReference/}{CreateSession} requests with this profile fail.
+Disables a profile. When disabled, temporary credential requests with this profile fail.
 
-See \url{https://paws-r.github.io/docs/iamrolesanywhere/disable_profile.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iamrolesanywhere_disable_profile/} for full documentation.
 }
 \keyword{internal}

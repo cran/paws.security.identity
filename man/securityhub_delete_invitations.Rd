@@ -8,11 +8,12 @@ become a member account}
 securityhub_delete_invitations(AccountIds)
 }
 \arguments{
-\item{AccountIds}{[required] The list of the account IDs that sent the invitations to delete.}
+\item{AccountIds}{[required] The list of member account IDs that received the invitations you want to
+delete.}
 }
 \description{
 Deletes invitations received by the Amazon Web Services account to become a member account.
 
-See \url{https://paws-r.github.io/docs/securityhub/delete_invitations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/securityhub_delete_invitations/} for full documentation.
 }
 \keyword{internal}

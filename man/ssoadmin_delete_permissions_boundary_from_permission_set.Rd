@@ -10,14 +10,14 @@ ssoadmin_delete_permissions_boundary_from_permission_set(
 )
 }
 \arguments{
-\item{InstanceArn}{[required] The ARN of the Amazon Web Services SSO instance under which the
-operation will be executed.}
+\item{InstanceArn}{[required] The ARN of the IAM Identity Center instance under which the operation
+will be executed.}
 
 \item{PermissionSetArn}{[required] The ARN of the \code{PermissionSet}.}
 }
 \description{
 Deletes the permissions boundary from a specified PermissionSet.
 
-See \url{https://paws-r.github.io/docs/ssoadmin/delete_permissions_boundary_from_permission_set.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssoadmin_delete_permissions_boundary_from_permission_set/} for full documentation.
 }
 \keyword{internal}

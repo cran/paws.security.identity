@@ -9,12 +9,12 @@ iam_delete_policy(PolicyArn)
 \arguments{
 \item{PolicyArn}{[required] The Amazon Resource Name (ARN) of the IAM policy you want to delete.
 
-For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
 in the \emph{Amazon Web Services General Reference}.}
 }
 \description{
 Deletes the specified managed policy.
 
-See \url{https://paws-r.github.io/docs/iam/delete_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_delete_policy/} for full documentation.
 }
 \keyword{internal}

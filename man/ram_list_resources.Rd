@@ -35,10 +35,10 @@ For valid values, query the
 \code{\link[=ram_list_resource_types]{list_resource_types}} operation.}
 
 \item{resourceArns}{Specifies that you want to list only the resource shares that include
-resources with the specified \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}.}
+resources with the specified \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}.}
 
 \item{resourceShareArns}{Specifies that you want to list only resources in the resource shares
-identified by the specified \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}.}
+identified by the specified \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}.}
 
 \item{nextToken}{Specifies that you want to receive the next page of results. Valid only
 if you received a \code{NextToken} response in the previous request. If you
@@ -73,6 +73,6 @@ The default value is \code{ALL}.}
 \description{
 Lists the resources that you added to a resource share or the resources that are shared with you.
 
-See \url{https://paws-r.github.io/docs/ram/list_resources.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ram_list_resources/} for full documentation.
 }
 \keyword{internal}

@@ -4,13 +4,12 @@
 NULL
 
 #' Returns a set of temporary security credentials that you can use to
-#' access Amazon Web Services resources that you might not normally have
-#' access to
+#' access Amazon Web Services resources
 #'
 #' @description
-#' Returns a set of temporary security credentials that you can use to access Amazon Web Services resources that you might not normally have access to. These temporary credentials consist of an access key ID, a secret access key, and a security token. Typically, you use [`assume_role`][sts_assume_role] within your account or for cross-account access. For a comparison of [`assume_role`][sts_assume_role] with other API operations that produce temporary credentials, see [Requesting Temporary Security Credentials](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html) and [Comparing the Amazon Web Services STS API operations](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#stsapi_comparison) in the *IAM User Guide*.
+#' Returns a set of temporary security credentials that you can use to access Amazon Web Services resources. These temporary credentials consist of an access key ID, a secret access key, and a security token. Typically, you use [`assume_role`][sts_assume_role] within your account or for cross-account access. For a comparison of [`assume_role`][sts_assume_role] with other API operations that produce temporary credentials, see [Requesting Temporary Security Credentials](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html) and [Comparing the Amazon Web Services STS API operations](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#stsapi_comparison) in the *IAM User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/sts/assume_role.html](https://paws-r.github.io/docs/sts/assume_role.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sts_assume_role/](https://www.paws-r-sdk.com/docs/sts_assume_role/) for full documentation.
 #'
 #' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the role to assume.
 #' @param RoleSessionName &#91;required&#93; An identifier for the assumed role session.
@@ -37,15 +36,15 @@ NULL
 #' session policies can't exceed 2,048 characters. For more information
 #' about ARNs, see [Amazon Resource Names (ARNs) and Amazon Web Services
 #' Service
-#' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' Namespaces](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the Amazon Web Services General Reference.
 #' 
-#' An Amazon Web Services conversion compresses the passed session policies
-#' and session tags into a packed binary format that has a separate limit.
-#' Your request can fail for this limit even if your plaintext meets the
-#' other requirements. The `PackedPolicySize` response element indicates by
-#' percentage how close the policies and tags for your request are to the
-#' upper size limit.
+#' An Amazon Web Services conversion compresses the passed inline session
+#' policy, managed policy ARNs, and session tags into a packed binary
+#' format that has a separate limit. Your request can fail for this limit
+#' even if your plaintext meets the other requirements. The
+#' `PackedPolicySize` response element indicates by percentage how close
+#' the policies and tags for your request are to the upper size limit.
 #' 
 #' Passing policies to this operation returns new temporary credentials.
 #' The resulting session's permissions are the intersection of the role's
@@ -74,15 +73,15 @@ NULL
 #' The plaintext that you use for both inline and managed session policies
 #' can't exceed 2,048 characters. The JSON policy characters can be any
 #' ASCII character from the space character to the end of the valid
-#' character list (`U+0020` through `U+00FF`). It can also include the tab
-#' (`U+0009`), linefeed (`U+000A`), and carriage return (`U+000D`) characters.
+#' character list (\`U+0020` through \`U+00FF`). It can also include the tab
+#' (\`U+0009`), linefeed (\`U+000A`), and carriage return (\`U+000D`) characters.
 #' 
-#' An Amazon Web Services conversion compresses the passed session policies
-#' and session tags into a packed binary format that has a separate limit.
-#' Your request can fail for this limit even if your plaintext meets the
-#' other requirements. The `PackedPolicySize` response element indicates by
-#' percentage how close the policies and tags for your request are to the
-#' upper size limit.
+#' An Amazon Web Services conversion compresses the passed inline session
+#' policy, managed policy ARNs, and session tags into a packed binary
+#' format that has a separate limit. Your request can fail for this limit
+#' even if your plaintext meets the other requirements. The
+#' `PackedPolicySize` response element indicates by percentage how close
+#' the policies and tags for your request are to the upper size limit.
 #' @param DurationSeconds The duration, in seconds, of the role session. The value specified can
 #' range from 900 seconds (15 minutes) up to the maximum session duration
 #' set for the role. The maximum session duration setting can have a value
@@ -128,12 +127,12 @@ NULL
 #' Limits](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-quotas.html#reference_iam-limits-entity-length)
 #' in the *IAM User Guide*.
 #' 
-#' An Amazon Web Services conversion compresses the passed session policies
-#' and session tags into a packed binary format that has a separate limit.
-#' Your request can fail for this limit even if your plaintext meets the
-#' other requirements. The `PackedPolicySize` response element indicates by
-#' percentage how close the policies and tags for your request are to the
-#' upper size limit.
+#' An Amazon Web Services conversion compresses the passed inline session
+#' policy, managed policy ARNs, and session tags into a packed binary
+#' format that has a separate limit. Your request can fail for this limit
+#' even if your plaintext meets the other requirements. The
+#' `PackedPolicySize` response element indicates by percentage how close
+#' the policies and tags for your request are to the upper size limit.
 #' 
 #' You can pass a session tag with the same key as a tag that is already
 #' attached to the role. When you do, session tags override a role tag with
@@ -250,7 +249,7 @@ sts_assume_role <- function(RoleArn, RoleSessionName, PolicyArns = NULL, Policy 
 #' @description
 #' Returns a set of temporary security credentials for users who have been authenticated via a SAML authentication response. This operation provides a mechanism for tying an enterprise identity store or directory to role-based Amazon Web Services access without user-specific credentials or configuration. For a comparison of [`assume_role_with_saml`][sts_assume_role_with_saml] with the other API operations that produce temporary credentials, see [Requesting Temporary Security Credentials](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html) and [Comparing the Amazon Web Services STS API operations](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#stsapi_comparison) in the *IAM User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/sts/assume_role_with_saml.html](https://paws-r.github.io/docs/sts/assume_role_with_saml.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sts_assume_role_with_saml/](https://www.paws-r-sdk.com/docs/sts_assume_role_with_saml/) for full documentation.
 #'
 #' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the role that the caller is assuming.
 #' @param PrincipalArn &#91;required&#93; The Amazon Resource Name (ARN) of the SAML provider in IAM that
@@ -269,15 +268,15 @@ sts_assume_role <- function(RoleArn, RoleSessionName, PolicyArns = NULL, Policy 
 #' session policies can't exceed 2,048 characters. For more information
 #' about ARNs, see [Amazon Resource Names (ARNs) and Amazon Web Services
 #' Service
-#' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' Namespaces](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the Amazon Web Services General Reference.
 #' 
-#' An Amazon Web Services conversion compresses the passed session policies
-#' and session tags into a packed binary format that has a separate limit.
-#' Your request can fail for this limit even if your plaintext meets the
-#' other requirements. The `PackedPolicySize` response element indicates by
-#' percentage how close the policies and tags for your request are to the
-#' upper size limit.
+#' An Amazon Web Services conversion compresses the passed inline session
+#' policy, managed policy ARNs, and session tags into a packed binary
+#' format that has a separate limit. Your request can fail for this limit
+#' even if your plaintext meets the other requirements. The
+#' `PackedPolicySize` response element indicates by percentage how close
+#' the policies and tags for your request are to the upper size limit.
 #' 
 #' Passing policies to this operation returns new temporary credentials.
 #' The resulting session's permissions are the intersection of the role's
@@ -306,15 +305,15 @@ sts_assume_role <- function(RoleArn, RoleSessionName, PolicyArns = NULL, Policy 
 #' The plaintext that you use for both inline and managed session policies
 #' can't exceed 2,048 characters. The JSON policy characters can be any
 #' ASCII character from the space character to the end of the valid
-#' character list (`U+0020` through `U+00FF`). It can also include the tab
-#' (`U+0009`), linefeed (`U+000A`), and carriage return (`U+000D`) characters.
+#' character list (\`U+0020` through \`U+00FF`). It can also include the tab
+#' (\`U+0009`), linefeed (\`U+000A`), and carriage return (\`U+000D`) characters.
 #' 
-#' An Amazon Web Services conversion compresses the passed session policies
-#' and session tags into a packed binary format that has a separate limit.
-#' Your request can fail for this limit even if your plaintext meets the
-#' other requirements. The `PackedPolicySize` response element indicates by
-#' percentage how close the policies and tags for your request are to the
-#' upper size limit.
+#' An Amazon Web Services conversion compresses the passed inline session
+#' policy, managed policy ARNs, and session tags into a packed binary
+#' format that has a separate limit. Your request can fail for this limit
+#' even if your plaintext meets the other requirements. The
+#' `PackedPolicySize` response element indicates by percentage how close
+#' the policies and tags for your request are to the upper size limit.
 #' @param DurationSeconds The duration, in seconds, of the role session. Your role session lasts
 #' for the duration that you specify for the `DurationSeconds` parameter,
 #' or until the time specified in the SAML authentication response's
@@ -368,7 +367,7 @@ sts_assume_role_with_saml <- function(RoleArn, PrincipalArn, SAMLAssertion, Poli
 #' @description
 #' Returns a set of temporary security credentials for users who have been authenticated in a mobile or web application with a web identity provider. Example providers include the OAuth 2.0 providers Login with Amazon and Facebook, or any OpenID Connect-compatible identity provider such as Google or [Amazon Cognito federated identities](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-identity.html).
 #'
-#' See [https://paws-r.github.io/docs/sts/assume_role_with_web_identity.html](https://paws-r.github.io/docs/sts/assume_role_with_web_identity.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sts_assume_role_with_web_identity/](https://www.paws-r-sdk.com/docs/sts_assume_role_with_web_identity/) for full documentation.
 #'
 #' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the role that the caller is assuming.
 #' @param RoleSessionName &#91;required&#93; An identifier for the assumed role session. Typically, you pass the name
@@ -406,15 +405,15 @@ sts_assume_role_with_saml <- function(RoleArn, PrincipalArn, SAMLAssertion, Poli
 #' session policies can't exceed 2,048 characters. For more information
 #' about ARNs, see [Amazon Resource Names (ARNs) and Amazon Web Services
 #' Service
-#' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' Namespaces](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the Amazon Web Services General Reference.
 #' 
-#' An Amazon Web Services conversion compresses the passed session policies
-#' and session tags into a packed binary format that has a separate limit.
-#' Your request can fail for this limit even if your plaintext meets the
-#' other requirements. The `PackedPolicySize` response element indicates by
-#' percentage how close the policies and tags for your request are to the
-#' upper size limit.
+#' An Amazon Web Services conversion compresses the passed inline session
+#' policy, managed policy ARNs, and session tags into a packed binary
+#' format that has a separate limit. Your request can fail for this limit
+#' even if your plaintext meets the other requirements. The
+#' `PackedPolicySize` response element indicates by percentage how close
+#' the policies and tags for your request are to the upper size limit.
 #' 
 #' Passing policies to this operation returns new temporary credentials.
 #' The resulting session's permissions are the intersection of the role's
@@ -443,15 +442,15 @@ sts_assume_role_with_saml <- function(RoleArn, PrincipalArn, SAMLAssertion, Poli
 #' The plaintext that you use for both inline and managed session policies
 #' can't exceed 2,048 characters. The JSON policy characters can be any
 #' ASCII character from the space character to the end of the valid
-#' character list (`U+0020` through `U+00FF`). It can also include the tab
-#' (`U+0009`), linefeed (`U+000A`), and carriage return (`U+000D`) characters.
+#' character list (\`U+0020` through \`U+00FF`). It can also include the tab
+#' (\`U+0009`), linefeed (\`U+000A`), and carriage return (\`U+000D`) characters.
 #' 
-#' An Amazon Web Services conversion compresses the passed session policies
-#' and session tags into a packed binary format that has a separate limit.
-#' Your request can fail for this limit even if your plaintext meets the
-#' other requirements. The `PackedPolicySize` response element indicates by
-#' percentage how close the policies and tags for your request are to the
-#' upper size limit.
+#' An Amazon Web Services conversion compresses the passed inline session
+#' policy, managed policy ARNs, and session tags into a packed binary
+#' format that has a separate limit. Your request can fail for this limit
+#' even if your plaintext meets the other requirements. The
+#' `PackedPolicySize` response element indicates by percentage how close
+#' the policies and tags for your request are to the upper size limit.
 #' @param DurationSeconds The duration, in seconds, of the role session. The value can range from
 #' 900 seconds (15 minutes) up to the maximum session duration setting for
 #' the role. This setting can have a value from 1 hour to 12 hours. If you
@@ -501,7 +500,7 @@ sts_assume_role_with_web_identity <- function(RoleArn, RoleSessionName, WebIdent
 #' @description
 #' Decodes additional information about the authorization status of a request from an encoded message returned in response to an Amazon Web Services request.
 #'
-#' See [https://paws-r.github.io/docs/sts/decode_authorization_message.html](https://paws-r.github.io/docs/sts/decode_authorization_message.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sts_decode_authorization_message/](https://www.paws-r-sdk.com/docs/sts_decode_authorization_message/) for full documentation.
 #'
 #' @param EncodedMessage &#91;required&#93; The encoded message that was returned with the response.
 #'
@@ -530,7 +529,7 @@ sts_decode_authorization_message <- function(EncodedMessage) {
 #' @description
 #' Returns the account identifier for the specified access key ID.
 #'
-#' See [https://paws-r.github.io/docs/sts/get_access_key_info.html](https://paws-r.github.io/docs/sts/get_access_key_info.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sts_get_access_key_info/](https://www.paws-r-sdk.com/docs/sts_get_access_key_info/) for full documentation.
 #'
 #' @param AccessKeyId &#91;required&#93; The identifier of an access key.
 #' 
@@ -563,7 +562,7 @@ sts_get_access_key_info <- function(AccessKeyId) {
 #' @description
 #' Returns details about the IAM user or role whose credentials are used to call the operation.
 #'
-#' See [https://paws-r.github.io/docs/sts/get_caller_identity.html](https://paws-r.github.io/docs/sts/get_caller_identity.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sts_get_caller_identity/](https://www.paws-r-sdk.com/docs/sts_get_caller_identity/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -586,12 +585,12 @@ sts_get_caller_identity <- function() {
 .sts$operations$get_caller_identity <- sts_get_caller_identity
 
 #' Returns a set of temporary security credentials (consisting of an access
-#' key ID, a secret access key, and a security token) for a federated user
+#' key ID, a secret access key, and a security token) for a user
 #'
 #' @description
-#' Returns a set of temporary security credentials (consisting of an access key ID, a secret access key, and a security token) for a federated user. A typical use is in a proxy application that gets temporary security credentials on behalf of distributed applications inside a corporate network. You must call the [`get_federation_token`][sts_get_federation_token] operation using the long-term security credentials of an IAM user. As a result, this call is appropriate in contexts where those credentials can be safely stored, usually in a server-based application. For a comparison of [`get_federation_token`][sts_get_federation_token] with the other API operations that produce temporary credentials, see [Requesting Temporary Security Credentials](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html) and [Comparing the Amazon Web Services STS API operations](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#stsapi_comparison) in the *IAM User Guide*.
+#' Returns a set of temporary security credentials (consisting of an access key ID, a secret access key, and a security token) for a user. A typical use is in a proxy application that gets temporary security credentials on behalf of distributed applications inside a corporate network.
 #'
-#' See [https://paws-r.github.io/docs/sts/get_federation_token.html](https://paws-r.github.io/docs/sts/get_federation_token.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sts_get_federation_token/](https://www.paws-r-sdk.com/docs/sts_get_federation_token/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the federated user. The name is used as an identifier for
 #' the temporary security credentials (such as `Bob`). For example, you can
@@ -608,8 +607,8 @@ sts_get_caller_identity <- function() {
 #' You must pass an inline or managed [session
 #' policy](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#policies_session)
 #' to this operation. You can pass a single JSON policy document to use as
-#' an inline session policy. You can also specify up to 10 managed policies
-#' to use as managed session policies.
+#' an inline session policy. You can also specify up to 10 managed policy
+#' Amazon Resource Names (ARNs) to use as managed session policies.
 #' 
 #' This parameter is optional. However, if you do not pass any session
 #' policies, then the resulting federated user session has no permissions.
@@ -633,15 +632,15 @@ sts_get_caller_identity <- function() {
 #' The plaintext that you use for both inline and managed session policies
 #' can't exceed 2,048 characters. The JSON policy characters can be any
 #' ASCII character from the space character to the end of the valid
-#' character list (`U+0020` through `U+00FF`). It can also include the tab
-#' (`U+0009`), linefeed (`U+000A`), and carriage return (`U+000D`) characters.
+#' character list (\`U+0020` through \`U+00FF`). It can also include the tab
+#' (\`U+0009`), linefeed (\`U+000A`), and carriage return (\`U+000D`) characters.
 #' 
-#' An Amazon Web Services conversion compresses the passed session policies
-#' and session tags into a packed binary format that has a separate limit.
-#' Your request can fail for this limit even if your plaintext meets the
-#' other requirements. The `PackedPolicySize` response element indicates by
-#' percentage how close the policies and tags for your request are to the
-#' upper size limit.
+#' An Amazon Web Services conversion compresses the passed inline session
+#' policy, managed policy ARNs, and session tags into a packed binary
+#' format that has a separate limit. Your request can fail for this limit
+#' even if your plaintext meets the other requirements. The
+#' `PackedPolicySize` response element indicates by percentage how close
+#' the policies and tags for your request are to the upper size limit.
 #' @param PolicyArns The Amazon Resource Names (ARNs) of the IAM managed policies that you
 #' want to use as a managed session policy. The policies must exist in the
 #' same account as the IAM user that is requesting federated access.
@@ -649,12 +648,13 @@ sts_get_caller_identity <- function() {
 #' You must pass an inline or managed [session
 #' policy](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#policies_session)
 #' to this operation. You can pass a single JSON policy document to use as
-#' an inline session policy. You can also specify up to 10 managed policies
-#' to use as managed session policies. The plaintext that you use for both
-#' inline and managed session policies can't exceed 2,048 characters. You
-#' can provide up to 10 managed policy ARNs. For more information about
-#' ARNs, see [Amazon Resource Names (ARNs) and Amazon Web Services Service
-#' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' an inline session policy. You can also specify up to 10 managed policy
+#' Amazon Resource Names (ARNs) to use as managed session policies. The
+#' plaintext that you use for both inline and managed session policies
+#' can't exceed 2,048 characters. You can provide up to 10 managed policy
+#' ARNs. For more information about ARNs, see [Amazon Resource Names (ARNs)
+#' and Amazon Web Services Service
+#' Namespaces](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the Amazon Web Services General Reference.
 #' 
 #' This parameter is optional. However, if you do not pass any session
@@ -676,19 +676,19 @@ sts_get_caller_identity <- function() {
 #' granted in addition to the permissions that are granted by the session
 #' policies.
 #' 
-#' An Amazon Web Services conversion compresses the passed session policies
-#' and session tags into a packed binary format that has a separate limit.
-#' Your request can fail for this limit even if your plaintext meets the
-#' other requirements. The `PackedPolicySize` response element indicates by
-#' percentage how close the policies and tags for your request are to the
-#' upper size limit.
+#' An Amazon Web Services conversion compresses the passed inline session
+#' policy, managed policy ARNs, and session tags into a packed binary
+#' format that has a separate limit. Your request can fail for this limit
+#' even if your plaintext meets the other requirements. The
+#' `PackedPolicySize` response element indicates by percentage how close
+#' the policies and tags for your request are to the upper size limit.
 #' @param DurationSeconds The duration, in seconds, that the session should last. Acceptable
 #' durations for federation sessions range from 900 seconds (15 minutes) to
 #' 129,600 seconds (36 hours), with 43,200 seconds (12 hours) as the
-#' default. Sessions obtained using Amazon Web Services account root user
-#' credentials are restricted to a maximum of 3,600 seconds (one hour). If
-#' the specified duration is longer than one hour, the session obtained by
-#' using root user credentials defaults to one hour.
+#' default. Sessions obtained using root user credentials are restricted to
+#' a maximum of 3,600 seconds (one hour). If the specified duration is
+#' longer than one hour, the session obtained by using root user
+#' credentials defaults to one hour.
 #' @param Tags A list of session tags. Each session tag consists of a key name and an
 #' associated value. For more information about session tags, see [Passing
 #' Session Tags in
@@ -702,12 +702,12 @@ sts_get_caller_identity <- function() {
 #' Limits](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-quotas.html#reference_iam-limits-entity-length)
 #' in the *IAM User Guide*.
 #' 
-#' An Amazon Web Services conversion compresses the passed session policies
-#' and session tags into a packed binary format that has a separate limit.
-#' Your request can fail for this limit even if your plaintext meets the
-#' other requirements. The `PackedPolicySize` response element indicates by
-#' percentage how close the policies and tags for your request are to the
-#' upper size limit.
+#' An Amazon Web Services conversion compresses the passed inline session
+#' policy, managed policy ARNs, and session tags into a packed binary
+#' format that has a separate limit. Your request can fail for this limit
+#' even if your plaintext meets the other requirements. The
+#' `PackedPolicySize` response element indicates by percentage how close
+#' the policies and tags for your request are to the upper size limit.
 #' 
 #' You can pass a session tag with the same key as a tag that is already
 #' attached to the user you are federating. When you do, session tags
@@ -744,9 +744,9 @@ sts_get_federation_token <- function(Name, Policy = NULL, PolicyArns = NULL, Dur
 #' account or IAM user
 #'
 #' @description
-#' Returns a set of temporary credentials for an Amazon Web Services account or IAM user. The credentials consist of an access key ID, a secret access key, and a security token. Typically, you use [`get_session_token`][sts_get_session_token] if you want to use MFA to protect programmatic calls to specific Amazon Web Services API operations like Amazon EC2 `StopInstances`. MFA-enabled IAM users would need to call [`get_session_token`][sts_get_session_token] and submit an MFA code that is associated with their MFA device. Using the temporary security credentials that are returned from the call, IAM users can then make programmatic calls to API operations that require MFA authentication. If you do not supply a correct MFA code, then the API returns an access denied error. For a comparison of [`get_session_token`][sts_get_session_token] with the other API operations that produce temporary credentials, see [Requesting Temporary Security Credentials](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html) and [Comparing the Amazon Web Services STS API operations](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#stsapi_comparison) in the *IAM User Guide*.
+#' Returns a set of temporary credentials for an Amazon Web Services account or IAM user. The credentials consist of an access key ID, a secret access key, and a security token. Typically, you use [`get_session_token`][sts_get_session_token] if you want to use MFA to protect programmatic calls to specific Amazon Web Services API operations like Amazon EC2 `StopInstances`.
 #'
-#' See [https://paws-r.github.io/docs/sts/get_session_token.html](https://paws-r.github.io/docs/sts/get_session_token.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sts_get_session_token/](https://www.paws-r-sdk.com/docs/sts_get_session_token/) for full documentation.
 #'
 #' @param DurationSeconds The duration, in seconds, that the credentials should remain valid.
 #' Acceptable durations for IAM user sessions range from 900 seconds (15

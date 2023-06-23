@@ -6,29 +6,29 @@
 \usage{
 accessanalyzer_update_findings(
   analyzerArn,
-  clientToken = NULL,
+  status,
   ids = NULL,
   resourceArn = NULL,
-  status
+  clientToken = NULL
 )
 }
 \arguments{
 \item{analyzerArn}{[required] The \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources}{ARN of the analyzer}
 that generated the findings to update.}
 
-\item{clientToken}{A client token.}
+\item{status}{[required] The state represents the action to take to update the finding Status.
+Use \code{ARCHIVE} to change an Active finding to an Archived finding. Use
+\code{ACTIVE} to change an Archived finding to an Active finding.}
 
 \item{ids}{The IDs of the findings to update.}
 
 \item{resourceArn}{The ARN of the resource identified in the finding.}
 
-\item{status}{[required] The state represents the action to take to update the finding Status.
-Use \code{ARCHIVE} to change an Active finding to an Archived finding. Use
-\code{ACTIVE} to change an Archived finding to an Active finding.}
+\item{clientToken}{A client token.}
 }
 \description{
 Updates the status for the specified findings.
 
-See \url{https://paws-r.github.io/docs/accessanalyzer/update_findings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/accessanalyzer_update_findings/} for full documentation.
 }
 \keyword{internal}

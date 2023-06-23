@@ -16,12 +16,12 @@ spaces. You can also include any of the following characters: _+=,.@-}
 
 \item{PolicyArn}{[required] The Amazon Resource Name (ARN) of the IAM policy you want to detach.
 
-For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
 in the \emph{Amazon Web Services General Reference}.}
 }
 \description{
 Removes the specified managed policy from the specified user.
 
-See \url{https://paws-r.github.io/docs/iam/detach_user_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_detach_user_policy/} for full documentation.
 }
 \keyword{internal}

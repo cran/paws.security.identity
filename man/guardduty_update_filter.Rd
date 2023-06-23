@@ -19,7 +19,13 @@ you want to update a filter.}
 
 \item{FilterName}{[required] The name of the filter.}
 
-\item{Description}{The description of the filter.}
+\item{Description}{The description of the filter. Valid characters include alphanumeric
+characters, and special characters such as hyphen, period, colon,
+underscore, parentheses (\code{{ }}, \verb{[ ]}, and \verb{( )}), forward slash,
+horizontal tab, vertical tab, newline, form feed, return, and
+whitespace.
+
+[ ]: R:\%20}
 
 \item{Action}{Specifies the action that is to be applied to the findings that match
 the filter.}
@@ -33,6 +39,6 @@ findings.}
 \description{
 Updates the filter specified by the filter name.
 
-See \url{https://paws-r.github.io/docs/guardduty/update_filter.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/guardduty_update_filter/} for full documentation.
 }
 \keyword{internal}

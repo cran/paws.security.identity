@@ -7,12 +7,12 @@
 macie2_delete_findings_filter(id)
 }
 \arguments{
-\item{id}{[required] The unique identifier for the Amazon Macie resource or account that the
-request applies to.}
+\item{id}{[required] The unique identifier for the Amazon Macie resource that the request
+applies to.}
 }
 \description{
 Deletes a findings filter.
 
-See \url{https://paws-r.github.io/docs/macie2/delete_findings_filter.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/macie2_delete_findings_filter/} for full documentation.
 }
 \keyword{internal}

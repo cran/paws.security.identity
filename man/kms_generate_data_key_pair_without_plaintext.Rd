@@ -15,6 +15,9 @@ kms_generate_data_key_pair_without_plaintext(
 \item{EncryptionContext}{Specifies the encryption context that will be used when encrypting the
 private key in the data key pair.
 
+Do not include confidential or sensitive information in this field. This
+field may be displayed in plaintext in CloudTrail logs and other output.
+
 An \emph{encryption context} is a collection of non-secret key-value pairs
 that represent additional authenticated data. When you use an encryption
 context to encrypt data, you must specify the same (an exact
@@ -56,8 +59,7 @@ The KMS rule that restricts the use of asymmetric RSA and SM2 KMS keys
 to encrypt and decrypt or to sign and verify (but not both), and the
 rule that permits you to use ECC KMS keys only to sign and verify, are
 not effective on data key pairs, which are used outside of KMS. The SM2
-key spec is only available in China Regions. RSA and ECC asymmetric key
-pairs are also available in China Regions.}
+key spec is only available in China Regions.}
 
 \item{GrantTokens}{A list of grant tokens.
 
@@ -70,6 +72,6 @@ in the \emph{Key Management Service Developer Guide}.}
 \description{
 Returns a unique asymmetric data key pair for use outside of KMS. This operation returns a plaintext public key and a copy of the private key that is encrypted under the symmetric encryption KMS key you specify. Unlike \code{\link[=kms_generate_data_key_pair]{generate_data_key_pair}}, this operation does not return a plaintext private key. The bytes in the keys are random; they are not related to the caller or to the KMS key that is used to encrypt the private key.
 
-See \url{https://paws-r.github.io/docs/kms/generate_data_key_pair_without_plaintext.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kms_generate_data_key_pair_without_plaintext/} for full documentation.
 }
 \keyword{internal}

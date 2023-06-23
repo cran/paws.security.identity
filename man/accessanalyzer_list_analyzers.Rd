@@ -4,18 +4,18 @@
 \alias{accessanalyzer_list_analyzers}
 \title{Retrieves a list of analyzers}
 \usage{
-accessanalyzer_list_analyzers(maxResults = NULL, nextToken = NULL, type = NULL)
+accessanalyzer_list_analyzers(nextToken = NULL, maxResults = NULL, type = NULL)
 }
 \arguments{
-\item{maxResults}{The maximum number of results to return in the response.}
-
 \item{nextToken}{A token used for pagination of results returned.}
+
+\item{maxResults}{The maximum number of results to return in the response.}
 
 \item{type}{The type of analyzer.}
 }
 \description{
 Retrieves a list of analyzers.
 
-See \url{https://paws-r.github.io/docs/accessanalyzer/list_analyzers.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/accessanalyzer_list_analyzers/} for full documentation.
 }
 \keyword{internal}

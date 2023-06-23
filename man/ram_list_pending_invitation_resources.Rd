@@ -13,7 +13,7 @@ ram_list_pending_invitation_resources(
 )
 }
 \arguments{
-\item{resourceShareInvitationArn}{[required] Specifies the \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resoure Name (ARN)}
+\item{resourceShareInvitationArn}{[required] Specifies the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Name (ARN)}
 of the invitation. You can use
 \code{\link[=ram_get_resource_share_invitations]{get_resource_share_invitations}}
 to find the ARN of the invitation.}
@@ -51,6 +51,6 @@ The default value is \code{ALL}.}
 \description{
 Lists the resources in a resource share that is shared with you but for which the invitation is still \code{PENDING}. That means that you haven't accepted or rejected the invitation and the invitation hasn't expired.
 
-See \url{https://paws-r.github.io/docs/ram/list_pending_invitation_resources.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ram_list_pending_invitation_resources/} for full documentation.
 }
 \keyword{internal}

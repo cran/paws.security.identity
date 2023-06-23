@@ -27,12 +27,12 @@ To learn the service namespace for a service, see \href{https://docs.aws.amazon.
 in the \emph{IAM User Guide}. Choose the name of the service to view details
 for that service. In the first paragraph, find the service prefix. For
 example, \verb{(service prefix: a4b)}. For more information about service
-namespaces, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces}{Amazon Web Services service namespaces}
+namespaces, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html#genref-aws-service-namespaces}{Amazon Web Services service namespaces}
 in the \emph{Amazon Web Services General Reference}.}
 }
 \description{
 Retrieves a list of policies that the IAM identity (user, group, or role) can use to access each specified service.
 
-See \url{https://paws-r.github.io/docs/iam/list_policies_granting_service_access.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_list_policies_granting_service_access/} for full documentation.
 }
 \keyword{internal}

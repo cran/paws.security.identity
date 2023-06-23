@@ -11,7 +11,7 @@ iam_set_default_policy_version(PolicyArn, VersionId)
 \item{PolicyArn}{[required] The Amazon Resource Name (ARN) of the IAM policy whose default version
 you want to set.
 
-For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
 in the \emph{Amazon Web Services General Reference}.}
 
 \item{VersionId}{[required] The version of the policy to set as the default (operative) version.
@@ -22,6 +22,6 @@ in the \emph{IAM User Guide}.}
 \description{
 Sets the specified version of the specified policy as the policy's default (operative) version.
 
-See \url{https://paws-r.github.io/docs/iam/set_default_policy_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_set_default_policy_version/} for full documentation.
 }
 \keyword{internal}

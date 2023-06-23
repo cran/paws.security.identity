@@ -18,7 +18,7 @@ using the
 \code{\link[=iam_list_open_id_connect_providers]{list_open_id_connect_providers}}
 operation.
 
-For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
 in the \emph{Amazon Web Services General Reference}.}
 
 \item{ClientID}{[required] The client ID (also known as audience) to remove from the IAM OIDC
@@ -28,6 +28,6 @@ provider resource. For more information about client IDs, see
 \description{
 Removes the specified client ID (also known as audience) from the list of client IDs registered for the specified IAM OpenID Connect (OIDC) provider resource object.
 
-See \url{https://paws-r.github.io/docs/iam/remove_client_id_from_open_id_connect_provider.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_remove_client_id_from_open_id_connect_provider/} for full documentation.
 }
 \keyword{internal}

@@ -7,12 +7,12 @@
 securityhub_decline_invitations(AccountIds)
 }
 \arguments{
-\item{AccountIds}{[required] The list of account IDs for the accounts from which to decline the
-invitations to Security Hub.}
+\item{AccountIds}{[required] The list of prospective member account IDs for which to decline an
+invitation.}
 }
 \description{
 Declines invitations to become a member account.
 
-See \url{https://paws-r.github.io/docs/securityhub/decline_invitations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/securityhub_decline_invitations/} for full documentation.
 }
 \keyword{internal}

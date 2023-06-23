@@ -17,12 +17,12 @@ software that is used as your organization's IdP.}
 
 \item{SAMLProviderArn}{[required] The Amazon Resource Name (ARN) of the SAML provider to update.
 
-For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
 in the \emph{Amazon Web Services General Reference}.}
 }
 \description{
 Updates the metadata document for an existing SAML provider resource object.
 
-See \url{https://paws-r.github.io/docs/iam/update_saml_provider.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_update_saml_provider/} for full documentation.
 }
 \keyword{internal}

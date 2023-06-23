@@ -37,9 +37,20 @@ This value becomes the \code{VersionId} of the new version.}
 \item{Description}{The description of the secret.}
 
 \item{KmsKeyId}{The ARN, key ID, or alias of the KMS key that Secrets Manager uses to
-encrypt new secret versions as well as any existing versions the staging
-labels \code{AWSCURRENT}, \code{AWSPENDING}, or \code{AWSPREVIOUS}. For more
+encrypt new secret versions as well as any existing versions with the
+staging labels \code{AWSCURRENT}, \code{AWSPENDING}, or \code{AWSPREVIOUS}. For more
 information about versions and staging labels, see \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/getting-started.html#term_version}{Concepts: Version}.
+
+A key alias is always prefixed by \verb{alias/}, for example
+\code{alias/aws/secretsmanager}. For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/alias-about.html}{About aliases}.
+
+If you set this to an empty string, Secrets Manager uses the Amazon Web
+Services managed key \code{aws/secretsmanager}. If this key doesn't already
+exist in your account, then Secrets Manager creates it for you
+automatically. All users and roles in the Amazon Web Services account
+automatically have access to use \code{aws/secretsmanager}. Creating
+\code{aws/secretsmanager} can result in a one-time significant delay in
+returning the result.
 
 You can only use the Amazon Web Services managed key
 \code{aws/secretsmanager} if you call this operation using credentials from
@@ -66,6 +77,6 @@ Either \code{SecretBinary} or \code{SecretString} must have a value, but not bot
 \description{
 Modifies the details of a secret, including metadata and the secret value. To change the secret value, you can also use \code{\link[=secretsmanager_put_secret_value]{put_secret_value}}.
 
-See \url{https://paws-r.github.io/docs/secretsmanager/update_secret.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/secretsmanager_update_secret/} for full documentation.
 }
 \keyword{internal}

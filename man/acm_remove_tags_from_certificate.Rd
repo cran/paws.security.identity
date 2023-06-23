@@ -12,13 +12,13 @@ tags that you want to remove. This must be of the form:
 
 \code{arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012}
 
-For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}.}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}.}
 
 \item{Tags}{[required] The key-value pair that defines the tag to remove.}
 }
 \description{
 Remove one or more tags from an ACM certificate. A tag consists of a key-value pair. If you do not specify the value portion of the tag when calling this function, the tag will be removed regardless of value. If you specify a value, the tag is removed only if it is associated with the specified value.
 
-See \url{https://paws-r.github.io/docs/acm/remove_tags_from_certificate.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/acm_remove_tags_from_certificate/} for full documentation.
 }
 \keyword{internal}

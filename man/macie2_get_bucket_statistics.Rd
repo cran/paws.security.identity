@@ -2,8 +2,8 @@
 % Please edit documentation in R/macie2_operations.R
 \name{macie2_get_bucket_statistics}
 \alias{macie2_get_bucket_statistics}
-\title{Retrieves (queries) aggregated statistical data about S3 buckets that
-Amazon Macie monitors and analyzes}
+\title{Retrieves (queries) aggregated statistical data about all the S3 buckets
+that Amazon Macie monitors and analyzes for an account}
 \usage{
 macie2_get_bucket_statistics(accountId = NULL)
 }
@@ -11,8 +11,8 @@ macie2_get_bucket_statistics(accountId = NULL)
 \item{accountId}{The unique identifier for the Amazon Web Services account.}
 }
 \description{
-Retrieves (queries) aggregated statistical data about S3 buckets that Amazon Macie monitors and analyzes.
+Retrieves (queries) aggregated statistical data about all the S3 buckets that Amazon Macie monitors and analyzes for an account.
 
-See \url{https://paws-r.github.io/docs/macie2/get_bucket_statistics.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/macie2_get_bucket_statistics/} for full documentation.
 }
 \keyword{internal}

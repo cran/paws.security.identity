@@ -6,20 +6,20 @@
 \usage{
 accessanalyzer_list_archive_rules(
   analyzerName,
-  maxResults = NULL,
-  nextToken = NULL
+  nextToken = NULL,
+  maxResults = NULL
 )
 }
 \arguments{
 \item{analyzerName}{[required] The name of the analyzer to retrieve rules from.}
 
-\item{maxResults}{The maximum number of results to return in the request.}
-
 \item{nextToken}{A token used for pagination of results returned.}
+
+\item{maxResults}{The maximum number of results to return in the request.}
 }
 \description{
 Retrieves a list of archive rules created for the specified analyzer.
 
-See \url{https://paws-r.github.io/docs/accessanalyzer/list_archive_rules.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/accessanalyzer_list_archive_rules/} for full documentation.
 }
 \keyword{internal}

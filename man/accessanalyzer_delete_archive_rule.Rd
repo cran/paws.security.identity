@@ -4,19 +4,19 @@
 \alias{accessanalyzer_delete_archive_rule}
 \title{Deletes the specified archive rule}
 \usage{
-accessanalyzer_delete_archive_rule(analyzerName, clientToken = NULL, ruleName)
+accessanalyzer_delete_archive_rule(analyzerName, ruleName, clientToken = NULL)
 }
 \arguments{
 \item{analyzerName}{[required] The name of the analyzer that associated with the archive rule to
 delete.}
 
-\item{clientToken}{A client token.}
-
 \item{ruleName}{[required] The name of the rule to delete.}
+
+\item{clientToken}{A client token.}
 }
 \description{
 Deletes the specified archive rule.
 
-See \url{https://paws-r.github.io/docs/accessanalyzer/delete_archive_rule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/accessanalyzer_delete_archive_rule/} for full documentation.
 }
 \keyword{internal}

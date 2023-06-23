@@ -12,7 +12,7 @@ iam_list_policy_versions(PolicyArn, Marker = NULL, MaxItems = NULL)
 \item{PolicyArn}{[required] The Amazon Resource Name (ARN) of the IAM policy for which you want the
 versions.
 
-For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
 in the \emph{Amazon Web Services General Reference}.}
 
 \item{Marker}{Use this parameter only when paginating results and only after you
@@ -33,6 +33,6 @@ subsequent call that tells the service where to continue from.}
 \description{
 Lists information about the versions of the specified managed policy, including the version that is currently set as the policy's default version.
 
-See \url{https://paws-r.github.io/docs/iam/list_policy_versions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_list_policy_versions/} for full documentation.
 }
 \keyword{internal}

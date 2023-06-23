@@ -19,28 +19,31 @@ partial ARN. See \href{https://docs.aws.amazon.com/secretsmanager/latest/usergui
 \item{RecoveryWindowInDays}{The number of days from 7 to 30 that Secrets Manager waits before
 permanently deleting the secret. You can't use both this parameter and
 \code{ForceDeleteWithoutRecovery} in the same call. If you don't use either,
-then Secrets Manager defaults to a 30 day recovery window.}
+then by default Secrets Manager uses a 30 day recovery window.}
 
 \item{ForceDeleteWithoutRecovery}{Specifies whether to delete the secret without any recovery window. You
 can't use both this parameter and \code{RecoveryWindowInDays} in the same
-call. If you don't use either, then Secrets Manager defaults to a 30 day
-recovery window.
+call. If you don't use either, then by default Secrets Manager uses a 30
+day recovery window.
 
 Secrets Manager performs the actual deletion with an asynchronous
 background process, so there might be a short delay before the secret is
 permanently deleted. If you delete a secret and then immediately create
 a secret with the same name, use appropriate back off and retry logic.
 
+If you forcibly delete an already deleted or nonexistent secret, the
+operation does not return \code{ResourceNotFoundException}.
+
 Use this parameter with caution. This parameter causes the operation to
 skip the normal recovery window before the permanent deletion that
 Secrets Manager would normally impose with the \code{RecoveryWindowInDays}
-parameter. If you delete a secret with the \code{ForceDeleteWithouRecovery}
+parameter. If you delete a secret with the \code{ForceDeleteWithoutRecovery}
 parameter, then you have no opportunity to recover the secret. You lose
 the secret permanently.}
 }
 \description{
 Deletes a secret and all of its versions. You can specify a recovery window during which you can restore the secret. The minimum recovery window is 7 days. The default recovery window is 30 days. Secrets Manager attaches a \code{DeletionDate} stamp to the secret that specifies the end of the recovery window. At the end of the recovery window, Secrets Manager deletes the secret permanently.
 
-See \url{https://paws-r.github.io/docs/secretsmanager/delete_secret.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/secretsmanager_delete_secret/} for full documentation.
 }
 \keyword{internal}

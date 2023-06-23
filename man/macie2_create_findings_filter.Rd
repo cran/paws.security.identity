@@ -16,7 +16,7 @@ macie2_create_findings_filter(
 )
 }
 \arguments{
-\item{action}{[required] The action to perform on findings that meet the filter criteria
+\item{action}{[required] The action to perform on findings that match the filter criteria
 (findingCriteria). Valid values are: ARCHIVE, suppress (automatically
 archive) the findings; and, NOOP, don't perform any action on the
 findings.}
@@ -57,6 +57,6 @@ tag key and an associated tag value. The maximum length of a tag key is
 \description{
 Creates and defines the criteria and other settings for a findings filter.
 
-See \url{https://paws-r.github.io/docs/macie2/create_findings_filter.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/macie2_create_findings_filter/} for full documentation.
 }
 \keyword{internal}

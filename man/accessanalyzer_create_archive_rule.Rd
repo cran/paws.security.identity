@@ -6,23 +6,23 @@
 \usage{
 accessanalyzer_create_archive_rule(
   analyzerName,
-  clientToken = NULL,
+  ruleName,
   filter,
-  ruleName
+  clientToken = NULL
 )
 }
 \arguments{
 \item{analyzerName}{[required] The name of the created analyzer.}
 
-\item{clientToken}{A client token.}
+\item{ruleName}{[required] The name of the rule to create.}
 
 \item{filter}{[required] The criteria for the rule.}
 
-\item{ruleName}{[required] The name of the rule to create.}
+\item{clientToken}{A client token.}
 }
 \description{
 Creates an archive rule for the specified analyzer. Archive rules automatically archive new findings that meet the criteria you define when you create the rule.
 
-See \url{https://paws-r.github.io/docs/accessanalyzer/create_archive_rule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/accessanalyzer_create_archive_rule/} for full documentation.
 }
 \keyword{internal}

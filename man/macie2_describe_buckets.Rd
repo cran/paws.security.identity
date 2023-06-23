@@ -3,7 +3,7 @@
 \name{macie2_describe_buckets}
 \alias{macie2_describe_buckets}
 \title{Retrieves (queries) statistical data and other information about one or
-more S3 buckets that Amazon Macie monitors and analyzes}
+more S3 buckets that Amazon Macie monitors and analyzes for an account}
 \usage{
 macie2_describe_buckets(
   criteria = NULL,
@@ -24,8 +24,8 @@ paginated response.}
 \item{sortCriteria}{The criteria to use to sort the query results.}
 }
 \description{
-Retrieves (queries) statistical data and other information about one or more S3 buckets that Amazon Macie monitors and analyzes.
+Retrieves (queries) statistical data and other information about one or more S3 buckets that Amazon Macie monitors and analyzes for an account.
 
-See \url{https://paws-r.github.io/docs/macie2/describe_buckets.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/macie2_describe_buckets/} for full documentation.
 }
 \keyword{internal}

@@ -7,11 +7,11 @@
 securityhub_delete_action_target(ActionTargetArn)
 }
 \arguments{
-\item{ActionTargetArn}{[required] The ARN of the custom action target to delete.}
+\item{ActionTargetArn}{[required] The Amazon Resource Name (ARN) of the custom action target to delete.}
 }
 \description{
 Deletes a custom action target from Security Hub.
 
-See \url{https://paws-r.github.io/docs/securityhub/delete_action_target.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/securityhub_delete_action_target/} for full documentation.
 }
 \keyword{internal}

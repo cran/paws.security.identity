@@ -4,7 +4,12 @@
 \alias{guardduty_update_member_detectors}
 \title{Contains information on member accounts to be updated}
 \usage{
-guardduty_update_member_detectors(DetectorId, AccountIds, DataSources = NULL)
+guardduty_update_member_detectors(
+  DetectorId,
+  AccountIds,
+  DataSources = NULL,
+  Features = NULL
+)
 }
 \arguments{
 \item{DetectorId}{[required] The detector ID of the administrator account.}
@@ -12,10 +17,13 @@ guardduty_update_member_detectors(DetectorId, AccountIds, DataSources = NULL)
 \item{AccountIds}{[required] A list of member account IDs to be updated.}
 
 \item{DataSources}{Describes which data sources will be updated.}
+
+\item{Features}{A list of features that will be updated for the specified member
+accounts.}
 }
 \description{
 Contains information on member accounts to be updated.
 
-See \url{https://paws-r.github.io/docs/guardduty/update_member_detectors.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/guardduty_update_member_detectors/} for full documentation.
 }
 \keyword{internal}

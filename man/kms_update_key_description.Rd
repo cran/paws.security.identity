@@ -21,11 +21,14 @@ For example:
 To get the key ID and key ARN for a KMS key, use
 \code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
 
-\item{Description}{[required] New description for the KMS key.}
+\item{Description}{[required] New description for the KMS key.
+
+Do not include confidential or sensitive information in this field. This
+field may be displayed in plaintext in CloudTrail logs and other output.}
 }
 \description{
 Updates the description of a KMS key. To see the description of a KMS key, use \code{\link[=kms_describe_key]{describe_key}}.
 
-See \url{https://paws-r.github.io/docs/kms/update_key_description.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kms_update_key_description/} for full documentation.
 }
 \keyword{internal}

@@ -8,13 +8,13 @@ symmetric encryption KMS key}
 kms_enable_key_rotation(KeyId)
 }
 \arguments{
-\item{KeyId}{[required] Identifies a symmetric encryption KMS key. You cannot enable or disable
-automatic rotation of \href{https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html}{asymmetric KMS keys},
+\item{KeyId}{[required] Identifies a symmetric encryption KMS key. You cannot enable automatic
+rotation of \href{https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html}{asymmetric KMS keys},
 \href{https://docs.aws.amazon.com/kms/latest/developerguide/hmac.html}{HMAC KMS keys},
 KMS keys with \href{https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html}{imported key material},
 or KMS keys in a \href{https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{custom key store}.
-The key rotation status of these KMS keys is always \code{false}. To enable
-or disable automatic rotation of a set of related \href{https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-manage.html#multi-region-rotate}{multi-Region keys},
+To enable or disable automatic rotation of a set of related
+\href{https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-manage.html#multi-region-rotate}{multi-Region keys},
 set the property on the primary key.
 
 Specify the key ID or key ARN of the KMS key.
@@ -32,6 +32,6 @@ To get the key ID and key ARN for a KMS key, use
 \description{
 Enables \href{https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html}{automatic rotation of the key material} of the specified symmetric encryption KMS key.
 
-See \url{https://paws-r.github.io/docs/kms/enable_key_rotation.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kms_enable_key_rotation/} for full documentation.
 }
 \keyword{internal}

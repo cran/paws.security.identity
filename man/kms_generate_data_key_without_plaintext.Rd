@@ -40,6 +40,9 @@ get the alias name and alias ARN, use
 \item{EncryptionContext}{Specifies the encryption context that will be used when encrypting the
 data key.
 
+Do not include confidential or sensitive information in this field. This
+field may be displayed in plaintext in CloudTrail logs and other output.
+
 An \emph{encryption context} is a collection of non-secret key-value pairs
 that represent additional authenticated data. When you use an encryption
 context to encrypt data, you must specify the same (an exact
@@ -70,6 +73,6 @@ in the \emph{Key Management Service Developer Guide}.}
 \description{
 Returns a unique symmetric data key for use outside of KMS. This operation returns a data key that is encrypted under a symmetric encryption KMS key that you specify. The bytes in the key are random; they are not related to the caller or to the KMS key.
 
-See \url{https://paws-r.github.io/docs/kms/generate_data_key_without_plaintext.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kms_generate_data_key_without_plaintext/} for full documentation.
 }
 \keyword{internal}

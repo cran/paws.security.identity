@@ -17,7 +17,7 @@ idempotency of the request.}
 
 \item{findingPublishingFrequency}{Specifies how often to publish updates to policy findings for the
 account. This includes publishing updates to Security Hub and Amazon
-EventBridge (formerly called Amazon CloudWatch Events).}
+EventBridge (formerly Amazon CloudWatch Events).}
 
 \item{status}{Specifies the new status for the account. To enable Amazon Macie and
 start all Macie activities for the account, set this value to ENABLED.}
@@ -25,6 +25,6 @@ start all Macie activities for the account, set this value to ENABLED.}
 \description{
 Enables Amazon Macie and specifies the configuration settings for a Macie account.
 
-See \url{https://paws-r.github.io/docs/macie2/enable_macie.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/macie2_enable_macie/} for full documentation.
 }
 \keyword{internal}

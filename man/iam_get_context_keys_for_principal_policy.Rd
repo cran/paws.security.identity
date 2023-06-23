@@ -20,7 +20,7 @@ that are found in policies attached to that entity. Note that all
 parameters are shown in unencoded form here for clarity, but must be URL
 encoded to be included as a part of a real HTML request.
 
-For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
 in the \emph{Amazon Web Services General Reference}.}
 
 \item{PolicyInputList}{An optional list of additional policies for which you want the list of
@@ -41,6 +41,6 @@ carriage return (\verb{U+000D})
 \description{
 Gets a list of all of the context keys referenced in all the IAM policies that are attached to the specified IAM entity. The entity can be an IAM user, group, or role. If you specify a user, then the request also includes all of the policies attached to groups that the user is a member of.
 
-See \url{https://paws-r.github.io/docs/iam/get_context_keys_for_principal_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_get_context_keys_for_principal_policy/} for full documentation.
 }
 \keyword{internal}

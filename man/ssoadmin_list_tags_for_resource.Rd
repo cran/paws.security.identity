@@ -7,10 +7,9 @@
 ssoadmin_list_tags_for_resource(InstanceArn, ResourceArn, NextToken = NULL)
 }
 \arguments{
-\item{InstanceArn}{[required] The ARN of the Amazon Web Services SSO instance under which the
-operation will be executed. For more information about ARNs, see Amazon
-Resource Names (ARNs) and Amazon Web Services Service Namespaces in the
-\emph{Amazon Web Services General Reference}.}
+\item{InstanceArn}{[required] The ARN of the IAM Identity Center instance under which the operation
+will be executed. For more information about ARNs, see Amazon Resource
+Names (ARNs) and AWS Service Namespaces in the \emph{AWS General Reference}.}
 
 \item{ResourceArn}{[required] The ARN of the resource with the tags to be listed.}
 
@@ -20,6 +19,6 @@ the output of previous API calls to make subsequent calls.}
 \description{
 Lists the tags that are attached to a specified resource.
 
-See \url{https://paws-r.github.io/docs/ssoadmin/list_tags_for_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssoadmin_list_tags_for_resource/} for full documentation.
 }
 \keyword{internal}

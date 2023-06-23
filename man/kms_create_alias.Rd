@@ -10,6 +10,9 @@ kms_create_alias(AliasName, TargetKeyId)
 \item{AliasName}{[required] Specifies the alias name. This value must begin with \verb{alias/} followed
 by a name, such as \code{alias/ExampleAlias}.
 
+Do not include confidential or sensitive information in this field. This
+field may be displayed in plaintext in CloudTrail logs and other output.
+
 The \code{AliasName} value must be string of 1-256 characters. It can contain
 only alphanumeric characters, forward slashes (/), underscores (_), and
 dashes (-). The alias name cannot begin with \verb{alias/aws/}. The
@@ -39,6 +42,6 @@ To get the key ID and key ARN for a KMS key, use
 \description{
 Creates a friendly name for a KMS key.
 
-See \url{https://paws-r.github.io/docs/kms/create_alias.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kms_create_alias/} for full documentation.
 }
 \keyword{internal}

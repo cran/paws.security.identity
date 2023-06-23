@@ -5,17 +5,25 @@
 \title{Immediately starts a scan of the policies applied to the specified
 resource}
 \usage{
-accessanalyzer_start_resource_scan(analyzerArn, resourceArn)
+accessanalyzer_start_resource_scan(
+  analyzerArn,
+  resourceArn,
+  resourceOwnerAccount = NULL
+)
 }
 \arguments{
 \item{analyzerArn}{[required] The \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources}{ARN of the analyzer}
 to use to scan the policies applied to the specified resource.}
 
 \item{resourceArn}{[required] The ARN of the resource to scan.}
+
+\item{resourceOwnerAccount}{The Amazon Web Services account ID that owns the resource. For most
+Amazon Web Services resources, the owning account is the account in
+which the resource was created.}
 }
 \description{
 Immediately starts a scan of the policies applied to the specified resource.
 
-See \url{https://paws-r.github.io/docs/accessanalyzer/start_resource_scan.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/accessanalyzer_start_resource_scan/} for full documentation.
 }
 \keyword{internal}

@@ -26,7 +26,7 @@ To learn the service namespace for a service, see \href{https://docs.aws.amazon.
 in the \emph{IAM User Guide}. Choose the name of the service to view details
 for that service. In the first paragraph, find the service prefix. For
 example, \verb{(service prefix: a4b)}. For more information about service
-namespaces, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces}{Amazon Web Services service namespaces}
+namespaces, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html#genref-aws-service-namespaces}{Amazon Web Services service namespaces}
 in the \emph{Amazon Web Services General Reference}.}
 
 \item{MaxItems}{Use this only when paginating results to indicate the maximum number of
@@ -47,6 +47,6 @@ indicate where the next call should start.}
 \description{
 After you generate a group or policy report using the \code{\link[=iam_generate_service_last_accessed_details]{generate_service_last_accessed_details}} operation, you can use the \code{JobId} parameter in \code{\link[=iam_get_service_last_accessed_details_with_entities]{get_service_last_accessed_details_with_entities}}. This operation retrieves the status of your report job and a list of entities that could have used group or policy permissions to access the specified service.
 
-See \url{https://paws-r.github.io/docs/iam/get_service_last_accessed_details_with_entities.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_get_service_last_accessed_details_with_entities/} for full documentation.
 }
 \keyword{internal}

@@ -8,8 +8,8 @@ a member account}
 macie2_update_member_session(id, status)
 }
 \arguments{
-\item{id}{[required] The unique identifier for the Amazon Macie resource or account that the
-request applies to.}
+\item{id}{[required] The unique identifier for the Amazon Macie resource that the request
+applies to.}
 
 \item{status}{[required] Specifies the new status for the account. Valid values are: ENABLED,
 resume all Amazon Macie activities for the account; and, PAUSED, suspend
@@ -18,6 +18,6 @@ all Macie activities for the account.}
 \description{
 Enables an Amazon Macie administrator to suspend or re-enable Macie for a member account.
 
-See \url{https://paws-r.github.io/docs/macie2/update_member_session.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/macie2_update_member_session/} for full documentation.
 }
 \keyword{internal}

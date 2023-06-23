@@ -13,8 +13,8 @@ ssoadmin_list_customer_managed_policy_references_in_permission_set(
 )
 }
 \arguments{
-\item{InstanceArn}{[required] The ARN of the Amazon Web Services SSO instance under which the
-operation will be executed.}
+\item{InstanceArn}{[required] The ARN of the IAM Identity Center instance under which the operation
+will be executed.}
 
 \item{PermissionSetArn}{[required] The ARN of the \code{PermissionSet}.}
 
@@ -26,6 +26,6 @@ the output of previous API calls to make subsequent calls.}
 \description{
 Lists all customer managed policies attached to a specified PermissionSet.
 
-See \url{https://paws-r.github.io/docs/ssoadmin/list_customer_managed_policy_references_in_permission_set.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssoadmin_list_customer_managed_policy_references_in_permission_set/} for full documentation.
 }
 \keyword{internal}

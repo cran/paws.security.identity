@@ -32,16 +32,16 @@ automatically aggregate findings from new Regions.
 }}
 
 \item{Regions}{If \code{RegionLinkingMode} is \code{ALL_REGIONS_EXCEPT_SPECIFIED}, then this is a
-comma-separated list of Regions that do not aggregate findings to the
+space-separated list of Regions that do not aggregate findings to the
 aggregation Region.
 
 If \code{RegionLinkingMode} is \code{SPECIFIED_REGIONS}, then this is a
-comma-separated list of Regions that do aggregate findings to the
+space-separated list of Regions that do aggregate findings to the
 aggregation Region.}
 }
 \description{
 Used to enable finding aggregation. Must be called from the aggregation Region.
 
-See \url{https://paws-r.github.io/docs/securityhub/create_finding_aggregator.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/securityhub_create_finding_aggregator/} for full documentation.
 }
 \keyword{internal}

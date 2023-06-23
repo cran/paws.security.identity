@@ -14,12 +14,12 @@ ARNs by using the
 \code{\link[=iam_list_open_id_connect_providers]{list_open_id_connect_providers}}
 operation.
 
-For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
 in the \emph{Amazon Web Services General Reference}.}
 }
 \description{
 Returns information about the specified OpenID Connect (OIDC) provider resource object in IAM.
 
-See \url{https://paws-r.github.io/docs/iam/get_open_id_connect_provider.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_get_open_id_connect_provider/} for full documentation.
 }
 \keyword{internal}

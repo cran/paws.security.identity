@@ -18,7 +18,7 @@ provider ARNs by using the
 \code{\link[=iam_list_open_id_connect_providers]{list_open_id_connect_providers}}
 operation.
 
-For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
 in the \emph{Amazon Web Services General Reference}.}
 
 \item{ThumbprintList}{[required] A list of certificate thumbprints that are associated with the specified
@@ -28,6 +28,6 @@ IAM OpenID Connect provider. For more information, see
 \description{
 Replaces the existing list of server certificate thumbprints associated with an OpenID Connect (OIDC) provider resource object with a new list of thumbprints.
 
-See \url{https://paws-r.github.io/docs/iam/update_open_id_connect_provider_thumbprint.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_update_open_id_connect_provider_thumbprint/} for full documentation.
 }
 \keyword{internal}

@@ -32,6 +32,14 @@ test_that("describe_standards", {
   expect_error(svc$describe_standards(MaxResults = 20), NA)
 })
 
+test_that("list_automation_rules", {
+  expect_error(svc$list_automation_rules(), NA)
+})
+
+test_that("list_automation_rules", {
+  expect_error(svc$list_automation_rules(MaxResults = 20), NA)
+})
+
 test_that("list_enabled_products_for_import", {
   expect_error(svc$list_enabled_products_for_import(), NA)
 })
@@ -70,4 +78,12 @@ test_that("list_organization_admin_accounts", {
 
 test_that("list_organization_admin_accounts", {
   expect_error(svc$list_organization_admin_accounts(MaxResults = 20), NA)
+})
+
+test_that("list_security_control_definitions", {
+  expect_error(svc$list_security_control_definitions(), NA)
+})
+
+test_that("list_security_control_definitions", {
+  expect_error(svc$list_security_control_definitions(MaxResults = 20), NA)
 })

@@ -9,7 +9,8 @@ kms_generate_data_key(
   EncryptionContext = NULL,
   NumberOfBytes = NULL,
   KeySpec = NULL,
-  GrantTokens = NULL
+  GrantTokens = NULL,
+  Recipient = NULL
 )
 }
 \arguments{
@@ -39,6 +40,9 @@ get the alias name and alias ARN, use
 
 \item{EncryptionContext}{Specifies the encryption context that will be used when encrypting the
 data key.
+
+Do not include confidential or sensitive information in this field. This
+field may be displayed in plaintext in CloudTrail logs and other output.
 
 An \emph{encryption context} is a collection of non-secret key-value pairs
 that represent additional authenticated data. When you use an encryption
@@ -74,10 +78,32 @@ a new grant that has not yet achieved \emph{eventual consistency}. For more
 information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token}{Grant token}
 and \href{https://docs.aws.amazon.com/kms/latest/developerguide/grant-manage.html#using-grant-token}{Using a grant token}
 in the \emph{Key Management Service Developer Guide}.}
+
+\item{Recipient}{A signed \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/#term-attestdoc}{attestation document}
+from an Amazon Web Services Nitro enclave and the encryption algorithm
+to use with the enclave's public key. The only valid encryption
+algorithm is \code{RSAES_OAEP_SHA_256}.
+
+This parameter only supports attestation documents for Amazon Web
+Services Nitro Enclaves. To include this parameter, use the \href{https://docs.aws.amazon.com/enclaves/latest/user/developing-applications.html#sdk}{Amazon Web Services Nitro Enclaves SDK}
+or any Amazon Web Services SDK.
+
+When you use this parameter, instead of returning the plaintext data
+key, KMS encrypts the plaintext data key under the public key in the
+attestation document, and returns the resulting ciphertext in the
+\code{CiphertextForRecipient} field in the response. This ciphertext can be
+decrypted only with the private key in the enclave. The \code{CiphertextBlob}
+field in the response contains a copy of the data key encrypted under
+the KMS key specified by the \code{KeyId} parameter. The \code{Plaintext} field in
+the response is null or empty.
+
+For information about the interaction between KMS and Amazon Web
+Services Nitro Enclaves, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/services-nitro-enclaves.html}{How Amazon Web Services Nitro Enclaves uses KMS}
+in the \emph{Key Management Service Developer Guide}.}
 }
 \description{
 Returns a unique symmetric data key for use outside of KMS. This operation returns a plaintext copy of the data key and a copy that is encrypted under a symmetric encryption KMS key that you specify. The bytes in the plaintext key are random; they are not related to the caller or the KMS key. You can use the plaintext key to encrypt your data outside of KMS and store the encrypted data key with the encrypted data.
 
-See \url{https://paws-r.github.io/docs/kms/generate_data_key.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kms_generate_data_key/} for full documentation.
 }
 \keyword{internal}

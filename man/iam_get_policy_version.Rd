@@ -11,7 +11,7 @@ iam_get_policy_version(PolicyArn, VersionId)
 \item{PolicyArn}{[required] The Amazon Resource Name (ARN) of the managed policy that you want
 information about.
 
-For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
 in the \emph{Amazon Web Services General Reference}.}
 
 \item{VersionId}{[required] Identifies the policy version to retrieve.
@@ -24,6 +24,6 @@ digits.}
 \description{
 Retrieves information about the specified version of the specified managed policy, including the policy document.
 
-See \url{https://paws-r.github.io/docs/iam/get_policy_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_get_policy_version/} for full documentation.
 }
 \keyword{internal}

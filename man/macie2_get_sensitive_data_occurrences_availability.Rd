@@ -2,8 +2,8 @@
 % Please edit documentation in R/macie2_operations.R
 \name{macie2_get_sensitive_data_occurrences_availability}
 \alias{macie2_get_sensitive_data_occurrences_availability}
-\title{Checks whether occurrences of sensitive data can be retrieved (revealed)
-for a finding}
+\title{Checks whether occurrences of sensitive data can be retrieved for a
+finding}
 \usage{
 macie2_get_sensitive_data_occurrences_availability(findingId)
 }
@@ -11,8 +11,8 @@ macie2_get_sensitive_data_occurrences_availability(findingId)
 \item{findingId}{[required] The unique identifier for the finding.}
 }
 \description{
-Checks whether occurrences of sensitive data can be retrieved (revealed) for a finding.
+Checks whether occurrences of sensitive data can be retrieved for a finding.
 
-See \url{https://paws-r.github.io/docs/macie2/get_sensitive_data_occurrences_availability.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/macie2_get_sensitive_data_occurrences_availability/} for full documentation.
 }
 \keyword{internal}

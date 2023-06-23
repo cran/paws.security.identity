@@ -15,12 +15,12 @@ spaces. You can also include any of the following characters: _+=,.@-}
 
 \item{PolicyArn}{[required] The Amazon Resource Name (ARN) of the IAM policy you want to attach.
 
-For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
 in the \emph{Amazon Web Services General Reference}.}
 }
 \description{
 Attaches the specified managed policy to the specified IAM role. When you attach a managed policy to a role, the managed policy becomes part of the role's permission (access) policy.
 
-See \url{https://paws-r.github.io/docs/iam/attach_role_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_attach_role_policy/} for full documentation.
 }
 \keyword{internal}

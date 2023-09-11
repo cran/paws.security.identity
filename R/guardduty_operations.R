@@ -170,9 +170,33 @@ guardduty_create_detector <- function(Enable, ClientToken = NULL, FindingPublish
 #' 
 #' -   accountId
 #' 
+#' -   id
+#' 
 #' -   region
 #' 
-#' -   id
+#' -   severity
+#' 
+#'     To filter on the basis of severity, the API and CLI use the
+#'     following input list for the
+#'     [FindingCriteria](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_FindingCriteria.html)
+#'     condition:
+#' 
+#'     -   **Low**: `["1", "2", "3"]`
+#' 
+#'     -   **Medium**: `["4", "5", "6"]`
+#' 
+#'     -   **High**: `["7", "8", "9"]`
+#' 
+#'     For more information, see [Severity levels for GuardDuty
+#'     findings](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_findings.html#guardduty_findings-severity).
+#' 
+#' -   type
+#' 
+#' -   updatedAt
+#' 
+#'     Type: ISO 8601 string format: YYYY-MM-DDTHH:MM:SS.SSSZ or
+#'     YYYY-MM-DDTHH:MM:SSZ depending on whether the value contains
+#'     milliseconds.
 #' 
 #' -   resource.accessKeyDetails.accessKeyId
 #' 
@@ -188,7 +212,9 @@ guardduty_create_detector <- function(Enable, ClientToken = NULL, FindingPublish
 #' 
 #' -   resource.instanceDetails.instanceId
 #' 
-#' -   resource.instanceDetails.outpostArn
+#' -   resource.instanceDetails.tags.key
+#' 
+#' -   resource.instanceDetails.tags.value
 #' 
 #' -   resource.instanceDetails.networkInterfaces.ipv6Addresses
 #' 
@@ -206,11 +232,19 @@ guardduty_create_detector <- function(Enable, ClientToken = NULL, FindingPublish
 #' 
 #' -   resource.instanceDetails.networkInterfaces.vpcId
 #' 
-#' -   resource.instanceDetails.tags.key
-#' 
-#' -   resource.instanceDetails.tags.value
+#' -   resource.instanceDetails.outpostArn
 #' 
 #' -   resource.resourceType
+#' 
+#' -   resource.s3BucketDetails.publicAccess.effectivePermissions
+#' 
+#' -   resource.s3BucketDetails.name
+#' 
+#' -   resource.s3BucketDetails.tags.key
+#' 
+#' -   resource.s3BucketDetails.tags.value
+#' 
+#' -   resource.s3BucketDetails.type
 #' 
 #' -   service.action.actionType
 #' 
@@ -219,8 +253,6 @@ guardduty_create_detector <- function(Enable, ClientToken = NULL, FindingPublish
 #' -   service.action.awsApiCallAction.callerType
 #' 
 #' -   service.action.awsApiCallAction.errorCode
-#' 
-#' -   service.action.awsApiCallAction.userAgent
 #' 
 #' -   service.action.awsApiCallAction.remoteIpDetails.city.cityName
 #' 
@@ -244,8 +276,6 @@ guardduty_create_detector <- function(Enable, ClientToken = NULL, FindingPublish
 #' 
 #' -   service.action.networkConnectionAction.protocol
 #' 
-#' -   service.action.networkConnectionAction.localIpDetails.ipAddressV4
-#' 
 #' -   service.action.networkConnectionAction.remoteIpDetails.city.cityName
 #' 
 #' -   service.action.networkConnectionAction.remoteIpDetails.country.countryName
@@ -258,29 +288,77 @@ guardduty_create_detector <- function(Enable, ClientToken = NULL, FindingPublish
 #' 
 #' -   service.action.networkConnectionAction.remotePortDetails.port
 #' 
+#' -   service.action.awsApiCallAction.remoteAccountDetails.affiliated
+#' 
+#' -   service.action.kubernetesApiCallAction.remoteIpDetails.ipAddressV4
+#' 
+#' -   service.action.kubernetesApiCallAction.requestUri
+#' 
+#' -   service.action.networkConnectionAction.localIpDetails.ipAddressV4
+#' 
+#' -   service.action.networkConnectionAction.protocol
+#' 
+#' -   service.action.awsApiCallAction.serviceName
+#' 
+#' -   service.action.awsApiCallAction.remoteAccountDetails.accountId
+#' 
 #' -   service.additionalInfo.threatListName
-#' 
-#' -   resource.s3BucketDetails.publicAccess.effectivePermissions
-#' 
-#' -   resource.s3BucketDetails.name
-#' 
-#' -   resource.s3BucketDetails.tags.key
-#' 
-#' -   resource.s3BucketDetails.tags.value
-#' 
-#' -   resource.s3BucketDetails.type
 #' 
 #' -   service.resourceRole
 #' 
-#' -   severity
+#' -   resource.eksClusterDetails.name
 #' 
-#' -   type
+#' -   resource.kubernetesDetails.kubernetesWorkloadDetails.name
 #' 
-#' -   updatedAt
+#' -   resource.kubernetesDetails.kubernetesWorkloadDetails.namespace
 #' 
-#'     Type: ISO 8601 string format: YYYY-MM-DDTHH:MM:SS.SSSZ or
-#'     YYYY-MM-DDTHH:MM:SSZ depending on whether the value contains
-#'     milliseconds.
+#' -   resource.kubernetesDetails.kubernetesUserDetails.username
+#' 
+#' -   resource.kubernetesDetails.kubernetesWorkloadDetails.containers.image
+#' 
+#' -   resource.kubernetesDetails.kubernetesWorkloadDetails.containers.imagePrefix
+#' 
+#' -   service.ebsVolumeScanDetails.scanId
+#' 
+#' -   service.ebsVolumeScanDetails.scanDetections.threatDetectedByName.threatNames.name
+#' 
+#' -   service.ebsVolumeScanDetails.scanDetections.threatDetectedByName.threatNames.severity
+#' 
+#' -   service.ebsVolumeScanDetails.scanDetections.threatDetectedByName.threatNames.filePaths.hash
+#' 
+#' -   resource.ecsClusterDetails.name
+#' 
+#' -   resource.ecsClusterDetails.taskDetails.containers.image
+#' 
+#' -   resource.ecsClusterDetails.taskDetails.definitionArn
+#' 
+#' -   resource.containerDetails.image
+#' 
+#' -   resource.rdsDbInstanceDetails.dbInstanceIdentifier
+#' 
+#' -   resource.rdsDbInstanceDetails.dbClusterIdentifier
+#' 
+#' -   resource.rdsDbInstanceDetails.engine
+#' 
+#' -   resource.rdsDbUserDetails.user
+#' 
+#' -   resource.rdsDbInstanceDetails.tags.key
+#' 
+#' -   resource.rdsDbInstanceDetails.tags.value
+#' 
+#' -   service.runtimeDetails.process.executableSha256
+#' 
+#' -   service.runtimeDetails.process.name
+#' 
+#' -   service.runtimeDetails.process.name
+#' 
+#' -   resource.lambdaDetails.functionName
+#' 
+#' -   resource.lambdaDetails.functionArn
+#' 
+#' -   resource.lambdaDetails.tags.key
+#' 
+#' -   resource.lambdaDetails.tags.value
 #' @param ClientToken The idempotency token for the create request.
 #' @param Tags The tags to be added to a new filter resource.
 #'
@@ -761,7 +839,7 @@ guardduty_describe_malware_scans <- function(DetectorId, NextToken = NULL, MaxRe
     name = "DescribeMalwareScans",
     http_method = "POST",
     http_path = "/detector/{detectorId}/malware-scans",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Scans")
   )
   input <- .guardduty$describe_malware_scans_input(DetectorId = DetectorId, NextToken = NextToken, MaxResults = MaxResults, FilterCriteria = FilterCriteria, SortCriteria = SortCriteria)
   output <- .guardduty$describe_malware_scans_output()
@@ -799,7 +877,7 @@ guardduty_describe_organization_configuration <- function(DetectorId, MaxResults
     name = "DescribeOrganizationConfiguration",
     http_method = "GET",
     http_path = "/detector/{detectorId}/admin",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .guardduty$describe_organization_configuration_input(DetectorId = DetectorId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .guardduty$describe_organization_configuration_output()
@@ -934,11 +1012,11 @@ guardduty_disassociate_from_master_account <- function(DetectorId) {
 }
 .guardduty$operations$disassociate_from_master_account <- guardduty_disassociate_from_master_account
 
-#' Disassociates GuardDuty member accounts (to the current administrator
+#' Disassociates GuardDuty member accounts (from the current administrator
 #' account) specified by the account IDs
 #'
 #' @description
-#' Disassociates GuardDuty member accounts (to the current administrator account) specified by the account IDs.
+#' Disassociates GuardDuty member accounts (from the current administrator account) specified by the account IDs.
 #'
 #' See [https://www.paws-r-sdk.com/docs/guardduty_disassociate_members/](https://www.paws-r-sdk.com/docs/guardduty_disassociate_members/) for full documentation.
 #'
@@ -1454,7 +1532,7 @@ guardduty_get_usage_statistics <- function(DetectorId, UsageStatisticType, Usage
     name = "GetUsageStatistics",
     http_method = "POST",
     http_path = "/detector/{detectorId}/usage/statistics",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .guardduty$get_usage_statistics_input(DetectorId = DetectorId, UsageStatisticType = UsageStatisticType, UsageCriteria = UsageCriteria, Unit = Unit, MaxResults = MaxResults, NextToken = NextToken)
   output <- .guardduty$get_usage_statistics_output()
@@ -1466,14 +1544,12 @@ guardduty_get_usage_statistics <- function(DetectorId, UsageStatisticType, Usage
 }
 .guardduty$operations$get_usage_statistics <- guardduty_get_usage_statistics
 
-#' Invites other Amazon Web Services accounts (created as members of the
-#' current Amazon Web Services account by CreateMembers) to enable
-#' GuardDuty, and allow the current Amazon Web Services account to view and
-#' manage these accounts' findings on their behalf as the GuardDuty
-#' administrator account
+#' Invites Amazon Web Services accounts to become members of an
+#' organization administered by the Amazon Web Services account that
+#' invokes this API
 #'
 #' @description
-#' Invites other Amazon Web Services accounts (created as members of the current Amazon Web Services account by CreateMembers) to enable GuardDuty, and allow the current Amazon Web Services account to view and manage these accounts' findings on their behalf as the GuardDuty administrator account.
+#' Invites Amazon Web Services accounts to become members of an organization administered by the Amazon Web Services account that invokes this API. If you are using Amazon Web Services Organizations to manager your GuardDuty environment, this step is not needed. For more information, see [Managing accounts with Amazon Web Services Organizations](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_organizations.html).
 #'
 #' See [https://www.paws-r-sdk.com/docs/guardduty_invite_members/](https://www.paws-r-sdk.com/docs/guardduty_invite_members/) for full documentation.
 #'
@@ -1532,7 +1608,7 @@ guardduty_list_coverage <- function(DetectorId, NextToken = NULL, MaxResults = N
     name = "ListCoverage",
     http_method = "POST",
     http_path = "/detector/{detectorId}/coverage",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Resources")
   )
   input <- .guardduty$list_coverage_input(DetectorId = DetectorId, NextToken = NextToken, MaxResults = MaxResults, FilterCriteria = FilterCriteria, SortCriteria = SortCriteria)
   output <- .guardduty$list_coverage_output()
@@ -1568,7 +1644,7 @@ guardduty_list_detectors <- function(MaxResults = NULL, NextToken = NULL) {
     name = "ListDetectors",
     http_method = "GET",
     http_path = "/detector",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "DetectorIds")
   )
   input <- .guardduty$list_detectors_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .guardduty$list_detectors_output()
@@ -1604,7 +1680,7 @@ guardduty_list_filters <- function(DetectorId, MaxResults = NULL, NextToken = NU
     name = "ListFilters",
     http_method = "GET",
     http_path = "/detector/{detectorId}/filter",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "FilterNames")
   )
   input <- .guardduty$list_filters_input(DetectorId = DetectorId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .guardduty$list_filters_output()
@@ -1746,7 +1822,7 @@ guardduty_list_findings <- function(DetectorId, FindingCriteria = NULL, SortCrit
     name = "ListFindings",
     http_method = "POST",
     http_path = "/detector/{detectorId}/findings",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "FindingIds")
   )
   input <- .guardduty$list_findings_input(DetectorId = DetectorId, FindingCriteria = FindingCriteria, SortCriteria = SortCriteria, MaxResults = MaxResults, NextToken = NextToken)
   output <- .guardduty$list_findings_output()
@@ -1781,7 +1857,7 @@ guardduty_list_ip_sets <- function(DetectorId, MaxResults = NULL, NextToken = NU
     name = "ListIPSets",
     http_method = "GET",
     http_path = "/detector/{detectorId}/ipset",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "IpSetIds")
   )
   input <- .guardduty$list_ip_sets_input(DetectorId = DetectorId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .guardduty$list_ip_sets_output()
@@ -1817,7 +1893,7 @@ guardduty_list_invitations <- function(MaxResults = NULL, NextToken = NULL) {
     name = "ListInvitations",
     http_method = "GET",
     http_path = "/invitation",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Invitations")
   )
   input <- .guardduty$list_invitations_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .guardduty$list_invitations_output()
@@ -1859,7 +1935,7 @@ guardduty_list_members <- function(DetectorId, MaxResults = NULL, NextToken = NU
     name = "ListMembers",
     http_method = "GET",
     http_path = "/detector/{detectorId}/member",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Members")
   )
   input <- .guardduty$list_members_input(DetectorId = DetectorId, MaxResults = MaxResults, NextToken = NextToken, OnlyAssociated = OnlyAssociated)
   output <- .guardduty$list_members_output()
@@ -1892,7 +1968,7 @@ guardduty_list_organization_admin_accounts <- function(MaxResults = NULL, NextTo
     name = "ListOrganizationAdminAccounts",
     http_method = "GET",
     http_path = "/admin",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AdminAccounts")
   )
   input <- .guardduty$list_organization_admin_accounts_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .guardduty$list_organization_admin_accounts_output()
@@ -1927,7 +2003,7 @@ guardduty_list_publishing_destinations <- function(DetectorId, MaxResults = NULL
     name = "ListPublishingDestinations",
     http_method = "GET",
     http_path = "/detector/{detectorId}/publishingDestination",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .guardduty$list_publishing_destinations_input(DetectorId = DetectorId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .guardduty$list_publishing_destinations_output()
@@ -1942,7 +2018,7 @@ guardduty_list_publishing_destinations <- function(DetectorId, MaxResults = NULL
 #' Lists tags for a resource
 #'
 #' @description
-#' Lists tags for a resource. Tagging is currently supported for detectors, finding filters, IP sets, and threat intel sets, with a limit of 50 tags per resource. When invoked, this operation returns all assigned tags for a given resource.
+#' Lists tags for a resource. Tagging is currently supported for detectors, finding filters, IP sets, threat intel sets, and publishing destination, with a limit of 50 tags per each resource. When invoked, this operation returns all assigned tags for a given resource.
 #'
 #' See [https://www.paws-r-sdk.com/docs/guardduty_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/guardduty_list_tags_for_resource/) for full documentation.
 #'
@@ -1995,7 +2071,7 @@ guardduty_list_threat_intel_sets <- function(DetectorId, MaxResults = NULL, Next
     name = "ListThreatIntelSets",
     http_method = "GET",
     http_path = "/detector/{detectorId}/threatintelset",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ThreatIntelSetIds")
   )
   input <- .guardduty$list_threat_intel_sets_input(DetectorId = DetectorId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .guardduty$list_threat_intel_sets_output()

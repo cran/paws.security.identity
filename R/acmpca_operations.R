@@ -634,12 +634,12 @@ acmpca_import_certificate_authority_certificate <- function(CertificateAuthority
 #' in RFC 5280.
 #' @param IdempotencyToken Alphanumeric string that can be used to distinguish between calls to the
 #' **IssueCertificate** action. Idempotency tokens for **IssueCertificate**
-#' time out after one minute. Therefore, if you call **IssueCertificate**
-#' multiple times with the same idempotency token within one minute, Amazon
-#' Web Services Private CA recognizes that you are requesting only one
-#' certificate and will issue only one. If you change the idempotency token
-#' for each call, Amazon Web Services Private CA recognizes that you are
-#' requesting multiple certificates.
+#' time out after five minutes. Therefore, if you call **IssueCertificate**
+#' multiple times with the same idempotency token within five minutes,
+#' Amazon Web Services Private CA recognizes that you are requesting only
+#' one certificate and will issue only one. If you change the idempotency
+#' token for each call, Amazon Web Services Private CA recognizes that you
+#' are requesting multiple certificates.
 #'
 #' @keywords internal
 #'
@@ -688,7 +688,7 @@ acmpca_list_certificate_authorities <- function(NextToken = NULL, MaxResults = N
     name = "ListCertificateAuthorities",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "CertificateAuthorities")
   )
   input <- .acmpca$list_certificate_authorities_input(NextToken = NextToken, MaxResults = MaxResults, ResourceOwner = ResourceOwner)
   output <- .acmpca$list_certificate_authorities_output()
@@ -733,7 +733,7 @@ acmpca_list_permissions <- function(CertificateAuthorityArn, NextToken = NULL, M
     name = "ListPermissions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Permissions")
   )
   input <- .acmpca$list_permissions_input(CertificateAuthorityArn = CertificateAuthorityArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .acmpca$list_permissions_output()
@@ -775,7 +775,7 @@ acmpca_list_tags <- function(CertificateAuthorityArn, NextToken = NULL, MaxResul
     name = "ListTags",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Tags")
   )
   input <- .acmpca$list_tags_input(CertificateAuthorityArn = CertificateAuthorityArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .acmpca$list_tags_output()

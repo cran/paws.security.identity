@@ -1,6 +1,6 @@
 Package: paws.security.identity
 Title: 'Amazon Web Services' Security, Identity, & Compliance Services
-Version: 0.4.0
+Version: 0.5.0
 Authors@R: c(
     person("David", "Kretch", , "david.kretch@gmail.com", role = "aut"),
     person("Adam", "Banker", , "adam.banker39@gmail.com", role = "aut"),
@@ -47,27 +47,32 @@ Collate: 'accessanalyzer_service.R' 'accessanalyzer_interfaces.R'
         'inspector_service.R' 'inspector_interfaces.R'
         'inspector_operations.R' 'kms_service.R' 'kms_interfaces.R'
         'kms_operations.R' 'macie2_service.R' 'macie2_interfaces.R'
-        'macie2_operations.R' 'macie_service.R' 'macie_interfaces.R'
-        'macie_operations.R' 'ram_service.R' 'ram_interfaces.R'
-        'ram_operations.R' 'reexports_paws.common.R'
-        'secretsmanager_service.R' 'secretsmanager_interfaces.R'
-        'secretsmanager_operations.R' 'securityhub_service.R'
-        'securityhub_interfaces.R' 'securityhub_operations.R'
+        'macie2_operations.R' 'pcaconnectorad_service.R'
+        'pcaconnectorad_interfaces.R' 'pcaconnectorad_operations.R'
+        'ram_service.R' 'ram_interfaces.R' 'ram_operations.R'
+        'reexports_paws.common.R' 'secretsmanager_service.R'
+        'secretsmanager_interfaces.R' 'secretsmanager_operations.R'
+        'securityhub_service.R' 'securityhub_interfaces.R'
+        'securityhub_operations.R' 'securitylake_service.R'
+        'securitylake_interfaces.R' 'securitylake_operations.R'
         'shield_service.R' 'shield_interfaces.R' 'shield_operations.R'
         'sso_service.R' 'sso_interfaces.R' 'sso_operations.R'
         'ssoadmin_service.R' 'ssoadmin_interfaces.R'
         'ssoadmin_operations.R' 'ssooidc_service.R'
         'ssooidc_interfaces.R' 'ssooidc_operations.R' 'sts_service.R'
-        'sts_interfaces.R' 'sts_operations.R' 'waf_service.R'
+        'sts_interfaces.R' 'sts_operations.R'
+        'verifiedpermissions_service.R'
+        'verifiedpermissions_interfaces.R'
+        'verifiedpermissions_operations.R' 'waf_service.R'
         'waf_interfaces.R' 'waf_operations.R' 'wafregional_service.R'
         'wafregional_interfaces.R' 'wafregional_operations.R'
         'wafv2_service.R' 'wafv2_interfaces.R' 'wafv2_operations.R'
 NeedsCompilation: no
-Packaged: 2023-09-11 15:37:04 UTC; dyfanjones
+Packaged: 2024-01-09 17:42:46 UTC; dyfanjones
 Author: David Kretch [aut],
   Adam Banker [aut],
   Dyfan Jones [cre],
   Amazon.com, Inc. [cph]
 Maintainer: Dyfan Jones <dyfan.r.jones@gmail.com>
 Repository: CRAN
-Date/Publication: 2023-09-11 19:20:02 UTC
+Date/Publication: 2024-01-10 11:30:02 UTC

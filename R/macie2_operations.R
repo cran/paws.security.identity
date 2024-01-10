@@ -155,9 +155,8 @@ macie2_create_allow_list <- function(clientToken, criteria, description = NULL, 
 #' @param managedDataIdentifierSelector The selection type to apply when determining which managed data
 #' identifiers the job uses to analyze data. Valid values are:
 #' 
-#' -   ALL (default) - Use all managed data identifiers. If you specify
-#'     this value, don't specify any values for the
-#'     managedDataIdentifierIds property.
+#' -   ALL - Use all managed data identifiers. If you specify this value,
+#'     don't specify any values for the managedDataIdentifierIds property.
 #' 
 #' -   EXCLUDE - Use all managed data identifiers except the ones specified
 #'     by the managedDataIdentifierIds property.
@@ -166,23 +165,23 @@ macie2_create_allow_list <- function(clientToken, criteria, description = NULL, 
 #'     managedDataIdentifierIds property.
 #' 
 #' -   NONE - Don't use any managed data identifiers. If you specify this
-#'     value, specify at least one custom data identifier for the job
-#'     (customDataIdentifierIds) and don't specify any values for the
+#'     value, specify at least one value for the customDataIdentifierIds
+#'     property and don't specify any values for the
 #'     managedDataIdentifierIds property.
 #' 
-#' -   RECOMMENDED - Use only the set of managed data identifiers that
-#'     Amazon Web Services recommends for jobs. If you specify this value,
-#'     don't specify any values for the managedDataIdentifierIds property.
+#' -   RECOMMENDED (default) - Use the recommended set of managed data
+#'     identifiers. If you specify this value, don't specify any values for
+#'     the managedDataIdentifierIds property.
 #' 
-#' If you don't specify a value for this property, the job uses all managed
-#' data identifiers.
+#' If you don't specify a value for this property, the job uses the
+#' recommended set of managed data identifiers.
 #' 
-#' If the job is a recurring job and you don't specify a value for this
-#' property or you specify ALL or EXCLUDE, each job run automatically uses
-#' new managed data identifiers that are released. If you specify
+#' If the job is a recurring job and you specify ALL or EXCLUDE, each job
+#' run automatically uses new managed data identifiers that are released.
+#' If you don't specify a value for this property or you specify
 #' RECOMMENDED for a recurring job, each job run automatically uses all the
-#' managed data identifiers that are in the recommended set when the job
-#' starts to run.
+#' managed data identifiers that are in the recommended set when the run
+#' starts.
 #' 
 #' For information about individual managed data identifiers or to
 #' determine which ones are in the recommended set, see [Using managed data
@@ -2733,20 +2732,21 @@ macie2_update_resource_profile_detections <- function(resourceArn, suppressDataI
 #'
 #' See [https://www.paws-r-sdk.com/docs/macie2_update_reveal_configuration/](https://www.paws-r-sdk.com/docs/macie2_update_reveal_configuration/) for full documentation.
 #'
-#' @param configuration &#91;required&#93; The new configuration settings and the status of the configuration for
-#' the account.
+#' @param configuration &#91;required&#93; The KMS key to use to encrypt the sensitive data, and the status of the
+#' configuration for the Amazon Macie account.
+#' @param retrievalConfiguration The access method and settings to use to retrieve the sensitive data.
 #'
 #' @keywords internal
 #'
 #' @rdname macie2_update_reveal_configuration
-macie2_update_reveal_configuration <- function(configuration) {
+macie2_update_reveal_configuration <- function(configuration, retrievalConfiguration = NULL) {
   op <- new_operation(
     name = "UpdateRevealConfiguration",
     http_method = "PUT",
     http_path = "/reveal-configuration",
     paginator = list()
   )
-  input <- .macie2$update_reveal_configuration_input(configuration = configuration)
+  input <- .macie2$update_reveal_configuration_input(configuration = configuration, retrievalConfiguration = retrievalConfiguration)
   output <- .macie2$update_reveal_configuration_output()
   config <- get_config()
   svc <- .macie2$service(config)
@@ -2777,7 +2777,7 @@ macie2_update_reveal_configuration <- function(configuration) {
 #' @param id &#91;required&#93; The unique identifier for the Amazon Macie resource that the request
 #' applies to.
 #' @param includes The allow lists, custom data identifiers, and managed data identifiers
-#' to include (use) when analyzing data.
+#' to explicitly include (use) when analyzing data.
 #'
 #' @keywords internal
 #'

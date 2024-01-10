@@ -3,6 +3,49 @@
 #' @include secretsmanager_service.R
 NULL
 
+#' Retrieves the contents of the encrypted fields SecretString or
+#' SecretBinary for up to 20 secrets
+#'
+#' @description
+#' Retrieves the contents of the encrypted fields `SecretString` or `SecretBinary` for up to 20 secrets. To retrieve a single secret, call [`get_secret_value`][secretsmanager_get_secret_value].
+#'
+#' See [https://www.paws-r-sdk.com/docs/secretsmanager_batch_get_secret_value/](https://www.paws-r-sdk.com/docs/secretsmanager_batch_get_secret_value/) for full documentation.
+#'
+#' @param SecretIdList The ARN or names of the secrets to retrieve. You must include `Filters`
+#' or `SecretIdList`, but not both.
+#' @param Filters The filters to choose which secrets to retrieve. You must include
+#' `Filters` or `SecretIdList`, but not both.
+#' @param MaxResults The number of results to include in the response.
+#' 
+#' If there are more results available, in the response, Secrets Manager
+#' includes `NextToken`. To get the next results, call
+#' [`batch_get_secret_value`][secretsmanager_batch_get_secret_value] again
+#' with the value from `NextToken`.
+#' @param NextToken A token that indicates where the output should continue from, if a
+#' previous call did not show all results. To get the next results, call
+#' [`batch_get_secret_value`][secretsmanager_batch_get_secret_value] again
+#' with this value.
+#'
+#' @keywords internal
+#'
+#' @rdname secretsmanager_batch_get_secret_value
+secretsmanager_batch_get_secret_value <- function(SecretIdList = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "BatchGetSecretValue",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
+  )
+  input <- .secretsmanager$batch_get_secret_value_input(SecretIdList = SecretIdList, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .secretsmanager$batch_get_secret_value_output()
+  config <- get_config()
+  svc <- .secretsmanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.secretsmanager$operations$batch_get_secret_value <- secretsmanager_batch_get_secret_value
+
 #' Turns off automatic rotation, and if a rotation is currently in
 #' progress, cancels the rotation
 #'
@@ -60,10 +103,11 @@ secretsmanager_cancel_rotate_secret <- function(SecretId) {
 #' If you use the Amazon Web Services CLI or one of the Amazon Web Services
 #' SDKs to call this operation, then you can leave this parameter empty.
 #' The CLI or SDK generates a random UUID for you and includes it as the
-#' value for this parameter in the request. If you don't use the SDK and
-#' instead generate a raw HTTP request to the Secrets Manager service
-#' endpoint, then you must generate a `ClientRequestToken` yourself for the
-#' new version and include the value in the request.
+#' value for this parameter in the request.
+#' 
+#' If you generate a raw HTTP request to the Secrets Manager service
+#' endpoint, then you must generate a `ClientRequestToken` and include it
+#' in the request.
 #' 
 #' This value helps ensure idempotency. Secrets Manager uses this value to
 #' prevent the accidental creation of duplicate versions if there are
@@ -147,26 +191,9 @@ secretsmanager_cancel_rotate_secret <- function(SecretId) {
 #' parameter, you should use single quotes to avoid confusion with the
 #' double quotes required in the JSON text.
 #' 
-#' The following restrictions apply to tags:
-#' 
-#' -   Maximum number of tags per secret: 50
-#' 
-#' -   Maximum key length: 127 Unicode characters in UTF-8
-#' 
-#' -   Maximum value length: 255 Unicode characters in UTF-8
-#' 
-#' -   Tag keys and values are case sensitive.
-#' 
-#' -   Do not use the `aws:` prefix in your tag names or values because
-#'     Amazon Web Services reserves it for Amazon Web Services use. You
-#'     can't edit or delete tag names or values with this prefix. Tags with
-#'     this prefix do not count against your tags per secret limit.
-#' 
-#' -   If you use your tagging schema across multiple services and
-#'     resources, other services might have restrictions on allowed
-#'     characters. Generally allowed characters: letters, spaces, and
-#'     numbers representable in UTF-8, plus the following special
-#'     characters: + - = . _ : / @@.
+#' For tag quotas and naming restrictions, see [Service quotas for
+#' Tagging](https://docs.aws.amazon.com/general/latest/gr/arg.html#taged-reference-quotas)
+#' in the *Amazon Web Services General Reference guide*.
 #' @param AddReplicaRegions A list of Regions and KMS keys to replicate secrets.
 #' @param ForceOverwriteReplicaSecret Specifies whether to overwrite a secret with the same name in the
 #' destination Region. By default, secrets aren't overwritten.
@@ -593,18 +620,19 @@ secretsmanager_put_resource_policy <- function(SecretId, ResourcePolicy, BlockPu
 #' @param ClientRequestToken A unique identifier for the new version of the secret.
 #' 
 #' If you use the Amazon Web Services CLI or one of the Amazon Web Services
-#' SDKs to call this operation, then you can leave this parameter empty
-#' because they generate a random UUID for you. If you don't use the SDK
-#' and instead generate a raw HTTP request to the Secrets Manager service
-#' endpoint, then you must generate a `ClientRequestToken` yourself for new
-#' versions and include that value in the request.
+#' SDKs to call this operation, then you can leave this parameter empty.
+#' The CLI or SDK generates a random UUID for you and includes it as the
+#' value for this parameter in the request.
+#' 
+#' If you generate a raw HTTP request to the Secrets Manager service
+#' endpoint, then you must generate a `ClientRequestToken` and include it
+#' in the request.
 #' 
 #' This value helps ensure idempotency. Secrets Manager uses this value to
 #' prevent the accidental creation of duplicate versions if there are
-#' failures and retries during the Lambda rotation function processing. We
-#' recommend that you generate a
+#' failures and retries during a rotation. We recommend that you generate a
 #' [UUID-type](https://en.wikipedia.org/wiki/Universally_unique_identifier)
-#' value to ensure uniqueness within the specified secret.
+#' value to ensure uniqueness of your versions within the specified secret.
 #' 
 #' -   If the `ClientRequestToken` value isn't already associated with a
 #'     version of the secret then a new version of the secret is created.
@@ -777,24 +805,25 @@ secretsmanager_restore_secret <- function(SecretId) {
 #' For an ARN, we recommend that you specify a complete ARN rather than a
 #' partial ARN. See [Finding a secret from a partial
 #' ARN](https://docs.aws.amazon.com/secretsmanager/latest/userguide/troubleshoot.html#ARN_secretnamehyphen).
-#' @param ClientRequestToken A unique identifier for the new version of the secret that helps ensure
-#' idempotency. Secrets Manager uses this value to prevent the accidental
-#' creation of duplicate versions if there are failures and retries during
-#' rotation. This value becomes the `VersionId` of the new version.
+#' @param ClientRequestToken A unique identifier for the new version of the secret. You only need to
+#' specify this value if you implement your own retry logic and you want to
+#' ensure that Secrets Manager doesn't attempt to create a secret version
+#' twice.
 #' 
 #' If you use the Amazon Web Services CLI or one of the Amazon Web Services
-#' SDK to call this operation, then you can leave this parameter empty. The
-#' CLI or SDK generates a random UUID for you and includes that in the
-#' request for this parameter. If you don't use the SDK and instead
-#' generate a raw HTTP request to the Secrets Manager service endpoint,
-#' then you must generate a `ClientRequestToken` yourself for new versions
-#' and include that value in the request.
+#' SDKs to call this operation, then you can leave this parameter empty.
+#' The CLI or SDK generates a random UUID for you and includes it as the
+#' value for this parameter in the request.
 #' 
-#' You only need to specify this value if you implement your own retry
-#' logic and you want to ensure that Secrets Manager doesn't attempt to
-#' create a secret version twice. We recommend that you generate a
+#' If you generate a raw HTTP request to the Secrets Manager service
+#' endpoint, then you must generate a `ClientRequestToken` and include it
+#' in the request.
+#' 
+#' This value helps ensure idempotency. Secrets Manager uses this value to
+#' prevent the accidental creation of duplicate versions if there are
+#' failures and retries during a rotation. We recommend that you generate a
 #' [UUID-type](https://en.wikipedia.org/wiki/Universally_unique_identifier)
-#' value to ensure uniqueness within the specified secret.
+#' value to ensure uniqueness of your versions within the specified secret.
 #' @param RotationLambdaARN For secrets that use a Lambda rotation function to rotate, the ARN of
 #' the Lambda rotation function.
 #' 
@@ -971,12 +1000,17 @@ secretsmanager_untag_resource <- function(SecretId, TagKeys) {
 #' If you use the Amazon Web Services CLI or one of the Amazon Web Services
 #' SDKs to call this operation, then you can leave this parameter empty.
 #' The CLI or SDK generates a random UUID for you and includes it as the
-#' value for this parameter in the request. If you don't use the SDK and
-#' instead generate a raw HTTP request to the Secrets Manager service
-#' endpoint, then you must generate a `ClientRequestToken` yourself for the
-#' new version and include the value in the request.
+#' value for this parameter in the request.
 #' 
-#' This value becomes the `VersionId` of the new version.
+#' If you generate a raw HTTP request to the Secrets Manager service
+#' endpoint, then you must generate a `ClientRequestToken` and include it
+#' in the request.
+#' 
+#' This value helps ensure idempotency. Secrets Manager uses this value to
+#' prevent the accidental creation of duplicate versions if there are
+#' failures and retries during a rotation. We recommend that you generate a
+#' [UUID-type](https://en.wikipedia.org/wiki/Universally_unique_identifier)
+#' value to ensure uniqueness of your versions within the specified secret.
 #' @param Description The description of the secret.
 #' @param KmsKeyId The ARN, key ID, or alias of the KMS key that Secrets Manager uses to
 #' encrypt new secret versions as well as any existing versions with the

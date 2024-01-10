@@ -24,41 +24,41 @@ NULL
 #' If you want to use Cognito Sync in an Android or iOS application, you
 #' will probably want to make API calls via the AWS Mobile SDK. To learn
 #' more, see the [Developer Guide for
-#' Android](https://docs.amplify.aws/start/q/integration/android/) and the
-#' [Developer Guide for
-#' iOS](https://docs.amplify.aws/start/q/integration/ios/).
+#' Android](https://docs.amplify.aws/android/start/getting-started/introduction/)
+#' and the [Developer Guide for
+#' iOS](https://docs.amplify.aws/swift/start/getting-started/introduction/).
 #'
 #' @param
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
-#' \item{\strong{credentials}:} {\itemize{
-#' \item{\strong{creds}:} {\itemize{
-#' \item{\strong{access_key_id}:} {AWS access key ID}
-#' \item{\strong{secret_access_key}:} {AWS secret access key}
-#' \item{\strong{session_token}:} {AWS temporary session token}
+#' \item{\strong{credentials}: \itemize{
+#' \item{\strong{creds}: \itemize{
+#' \item{\strong{access_key_id}: AWS access key ID}
+#' \item{\strong{secret_access_key}: AWS secret access key}
+#' \item{\strong{session_token}: AWS temporary session token}
 #' }}
-#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
-#' \item{\strong{anonymous}:} {Set anonymous credentials.}
-#' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
-#' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' \item{\strong{profile}: The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}: Set anonymous credentials.}
 #' }}
-#' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
-#' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
-#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
+#' \item{\strong{endpoint}: The complete URL to use for the constructed client.}
+#' \item{\strong{region}: The AWS Region used in instantiating the client.}
+#' \item{\strong{close_connection}: Immediately close all HTTP connections.}
+#' \item{\strong{timeout}: The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+#' \item{\strong{s3_force_path_style}: Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}: Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
 #' @param
 #' credentials
 #' Optional credentials shorthand for the config parameter
 #' \itemize{
-#' \item{\strong{creds}:} {\itemize{
-#' \item{\strong{access_key_id}:} {AWS access key ID}
-#' \item{\strong{secret_access_key}:} {AWS secret access key}
-#' \item{\strong{session_token}:} {AWS temporary session token}
+#' \item{\strong{creds}: \itemize{
+#' \item{\strong{access_key_id}: AWS access key ID}
+#' \item{\strong{secret_access_key}: AWS secret access key}
+#' \item{\strong{session_token}: AWS temporary session token}
 #' }}
-#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
-#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' \item{\strong{profile}: The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}: Set anonymous credentials.}
 #' }
 #' @param
 #' endpoint

@@ -14,32 +14,32 @@ guardduty(
 \arguments{
 \item{config}{Optional configuration of credentials, endpoint, and/or region.
 \itemize{
-\item{\strong{credentials}:} {\itemize{
-\item{\strong{creds}:} {\itemize{
-\item{\strong{access_key_id}:} {AWS access key ID}
-\item{\strong{secret_access_key}:} {AWS secret access key}
-\item{\strong{session_token}:} {AWS temporary session token}
+\item{\strong{credentials}: \itemize{
+\item{\strong{creds}: \itemize{
+\item{\strong{access_key_id}: AWS access key ID}
+\item{\strong{secret_access_key}: AWS secret access key}
+\item{\strong{session_token}: AWS temporary session token}
 }}
-\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
-\item{\strong{anonymous}:} {Set anonymous credentials.}
-\item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
-\item{\strong{region}:} {The AWS Region used in instantiating the client.}
+\item{\strong{profile}: The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}: Set anonymous credentials.}
 }}
-\item{\strong{close_connection}:} {Immediately close all HTTP connections.}
-\item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e. \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
-\item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
+\item{\strong{endpoint}: The complete URL to use for the constructed client.}
+\item{\strong{region}: The AWS Region used in instantiating the client.}
+\item{\strong{close_connection}: Immediately close all HTTP connections.}
+\item{\strong{timeout}: The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+\item{\strong{s3_force_path_style}: Set this to \code{true} to force the request to use path-style addressing, i.e. \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+\item{\strong{sts_regional_endpoint}: Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 }}
 
 \item{credentials}{Optional credentials shorthand for the config parameter
 \itemize{
-\item{\strong{creds}:} {\itemize{
-\item{\strong{access_key_id}:} {AWS access key ID}
-\item{\strong{secret_access_key}:} {AWS secret access key}
-\item{\strong{session_token}:} {AWS temporary session token}
+\item{\strong{creds}: \itemize{
+\item{\strong{access_key_id}: AWS access key ID}
+\item{\strong{secret_access_key}: AWS secret access key}
+\item{\strong{session_token}: AWS temporary session token}
 }}
-\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
-\item{\strong{anonymous}:} {Set anonymous credentials.}
+\item{\strong{profile}: The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}: Set anonymous credentials.}
 }}
 
 \item{endpoint}{Optional shorthand for complete URL to use for the constructed client.}
@@ -54,17 +54,20 @@ Operations section.
 }
 \description{
 Amazon GuardDuty is a continuous security monitoring service that
-analyzes and processes the following data sources: VPC flow logs, Amazon
-Web Services CloudTrail management event logs, CloudTrail S3 data event
-logs, EKS audit logs, DNS logs, and Amazon EBS volume data. It uses
-threat intelligence feeds, such as lists of malicious IPs and domains,
-and machine learning to identify unexpected, potentially unauthorized,
-and malicious activity within your Amazon Web Services environment. This
-can include issues like escalations of privileges, uses of exposed
-credentials, or communication with malicious IPs, domains, or presence
-of malware on your Amazon EC2 instances and container workloads. For
-example, GuardDuty can detect compromised EC2 instances and container
-workloads serving malware, or mining bitcoin.
+analyzes and processes the following foundational data sources - VPC
+flow logs, Amazon Web Services CloudTrail management event logs,
+CloudTrail S3 data event logs, EKS audit logs, DNS logs, Amazon EBS
+volume data, runtime activity belonging to container workloads, such as
+Amazon EKS, Amazon ECS (including Amazon Web Services Fargate), and
+Amazon EC2 instances. It uses threat intelligence feeds, such as lists
+of malicious IPs and domains, and machine learning to identify
+unexpected, potentially unauthorized, and malicious activity within your
+Amazon Web Services environment. This can include issues like
+escalations of privileges, uses of exposed credentials, or communication
+with malicious IPs, domains, or presence of malware on your Amazon EC2
+instances and container workloads. For example, GuardDuty can detect
+compromised EC2 instances and container workloads serving malware, or
+mining bitcoin.
 
 GuardDuty also monitors Amazon Web Services account access behavior for
 signs of compromise, such as unauthorized infrastructure deployments
@@ -75,7 +78,7 @@ strength.
 GuardDuty informs you about the status of your Amazon Web Services
 environment by producing security findings that you can view in the
 GuardDuty console or through Amazon EventBridge. For more information,
-see the \emph{\href{https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html}{AmazonGuardDuty User Guide}} .
+see the \emph{\href{https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html}{Amazon GuardDuty User Guide}} .
 }
 \section{Service syntax}{
 
@@ -137,12 +140,12 @@ see the \emph{\href{https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guar
 \link[=guardduty_describe_malware_scans]{describe_malware_scans} \tab Returns a list of malware scans\cr
 \link[=guardduty_describe_organization_configuration]{describe_organization_configuration} \tab Returns information about the account selected as the delegated administrator for GuardDuty\cr
 \link[=guardduty_describe_publishing_destination]{describe_publishing_destination} \tab Returns information about the publishing destination specified by the provided destinationId\cr
-\link[=guardduty_disable_organization_admin_account]{disable_organization_admin_account} \tab Disables an Amazon Web Services account within the Organization as the GuardDuty delegated administrator\cr
+\link[=guardduty_disable_organization_admin_account]{disable_organization_admin_account} \tab Removes the existing GuardDuty delegated administrator of the organization\cr
 \link[=guardduty_disassociate_from_administrator_account]{disassociate_from_administrator_account} \tab Disassociates the current GuardDuty member account from its administrator account\cr
 \link[=guardduty_disassociate_from_master_account]{disassociate_from_master_account} \tab Disassociates the current GuardDuty member account from its administrator account\cr
 \link[=guardduty_disassociate_members]{disassociate_members} \tab Disassociates GuardDuty member accounts (from the current administrator account) specified by the account IDs\cr
-\link[=guardduty_enable_organization_admin_account]{enable_organization_admin_account} \tab Enables an Amazon Web Services account within the organization as the GuardDuty delegated administrator\cr
-\link[=guardduty_get_administrator_account]{get_administrator_account} \tab Provides the details for the GuardDuty administrator account associated with the current GuardDuty member account\cr
+\link[=guardduty_enable_organization_admin_account]{enable_organization_admin_account} \tab Designates an Amazon Web Services account within the organization as your GuardDuty delegated administrator\cr
+\link[=guardduty_get_administrator_account]{get_administrator_account} \tab Provides the details of the GuardDuty administrator account associated with the current GuardDuty member account\cr
 \link[=guardduty_get_coverage_statistics]{get_coverage_statistics} \tab Retrieves aggregated statistics for your account\cr
 \link[=guardduty_get_detector]{get_detector} \tab Retrieves an Amazon GuardDuty detector specified by the detectorId\cr
 \link[=guardduty_get_filter]{get_filter} \tab Returns the details of the filter specified by the filter name\cr
@@ -154,6 +157,7 @@ see the \emph{\href{https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guar
 \link[=guardduty_get_master_account]{get_master_account} \tab Provides the details for the GuardDuty administrator account associated with the current GuardDuty member account\cr
 \link[=guardduty_get_member_detectors]{get_member_detectors} \tab Describes which data sources are enabled for the member account's detector\cr
 \link[=guardduty_get_members]{get_members} \tab Retrieves GuardDuty member accounts (of the current GuardDuty administrator account) specified by the account IDs\cr
+\link[=guardduty_get_organization_statistics]{get_organization_statistics} \tab Retrieves how many active member accounts in your Amazon Web Services organization have each feature enabled within GuardDuty\cr
 \link[=guardduty_get_remaining_free_trial_days]{get_remaining_free_trial_days} \tab Provides the number of days left for each data source used in the free trial period\cr
 \link[=guardduty_get_threat_intel_set]{get_threat_intel_set} \tab Retrieves the ThreatIntelSet that is specified by the ThreatIntelSet ID\cr
 \link[=guardduty_get_usage_statistics]{get_usage_statistics} \tab Lists Amazon GuardDuty usage statistics over the last 30 days for the specified detector ID\cr
@@ -165,7 +169,7 @@ see the \emph{\href{https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guar
 \link[=guardduty_list_invitations]{list_invitations} \tab Lists all GuardDuty membership invitations that were sent to the current Amazon Web Services account\cr
 \link[=guardduty_list_ip_sets]{list_ip_sets} \tab Lists the IPSets of the GuardDuty service specified by the detector ID\cr
 \link[=guardduty_list_members]{list_members} \tab Lists details about all member accounts for the current GuardDuty administrator account\cr
-\link[=guardduty_list_organization_admin_accounts]{list_organization_admin_accounts} \tab Lists the accounts configured as GuardDuty delegated administrators\cr
+\link[=guardduty_list_organization_admin_accounts]{list_organization_admin_accounts} \tab Lists the accounts designated as GuardDuty delegated administrators\cr
 \link[=guardduty_list_publishing_destinations]{list_publishing_destinations} \tab Returns a list of publishing destinations associated with the specified detectorId\cr
 \link[=guardduty_list_tags_for_resource]{list_tags_for_resource} \tab Lists tags for a resource\cr
 \link[=guardduty_list_threat_intel_sets]{list_threat_intel_sets} \tab Lists the ThreatIntelSets of the GuardDuty service specified by the detector ID\cr

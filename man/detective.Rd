@@ -14,32 +14,32 @@ detective(
 \arguments{
 \item{config}{Optional configuration of credentials, endpoint, and/or region.
 \itemize{
-\item{\strong{credentials}:} {\itemize{
-\item{\strong{creds}:} {\itemize{
-\item{\strong{access_key_id}:} {AWS access key ID}
-\item{\strong{secret_access_key}:} {AWS secret access key}
-\item{\strong{session_token}:} {AWS temporary session token}
+\item{\strong{credentials}: \itemize{
+\item{\strong{creds}: \itemize{
+\item{\strong{access_key_id}: AWS access key ID}
+\item{\strong{secret_access_key}: AWS secret access key}
+\item{\strong{session_token}: AWS temporary session token}
 }}
-\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
-\item{\strong{anonymous}:} {Set anonymous credentials.}
-\item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
-\item{\strong{region}:} {The AWS Region used in instantiating the client.}
+\item{\strong{profile}: The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}: Set anonymous credentials.}
 }}
-\item{\strong{close_connection}:} {Immediately close all HTTP connections.}
-\item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e. \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
-\item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
+\item{\strong{endpoint}: The complete URL to use for the constructed client.}
+\item{\strong{region}: The AWS Region used in instantiating the client.}
+\item{\strong{close_connection}: Immediately close all HTTP connections.}
+\item{\strong{timeout}: The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+\item{\strong{s3_force_path_style}: Set this to \code{true} to force the request to use path-style addressing, i.e. \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+\item{\strong{sts_regional_endpoint}: Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 }}
 
 \item{credentials}{Optional credentials shorthand for the config parameter
 \itemize{
-\item{\strong{creds}:} {\itemize{
-\item{\strong{access_key_id}:} {AWS access key ID}
-\item{\strong{secret_access_key}:} {AWS secret access key}
-\item{\strong{session_token}:} {AWS temporary session token}
+\item{\strong{creds}: \itemize{
+\item{\strong{access_key_id}: AWS access key ID}
+\item{\strong{secret_access_key}: AWS secret access key}
+\item{\strong{session_token}: AWS temporary session token}
 }}
-\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
-\item{\strong{anonymous}:} {Set anonymous credentials.}
+\item{\strong{profile}: The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}: Set anonymous credentials.}
 }}
 
 \item{endpoint}{Optional shorthand for complete URL to use for the constructed client.}
@@ -171,18 +171,23 @@ the accounts in their behavior graph.
 \link[=detective_disable_organization_admin_account]{disable_organization_admin_account} \tab Removes the Detective administrator account in the current Region\cr
 \link[=detective_disassociate_membership]{disassociate_membership} \tab Removes the member account from the specified behavior graph\cr
 \link[=detective_enable_organization_admin_account]{enable_organization_admin_account} \tab Designates the Detective administrator account for the organization in the current Region\cr
+\link[=detective_get_investigation]{get_investigation} \tab Returns the investigation results of an investigation for a behavior graph\cr
 \link[=detective_get_members]{get_members} \tab Returns the membership details for specified member accounts for a behavior graph\cr
 \link[=detective_list_datasource_packages]{list_datasource_packages} \tab Lists data source packages in the behavior graph\cr
 \link[=detective_list_graphs]{list_graphs} \tab Returns the list of behavior graphs that the calling account is an administrator account of\cr
+\link[=detective_list_indicators]{list_indicators} \tab Get the indicators from an investigation\cr
+\link[=detective_list_investigations]{list_investigations} \tab List all Investigations\cr
 \link[=detective_list_invitations]{list_invitations} \tab Retrieves the list of open and accepted behavior graph invitations for the member account\cr
 \link[=detective_list_members]{list_members} \tab Retrieves the list of member accounts for a behavior graph\cr
 \link[=detective_list_organization_admin_accounts]{list_organization_admin_accounts} \tab Returns information about the Detective administrator account for an organization\cr
 \link[=detective_list_tags_for_resource]{list_tags_for_resource} \tab Returns the tag values that are assigned to a behavior graph\cr
 \link[=detective_reject_invitation]{reject_invitation} \tab Rejects an invitation to contribute the account data to a behavior graph\cr
+\link[=detective_start_investigation]{start_investigation} \tab initiate an investigation on an entity in a graph\cr
 \link[=detective_start_monitoring_member]{start_monitoring_member} \tab Sends a request to enable data ingest for a member account that has a status of ACCEPTED_BUT_DISABLED\cr
 \link[=detective_tag_resource]{tag_resource} \tab Applies tag values to a behavior graph\cr
 \link[=detective_untag_resource]{untag_resource} \tab Removes tags from a behavior graph\cr
 \link[=detective_update_datasource_packages]{update_datasource_packages} \tab Starts a data source packages for the behavior graph\cr
+\link[=detective_update_investigation_state]{update_investigation_state} \tab Update the state of an investigation\cr
 \link[=detective_update_organization_configuration]{update_organization_configuration} \tab Updates the configuration for the Organizations integration in the current Region
 }
 }

@@ -573,6 +573,8 @@ sts_get_access_key_info <- function(AccessKeyId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/sts_get_caller_identity/](https://www.paws-r-sdk.com/docs/sts_get_caller_identity/) for full documentation.
 #'
+
+#'
 #' @keywords internal
 #'
 #' @rdname sts_get_caller_identity

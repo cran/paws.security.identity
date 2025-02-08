@@ -55,7 +55,7 @@ NULL
 #' credentials and use those to sign requests.
 #' 
 #' All KMS requests must be signed with [Signature Version
-#' 4](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html).
+#' 4](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html).
 #' 
 #' **Logging API Requests**
 #' 
@@ -84,7 +84,7 @@ NULL
 #'     temporary security credentials.
 #' 
 #' -   [Signature Version 4 Signing
-#'     Process](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html) -
+#'     Process](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html) -
 #'     This set of topics walks you through the process of signing a
 #'     request using an access key ID and a secret access key.
 #' 
@@ -271,7 +271,7 @@ kms <- function(config = list(), credentials = list(), endpoint = NULL, region =
 
 .kms$metadata <- list(
   service_name = "kms",
-  endpoints = list("*" = list(endpoint = "kms.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "kms.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "kms.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "kms.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "kms.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "kms.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "kms.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "kms.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "kms.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "kms.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "kms.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "kms.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "kms.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "KMS",
   api_version = "2014-11-01",
   signing_name = "kms",

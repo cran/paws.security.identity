@@ -7,7 +7,7 @@ NULL
 #' access Amazon Web Services resources
 #'
 #' @description
-#' Returns a set of temporary security credentials that you can use to access Amazon Web Services resources. These temporary credentials consist of an access key ID, a secret access key, and a security token. Typically, you use [`assume_role`][sts_assume_role] within your account or for cross-account access. For a comparison of [`assume_role`][sts_assume_role] with other API operations that produce temporary credentials, see [Requesting Temporary Security Credentials](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html) and [Comparing the Amazon Web Services STS API operations](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#stsapi_comparison) in the *IAM User Guide*.
+#' Returns a set of temporary security credentials that you can use to access Amazon Web Services resources. These temporary credentials consist of an access key ID, a secret access key, and a security token. Typically, you use [`assume_role`][sts_assume_role] within your account or for cross-account access. For a comparison of [`assume_role`][sts_assume_role] with other API operations that produce temporary credentials, see [Requesting Temporary Security Credentials](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html) and [Compare STS credentials](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_sts-comparison.html) in the *IAM User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/sts_assume_role/](https://www.paws-r-sdk.com/docs/sts_assume_role/) for full documentation.
 #'
@@ -22,6 +22,14 @@ NULL
 #' subsequent cross-account API requests that use the temporary security
 #' credentials will expose the role session name to the external account in
 #' their CloudTrail logs.
+#' 
+#' For security purposes, administrators can view this field in [CloudTrail
+#' logs](https://docs.aws.amazon.com/IAM/latest/UserGuide/cloudtrail-integration.html#cloudtrail-integration_signin-tempcreds)
+#' to help identify who performed an action in Amazon Web Services. Your
+#' administrator might require that you specify your user name as the
+#' session name when you assume the role. For more information, see
+#' [`sts:RoleSessionName`](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_iam-condition-keys.html#ck_rolesessionname)
+#' .
 #' 
 #' The regex used to validate this parameter is a string of characters
 #' consisting of upper- and lower-case alphanumeric characters with no
@@ -82,6 +90,9 @@ NULL
 #' even if your plaintext meets the other requirements. The
 #' `PackedPolicySize` response element indicates by percentage how close
 #' the policies and tags for your request are to the upper size limit.
+#' 
+#' For more information about role session permissions, see [Session
+#' policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#policies_session).
 #' @param DurationSeconds The duration, in seconds, of the role session. The value specified can
 #' range from 900 seconds (15 minutes) up to the maximum session duration
 #' set for the role. The maximum session duration setting can have a value
@@ -99,10 +110,9 @@ NULL
 #' hours), depending on the maximum session duration setting for your role.
 #' However, if you assume a role using role chaining and provide a
 #' `DurationSeconds` parameter value greater than one hour, the operation
-#' fails. To learn how to view the maximum value for your role, see [View
-#' the Maximum Session Duration Setting for a
-#' Role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_manage-assume.html#id_roles_use_view-role-max-session)
-#' in the *IAM User Guide*.
+#' fails. To learn how to view the maximum value for your role, see [Update
+#' the maximum session duration for a
+#' role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_update-role-settings.html#id_roles_update-session-duration).
 #' 
 #' By default, the value is set to `3600` seconds.
 #' 
@@ -160,8 +170,8 @@ NULL
 #' Tags](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_session-tags.html#id_session-tags_role-chaining)
 #' in the *IAM User Guide*.
 #' 
-#' This parameter is optional. When you set session tags as transitive, the
-#' session policy and session tags packed binary limit is not affected.
+#' This parameter is optional. The transitive status of a session tag does
+#' not impact its packed binary size.
 #' 
 #' If you choose not to specify a transitive tag key, then no tags are
 #' passed from this session to any subsequent sessions.
@@ -204,23 +214,27 @@ NULL
 #' The format for this parameter, as described by its regex pattern, is a
 #' sequence of six numeric digits.
 #' @param SourceIdentity The source identity specified by the principal that is calling the
-#' [`assume_role`][sts_assume_role] operation.
+#' [`assume_role`][sts_assume_role] operation. The source identity value
+#' persists across [chained
+#' role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html#iam-term-role-chaining)
+#' sessions.
 #' 
 #' You can require users to specify a source identity when they assume a
-#' role. You do this by using the `sts:SourceIdentity` condition key in a
-#' role trust policy. You can use source identity information in CloudTrail
-#' logs to determine who took actions with a role. You can use the
-#' `aws:SourceIdentity` condition key to further control access to Amazon
-#' Web Services resources based on the value of source identity. For more
-#' information about using source identity, see [Monitor and control
-#' actions taken with assumed
+#' role. You do this by using the
+#' [`sts:SourceIdentity`](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html#condition-keys-sourceidentity)
+#' condition key in a role trust policy. You can use source identity
+#' information in CloudTrail logs to determine who took actions with a
+#' role. You can use the `aws:SourceIdentity` condition key to further
+#' control access to Amazon Web Services resources based on the value of
+#' source identity. For more information about using source identity, see
+#' [Monitor and control actions taken with assumed
 #' roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_control-access_monitor.html)
 #' in the *IAM User Guide*.
 #' 
 #' The regex used to validate this parameter is a string of characters
 #' consisting of upper- and lower-case alphanumeric characters with no
 #' spaces. You can also include underscores or any of the following
-#' characters: =,.@@-. You cannot use a value that begins with the text
+#' characters: +=,.@@-. You cannot use a value that begins with the text
 #' `aws:`. This prefix is reserved for Amazon Web Services internal use.
 #' @param ProvidedContexts A list of previously acquired trusted context assertions in the format
 #' of a JSON array. The trusted context assertion is signed and encrypted
@@ -241,7 +255,8 @@ sts_assume_role <- function(RoleArn, RoleSessionName, PolicyArns = NULL, Policy 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sts$assume_role_input(RoleArn = RoleArn, RoleSessionName = RoleSessionName, PolicyArns = PolicyArns, Policy = Policy, DurationSeconds = DurationSeconds, Tags = Tags, TransitiveTagKeys = TransitiveTagKeys, ExternalId = ExternalId, SerialNumber = SerialNumber, TokenCode = TokenCode, SourceIdentity = SourceIdentity, ProvidedContexts = ProvidedContexts)
   output <- .sts$assume_role_output()
@@ -257,7 +272,7 @@ sts_assume_role <- function(RoleArn, RoleSessionName, PolicyArns = NULL, Policy 
 #' authenticated via a SAML authentication response
 #'
 #' @description
-#' Returns a set of temporary security credentials for users who have been authenticated via a SAML authentication response. This operation provides a mechanism for tying an enterprise identity store or directory to role-based Amazon Web Services access without user-specific credentials or configuration. For a comparison of [`assume_role_with_saml`][sts_assume_role_with_saml] with the other API operations that produce temporary credentials, see [Requesting Temporary Security Credentials](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html) and [Comparing the Amazon Web Services STS API operations](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#stsapi_comparison) in the *IAM User Guide*.
+#' Returns a set of temporary security credentials for users who have been authenticated via a SAML authentication response. This operation provides a mechanism for tying an enterprise identity store or directory to role-based Amazon Web Services access without user-specific credentials or configuration. For a comparison of [`assume_role_with_saml`][sts_assume_role_with_saml] with the other API operations that produce temporary credentials, see [Requesting Temporary Security Credentials](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html) and [Compare STS credentials](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_sts-comparison.html) in the *IAM User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/sts_assume_role_with_saml/](https://www.paws-r-sdk.com/docs/sts_assume_role_with_saml/) for full documentation.
 #'
@@ -318,6 +333,9 @@ sts_assume_role <- function(RoleArn, RoleSessionName, PolicyArns = NULL, Policy 
 #' character list (``U+0020`` through ``U+00FF``). It can also include the tab
 #' (``U+0009``), linefeed (``U+000A``), and carriage return (``U+000D``) characters.
 #' 
+#' For more information about role session permissions, see [Session
+#' policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#policies_session).
+#' 
 #' An Amazon Web Services conversion compresses the passed inline session
 #' policy, managed policy ARNs, and session tags into a packed binary
 #' format that has a separate limit. Your request can fail for this limit
@@ -359,7 +377,8 @@ sts_assume_role_with_saml <- function(RoleArn, PrincipalArn, SAMLAssertion, Poli
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sts$assume_role_with_saml_input(RoleArn = RoleArn, PrincipalArn = PrincipalArn, SAMLAssertion = SAMLAssertion, PolicyArns = PolicyArns, Policy = Policy, DurationSeconds = DurationSeconds)
   output <- .sts$assume_role_with_saml_output()
@@ -381,12 +400,34 @@ sts_assume_role_with_saml <- function(RoleArn, PrincipalArn, SAMLAssertion, Poli
 #' See [https://www.paws-r-sdk.com/docs/sts_assume_role_with_web_identity/](https://www.paws-r-sdk.com/docs/sts_assume_role_with_web_identity/) for full documentation.
 #'
 #' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the role that the caller is assuming.
+#' 
+#' Additional considerations apply to Amazon Cognito identity pools that
+#' assume [cross-account IAM
+#' roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies-cross-account-resource-access.html).
+#' The trust policies of these roles must accept the
+#' `cognito-identity.amazonaws.com` service principal and must contain the
+#' `cognito-identity.amazonaws.com:aud` condition key to restrict role
+#' assumption to users from your intended identity pools. A policy that
+#' trusts Amazon Cognito identity pools without this condition creates a
+#' risk that a user from an unintended identity pool can assume the role.
+#' For more information, see [Trust policies for IAM roles in Basic
+#' (Classic)
+#' authentication](https://docs.aws.amazon.com/cognito/latest/developerguide/iam-roles.html#trust-policies)
+#' in the *Amazon Cognito Developer Guide*.
 #' @param RoleSessionName &#91;required&#93; An identifier for the assumed role session. Typically, you pass the name
 #' or identifier that is associated with the user who is using your
 #' application. That way, the temporary security credentials that your
 #' application will use are associated with that user. This session name is
 #' included as part of the ARN and assumed role ID in the `AssumedRoleUser`
 #' response element.
+#' 
+#' For security purposes, administrators can view this field in [CloudTrail
+#' logs](https://docs.aws.amazon.com/IAM/latest/UserGuide/cloudtrail-integration.html#cloudtrail-integration_signin-tempcreds)
+#' to help identify who performed an action in Amazon Web Services. Your
+#' administrator might require that you specify your user name as the
+#' session name when you assume the role. For more information, see
+#' [`sts:RoleSessionName`](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_iam-condition-keys.html#ck_rolesessionname)
+#' .
 #' 
 #' The regex used to validate this parameter is a string of characters
 #' consisting of upper- and lower-case alphanumeric characters with no
@@ -397,7 +438,9 @@ sts_assume_role_with_saml <- function(RoleArn, PrincipalArn, SAMLAssertion, Poli
 #' authenticating the user who is using your application with a web
 #' identity provider before the application makes an
 #' [`assume_role_with_web_identity`][sts_assume_role_with_web_identity]
-#' call. Only tokens with RSA algorithms (RS256) are supported.
+#' call. Timestamps in the token must be formatted as either an integer or
+#' a long integer. Tokens must be signed using either RSA keys (RS256,
+#' RS384, or RS512) or ECDSA keys (ES256, ES384, or ES512).
 #' @param ProviderId The fully qualified host component of the domain name of the OAuth 2.0
 #' identity provider. Do not specify this value for an OpenID Connect
 #' identity provider.
@@ -456,6 +499,9 @@ sts_assume_role_with_saml <- function(RoleArn, PrincipalArn, SAMLAssertion, Poli
 #' character list (``U+0020`` through ``U+00FF``). It can also include the tab
 #' (``U+0009``), linefeed (``U+000A``), and carriage return (``U+000D``) characters.
 #' 
+#' For more information about role session permissions, see [Session
+#' policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#policies_session).
+#' 
 #' An Amazon Web Services conversion compresses the passed inline session
 #' policy, managed policy ARNs, and session tags into a packed binary
 #' format that has a separate limit. Your request can fail for this limit
@@ -493,7 +539,8 @@ sts_assume_role_with_web_identity <- function(RoleArn, RoleSessionName, WebIdent
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sts$assume_role_with_web_identity_input(RoleArn = RoleArn, RoleSessionName = RoleSessionName, WebIdentityToken = WebIdentityToken, ProviderId = ProviderId, PolicyArns = PolicyArns, Policy = Policy, DurationSeconds = DurationSeconds)
   output <- .sts$assume_role_with_web_identity_output()
@@ -504,6 +551,57 @@ sts_assume_role_with_web_identity <- function(RoleArn, RoleSessionName, WebIdent
   return(response)
 }
 .sts$operations$assume_role_with_web_identity <- sts_assume_role_with_web_identity
+
+#' Returns a set of short term credentials you can use to perform
+#' privileged tasks on a member account in your organization
+#'
+#' @description
+#' Returns a set of short term credentials you can use to perform privileged tasks on a member account in your organization.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sts_assume_root/](https://www.paws-r-sdk.com/docs/sts_assume_root/) for full documentation.
+#'
+#' @param TargetPrincipal &#91;required&#93; The member account principal ARN or account ID.
+#' @param TaskPolicyArn &#91;required&#93; The identity based policy that scopes the session to the privileged
+#' tasks that can be performed. You can use one of following Amazon Web
+#' Services managed policies to scope root session actions.
+#' 
+#' -   [IAMAuditRootUserCredentials](https://docs.aws.amazon.com/IAM/latest/UserGuide/security-iam-awsmanpol.html#security-iam-awsmanpol-IAMAuditRootUserCredentials)
+#' 
+#' -   [IAMCreateRootUserPassword](https://docs.aws.amazon.com/IAM/latest/UserGuide/security-iam-awsmanpol.html#security-iam-awsmanpol-IAMCreateRootUserPassword)
+#' 
+#' -   [IAMDeleteRootUserCredentials](https://docs.aws.amazon.com/IAM/latest/UserGuide/security-iam-awsmanpol.html#security-iam-awsmanpol-IAMDeleteRootUserCredentials)
+#' 
+#' -   [S3UnlockBucketPolicy](https://docs.aws.amazon.com/IAM/latest/UserGuide/security-iam-awsmanpol.html#security-iam-awsmanpol-S3UnlockBucketPolicy)
+#' 
+#' -   [SQSUnlockQueuePolicy](https://docs.aws.amazon.com/IAM/latest/UserGuide/security-iam-awsmanpol.html#security-iam-awsmanpol-SQSUnlockQueuePolicy)
+#' @param DurationSeconds The duration, in seconds, of the privileged session. The value can range
+#' from 0 seconds up to the maximum session duration of 900 seconds (15
+#' minutes). If you specify a value higher than this setting, the operation
+#' fails.
+#' 
+#' By default, the value is set to `900` seconds.
+#'
+#' @keywords internal
+#'
+#' @rdname sts_assume_root
+sts_assume_root <- function(TargetPrincipal, TaskPolicyArn, DurationSeconds = NULL) {
+  op <- new_operation(
+    name = "AssumeRoot",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .sts$assume_root_input(TargetPrincipal = TargetPrincipal, TaskPolicyArn = TaskPolicyArn, DurationSeconds = DurationSeconds)
+  output <- .sts$assume_root_output()
+  config <- get_config()
+  svc <- .sts$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sts$operations$assume_root <- sts_assume_root
 
 #' Decodes additional information about the authorization status of a
 #' request from an encoded message returned in response to an Amazon Web
@@ -525,7 +623,8 @@ sts_decode_authorization_message <- function(EncodedMessage) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sts$decode_authorization_message_input(EncodedMessage = EncodedMessage)
   output <- .sts$decode_authorization_message_output()
@@ -558,7 +657,8 @@ sts_get_access_key_info <- function(AccessKeyId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sts$get_access_key_info_input(AccessKeyId = AccessKeyId)
   output <- .sts$get_access_key_info_output()
@@ -589,7 +689,8 @@ sts_get_caller_identity <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sts$get_caller_identity_input()
   output <- .sts$get_caller_identity_output()
@@ -746,7 +847,8 @@ sts_get_federation_token <- function(Name, Policy = NULL, PolicyArns = NULL, Dur
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sts$get_federation_token_input(Name = Name, Policy = Policy, PolicyArns = PolicyArns, DurationSeconds = DurationSeconds, Tags = Tags)
   output <- .sts$get_federation_token_output()
@@ -805,7 +907,8 @@ sts_get_session_token <- function(DurationSeconds = NULL, SerialNumber = NULL, T
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sts$get_session_token_input(DurationSeconds = DurationSeconds, SerialNumber = SerialNumber, TokenCode = TokenCode)
   output <- .sts$get_session_token_output()

@@ -1,6 +1,6 @@
 Package: paws.security.identity
 Title: 'Amazon Web Services' Security, Identity, & Compliance Services
-Version: 0.7.0
+Version: 0.8.0
 Authors@R: c(
     person("David", "Kretch", , "david.kretch@gmail.com", role = "aut"),
     person("Adam", "Banker", , "adam.banker39@gmail.com", role = "aut"),
@@ -12,9 +12,10 @@ Description: Interface to 'Amazon Web Services' security, identity, and
     ('IAM') service for managing access to services and resources, and
     more <https://aws.amazon.com/>.
 License: Apache License (>= 2.0)
-URL: https://github.com/paws-r/paws
+URL: https://github.com/paws-r/paws,
+        https://paws-r.r-universe.dev/paws.security.identity
 BugReports: https://github.com/paws-r/paws/issues
-Imports: paws.common (>= 0.7.5)
+Imports: paws.common (>= 0.8.0)
 Suggests: testthat
 Encoding: UTF-8
 RoxygenNote: 7.3.2
@@ -23,12 +24,14 @@ Collate: 'accessanalyzer_service.R' 'accessanalyzer_interfaces.R'
         'account_interfaces.R' 'account_operations.R' 'acm_service.R'
         'acm_interfaces.R' 'acm_operations.R' 'acmpca_service.R'
         'acmpca_interfaces.R' 'acmpca_operations.R'
-        'clouddirectory_service.R' 'clouddirectory_interfaces.R'
-        'clouddirectory_operations.R' 'cloudhsm_service.R'
-        'cloudhsm_interfaces.R' 'cloudhsm_operations.R'
-        'cloudhsmv2_service.R' 'cloudhsmv2_interfaces.R'
-        'cloudhsmv2_operations.R' 'cognitoidentity_service.R'
-        'cognitoidentity_interfaces.R' 'cognitoidentity_operations.R'
+        'cleanroomsml_service.R' 'cleanroomsml_interfaces.R'
+        'cleanroomsml_operations.R' 'clouddirectory_service.R'
+        'clouddirectory_interfaces.R' 'clouddirectory_operations.R'
+        'cloudhsm_service.R' 'cloudhsm_interfaces.R'
+        'cloudhsm_operations.R' 'cloudhsmv2_service.R'
+        'cloudhsmv2_interfaces.R' 'cloudhsmv2_operations.R'
+        'cognitoidentity_service.R' 'cognitoidentity_interfaces.R'
+        'cognitoidentity_operations.R'
         'cognitoidentityprovider_service.R'
         'cognitoidentityprovider_interfaces.R'
         'cognitoidentityprovider_operations.R' 'cognitosync_service.R'
@@ -68,11 +71,11 @@ Collate: 'accessanalyzer_service.R' 'accessanalyzer_interfaces.R'
         'wafregional_interfaces.R' 'wafregional_operations.R'
         'wafv2_service.R' 'wafv2_interfaces.R' 'wafv2_operations.R'
 NeedsCompilation: no
-Packaged: 2024-09-11 08:29:56 UTC; dyfanjones
+Packaged: 2025-02-08 17:04:36 UTC; dyfanjones
 Author: David Kretch [aut],
   Adam Banker [aut],
   Dyfan Jones [cre],
   Amazon.com, Inc. [cph]
 Maintainer: Dyfan Jones <dyfan.r.jones@gmail.com>
 Repository: CRAN
-Date/Publication: 2024-09-11 22:50:36 UTC
+Date/Publication: 2025-02-08 20:20:02 UTC

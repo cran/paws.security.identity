@@ -142,7 +142,7 @@ NULL
 #'  \link[=macie2_list_automated_discovery_accounts]{list_automated_discovery_accounts} \tab Retrieves the status of automated sensitive data discovery for one or more accounts\cr
 #'  \link[=macie2_list_classification_jobs]{list_classification_jobs} \tab Retrieves a subset of information about one or more classification jobs\cr
 #'  \link[=macie2_list_classification_scopes]{list_classification_scopes} \tab Retrieves a subset of information about the classification scope for an account\cr
-#'  \link[=macie2_list_custom_data_identifiers]{list_custom_data_identifiers} \tab Retrieves a subset of information about all the custom data identifiers for an account\cr
+#'  \link[=macie2_list_custom_data_identifiers]{list_custom_data_identifiers} \tab Retrieves a subset of information about the custom data identifiers for an account\cr
 #'  \link[=macie2_list_findings]{list_findings} \tab Retrieves a subset of information about one or more findings\cr
 #'  \link[=macie2_list_findings_filters]{list_findings_filters} \tab Retrieves a subset of information about all the findings filters for an account\cr
 #'  \link[=macie2_list_invitations]{list_invitations} \tab Retrieves information about Amazon Macie membership invitations that were received by an account\cr
@@ -155,7 +155,7 @@ NULL
 #'  \link[=macie2_list_tags_for_resource]{list_tags_for_resource} \tab Retrieves the tags (keys and values) that are associated with an Amazon Macie resource\cr
 #'  \link[=macie2_put_classification_export_configuration]{put_classification_export_configuration} \tab Adds or updates the configuration settings for storing data classification results\cr
 #'  \link[=macie2_put_findings_publication_configuration]{put_findings_publication_configuration} \tab Updates the configuration settings for publishing findings to Security Hub\cr
-#'  \link[=macie2_search_resources]{search_resources} \tab Retrieves (queries) statistical data and other information about Amazon Web Services resources that Amazon Macie monitors and analyzes\cr
+#'  \link[=macie2_search_resources]{search_resources} \tab Retrieves (queries) statistical data and other information about Amazon Web Services resources that Amazon Macie monitors and analyzes for an account\cr
 #'  \link[=macie2_tag_resource]{tag_resource} \tab Adds or updates one or more tags (keys and values) that are associated with an Amazon Macie resource\cr
 #'  \link[=macie2_test_custom_data_identifier]{test_custom_data_identifier} \tab Tests criteria for a custom data identifier\cr
 #'  \link[=macie2_untag_resource]{untag_resource} \tab Removes one or more tags (keys and values) from an Amazon Macie resource\cr
@@ -202,7 +202,7 @@ macie2 <- function(config = list(), credentials = list(), endpoint = NULL, regio
 
 .macie2$metadata <- list(
   service_name = "macie2",
-  endpoints = list("*" = list(endpoint = "macie2.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "macie2.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "macie2.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "macie2.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "macie2.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "macie2.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "macie2.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "macie2.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "macie2.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "macie2.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "macie2.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "macie2.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "macie2.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Macie2",
   api_version = "2020-01-01",
   signing_name = "macie2",

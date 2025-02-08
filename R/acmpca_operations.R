@@ -12,10 +12,10 @@ NULL
 #'
 #' @param CertificateAuthorityConfiguration &#91;required&#93; Name and bit size of the private key algorithm, the name of the signing
 #' algorithm, and X.500 certificate subject information.
-#' @param RevocationConfiguration Contains information to enable Online Certificate Status Protocol (OCSP)
-#' support, to enable a certificate revocation list (CRL), to enable both,
-#' or to enable neither. The default is for both certificate validation
-#' mechanisms to be disabled.
+#' @param RevocationConfiguration Contains information to enable support for Online Certificate Status
+#' Protocol (OCSP), certificate revocation list (CRL), both protocols, or
+#' neither. By default, both certificate validation mechanisms are
+#' disabled.
 #' 
 #' The following requirements apply to revocation configurations.
 #' 
@@ -86,7 +86,8 @@ acmpca_create_certificate_authority <- function(CertificateAuthorityConfiguratio
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .acmpca$create_certificate_authority_input(CertificateAuthorityConfiguration = CertificateAuthorityConfiguration, RevocationConfiguration = RevocationConfiguration, CertificateAuthorityType = CertificateAuthorityType, IdempotencyToken = IdempotencyToken, KeyStorageSecurityStandard = KeyStorageSecurityStandard, Tags = Tags, UsageMode = UsageMode)
   output <- .acmpca$create_certificate_authority_output()
@@ -99,10 +100,10 @@ acmpca_create_certificate_authority <- function(CertificateAuthorityConfiguratio
 .acmpca$operations$create_certificate_authority <- acmpca_create_certificate_authority
 
 #' Creates an audit report that lists every time that your CA private key
-#' is used
+#' is used to issue a certificate
 #'
 #' @description
-#' Creates an audit report that lists every time that your CA private key is used. The report is saved in the Amazon S3 bucket that you specify on input. The [`issue_certificate`][acmpca_issue_certificate] and [`revoke_certificate`][acmpca_revoke_certificate] actions use the private key.
+#' Creates an audit report that lists every time that your CA private key is used to issue a certificate. The [`issue_certificate`][acmpca_issue_certificate] and [`revoke_certificate`][acmpca_revoke_certificate] actions use the private key.
 #'
 #' See [https://www.paws-r-sdk.com/docs/acmpca_create_certificate_authority_audit_report/](https://www.paws-r-sdk.com/docs/acmpca_create_certificate_authority_audit_report/) for full documentation.
 #'
@@ -123,7 +124,8 @@ acmpca_create_certificate_authority_audit_report <- function(CertificateAuthorit
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .acmpca$create_certificate_authority_audit_report_input(CertificateAuthorityArn = CertificateAuthorityArn, S3BucketName = S3BucketName, AuditReportResponseFormat = AuditReportResponseFormat)
   output <- .acmpca$create_certificate_authority_audit_report_output()
@@ -167,7 +169,8 @@ acmpca_create_permission <- function(CertificateAuthorityArn, Principal, SourceA
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .acmpca$create_permission_input(CertificateAuthorityArn = CertificateAuthorityArn, Principal = Principal, SourceAccount = SourceAccount, Actions = Actions)
   output <- .acmpca$create_permission_output()
@@ -203,7 +206,8 @@ acmpca_delete_certificate_authority <- function(CertificateAuthorityArn, Permane
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .acmpca$delete_certificate_authority_input(CertificateAuthorityArn = CertificateAuthorityArn, PermanentDeletionTimeInDays = PermanentDeletionTimeInDays)
   output <- .acmpca$delete_certificate_authority_output()
@@ -243,7 +247,8 @@ acmpca_delete_permission <- function(CertificateAuthorityArn, Principal, SourceA
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .acmpca$delete_permission_input(CertificateAuthorityArn = CertificateAuthorityArn, Principal = Principal, SourceAccount = SourceAccount)
   output <- .acmpca$delete_permission_output()
@@ -277,7 +282,8 @@ acmpca_delete_policy <- function(ResourceArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .acmpca$delete_policy_input(ResourceArn = ResourceArn)
   output <- .acmpca$delete_policy_output()
@@ -312,7 +318,8 @@ acmpca_describe_certificate_authority <- function(CertificateAuthorityArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .acmpca$describe_certificate_authority_input(CertificateAuthorityArn = CertificateAuthorityArn)
   output <- .acmpca$describe_certificate_authority_output()
@@ -349,7 +356,8 @@ acmpca_describe_certificate_authority_audit_report <- function(CertificateAuthor
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .acmpca$describe_certificate_authority_audit_report_input(CertificateAuthorityArn = CertificateAuthorityArn, AuditReportId = AuditReportId)
   output <- .acmpca$describe_certificate_authority_audit_report_output()
@@ -388,7 +396,8 @@ acmpca_get_certificate <- function(CertificateAuthorityArn, CertificateArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .acmpca$get_certificate_input(CertificateAuthorityArn = CertificateAuthorityArn, CertificateArn = CertificateArn)
   output <- .acmpca$get_certificate_output()
@@ -421,7 +430,8 @@ acmpca_get_certificate_authority_certificate <- function(CertificateAuthorityArn
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .acmpca$get_certificate_authority_certificate_input(CertificateAuthorityArn = CertificateAuthorityArn)
   output <- .acmpca$get_certificate_authority_certificate_output()
@@ -456,7 +466,8 @@ acmpca_get_certificate_authority_csr <- function(CertificateAuthorityArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .acmpca$get_certificate_authority_csr_input(CertificateAuthorityArn = CertificateAuthorityArn)
   output <- .acmpca$get_certificate_authority_csr_output()
@@ -490,7 +501,8 @@ acmpca_get_policy <- function(ResourceArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .acmpca$get_policy_input(ResourceArn = ResourceArn)
   output <- .acmpca$get_policy_output()
@@ -536,7 +548,8 @@ acmpca_import_certificate_authority_certificate <- function(CertificateAuthority
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .acmpca$import_certificate_authority_certificate_input(CertificateAuthorityArn = CertificateAuthorityArn, Certificate = Certificate, CertificateChain = CertificateChain)
   output <- .acmpca$import_certificate_authority_certificate_output()
@@ -665,7 +678,8 @@ acmpca_issue_certificate <- function(ApiPassthrough = NULL, CertificateAuthority
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .acmpca$issue_certificate_input(ApiPassthrough = ApiPassthrough, CertificateAuthorityArn = CertificateAuthorityArn, Csr = Csr, SigningAlgorithm = SigningAlgorithm, TemplateArn = TemplateArn, Validity = Validity, ValidityNotBefore = ValidityNotBefore, IdempotencyToken = IdempotencyToken)
   output <- .acmpca$issue_certificate_output()
@@ -708,7 +722,8 @@ acmpca_list_certificate_authorities <- function(MaxResults = NULL, NextToken = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "CertificateAuthorities")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "CertificateAuthorities"),
+    stream_api = FALSE
   )
   input <- .acmpca$list_certificate_authorities_input(MaxResults = MaxResults, NextToken = NextToken, ResourceOwner = ResourceOwner)
   output <- .acmpca$list_certificate_authorities_output()
@@ -754,7 +769,8 @@ acmpca_list_permissions <- function(MaxResults = NULL, NextToken = NULL, Certifi
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Permissions")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Permissions"),
+    stream_api = FALSE
   )
   input <- .acmpca$list_permissions_input(MaxResults = MaxResults, NextToken = NextToken, CertificateAuthorityArn = CertificateAuthorityArn)
   output <- .acmpca$list_permissions_output()
@@ -797,7 +813,8 @@ acmpca_list_tags <- function(MaxResults = NULL, NextToken = NULL, CertificateAut
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Tags")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Tags"),
+    stream_api = FALSE
   )
   input <- .acmpca$list_tags_input(MaxResults = MaxResults, NextToken = NextToken, CertificateAuthorityArn = CertificateAuthorityArn)
   output <- .acmpca$list_tags_output()
@@ -837,7 +854,8 @@ acmpca_put_policy <- function(ResourceArn, Policy) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .acmpca$put_policy_input(ResourceArn = ResourceArn, Policy = Policy)
   output <- .acmpca$put_policy_output()
@@ -871,7 +889,8 @@ acmpca_restore_certificate_authority <- function(CertificateAuthorityArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .acmpca$restore_certificate_authority_input(CertificateAuthorityArn = CertificateAuthorityArn)
   output <- .acmpca$restore_certificate_authority_output()
@@ -919,7 +938,8 @@ acmpca_revoke_certificate <- function(CertificateAuthorityArn, CertificateSerial
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .acmpca$revoke_certificate_input(CertificateAuthorityArn = CertificateAuthorityArn, CertificateSerial = CertificateSerial, RevocationReason = RevocationReason)
   output <- .acmpca$revoke_certificate_output()
@@ -954,7 +974,8 @@ acmpca_tag_certificate_authority <- function(CertificateAuthorityArn, Tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .acmpca$tag_certificate_authority_input(CertificateAuthorityArn = CertificateAuthorityArn, Tags = Tags)
   output <- .acmpca$tag_certificate_authority_output()
@@ -989,7 +1010,8 @@ acmpca_untag_certificate_authority <- function(CertificateAuthorityArn, Tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .acmpca$untag_certificate_authority_input(CertificateAuthorityArn = CertificateAuthorityArn, Tags = Tags)
   output <- .acmpca$untag_certificate_authority_output()
@@ -1013,10 +1035,10 @@ acmpca_untag_certificate_authority <- function(CertificateAuthorityArn, Tags) {
 #' to be revoked. This must be of the form:
 #' 
 #' `arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 `
-#' @param RevocationConfiguration Contains information to enable Online Certificate Status Protocol (OCSP)
-#' support, to enable a certificate revocation list (CRL), to enable both,
-#' or to enable neither. If this parameter is not supplied, existing
-#' capibilites remain unchanged. For more information, see the
+#' @param RevocationConfiguration Contains information to enable support for Online Certificate Status
+#' Protocol (OCSP), certificate revocation list (CRL), both protocols, or
+#' neither. If you don't supply this parameter, existing capibilites remain
+#' unchanged. For more information, see the
 #' [OcspConfiguration](https://docs.aws.amazon.com/privateca/latest/APIReference/API_OcspConfiguration.html)
 #' and
 #' [CrlConfiguration](https://docs.aws.amazon.com/privateca/latest/APIReference/API_CrlConfiguration.html)
@@ -1039,6 +1061,21 @@ acmpca_untag_certificate_authority <- function(CertificateAuthorityArn, Tags) {
 #' 
 #' -   In a CRL or OCSP configuration, the value of a CNAME parameter must
 #'     not include a protocol prefix such as "http://" or "https://".
+#' 
+#' If you update the `S3BucketName` of
+#' [CrlConfiguration](https://docs.aws.amazon.com/privateca/latest/APIReference/API_CrlConfiguration.html),
+#' you can break revocation for existing certificates. In other words, if
+#' you call
+#' [`update_certificate_authority`][acmpca_update_certificate_authority] to
+#' update the CRL configuration's S3 bucket name, Amazon Web Services
+#' Private CA only writes CRLs to the new S3 bucket. Certificates issued
+#' prior to this point will have the old S3 bucket name in your CRL
+#' Distribution Point (CDP) extension, essentially breaking revocation. If
+#' you must update the S3 bucket, you'll need to reissue old certificates
+#' to keep the revocation working. Alternatively, you can use a
+#' [CustomCname](https://docs.aws.amazon.com/privateca/latest/APIReference/API_CrlConfiguration.html#privateca-Type-CrlConfiguration-CustomCname)
+#' in your CRL configuration if you might need to change the S3 bucket name
+#' in the future.
 #' @param Status Status of your private CA.
 #'
 #' @keywords internal
@@ -1050,7 +1087,8 @@ acmpca_update_certificate_authority <- function(CertificateAuthorityArn, Revocat
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .acmpca$update_certificate_authority_input(CertificateAuthorityArn = CertificateAuthorityArn, RevocationConfiguration = RevocationConfiguration, Status = Status)
   output <- .acmpca$update_certificate_authority_output()

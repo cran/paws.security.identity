@@ -73,7 +73,7 @@ NULL
 #' 
 #' All API actions are logged as CloudTrail events. See [Logging Detective
 #' API Calls with
-#' CloudTrail](https://docs.aws.amazon.com/detective/latest/userguide/).
+#' CloudTrail](https://docs.aws.amazon.com/detective/latest/userguide/logging-using-cloudtrail.html).
 #' 
 #' We replaced the term "master account" with the term "administrator
 #' account". An administrator account is used to centrally manage multiple
@@ -189,7 +189,7 @@ NULL
 #'  \link[=detective_start_monitoring_member]{start_monitoring_member} \tab Sends a request to enable data ingest for a member account that has a status of ACCEPTED_BUT_DISABLED\cr
 #'  \link[=detective_tag_resource]{tag_resource} \tab Applies tag values to a behavior graph\cr
 #'  \link[=detective_untag_resource]{untag_resource} \tab Removes tags from a behavior graph\cr
-#'  \link[=detective_update_datasource_packages]{update_datasource_packages} \tab Starts a data source packages for the behavior graph\cr
+#'  \link[=detective_update_datasource_packages]{update_datasource_packages} \tab Starts a data source package for the Detective behavior graph\cr
 #'  \link[=detective_update_investigation_state]{update_investigation_state} \tab Updates the state of an investigation\cr
 #'  \link[=detective_update_organization_configuration]{update_organization_configuration} \tab Updates the configuration for the Organizations integration in the current Region
 #' }
@@ -223,7 +223,7 @@ detective <- function(config = list(), credentials = list(), endpoint = NULL, re
 
 .detective$metadata <- list(
   service_name = "detective",
-  endpoints = list("*" = list(endpoint = "api.detective.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "api.detective.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "api.detective.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "api.detective.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "api.detective.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "api.detective.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "api.detective.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "api.detective.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "api.detective.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "api.detective.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "api.detective.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "api.detective.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "api.detective.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Detective",
   api_version = "2018-10-26",
   signing_name = "detective",

@@ -19,12 +19,14 @@ cognitoidentityprovider_forgot_password(
 
 \item{SecretHash}{A keyed-hash message authentication code (HMAC) calculated using the
 secret key of a user pool client and username plus the client ID in the
-message.}
+message. For more information about \code{SecretHash}, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/signing-up-users-in-your-app.html#cognito-user-pools-computing-secret-hash}{Computing secret hash values}.}
 
 \item{UserContextData}{Contextual data about your user session, such as the device fingerprint,
 IP address, or location. Amazon Cognito advanced security evaluates the
 risk of an authentication event based on the context that your app
-generates and passes to Amazon Cognito when it makes API requests.}
+generates and passes to Amazon Cognito when it makes API requests.
+
+For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-settings-viewing-threat-protection-app.html}{Collecting data for threat protection in applications}.}
 
 \item{Username}{[required] The username of the user that you want to query or modify. The value of
 this parameter is typically your user's username, but it can be any of
@@ -52,20 +54,20 @@ enhance your workflow for your specific needs.
 For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-working-with-lambda-triggers.html}{Customizing user pool Workflows with Lambda Triggers}
 in the \emph{Amazon Cognito Developer Guide}.
 
-When you use the ClientMetadata parameter, remember that Amazon Cognito
+When you use the \code{ClientMetadata} parameter, note that Amazon Cognito
 won't do the following:
 \itemize{
-\item Store the ClientMetadata value. This data is available only to
+\item Store the \code{ClientMetadata} value. This data is available only to
 Lambda triggers that are assigned to a user pool to support custom
 workflows. If your user pool configuration doesn't include triggers,
-the ClientMetadata parameter serves no purpose.
-\item Validate the ClientMetadata value.
-\item Encrypt the ClientMetadata value. Don't use Amazon Cognito to
-provide sensitive information.
+the \code{ClientMetadata} parameter serves no purpose.
+\item Validate the \code{ClientMetadata} value.
+\item Encrypt the \code{ClientMetadata} value. Don't send sensitive information
+in this parameter.
 }}
 }
 \description{
-Calling this API causes a message to be sent to the end user with a confirmation code that is required to change the user's password. For the \code{Username} parameter, you can use the username or user alias. The method used to send the confirmation code is sent according to the specified AccountRecoverySetting. For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/how-to-recover-a-user-account.html}{Recovering User Accounts} in the \emph{Amazon Cognito Developer Guide}. To use the confirmation code for resetting the password, call \code{\link[=cognitoidentityprovider_confirm_forgot_password]{confirm_forgot_password}}.
+Calling this API causes a message to be sent to the end user with a confirmation code that is required to change the user's password. For the \code{Username} parameter, you can use the username or user alias. The method used to send the confirmation code is sent according to the specified AccountRecoverySetting. For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/managing-users-passwords.html}{Recovering User Accounts} in the \emph{Amazon Cognito Developer Guide}. To use the confirmation code for resetting the password, call \code{\link[=cognitoidentityprovider_confirm_forgot_password]{confirm_forgot_password}}.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_forgot_password/} for full documentation.
 }

@@ -1,6 +1,6 @@
 Package: paws.security.identity
 Title: 'Amazon Web Services' Security, Identity, & Compliance Services
-Version: 0.8.0
+Version: 0.9.0
 Authors@R: c(
     person("David", "Kretch", , "david.kretch@gmail.com", role = "aut"),
     person("Adam", "Banker", , "adam.banker39@gmail.com", role = "aut"),
@@ -71,11 +71,11 @@ Collate: 'accessanalyzer_service.R' 'accessanalyzer_interfaces.R'
         'wafregional_interfaces.R' 'wafregional_operations.R'
         'wafv2_service.R' 'wafv2_interfaces.R' 'wafv2_operations.R'
 NeedsCompilation: no
-Packaged: 2025-02-08 17:04:36 UTC; dyfanjones
+Packaged: 2025-03-14 09:23:34 UTC; dyfanjones
 Author: David Kretch [aut],
   Adam Banker [aut],
   Dyfan Jones [cre],
   Amazon.com, Inc. [cph]
 Maintainer: Dyfan Jones <dyfan.r.jones@gmail.com>
 Repository: CRAN
-Date/Publication: 2025-02-08 20:20:02 UTC
+Date/Publication: 2025-03-14 16:50:02 UTC

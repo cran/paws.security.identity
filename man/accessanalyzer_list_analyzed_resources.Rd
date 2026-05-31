@@ -13,8 +13,7 @@ accessanalyzer_list_analyzed_resources(
 )
 }
 \arguments{
-\item{analyzerArn}{[required] The \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources}{ARN of the analyzer}
-to retrieve a list of analyzed resources from.}
+\item{analyzerArn}{[required] The \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources}{ARN of the analyzer} to retrieve a list of analyzed resources from.}
 
 \item{resourceType}{The type of resource.}
 

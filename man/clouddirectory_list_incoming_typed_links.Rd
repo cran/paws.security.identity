@@ -16,18 +16,13 @@ clouddirectory_list_incoming_typed_links(
 )
 }
 \arguments{
-\item{DirectoryArn}{[required] The Amazon Resource Name (ARN) of the directory where you want to list
-the typed links.}
+\item{DirectoryArn}{[required] The Amazon Resource Name (ARN) of the directory where you want to list the typed links.}
 
 \item{ObjectReference}{[required] Reference that identifies the object whose attributes will be listed.}
 
-\item{FilterAttributeRanges}{Provides range filters for multiple attributes. When providing ranges to
-typed link selection, any inexact ranges must be specified at the end.
-Any attributes that do not have a range specified are presumed to match
-the entire range.}
+\item{FilterAttributeRanges}{Provides range filters for multiple attributes. When providing ranges to typed link selection, any inexact ranges must be specified at the end. Any attributes that do not have a range specified are presumed to match the entire range.}
 
-\item{FilterTypedLink}{Filters are interpreted in the order of the attributes on the typed link
-facet, not the order in which they are supplied to any API calls.}
+\item{FilterTypedLink}{Filters are interpreted in the order of the attributes on the typed link facet, not the order in which they are supplied to any API calls.}
 
 \item{NextToken}{The pagination token.}
 

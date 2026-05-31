@@ -7,8 +7,7 @@
 clouddirectory_create_schema(Name)
 }
 \arguments{
-\item{Name}{[required] The name that is associated with the schema. This is unique to each
-account and in each region.}
+\item{Name}{[required] The name that is associated with the schema. This is unique to each account and in each region.}
 }
 \description{
 Creates a new schema in a development state. A schema can exist in three phases:

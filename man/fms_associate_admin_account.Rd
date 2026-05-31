@@ -7,11 +7,7 @@
 fms_associate_admin_account(AdminAccount)
 }
 \arguments{
-\item{AdminAccount}{[required] The Amazon Web Services account ID to associate with Firewall Manager as
-the Firewall Manager default administrator account. This account must be
-a member account of the organization in Organizations whose resources
-you want to protect. For more information about Organizations, see
-\href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts.html}{Managing the Amazon Web Services Accounts in Your Organization}.}
+\item{AdminAccount}{[required] The Amazon Web Services account ID to associate with Firewall Manager as the Firewall Manager default administrator account. This account must be a member account of the organization in Organizations whose resources you want to protect. For more information about Organizations, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts.html}{Managing the Amazon Web Services Accounts in Your Organization}.}
 }
 \description{
 Sets a Firewall Manager default administrator account. The Firewall Manager default administrator account can manage third-party firewalls and has full administrative scope that allows administration of all policy types, accounts, organizational units, and Regions. This account must be a member account of the organization in Organizations whose resources you want to protect.

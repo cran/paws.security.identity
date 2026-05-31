@@ -8,8 +8,7 @@ the current Region}
 detective_enable_organization_admin_account(AccountId)
 }
 \arguments{
-\item{AccountId}{[required] The Amazon Web Services account identifier of the account to designate
-as the Detective administrator account for the organization.}
+\item{AccountId}{[required] The Amazon Web Services account identifier of the account to designate as the Detective administrator account for the organization.}
 }
 \description{
 Designates the Detective administrator account for the organization in the current Region.

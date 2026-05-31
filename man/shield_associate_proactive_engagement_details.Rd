@@ -8,18 +8,11 @@ Shield Response Team (SRT) to use}
 shield_associate_proactive_engagement_details(EmergencyContactList)
 }
 \arguments{
-\item{EmergencyContactList}{[required] A list of email addresses and phone numbers that the Shield Response
-Team (SRT) can use to contact you for escalations to the SRT and to
-initiate proactive customer support.
+\item{EmergencyContactList}{[required] A list of email addresses and phone numbers that the Shield Response Team (SRT) can use to contact you for escalations to the SRT and to initiate proactive customer support.
 
-To enable proactive engagement, the contact list must include at least
-one phone number.
+To enable proactive engagement, the contact list must include at least one phone number.
 
-The contacts that you provide here replace any contacts that were
-already defined. If you already have contacts defined and want to use
-them, retrieve the list using
-\code{\link[=shield_describe_emergency_contact_settings]{describe_emergency_contact_settings}}
-and then provide it here.}
+The contacts that you provide here replace any contacts that were already defined. If you already have contacts defined and want to use them, retrieve the list using \code{\link[=shield_describe_emergency_contact_settings]{describe_emergency_contact_settings}} and then provide it here.}
 }
 \description{
 Initializes proactive engagement and sets the list of contacts for the Shield Response Team (SRT) to use. You must provide at least one phone number in the emergency contact list.

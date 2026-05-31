@@ -7,22 +7,17 @@
 wafv2_get_logging_configuration(ResourceArn, LogType = NULL, LogScope = NULL)
 }
 \arguments{
-\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the web ACL for which you want to get
-the LoggingConfiguration.}
+\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the web ACL for which you want to get the LoggingConfiguration.}
 
-\item{LogType}{Used to distinguish between various logging options. Currently, there is
-one option.
+\item{LogType}{Used to distinguish between various logging options. Currently, there is one option.
 
 Default: \code{WAF_LOGS}}
 
-\item{LogScope}{The owner of the logging configuration, which must be set to \code{CUSTOMER}
-for the configurations that you manage.
+\item{LogScope}{The owner of the logging configuration, which must be set to \code{CUSTOMER} for the configurations that you manage.
 
-The log scope \code{SECURITY_LAKE} indicates a configuration that is managed
-through Amazon Security Lake. You can use Security Lake to collect log
-and event data from various sources for normalization, analysis, and
-management. For information, see \href{https://docs.aws.amazon.com/security-lake/latest/userguide/internal-sources.html}{Collecting data from Amazon Web Services services}
-in the \emph{Amazon Security Lake user guide}.
+The log scope \code{SECURITY_LAKE} indicates a configuration that is managed through Amazon Security Lake. You can use Security Lake to collect log and event data from various sources for normalization, analysis, and management. For information, see \href{https://docs.aws.amazon.com/security-lake/latest/userguide/internal-sources.html}{Collecting data from Amazon Web Services services} in the \emph{Amazon Security Lake user guide}.
+
+The log scope \code{CLOUDWATCH_TELEMETRY_RULE_MANAGED} indicates a configuration that is managed through Amazon CloudWatch Logs for telemetry data collection and analysis. For information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html}{What is Amazon CloudWatch Logs ?} in the \emph{Amazon CloudWatch Logs user guide}.
 
 Default: \code{CUSTOMER}}
 }

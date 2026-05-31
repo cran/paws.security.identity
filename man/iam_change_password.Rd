@@ -9,18 +9,9 @@ iam_change_password(OldPassword, NewPassword)
 \arguments{
 \item{OldPassword}{[required] The IAM user's current password.}
 
-\item{NewPassword}{[required] The new password. The new password must conform to the Amazon Web
-Services account's password policy, if one exists.
+\item{NewPassword}{[required] The new password. The new password must conform to the Amazon Web Services account's password policy, if one exists.
 
-The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} that is used to
-validate this parameter is a string of characters. That string can
-include almost any printable ASCII character from the space (\code{U+0020})
-through the end of the ASCII character range (\verb{U+00FF}). You can also
-include the tab (\code{U+0009}), line feed (\verb{U+000A}), and carriage return
-(\verb{U+000D}) characters. Any of these characters are valid in a password.
-However, many tools, such as the Amazon Web Services Management Console,
-might restrict the ability to type certain characters because they have
-special meaning within that tool.}
+The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} that is used to validate this parameter is a string of characters. That string can include almost any printable ASCII character from the space (\code{U+0020}) through the end of the ASCII character range (\verb{U+00FF}). You can also include the tab (\code{U+0009}), line feed (\verb{U+000A}), and carriage return (\verb{U+000D}) characters. Any of these characters are valid in a password. However, many tools, such as the Amazon Web Services Management Console, might restrict the ability to type certain characters because they have special meaning within that tool.}
 }
 \description{
 Changes the password of the IAM user who is calling this operation. This operation can be performed using the CLI, the Amazon Web Services API, or the \strong{My Security Credentials} page in the Amazon Web Services Management Console. The Amazon Web Services account root user password is not affected by this operation.

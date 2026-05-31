@@ -7,11 +7,9 @@
 cleanroomsml_get_ml_input_channel(mlInputChannelArn, membershipIdentifier)
 }
 \arguments{
-\item{mlInputChannelArn}{[required] The Amazon Resource Name (ARN) of the ML input channel that you want to
-get.}
+\item{mlInputChannelArn}{[required] The Amazon Resource Name (ARN) of the ML input channel that you want to get.}
 
-\item{membershipIdentifier}{[required] The membership ID of the membership that contains the ML input channel
-that you want to get.}
+\item{membershipIdentifier}{[required] The membership ID of the membership that contains the ML input channel that you want to get.}
 }
 \description{
 Returns information about an ML input channel.

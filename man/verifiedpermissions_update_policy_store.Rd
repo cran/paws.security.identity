@@ -7,17 +7,28 @@
 verifiedpermissions_update_policy_store(
   policyStoreId,
   validationSettings,
+  deletionProtection = NULL,
   description = NULL
 )
 }
 \arguments{
-\item{policyStoreId}{[required] Specifies the ID of the policy store that you want to update}
+\item{policyStoreId}{[required] Specifies the ID of the policy store that you want to update
 
-\item{validationSettings}{[required] A structure that defines the validation settings that want to enable for
-the policy store.}
+To specify a policy store, use its ID or alias name. When using an alias name, prefix it with \verb{policy-store-alias/}. For example:
+\itemize{
+\item ID: \code{PSEXAMPLEabcdefg111111}
+\item Alias name: \code{policy-store-alias/example-policy-store}
+}
 
-\item{description}{Descriptive text that you can provide to help with identification of the
-current policy store.}
+To view aliases, use \code{\link[=verifiedpermissions_list_policy_store_aliases]{list_policy_store_aliases}}.}
+
+\item{validationSettings}{[required] A structure that defines the validation settings that want to enable for the policy store.}
+
+\item{deletionProtection}{Specifies whether the policy store can be deleted. If enabled, the policy store can't be deleted.
+
+When you call \code{\link[=verifiedpermissions_update_policy_store]{update_policy_store}}, this parameter is unchanged unless explicitly included in the call.}
+
+\item{description}{Descriptive text that you can provide to help with identification of the current policy store.}
 }
 \description{
 Modifies the validation setting for a policy store.

@@ -7,8 +7,7 @@
 waf_put_permission_policy(ResourceArn, Policy)
 }
 \arguments{
-\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the RuleGroup to which you want to
-attach the policy.}
+\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the RuleGroup to which you want to attach the policy.}
 
 \item{Policy}{[required] The policy to attach to the specified RuleGroup.}
 }

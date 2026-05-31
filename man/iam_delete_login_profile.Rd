@@ -2,26 +2,20 @@
 % Please edit documentation in R/iam_operations.R
 \name{iam_delete_login_profile}
 \alias{iam_delete_login_profile}
-\title{Deletes the password for the specified IAM user, For more information,
-see Managing passwords for IAM users}
+\title{Deletes the password for the specified IAM user or root user, For more
+information, see Managing passwords for IAM users}
 \usage{
 iam_delete_login_profile(UserName = NULL)
 }
 \arguments{
 \item{UserName}{The name of the user whose password you want to delete.
 
-This parameter is optional. If no user name is included, it defaults to
-the principal making the request. When you make this request with root
-user credentials, you must use an
-\href{https://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRoot.html}{AssumeRoot}
-session to omit the user name.
+This parameter is optional. If no user name is included, it defaults to the principal making the request. When you make this request with root user credentials, you must use an \href{https://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRoot.html}{AssumeRoot} session to omit the user name.
 
-This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
-consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: _+=,.@-}
+This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-}
 }
 \description{
-Deletes the password for the specified IAM user, For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_admin-change-user.html}{Managing passwords for IAM users}.
+Deletes the password for the specified IAM user or root user, For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_admin-change-user.html}{Managing passwords for IAM users}.
 
 See \url{https://www.paws-r-sdk.com/docs/iam_delete_login_profile/} for full documentation.
 }

@@ -7,12 +7,9 @@
 waf_put_logging_configuration(LoggingConfiguration)
 }
 \arguments{
-\item{LoggingConfiguration}{[required] The Amazon Kinesis Data Firehose that contains the inspected traffic
-information, the redacted fields details, and the Amazon Resource Name
-(ARN) of the web ACL to monitor.
+\item{LoggingConfiguration}{[required] The Amazon Kinesis Data Firehose that contains the inspected traffic information, the redacted fields details, and the Amazon Resource Name (ARN) of the web ACL to monitor.
 
-When specifying \code{Type} in \code{RedactedFields}, you must use one of the
-following values: \code{URI}, \code{QUERY_STRING}, \code{HEADER}, or \code{METHOD}.}
+When specifying \code{Type} in \code{RedactedFields}, you must use one of the following values: \code{URI}, \code{QUERY_STRING}, \code{HEADER}, or \code{METHOD}.}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic} in the developer guide.

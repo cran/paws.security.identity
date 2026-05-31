@@ -8,9 +8,7 @@ that has been shared with you}
 acmpca_describe_certificate_authority(CertificateAuthorityArn)
 }
 \arguments{
-\item{CertificateAuthorityArn}{[required] The Amazon Resource Name (ARN) that was returned when you called
-\code{\link[=acmpca_create_certificate_authority]{create_certificate_authority}}.
-This must be of the form:
+\item{CertificateAuthorityArn}{[required] The Amazon Resource Name (ARN) that was returned when you called \code{\link[=acmpca_create_certificate_authority]{create_certificate_authority}}. This must be of the form:
 
 \code{arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 }.}
 }

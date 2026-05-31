@@ -9,8 +9,7 @@ detective_disassociate_membership(GraphArn)
 \arguments{
 \item{GraphArn}{[required] The ARN of the behavior graph to remove the member account from.
 
-The member account's member status in the behavior graph must be
-\code{ENABLED}.}
+The member account's member status in the behavior graph must be \code{ENABLED}.}
 }
 \description{
 Removes the member account from the specified behavior graph. This operation can only be called by an invited member account that has the \code{ENABLED} status.

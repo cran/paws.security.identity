@@ -5,26 +5,11 @@ NULL
 #' IAM Roles Anywhere
 #'
 #' @description
-#' Identity and Access Management Roles Anywhere provides a secure way for
-#' your workloads such as servers, containers, and applications that run
-#' outside of Amazon Web Services to obtain temporary Amazon Web Services
-#' credentials. Your workloads can use the same IAM policies and roles you
-#' have for native Amazon Web Services applications to access Amazon Web
-#' Services resources. Using IAM Roles Anywhere eliminates the need to
-#' manage long-term credentials for workloads running outside of Amazon Web
-#' Services.
+#' Identity and Access Management Roles Anywhere provides a secure way for your workloads such as servers, containers, and applications that run outside of Amazon Web Services to obtain temporary Amazon Web Services credentials. Your workloads can use the same IAM policies and roles you have for native Amazon Web Services applications to access Amazon Web Services resources. Using IAM Roles Anywhere eliminates the need to manage long-term credentials for workloads running outside of Amazon Web Services.
 #' 
-#' To use IAM Roles Anywhere, your workloads must use X.509 certificates
-#' issued by their certificate authority (CA). You register the CA with IAM
-#' Roles Anywhere as a trust anchor to establish trust between your public
-#' key infrastructure (PKI) and IAM Roles Anywhere. If you don't manage
-#' your own PKI system, you can use Private Certificate Authority to create
-#' a CA and then use that to establish trust with IAM Roles Anywhere.
+#' To use IAM Roles Anywhere, your workloads must use X.509 certificates issued by their certificate authority (CA). You register the CA with IAM Roles Anywhere as a trust anchor to establish trust between your public key infrastructure (PKI) and IAM Roles Anywhere. If you don't manage your own PKI system, you can use Private Certificate Authority to create a CA and then use that to establish trust with IAM Roles Anywhere.
 #' 
-#' This guide describes the IAM Roles Anywhere operations that you can call
-#' programmatically. For more information about IAM Roles Anywhere, see the
-#' [IAM Roles Anywhere User
-#' Guide](https://docs.aws.amazon.com/rolesanywhere/latest/userguide/introduction.html).
+#' This guide describes the IAM Roles Anywhere operations that you can call programmatically. For more information about IAM Roles Anywhere, see the [IAM Roles Anywhere User Guide](https://docs.aws.amazon.com/rolesanywhere/latest/userguide/introduction.html).
 #'
 #' @param
 #' config
@@ -170,11 +155,11 @@ iamrolesanywhere <- function(config = list(), credentials = list(), endpoint = N
 
 .iamrolesanywhere$metadata <- list(
   service_name = "iamrolesanywhere",
-  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "rolesanywhere.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "rolesanywhere.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "rolesanywhere.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "rolesanywhere.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "rolesanywhere.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "rolesanywhere.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "rolesanywhere.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "rolesanywhere.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "rolesanywhere.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "rolesanywhere.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "rolesanywhere.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "rolesanywhere.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "rolesanywhere.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "rolesanywhere.{region}.csp.hci.ic.gov", global = FALSE), "^eusc\\-(de)\\-\\w+\\-\\d+$" = list(endpoint = "rolesanywhere.{region}.amazonaws.eu", global = FALSE)),
   service_id = "RolesAnywhere",
   api_version = "2018-05-10",
   signing_name = "rolesanywhere",
-  json_version = "1.1",
+  json_version = "",
   target_prefix = ""
 )
 

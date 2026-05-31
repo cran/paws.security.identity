@@ -50,50 +50,23 @@ Operations section.
 \description{
 WAF
 
-This is the latest version of the \strong{WAF} API, released in November,
-2019. The names of the entities that you use to access this API, like
-endpoints and namespaces, all have the versioning information added,
-like "V2" or "v2", to distinguish from the prior version. We recommend
-migrating your resources to this version, because it has a number of
-significant improvements.
+This is the latest version of the \strong{WAF} API, released in November, 2019. The names of the entities that you use to access this API, like endpoints and namespaces, all have the versioning information added, like "V2" or "v2", to distinguish from the prior version. We recommend migrating your resources to this version, because it has a number of significant improvements.
 
-If you used WAF prior to this release, you can't use this WAFV2 API to
-access any WAF resources that you created before. WAF Classic support
-will end on September 30, 2025.
+If you used WAF prior to this release, you can't use this WAFV2 API to access any WAF resources that you created before. WAF Classic support will end on September 30, 2025.
 
-For information about WAF, including how to migrate your WAF Classic
-resources to this version, see the \href{https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html}{WAF Developer Guide}.
+For information about WAF, including how to migrate your WAF Classic resources to this version, see the \href{https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html}{WAF Developer Guide}.
 
-WAF is a web application firewall that lets you monitor the HTTP and
-HTTPS requests that are forwarded to a protected resource. Protected
-resource types include Amazon CloudFront distribution, Amazon API
-Gateway REST API, Application Load Balancer, AppSync GraphQL API, Amazon
-Cognito user pool, App Runner service, and Amazon Web Services Verified
-Access instance. WAF also lets you control access to your content, to
-protect the Amazon Web Services resource that WAF is monitoring. Based
-on conditions that you specify, such as the IP addresses that requests
-originate from or the values of query strings, the protected resource
-responds to requests with either the requested content, an HTTP 403
-status code (Forbidden), or with a custom response.
+WAF is a web application firewall that lets you monitor the HTTP and HTTPS requests that are forwarded to a protected resource. Protected resource types include Amazon CloudFront distribution, Amazon API Gateway REST API, Application Load Balancer, AppSync GraphQL API, Amazon Cognito user pool, App Runner service, Amplify application, and Amazon Web Services Verified Access instance. WAF also lets you control access to your content, to protect the Amazon Web Services resource that WAF is monitoring. Based on conditions that you specify, such as the IP addresses that requests originate from or the values of query strings, the protected resource responds to requests with either the requested content, an HTTP 403 status code (Forbidden), or with a custom response.
 
-This API guide is for developers who need detailed information about WAF
-API actions, data types, and errors. For detailed information about WAF
-features and guidance for configuring and using WAF, see the \href{https://docs.aws.amazon.com/waf/latest/developerguide/what-is-aws-waf.html}{WAF Developer Guide}.
+This API guide is for developers who need detailed information about WAF API actions, data types, and errors. For detailed information about WAF features and guidance for configuring and using WAF, see the \href{https://docs.aws.amazon.com/waf/latest/developerguide/what-is-aws-waf.html}{WAF Developer Guide}.
 
 You can make calls using the endpoints listed in \href{https://docs.aws.amazon.com/general/latest/gr/waf.html}{WAF endpoints and quotas}.
 \itemize{
-\item For regional resources, you can use any of the endpoints in the
-list. A regional application can be an Application Load Balancer
-(ALB), an Amazon API Gateway REST API, an AppSync GraphQL API, an
-Amazon Cognito user pool, an App Runner service, or an Amazon Web
-Services Verified Access instance.
-\item For Amazon CloudFront, you must use the API endpoint listed for US
-East (N. Virginia): us-east-1.
+\item For regional resources, you can use any of the endpoints in the list. A regional application can be an Application Load Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API, an Amazon Cognito user pool, an App Runner service, or an Amazon Web Services Verified Access instance.
+\item For Amazon CloudFront and Amplify, you must use the API endpoint listed for US East (N. Virginia): us-east-1.
 }
 
-Alternatively, you can use one of the Amazon Web Services SDKs to access
-an API that's tailored to the programming language or platform that
-you're using. For more information, see \href{https://aws.amazon.com/developer/tools/#SDKs}{Amazon Web Services SDKs}.
+Alternatively, you can use one of the Amazon Web Services SDKs to access an API that's tailored to the programming language or platform that you're using. For more information, see \href{https://builder.aws.com/build/tools#SDKs}{Amazon Web Services SDKs}.
 }
 \section{Service syntax}{
 
@@ -164,6 +137,7 @@ you're using. For more information, see \href{https://aws.amazon.com/developer/t
 \link[=wafv2_get_regex_pattern_set]{get_regex_pattern_set} \tab Retrieves the specified RegexPatternSet\cr
 \link[=wafv2_get_rule_group]{get_rule_group} \tab Retrieves the specified RuleGroup\cr
 \link[=wafv2_get_sampled_requests]{get_sampled_requests} \tab Gets detailed information about a specified number of requests--a sample--that WAF randomly selects from among the first 5,000 requests that your Amazon Web Services resource received during a time range that you choose\cr
+\link[=wafv2_get_top_path_statistics_by_traffic]{get_top_path_statistics_by_traffic} \tab Retrieves aggregated statistics about the top URI paths accessed by bot traffic for a specified web ACL and time window\cr
 \link[=wafv2_get_web_acl]{get_web_acl} \tab Retrieves the specified WebACL\cr
 \link[=wafv2_get_web_acl_for_resource]{get_web_acl_for_resource} \tab Retrieves the WebACL for the specified resource\cr
 \link[=wafv2_list_api_keys]{list_api_keys} \tab Retrieves a list of the API keys that you've defined for the specified scope\cr

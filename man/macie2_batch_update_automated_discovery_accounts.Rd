@@ -8,10 +8,7 @@ accounts}
 macie2_batch_update_automated_discovery_accounts(accounts = NULL)
 }
 \arguments{
-\item{accounts}{An array of objects, one for each account to change the status of
-automated sensitive data discovery for. Each object specifies the Amazon
-Web Services account ID for an account and a new status for that
-account.}
+\item{accounts}{An array of objects, one for each account to change the status of automated sensitive data discovery for. Each object specifies the Amazon Web Services account ID for an account and a new status for that account.}
 }
 \description{
 Changes the status of automated sensitive data discovery for one or more accounts.

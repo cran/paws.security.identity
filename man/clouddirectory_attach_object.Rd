@@ -12,8 +12,7 @@ clouddirectory_attach_object(
 )
 }
 \arguments{
-\item{DirectoryArn}{[required] Amazon Resource Name (ARN) that is associated with the Directory where
-both objects reside. For more information, see arns.}
+\item{DirectoryArn}{[required] Amazon Resource Name (ARN) that is associated with the Directory where both objects reside. For more information, see arns.}
 
 \item{ParentReference}{[required] The parent object reference.}
 

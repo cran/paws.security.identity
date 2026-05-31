@@ -6,32 +6,21 @@ NULL
 #' Creates a new identity pool
 #'
 #' @description
-#' Creates a new identity pool. The identity pool is a store of user identity information that is specific to your AWS account. The keys for `SupportedLoginProviders` are as follows:
+#' Creates a new identity pool. The identity pool is a store of user identity information that is specific to your Amazon Web Services account. The keys for `SupportedLoginProviders` are as follows:
 #'
 #' See [https://www.paws-r-sdk.com/docs/cognitoidentity_create_identity_pool/](https://www.paws-r-sdk.com/docs/cognitoidentity_create_identity_pool/) for full documentation.
 #'
 #' @param IdentityPoolName &#91;required&#93; A string that you provide.
 #' @param AllowUnauthenticatedIdentities &#91;required&#93; TRUE if the identity pool supports unauthenticated logins.
-#' @param AllowClassicFlow Enables or disables the Basic (Classic) authentication flow. For more
-#' information, see [Identity Pools (Federated Identities) Authentication
-#' Flow](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flow.html)
-#' in the *Amazon Cognito Developer Guide*.
+#' @param AllowClassicFlow Enables or disables the Basic (Classic) authentication flow. For more information, see [Identity Pools (Federated Identities) Authentication Flow](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flow.html) in the *Amazon Cognito Developer Guide*.
 #' @param SupportedLoginProviders Optional key:value pairs mapping provider names to provider app IDs.
-#' @param DeveloperProviderName The "domain" by which Cognito will refer to your users. This name acts
-#' as a placeholder that allows your backend and the Cognito service to
-#' communicate about the developer provider. For the
-#' `DeveloperProviderName`, you can use letters as well as period (`.`),
-#' underscore (`_`), and dash (`-`).
+#' @param DeveloperProviderName The "domain" by which Cognito will refer to your users. This name acts as a placeholder that allows your backend and the Cognito service to communicate about the developer provider. For the `DeveloperProviderName`, you can use letters as well as period (`.`), underscore (`_`), and dash (`-`).
 #' 
-#' Once you have set a developer provider name, you cannot change it.
-#' Please take care in setting this parameter.
+#' Once you have set a developer provider name, you cannot change it. Please take care in setting this parameter.
 #' @param OpenIdConnectProviderARNs The Amazon Resource Names (ARN) of the OpenID Connect providers.
 #' @param CognitoIdentityProviders An array of Amazon Cognito user pools and their client IDs.
-#' @param SamlProviderARNs An array of Amazon Resource Names (ARNs) of the SAML provider for your
-#' identity pool.
-#' @param IdentityPoolTags Tags to assign to the identity pool. A tag is a label that you can apply
-#' to identity pools to categorize and manage them in different ways, such
-#' as by purpose, owner, environment, or other criteria.
+#' @param SamlProviderARNs An array of Amazon Resource Names (ARNs) of the SAML provider for your identity pool.
+#' @param IdentityPoolTags Tags to assign to the identity pool. A tag is a label that you can apply to identity pools to categorize and manage them in different ways, such as by purpose, owner, environment, or other criteria.
 #'
 #' @keywords internal
 #'
@@ -184,27 +173,17 @@ cognitoidentity_describe_identity_pool <- function(IdentityPoolId) {
 #' Returns credentials for the provided identity ID
 #'
 #' @description
-#' Returns credentials for the provided identity ID. Any provided logins will be validated against supported login providers. If the token is for cognito-identity.amazonaws.com, it will be passed through to AWS Security Token Service with the appropriate role for the token.
+#' Returns credentials for the provided identity ID. Any provided logins will be validated against supported login providers. If the token is for `cognito-identity.amazonaws.com`, it will be passed through to Security Token Service with the appropriate role for the token.
 #'
 #' See [https://www.paws-r-sdk.com/docs/cognitoidentity_get_credentials_for_identity/](https://www.paws-r-sdk.com/docs/cognitoidentity_get_credentials_for_identity/) for full documentation.
 #'
 #' @param IdentityId &#91;required&#93; A unique identifier in the format REGION:GUID.
-#' @param Logins A set of optional name-value pairs that map provider names to provider
-#' tokens. The name-value pair will follow the syntax "provider_name":
-#' "provider_user_identifier".
+#' @param Logins A set of optional name-value pairs that map provider names to provider tokens. The name-value pair will follow the syntax "provider_name": "provider_user_identifier".
 #' 
-#' Logins should not be specified when trying to get credentials for an
-#' unauthenticated identity.
+#' Logins should not be specified when trying to get credentials for an unauthenticated identity.
 #' 
-#' The Logins parameter is required when using identities associated with
-#' external identity providers such as Facebook. For examples of `Logins`
-#' maps, see the code examples in the [External Identity
-#' Providers](https://docs.aws.amazon.com/cognito/latest/developerguide/external-identity-providers.html)
-#' section of the Amazon Cognito Developer Guide.
-#' @param CustomRoleArn The Amazon Resource Name (ARN) of the role to be assumed when multiple
-#' roles were received in the token from the identity provider. For
-#' example, a SAML-based identity provider. This parameter is optional for
-#' identity providers that do not support role customization.
+#' The Logins parameter is required when using identities associated with external identity providers such as Facebook. For examples of `Logins` maps, see the code examples in the [External Identity Providers](https://docs.aws.amazon.com/cognito/latest/developerguide/external-identity-providers.html) section of the Amazon Cognito Developer Guide.
+#' @param CustomRoleArn The Amazon Resource Name (ARN) of the role to be assumed when multiple roles were received in the token from the identity provider. For example, a SAML-based identity provider. This parameter is optional for identity providers that do not support role customization.
 #'
 #' @keywords internal
 #'
@@ -228,23 +207,20 @@ cognitoidentity_get_credentials_for_identity <- function(IdentityId, Logins = NU
 }
 .cognitoidentity$operations$get_credentials_for_identity <- cognitoidentity_get_credentials_for_identity
 
-#' Generates (or retrieves) a Cognito ID
+#' Generates (or retrieves) IdentityID
 #'
 #' @description
-#' Generates (or retrieves) a Cognito ID. Supplying multiple logins will create an implicit linked account.
+#' Generates (or retrieves) IdentityID. Supplying multiple logins will create an implicit linked account.
 #'
 #' See [https://www.paws-r-sdk.com/docs/cognitoidentity_get_id/](https://www.paws-r-sdk.com/docs/cognitoidentity_get_id/) for full documentation.
 #'
-#' @param AccountId A standard AWS account ID (9+ digits).
+#' @param AccountId A standard Amazon Web Services account ID (9+ digits).
 #' @param IdentityPoolId &#91;required&#93; An identity pool ID in the format REGION:GUID.
-#' @param Logins A set of optional name-value pairs that map provider names to provider
-#' tokens. The available provider names for `Logins` are as follows:
+#' @param Logins A set of optional name-value pairs that map provider names to provider tokens. The available provider names for `Logins` are as follows:
 #' 
 #' -   Facebook: `graph.facebook.com`
 #' 
-#' -   Amazon Cognito user pool:
-#'     `cognito-idp.<region>.amazonaws.com/<YOUR_USER_POOL_ID>`, for
-#'     example, `cognito-idp.us-east-1.amazonaws.com/us-east-1_123456789`.
+#' -   Amazon Cognito user pool: `cognito-idp.<region>.amazonaws.com/<YOUR_USER_POOL_ID>`, for example, `cognito-idp.us-east-1.amazonaws.com/us-east-1_123456789`.
 #' 
 #' -   Google: `accounts.google.com`
 #' 
@@ -315,11 +291,7 @@ cognitoidentity_get_identity_pool_roles <- function(IdentityPoolId) {
 #' See [https://www.paws-r-sdk.com/docs/cognitoidentity_get_open_id_token/](https://www.paws-r-sdk.com/docs/cognitoidentity_get_open_id_token/) for full documentation.
 #'
 #' @param IdentityId &#91;required&#93; A unique identifier in the format REGION:GUID.
-#' @param Logins A set of optional name-value pairs that map provider names to provider
-#' tokens. When using graph.facebook.com and www.amazon.com, supply the
-#' access_token returned from the provider's authflow. For
-#' accounts.google.com, an Amazon Cognito user pool provider, or any other
-#' OpenID Connect provider, always include the `id_token`.
+#' @param Logins A set of optional name-value pairs that map provider names to provider tokens. When using graph.facebook.com and www.amazon.com, supply the access_token returned from the provider's authflow. For accounts.google.com, an Amazon Cognito user pool provider, or any other OpenID Connect provider, always include the `id_token`.
 #'
 #' @keywords internal
 #'
@@ -353,29 +325,11 @@ cognitoidentity_get_open_id_token <- function(IdentityId, Logins = NULL) {
 #'
 #' @param IdentityPoolId &#91;required&#93; An identity pool ID in the format REGION:GUID.
 #' @param IdentityId A unique identifier in the format REGION:GUID.
-#' @param Logins &#91;required&#93; A set of optional name-value pairs that map provider names to provider
-#' tokens. Each name-value pair represents a user from a public provider or
-#' developer provider. If the user is from a developer provider, the
-#' name-value pair will follow the syntax
-#' `"developer_provider_name": "developer_user_identifier"`. The developer
-#' provider is the "domain" by which Cognito will refer to your users; you
-#' provided this domain while creating/updating the identity pool. The
-#' developer user identifier is an identifier from your backend that
-#' uniquely identifies a user. When you create an identity pool, you can
-#' specify the supported logins.
+#' @param Logins &#91;required&#93; A set of optional name-value pairs that map provider names to provider tokens. Each name-value pair represents a user from a public provider or developer provider. If the user is from a developer provider, the name-value pair will follow the syntax `"developer_provider_name": "developer_user_identifier"`. The developer provider is the "domain" by which Cognito will refer to your users; you provided this domain while creating/updating the identity pool. The developer user identifier is an identifier from your backend that uniquely identifies a user. When you create an identity pool, you can specify the supported logins.
 #' @param PrincipalTags Use this operation to configure attribute mappings for custom providers.
-#' @param TokenDuration The expiration time of the token, in seconds. You can specify a custom
-#' expiration time for the token so that you can cache it. If you don't
-#' provide an expiration time, the token is valid for 15 minutes. You can
-#' exchange the token with Amazon STS for temporary AWS credentials, which
-#' are valid for a maximum of one hour. The maximum token duration you can
-#' set is 24 hours. You should take care in setting the expiration time for
-#' a token, as there are significant security implications: an attacker
-#' could use a leaked token to access your AWS resources for the token's
-#' duration.
+#' @param TokenDuration The expiration time of the token, in seconds. You can specify a custom expiration time for the token so that you can cache it. If you don't provide an expiration time, the token is valid for 15 minutes. You can exchange the token with Amazon STS for temporary Amazon Web Services credentials, which are valid for a maximum of one hour. The maximum token duration you can set is 24 hours. You should take care in setting the expiration time for a token, as there are significant security implications: an attacker could use a leaked token to access your Amazon Web Services resources for the token's duration.
 #' 
-#' Please provide for a small grace period, usually no more than 5 minutes,
-#' to account for clock skew.
+#' Please provide for a small grace period, usually no more than 5 minutes, to account for clock skew.
 #'
 #' @keywords internal
 #'
@@ -407,8 +361,7 @@ cognitoidentity_get_open_id_token_for_developer_identity <- function(IdentityPoo
 #'
 #' See [https://www.paws-r-sdk.com/docs/cognitoidentity_get_principal_tag_attribute_map/](https://www.paws-r-sdk.com/docs/cognitoidentity_get_principal_tag_attribute_map/) for full documentation.
 #'
-#' @param IdentityPoolId &#91;required&#93; You can use this operation to get the ID of the Identity Pool you setup
-#' attribute mappings for.
+#' @param IdentityPoolId &#91;required&#93; You can use this operation to get the ID of the Identity Pool you setup attribute mappings for.
 #' @param IdentityProviderName &#91;required&#93; You can use this operation to get the provider name.
 #'
 #' @keywords internal
@@ -443,9 +396,7 @@ cognitoidentity_get_principal_tag_attribute_map <- function(IdentityPoolId, Iden
 #' @param IdentityPoolId &#91;required&#93; An identity pool ID in the format REGION:GUID.
 #' @param MaxResults &#91;required&#93; The maximum number of identities to return.
 #' @param NextToken A pagination token.
-#' @param HideDisabled An optional boolean parameter that allows you to hide disabled
-#' identities. If omitted, the ListIdentities API will include disabled
-#' identities in the response.
+#' @param HideDisabled An optional boolean parameter that allows you to hide disabled identities. If omitted, the ListIdentities API will include disabled identities in the response.
 #'
 #' @keywords internal
 #'
@@ -508,8 +459,7 @@ cognitoidentity_list_identity_pools <- function(MaxResults, NextToken = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/cognitoidentity_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/cognitoidentity_list_tags_for_resource/) for full documentation.
 #'
-#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the identity pool that the tags are
-#' assigned to.
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the identity pool that the tags are assigned to.
 #'
 #' @keywords internal
 #'
@@ -538,22 +488,15 @@ cognitoidentity_list_tags_for_resource <- function(ResourceArn) {
 #' for an existing identity
 #'
 #' @description
-#' Retrieves the `IdentityID` associated with a `DeveloperUserIdentifier` or the list of `DeveloperUserIdentifier` values associated with an `IdentityId` for an existing identity. Either `IdentityID` or `DeveloperUserIdentifier` must not be null. If you supply only one of these values, the other value will be searched in the database and returned as a part of the response. If you supply both, `DeveloperUserIdentifier` will be matched against `IdentityID`. If the values are verified against the database, the response returns both values and is the same as the request. Otherwise a `ResourceConflictException` is thrown.
+#' Retrieves the `IdentityID` associated with a `DeveloperUserIdentifier` or the list of `DeveloperUserIdentifier` values associated with an `IdentityId` for an existing identity. Either `IdentityID` or `DeveloperUserIdentifier` must not be null. If you supply only one of these values, the other value will be searched in the database and returned as a part of the response. If you supply both, `DeveloperUserIdentifier` will be matched against `IdentityID`. If the values are verified against the database, the response returns both values and is the same as the request. Otherwise, a `ResourceConflictException` is thrown.
 #'
 #' See [https://www.paws-r-sdk.com/docs/cognitoidentity_lookup_developer_identity/](https://www.paws-r-sdk.com/docs/cognitoidentity_lookup_developer_identity/) for full documentation.
 #'
 #' @param IdentityPoolId &#91;required&#93; An identity pool ID in the format REGION:GUID.
 #' @param IdentityId A unique identifier in the format REGION:GUID.
-#' @param DeveloperUserIdentifier A unique ID used by your backend authentication process to identify a
-#' user. Typically, a developer identity provider would issue many
-#' developer user identifiers, in keeping with the number of users.
+#' @param DeveloperUserIdentifier A unique ID used by your backend authentication process to identify a user. Typically, a developer identity provider would issue many developer user identifiers, in keeping with the number of users.
 #' @param MaxResults The maximum number of identities to return.
-#' @param NextToken A pagination token. The first call you make will have `NextToken` set to
-#' null. After that the service will return `NextToken` values as needed.
-#' For example, let's say you make a request with `MaxResults` set to 10,
-#' and there are 20 matches in the database. The service will return a
-#' pagination token as a part of the response. This token can be used to
-#' call the API again and get results starting from the 11th match.
+#' @param NextToken A pagination token. The first call you make will have `NextToken` set to null. After that the service will return `NextToken` values as needed. For example, let's say you make a request with `MaxResults` set to 10, and there are 20 matches in the database. The service will return a pagination token as a part of the response. This token can be used to call the API again and get results starting from the 11th match.
 #'
 #' @keywords internal
 #'
@@ -585,16 +528,9 @@ cognitoidentity_lookup_developer_identity <- function(IdentityPoolId, IdentityId
 #'
 #' See [https://www.paws-r-sdk.com/docs/cognitoidentity_merge_developer_identities/](https://www.paws-r-sdk.com/docs/cognitoidentity_merge_developer_identities/) for full documentation.
 #'
-#' @param SourceUserIdentifier &#91;required&#93; User identifier for the source user. The value should be a
-#' `DeveloperUserIdentifier`.
-#' @param DestinationUserIdentifier &#91;required&#93; User identifier for the destination user. The value should be a
-#' `DeveloperUserIdentifier`.
-#' @param DeveloperProviderName &#91;required&#93; The "domain" by which Cognito will refer to your users. This is a
-#' (pseudo) domain name that you provide while creating an identity pool.
-#' This name acts as a placeholder that allows your backend and the Cognito
-#' service to communicate about the developer provider. For the
-#' `DeveloperProviderName`, you can use letters as well as period (.),
-#' underscore (_), and dash (-).
+#' @param SourceUserIdentifier &#91;required&#93; User identifier for the source user. The value should be a `DeveloperUserIdentifier`.
+#' @param DestinationUserIdentifier &#91;required&#93; User identifier for the destination user. The value should be a `DeveloperUserIdentifier`.
+#' @param DeveloperProviderName &#91;required&#93; The "domain" by which Cognito will refer to your users. This is a (pseudo) domain name that you provide while creating an identity pool. This name acts as a placeholder that allows your backend and the Cognito service to communicate about the developer provider. For the `DeveloperProviderName`, you can use letters as well as period (.), underscore (_), and dash (-).
 #' @param IdentityPoolId &#91;required&#93; An identity pool ID in the format REGION:GUID.
 #'
 #' @keywords internal
@@ -627,13 +563,8 @@ cognitoidentity_merge_developer_identities <- function(SourceUserIdentifier, Des
 #' See [https://www.paws-r-sdk.com/docs/cognitoidentity_set_identity_pool_roles/](https://www.paws-r-sdk.com/docs/cognitoidentity_set_identity_pool_roles/) for full documentation.
 #'
 #' @param IdentityPoolId &#91;required&#93; An identity pool ID in the format REGION:GUID.
-#' @param Roles &#91;required&#93; The map of roles associated with this pool. For a given role, the key
-#' will be either "authenticated" or "unauthenticated" and the value will
-#' be the Role ARN.
-#' @param RoleMappings How users for a specific identity provider are to mapped to roles. This
-#' is a string to RoleMapping object map. The string identifies the
-#' identity provider, for example, "graph.facebook.com" or
-#' "cognito-idp.us-east-1.amazonaws.com/us-east-1_abcdefghi:app_client_id".
+#' @param Roles &#91;required&#93; The map of roles associated with this pool. For a given role, the key will be either "authenticated" or "unauthenticated" and the value will be the Role ARN.
+#' @param RoleMappings How users for a specific identity provider are to mapped to roles. This is a string to RoleMapping object map. The string identifies the identity provider, for example, `graph.facebook.com` or `cognito-idp.us-east-1.amazonaws.com/us-east-1_abcdefghi:app_client_id`.
 #' 
 #' Up to 25 rules can be specified per identity provider.
 #'
@@ -669,8 +600,7 @@ cognitoidentity_set_identity_pool_roles <- function(IdentityPoolId, Roles, RoleM
 #'
 #' @param IdentityPoolId &#91;required&#93; The ID of the Identity Pool you want to set attribute mappings for.
 #' @param IdentityProviderName &#91;required&#93; The provider name you want to use for attribute mappings.
-#' @param UseDefaults You can use this operation to use default (username and clientID)
-#' attribute mappings.
+#' @param UseDefaults You can use this operation to use default (username and clientID) attribute mappings.
 #' @param PrincipalTags You can use this operation to add principal tags.
 #'
 #' @keywords internal
@@ -737,8 +667,7 @@ cognitoidentity_tag_resource <- function(ResourceArn, Tags) {
 #' @param IdentityId &#91;required&#93; A unique identifier in the format REGION:GUID.
 #' @param IdentityPoolId &#91;required&#93; An identity pool ID in the format REGION:GUID.
 #' @param DeveloperProviderName &#91;required&#93; The "domain" by which Cognito will refer to your users.
-#' @param DeveloperUserIdentifier &#91;required&#93; A unique ID used by your backend authentication process to identify a
-#' user.
+#' @param DeveloperUserIdentifier &#91;required&#93; A unique ID used by your backend authentication process to identify a user.
 #'
 #' @keywords internal
 #'
@@ -770,8 +699,7 @@ cognitoidentity_unlink_developer_identity <- function(IdentityId, IdentityPoolId
 #' See [https://www.paws-r-sdk.com/docs/cognitoidentity_unlink_identity/](https://www.paws-r-sdk.com/docs/cognitoidentity_unlink_identity/) for full documentation.
 #'
 #' @param IdentityId &#91;required&#93; A unique identifier in the format REGION:GUID.
-#' @param Logins &#91;required&#93; A set of optional name-value pairs that map provider names to provider
-#' tokens.
+#' @param Logins &#91;required&#93; A set of optional name-value pairs that map provider names to provider tokens.
 #' @param LoginsToRemove &#91;required&#93; Provider names to unlink from this identity.
 #'
 #' @keywords internal
@@ -829,30 +757,23 @@ cognitoidentity_untag_resource <- function(ResourceArn, TagKeys) {
 }
 .cognitoidentity$operations$untag_resource <- cognitoidentity_untag_resource
 
-#' Updates an identity pool
+#' Updates the configuration of an identity pool
 #'
 #' @description
-#' Updates an identity pool.
+#' Updates the configuration of an identity pool.
 #'
 #' See [https://www.paws-r-sdk.com/docs/cognitoidentity_update_identity_pool/](https://www.paws-r-sdk.com/docs/cognitoidentity_update_identity_pool/) for full documentation.
 #'
 #' @param IdentityPoolId &#91;required&#93; An identity pool ID in the format REGION:GUID.
 #' @param IdentityPoolName &#91;required&#93; A string that you provide.
 #' @param AllowUnauthenticatedIdentities &#91;required&#93; TRUE if the identity pool supports unauthenticated logins.
-#' @param AllowClassicFlow Enables or disables the Basic (Classic) authentication flow. For more
-#' information, see [Identity Pools (Federated Identities) Authentication
-#' Flow](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flow.html)
-#' in the *Amazon Cognito Developer Guide*.
+#' @param AllowClassicFlow Enables or disables the Basic (Classic) authentication flow. For more information, see [Identity Pools (Federated Identities) Authentication Flow](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flow.html) in the *Amazon Cognito Developer Guide*.
 #' @param SupportedLoginProviders Optional key:value pairs mapping provider names to provider app IDs.
 #' @param DeveloperProviderName The "domain" by which Cognito will refer to your users.
 #' @param OpenIdConnectProviderARNs The ARNs of the OpenID Connect providers.
 #' @param CognitoIdentityProviders A list representing an Amazon Cognito user pool and its client ID.
-#' @param SamlProviderARNs An array of Amazon Resource Names (ARNs) of the SAML provider for your
-#' identity pool.
-#' @param IdentityPoolTags The tags that are assigned to the identity pool. A tag is a label that
-#' you can apply to identity pools to categorize and manage them in
-#' different ways, such as by purpose, owner, environment, or other
-#' criteria.
+#' @param SamlProviderARNs An array of Amazon Resource Names (ARNs) of the SAML provider for your identity pool.
+#' @param IdentityPoolTags The tags that are assigned to the identity pool. A tag is a label that you can apply to identity pools to categorize and manage them in different ways, such as by purpose, owner, environment, or other criteria.
 #'
 #' @keywords internal
 #'

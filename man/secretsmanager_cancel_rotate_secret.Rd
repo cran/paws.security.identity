@@ -10,8 +10,7 @@ secretsmanager_cancel_rotate_secret(SecretId)
 \arguments{
 \item{SecretId}{[required] The ARN or name of the secret.
 
-For an ARN, we recommend that you specify a complete ARN rather than a
-partial ARN. See \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/troubleshoot.html#ARN_secretnamehyphen}{Finding a secret from a partial ARN}.}
+For an ARN, we recommend that you specify a complete ARN rather than a partial ARN. See \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/troubleshoot.html#ARN_secretnamehyphen}{Finding a secret from a partial ARN}.}
 }
 \description{
 Turns off automatic rotation, and if a rotation is currently in progress, cancels the rotation.

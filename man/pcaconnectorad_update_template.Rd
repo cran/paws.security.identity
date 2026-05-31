@@ -12,18 +12,11 @@ pcaconnectorad_update_template(
 )
 }
 \arguments{
-\item{Definition}{Template configuration to define the information included in
-certificates. Define certificate validity and renewal periods,
-certificate request handling and enrollment options, key usage
-extensions, application policies, and cryptography settings.}
+\item{Definition}{Template configuration to define the information included in certificates. Define certificate validity and renewal periods, certificate request handling and enrollment options, key usage extensions, application policies, and cryptography settings.}
 
-\item{ReenrollAllCertificateHolders}{This setting allows the major version of a template to be increased
-automatically. All members of Active Directory groups that are allowed
-to enroll with a template will receive a new certificate issued using
-that template.}
+\item{ReenrollAllCertificateHolders}{This setting allows the major version of a template to be increased automatically. All members of Active Directory groups that are allowed to enroll with a template will receive a new certificate issued using that template.}
 
-\item{TemplateArn}{[required] The Amazon Resource Name (ARN) that was returned when you called
-\code{\link[=pcaconnectorad_create_template]{create_template}}.}
+\item{TemplateArn}{[required] The Amazon Resource Name (ARN) that was returned when you called \code{\link[=pcaconnectorad_create_template]{create_template}}.}
 }
 \description{
 Update template configuration to define the information included in certificates.

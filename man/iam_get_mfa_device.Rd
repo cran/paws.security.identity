@@ -7,9 +7,7 @@
 iam_get_mfa_device(SerialNumber, UserName = NULL)
 }
 \arguments{
-\item{SerialNumber}{[required] Serial number that uniquely identifies the MFA device. For this API, we
-only accept FIDO security key
-\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{ARNs}.}
+\item{SerialNumber}{[required] Serial number that uniquely identifies the MFA device. For this API, we only accept FIDO security key \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{ARNs}.}
 
 \item{UserName}{The friendly name identifying the user.}
 }

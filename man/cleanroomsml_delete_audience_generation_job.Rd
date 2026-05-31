@@ -8,8 +8,7 @@ associated with the job}
 cleanroomsml_delete_audience_generation_job(audienceGenerationJobArn)
 }
 \arguments{
-\item{audienceGenerationJobArn}{[required] The Amazon Resource Name (ARN) of the audience generation job that you
-want to delete.}
+\item{audienceGenerationJobArn}{[required] The Amazon Resource Name (ARN) of the audience generation job that you want to delete.}
 }
 \description{
 Deletes the specified audience generation job, and removes all data associated with the job.

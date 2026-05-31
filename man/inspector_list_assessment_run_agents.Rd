@@ -15,22 +15,13 @@ inspector_list_assessment_run_agents(
 \arguments{
 \item{assessmentRunArn}{[required] The ARN that specifies the assessment run whose agents you want to list.}
 
-\item{filter}{You can use this parameter to specify a subset of data to be included in
-the action's response.
+\item{filter}{You can use this parameter to specify a subset of data to be included in the action's response.
 
-For a record to match a filter, all specified filter attributes must
-match. When multiple values are specified for a filter attribute, any of
-the values can match.}
+For a record to match a filter, all specified filter attributes must match. When multiple values are specified for a filter attribute, any of the values can match.}
 
-\item{nextToken}{You can use this parameter when paginating results. Set the value of
-this parameter to null on your first call to the
-\strong{ListAssessmentRunAgents} action. Subsequent calls to the action fill
-\strong{nextToken} in the request with the value of \strong{NextToken} from the
-previous response to continue listing data.}
+\item{nextToken}{You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the \strong{ListAssessmentRunAgents} action. Subsequent calls to the action fill \strong{nextToken} in the request with the value of \strong{NextToken} from the previous response to continue listing data.}
 
-\item{maxResults}{You can use this parameter to indicate the maximum number of items that
-you want in the response. The default value is 10. The maximum value is
-500.}
+\item{maxResults}{You can use this parameter to indicate the maximum number of items that you want in the response. The default value is 10. The maximum value is 500.}
 }
 \description{
 Lists the agents of the assessment runs that are specified by the ARNs of the assessment runs.

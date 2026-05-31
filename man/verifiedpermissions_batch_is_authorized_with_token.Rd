@@ -14,43 +14,33 @@ verifiedpermissions_batch_is_authorized_with_token(
 )
 }
 \arguments{
-\item{policyStoreId}{[required] Specifies the ID of the policy store. Policies in this policy store will
-be used to make an authorization decision for the input.}
+\item{policyStoreId}{[required] Specifies the ID of the policy store. Policies in this policy store will be used to make an authorization decision for the input.
 
-\item{identityToken}{Specifies an identity (ID) token for the principal that you want to
-authorize in each request. This token is provided to you by the identity
-provider (IdP) associated with the specified identity source. You must
-specify either an \code{accessToken}, an \code{identityToken}, or both.
-
-Must be an ID token. Verified Permissions returns an error if the
-\code{token_use} claim in the submitted token isn't \code{id}.}
-
-\item{accessToken}{Specifies an access token for the principal that you want to authorize
-in each request. This token is provided to you by the identity provider
-(IdP) associated with the specified identity source. You must specify
-either an \code{accessToken}, an \code{identityToken}, or both.
-
-Must be an access token. Verified Permissions returns an error if the
-\code{token_use} claim in the submitted token isn't \code{access}.}
-
-\item{entities}{Specifies the list of resources and their associated attributes that
-Verified Permissions can examine when evaluating the policies.
-
-You can't include principals in this parameter, only resource and action
-entities. This parameter can't include any entities of a type that
-matches the user or group entity types that you defined in your identity
-source.
+To specify a policy store, use its ID or alias name. When using an alias name, prefix it with \verb{policy-store-alias/}. For example:
 \itemize{
-\item The
-\code{\link[=verifiedpermissions_batch_is_authorized_with_token]{batch_is_authorized_with_token}}
-operation takes principal attributes from \emph{\strong{only}} the
-\code{identityToken} or \code{accessToken} passed to the operation.
-\item For action entities, you can include only their \code{Identifier} and
-\code{EntityType}.
+\item ID: \code{PSEXAMPLEabcdefg111111}
+\item Alias name: \code{policy-store-alias/example-policy-store}
+}
+
+To view aliases, use \code{\link[=verifiedpermissions_list_policy_store_aliases]{list_policy_store_aliases}}.}
+
+\item{identityToken}{Specifies an identity (ID) token for the principal that you want to authorize in each request. This token is provided to you by the identity provider (IdP) associated with the specified identity source. You must specify either an \code{accessToken}, an \code{identityToken}, or both.
+
+Must be an ID token. Verified Permissions returns an error if the \code{token_use} claim in the submitted token isn't \code{id}.}
+
+\item{accessToken}{Specifies an access token for the principal that you want to authorize in each request. This token is provided to you by the identity provider (IdP) associated with the specified identity source. You must specify either an \code{accessToken}, an \code{identityToken}, or both.
+
+Must be an access token. Verified Permissions returns an error if the \code{token_use} claim in the submitted token isn't \code{access}.}
+
+\item{entities}{(Optional) Specifies the list of resources and their associated attributes that Verified Permissions can examine when evaluating the policies. These additional entities and their attributes can be referenced and checked by conditional elements in the policies in the specified policy store.
+
+You can't include principals in this parameter, only resource and action entities. This parameter can't include any entities of a type that matches the user or group entity types that you defined in your identity source.
+\itemize{
+\item The \code{\link[=verifiedpermissions_batch_is_authorized_with_token]{batch_is_authorized_with_token}} operation takes principal attributes from \emph{\strong{only}} the \code{identityToken} or \code{accessToken} passed to the operation.
+\item For action entities, you can include only their \code{Identifier} and \code{EntityType}.
 }}
 
-\item{requests}{[required] An array of up to 30 requests that you want Verified Permissions to
-evaluate.}
+\item{requests}{[required] An array of up to 30 requests that you want Verified Permissions to evaluate.}
 }
 \description{
 Makes a series of decisions about multiple authorization requests for one token. The principal in this request comes from an external identity source in the form of an identity or access token, formatted as a \href{https://en.wikipedia.org/wiki/JSON_Web_Token}{JSON web token (JWT)}. The information in the parameters can also define additional context that Verified Permissions can include in the evaluations.

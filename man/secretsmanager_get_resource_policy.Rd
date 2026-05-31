@@ -8,11 +8,9 @@ to the secret}
 secretsmanager_get_resource_policy(SecretId)
 }
 \arguments{
-\item{SecretId}{[required] The ARN or name of the secret to retrieve the attached resource-based
-policy for.
+\item{SecretId}{[required] The ARN or name of the secret to retrieve the attached resource-based policy for.
 
-For an ARN, we recommend that you specify a complete ARN rather than a
-partial ARN. See \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/troubleshoot.html#ARN_secretnamehyphen}{Finding a secret from a partial ARN}.}
+For an ARN, we recommend that you specify a complete ARN rather than a partial ARN. See \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/troubleshoot.html#ARN_secretnamehyphen}{Finding a secret from a partial ARN}.}
 }
 \description{
 Retrieves the JSON text of the resource-based policy document attached to the secret. For more information about permissions policies attached to a secret, see \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_resource-policies.html}{Permissions policies attached to a secret}.

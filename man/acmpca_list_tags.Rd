@@ -8,19 +8,11 @@ that has been shared with you}
 acmpca_list_tags(MaxResults = NULL, NextToken = NULL, CertificateAuthorityArn)
 }
 \arguments{
-\item{MaxResults}{Use this parameter when paginating results to specify the maximum number
-of items to return in the response. If additional items exist beyond the
-number you specify, the \strong{NextToken} element is sent in the response.
-Use this \strong{NextToken} value in a subsequent request to retrieve
-additional items.}
+\item{MaxResults}{Use this parameter when paginating results to specify the maximum number of items to return in the response. If additional items exist beyond the number you specify, the \strong{NextToken} element is sent in the response. Use this \strong{NextToken} value in a subsequent request to retrieve additional items.}
 
-\item{NextToken}{Use this parameter when paginating results in a subsequent request after
-you receive a response with truncated results. Set it to the value of
-\strong{NextToken} from the response you just received.}
+\item{NextToken}{Use this parameter when paginating results in a subsequent request after you receive a response with truncated results. Set it to the value of \strong{NextToken} from the response you just received.}
 
-\item{CertificateAuthorityArn}{[required] The Amazon Resource Name (ARN) that was returned when you called the
-\code{\link[=acmpca_create_certificate_authority]{create_certificate_authority}}
-action. This must be of the form:
+\item{CertificateAuthorityArn}{[required] The Amazon Resource Name (ARN) that was returned when you called the \code{\link[=acmpca_create_certificate_authority]{create_certificate_authority}} action. This must be of the form:
 
 \code{arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 }}
 }

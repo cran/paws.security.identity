@@ -10,9 +10,7 @@ guardduty_delete_detector(DetectorId)
 \arguments{
 \item{DetectorId}{[required] The unique ID of the detector that you want to delete.
 
-To find the \code{detectorId} in the current Region, see the Settings page in
-the GuardDuty console, or run the
-\code{\link[=guardduty_list_detectors]{list_detectors}} API.}
+To find the \code{detectorId} in the current Region, see the Settings page in the GuardDuty console, or run the \code{\link[=guardduty_list_detectors]{list_detectors}} API.}
 }
 \description{
 Deletes an Amazon GuardDuty detector that is specified by the detector ID.

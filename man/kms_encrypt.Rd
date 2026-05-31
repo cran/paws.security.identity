@@ -14,74 +14,43 @@ kms_encrypt(
 )
 }
 \arguments{
-\item{KeyId}{[required] Identifies the KMS key to use in the encryption operation. The KMS key
-must have a \code{KeyUsage} of \code{ENCRYPT_DECRYPT}. To find the \code{KeyUsage} of a
-KMS key, use the \code{\link[=kms_describe_key]{describe_key}} operation.
+\item{KeyId}{[required] Identifies the KMS key to use in the encryption operation. The KMS key must have a \code{KeyUsage} of \code{ENCRYPT_DECRYPT}. To find the \code{KeyUsage} of a KMS key, use the \code{\link[=kms_describe_key]{describe_key}} operation.
 
-To specify a KMS key, use its key ID, key ARN, alias name, or alias ARN.
-When using an alias name, prefix it with \code{"alias/"}. To specify a KMS
-key in a different Amazon Web Services account, you must use the key ARN
-or alias ARN.
+To specify a KMS key, use its key ID, key ARN, alias name, or alias ARN. When using an alias name, prefix it with \code{"alias/"}. To specify a KMS key in a different Amazon Web Services account, you must use the key ARN or alias ARN.
 
 For example:
 \itemize{
 \item Key ID: \verb{1234abcd-12ab-34cd-56ef-1234567890ab}
-\item Key ARN:
-\verb{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
+\item Key ARN: \verb{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
 \item Alias name: \code{alias/ExampleAlias}
 \item Alias ARN: \code{arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias}
 }
 
-To get the key ID and key ARN for a KMS key, use
-\code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}. To
-get the alias name and alias ARN, use
-\code{\link[=kms_list_aliases]{list_aliases}}.}
+To get the key ID and key ARN for a KMS key, use \code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}. To get the alias name and alias ARN, use \code{\link[=kms_list_aliases]{list_aliases}}.}
 
 \item{Plaintext}{[required] Data to be encrypted.}
 
-\item{EncryptionContext}{Specifies the encryption context that will be used to encrypt the data.
-An encryption context is valid only for \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#cryptographic-operations}{cryptographic operations}
-with a symmetric encryption KMS key. The standard asymmetric encryption
-algorithms and HMAC algorithms that KMS uses do not support an
-encryption context.
+\item{EncryptionContext}{Specifies the encryption context that will be used to encrypt the data. An encryption context is valid only for \href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-cryptography.html#cryptographic-operations}{cryptographic operations} with a symmetric encryption KMS key. The standard asymmetric encryption algorithms and HMAC algorithms that KMS uses do not support an encryption context.
 
-Do not include confidential or sensitive information in this field. This
-field may be displayed in plaintext in CloudTrail logs and other output.
+Do not include confidential or sensitive information in this field. This field may be displayed in plaintext in CloudTrail logs and other output.
 
-An \emph{encryption context} is a collection of non-secret key-value pairs
-that represent additional authenticated data. When you use an encryption
-context to encrypt data, you must specify the same (an exact
-case-sensitive match) encryption context to decrypt the data. An
-encryption context is supported only on operations with symmetric
-encryption KMS keys. On operations with symmetric encryption KMS keys,
-an encryption context is optional, but it is strongly recommended.
+An \emph{encryption context} is a collection of non-secret key-value pairs that represent additional authenticated data. When you use an encryption context to encrypt data, you must specify the same (an exact case-sensitive match) encryption context to decrypt the data. An encryption context is supported only on operations with symmetric encryption KMS keys. On operations with symmetric encryption KMS keys, an encryption context is optional, but it is strongly recommended.
 
-For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context}{Encryption context}
-in the \emph{Key Management Service Developer Guide}.}
+For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/encrypt_context.html}{Encryption context} in the \emph{Key Management Service Developer Guide}.}
 
 \item{GrantTokens}{A list of grant tokens.
 
-Use a grant token when your permission to call this operation comes from
-a new grant that has not yet achieved \emph{eventual consistency}. For more
-information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token}{Grant token}
-and \href{https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#using-grant-token}{Using a grant token}
-in the \emph{Key Management Service Developer Guide}.}
+Use a grant token when your permission to call this operation comes from a new grant that has not yet achieved \emph{eventual consistency}. For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token}{Grant token} and \href{https://docs.aws.amazon.com/kms/latest/developerguide/using-grant-token.html}{Using a grant token} in the \emph{Key Management Service Developer Guide}.}
 
-\item{EncryptionAlgorithm}{Specifies the encryption algorithm that KMS will use to encrypt the
-plaintext message. The algorithm must be compatible with the KMS key
-that you specify.
+\item{EncryptionAlgorithm}{Specifies the encryption algorithm that KMS will use to encrypt the plaintext message. The algorithm must be compatible with the KMS key that you specify.
 
-This parameter is required only for asymmetric KMS keys. The default
-value, \code{SYMMETRIC_DEFAULT}, is the algorithm used for symmetric
-encryption KMS keys. If you are using an asymmetric KMS key, we
-recommend RSAES_OAEP_SHA_256.
+This parameter is required only for asymmetric KMS keys. The default value, \code{SYMMETRIC_DEFAULT}, is the algorithm used for symmetric encryption KMS keys. If you are using an asymmetric KMS key, we recommend RSAES_OAEP_SHA_256.
 
 The SM2PKE algorithm is only available in China Regions.}
 
 \item{DryRun}{Checks if your request will succeed. \code{DryRun} is an optional parameter.
 
-To learn more about how to use this parameter, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html}{Testing your KMS API calls}
-in the \emph{Key Management Service Developer Guide}.}
+To learn more about how to use this parameter, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html}{Testing your permissions} in the \emph{Key Management Service Developer Guide}.}
 }
 \description{
 Encrypts plaintext of up to 4,096 bytes using a KMS key. You can use a symmetric or asymmetric KMS key with a \code{KeyUsage} of \code{ENCRYPT_DECRYPT}.

@@ -10,12 +10,7 @@ NULL
 #'
 #' See [https://www.paws-r-sdk.com/docs/fms_associate_admin_account/](https://www.paws-r-sdk.com/docs/fms_associate_admin_account/) for full documentation.
 #'
-#' @param AdminAccount &#91;required&#93; The Amazon Web Services account ID to associate with Firewall Manager as
-#' the Firewall Manager default administrator account. This account must be
-#' a member account of the organization in Organizations whose resources
-#' you want to protect. For more information about Organizations, see
-#' [Managing the Amazon Web Services Accounts in Your
-#' Organization](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts.html).
+#' @param AdminAccount &#91;required&#93; The Amazon Web Services account ID to associate with Firewall Manager as the Firewall Manager default administrator account. This account must be a member account of the organization in Organizations whose resources you want to protect. For more information about Organizations, see [Managing the Amazon Web Services Accounts in Your Organization](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts.html).
 #'
 #' @keywords internal
 #'
@@ -78,11 +73,8 @@ fms_associate_third_party_firewall <- function(ThirdPartyFirewall) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/fms_batch_associate_resource/](https://www.paws-r-sdk.com/docs/fms_batch_associate_resource/) for full documentation.
 #'
-#' @param ResourceSetIdentifier &#91;required&#93; A unique identifier for the resource set, used in a request to refer to
-#' the resource set.
-#' @param Items &#91;required&#93; The uniform resource identifiers (URIs) of resources that should be
-#' associated to the resource set. The URIs must be Amazon Resource Names
-#' (ARNs).
+#' @param ResourceSetIdentifier &#91;required&#93; A unique identifier for the resource set, used in a request to refer to the resource set.
+#' @param Items &#91;required&#93; The uniform resource identifiers (URIs) of resources that should be associated to the resource set. The URIs must be Amazon Resource Names (ARNs).
 #'
 #' @keywords internal
 #'
@@ -113,11 +105,8 @@ fms_batch_associate_resource <- function(ResourceSetIdentifier, Items) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/fms_batch_disassociate_resource/](https://www.paws-r-sdk.com/docs/fms_batch_disassociate_resource/) for full documentation.
 #'
-#' @param ResourceSetIdentifier &#91;required&#93; A unique identifier for the resource set, used in a request to refer to
-#' the resource set.
-#' @param Items &#91;required&#93; The uniform resource identifiers (URI) of resources that should be
-#' disassociated from the resource set. The URIs must be Amazon Resource
-#' Names (ARNs).
+#' @param ResourceSetIdentifier &#91;required&#93; A unique identifier for the resource set, used in a request to refer to the resource set.
+#' @param Items &#91;required&#93; The uniform resource identifiers (URI) of resources that should be disassociated from the resource set. The URIs must be Amazon Resource Names (ARNs).
 #'
 #' @keywords internal
 #'
@@ -148,10 +137,7 @@ fms_batch_disassociate_resource <- function(ResourceSetIdentifier, Items) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/fms_delete_apps_list/](https://www.paws-r-sdk.com/docs/fms_delete_apps_list/) for full documentation.
 #'
-#' @param ListId &#91;required&#93; The ID of the applications list that you want to delete. You can
-#' retrieve this ID from [`put_apps_list`][fms_put_apps_list],
-#' [`list_apps_lists`][fms_list_apps_lists], and
-#' [`get_apps_list`][fms_get_apps_list].
+#' @param ListId &#91;required&#93; The ID of the applications list that you want to delete. You can retrieve this ID from [`put_apps_list`][fms_put_apps_list], [`list_apps_lists`][fms_list_apps_lists], and [`get_apps_list`][fms_get_apps_list].
 #'
 #' @keywords internal
 #'
@@ -215,9 +201,7 @@ fms_delete_notification_channel <- function() {
 #'
 #' See [https://www.paws-r-sdk.com/docs/fms_delete_policy/](https://www.paws-r-sdk.com/docs/fms_delete_policy/) for full documentation.
 #'
-#' @param PolicyId &#91;required&#93; The ID of the policy that you want to delete. You can retrieve this ID
-#' from [`put_policy`][fms_put_policy] and
-#' [`list_policies`][fms_list_policies].
+#' @param PolicyId &#91;required&#93; The ID of the policy that you want to delete. You can retrieve this ID from [`put_policy`][fms_put_policy] and [`list_policies`][fms_list_policies].
 #' @param DeleteAllPolicyResources If `True`, the request performs cleanup according to the policy type.
 #' 
 #' For WAF and Shield Advanced policies, the cleanup does the following:
@@ -228,27 +212,15 @@ fms_delete_notification_channel <- function() {
 #' 
 #' -   Deletes web ACLs that contain no rules or rule groups
 #' 
-#' For security group policies, the cleanup does the following for each
-#' security group in the policy:
+#' For security group policies, the cleanup does the following for each security group in the policy:
 #' 
 #' -   Disassociates the security group from in-scope resources
 #' 
-#' -   Deletes the security group if it was created through Firewall
-#'     Manager and if it's no longer associated with any resources through
-#'     another policy
+#' -   Deletes the security group if it was created through Firewall Manager and if it's no longer associated with any resources through another policy
 #' 
-#' For security group common policies, even if set to `False`, Firewall
-#' Manager deletes all security groups created by Firewall Manager that
-#' aren't associated with any other resources through another policy.
+#' For security group common policies, even if set to `False`, Firewall Manager deletes all security groups created by Firewall Manager that aren't associated with any other resources through another policy.
 #' 
-#' After the cleanup, in-scope resources are no longer protected by web
-#' ACLs in this policy. Protection of out-of-scope resources remains
-#' unchanged. Scope is determined by tags that you create and accounts that
-#' you associate with the policy. When creating the policy, if you specify
-#' that only resources in specific accounts or with specific tags are in
-#' scope of the policy, those accounts and resources are handled by the
-#' policy. All others are out of scope. If you don't specify tags or
-#' accounts, all resources are in scope.
+#' After the cleanup, in-scope resources are no longer protected by web ACLs in this policy. Protection of out-of-scope resources remains unchanged. Scope is determined by tags that you create and accounts that you associate with the policy. When creating the policy, if you specify that only resources in specific accounts or with specific tags are in scope of the policy, those accounts and resources are handled by the policy. All others are out of scope. If you don't specify tags or accounts, all resources are in scope.
 #'
 #' @keywords internal
 #'
@@ -279,10 +251,7 @@ fms_delete_policy <- function(PolicyId, DeleteAllPolicyResources = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/fms_delete_protocols_list/](https://www.paws-r-sdk.com/docs/fms_delete_protocols_list/) for full documentation.
 #'
-#' @param ListId &#91;required&#93; The ID of the protocols list that you want to delete. You can retrieve
-#' this ID from [`put_protocols_list`][fms_put_protocols_list],
-#' [`list_protocols_lists`][fms_list_protocols_lists], and
-#' `GetProtocolsLost`.
+#' @param ListId &#91;required&#93; The ID of the protocols list that you want to delete. You can retrieve this ID from [`put_protocols_list`][fms_put_protocols_list], [`list_protocols_lists`][fms_list_protocols_lists], and `GetProtocolsLost`.
 #'
 #' @keywords internal
 #'
@@ -313,8 +282,7 @@ fms_delete_protocols_list <- function(ListId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/fms_delete_resource_set/](https://www.paws-r-sdk.com/docs/fms_delete_resource_set/) for full documentation.
 #'
-#' @param Identifier &#91;required&#93; A unique identifier for the resource set, used in a request to refer to
-#' the resource set.
+#' @param Identifier &#91;required&#93; A unique identifier for the resource set, used in a request to refer to the resource set.
 #'
 #' @keywords internal
 #'
@@ -472,10 +440,8 @@ fms_get_admin_scope <- function(AdminAccount) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/fms_get_apps_list/](https://www.paws-r-sdk.com/docs/fms_get_apps_list/) for full documentation.
 #'
-#' @param ListId &#91;required&#93; The ID of the Firewall Manager applications list that you want the
-#' details for.
-#' @param DefaultList Specifies whether the list to retrieve is a default list owned by
-#' Firewall Manager.
+#' @param ListId &#91;required&#93; The ID of the Firewall Manager applications list that you want the details for.
+#' @param DefaultList Specifies whether the list to retrieve is a default list owned by Firewall Manager.
 #'
 #' @keywords internal
 #'
@@ -507,11 +473,8 @@ fms_get_apps_list <- function(ListId, DefaultList = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/fms_get_compliance_detail/](https://www.paws-r-sdk.com/docs/fms_get_compliance_detail/) for full documentation.
 #'
-#' @param PolicyId &#91;required&#93; The ID of the policy that you want to get the details for. `PolicyId` is
-#' returned by [`put_policy`][fms_put_policy] and by
-#' [`list_policies`][fms_list_policies].
-#' @param MemberAccount &#91;required&#93; The Amazon Web Services account that owns the resources that you want to
-#' get the details for.
+#' @param PolicyId &#91;required&#93; The ID of the policy that you want to get the details for. `PolicyId` is returned by [`put_policy`][fms_put_policy] and by [`list_policies`][fms_list_policies].
+#' @param MemberAccount &#91;required&#93; The Amazon Web Services account that owns the resources that you want to get the details for.
 #'
 #' @keywords internal
 #'
@@ -607,27 +570,11 @@ fms_get_policy <- function(PolicyId) {
 #' See [https://www.paws-r-sdk.com/docs/fms_get_protection_status/](https://www.paws-r-sdk.com/docs/fms_get_protection_status/) for full documentation.
 #'
 #' @param PolicyId &#91;required&#93; The ID of the policy for which you want to get the attack information.
-#' @param MemberAccountId The Amazon Web Services account that is in scope of the policy that you
-#' want to get the details for.
-#' @param StartTime The start of the time period to query for the attacks. This is a
-#' `timestamp` type. The request syntax listing indicates a `number` type
-#' because the default used by Firewall Manager is Unix time in seconds.
-#' However, any valid `timestamp` format is allowed.
-#' @param EndTime The end of the time period to query for the attacks. This is a
-#' `timestamp` type. The request syntax listing indicates a `number` type
-#' because the default used by Firewall Manager is Unix time in seconds.
-#' However, any valid `timestamp` format is allowed.
-#' @param NextToken If you specify a value for `MaxResults` and you have more objects than
-#' the number that you specify for `MaxResults`, Firewall Manager returns a
-#' `NextToken` value in the response, which you can use to retrieve another
-#' group of objects. For the second and subsequent
-#' [`get_protection_status`][fms_get_protection_status] requests, specify
-#' the value of `NextToken` from the previous response to get information
-#' about another batch of objects.
-#' @param MaxResults Specifies the number of objects that you want Firewall Manager to return
-#' for this request. If you have more objects than the number that you
-#' specify for `MaxResults`, the response includes a `NextToken` value that
-#' you can use to get another batch of objects.
+#' @param MemberAccountId The Amazon Web Services account that is in scope of the policy that you want to get the details for.
+#' @param StartTime The start of the time period to query for the attacks. This is a `timestamp` type. The request syntax listing indicates a `number` type because the default used by Firewall Manager is Unix time in seconds. However, any valid `timestamp` format is allowed.
+#' @param EndTime The end of the time period to query for the attacks. This is a `timestamp` type. The request syntax listing indicates a `number` type because the default used by Firewall Manager is Unix time in seconds. However, any valid `timestamp` format is allowed.
+#' @param NextToken If you specify a value for `MaxResults` and you have more objects than the number that you specify for `MaxResults`, Firewall Manager returns a `NextToken` value in the response, which you can use to retrieve another group of objects. For the second and subsequent [`get_protection_status`][fms_get_protection_status] requests, specify the value of `NextToken` from the previous response to get information about another batch of objects.
+#' @param MaxResults Specifies the number of objects that you want Firewall Manager to return for this request. If you have more objects than the number that you specify for `MaxResults`, the response includes a `NextToken` value that you can use to get another batch of objects.
 #'
 #' @keywords internal
 #'
@@ -658,10 +605,8 @@ fms_get_protection_status <- function(PolicyId, MemberAccountId = NULL, StartTim
 #'
 #' See [https://www.paws-r-sdk.com/docs/fms_get_protocols_list/](https://www.paws-r-sdk.com/docs/fms_get_protocols_list/) for full documentation.
 #'
-#' @param ListId &#91;required&#93; The ID of the Firewall Manager protocols list that you want the details
-#' for.
-#' @param DefaultList Specifies whether the list to retrieve is a default list owned by
-#' Firewall Manager.
+#' @param ListId &#91;required&#93; The ID of the Firewall Manager protocols list that you want the details for.
+#' @param DefaultList Specifies whether the list to retrieve is a default list owned by Firewall Manager.
 #'
 #' @keywords internal
 #'
@@ -692,8 +637,7 @@ fms_get_protocols_list <- function(ListId, DefaultList = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/fms_get_resource_set/](https://www.paws-r-sdk.com/docs/fms_get_resource_set/) for full documentation.
 #'
-#' @param Identifier &#91;required&#93; A unique identifier for the resource set, used in a request to refer to
-#' the resource set.
+#' @param Identifier &#91;required&#93; A unique identifier for the resource set, used in a request to refer to the resource set.
 #'
 #' @keywords internal
 #'
@@ -757,8 +701,7 @@ fms_get_third_party_firewall_association_status <- function(ThirdPartyFirewall) 
 #'
 #' See [https://www.paws-r-sdk.com/docs/fms_get_violation_details/](https://www.paws-r-sdk.com/docs/fms_get_violation_details/) for full documentation.
 #'
-#' @param PolicyId &#91;required&#93; The ID of the Firewall Manager policy that you want the details for. You
-#' can get violation details for the following policy types:
+#' @param PolicyId &#91;required&#93; The ID of the Firewall Manager policy that you want the details for. You can get violation details for the following policy types:
 #' 
 #' -   WAF
 #' 
@@ -775,13 +718,7 @@ fms_get_third_party_firewall_association_status <- function(ThirdPartyFirewall) 
 #' -   Third-party firewall
 #' @param MemberAccount &#91;required&#93; The Amazon Web Services account ID that you want the details for.
 #' @param ResourceId &#91;required&#93; The ID of the resource that has violations.
-#' @param ResourceType &#91;required&#93; The resource type. This is in the format shown in the [Amazon Web
-#' Services Resource Types
-#' Reference](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html).
-#' Supported resource types are: `AWS::WAFv2::WebACL`,
-#' `AWS::EC2::Instance`, `AWS::EC2::NetworkInterface`,
-#' `AWS::EC2::SecurityGroup`, `AWS::NetworkFirewall::FirewallPolicy`, and
-#' `AWS::EC2::Subnet`.
+#' @param ResourceType &#91;required&#93; The resource type. This is in the format shown in the [Amazon Web Services Resource Types Reference](https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/aws-template-resource-type-ref.html). Supported resource types are: `AWS::WAFv2::WebACL`, `AWS::EC2::Instance`, `AWS::EC2::NetworkInterface`, `AWS::EC2::SecurityGroup`, `AWS::NetworkFirewall::FirewallPolicy`, and `AWS::EC2::Subnet`.
 #'
 #' @keywords internal
 #'
@@ -814,15 +751,8 @@ fms_get_violation_details <- function(PolicyId, MemberAccount, ResourceId, Resou
 #'
 #' See [https://www.paws-r-sdk.com/docs/fms_list_admin_accounts_for_organization/](https://www.paws-r-sdk.com/docs/fms_list_admin_accounts_for_organization/) for full documentation.
 #'
-#' @param NextToken When you request a list of objects with a `MaxResults` setting, if the
-#' number of objects that are still available for retrieval exceeds the
-#' maximum you requested, Firewall Manager returns a `NextToken` value in
-#' the response. To retrieve the next batch of objects, use the token
-#' returned from the prior request in your next request.
-#' @param MaxResults The maximum number of objects that you want Firewall Manager to return
-#' for this request. If more objects are available, in the response,
-#' Firewall Manager provides a `NextToken` value that you can use in a
-#' subsequent call to get the next batch of objects.
+#' @param NextToken When you request a list of objects with a `MaxResults` setting, if the number of objects that are still available for retrieval exceeds the maximum you requested, Firewall Manager returns a `NextToken` value in the response. To retrieve the next batch of objects, use the token returned from the prior request in your next request.
+#' @param MaxResults The maximum number of objects that you want Firewall Manager to return for this request. If more objects are available, in the response, Firewall Manager provides a `NextToken` value that you can use in a subsequent call to get the next batch of objects.
 #'
 #' @keywords internal
 #'
@@ -854,15 +784,8 @@ fms_list_admin_accounts_for_organization <- function(NextToken = NULL, MaxResult
 #'
 #' See [https://www.paws-r-sdk.com/docs/fms_list_admins_managing_account/](https://www.paws-r-sdk.com/docs/fms_list_admins_managing_account/) for full documentation.
 #'
-#' @param NextToken When you request a list of objects with a `MaxResults` setting, if the
-#' number of objects that are still available for retrieval exceeds the
-#' maximum you requested, Firewall Manager returns a `NextToken` value in
-#' the response. To retrieve the next batch of objects, use the token
-#' returned from the prior request in your next request.
-#' @param MaxResults The maximum number of objects that you want Firewall Manager to return
-#' for this request. If more objects are available, in the response,
-#' Firewall Manager provides a `NextToken` value that you can use in a
-#' subsequent call to get the next batch of objects.
+#' @param NextToken When you request a list of objects with a `MaxResults` setting, if the number of objects that are still available for retrieval exceeds the maximum you requested, Firewall Manager returns a `NextToken` value in the response. To retrieve the next batch of objects, use the token returned from the prior request in your next request.
+#' @param MaxResults The maximum number of objects that you want Firewall Manager to return for this request. If more objects are available, in the response, Firewall Manager provides a `NextToken` value that you can use in a subsequent call to get the next batch of objects.
 #'
 #' @keywords internal
 #'
@@ -893,20 +816,11 @@ fms_list_admins_managing_account <- function(NextToken = NULL, MaxResults = NULL
 #'
 #' See [https://www.paws-r-sdk.com/docs/fms_list_apps_lists/](https://www.paws-r-sdk.com/docs/fms_list_apps_lists/) for full documentation.
 #'
-#' @param DefaultLists Specifies whether the lists to retrieve are default lists owned by
-#' Firewall Manager.
-#' @param NextToken If you specify a value for `MaxResults` in your list request, and you
-#' have more objects than the maximum, Firewall Manager returns this token
-#' in the response. For all but the first request, you provide the token
-#' returned by the prior request in the request parameters, to retrieve the
-#' next batch of objects.
-#' @param MaxResults &#91;required&#93; The maximum number of objects that you want Firewall Manager to return
-#' for this request. If more objects are available, in the response,
-#' Firewall Manager provides a `NextToken` value that you can use in a
-#' subsequent call to get the next batch of objects.
+#' @param DefaultLists Specifies whether the lists to retrieve are default lists owned by Firewall Manager.
+#' @param NextToken If you specify a value for `MaxResults` in your list request, and you have more objects than the maximum, Firewall Manager returns this token in the response. For all but the first request, you provide the token returned by the prior request in the request parameters, to retrieve the next batch of objects.
+#' @param MaxResults &#91;required&#93; The maximum number of objects that you want Firewall Manager to return for this request. If more objects are available, in the response, Firewall Manager provides a `NextToken` value that you can use in a subsequent call to get the next batch of objects.
 #' 
-#' If you don't specify this, Firewall Manager returns all available
-#' objects.
+#' If you don't specify this, Firewall Manager returns all available objects.
 #'
 #' @keywords internal
 #'
@@ -938,19 +852,8 @@ fms_list_apps_lists <- function(DefaultLists = NULL, NextToken = NULL, MaxResult
 #' See [https://www.paws-r-sdk.com/docs/fms_list_compliance_status/](https://www.paws-r-sdk.com/docs/fms_list_compliance_status/) for full documentation.
 #'
 #' @param PolicyId &#91;required&#93; The ID of the Firewall Manager policy that you want the details for.
-#' @param NextToken If you specify a value for `MaxResults` and you have more
-#' `PolicyComplianceStatus` objects than the number that you specify for
-#' `MaxResults`, Firewall Manager returns a `NextToken` value in the
-#' response that allows you to list another group of
-#' `PolicyComplianceStatus` objects. For the second and subsequent
-#' [`list_compliance_status`][fms_list_compliance_status] requests, specify
-#' the value of `NextToken` from the previous response to get information
-#' about another batch of `PolicyComplianceStatus` objects.
-#' @param MaxResults Specifies the number of `PolicyComplianceStatus` objects that you want
-#' Firewall Manager to return for this request. If you have more
-#' `PolicyComplianceStatus` objects than the number that you specify for
-#' `MaxResults`, the response includes a `NextToken` value that you can use
-#' to get another batch of `PolicyComplianceStatus` objects.
+#' @param NextToken If you specify a value for `MaxResults` and you have more `PolicyComplianceStatus` objects than the number that you specify for `MaxResults`, Firewall Manager returns a `NextToken` value in the response that allows you to list another group of `PolicyComplianceStatus` objects. For the second and subsequent [`list_compliance_status`][fms_list_compliance_status] requests, specify the value of `NextToken` from the previous response to get information about another batch of `PolicyComplianceStatus` objects.
+#' @param MaxResults Specifies the number of `PolicyComplianceStatus` objects that you want Firewall Manager to return for this request. If you have more `PolicyComplianceStatus` objects than the number that you specify for `MaxResults`, the response includes a `NextToken` value that you can use to get another batch of `PolicyComplianceStatus` objects.
 #'
 #' @keywords internal
 #'
@@ -982,19 +885,10 @@ fms_list_compliance_status <- function(PolicyId, NextToken = NULL, MaxResults = 
 #'
 #' See [https://www.paws-r-sdk.com/docs/fms_list_discovered_resources/](https://www.paws-r-sdk.com/docs/fms_list_discovered_resources/) for full documentation.
 #'
-#' @param MemberAccountIds &#91;required&#93; The Amazon Web Services account IDs to discover resources in. Only one
-#' account is supported per request. The account must be a member of your
-#' organization.
+#' @param MemberAccountIds &#91;required&#93; The Amazon Web Services account IDs to discover resources in. Only one account is supported per request. The account must be a member of your organization.
 #' @param ResourceType &#91;required&#93; The type of resources to discover.
-#' @param MaxResults The maximum number of objects that you want Firewall Manager to return
-#' for this request. If more objects are available, in the response,
-#' Firewall Manager provides a `NextToken` value that you can use in a
-#' subsequent call to get the next batch of objects.
-#' @param NextToken When you request a list of objects with a `MaxResults` setting, if the
-#' number of objects that are still available for retrieval exceeds the
-#' maximum you requested, Firewall Manager returns a `NextToken` value in
-#' the response. To retrieve the next batch of objects, use the token
-#' returned from the prior request in your next request.
+#' @param MaxResults The maximum number of objects that you want Firewall Manager to return for this request. If more objects are available, in the response, Firewall Manager provides a `NextToken` value that you can use in a subsequent call to get the next batch of objects.
+#' @param NextToken When you request a list of objects with a `MaxResults` setting, if the number of objects that are still available for retrieval exceeds the maximum you requested, Firewall Manager returns a `NextToken` value in the response. To retrieve the next batch of objects, use the token returned from the prior request in your next request.
 #'
 #' @keywords internal
 #'
@@ -1026,17 +920,8 @@ fms_list_discovered_resources <- function(MemberAccountIds, ResourceType, MaxRes
 #'
 #' See [https://www.paws-r-sdk.com/docs/fms_list_member_accounts/](https://www.paws-r-sdk.com/docs/fms_list_member_accounts/) for full documentation.
 #'
-#' @param NextToken If you specify a value for `MaxResults` and you have more account IDs
-#' than the number that you specify for `MaxResults`, Firewall Manager
-#' returns a `NextToken` value in the response that allows you to list
-#' another group of IDs. For the second and subsequent
-#' `ListMemberAccountsRequest` requests, specify the value of `NextToken`
-#' from the previous response to get information about another batch of
-#' member account IDs.
-#' @param MaxResults Specifies the number of member account IDs that you want Firewall
-#' Manager to return for this request. If you have more IDs than the number
-#' that you specify for `MaxResults`, the response includes a `NextToken`
-#' value that you can use to get another batch of member account IDs.
+#' @param NextToken If you specify a value for `MaxResults` and you have more account IDs than the number that you specify for `MaxResults`, Firewall Manager returns a `NextToken` value in the response that allows you to list another group of IDs. For the second and subsequent `ListMemberAccountsRequest` requests, specify the value of `NextToken` from the previous response to get information about another batch of member account IDs.
+#' @param MaxResults Specifies the number of member account IDs that you want Firewall Manager to return for this request. If you have more IDs than the number that you specify for `MaxResults`, the response includes a `NextToken` value that you can use to get another batch of member account IDs.
 #'
 #' @keywords internal
 #'
@@ -1067,19 +952,8 @@ fms_list_member_accounts <- function(NextToken = NULL, MaxResults = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/fms_list_policies/](https://www.paws-r-sdk.com/docs/fms_list_policies/) for full documentation.
 #'
-#' @param NextToken If you specify a value for `MaxResults` and you have more
-#' `PolicySummary` objects than the number that you specify for
-#' `MaxResults`, Firewall Manager returns a `NextToken` value in the
-#' response that allows you to list another group of `PolicySummary`
-#' objects. For the second and subsequent
-#' [`list_policies`][fms_list_policies] requests, specify the value of
-#' `NextToken` from the previous response to get information about another
-#' batch of `PolicySummary` objects.
-#' @param MaxResults Specifies the number of `PolicySummary` objects that you want Firewall
-#' Manager to return for this request. If you have more `PolicySummary`
-#' objects than the number that you specify for `MaxResults`, the response
-#' includes a `NextToken` value that you can use to get another batch of
-#' `PolicySummary` objects.
+#' @param NextToken If you specify a value for `MaxResults` and you have more `PolicySummary` objects than the number that you specify for `MaxResults`, Firewall Manager returns a `NextToken` value in the response that allows you to list another group of `PolicySummary` objects. For the second and subsequent [`list_policies`][fms_list_policies] requests, specify the value of `NextToken` from the previous response to get information about another batch of `PolicySummary` objects.
+#' @param MaxResults Specifies the number of `PolicySummary` objects that you want Firewall Manager to return for this request. If you have more `PolicySummary` objects than the number that you specify for `MaxResults`, the response includes a `NextToken` value that you can use to get another batch of `PolicySummary` objects.
 #'
 #' @keywords internal
 #'
@@ -1110,20 +984,11 @@ fms_list_policies <- function(NextToken = NULL, MaxResults = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/fms_list_protocols_lists/](https://www.paws-r-sdk.com/docs/fms_list_protocols_lists/) for full documentation.
 #'
-#' @param DefaultLists Specifies whether the lists to retrieve are default lists owned by
-#' Firewall Manager.
-#' @param NextToken If you specify a value for `MaxResults` in your list request, and you
-#' have more objects than the maximum, Firewall Manager returns this token
-#' in the response. For all but the first request, you provide the token
-#' returned by the prior request in the request parameters, to retrieve the
-#' next batch of objects.
-#' @param MaxResults &#91;required&#93; The maximum number of objects that you want Firewall Manager to return
-#' for this request. If more objects are available, in the response,
-#' Firewall Manager provides a `NextToken` value that you can use in a
-#' subsequent call to get the next batch of objects.
+#' @param DefaultLists Specifies whether the lists to retrieve are default lists owned by Firewall Manager.
+#' @param NextToken If you specify a value for `MaxResults` in your list request, and you have more objects than the maximum, Firewall Manager returns this token in the response. For all but the first request, you provide the token returned by the prior request in the request parameters, to retrieve the next batch of objects.
+#' @param MaxResults &#91;required&#93; The maximum number of objects that you want Firewall Manager to return for this request. If more objects are available, in the response, Firewall Manager provides a `NextToken` value that you can use in a subsequent call to get the next batch of objects.
 #' 
-#' If you don't specify this, Firewall Manager returns all available
-#' objects.
+#' If you don't specify this, Firewall Manager returns all available objects.
 #'
 #' @keywords internal
 #'
@@ -1155,17 +1020,9 @@ fms_list_protocols_lists <- function(DefaultLists = NULL, NextToken = NULL, MaxR
 #'
 #' See [https://www.paws-r-sdk.com/docs/fms_list_resource_set_resources/](https://www.paws-r-sdk.com/docs/fms_list_resource_set_resources/) for full documentation.
 #'
-#' @param Identifier &#91;required&#93; A unique identifier for the resource set, used in a request to refer to
-#' the resource set.
-#' @param MaxResults The maximum number of objects that you want Firewall Manager to return
-#' for this request. If more objects are available, in the response,
-#' Firewall Manager provides a `NextToken` value that you can use in a
-#' subsequent call to get the next batch of objects.
-#' @param NextToken When you request a list of objects with a `MaxResults` setting, if the
-#' number of objects that are still available for retrieval exceeds the
-#' maximum you requested, Firewall Manager returns a `NextToken` value in
-#' the response. To retrieve the next batch of objects, use the token
-#' returned from the prior request in your next request.
+#' @param Identifier &#91;required&#93; A unique identifier for the resource set, used in a request to refer to the resource set.
+#' @param MaxResults The maximum number of objects that you want Firewall Manager to return for this request. If more objects are available, in the response, Firewall Manager provides a `NextToken` value that you can use in a subsequent call to get the next batch of objects.
+#' @param NextToken When you request a list of objects with a `MaxResults` setting, if the number of objects that are still available for retrieval exceeds the maximum you requested, Firewall Manager returns a `NextToken` value in the response. To retrieve the next batch of objects, use the token returned from the prior request in your next request.
 #'
 #' @keywords internal
 #'
@@ -1196,15 +1053,8 @@ fms_list_resource_set_resources <- function(Identifier, MaxResults = NULL, NextT
 #'
 #' See [https://www.paws-r-sdk.com/docs/fms_list_resource_sets/](https://www.paws-r-sdk.com/docs/fms_list_resource_sets/) for full documentation.
 #'
-#' @param NextToken When you request a list of objects with a `MaxResults` setting, if the
-#' number of objects that are still available for retrieval exceeds the
-#' maximum you requested, Firewall Manager returns a `NextToken` value in
-#' the response. To retrieve the next batch of objects, use the token
-#' returned from the prior request in your next request.
-#' @param MaxResults The maximum number of objects that you want Firewall Manager to return
-#' for this request. If more objects are available, in the response,
-#' Firewall Manager provides a `NextToken` value that you can use in a
-#' subsequent call to get the next batch of objects.
+#' @param NextToken When you request a list of objects with a `MaxResults` setting, if the number of objects that are still available for retrieval exceeds the maximum you requested, Firewall Manager returns a `NextToken` value in the response. To retrieve the next batch of objects, use the token returned from the prior request in your next request.
+#' @param MaxResults The maximum number of objects that you want Firewall Manager to return for this request. If more objects are available, in the response, Firewall Manager provides a `NextToken` value that you can use in a subsequent call to get the next batch of objects.
 #'
 #' @keywords internal
 #'
@@ -1236,9 +1086,7 @@ fms_list_resource_sets <- function(NextToken = NULL, MaxResults = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/fms_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/fms_list_tags_for_resource/) for full documentation.
 #'
-#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to return tags for. The
-#' Firewall Manager resources that support tagging are policies,
-#' applications lists, and protocols lists.
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to return tags for. The Firewall Manager resources that support tagging are policies, applications lists, and protocols lists.
 #'
 #' @keywords internal
 #'
@@ -1271,20 +1119,10 @@ fms_list_tags_for_resource <- function(ResourceArn) {
 #' See [https://www.paws-r-sdk.com/docs/fms_list_third_party_firewall_firewall_policies/](https://www.paws-r-sdk.com/docs/fms_list_third_party_firewall_firewall_policies/) for full documentation.
 #'
 #' @param ThirdPartyFirewall &#91;required&#93; The name of the third-party firewall vendor.
-#' @param NextToken If the previous response included a `NextToken` element, the specified
-#' third-party firewall vendor is associated with more third-party firewall
-#' policies. To get more third-party firewall policies, submit another
-#' `ListThirdPartyFirewallFirewallPoliciesRequest` request.
+#' @param NextToken If the previous response included a `NextToken` element, the specified third-party firewall vendor is associated with more third-party firewall policies. To get more third-party firewall policies, submit another `ListThirdPartyFirewallFirewallPoliciesRequest` request.
 #' 
-#' For the value of `NextToken`, specify the value of `NextToken` from the
-#' previous response. If the previous response didn't include a `NextToken`
-#' element, there are no more third-party firewall policies to get.
-#' @param MaxResults &#91;required&#93; The maximum number of third-party firewall policies that you want
-#' Firewall Manager to return. If the specified third-party firewall vendor
-#' is associated with more than `MaxResults` firewall policies, the
-#' response includes a `NextToken` element. `NextToken` contains an
-#' encrypted token that identifies the first third-party firewall policies
-#' that Firewall Manager will return if you submit another request.
+#' For the value of `NextToken`, specify the value of `NextToken` from the previous response. If the previous response didn't include a `NextToken` element, there are no more third-party firewall policies to get.
+#' @param MaxResults &#91;required&#93; The maximum number of third-party firewall policies that you want Firewall Manager to return. If the specified third-party firewall vendor is associated with more than `MaxResults` firewall policies, the response includes a `NextToken` element. `NextToken` contains an encrypted token that identifies the first third-party firewall policies that Firewall Manager will return if you submit another request.
 #'
 #' @keywords internal
 #'
@@ -1315,18 +1153,8 @@ fms_list_third_party_firewall_firewall_policies <- function(ThirdPartyFirewall, 
 #'
 #' See [https://www.paws-r-sdk.com/docs/fms_put_admin_account/](https://www.paws-r-sdk.com/docs/fms_put_admin_account/) for full documentation.
 #'
-#' @param AdminAccount &#91;required&#93; The Amazon Web Services account ID to add as an Firewall Manager
-#' administrator account. The account must be a member of the organization
-#' that was onboarded to Firewall Manager by
-#' [`associate_admin_account`][fms_associate_admin_account]. For more
-#' information about Organizations, see [Managing the Amazon Web Services
-#' Accounts in Your
-#' Organization](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts.html).
-#' @param AdminScope Configures the resources that the specified Firewall Manager
-#' administrator can manage. As a best practice, set the administrative
-#' scope according to the principles of least privilege. Only grant the
-#' administrator the specific resources or permissions that they need to
-#' perform the duties of their role.
+#' @param AdminAccount &#91;required&#93; The Amazon Web Services account ID to add as an Firewall Manager administrator account. The account must be a member of the organization that was onboarded to Firewall Manager by [`associate_admin_account`][fms_associate_admin_account]. For more information about Organizations, see [Managing the Amazon Web Services Accounts in Your Organization](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts.html).
+#' @param AdminScope Configures the resources that the specified Firewall Manager administrator can manage. As a best practice, set the administrative scope according to the principles of least privilege. Only grant the administrator the specific resources or permissions that they need to perform the duties of their role.
 #'
 #' @keywords internal
 #'
@@ -1390,10 +1218,8 @@ fms_put_apps_list <- function(AppsList, TagList = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/fms_put_notification_channel/](https://www.paws-r-sdk.com/docs/fms_put_notification_channel/) for full documentation.
 #'
-#' @param SnsTopicArn &#91;required&#93; The Amazon Resource Name (ARN) of the SNS topic that collects
-#' notifications from Firewall Manager.
-#' @param SnsRoleName &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role that allows Amazon SNS to
-#' record Firewall Manager activity.
+#' @param SnsTopicArn &#91;required&#93; The Amazon Resource Name (ARN) of the SNS topic that collects notifications from Firewall Manager.
+#' @param SnsRoleName &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role that allows Amazon SNS to record Firewall Manager activity.
 #'
 #' @keywords internal
 #'
@@ -1489,12 +1315,7 @@ fms_put_protocols_list <- function(ProtocolsList, TagList = NULL) {
 #' See [https://www.paws-r-sdk.com/docs/fms_put_resource_set/](https://www.paws-r-sdk.com/docs/fms_put_resource_set/) for full documentation.
 #'
 #' @param ResourceSet &#91;required&#93; Details about the resource set to be created or updated.\>
-#' @param TagList Retrieves the tags associated with the specified resource set. Tags are
-#' key:value pairs that you can use to categorize and manage your
-#' resources, for purposes like billing. For example, you might set the tag
-#' key to "customer" and the value to the customer name or ID. You can
-#' specify one or more tags to add to each Amazon Web Services resource, up
-#' to 50 tags for a resource.
+#' @param TagList Retrieves the tags associated with the specified resource set. Tags are key:value pairs that you can use to categorize and manage your resources, for purposes like billing. For example, you might set the tag key to "customer" and the value to the customer name or ID. You can specify one or more tags to add to each Amazon Web Services resource, up to 50 tags for a resource.
 #'
 #' @keywords internal
 #'
@@ -1525,9 +1346,7 @@ fms_put_resource_set <- function(ResourceSet, TagList = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/fms_tag_resource/](https://www.paws-r-sdk.com/docs/fms_tag_resource/) for full documentation.
 #'
-#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to return tags for. The
-#' Firewall Manager resources that support tagging are policies,
-#' applications lists, and protocols lists.
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to return tags for. The Firewall Manager resources that support tagging are policies, applications lists, and protocols lists.
 #' @param TagList &#91;required&#93; The tags to add to the resource.
 #'
 #' @keywords internal
@@ -1559,9 +1378,7 @@ fms_tag_resource <- function(ResourceArn, TagList) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/fms_untag_resource/](https://www.paws-r-sdk.com/docs/fms_untag_resource/) for full documentation.
 #'
-#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to return tags for. The
-#' Firewall Manager resources that support tagging are policies,
-#' applications lists, and protocols lists.
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to return tags for. The Firewall Manager resources that support tagging are policies, applications lists, and protocols lists.
 #' @param TagKeys &#91;required&#93; The keys of the tags to remove from the resource.
 #'
 #' @keywords internal

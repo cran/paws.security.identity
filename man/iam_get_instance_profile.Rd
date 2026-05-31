@@ -10,9 +10,7 @@ iam_get_instance_profile(InstanceProfileName)
 \arguments{
 \item{InstanceProfileName}{[required] The name of the instance profile to get information about.
 
-This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
-consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: _+=,.@-}
+This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-}
 }
 \description{
 Retrieves information about the specified instance profile, including the instance profile's path, GUID, ARN, and role. For more information about instance profiles, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html}{Using instance profiles} in the \emph{IAM User Guide}.

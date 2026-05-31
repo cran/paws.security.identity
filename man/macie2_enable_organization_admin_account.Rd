@@ -8,11 +8,9 @@ account for an organization in Organizations}
 macie2_enable_organization_admin_account(adminAccountId, clientToken = NULL)
 }
 \arguments{
-\item{adminAccountId}{[required] The Amazon Web Services account ID for the account to designate as the
-delegated Amazon Macie administrator account for the organization.}
+\item{adminAccountId}{[required] The Amazon Web Services account ID for the account to designate as the delegated Amazon Macie administrator account for the organization.}
 
-\item{clientToken}{A unique, case-sensitive token that you provide to ensure the
-idempotency of the request.}
+\item{clientToken}{A unique, case-sensitive token that you provide to ensure the idempotency of the request.}
 }
 \description{
 Designates an account as the delegated Amazon Macie administrator account for an organization in Organizations.

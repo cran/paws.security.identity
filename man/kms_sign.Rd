@@ -15,88 +15,64 @@ kms_sign(
 )
 }
 \arguments{
-\item{KeyId}{[required] Identifies an asymmetric KMS key. KMS uses the private key in the
-asymmetric KMS key to sign the message. The \code{KeyUsage} type of the KMS
-key must be \code{SIGN_VERIFY}. To find the \code{KeyUsage} of a KMS key, use the
-\code{\link[=kms_describe_key]{describe_key}} operation.
+\item{KeyId}{[required] Identifies an asymmetric KMS key. KMS uses the private key in the asymmetric KMS key to sign the message. The \code{KeyUsage} type of the KMS key must be \code{SIGN_VERIFY}. To find the \code{KeyUsage} of a KMS key, use the \code{\link[=kms_describe_key]{describe_key}} operation.
 
-To specify a KMS key, use its key ID, key ARN, alias name, or alias ARN.
-When using an alias name, prefix it with \code{"alias/"}. To specify a KMS
-key in a different Amazon Web Services account, you must use the key ARN
-or alias ARN.
+To specify a KMS key, use its key ID, key ARN, alias name, or alias ARN. When using an alias name, prefix it with \code{"alias/"}. To specify a KMS key in a different Amazon Web Services account, you must use the key ARN or alias ARN.
 
 For example:
 \itemize{
 \item Key ID: \verb{1234abcd-12ab-34cd-56ef-1234567890ab}
-\item Key ARN:
-\verb{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
+\item Key ARN: \verb{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
 \item Alias name: \code{alias/ExampleAlias}
 \item Alias ARN: \code{arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias}
 }
 
-To get the key ID and key ARN for a KMS key, use
-\code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}. To
-get the alias name and alias ARN, use
-\code{\link[=kms_list_aliases]{list_aliases}}.}
+To get the key ID and key ARN for a KMS key, use \code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}. To get the alias name and alias ARN, use \code{\link[=kms_list_aliases]{list_aliases}}.}
 
-\item{Message}{[required] Specifies the message or message digest to sign. Messages can be 0-4096
-bytes. To sign a larger message, provide a message digest.
+\item{Message}{[required] Specifies the message or message digest to sign. Messages can be 0-4096 bytes. To sign a larger message, provide a message digest.
 
-If you provide a message digest, use the \code{DIGEST} value of \code{MessageType}
-to prevent the digest from being hashed again while signing.}
+If you provide a message digest, use the \code{DIGEST} value of \code{MessageType} to prevent the digest from being hashed again while signing.}
 
-\item{MessageType}{Tells KMS whether the value of the \code{Message} parameter should be hashed
-as part of the signing algorithm. Use \code{RAW} for unhashed messages; use
-\code{DIGEST} for message digests, which are already hashed.
+\item{MessageType}{Tells KMS whether the value of the \code{Message} parameter should be hashed as part of the signing algorithm. Use \code{RAW} for unhashed messages; use \code{DIGEST} for message digests, which are already hashed; use \code{EXTERNAL_MU} for 64-byte representative \code{u} used in ML-DSA signing as defined in NIST FIPS 204 Section 6.2.
 
-When the value of \code{MessageType} is \code{RAW}, KMS uses the standard signing
-algorithm, which begins with a hash function. When the value is
-\code{DIGEST}, KMS skips the hashing step in the signing algorithm.
+When the value of \code{MessageType} is \code{RAW}, KMS uses the standard signing algorithm, which begins with a hash function. When the value is \code{DIGEST}, KMS skips the hashing step in the signing algorithm. When the value is \code{EXTERNAL_MU} KMS skips the concatenated hashing of the public key hash and the message done in the ML-DSA signing algorithm.
 
-Use the \code{DIGEST} value only when the value of the \code{Message} parameter is
-a message digest. If you use the \code{DIGEST} value with an unhashed
-message, the security of the signing operation can be compromised.
+Use the \code{DIGEST} or \code{EXTERNAL_MU} value only when the value of the \code{Message} parameter is a message digest. If you use the \code{DIGEST} value with an unhashed message, the security of the signing operation can be compromised.
 
-When the value of \code{MessageType}is \code{DIGEST}, the length of the \code{Message}
-value must match the length of hashed messages for the specified signing
-algorithm.
-
-You can submit a message digest and omit the \code{MessageType} or specify
-\code{RAW} so the digest is hashed again while signing. However, this can
-cause verification failures when verifying with a system that assumes a
-single hash.
-
-The hashing algorithm in that \code{\link[=kms_sign]{sign}} uses is based on the
-\code{SigningAlgorithm} value.
+When using ECC_NIST_EDWARDS25519 KMS keys:
 \itemize{
-\item Signing algorithms that end in SHA_256 use the SHA_256 hashing
-algorithm.
-\item Signing algorithms that end in SHA_384 use the SHA_384 hashing
-algorithm.
-\item Signing algorithms that end in SHA_512 use the SHA_512 hashing
-algorithm.
-\item SM2DSA uses the SM3 hashing algorithm. For details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/symm-asymm-choose-key-spec.html#key-spec-sm-offline-verification}{Offline verification with SM2 key pairs}.
+\item ED25519_SHA_512 signing algorithm requires KMS \code{MessageType:RAW}
+\item ED25519_PH_SHA_512 signing algorithm requires KMS \code{MessageType:DIGEST}
+}
+
+When you specify the ED25519_PH_SHA_512 signing algorithm with \code{MessageType:DIGEST}, KMS still performs the SHA-512 prehash described in Step 1 of Section 7.8.1 in FIPS 186-5. This means the input is hashed twice: once by you and once by KMS.
+
+When the value of \code{MessageType} is \code{DIGEST}, the length of the \code{Message} value must match the length of hashed messages for the specified signing algorithm.
+
+When the value of \code{MessageType} is \code{EXTERNAL_MU} the length of the \code{Message} value must be 64 bytes.
+
+You can submit a message digest and omit the \code{MessageType} or specify \code{RAW} so the digest is hashed again while signing. However, this can cause verification failures when verifying with a system that assumes a single hash.
+
+The hashing algorithm that \code{\link[=kms_sign]{sign}} uses is based on the \code{SigningAlgorithm} value.
+\itemize{
+\item Signing algorithms that end in SHA_256 use the SHA_256 hashing algorithm.
+\item Signing algorithms that end in SHA_384 use the SHA_384 hashing algorithm.
+\item Signing algorithms that end in SHA_512 use the SHA_512 hashing algorithm.
+\item Signing algorithms that end in SHAKE_256 use the SHAKE_256 hashing algorithm.
+\item SM2DSA uses the SM3 hashing algorithm. For details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/offline-operations.html#key-spec-sm-offline-verification}{Offline verification with SM2 key pairs}.
 }}
 
 \item{GrantTokens}{A list of grant tokens.
 
-Use a grant token when your permission to call this operation comes from
-a new grant that has not yet achieved \emph{eventual consistency}. For more
-information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token}{Grant token}
-and \href{https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#using-grant-token}{Using a grant token}
-in the \emph{Key Management Service Developer Guide}.}
+Use a grant token when your permission to call this operation comes from a new grant that has not yet achieved \emph{eventual consistency}. For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token}{Grant token} and \href{https://docs.aws.amazon.com/kms/latest/developerguide/using-grant-token.html}{Using a grant token} in the \emph{Key Management Service Developer Guide}.}
 
 \item{SigningAlgorithm}{[required] Specifies the signing algorithm to use when signing the message.
 
-Choose an algorithm that is compatible with the type and size of the
-specified asymmetric KMS key. When signing with RSA key pairs,
-RSASSA-PSS algorithms are preferred. We include RSASSA-PKCS1-v1_5
-algorithms for compatibility with existing applications.}
+Choose an algorithm that is compatible with the type and size of the specified asymmetric KMS key. When signing with RSA key pairs, RSASSA-PSS algorithms are preferred. We include RSASSA-PKCS1-v1_5 algorithms for compatibility with existing applications.}
 
 \item{DryRun}{Checks if your request will succeed. \code{DryRun} is an optional parameter.
 
-To learn more about how to use this parameter, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html}{Testing your KMS API calls}
-in the \emph{Key Management Service Developer Guide}.}
+To learn more about how to use this parameter, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html}{Testing your permissions} in the \emph{Key Management Service Developer Guide}.}
 }
 \description{
 Creates a \href{https://en.wikipedia.org/wiki/Digital_signature}{digital signature} for a message or message digest by using the private key in an asymmetric signing KMS key. To verify the signature, use the \code{\link[=kms_verify]{verify}} operation, or use the public key in the same asymmetric KMS key outside of KMS. For information about asymmetric KMS keys, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html}{Asymmetric KMS keys} in the \emph{Key Management Service Developer Guide}.

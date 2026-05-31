@@ -13,13 +13,11 @@ securitylake_list_log_sources(
 )
 }
 \arguments{
-\item{accounts}{The list of Amazon Web Services accounts for which log sources are
-displayed.}
+\item{accounts}{The list of Amazon Web Services accounts for which log sources are displayed.}
 
 \item{maxResults}{The maximum number of accounts for which the log sources are displayed.}
 
-\item{nextToken}{If nextToken is returned, there are more results available. You can
-repeat the call using the returned token to retrieve the next page.}
+\item{nextToken}{If nextToken is returned, there are more results available. You can repeat the call using the returned token to retrieve the next page.}
 
 \item{regions}{The list of Regions for which log sources are displayed.}
 

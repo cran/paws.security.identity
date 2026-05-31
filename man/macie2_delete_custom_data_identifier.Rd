@@ -7,8 +7,7 @@
 macie2_delete_custom_data_identifier(id)
 }
 \arguments{
-\item{id}{[required] The unique identifier for the Amazon Macie resource that the request
-applies to.}
+\item{id}{[required] The unique identifier for the Amazon Macie resource that the request applies to.}
 }
 \description{
 Soft deletes a custom data identifier.

@@ -13,9 +13,7 @@ cognitosync_unsubscribe_from_dataset(
 )
 }
 \arguments{
-\item{IdentityPoolId}{[required] A name-spaced GUID (for example,
-us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
-Cognito. The ID of the pool to which this identity belongs.}
+\item{IdentityPoolId}{[required] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. The ID of the pool to which this identity belongs.}
 
 \item{IdentityId}{[required] Unique ID for this identity.}
 

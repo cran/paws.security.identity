@@ -7,12 +7,9 @@
 wafregional_delete_ip_set(IPSetId, ChangeToken)
 }
 \arguments{
-\item{IPSetId}{[required] The \code{IPSetId} of the IPSet that you want to delete. \code{IPSetId} is
-returned by \code{\link[=wafregional_create_ip_set]{create_ip_set}} and by
-\code{\link[=wafregional_list_ip_sets]{list_ip_sets}}.}
+\item{IPSetId}{[required] The \code{IPSetId} of the IPSet that you want to delete. \code{IPSetId} is returned by \code{\link[=wafregional_create_ip_set]{create_ip_set}} and by \code{\link[=wafregional_list_ip_sets]{list_ip_sets}}.}
 
-\item{ChangeToken}{[required] The value returned by the most recent call to
-\code{\link[=wafregional_get_change_token]{get_change_token}}.}
+\item{ChangeToken}{[required] The value returned by the most recent call to \code{\link[=wafregional_get_change_token]{get_change_token}}.}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic} in the developer guide.

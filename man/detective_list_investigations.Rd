@@ -16,13 +16,9 @@ detective_list_investigations(
 \arguments{
 \item{GraphArn}{[required] The Amazon Resource Name (ARN) of the behavior graph.}
 
-\item{NextToken}{Lists if there are more results available. The value of nextToken is a
-unique pagination token for each page. Repeat the call using the
-returned token to retrieve the next page. Keep all other arguments
-unchanged.
+\item{NextToken}{Lists if there are more results available. The value of nextToken is a unique pagination token for each page. Repeat the call using the returned token to retrieve the next page. Keep all other arguments unchanged.
 
-Each pagination token expires after 24 hours. Using an expired
-pagination token will return a Validation Exception error.}
+Each pagination token expires after 24 hours. Using an expired pagination token will return a Validation Exception error.}
 
 \item{MaxResults}{Lists the maximum number of investigations in a page.}
 

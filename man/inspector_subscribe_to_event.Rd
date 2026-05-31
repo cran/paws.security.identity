@@ -8,8 +8,7 @@ notifications about a specified event to a specified SNS topic}
 inspector_subscribe_to_event(resourceArn, event, topicArn)
 }
 \arguments{
-\item{resourceArn}{[required] The ARN of the assessment template that is used during the event for
-which you want to receive SNS notifications.}
+\item{resourceArn}{[required] The ARN of the assessment template that is used during the event for which you want to receive SNS notifications.}
 
 \item{event}{[required] The event for which you want to receive SNS notifications.}
 

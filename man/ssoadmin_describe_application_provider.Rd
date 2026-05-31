@@ -9,8 +9,7 @@ Identity Center}
 ssoadmin_describe_application_provider(ApplicationProviderArn)
 }
 \arguments{
-\item{ApplicationProviderArn}{[required] Specifies the ARN of the application provider for which you want
-details.}
+\item{ApplicationProviderArn}{[required] Specifies the ARN of the application provider for which you want details.}
 }
 \description{
 Retrieves details about a provider that can be used to connect an Amazon Web Services managed application or customer managed application to IAM Identity Center.

@@ -7,14 +7,9 @@
 wafregional_delete_sql_injection_match_set(SqlInjectionMatchSetId, ChangeToken)
 }
 \arguments{
-\item{SqlInjectionMatchSetId}{[required] The \code{SqlInjectionMatchSetId} of the SqlInjectionMatchSet that you want
-to delete. \code{SqlInjectionMatchSetId} is returned by
-\code{\link[=wafregional_create_sql_injection_match_set]{create_sql_injection_match_set}}
-and by
-\code{\link[=wafregional_list_sql_injection_match_sets]{list_sql_injection_match_sets}}.}
+\item{SqlInjectionMatchSetId}{[required] The \code{SqlInjectionMatchSetId} of the SqlInjectionMatchSet that you want to delete. \code{SqlInjectionMatchSetId} is returned by \code{\link[=wafregional_create_sql_injection_match_set]{create_sql_injection_match_set}} and by \code{\link[=wafregional_list_sql_injection_match_sets]{list_sql_injection_match_sets}}.}
 
-\item{ChangeToken}{[required] The value returned by the most recent call to
-\code{\link[=wafregional_get_change_token]{get_change_token}}.}
+\item{ChangeToken}{[required] The value returned by the most recent call to \code{\link[=wafregional_get_change_token]{get_change_token}}.}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic} in the developer guide.

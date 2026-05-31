@@ -7,9 +7,7 @@
 macie2_create_sample_findings(findingTypes = NULL)
 }
 \arguments{
-\item{findingTypes}{An array of finding types, one for each type of sample finding to
-create. To create a sample of every type of finding that Amazon Macie
-supports, don't include this array in your request.}
+\item{findingTypes}{An array of finding types, one for each type of sample finding to create. To create a sample of every type of finding that Amazon Macie supports, don't include this array in your request.}
 }
 \description{
 Creates sample findings.

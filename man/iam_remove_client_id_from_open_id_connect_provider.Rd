@@ -12,18 +12,11 @@ iam_remove_client_id_from_open_id_connect_provider(
 )
 }
 \arguments{
-\item{OpenIDConnectProviderArn}{[required] The Amazon Resource Name (ARN) of the IAM OIDC provider resource to
-remove the client ID from. You can get a list of OIDC provider ARNs by
-using the
-\code{\link[=iam_list_open_id_connect_providers]{list_open_id_connect_providers}}
-operation.
+\item{OpenIDConnectProviderArn}{[required] The Amazon Resource Name (ARN) of the IAM OIDC provider resource to remove the client ID from. You can get a list of OIDC provider ARNs by using the \code{\link[=iam_list_open_id_connect_providers]{list_open_id_connect_providers}} operation.
 
-For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
-in the \emph{Amazon Web Services General Reference}.}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)} in the \emph{Amazon Web Services General Reference}.}
 
-\item{ClientID}{[required] The client ID (also known as audience) to remove from the IAM OIDC
-provider resource. For more information about client IDs, see
-\code{\link[=iam_create_open_id_connect_provider]{create_open_id_connect_provider}}.}
+\item{ClientID}{[required] The client ID (also known as audience) to remove from the IAM OIDC provider resource. For more information about client IDs, see \code{\link[=iam_create_open_id_connect_provider]{create_open_id_connect_provider}}.}
 }
 \description{
 Removes the specified client ID (also known as audience) from the list of client IDs registered for the specified IAM OpenID Connect (OIDC) provider resource object.

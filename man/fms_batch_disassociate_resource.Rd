@@ -7,12 +7,9 @@
 fms_batch_disassociate_resource(ResourceSetIdentifier, Items)
 }
 \arguments{
-\item{ResourceSetIdentifier}{[required] A unique identifier for the resource set, used in a request to refer to
-the resource set.}
+\item{ResourceSetIdentifier}{[required] A unique identifier for the resource set, used in a request to refer to the resource set.}
 
-\item{Items}{[required] The uniform resource identifiers (URI) of resources that should be
-disassociated from the resource set. The URIs must be Amazon Resource
-Names (ARNs).}
+\item{Items}{[required] The uniform resource identifiers (URI) of resources that should be disassociated from the resource set. The URIs must be Amazon Resource Names (ARNs).}
 }
 \description{
 Disassociates resources from a Firewall Manager resource set.

@@ -10,13 +10,9 @@ Region}
 securitylake_tag_resource(resourceArn, tags)
 }
 \arguments{
-\item{resourceArn}{[required] The Amazon Resource Name (ARN) of the Amazon Security Lake resource to
-add or update the tags for.}
+\item{resourceArn}{[required] The Amazon Resource Name (ARN) of the Amazon Security Lake resource to add or update the tags for.}
 
-\item{tags}{[required] An array of objects, one for each tag (key and value) to associate with
-the Amazon Security Lake resource. For each tag, you must specify both a
-tag key and a tag value. A tag value cannot be null, but it can be an
-empty string.}
+\item{tags}{[required] An array of objects, one for each tag (key and value) to associate with the Amazon Security Lake resource. For each tag, you must specify both a tag key and a tag value. A tag value cannot be null, but it can be an empty string.}
 }
 \description{
 Adds or updates one or more tags that are associated with an Amazon Security Lake resource: a subscriber, or the data lake configuration for your Amazon Web Services account in a particular Amazon Web Services Region. A \emph{tag} is a label that you can define and associate with Amazon Web Services resources. Each tag consists of a required \emph{tag key} and an associated \emph{tag value}. A \emph{tag key} is a general label that acts as a category for a more specific tag value. A \emph{tag value} acts as a descriptor for a tag key. Tags can help you identify, categorize, and manage resources in different ways, such as by owner, environment, or other criteria. For more information, see \href{https://docs.aws.amazon.com/security-lake/latest/userguide/tagging-resources.html}{Tagging Amazon Security Lake resources} in the \emph{Amazon Security Lake User Guide}.

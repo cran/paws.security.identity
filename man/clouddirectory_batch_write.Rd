@@ -7,8 +7,7 @@
 clouddirectory_batch_write(DirectoryArn, Operations)
 }
 \arguments{
-\item{DirectoryArn}{[required] The Amazon Resource Name (ARN) that is associated with the Directory.
-For more information, see arns.}
+\item{DirectoryArn}{[required] The Amazon Resource Name (ARN) that is associated with the Directory. For more information, see arns.}
 
 \item{Operations}{[required] A list of operations that are part of the batch.}
 }

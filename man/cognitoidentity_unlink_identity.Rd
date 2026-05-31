@@ -9,8 +9,7 @@ cognitoidentity_unlink_identity(IdentityId, Logins, LoginsToRemove)
 \arguments{
 \item{IdentityId}{[required] A unique identifier in the format REGION:GUID.}
 
-\item{Logins}{[required] A set of optional name-value pairs that map provider names to provider
-tokens.}
+\item{Logins}{[required] A set of optional name-value pairs that map provider names to provider tokens.}
 
 \item{LoginsToRemove}{[required] Provider names to unlink from this identity.}
 }

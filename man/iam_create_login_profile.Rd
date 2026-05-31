@@ -11,37 +11,19 @@ iam_create_login_profile(
 )
 }
 \arguments{
-\item{UserName}{The name of the IAM user to create a password for. The user must already
-exist.
+\item{UserName}{The name of the IAM user to create a password for. The user must already exist.
 
-This parameter is optional. If no user name is included, it defaults to
-the principal making the request. When you make this request with root
-user credentials, you must use an
-\href{https://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRoot.html}{AssumeRoot}
-session to omit the user name.
+This parameter is optional. If no user name is included, it defaults to the principal making the request. When you make this request with root user credentials, you must use an \href{https://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRoot.html}{AssumeRoot} session to omit the user name.
 
-This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
-consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: _+=,.@-}
+This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-}
 
 \item{Password}{The new password for the user.
 
-This parameter must be omitted when you make the request with an
-\href{https://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRoot.html}{AssumeRoot}
-session. It is required in all other cases.
+This parameter must be omitted when you make the request with an \href{https://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRoot.html}{AssumeRoot} session. It is required in all other cases.
 
-The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} that is used to
-validate this parameter is a string of characters. That string can
-include almost any printable ASCII character from the space (\code{U+0020})
-through the end of the ASCII character range (\verb{U+00FF}). You can also
-include the tab (\code{U+0009}), line feed (\verb{U+000A}), and carriage return
-(\verb{U+000D}) characters. Any of these characters are valid in a password.
-However, many tools, such as the Amazon Web Services Management Console,
-might restrict the ability to type certain characters because they have
-special meaning within that tool.}
+The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} that is used to validate this parameter is a string of characters. That string can include almost any printable ASCII character from the space (\code{U+0020}) through the end of the ASCII character range (\verb{U+00FF}). You can also include the tab (\code{U+0009}), line feed (\verb{U+000A}), and carriage return (\verb{U+000D}) characters. Any of these characters are valid in a password. However, many tools, such as the Amazon Web Services Management Console, might restrict the ability to type certain characters because they have special meaning within that tool.}
 
-\item{PasswordResetRequired}{Specifies whether the user is required to set a new password on next
-sign-in.}
+\item{PasswordResetRequired}{Specifies whether the user is required to set a new password on next sign-in.}
 }
 \description{
 Creates a password for the specified IAM user. A password allows an IAM user to access Amazon Web Services services through the Amazon Web Services Management Console.

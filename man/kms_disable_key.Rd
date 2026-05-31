@@ -14,15 +14,13 @@ Specify the key ID or key ARN of the KMS key.
 For example:
 \itemize{
 \item Key ID: \verb{1234abcd-12ab-34cd-56ef-1234567890ab}
-\item Key ARN:
-\verb{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
+\item Key ARN: \verb{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
 }
 
-To get the key ID and key ARN for a KMS key, use
-\code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
+To get the key ID and key ARN for a KMS key, use \code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
 }
 \description{
-Sets the state of a KMS key to disabled. This change temporarily prevents use of the KMS key for \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#cryptographic-operations}{cryptographic operations}.
+Sets the state of a KMS key to disabled. This change temporarily prevents use of the KMS key for \href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-cryptography.html#cryptographic-operations}{cryptographic operations}.
 
 See \url{https://www.paws-r-sdk.com/docs/kms_disable_key/} for full documentation.
 }

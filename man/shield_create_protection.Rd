@@ -13,21 +13,15 @@ shield_create_protection(Name, ResourceArn, Tags = NULL)
 
 The ARN should be in one of the following formats:
 \itemize{
-\item For an Application Load Balancer:
-\code{arn:aws:elasticloadbalancing:region:account-id:loadbalancer/app/load-balancer-name/load-balancer-id }
-\item For an Elastic Load Balancer (Classic Load Balancer):
-\code{arn:aws:elasticloadbalancing:region:account-id:loadbalancer/load-balancer-name }
-\item For an Amazon CloudFront distribution:
-\code{arn:aws:cloudfront::account-id:distribution/distribution-id }
-\item For an Global Accelerator standard accelerator:
-\code{arn:aws:globalaccelerator::account-id:accelerator/accelerator-id }
+\item For an Application Load Balancer: \code{arn:aws:elasticloadbalancing:region:account-id:loadbalancer/app/load-balancer-name/load-balancer-id }
+\item For an Elastic Load Balancer (Classic Load Balancer): \code{arn:aws:elasticloadbalancing:region:account-id:loadbalancer/load-balancer-name }
+\item For an Amazon CloudFront distribution: \code{arn:aws:cloudfront::account-id:distribution/distribution-id }
+\item For an Global Accelerator standard accelerator: \code{arn:aws:globalaccelerator::account-id:accelerator/accelerator-id }
 \item For Amazon Route 53: \code{arn:aws:route53:::hostedzone/hosted-zone-id }
-\item For an Elastic IP address:
-\code{arn:aws:ec2:region:account-id:eip-allocation/allocation-id }
+\item For an Elastic IP address: \code{arn:aws:ec2:region:account-id:eip-allocation/allocation-id }
 }}
 
-\item{Tags}{One or more tag key-value pairs for the Protection object that is
-created.}
+\item{Tags}{One or more tag key-value pairs for the Protection object that is created.}
 }
 \description{
 Enables Shield Advanced for a specific Amazon Web Services resource. The resource can be an Amazon CloudFront distribution, Amazon Route 53 hosted zone, Global Accelerator standard accelerator, Elastic IP Address, Application Load Balancer, or a Classic Load Balancer. You can protect Amazon EC2 instances and Network Load Balancers by association with protected Amazon EC2 Elastic IP addresses.

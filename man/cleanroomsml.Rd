@@ -55,19 +55,11 @@ Operations section.
 \description{
 Welcome to the \emph{Amazon Web Services Clean Rooms ML API Reference}.
 
-Amazon Web Services Clean Rooms ML provides a privacy-enhancing method
-for two parties to identify similar users in their data without the need
-to share their data with each other. The first party brings the training
-data to Clean Rooms so that they can create and configure an audience
-model (lookalike model) and associate it with a collaboration. The
-second party then brings their seed data to Clean Rooms and generates an
-audience (lookalike segment) that resembles the training data.
+Amazon Web Services Clean Rooms ML provides a privacy-enhancing method for two parties to identify similar users in their data without the need to share their data with each other. The first party brings the training data to Clean Rooms so that they can create and configure an audience model (lookalike model) and associate it with a collaboration. The second party then brings their seed data to Clean Rooms and generates an audience (lookalike segment) that resembles the training data.
 
-To learn more about Amazon Web Services Clean Rooms ML concepts,
-procedures, and best practices, see the \href{https://docs.aws.amazon.com/clean-rooms/latest/userguide/machine-learning.html}{Clean Rooms User Guide}.
+To learn more about Amazon Web Services Clean Rooms ML concepts, procedures, and best practices, see the \href{https://docs.aws.amazon.com/clean-rooms/latest/userguide/machine-learning.html}{Clean Rooms User Guide}.
 
-To learn more about SQL commands, functions, and conditions supported in
-Clean Rooms, see the \href{https://docs.aws.amazon.com/clean-rooms/latest/sql-reference/sql-reference.html}{Clean Rooms SQL Reference}.
+To learn more about SQL commands, functions, and conditions supported in Clean Rooms, see the \href{https://docs.aws.amazon.com/clean-rooms/latest/sql-reference/sql-reference.html}{Clean Rooms SQL Reference}.
 }
 \section{Service syntax}{
 
@@ -125,7 +117,7 @@ Clean Rooms, see the \href{https://docs.aws.amazon.com/clean-rooms/latest/sql-re
 \link[=cleanroomsml_delete_configured_model_algorithm_association]{delete_configured_model_algorithm_association} \tab Deletes a configured model algorithm association\cr
 \link[=cleanroomsml_delete_ml_configuration]{delete_ml_configuration} \tab Deletes a ML modeling configuration\cr
 \link[=cleanroomsml_delete_ml_input_channel_data]{delete_ml_input_channel_data} \tab Provides the information necessary to delete an ML input channel\cr
-\link[=cleanroomsml_delete_trained_model_output]{delete_trained_model_output} \tab Deletes the output of a trained model\cr
+\link[=cleanroomsml_delete_trained_model_output]{delete_trained_model_output} \tab Deletes the model artifacts stored by the service\cr
 \link[=cleanroomsml_delete_training_dataset]{delete_training_dataset} \tab Specifies a training dataset that you want to delete\cr
 \link[=cleanroomsml_get_audience_generation_job]{get_audience_generation_job} \tab Returns information about an audience generation job\cr
 \link[=cleanroomsml_get_audience_model]{get_audience_model} \tab Returns information about an audience model\cr
@@ -156,6 +148,7 @@ Clean Rooms, see the \href{https://docs.aws.amazon.com/clean-rooms/latest/sql-re
 \link[=cleanroomsml_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of tags for a provided resource\cr
 \link[=cleanroomsml_list_trained_model_inference_jobs]{list_trained_model_inference_jobs} \tab Returns a list of trained model inference jobs that match the request parameters\cr
 \link[=cleanroomsml_list_trained_models]{list_trained_models} \tab Returns a list of trained models\cr
+\link[=cleanroomsml_list_trained_model_versions]{list_trained_model_versions} \tab Returns a list of trained model versions for a specified trained model\cr
 \link[=cleanroomsml_list_training_datasets]{list_training_datasets} \tab Returns a list of training datasets\cr
 \link[=cleanroomsml_put_configured_audience_model_policy]{put_configured_audience_model_policy} \tab Create or update the resource policy for a configured audience model\cr
 \link[=cleanroomsml_put_ml_configuration]{put_ml_configuration} \tab Assigns information about an ML configuration\cr

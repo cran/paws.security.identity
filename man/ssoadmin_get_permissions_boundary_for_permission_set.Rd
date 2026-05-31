@@ -10,8 +10,7 @@ ssoadmin_get_permissions_boundary_for_permission_set(
 )
 }
 \arguments{
-\item{InstanceArn}{[required] The ARN of the IAM Identity Center instance under which the operation
-will be executed.}
+\item{InstanceArn}{[required] The ARN of the IAM Identity Center instance under which the operation will be executed.}
 
 \item{PermissionSetArn}{[required] The ARN of the \code{PermissionSet}.}
 }

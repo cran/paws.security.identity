@@ -11,17 +11,11 @@ securityhub_get_insights(
 )
 }
 \arguments{
-\item{InsightArns}{The ARNs of the insights to describe. If you don't provide any insight
-ARNs, then \code{\link[=securityhub_get_insights]{get_insights}} returns all of
-your custom insights. It does not return any managed insights.}
+\item{InsightArns}{The ARNs of the insights to describe. If you don't provide any insight ARNs, then \code{\link[=securityhub_get_insights]{get_insights}} returns all of your custom insights. It does not return any managed insights.}
 
-\item{NextToken}{The token that is required for pagination. On your first call to the
-\code{\link[=securityhub_get_insights]{get_insights}} operation, set the value of
-this parameter to \code{NULL}.
+\item{NextToken}{The token that is required for pagination. On your first call to the \code{\link[=securityhub_get_insights]{get_insights}} operation, set the value of this parameter to \code{NULL}.
 
-For subsequent calls to the operation, to continue listing data, set the
-value of this parameter to the value returned from the previous
-response.}
+For subsequent calls to the operation, to continue listing data, set the value of this parameter to the value returned from the previous response.}
 
 \item{MaxResults}{The maximum number of items to return in the response.}
 }

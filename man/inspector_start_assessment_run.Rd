@@ -8,12 +8,9 @@ template}
 inspector_start_assessment_run(assessmentTemplateArn, assessmentRunName = NULL)
 }
 \arguments{
-\item{assessmentTemplateArn}{[required] The ARN of the assessment template of the assessment run that you want
-to start.}
+\item{assessmentTemplateArn}{[required] The ARN of the assessment template of the assessment run that you want to start.}
 
-\item{assessmentRunName}{You can specify the name for the assessment run. The name must be unique
-for the assessment template whose ARN is used to start the assessment
-run.}
+\item{assessmentRunName}{You can specify the name for the assessment run. The name must be unique for the assessment template whose ARN is used to start the assessment run.}
 }
 \description{
 Starts the assessment run specified by the ARN of the assessment template. For this API to function properly, you must not exceed the limit of running up to 500 concurrent agents per AWS account.

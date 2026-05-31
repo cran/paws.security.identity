@@ -7,15 +7,9 @@
 pcaconnectorad_list_connectors(MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
-\item{MaxResults}{Use this parameter when paginating results to specify the maximum number
-of items to return in the response on each page. If additional items
-exist beyond the number you specify, the \code{NextToken} element is sent in
-the response. Use this \code{NextToken} value in a subsequent request to
-retrieve additional items.}
+\item{MaxResults}{Use this parameter when paginating results to specify the maximum number of items to return in the response on each page. If additional items exist beyond the number you specify, the \code{NextToken} element is sent in the response. Use this \code{NextToken} value in a subsequent request to retrieve additional items.}
 
-\item{NextToken}{Use this parameter when paginating results in a subsequent request after
-you receive a response with truncated results. Set it to the value of
-the \code{NextToken} parameter from the response you just received.}
+\item{NextToken}{Use this parameter when paginating results in a subsequent request after you receive a response with truncated results. Set it to the value of the \code{NextToken} parameter from the response you just received.}
 }
 \description{
 Lists the connectors that you created by using the \href{https://docs.aws.amazon.com/pca-connector-ad/latest/APIReference/API_CreateConnector.html}{https://docs.aws.amazon.com/pca-connector-ad/latest/APIReference/API_CreateConnector} action.

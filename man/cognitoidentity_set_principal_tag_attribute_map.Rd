@@ -17,8 +17,7 @@ cognitoidentity_set_principal_tag_attribute_map(
 
 \item{IdentityProviderName}{[required] The provider name you want to use for attribute mappings.}
 
-\item{UseDefaults}{You can use this operation to use default (username and clientID)
-attribute mappings.}
+\item{UseDefaults}{You can use this operation to use default (username and clientID) attribute mappings.}
 
 \item{PrincipalTags}{You can use this operation to add principal tags.}
 }

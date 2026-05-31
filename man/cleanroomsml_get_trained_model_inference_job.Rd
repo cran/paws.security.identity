@@ -10,11 +10,9 @@ cleanroomsml_get_trained_model_inference_job(
 )
 }
 \arguments{
-\item{membershipIdentifier}{[required] Provides the membership ID of the membership that contains the trained
-model inference job that you are interested in.}
+\item{membershipIdentifier}{[required] Provides the membership ID of the membership that contains the trained model inference job that you are interested in.}
 
-\item{trainedModelInferenceJobArn}{[required] Provides the Amazon Resource Name (ARN) of the trained model inference
-job that you are interested in.}
+\item{trainedModelInferenceJobArn}{[required] Provides the Amazon Resource Name (ARN) of the trained model inference job that you are interested in.}
 }
 \description{
 Returns information about a trained model inference job.

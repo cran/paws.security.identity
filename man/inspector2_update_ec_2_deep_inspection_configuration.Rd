@@ -11,14 +11,9 @@ inspector2_update_ec_2_deep_inspection_configuration(
 )
 }
 \arguments{
-\item{activateDeepInspection}{Specify \code{TRUE} to activate Amazon Inspector deep inspection in your
-account, or \code{FALSE} to deactivate. Member accounts in an organization
-cannot deactivate deep inspection, instead the delegated administrator
-for the organization can deactivate a member account using
-\code{\link[=inspector2_batch_update_member_ec_2_deep_inspection_status]{batch_update_member_ec_2_deep_inspection_status}}.}
+\item{activateDeepInspection}{Specify \code{TRUE} to activate Amazon Inspector deep inspection in your account, or \code{FALSE} to deactivate. Member accounts in an organization cannot deactivate deep inspection, instead the delegated administrator for the organization can deactivate a member account using \code{\link[=inspector2_batch_update_member_ec_2_deep_inspection_status]{batch_update_member_ec_2_deep_inspection_status}}.}
 
-\item{packagePaths}{The Amazon Inspector deep inspection custom paths you are adding for
-your account.}
+\item{packagePaths}{The Amazon Inspector deep inspection custom paths you are adding for your account.}
 }
 \description{
 Activates, deactivates Amazon Inspector deep inspection, or updates custom paths for your account.

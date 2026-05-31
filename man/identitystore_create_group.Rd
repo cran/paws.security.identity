@@ -13,10 +13,7 @@ identitystore_create_group(
 \arguments{
 \item{IdentityStoreId}{[required] The globally unique identifier for the identity store.}
 
-\item{DisplayName}{A string containing the name of the group. This value is commonly
-displayed when the group is referenced. \code{Administrator} and
-\code{AWSAdministrators} are reserved names and can't be used for users or
-groups.}
+\item{DisplayName}{A string containing the name of the group. This value is commonly displayed when the group is referenced. \code{Administrator} and \code{AWSAdministrators} are reserved names and can't be used for users or groups.}
 
 \item{Description}{A string containing the description of the group.}
 }

@@ -12,21 +12,18 @@ kms_get_key_rotation_status(KeyId)
 \arguments{
 \item{KeyId}{[required] Gets the rotation status for the specified KMS key.
 
-Specify the key ID or key ARN of the KMS key. To specify a KMS key in a
-different Amazon Web Services account, you must use the key ARN.
+Specify the key ID or key ARN of the KMS key. To specify a KMS key in a different Amazon Web Services account, you must use the key ARN.
 
 For example:
 \itemize{
 \item Key ID: \verb{1234abcd-12ab-34cd-56ef-1234567890ab}
-\item Key ARN:
-\verb{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
+\item Key ARN: \verb{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
 }
 
-To get the key ID and key ARN for a KMS key, use
-\code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
+To get the key ID and key ARN for a KMS key, use \code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
 }
 \description{
-Provides detailed information about the rotation status for a KMS key, including whether \href{https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html}{automatic rotation of the key material} is enabled for the specified KMS key, the \href{https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html#rotation-period}{rotation period}, and the next scheduled rotation date.
+Provides detailed information about the rotation status for a KMS key, including whether \href{https://docs.aws.amazon.com/kms/latest/developerguide/}{automatic rotation of the key material} is enabled for the specified KMS key, the \href{https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html#rotation-period}{rotation period}, and the next scheduled rotation date.
 
 See \url{https://www.paws-r-sdk.com/docs/kms_get_key_rotation_status/} for full documentation.
 }

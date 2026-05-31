@@ -11,8 +11,7 @@ directoryservice_enable_radius(DirectoryId, RadiusSettings)
 \arguments{
 \item{DirectoryId}{[required] The identifier of the directory for which to enable MFA.}
 
-\item{RadiusSettings}{[required] A RadiusSettings object that contains information about the RADIUS
-server.}
+\item{RadiusSettings}{[required] A RadiusSettings object that contains information about the RADIUS server.}
 }
 \description{
 Enables multi-factor authentication (MFA) with the Remote Authentication Dial In User Service (RADIUS) server for an AD Connector or Microsoft AD directory.

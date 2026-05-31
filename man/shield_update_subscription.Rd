@@ -7,13 +7,7 @@
 shield_update_subscription(AutoRenew = NULL)
 }
 \arguments{
-\item{AutoRenew}{When you initally create a subscription, \code{AutoRenew} is set to
-\code{ENABLED}. If \code{ENABLED}, the subscription will be automatically renewed
-at the end of the existing subscription period. You can change this by
-submitting an \code{\link[=shield_update_subscription]{update_subscription}}
-request. If the \code{\link[=shield_update_subscription]{update_subscription}}
-request does not included a value for \code{AutoRenew}, the existing value
-for \code{AutoRenew} remains unchanged.}
+\item{AutoRenew}{When you initally create a subscription, \code{AutoRenew} is set to \code{ENABLED}. If \code{ENABLED}, the subscription will be automatically renewed at the end of the existing subscription period. You can change this by submitting an \code{\link[=shield_update_subscription]{update_subscription}} request. If the \code{\link[=shield_update_subscription]{update_subscription}} request does not included a value for \code{AutoRenew}, the existing value for \code{AutoRenew} remains unchanged.}
 }
 \description{
 Updates the details of an existing subscription. Only enter values for parameters you want to change. Empty parameters are not updated.

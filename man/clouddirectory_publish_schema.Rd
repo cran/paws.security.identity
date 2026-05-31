@@ -13,18 +13,13 @@ clouddirectory_publish_schema(
 )
 }
 \arguments{
-\item{DevelopmentSchemaArn}{[required] The Amazon Resource Name (ARN) that is associated with the development
-schema. For more information, see arns.}
+\item{DevelopmentSchemaArn}{[required] The Amazon Resource Name (ARN) that is associated with the development schema. For more information, see arns.}
 
-\item{Version}{[required] The major version under which the schema will be published. Schemas have
-both a major and minor version associated with them.}
+\item{Version}{[required] The major version under which the schema will be published. Schemas have both a major and minor version associated with them.}
 
-\item{MinorVersion}{The minor version under which the schema will be published. This
-parameter is recommended. Schemas have both a major and minor version
-associated with them.}
+\item{MinorVersion}{The minor version under which the schema will be published. This parameter is recommended. Schemas have both a major and minor version associated with them.}
 
-\item{Name}{The new name under which the schema will be published. If this is not
-provided, the development schema is considered.}
+\item{Name}{The new name under which the schema will be published. If this is not provided, the development schema is considered.}
 }
 \description{
 Publishes a development schema with a major version and a recommended minor version.

@@ -10,8 +10,7 @@ inspector_set_tags_for_resource(resourceArn, tags = NULL)
 \arguments{
 \item{resourceArn}{[required] The ARN of the assessment template that you want to set tags to.}
 
-\item{tags}{A collection of key and value pairs that you want to set to the
-assessment template.}
+\item{tags}{A collection of key and value pairs that you want to set to the assessment template.}
 }
 \description{
 Sets tags (key and value pairs) to the assessment template that is specified by the ARN of the assessment template.

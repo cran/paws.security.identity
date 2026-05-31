@@ -11,8 +11,7 @@ NULL
 #'
 #' See [https://www.paws-r-sdk.com/docs/detective_accept_invitation/](https://www.paws-r-sdk.com/docs/detective_accept_invitation/) for full documentation.
 #'
-#' @param GraphArn &#91;required&#93; The ARN of the behavior graph that the member account is accepting the
-#' invitation for.
+#' @param GraphArn &#91;required&#93; The ARN of the behavior graph that the member account is accepting the invitation for.
 #' 
 #' The member account status in the behavior graph must be `INVITED`.
 #'
@@ -46,8 +45,7 @@ detective_accept_invitation <- function(GraphArn) {
 #' See [https://www.paws-r-sdk.com/docs/detective_batch_get_graph_member_datasources/](https://www.paws-r-sdk.com/docs/detective_batch_get_graph_member_datasources/) for full documentation.
 #'
 #' @param GraphArn &#91;required&#93; The ARN of the behavior graph.
-#' @param AccountIds &#91;required&#93; The list of Amazon Web Services accounts to get data source package
-#' information on.
+#' @param AccountIds &#91;required&#93; The list of Amazon Web Services accounts to get data source package information on.
 #'
 #' @keywords internal
 #'
@@ -110,10 +108,7 @@ detective_batch_get_membership_datasources <- function(GraphArns) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/detective_create_graph/](https://www.paws-r-sdk.com/docs/detective_create_graph/) for full documentation.
 #'
-#' @param Tags The tags to assign to the new behavior graph. You can add up to 50 tags.
-#' For each tag, you provide the tag key and the tag value. Each tag key
-#' can contain up to 128 characters. Each tag value can contain up to 256
-#' characters.
+#' @param Tags The tags to assign to the new behavior graph. You can add up to 50 tags. For each tag, you provide the tag key and the tag value. Each tag key can contain up to 128 characters. Each tag value can contain up to 256 characters.
 #'
 #' @keywords internal
 #'
@@ -145,19 +140,11 @@ detective_create_graph <- function(Tags = NULL) {
 #' See [https://www.paws-r-sdk.com/docs/detective_create_members/](https://www.paws-r-sdk.com/docs/detective_create_members/) for full documentation.
 #'
 #' @param GraphArn &#91;required&#93; The ARN of the behavior graph.
-#' @param Message Customized message text to include in the invitation email message to
-#' the invited member accounts.
-#' @param DisableEmailNotification if set to `true`, then the invited accounts do not receive email
-#' notifications. By default, this is set to `false`, and the invited
-#' accounts receive email notifications.
+#' @param Message Customized message text to include in the invitation email message to the invited member accounts.
+#' @param DisableEmailNotification if set to `true`, then the invited accounts do not receive email notifications. By default, this is set to `false`, and the invited accounts receive email notifications.
 #' 
-#' Organization accounts in the organization behavior graph do not receive
-#' email notifications.
-#' @param Accounts &#91;required&#93; The list of Amazon Web Services accounts to invite or to enable. You can
-#' invite or enable up to 50 accounts at a time. For each invited account,
-#' the account list contains the account identifier and the Amazon Web
-#' Services account root user email address. For organization accounts in
-#' the organization behavior graph, the email address is not required.
+#' Organization accounts in the organization behavior graph do not receive email notifications.
+#' @param Accounts &#91;required&#93; The list of Amazon Web Services accounts to invite or to enable. You can invite or enable up to 50 accounts at a time. For each invited account, the account list contains the account identifier and the Amazon Web Services account root user email address. For organization accounts in the organization behavior graph, the email address is not required.
 #'
 #' @keywords internal
 #'
@@ -220,9 +207,7 @@ detective_delete_graph <- function(GraphArn) {
 #' See [https://www.paws-r-sdk.com/docs/detective_delete_members/](https://www.paws-r-sdk.com/docs/detective_delete_members/) for full documentation.
 #'
 #' @param GraphArn &#91;required&#93; The ARN of the behavior graph to remove members from.
-#' @param AccountIds &#91;required&#93; The list of Amazon Web Services account identifiers for the member
-#' accounts to remove from the behavior graph. You can remove up to 50
-#' member accounts at a time.
+#' @param AccountIds &#91;required&#93; The list of Amazon Web Services account identifiers for the member accounts to remove from the behavior graph. You can remove up to 50 member accounts at a time.
 #'
 #' @keywords internal
 #'
@@ -318,8 +303,7 @@ detective_disable_organization_admin_account <- function() {
 #'
 #' @param GraphArn &#91;required&#93; The ARN of the behavior graph to remove the member account from.
 #' 
-#' The member account's member status in the behavior graph must be
-#' `ENABLED`.
+#' The member account's member status in the behavior graph must be `ENABLED`.
 #'
 #' @keywords internal
 #'
@@ -351,8 +335,7 @@ detective_disassociate_membership <- function(GraphArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/detective_enable_organization_admin_account/](https://www.paws-r-sdk.com/docs/detective_enable_organization_admin_account/) for full documentation.
 #'
-#' @param AccountId &#91;required&#93; The Amazon Web Services account identifier of the account to designate
-#' as the Detective administrator account for the organization.
+#' @param AccountId &#91;required&#93; The Amazon Web Services account identifier of the account to designate as the Detective administrator account for the organization.
 #'
 #' @keywords internal
 #'
@@ -418,13 +401,9 @@ detective_get_investigation <- function(GraphArn, InvestigationId) {
 #' See [https://www.paws-r-sdk.com/docs/detective_get_members/](https://www.paws-r-sdk.com/docs/detective_get_members/) for full documentation.
 #'
 #' @param GraphArn &#91;required&#93; The ARN of the behavior graph for which to request the member details.
-#' @param AccountIds &#91;required&#93; The list of Amazon Web Services account identifiers for the member
-#' account for which to return member details. You can request details for
-#' up to 50 member accounts at a time.
+#' @param AccountIds &#91;required&#93; The list of Amazon Web Services account identifiers for the member account for which to return member details. You can request details for up to 50 member accounts at a time.
 #' 
-#' You cannot use [`get_members`][detective_get_members] to retrieve
-#' information about member accounts that were removed from the behavior
-#' graph.
+#' You cannot use [`get_members`][detective_get_members] to retrieve information about member accounts that were removed from the behavior graph.
 #'
 #' @keywords internal
 #'
@@ -456,9 +435,7 @@ detective_get_members <- function(GraphArn, AccountIds) {
 #' See [https://www.paws-r-sdk.com/docs/detective_list_datasource_packages/](https://www.paws-r-sdk.com/docs/detective_list_datasource_packages/) for full documentation.
 #'
 #' @param GraphArn &#91;required&#93; The ARN of the behavior graph.
-#' @param NextToken For requests to get the next page of results, the pagination token that
-#' was returned with the previous set of results. The initial request does
-#' not include a pagination token.
+#' @param NextToken For requests to get the next page of results, the pagination token that was returned with the previous set of results. The initial request does not include a pagination token.
 #' @param MaxResults The maximum number of results to return.
 #'
 #' @keywords internal
@@ -491,12 +468,8 @@ detective_list_datasource_packages <- function(GraphArn, NextToken = NULL, MaxRe
 #'
 #' See [https://www.paws-r-sdk.com/docs/detective_list_graphs/](https://www.paws-r-sdk.com/docs/detective_list_graphs/) for full documentation.
 #'
-#' @param NextToken For requests to get the next page of results, the pagination token that
-#' was returned with the previous set of results. The initial request does
-#' not include a pagination token.
-#' @param MaxResults The maximum number of graphs to return at a time. The total must be less
-#' than the overall limit on the number of results to return, which is
-#' currently 200.
+#' @param NextToken For requests to get the next page of results, the pagination token that was returned with the previous set of results. The initial request does not include a pagination token.
+#' @param MaxResults The maximum number of graphs to return at a time. The total must be less than the overall limit on the number of results to return, which is currently 200.
 #'
 #' @keywords internal
 #'
@@ -529,16 +502,10 @@ detective_list_graphs <- function(NextToken = NULL, MaxResults = NULL) {
 #'
 #' @param GraphArn &#91;required&#93; The Amazon Resource Name (ARN) of the behavior graph.
 #' @param InvestigationId &#91;required&#93; The investigation ID of the investigation report.
-#' @param IndicatorType For the list of indicators of compromise that are generated by Detective
-#' investigations, see [Detective
-#' investigations](https://docs.aws.amazon.com/detective/latest/userguide/detective-investigation-about.html).
-#' @param NextToken Lists if there are more results available. The value of nextToken is a
-#' unique pagination token for each page. Repeat the call using the
-#' returned token to retrieve the next page. Keep all other arguments
-#' unchanged.
+#' @param IndicatorType For the list of indicators of compromise that are generated by Detective investigations, see [Detective investigations](https://docs.aws.amazon.com/detective/latest/userguide/detective-investigation-about.html).
+#' @param NextToken Lists if there are more results available. The value of nextToken is a unique pagination token for each page. Repeat the call using the returned token to retrieve the next page. Keep all other arguments unchanged.
 #' 
-#' Each pagination token expires after 24 hours. Using an expired
-#' pagination token will return a Validation Exception error.
+#' Each pagination token expires after 24 hours. Using an expired pagination token will return a Validation Exception error.
 #' @param MaxResults Lists the maximum number of indicators in a page.
 #'
 #' @keywords internal
@@ -572,13 +539,9 @@ detective_list_indicators <- function(GraphArn, InvestigationId, IndicatorType =
 #' See [https://www.paws-r-sdk.com/docs/detective_list_investigations/](https://www.paws-r-sdk.com/docs/detective_list_investigations/) for full documentation.
 #'
 #' @param GraphArn &#91;required&#93; The Amazon Resource Name (ARN) of the behavior graph.
-#' @param NextToken Lists if there are more results available. The value of nextToken is a
-#' unique pagination token for each page. Repeat the call using the
-#' returned token to retrieve the next page. Keep all other arguments
-#' unchanged.
+#' @param NextToken Lists if there are more results available. The value of nextToken is a unique pagination token for each page. Repeat the call using the returned token to retrieve the next page. Keep all other arguments unchanged.
 #' 
-#' Each pagination token expires after 24 hours. Using an expired
-#' pagination token will return a Validation Exception error.
+#' Each pagination token expires after 24 hours. Using an expired pagination token will return a Validation Exception error.
 #' @param MaxResults Lists the maximum number of investigations in a page.
 #' @param FilterCriteria Filters the investigation results based on a criteria.
 #' @param SortCriteria Sorts the investigation results based on a criteria.
@@ -613,12 +576,8 @@ detective_list_investigations <- function(GraphArn, NextToken = NULL, MaxResults
 #'
 #' See [https://www.paws-r-sdk.com/docs/detective_list_invitations/](https://www.paws-r-sdk.com/docs/detective_list_invitations/) for full documentation.
 #'
-#' @param NextToken For requests to retrieve the next page of results, the pagination token
-#' that was returned with the previous page of results. The initial request
-#' does not include a pagination token.
-#' @param MaxResults The maximum number of behavior graph invitations to return in the
-#' response. The total must be less than the overall limit on the number of
-#' results to return, which is currently 200.
+#' @param NextToken For requests to retrieve the next page of results, the pagination token that was returned with the previous page of results. The initial request does not include a pagination token.
+#' @param MaxResults The maximum number of behavior graph invitations to return in the response. The total must be less than the overall limit on the number of results to return, which is currently 200.
 #'
 #' @keywords internal
 #'
@@ -649,14 +608,9 @@ detective_list_invitations <- function(NextToken = NULL, MaxResults = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/detective_list_members/](https://www.paws-r-sdk.com/docs/detective_list_members/) for full documentation.
 #'
-#' @param GraphArn &#91;required&#93; The ARN of the behavior graph for which to retrieve the list of member
-#' accounts.
-#' @param NextToken For requests to retrieve the next page of member account results, the
-#' pagination token that was returned with the previous page of results.
-#' The initial request does not include a pagination token.
-#' @param MaxResults The maximum number of member accounts to include in the response. The
-#' total must be less than the overall limit on the number of results to
-#' return, which is currently 200.
+#' @param GraphArn &#91;required&#93; The ARN of the behavior graph for which to retrieve the list of member accounts.
+#' @param NextToken For requests to retrieve the next page of member account results, the pagination token that was returned with the previous page of results. The initial request does not include a pagination token.
+#' @param MaxResults The maximum number of member accounts to include in the response. The total must be less than the overall limit on the number of results to return, which is currently 200.
 #'
 #' @keywords internal
 #'
@@ -688,9 +642,7 @@ detective_list_members <- function(GraphArn, NextToken = NULL, MaxResults = NULL
 #'
 #' See [https://www.paws-r-sdk.com/docs/detective_list_organization_admin_accounts/](https://www.paws-r-sdk.com/docs/detective_list_organization_admin_accounts/) for full documentation.
 #'
-#' @param NextToken For requests to get the next page of results, the pagination token that
-#' was returned with the previous set of results. The initial request does
-#' not include a pagination token.
+#' @param NextToken For requests to get the next page of results, the pagination token that was returned with the previous set of results. The initial request does not include a pagination token.
 #' @param MaxResults The maximum number of results to return.
 #'
 #' @keywords internal
@@ -755,8 +707,7 @@ detective_list_tags_for_resource <- function(ResourceArn) {
 #'
 #' @param GraphArn &#91;required&#93; The ARN of the behavior graph to reject the invitation to.
 #' 
-#' The member account's current member status in the behavior graph must be
-#' `INVITED`.
+#' The member account's current member status in the behavior graph must be `INVITED`.
 #'
 #' @keywords internal
 #'
@@ -790,10 +741,8 @@ detective_reject_invitation <- function(GraphArn) {
 #'
 #' @param GraphArn &#91;required&#93; The Amazon Resource Name (ARN) of the behavior graph.
 #' @param EntityArn &#91;required&#93; The unique Amazon Resource Name (ARN) of the IAM user and IAM role.
-#' @param ScopeStartTime &#91;required&#93; The data and time when the investigation began. The value is an UTC
-#' ISO8601 formatted string. For example, `2021-08-18T16:35:56.284Z`.
-#' @param ScopeEndTime &#91;required&#93; The data and time when the investigation ended. The value is an UTC
-#' ISO8601 formatted string. For example, `2021-08-18T16:35:56.284Z`.
+#' @param ScopeStartTime &#91;required&#93; The data and time when the investigation began. The value is an UTC ISO8601 formatted string. For example, `2021-08-18T16:35:56.284Z`.
+#' @param ScopeEndTime &#91;required&#93; The data and time when the investigation ended. The value is an UTC ISO8601 formatted string. For example, `2021-08-18T16:35:56.284Z`.
 #'
 #' @keywords internal
 #'
@@ -828,8 +777,7 @@ detective_start_investigation <- function(GraphArn, EntityArn, ScopeStartTime, S
 #' @param GraphArn &#91;required&#93; The ARN of the behavior graph.
 #' @param AccountId &#91;required&#93; The account ID of the member account to try to enable.
 #' 
-#' The account must be an invited member account with a status of
-#' `ACCEPTED_BUT_DISABLED`.
+#' The account must be an invited member account with a status of `ACCEPTED_BUT_DISABLED`.
 #'
 #' @keywords internal
 #'
@@ -861,10 +809,7 @@ detective_start_monitoring_member <- function(GraphArn, AccountId) {
 #' See [https://www.paws-r-sdk.com/docs/detective_tag_resource/](https://www.paws-r-sdk.com/docs/detective_tag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The ARN of the behavior graph to assign the tags to.
-#' @param Tags &#91;required&#93; The tags to assign to the behavior graph. You can add up to 50 tags. For
-#' each tag, you provide the tag key and the tag value. Each tag key can
-#' contain up to 128 characters. Each tag value can contain up to 256
-#' characters.
+#' @param Tags &#91;required&#93; The tags to assign to the behavior graph. You can add up to 50 tags. For each tag, you provide the tag key and the tag value. Each tag key can contain up to 128 characters. Each tag value can contain up to 256 characters.
 #'
 #' @keywords internal
 #'
@@ -896,8 +841,7 @@ detective_tag_resource <- function(ResourceArn, Tags) {
 #' See [https://www.paws-r-sdk.com/docs/detective_untag_resource/](https://www.paws-r-sdk.com/docs/detective_untag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The ARN of the behavior graph to remove the tags from.
-#' @param TagKeys &#91;required&#93; The tag keys of the tags to remove from the behavior graph. You can
-#' remove up to 50 tags at a time.
+#' @param TagKeys &#91;required&#93; The tag keys of the tags to remove from the behavior graph. You can remove up to 50 tags at a time.
 #'
 #' @keywords internal
 #'
@@ -962,8 +906,7 @@ detective_update_datasource_packages <- function(GraphArn, DatasourcePackages) {
 #'
 #' @param GraphArn &#91;required&#93; The Amazon Resource Name (ARN) of the behavior graph.
 #' @param InvestigationId &#91;required&#93; The investigation ID of the investigation report.
-#' @param State &#91;required&#93; The current state of the investigation. An archived investigation
-#' indicates you have completed reviewing the investigation.
+#' @param State &#91;required&#93; The current state of the investigation. An archived investigation indicates you have completed reviewing the investigation.
 #'
 #' @keywords internal
 #'
@@ -996,8 +939,7 @@ detective_update_investigation_state <- function(GraphArn, InvestigationId, Stat
 #' See [https://www.paws-r-sdk.com/docs/detective_update_organization_configuration/](https://www.paws-r-sdk.com/docs/detective_update_organization_configuration/) for full documentation.
 #'
 #' @param GraphArn &#91;required&#93; The ARN of the organization behavior graph.
-#' @param AutoEnable Indicates whether to automatically enable new organization accounts as
-#' member accounts in the organization behavior graph.
+#' @param AutoEnable Indicates whether to automatically enable new organization accounts as member accounts in the organization behavior graph.
 #'
 #' @keywords internal
 #'

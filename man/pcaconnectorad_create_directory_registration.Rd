@@ -16,8 +16,7 @@ pcaconnectorad_create_directory_registration(
 
 \item{DirectoryId}{[required] The identifier of the Active Directory.}
 
-\item{Tags}{Metadata assigned to a directory registration consisting of a key-value
-pair.}
+\item{Tags}{Metadata assigned to a directory registration consisting of a key-value pair.}
 }
 \description{
 Creates a directory registration that authorizes communication between Amazon Web Services Private CA and an Active Directory

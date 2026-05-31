@@ -7,8 +7,7 @@
 cleanroomsml_get_training_dataset(trainingDatasetArn)
 }
 \arguments{
-\item{trainingDatasetArn}{[required] The Amazon Resource Name (ARN) of the training dataset that you are
-interested in.}
+\item{trainingDatasetArn}{[required] The Amazon Resource Name (ARN) of the training dataset that you are interested in.}
 }
 \description{
 Returns information about a training dataset.

@@ -7,8 +7,7 @@
 acm_list_tags_for_certificate(CertificateArn)
 }
 \arguments{
-\item{CertificateArn}{[required] String that contains the ARN of the ACM certificate for which you want
-to list the tags. This must have the following form:
+\item{CertificateArn}{[required] String that contains the ARN of the ACM certificate for which you want to list the tags. This must have the following form:
 
 \code{arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012}
 

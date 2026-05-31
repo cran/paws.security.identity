@@ -2,34 +2,18 @@
 % Please edit documentation in R/securityhub_operations.R
 \name{securityhub_list_configuration_policies}
 \alias{securityhub_list_configuration_policies}
-\title{Lists the configuration policies that the Security Hub delegated
+\title{Lists the configuration policies that the Security Hub CSPM delegated
 administrator has created for your organization}
 \usage{
 securityhub_list_configuration_policies(NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
-\item{NextToken}{The NextToken value that's returned from a previous paginated
-\code{\link[=securityhub_list_configuration_policies]{list_configuration_policies}}
-request where \code{MaxResults} was used but the results exceeded the value
-of that parameter. Pagination continues from the \code{MaxResults} was used
-but the results exceeded the value of that parameter. Pagination
-continues from the end of the previous response that returned the
-\code{NextToken} value. This value is \code{null} when there are no more results
-to return.}
+\item{NextToken}{The NextToken value that's returned from a previous paginated \code{\link[=securityhub_list_configuration_policies]{list_configuration_policies}} request where \code{MaxResults} was used but the results exceeded the value of that parameter. Pagination continues from the \code{MaxResults} was used but the results exceeded the value of that parameter. Pagination continues from the end of the previous response that returned the \code{NextToken} value. This value is \code{null} when there are no more results to return.}
 
-\item{MaxResults}{The maximum number of results that's returned by
-\code{\link[=securityhub_list_configuration_policies]{list_configuration_policies}}
-in each page of the response. When this parameter is used,
-\code{\link[=securityhub_list_configuration_policies]{list_configuration_policies}}
-returns the specified number of results in a single page and a
-\code{NextToken} response element. You can see the remaining results of the
-initial request by sending another
-\code{\link[=securityhub_list_configuration_policies]{list_configuration_policies}}
-request with the returned \code{NextToken} value. A valid range for
-\code{MaxResults} is between 1 and 100.}
+\item{MaxResults}{The maximum number of results that's returned by \code{\link[=securityhub_list_configuration_policies]{list_configuration_policies}} in each page of the response. When this parameter is used, \code{\link[=securityhub_list_configuration_policies]{list_configuration_policies}} returns the specified number of results in a single page and a \code{NextToken} response element. You can see the remaining results of the initial request by sending another \code{\link[=securityhub_list_configuration_policies]{list_configuration_policies}} request with the returned \code{NextToken} value. A valid range for \code{MaxResults} is between 1 and 100.}
 }
 \description{
-Lists the configuration policies that the Security Hub delegated administrator has created for your organization. Only the delegated administrator can invoke this operation from the home Region.
+Lists the configuration policies that the Security Hub CSPM delegated administrator has created for your organization. Only the delegated administrator can invoke this operation from the home Region.
 
 See \url{https://www.paws-r-sdk.com/docs/securityhub_list_configuration_policies/} for full documentation.
 }

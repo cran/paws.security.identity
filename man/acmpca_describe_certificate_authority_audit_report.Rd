@@ -11,14 +11,11 @@ acmpca_describe_certificate_authority_audit_report(
 )
 }
 \arguments{
-\item{CertificateAuthorityArn}{[required] The Amazon Resource Name (ARN) of the private CA. This must be of the
-form:
+\item{CertificateAuthorityArn}{[required] The Amazon Resource Name (ARN) of the private CA. This must be of the form:
 
 \code{arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 }.}
 
-\item{AuditReportId}{[required] The report ID returned by calling the
-\code{\link[=acmpca_create_certificate_authority_audit_report]{create_certificate_authority_audit_report}}
-action.}
+\item{AuditReportId}{[required] The report ID returned by calling the \code{\link[=acmpca_create_certificate_authority_audit_report]{create_certificate_authority_audit_report}} action.}
 }
 \description{
 Lists information about a specific audit report created by calling the \code{\link[=acmpca_create_certificate_authority_audit_report]{create_certificate_authority_audit_report}} action. Audit information is created every time the certificate authority (CA) private key is used. The private key is used when you call the \code{\link[=acmpca_issue_certificate]{issue_certificate}} action or the \code{\link[=acmpca_revoke_certificate]{revoke_certificate}} action.

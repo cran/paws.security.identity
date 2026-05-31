@@ -2,22 +2,19 @@
 % Please edit documentation in R/cognitoidentity_operations.R
 \name{cognitoidentity_get_id}
 \alias{cognitoidentity_get_id}
-\title{Generates (or retrieves) a Cognito ID}
+\title{Generates (or retrieves) IdentityID}
 \usage{
 cognitoidentity_get_id(AccountId = NULL, IdentityPoolId, Logins = NULL)
 }
 \arguments{
-\item{AccountId}{A standard AWS account ID (9+ digits).}
+\item{AccountId}{A standard Amazon Web Services account ID (9+ digits).}
 
 \item{IdentityPoolId}{[required] An identity pool ID in the format REGION:GUID.}
 
-\item{Logins}{A set of optional name-value pairs that map provider names to provider
-tokens. The available provider names for \code{Logins} are as follows:
+\item{Logins}{A set of optional name-value pairs that map provider names to provider tokens. The available provider names for \code{Logins} are as follows:
 \itemize{
 \item Facebook: \code{graph.facebook.com}
-\item Amazon Cognito user pool:
-\verb{cognito-idp.<region>.amazonaws.com/<YOUR_USER_POOL_ID>}, for
-example, \verb{cognito-idp.us-east-1.amazonaws.com/us-east-1_123456789}.
+\item Amazon Cognito user pool: \verb{cognito-idp.<region>.amazonaws.com/<YOUR_USER_POOL_ID>}, for example, \verb{cognito-idp.us-east-1.amazonaws.com/us-east-1_123456789}.
 \item Google: \code{accounts.google.com}
 \item Amazon: \code{www.amazon.com}
 \item Twitter: \code{api.twitter.com}
@@ -25,7 +22,7 @@ example, \verb{cognito-idp.us-east-1.amazonaws.com/us-east-1_123456789}.
 }}
 }
 \description{
-Generates (or retrieves) a Cognito ID. Supplying multiple logins will create an implicit linked account.
+Generates (or retrieves) IdentityID. Supplying multiple logins will create an implicit linked account.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentity_get_id/} for full documentation.
 }

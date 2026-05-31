@@ -7,8 +7,7 @@
 cleanroomsml_untag_resource(resourceArn, tagKeys)
 }
 \arguments{
-\item{resourceArn}{[required] The Amazon Resource Name (ARN) of the resource that you want to remove
-tags from.}
+\item{resourceArn}{[required] The Amazon Resource Name (ARN) of the resource that you want to remove tags from.}
 
 \item{tagKeys}{[required] The key values of tags that you want to remove.}
 }

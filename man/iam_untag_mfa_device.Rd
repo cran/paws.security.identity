@@ -8,16 +8,11 @@ authentication (MFA) device}
 iam_untag_mfa_device(SerialNumber, TagKeys)
 }
 \arguments{
-\item{SerialNumber}{[required] The unique identifier for the IAM virtual MFA device from which you want
-to remove tags. For virtual MFA devices, the serial number is the same
-as the ARN.
+\item{SerialNumber}{[required] The unique identifier for the IAM virtual MFA device from which you want to remove tags. For virtual MFA devices, the serial number is the same as the ARN.
 
-This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
-consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: _+=,.@-}
+This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-}
 
-\item{TagKeys}{[required] A list of key names as a simple array of strings. The tags with matching
-keys are removed from the specified instance profile.}
+\item{TagKeys}{[required] A list of key names as a simple array of strings. The tags with matching keys are removed from the specified instance profile.}
 }
 \description{
 Removes the specified tags from the IAM virtual multi-factor authentication (MFA) device. For more information about tagging, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html}{Tagging IAM resources} in the \emph{IAM User Guide}.

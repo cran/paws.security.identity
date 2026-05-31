@@ -16,27 +16,18 @@ acm_list_certificates(
 \arguments{
 \item{CertificateStatuses}{Filter the certificate list by status value.}
 
-\item{Includes}{Filter the certificate list. For more information, see the Filters
-structure.}
+\item{Includes}{Filter the certificate list. For more information, see the Filters structure.}
 
-\item{NextToken}{Use this parameter only when paginating results and only in a subsequent
-request after you receive a response with truncated results. Set it to
-the value of \code{NextToken} from the response you just received.}
+\item{NextToken}{Use this parameter only when paginating results and only in a subsequent request after you receive a response with truncated results. Set it to the value of \code{NextToken} from the response you just received.}
 
-\item{MaxItems}{Use this parameter when paginating results to specify the maximum number
-of items to return in the response. If additional items exist beyond the
-number you specify, the \code{NextToken} element is sent in the response. Use
-this \code{NextToken} value in a subsequent request to retrieve additional
-items.}
+\item{MaxItems}{Use this parameter when paginating results to specify the maximum number of items to return in the response. If additional items exist beyond the number you specify, the \code{NextToken} element is sent in the response. Use this \code{NextToken} value in a subsequent request to retrieve additional items.}
 
-\item{SortBy}{Specifies the field to sort results by. If you specify \code{SortBy}, you
-must also specify \code{SortOrder}.}
+\item{SortBy}{Specifies the field to sort results by. If you specify \code{SortBy}, you must also specify \code{SortOrder}.}
 
-\item{SortOrder}{Specifies the order of sorted results. If you specify \code{SortOrder}, you
-must also specify \code{SortBy}.}
+\item{SortOrder}{Specifies the order of sorted results. If you specify \code{SortOrder}, you must also specify \code{SortBy}.}
 }
 \description{
-Retrieves a list of certificate ARNs and domain names. By default, the API returns RSA_2048 certificates. To return all certificates in the account, include the \code{keyType} filter with the values \verb{[RSA_1024, RSA_2048, RSA_3072, RSA_4096, EC_prime256v1, EC_secp384r1, EC_secp521r1]}.
+Retrieves a list of certificate ARNs and domain names. You can request that only certificates that match a specific status be listed. You can also filter by specific attributes of the certificate. Default filtering returns only \code{RSA_2048} certificates. For more information, see Filters.
 
 See \url{https://www.paws-r-sdk.com/docs/acm_list_certificates/} for full documentation.
 }

@@ -15,8 +15,7 @@ clouddirectory_list_directories(
 
 \item{MaxResults}{The maximum number of results to retrieve.}
 
-\item{state}{The state of the directories in the list. Can be either Enabled,
-Disabled, or Deleted.}
+\item{state}{The state of the directories in the list. Can be either Enabled, Disabled, or Deleted.}
 }
 \description{
 Lists directories created within an account.

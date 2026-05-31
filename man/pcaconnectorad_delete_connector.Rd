@@ -7,8 +7,7 @@
 pcaconnectorad_delete_connector(ConnectorArn)
 }
 \arguments{
-\item{ConnectorArn}{[required] The Amazon Resource Name (ARN) that was returned when you called
-\code{\link[=pcaconnectorad_create_connector]{create_connector}}.}
+\item{ConnectorArn}{[required] The Amazon Resource Name (ARN) that was returned when you called \code{\link[=pcaconnectorad_create_connector]{create_connector}}.}
 }
 \description{
 Deletes a connector for Active Directory. You must provide the Amazon Resource Name (ARN) of the connector that you want to delete. You can find the ARN by calling the \href{https://docs.aws.amazon.com/pca-connector-ad/latest/APIReference/API_ListConnectors.html}{https://docs.aws.amazon.com/pca-connector-ad/latest/APIReference/API_ListConnectors} action. Deleting a connector does not deregister your directory with Amazon Web Services Private CA. You can deregister your directory by calling the \href{https://docs.aws.amazon.com/pca-connector-ad/latest/APIReference/API_DeleteDirectoryRegistration.html}{https://docs.aws.amazon.com/pca-connector-ad/latest/APIReference/API_DeleteDirectoryRegistration} action.

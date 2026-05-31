@@ -13,28 +13,21 @@ clouddirectory_create_facet(
 )
 }
 \arguments{
-\item{SchemaArn}{[required] The schema ARN in which the new Facet will be created. For more
-information, see arns.}
+\item{SchemaArn}{[required] The schema ARN in which the new Facet will be created. For more information, see arns.}
 
 \item{Name}{[required] The name of the Facet, which is unique for a given schema.}
 
 \item{Attributes}{The attributes that are associated with the Facet.}
 
-\item{ObjectType}{Specifies whether a given object created from this facet is of type
-node, leaf node, policy or index.
+\item{ObjectType}{Specifies whether a given object created from this facet is of type node, leaf node, policy or index.
 \itemize{
 \item Node: Can have multiple children but one parent.
 \item Leaf node: Cannot have children but can have multiple parents.
-\item Policy: Allows you to store a policy document and policy type. For
-more information, see
-\href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/key_concepts_directory.html#key_concepts_policies}{Policies}.
+\item Policy: Allows you to store a policy document and policy type. For more information, see \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/key_concepts_directory.html#key_concepts_policies}{Policies}.
 \item Index: Can be created with the Index API.
 }}
 
-\item{FacetStyle}{There are two different styles that you can define on any given facet,
-\code{Static} and \code{Dynamic}. For static facets, all attributes must be
-defined in the schema. For dynamic facets, attributes can be defined
-during data plane operations.}
+\item{FacetStyle}{There are two different styles that you can define on any given facet, \code{Static} and \code{Dynamic}. For static facets, all attributes must be defined in the schema. For dynamic facets, attributes can be defined during data plane operations.}
 }
 \description{
 Creates a new Facet in a schema. Facet creation is allowed only in development or applied schemas.

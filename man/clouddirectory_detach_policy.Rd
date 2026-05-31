@@ -7,13 +7,11 @@
 clouddirectory_detach_policy(DirectoryArn, PolicyReference, ObjectReference)
 }
 \arguments{
-\item{DirectoryArn}{[required] The Amazon Resource Name (ARN) that is associated with the Directory
-where both objects reside. For more information, see arns.}
+\item{DirectoryArn}{[required] The Amazon Resource Name (ARN) that is associated with the Directory where both objects reside. For more information, see arns.}
 
 \item{PolicyReference}{[required] Reference that identifies the policy object.}
 
-\item{ObjectReference}{[required] Reference that identifies the object whose policy object will be
-detached.}
+\item{ObjectReference}{[required] Reference that identifies the object whose policy object will be detached.}
 }
 \description{
 Detaches a policy from an object.

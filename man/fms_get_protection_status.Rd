@@ -17,31 +17,15 @@ fms_get_protection_status(
 \arguments{
 \item{PolicyId}{[required] The ID of the policy for which you want to get the attack information.}
 
-\item{MemberAccountId}{The Amazon Web Services account that is in scope of the policy that you
-want to get the details for.}
+\item{MemberAccountId}{The Amazon Web Services account that is in scope of the policy that you want to get the details for.}
 
-\item{StartTime}{The start of the time period to query for the attacks. This is a
-\code{timestamp} type. The request syntax listing indicates a \code{number} type
-because the default used by Firewall Manager is Unix time in seconds.
-However, any valid \code{timestamp} format is allowed.}
+\item{StartTime}{The start of the time period to query for the attacks. This is a \code{timestamp} type. The request syntax listing indicates a \code{number} type because the default used by Firewall Manager is Unix time in seconds. However, any valid \code{timestamp} format is allowed.}
 
-\item{EndTime}{The end of the time period to query for the attacks. This is a
-\code{timestamp} type. The request syntax listing indicates a \code{number} type
-because the default used by Firewall Manager is Unix time in seconds.
-However, any valid \code{timestamp} format is allowed.}
+\item{EndTime}{The end of the time period to query for the attacks. This is a \code{timestamp} type. The request syntax listing indicates a \code{number} type because the default used by Firewall Manager is Unix time in seconds. However, any valid \code{timestamp} format is allowed.}
 
-\item{NextToken}{If you specify a value for \code{MaxResults} and you have more objects than
-the number that you specify for \code{MaxResults}, Firewall Manager returns a
-\code{NextToken} value in the response, which you can use to retrieve another
-group of objects. For the second and subsequent
-\code{\link[=fms_get_protection_status]{get_protection_status}} requests, specify
-the value of \code{NextToken} from the previous response to get information
-about another batch of objects.}
+\item{NextToken}{If you specify a value for \code{MaxResults} and you have more objects than the number that you specify for \code{MaxResults}, Firewall Manager returns a \code{NextToken} value in the response, which you can use to retrieve another group of objects. For the second and subsequent \code{\link[=fms_get_protection_status]{get_protection_status}} requests, specify the value of \code{NextToken} from the previous response to get information about another batch of objects.}
 
-\item{MaxResults}{Specifies the number of objects that you want Firewall Manager to return
-for this request. If you have more objects than the number that you
-specify for \code{MaxResults}, the response includes a \code{NextToken} value that
-you can use to get another batch of objects.}
+\item{MaxResults}{Specifies the number of objects that you want Firewall Manager to return for this request. If you have more objects than the number that you specify for \code{MaxResults}, the response includes a \code{NextToken} value that you can use to get another batch of objects.}
 }
 \description{
 If you created a Shield Advanced policy, returns policy-level attack summary information in the event of a potential DDoS attack. Other policy types are currently unsupported.

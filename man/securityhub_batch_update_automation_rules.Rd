@@ -8,8 +8,7 @@
 securityhub_batch_update_automation_rules(UpdateAutomationRulesRequestItems)
 }
 \arguments{
-\item{UpdateAutomationRulesRequestItems}{[required] An array of ARNs for the rules that are to be updated. Optionally, you
-can also include \code{RuleStatus} and \code{RuleOrder}.}
+\item{UpdateAutomationRulesRequestItems}{[required] An array of ARNs for the rules that are to be updated. Optionally, you can also include \code{RuleStatus} and \code{RuleOrder}.}
 }
 \description{
 Updates one or more automation rules based on rule Amazon Resource Names (ARNs) and input parameters.

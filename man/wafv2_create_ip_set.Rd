@@ -15,17 +15,13 @@ wafv2_create_ip_set(
 )
 }
 \arguments{
-\item{Name}{[required] The name of the IP set. You cannot change the name of an \code{IPSet} after
-you create it.}
+\item{Name}{[required] The name of the IP set. You cannot change the name of an \code{IPSet} after you create it.}
 
-\item{Scope}{[required] Specifies whether this is for a global resource type, such as a Amazon
-CloudFront distribution.
+\item{Scope}{[required] Specifies whether this is for a global resource type, such as a Amazon CloudFront distribution. For an Amplify application, use \code{CLOUDFRONT}.
 
-To work with CloudFront, you must also specify the Region US East (N.
-Virginia) as follows:
+To work with CloudFront, you must also specify the Region US East (N. Virginia) as follows:
 \itemize{
-\item CLI - Specify the Region when you use the CloudFront scope:
-\code{--scope=CLOUDFRONT --region=us-east-1}.
+\item CLI - Specify the Region when you use the CloudFront scope: \code{--scope=CLOUDFRONT --region=us-east-1}.
 \item API and SDKs - For all calls, use the Region endpoint us-east-1.
 }}
 
@@ -33,36 +29,23 @@ Virginia) as follows:
 
 \item{IPAddressVersion}{[required] The version of the IP addresses, either \code{IPV4} or \code{IPV6}.}
 
-\item{Addresses}{[required] Contains an array of strings that specifies zero or more IP addresses or
-blocks of IP addresses that you want WAF to inspect for in incoming
-requests. All addresses must be specified using Classless Inter-Domain
-Routing (CIDR) notation. WAF supports all IPv4 and IPv6 CIDR ranges
-except for \verb{/0}.
+\item{Addresses}{[required] Contains an array of strings that specifies zero or more IP addresses or blocks of IP addresses that you want WAF to inspect for in incoming requests. All addresses must be specified using Classless Inter-Domain Routing (CIDR) notation. WAF supports all IPv4 and IPv6 CIDR ranges except for \verb{/0}.
 
 Example address strings:
 \itemize{
-\item For requests that originated from the IP address 192.0.2.44, specify
-\verb{192.0.2.44/32}.
-\item For requests that originated from IP addresses from 192.0.2.0 to
-192.0.2.255, specify \verb{192.0.2.0/24}.
-\item For requests that originated from the IP address
-1111:0000:0000:0000:0000:0000:0000:0111, specify
-\code{1111:0000:0000:0000:0000:0000:0000:0111/128}.
-\item For requests that originated from IP addresses
-1111:0000:0000:0000:0000:0000:0000:0000 to
-1111:0000:0000:0000:ffff:ffff:ffff:ffff, specify
-\code{1111:0000:0000:0000:0000:0000:0000:0000/64}.
+\item For requests that originated from the IP address 192.0.2.44, specify \verb{192.0.2.44/32}.
+\item For requests that originated from IP addresses from 192.0.2.0 to 192.0.2.255, specify \verb{192.0.2.0/24}.
+\item For requests that originated from the IP address 1111:0000:0000:0000:0000:0000:0000:0111, specify \code{1111:0000:0000:0000:0000:0000:0000:0111/128}.
+\item For requests that originated from IP addresses 1111:0000:0000:0000:0000:0000:0000:0000 to 1111:0000:0000:0000:ffff:ffff:ffff:ffff, specify \code{1111:0000:0000:0000:0000:0000:0000:0000/64}.
 }
 
-For more information about CIDR notation, see the Wikipedia entry
-\href{https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing}{Classless Inter-Domain Routing}.
+For more information about CIDR notation, see the Wikipedia entry \href{https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing}{Classless Inter-Domain Routing}.
 
 Example JSON \code{Addresses} specifications:
 \itemize{
 \item Empty array: \verb{"Addresses": []}
 \item Array with one address: \verb{"Addresses": ["192.0.2.44/32"]}
-\item Array with three addresses:
-\verb{"Addresses": ["192.0.2.44/32", "192.0.2.0/24", "192.0.0.0/16"]}
+\item Array with three addresses: \verb{"Addresses": ["192.0.2.44/32", "192.0.2.0/24", "192.0.0.0/16"]}
 \item INVALID specification: \verb{"Addresses": [""]} INVALID
 }}
 

@@ -8,18 +8,9 @@ administrator's Amazon Web Services organization}
 fms_list_member_accounts(NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
-\item{NextToken}{If you specify a value for \code{MaxResults} and you have more account IDs
-than the number that you specify for \code{MaxResults}, Firewall Manager
-returns a \code{NextToken} value in the response that allows you to list
-another group of IDs. For the second and subsequent
-\code{ListMemberAccountsRequest} requests, specify the value of \code{NextToken}
-from the previous response to get information about another batch of
-member account IDs.}
+\item{NextToken}{If you specify a value for \code{MaxResults} and you have more account IDs than the number that you specify for \code{MaxResults}, Firewall Manager returns a \code{NextToken} value in the response that allows you to list another group of IDs. For the second and subsequent \code{ListMemberAccountsRequest} requests, specify the value of \code{NextToken} from the previous response to get information about another batch of member account IDs.}
 
-\item{MaxResults}{Specifies the number of member account IDs that you want Firewall
-Manager to return for this request. If you have more IDs than the number
-that you specify for \code{MaxResults}, the response includes a \code{NextToken}
-value that you can use to get another batch of member account IDs.}
+\item{MaxResults}{Specifies the number of member account IDs that you want Firewall Manager to return for this request. If you have more IDs than the number that you specify for \code{MaxResults}, the response includes a \code{NextToken} value that you can use to get another batch of member account IDs.}
 }
 \description{
 Returns a \code{MemberAccounts} object that lists the member accounts in the administrator's Amazon Web Services organization.

@@ -7,8 +7,7 @@
 cleanroomsml_delete_audience_model(audienceModelArn)
 }
 \arguments{
-\item{audienceModelArn}{[required] The Amazon Resource Name (ARN) of the audience model that you want to
-delete.}
+\item{audienceModelArn}{[required] The Amazon Resource Name (ARN) of the audience model that you want to delete.}
 }
 \description{
 Specifies an audience model that you want to delete. You can't delete an audience model if there are any configured audience models that depend on the audience model.

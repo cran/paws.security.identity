@@ -7,12 +7,9 @@
 iam_delete_virtual_mfa_device(SerialNumber)
 }
 \arguments{
-\item{SerialNumber}{[required] The serial number that uniquely identifies the MFA device. For virtual
-MFA devices, the serial number is the same as the ARN.
+\item{SerialNumber}{[required] The serial number that uniquely identifies the MFA device. For virtual MFA devices, the serial number is the same as the ARN.
 
-This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
-consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: =,.@:/-}
+This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@:/-}
 }
 \description{
 Deletes a virtual MFA device.

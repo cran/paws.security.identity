@@ -10,10 +10,7 @@ directoryservice_list_certificates(DirectoryId, NextToken = NULL, Limit = NULL)
 \arguments{
 \item{DirectoryId}{[required] The identifier of the directory.}
 
-\item{NextToken}{A token for requesting another page of certificates if the \code{NextToken}
-response element indicates that more certificates are available. Use the
-value of the returned \code{NextToken} element in your request until the
-token comes back as \code{null}. Pass \code{null} if this is the first call.}
+\item{NextToken}{A token for requesting another page of certificates if the \code{NextToken} response element indicates that more certificates are available. Use the value of the returned \code{NextToken} element in your request until the token comes back as \code{null}. Pass \code{null} if this is the first call.}
 
 \item{Limit}{The number of items that should show up on one page}
 }

@@ -8,8 +8,7 @@ or unused access analyzer}
 accessanalyzer_get_findings_statistics(analyzerArn)
 }
 \arguments{
-\item{analyzerArn}{[required] The \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources}{ARN of the analyzer}
-used to generate the statistics.}
+\item{analyzerArn}{[required] The \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources}{ARN of the analyzer} used to generate the statistics.}
 }
 \description{
 Retrieves a list of aggregated finding statistics for an external access or unused access analyzer.

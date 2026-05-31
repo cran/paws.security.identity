@@ -13,22 +13,15 @@ cloudhsmv2_describe_clusters(
 \arguments{
 \item{Filters}{One or more filters to limit the items returned in the response.
 
-Use the \code{clusterIds} filter to return only the specified clusters.
-Specify clusters by their cluster identifier (ID).
+Use the \code{clusterIds} filter to return only the specified clusters. Specify clusters by their cluster identifier (ID).
 
-Use the \code{vpcIds} filter to return only the clusters in the specified
-virtual private clouds (VPCs). Specify VPCs by their VPC identifier
-(ID).
+Use the \code{vpcIds} filter to return only the clusters in the specified virtual private clouds (VPCs). Specify VPCs by their VPC identifier (ID).
 
-Use the \code{states} filter to return only clusters that match the specified
-state.}
+Use the \code{states} filter to return only clusters that match the specified state.}
 
-\item{NextToken}{The \code{NextToken} value that you received in the previous response. Use
-this value to get more clusters.}
+\item{NextToken}{The \code{NextToken} value that you received in the previous response. Use this value to get more clusters.}
 
-\item{MaxResults}{The maximum number of clusters to return in the response. When there are
-more clusters than the number you specify, the response contains a
-\code{NextToken} value.}
+\item{MaxResults}{The maximum number of clusters to return in the response. When there are more clusters than the number you specify, the response contains a \code{NextToken} value.}
 }
 \description{
 Gets information about CloudHSM clusters.

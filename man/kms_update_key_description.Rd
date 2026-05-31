@@ -14,17 +14,14 @@ Specify the key ID or key ARN of the KMS key.
 For example:
 \itemize{
 \item Key ID: \verb{1234abcd-12ab-34cd-56ef-1234567890ab}
-\item Key ARN:
-\verb{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
+\item Key ARN: \verb{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
 }
 
-To get the key ID and key ARN for a KMS key, use
-\code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
+To get the key ID and key ARN for a KMS key, use \code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
 
 \item{Description}{[required] New description for the KMS key.
 
-Do not include confidential or sensitive information in this field. This
-field may be displayed in plaintext in CloudTrail logs and other output.}
+Do not include confidential or sensitive information in this field. This field may be displayed in plaintext in CloudTrail logs and other output.}
 }
 \description{
 Updates the description of a KMS key. To see the description of a KMS key, use \code{\link[=kms_describe_key]{describe_key}}.

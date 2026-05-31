@@ -14,16 +14,13 @@ guardduty_update_member_detectors(
 \arguments{
 \item{DetectorId}{[required] The detector ID of the administrator account.
 
-To find the \code{detectorId} in the current Region, see the Settings page in
-the GuardDuty console, or run the
-\code{\link[=guardduty_list_detectors]{list_detectors}} API.}
+To find the \code{detectorId} in the current Region, see the Settings page in the GuardDuty console, or run the \code{\link[=guardduty_list_detectors]{list_detectors}} API.}
 
 \item{AccountIds}{[required] A list of member account IDs to be updated.}
 
 \item{DataSources}{Describes which data sources will be updated.}
 
-\item{Features}{A list of features that will be updated for the specified member
-accounts.}
+\item{Features}{A list of features that will be updated for the specified member accounts.}
 }
 \description{
 Contains information on member accounts to be updated.

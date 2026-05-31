@@ -9,10 +9,7 @@ detective_tag_resource(ResourceArn, Tags)
 \arguments{
 \item{ResourceArn}{[required] The ARN of the behavior graph to assign the tags to.}
 
-\item{Tags}{[required] The tags to assign to the behavior graph. You can add up to 50 tags. For
-each tag, you provide the tag key and the tag value. Each tag key can
-contain up to 128 characters. Each tag value can contain up to 256
-characters.}
+\item{Tags}{[required] The tags to assign to the behavior graph. You can add up to 50 tags. For each tag, you provide the tag key and the tag value. Each tag key can contain up to 128 characters. Each tag value can contain up to 256 characters.}
 }
 \description{
 Applies tag values to a behavior graph.

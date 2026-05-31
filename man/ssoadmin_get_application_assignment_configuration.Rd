@@ -7,9 +7,7 @@
 ssoadmin_get_application_assignment_configuration(ApplicationArn)
 }
 \arguments{
-\item{ApplicationArn}{[required] Specifies the ARN of the application. For more information about ARNs,
-see Amazon Resource Names (ARNs) and Amazon Web Services Service
-Namespaces in the \emph{Amazon Web Services General Reference}.}
+\item{ApplicationArn}{[required] Specifies the ARN of the application. For more information about ARNs, see Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces in the \emph{Amazon Web Services General Reference}.}
 }
 \description{
 Retrieves the configuration of \code{\link[=ssoadmin_put_application_assignment_configuration]{put_application_assignment_configuration}}.

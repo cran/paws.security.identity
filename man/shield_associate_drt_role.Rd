@@ -9,13 +9,9 @@ mitigation during potential attacks}
 shield_associate_drt_role(RoleArn)
 }
 \arguments{
-\item{RoleArn}{[required] The Amazon Resource Name (ARN) of the role the SRT will use to access
-your Amazon Web Services account.
+\item{RoleArn}{[required] The Amazon Resource Name (ARN) of the role the SRT will use to access your Amazon Web Services account.
 
-Prior to making the \code{\link[=shield_associate_drt_role]{associate_drt_role}}
-request, you must attach the AWSShieldDRTAccessPolicy managed policy to
-this role. For more information see Attaching and Detaching IAM
-Policies.}
+Prior to making the \code{\link[=shield_associate_drt_role]{associate_drt_role}} request, you must attach the AWSShieldDRTAccessPolicy managed policy to this role. For more information see Attaching and Detaching IAM Policies.}
 }
 \description{
 Authorizes the Shield Response Team (SRT) using the specified role, to access your Amazon Web Services account to assist with DDoS attack mitigation during potential attacks. This enables the SRT to inspect your WAF configuration and create or update WAF rules and web ACLs.

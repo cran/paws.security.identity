@@ -7,12 +7,9 @@
 fms_batch_associate_resource(ResourceSetIdentifier, Items)
 }
 \arguments{
-\item{ResourceSetIdentifier}{[required] A unique identifier for the resource set, used in a request to refer to
-the resource set.}
+\item{ResourceSetIdentifier}{[required] A unique identifier for the resource set, used in a request to refer to the resource set.}
 
-\item{Items}{[required] The uniform resource identifiers (URIs) of resources that should be
-associated to the resource set. The URIs must be Amazon Resource Names
-(ARNs).}
+\item{Items}{[required] The uniform resource identifiers (URIs) of resources that should be associated to the resource set. The URIs must be Amazon Resource Names (ARNs).}
 }
 \description{
 Associate resources to a Firewall Manager resource set.

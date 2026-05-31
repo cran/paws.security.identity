@@ -19,8 +19,7 @@ clouddirectory_list_object_parent_paths(
 
 \item{NextToken}{The pagination token.}
 
-\item{MaxResults}{The maximum number of items to be retrieved in a single call. This is an
-approximate number.}
+\item{MaxResults}{The maximum number of items to be retrieved in a single call. This is an approximate number.}
 }
 \description{
 Retrieves all available parent paths for any object type such as node, leaf node, policy node, and index node objects. For more information about objects, see \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/key_concepts_directorystructure.html}{Directory Structure}.

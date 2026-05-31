@@ -2,7 +2,7 @@
 % Please edit documentation in R/securityhub_operations.R
 \name{securityhub_create_action_target}
 \alias{securityhub_create_action_target}
-\title{Creates a custom action target in Security Hub}
+\title{Creates a custom action target in Security Hub CSPM}
 \usage{
 securityhub_create_action_target(Name, Description, Id)
 }
@@ -11,11 +11,10 @@ securityhub_create_action_target(Name, Description, Id)
 
 \item{Description}{[required] The description for the custom action target.}
 
-\item{Id}{[required] The ID for the custom action target. Can contain up to 20 alphanumeric
-characters.}
+\item{Id}{[required] The ID for the custom action target. Can contain up to 20 alphanumeric characters.}
 }
 \description{
-Creates a custom action target in Security Hub.
+Creates a custom action target in Security Hub CSPM.
 
 See \url{https://www.paws-r-sdk.com/docs/securityhub_create_action_target/} for full documentation.
 }

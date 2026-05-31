@@ -11,9 +11,7 @@ directoryservice_create_alias(DirectoryId, Alias)
 
 \item{Alias}{[required] The requested alias.
 
-The alias must be unique amongst all aliases in Amazon Web Services.
-This operation throws an \code{EntityAlreadyExistsException} error if the
-alias already exists.}
+The alias must be unique amongst all aliases in Amazon Web Services. This operation throws an \code{EntityAlreadyExistsException} error if the alias already exists.}
 }
 \description{
 Creates an alias for a directory and assigns the alias to the directory. The alias is used to construct the access URL for the directory, such as \verb{http://<alias>.awsapps.com}.

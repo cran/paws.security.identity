@@ -7,13 +7,10 @@
 kms_connect_custom_key_store(CustomKeyStoreId)
 }
 \arguments{
-\item{CustomKeyStoreId}{[required] Enter the key store ID of the custom key store that you want to connect.
-To find the ID of a custom key store, use the
-\code{\link[=kms_describe_custom_key_stores]{describe_custom_key_stores}}
-operation.}
+\item{CustomKeyStoreId}{[required] Enter the key store ID of the custom key store that you want to connect. To find the ID of a custom key store, use the \code{\link[=kms_describe_custom_key_stores]{describe_custom_key_stores}} operation.}
 }
 \description{
-Connects or reconnects a \href{https://docs.aws.amazon.com/kms/latest/developerguide/}{custom key store} to its backing key store. For an CloudHSM key store, \code{\link[=kms_connect_custom_key_store]{connect_custom_key_store}} connects the key store to its associated CloudHSM cluster. For an external key store, \code{\link[=kms_connect_custom_key_store]{connect_custom_key_store}} connects the key store to the external key store proxy that communicates with your external key manager.
+Connects or reconnects a \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-store-overview.html}{custom key store} to its backing key store. For an CloudHSM key store, \code{\link[=kms_connect_custom_key_store]{connect_custom_key_store}} connects the key store to its associated CloudHSM cluster. For an external key store, \code{\link[=kms_connect_custom_key_store]{connect_custom_key_store}} connects the key store to the external key store proxy that communicates with your external key manager.
 
 See \url{https://www.paws-r-sdk.com/docs/kms_connect_custom_key_store/} for full documentation.
 }

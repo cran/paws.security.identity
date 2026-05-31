@@ -12,11 +12,9 @@ securitylake_create_data_lake_exception_subscription(
 )
 }
 \arguments{
-\item{exceptionTimeToLive}{The expiration period and time-to-live (TTL). It is the duration of time
-until which the exception message remains.}
+\item{exceptionTimeToLive}{The expiration period and time-to-live (TTL). It is the duration of time until which the exception message remains.}
 
-\item{notificationEndpoint}{[required] The Amazon Web Services account where you want to receive exception
-notifications.}
+\item{notificationEndpoint}{[required] The Amazon Web Services account where you want to receive exception notifications.}
 
 \item{subscriptionProtocol}{[required] The subscription protocol to which exception notifications are posted.}
 }

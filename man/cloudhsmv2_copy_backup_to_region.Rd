@@ -11,10 +11,7 @@ cloudhsmv2_copy_backup_to_region(DestinationRegion, BackupId, TagList = NULL)
 
 \item{BackupId}{[required] The ID of the backup that will be copied to the destination region.}
 
-\item{TagList}{Tags to apply to the destination backup during creation. If you specify
-tags, only these tags will be applied to the destination backup. If you
-do not specify tags, the service copies tags from the source backup to
-the destination backup.}
+\item{TagList}{Tags to apply to the destination backup during creation. If you specify tags, only these tags will be applied to the destination backup. If you do not specify tags, the service copies tags from the source backup to the destination backup.}
 }
 \description{
 Copy an CloudHSM cluster backup to a different region.

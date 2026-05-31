@@ -11,8 +11,7 @@ clouddirectory_list_managed_schema_arns(
 )
 }
 \arguments{
-\item{SchemaArn}{The response for ListManagedSchemaArns. When this parameter is used, all
-minor version ARNs for a major version are listed.}
+\item{SchemaArn}{The response for ListManagedSchemaArns. When this parameter is used, all minor version ARNs for a major version are listed.}
 
 \item{NextToken}{The pagination token.}
 

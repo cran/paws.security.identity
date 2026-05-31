@@ -8,15 +8,11 @@ administrator account) specified by the account IDs}
 guardduty_get_members(DetectorId, AccountIds)
 }
 \arguments{
-\item{DetectorId}{[required] The unique ID of the detector of the GuardDuty account whose members you
-want to retrieve.
+\item{DetectorId}{[required] The unique ID of the detector of the GuardDuty account whose members you want to retrieve.
 
-To find the \code{detectorId} in the current Region, see the Settings page in
-the GuardDuty console, or run the
-\code{\link[=guardduty_list_detectors]{list_detectors}} API.}
+To find the \code{detectorId} in the current Region, see the Settings page in the GuardDuty console, or run the \code{\link[=guardduty_list_detectors]{list_detectors}} API.}
 
-\item{AccountIds}{[required] A list of account IDs of the GuardDuty member accounts that you want to
-describe.}
+\item{AccountIds}{[required] A list of account IDs of the GuardDuty member accounts that you want to describe.}
 }
 \description{
 Retrieves GuardDuty member accounts (of the current GuardDuty administrator account) specified by the account IDs.

@@ -11,13 +11,9 @@ NULL
 #'
 #' See [https://www.paws-r-sdk.com/docs/macie2_accept_invitation/](https://www.paws-r-sdk.com/docs/macie2_accept_invitation/) for full documentation.
 #'
-#' @param administratorAccountId The Amazon Web Services account ID for the account that sent the
-#' invitation.
+#' @param administratorAccountId The Amazon Web Services account ID for the account that sent the invitation.
 #' @param invitationId &#91;required&#93; The unique identifier for the invitation to accept.
-#' @param masterAccount (Deprecated) The Amazon Web Services account ID for the account that
-#' sent the invitation. This property has been replaced by the
-#' administratorAccountId property and is retained only for backward
-#' compatibility.
+#' @param masterAccount (Deprecated) The Amazon Web Services account ID for the account that sent the invitation. This property has been replaced by the administratorAccountId property and is retained only for backward compatibility.
 #'
 #' @keywords internal
 #'
@@ -48,8 +44,7 @@ macie2_accept_invitation <- function(administratorAccountId = NULL, invitationId
 #'
 #' See [https://www.paws-r-sdk.com/docs/macie2_batch_get_custom_data_identifiers/](https://www.paws-r-sdk.com/docs/macie2_batch_get_custom_data_identifiers/) for full documentation.
 #'
-#' @param ids An array of custom data identifier IDs, one for each custom data
-#' identifier to retrieve information about.
+#' @param ids An array of custom data identifier IDs, one for each custom data identifier to retrieve information about.
 #'
 #' @keywords internal
 #'
@@ -81,10 +76,7 @@ macie2_batch_get_custom_data_identifiers <- function(ids = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/macie2_batch_update_automated_discovery_accounts/](https://www.paws-r-sdk.com/docs/macie2_batch_update_automated_discovery_accounts/) for full documentation.
 #'
-#' @param accounts An array of objects, one for each account to change the status of
-#' automated sensitive data discovery for. Each object specifies the Amazon
-#' Web Services account ID for an account and a new status for that
-#' account.
+#' @param accounts An array of objects, one for each account to change the status of automated sensitive data discovery for. Each object specifies the Amazon Web Services account ID for an account and a new status for that account.
 #'
 #' @keywords internal
 #'
@@ -115,22 +107,13 @@ macie2_batch_update_automated_discovery_accounts <- function(accounts = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/macie2_create_allow_list/](https://www.paws-r-sdk.com/docs/macie2_create_allow_list/) for full documentation.
 #'
-#' @param clientToken &#91;required&#93; A unique, case-sensitive token that you provide to ensure the
-#' idempotency of the request.
-#' @param criteria &#91;required&#93; The criteria that specify the text or text pattern to ignore. The
-#' criteria can be the location and name of an S3 object that lists
-#' specific text to ignore (s3WordsList), or a regular expression (regex)
-#' that defines a text pattern to ignore.
-#' @param description A custom description of the allow list. The description can contain as
-#' many as 512 characters.
-#' @param name &#91;required&#93; A custom name for the allow list. The name can contain as many as 128
-#' characters.
-#' @param tags A map of key-value pairs that specifies the tags to associate with the
-#' allow list.
+#' @param clientToken &#91;required&#93; A unique, case-sensitive token that you provide to ensure the idempotency of the request.
+#' @param criteria &#91;required&#93; The criteria that specify the text or text pattern to ignore. The criteria can be the location and name of an S3 object that lists specific text to ignore (s3WordsList), or a regular expression (regex) that defines a text pattern to ignore.
+#' @param description A custom description of the allow list. The description can contain as many as 512 characters.
+#' @param name &#91;required&#93; A custom name for the allow list. The name can contain as many as 128 characters.
+#' @param tags A map of key-value pairs that specifies the tags to associate with the allow list.
 #' 
-#' An allow list can have a maximum of 50 tags. Each tag consists of a tag
-#' key and an associated tag value. The maximum length of a tag key is 128
-#' characters. The maximum length of a tag value is 256 characters.
+#' An allow list can have a maximum of 50 tags. Each tag consists of a tag key and an associated tag value. The maximum length of a tag key is 128 characters. The maximum length of a tag value is 256 characters.
 #'
 #' @keywords internal
 #'
@@ -161,93 +144,45 @@ macie2_create_allow_list <- function(clientToken, criteria, description = NULL, 
 #'
 #' See [https://www.paws-r-sdk.com/docs/macie2_create_classification_job/](https://www.paws-r-sdk.com/docs/macie2_create_classification_job/) for full documentation.
 #'
-#' @param allowListIds An array of unique identifiers, one for each allow list for the job to
-#' use when it analyzes data.
-#' @param clientToken &#91;required&#93; A unique, case-sensitive token that you provide to ensure the
-#' idempotency of the request.
-#' @param customDataIdentifierIds An array of unique identifiers, one for each custom data identifier for
-#' the job to use when it analyzes data. To use only managed data
-#' identifiers, don't specify a value for this property and specify a value
-#' other than NONE for the managedDataIdentifierSelector property.
-#' @param description A custom description of the job. The description can contain as many as
-#' 200 characters.
-#' @param initialRun For a recurring job, specifies whether to analyze all existing, eligible
-#' objects immediately after the job is created (true). To analyze only
-#' those objects that are created or changed after you create the job and
-#' before the job's first scheduled run, set this value to false.
+#' @param allowListIds An array of unique identifiers, one for each allow list for the job to use when it analyzes data.
+#' @param clientToken &#91;required&#93; A unique, case-sensitive token that you provide to ensure the idempotency of the request.
+#' @param customDataIdentifierIds An array of unique identifiers, one for each custom data identifier for the job to use when it analyzes data. To use only managed data identifiers, don't specify a value for this property and specify a value other than NONE for the managedDataIdentifierSelector property.
+#' @param description A custom description of the job. The description can contain as many as 200 characters.
+#' @param initialRun For a recurring job, specifies whether to analyze all existing, eligible objects immediately after the job is created (true). To analyze only those objects that are created or changed after you create the job and before the job's first scheduled run, set this value to false.
 #' 
-#' If you configure the job to run only once, don't specify a value for
-#' this property.
+#' If you configure the job to run only once, don't specify a value for this property.
 #' @param jobType &#91;required&#93; The schedule for running the job. Valid values are:
 #' 
-#' -   ONE_TIME - Run the job only once. If you specify this value, don't
-#'     specify a value for the scheduleFrequency property.
+#' -   ONE_TIME - Run the job only once. If you specify this value, don't specify a value for the scheduleFrequency property.
 #' 
-#' -   SCHEDULED - Run the job on a daily, weekly, or monthly basis. If you
-#'     specify this value, use the scheduleFrequency property to specify
-#'     the recurrence pattern for the job.
-#' @param managedDataIdentifierIds An array of unique identifiers, one for each managed data identifier for
-#' the job to include (use) or exclude (not use) when it analyzes data.
-#' Inclusion or exclusion depends on the managed data identifier selection
-#' type that you specify for the job (managedDataIdentifierSelector).
+#' -   SCHEDULED - Run the job on a daily, weekly, or monthly basis. If you specify this value, use the scheduleFrequency property to specify the recurrence pattern for the job.
+#' @param managedDataIdentifierIds An array of unique identifiers, one for each managed data identifier for the job to include (use) or exclude (not use) when it analyzes data. Inclusion or exclusion depends on the managed data identifier selection type that you specify for the job (managedDataIdentifierSelector).
 #' 
-#' To retrieve a list of valid values for this property, use the
-#' ListManagedDataIdentifiers operation.
-#' @param managedDataIdentifierSelector The selection type to apply when determining which managed data
-#' identifiers the job uses to analyze data. Valid values are:
+#' To retrieve a list of valid values for this property, use the ListManagedDataIdentifiers operation.
+#' @param managedDataIdentifierSelector The selection type to apply when determining which managed data identifiers the job uses to analyze data. Valid values are:
 #' 
-#' -   ALL - Use all managed data identifiers. If you specify this value,
-#'     don't specify any values for the managedDataIdentifierIds property.
+#' -   ALL - Use all managed data identifiers. If you specify this value, don't specify any values for the managedDataIdentifierIds property.
 #' 
-#' -   EXCLUDE - Use all managed data identifiers except the ones specified
-#'     by the managedDataIdentifierIds property.
+#' -   EXCLUDE - Use all managed data identifiers except the ones specified by the managedDataIdentifierIds property.
 #' 
-#' -   INCLUDE - Use only the managed data identifiers specified by the
-#'     managedDataIdentifierIds property.
+#' -   INCLUDE - Use only the managed data identifiers specified by the managedDataIdentifierIds property.
 #' 
-#' -   NONE - Don't use any managed data identifiers. If you specify this
-#'     value, specify at least one value for the customDataIdentifierIds
-#'     property and don't specify any values for the
-#'     managedDataIdentifierIds property.
+#' -   NONE - Don't use any managed data identifiers. If you specify this value, specify at least one value for the customDataIdentifierIds property and don't specify any values for the managedDataIdentifierIds property.
 #' 
-#' -   RECOMMENDED (default) - Use the recommended set of managed data
-#'     identifiers. If you specify this value, don't specify any values for
-#'     the managedDataIdentifierIds property.
+#' -   RECOMMENDED (default) - Use the recommended set of managed data identifiers. If you specify this value, don't specify any values for the managedDataIdentifierIds property.
 #' 
-#' If you don't specify a value for this property, the job uses the
-#' recommended set of managed data identifiers.
+#' If you don't specify a value for this property, the job uses the recommended set of managed data identifiers.
 #' 
-#' If the job is a recurring job and you specify ALL or EXCLUDE, each job
-#' run automatically uses new managed data identifiers that are released.
-#' If you don't specify a value for this property or you specify
-#' RECOMMENDED for a recurring job, each job run automatically uses all the
-#' managed data identifiers that are in the recommended set when the run
-#' starts.
+#' If the job is a recurring job and you specify ALL or EXCLUDE, each job run automatically uses new managed data identifiers that are released. If you don't specify a value for this property or you specify RECOMMENDED for a recurring job, each job run automatically uses all the managed data identifiers that are in the recommended set when the run starts.
 #' 
-#' To learn about individual managed data identifiers or determine which
-#' ones are in the recommended set, see [Using managed data
-#' identifiers](https://docs.aws.amazon.com/macie/latest/user/managed-data-identifiers.html)
-#' or [Recommended managed data
-#' identifiers](https://docs.aws.amazon.com/macie/latest/user/discovery-jobs-mdis-recommended.html)
-#' in the *Amazon Macie User Guide*.
-#' @param name &#91;required&#93; A custom name for the job. The name can contain as many as 500
-#' characters.
-#' @param s3JobDefinition &#91;required&#93; The S3 buckets that contain the objects to analyze, and the scope of
-#' that analysis.
-#' @param samplingPercentage The sampling depth, as a percentage, for the job to apply when
-#' processing objects. This value determines the percentage of eligible
-#' objects that the job analyzes. If this value is less than 100, Amazon
-#' Macie selects the objects to analyze at random, up to the specified
-#' percentage, and analyzes all the data in those objects.
-#' @param scheduleFrequency The recurrence pattern for running the job. To run the job only once,
-#' don't specify a value for this property and set the value for the
-#' jobType property to ONE_TIME.
-#' @param tags A map of key-value pairs that specifies the tags to associate with the
-#' job.
+#' To learn about individual managed data identifiers or determine which ones are in the recommended set, see [Using managed data identifiers](https://docs.aws.amazon.com/macie/latest/user/managed-data-identifiers.html) or [Recommended managed data identifiers](https://docs.aws.amazon.com/macie/latest/user/discovery-jobs-mdis-recommended.html) in the *Amazon Macie User Guide*.
+#' @param name &#91;required&#93; A custom name for the job. The name can contain as many as 500 characters.
+#' @param s3JobDefinition &#91;required&#93; The S3 buckets that contain the objects to analyze, and the scope of that analysis.
+#' @param samplingPercentage The sampling depth, as a percentage, for the job to apply when processing objects. This value determines the percentage of eligible objects that the job analyzes. If this value is less than 100, Amazon Macie selects the objects to analyze at random, up to the specified percentage, and analyzes all the data in those objects.
+#' @param scheduleFrequency The recurrence pattern for running the job. To run the job only once, don't specify a value for this property and set the value for the jobType property to ONE_TIME.
+#' @param tags A map of key-value pairs that specifies the tags to associate with the job.
 #' 
-#' A job can have a maximum of 50 tags. Each tag consists of a tag key and
-#' an associated tag value. The maximum length of a tag key is 128
-#' characters. The maximum length of a tag value is 256 characters.
+#' A job can have a maximum of 50 tags. Each tag consists of a tag key and an associated tag value. The maximum length of a tag key is 128 characters. The maximum length of a tag value is 256 characters.
 #'
 #' @keywords internal
 #'
@@ -279,61 +214,23 @@ macie2_create_classification_job <- function(allowListIds = NULL, clientToken, c
 #'
 #' See [https://www.paws-r-sdk.com/docs/macie2_create_custom_data_identifier/](https://www.paws-r-sdk.com/docs/macie2_create_custom_data_identifier/) for full documentation.
 #'
-#' @param clientToken A unique, case-sensitive token that you provide to ensure the
-#' idempotency of the request.
-#' @param description A custom description of the custom data identifier. The description can
-#' contain as many as 512 characters.
+#' @param clientToken A unique, case-sensitive token that you provide to ensure the idempotency of the request.
+#' @param description A custom description of the custom data identifier. The description can contain as many as 512 characters.
 #' 
-#' We strongly recommend that you avoid including any sensitive data in the
-#' description of a custom data identifier. Other users of your account
-#' might be able to see this description, depending on the actions that
-#' they're allowed to perform in Amazon Macie.
-#' @param ignoreWords An array that lists specific character sequences (*ignore words*) to
-#' exclude from the results. If the text matched by the regular expression
-#' contains any string in this array, Amazon Macie ignores it. The array
-#' can contain as many as 10 ignore words. Each ignore word can contain
-#' 4-90 UTF-8 characters. Ignore words are case sensitive.
-#' @param keywords An array that lists specific character sequences (*keywords*), one of
-#' which must precede and be within proximity (maximumMatchDistance) of the
-#' regular expression to match. The array can contain as many as 50
-#' keywords. Each keyword can contain 3-90 UTF-8 characters. Keywords
-#' aren't case sensitive.
-#' @param maximumMatchDistance The maximum number of characters that can exist between the end of at
-#' least one complete character sequence specified by the keywords array
-#' and the end of the text that matches the regex pattern. If a complete
-#' keyword precedes all the text that matches the pattern and the keyword
-#' is within the specified distance, Amazon Macie includes the result. The
-#' distance can be 1-300 characters. The default value is 50.
-#' @param name &#91;required&#93; A custom name for the custom data identifier. The name can contain as
-#' many as 128 characters.
+#' We strongly recommend that you avoid including any sensitive data in the description of a custom data identifier. Other users of your account might be able to see this description, depending on the actions that they're allowed to perform in Amazon Macie.
+#' @param ignoreWords An array that lists specific character sequences (*ignore words*) to exclude from the results. If the text matched by the regular expression contains any string in this array, Amazon Macie ignores it. The array can contain as many as 10 ignore words. Each ignore word can contain 4-90 UTF-8 characters. Ignore words are case sensitive.
+#' @param keywords An array that lists specific character sequences (*keywords*), one of which must precede and be within proximity (maximumMatchDistance) of the regular expression to match. The array can contain as many as 50 keywords. Each keyword can contain 3-90 UTF-8 characters. Keywords aren't case sensitive.
+#' @param maximumMatchDistance The maximum number of characters that can exist between the end of at least one complete character sequence specified by the keywords array and the end of the text that matches the regex pattern. If a complete keyword precedes all the text that matches the pattern and the keyword is within the specified distance, Amazon Macie includes the result. The distance can be 1-300 characters. The default value is 50.
+#' @param name &#91;required&#93; A custom name for the custom data identifier. The name can contain as many as 128 characters.
 #' 
-#' We strongly recommend that you avoid including any sensitive data in the
-#' name of a custom data identifier. Other users of your account might be
-#' able to see this name, depending on the actions that they're allowed to
-#' perform in Amazon Macie.
-#' @param regex &#91;required&#93; The regular expression (*regex*) that defines the pattern to match. The
-#' expression can contain as many as 512 characters.
-#' @param severityLevels The severity to assign to findings that the custom data identifier
-#' produces, based on the number of occurrences of text that match the
-#' custom data identifier's detection criteria. You can specify as many as
-#' three SeverityLevel objects in this array, one for each severity: LOW,
-#' MEDIUM, or HIGH. If you specify more than one, the occurrences
-#' thresholds must be in ascending order by severity, moving from LOW to
-#' HIGH. For example, 1 for LOW, 50 for MEDIUM, and 100 for HIGH. If an S3
-#' object contains fewer occurrences than the lowest specified threshold,
-#' Amazon Macie doesn't create a finding.
+#' We strongly recommend that you avoid including any sensitive data in the name of a custom data identifier. Other users of your account might be able to see this name, depending on the actions that they're allowed to perform in Amazon Macie.
+#' @param regex &#91;required&#93; The regular expression (*regex*) that defines the pattern to match. The expression can contain as many as 512 characters.
+#' @param severityLevels The severity to assign to findings that the custom data identifier produces, based on the number of occurrences of text that match the custom data identifier's detection criteria. You can specify as many as three SeverityLevel objects in this array, one for each severity: LOW, MEDIUM, or HIGH. If you specify more than one, the occurrences thresholds must be in ascending order by severity, moving from LOW to HIGH. For example, 1 for LOW, 50 for MEDIUM, and 100 for HIGH. If an S3 object contains fewer occurrences than the lowest specified threshold, Amazon Macie doesn't create a finding.
 #' 
-#' If you don't specify any values for this array, Macie creates findings
-#' for S3 objects that contain at least one occurrence of text that matches
-#' the detection criteria, and Macie assigns the MEDIUM severity to those
-#' findings.
-#' @param tags A map of key-value pairs that specifies the tags to associate with the
-#' custom data identifier.
+#' If you don't specify any values for this array, Macie creates findings for S3 objects that contain at least one occurrence of text that matches the detection criteria, and Macie assigns the MEDIUM severity to those findings.
+#' @param tags A map of key-value pairs that specifies the tags to associate with the custom data identifier.
 #' 
-#' A custom data identifier can have a maximum of 50 tags. Each tag
-#' consists of a tag key and an associated tag value. The maximum length of
-#' a tag key is 128 characters. The maximum length of a tag value is 256
-#' characters.
+#' A custom data identifier can have a maximum of 50 tags. Each tag consists of a tag key and an associated tag value. The maximum length of a tag key is 128 characters. The maximum length of a tag value is 256 characters.
 #'
 #' @keywords internal
 #'
@@ -365,37 +262,19 @@ macie2_create_custom_data_identifier <- function(clientToken = NULL, description
 #'
 #' See [https://www.paws-r-sdk.com/docs/macie2_create_findings_filter/](https://www.paws-r-sdk.com/docs/macie2_create_findings_filter/) for full documentation.
 #'
-#' @param action &#91;required&#93; The action to perform on findings that match the filter criteria
-#' (findingCriteria). Valid values are: ARCHIVE, suppress (automatically
-#' archive) the findings; and, NOOP, don't perform any action on the
-#' findings.
-#' @param clientToken A unique, case-sensitive token that you provide to ensure the
-#' idempotency of the request.
-#' @param description A custom description of the filter. The description can contain as many
-#' as 512 characters.
+#' @param action &#91;required&#93; The action to perform on findings that match the filter criteria (findingCriteria). Valid values are: ARCHIVE, suppress (automatically archive) the findings; and, NOOP, don't perform any action on the findings.
+#' @param clientToken A unique, case-sensitive token that you provide to ensure the idempotency of the request.
+#' @param description A custom description of the filter. The description can contain as many as 512 characters.
 #' 
-#' We strongly recommend that you avoid including any sensitive data in the
-#' description of a filter. Other users of your account might be able to
-#' see this description, depending on the actions that they're allowed to
-#' perform in Amazon Macie.
+#' We strongly recommend that you avoid including any sensitive data in the description of a filter. Other users of your account might be able to see this description, depending on the actions that they're allowed to perform in Amazon Macie.
 #' @param findingCriteria &#91;required&#93; The criteria to use to filter findings.
-#' @param name &#91;required&#93; A custom name for the filter. The name must contain at least 3
-#' characters and can contain as many as 64 characters.
+#' @param name &#91;required&#93; A custom name for the filter. The name must contain at least 3 characters and can contain as many as 64 characters.
 #' 
-#' We strongly recommend that you avoid including any sensitive data in the
-#' name of a filter. Other users of your account might be able to see this
-#' name, depending on the actions that they're allowed to perform in Amazon
-#' Macie.
-#' @param position The position of the filter in the list of saved filters on the Amazon
-#' Macie console. This value also determines the order in which the filter
-#' is applied to findings, relative to other filters that are also applied
-#' to the findings.
-#' @param tags A map of key-value pairs that specifies the tags to associate with the
-#' filter.
+#' We strongly recommend that you avoid including any sensitive data in the name of a filter. Other users of your account might be able to see this name, depending on the actions that they're allowed to perform in Amazon Macie.
+#' @param position The position of the filter in the list of saved filters on the Amazon Macie console. This value also determines the order in which the filter is applied to findings, relative to other filters that are also applied to the findings.
+#' @param tags A map of key-value pairs that specifies the tags to associate with the filter.
 #' 
-#' A findings filter can have a maximum of 50 tags. Each tag consists of a
-#' tag key and an associated tag value. The maximum length of a tag key is
-#' 128 characters. The maximum length of a tag value is 256 characters.
+#' A findings filter can have a maximum of 50 tags. Each tag consists of a tag key and an associated tag value. The maximum length of a tag key is 128 characters. The maximum length of a tag value is 256 characters.
 #'
 #' @keywords internal
 #'
@@ -426,15 +305,9 @@ macie2_create_findings_filter <- function(action, clientToken = NULL, descriptio
 #'
 #' See [https://www.paws-r-sdk.com/docs/macie2_create_invitations/](https://www.paws-r-sdk.com/docs/macie2_create_invitations/) for full documentation.
 #'
-#' @param accountIds &#91;required&#93; An array that lists Amazon Web Services account IDs, one for each
-#' account to send the invitation to.
-#' @param disableEmailNotification Specifies whether to send the invitation as an email message. If this
-#' value is false, Amazon Macie sends the invitation (as an email message)
-#' to the email address that you specified for the recipient's account when
-#' you associated the account with your account. The default value is
-#' false.
-#' @param message Custom text to include in the email message that contains the
-#' invitation. The text can contain as many as 80 alphanumeric characters.
+#' @param accountIds &#91;required&#93; An array that lists Amazon Web Services account IDs, one for each account to send the invitation to.
+#' @param disableEmailNotification Specifies whether to send the invitation as an email message. If this value is false, Amazon Macie sends the invitation (as an email message) to the email address that you specified for the recipient's account when you associated the account with your account. The default value is false.
+#' @param message Custom text to include in the email message that contains the invitation. The text can contain as many as 80 alphanumeric characters.
 #'
 #' @keywords internal
 #'
@@ -466,12 +339,9 @@ macie2_create_invitations <- function(accountIds, disableEmailNotification = NUL
 #' See [https://www.paws-r-sdk.com/docs/macie2_create_member/](https://www.paws-r-sdk.com/docs/macie2_create_member/) for full documentation.
 #'
 #' @param account &#91;required&#93; The details of the account to associate with the administrator account.
-#' @param tags A map of key-value pairs that specifies the tags to associate with the
-#' account in Amazon Macie.
+#' @param tags A map of key-value pairs that specifies the tags to associate with the account in Amazon Macie.
 #' 
-#' An account can have a maximum of 50 tags. Each tag consists of a tag key
-#' and an associated tag value. The maximum length of a tag key is 128
-#' characters. The maximum length of a tag value is 256 characters.
+#' An account can have a maximum of 50 tags. Each tag consists of a tag key and an associated tag value. The maximum length of a tag key is 128 characters. The maximum length of a tag value is 256 characters.
 #'
 #' @keywords internal
 #'
@@ -502,9 +372,7 @@ macie2_create_member <- function(account, tags = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/macie2_create_sample_findings/](https://www.paws-r-sdk.com/docs/macie2_create_sample_findings/) for full documentation.
 #'
-#' @param findingTypes An array of finding types, one for each type of sample finding to
-#' create. To create a sample of every type of finding that Amazon Macie
-#' supports, don't include this array in your request.
+#' @param findingTypes An array of finding types, one for each type of sample finding to create. To create a sample of every type of finding that Amazon Macie supports, don't include this array in your request.
 #'
 #' @keywords internal
 #'
@@ -536,8 +404,7 @@ macie2_create_sample_findings <- function(findingTypes = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/macie2_decline_invitations/](https://www.paws-r-sdk.com/docs/macie2_decline_invitations/) for full documentation.
 #'
-#' @param accountIds &#91;required&#93; An array that lists Amazon Web Services account IDs, one for each
-#' account that sent an invitation to decline.
+#' @param accountIds &#91;required&#93; An array that lists Amazon Web Services account IDs, one for each account that sent an invitation to decline.
 #'
 #' @keywords internal
 #'
@@ -568,17 +435,10 @@ macie2_decline_invitations <- function(accountIds) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/macie2_delete_allow_list/](https://www.paws-r-sdk.com/docs/macie2_delete_allow_list/) for full documentation.
 #'
-#' @param id &#91;required&#93; The unique identifier for the Amazon Macie resource that the request
-#' applies to.
-#' @param ignoreJobChecks Specifies whether to force deletion of the allow list, even if active
-#' classification jobs are configured to use the list.
+#' @param id &#91;required&#93; The unique identifier for the Amazon Macie resource that the request applies to.
+#' @param ignoreJobChecks Specifies whether to force deletion of the allow list, even if active classification jobs are configured to use the list.
 #' 
-#' When you try to delete an allow list, Amazon Macie checks for
-#' classification jobs that use the list and have a status other than
-#' COMPLETE or CANCELLED. By default, Macie rejects your request if any
-#' jobs meet these criteria. To skip these checks and delete the list, set
-#' this value to true. To delete the list only if no active jobs are
-#' configured to use it, set this value to false.
+#' When you try to delete an allow list, Amazon Macie checks for classification jobs that use the list and have a status other than COMPLETE or CANCELLED. By default, Macie rejects your request if any jobs meet these criteria. To skip these checks and delete the list, set this value to true. To delete the list only if no active jobs are configured to use it, set this value to false.
 #'
 #' @keywords internal
 #'
@@ -609,8 +469,7 @@ macie2_delete_allow_list <- function(id, ignoreJobChecks = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/macie2_delete_custom_data_identifier/](https://www.paws-r-sdk.com/docs/macie2_delete_custom_data_identifier/) for full documentation.
 #'
-#' @param id &#91;required&#93; The unique identifier for the Amazon Macie resource that the request
-#' applies to.
+#' @param id &#91;required&#93; The unique identifier for the Amazon Macie resource that the request applies to.
 #'
 #' @keywords internal
 #'
@@ -641,8 +500,7 @@ macie2_delete_custom_data_identifier <- function(id) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/macie2_delete_findings_filter/](https://www.paws-r-sdk.com/docs/macie2_delete_findings_filter/) for full documentation.
 #'
-#' @param id &#91;required&#93; The unique identifier for the Amazon Macie resource that the request
-#' applies to.
+#' @param id &#91;required&#93; The unique identifier for the Amazon Macie resource that the request applies to.
 #'
 #' @keywords internal
 #'
@@ -674,8 +532,7 @@ macie2_delete_findings_filter <- function(id) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/macie2_delete_invitations/](https://www.paws-r-sdk.com/docs/macie2_delete_invitations/) for full documentation.
 #'
-#' @param accountIds &#91;required&#93; An array that lists Amazon Web Services account IDs, one for each
-#' account that sent an invitation to delete.
+#' @param accountIds &#91;required&#93; An array that lists Amazon Web Services account IDs, one for each account that sent an invitation to delete.
 #'
 #' @keywords internal
 #'
@@ -707,8 +564,7 @@ macie2_delete_invitations <- function(accountIds) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/macie2_delete_member/](https://www.paws-r-sdk.com/docs/macie2_delete_member/) for full documentation.
 #'
-#' @param id &#91;required&#93; The unique identifier for the Amazon Macie resource that the request
-#' applies to.
+#' @param id &#91;required&#93; The unique identifier for the Amazon Macie resource that the request applies to.
 #'
 #' @keywords internal
 #'
@@ -741,10 +597,8 @@ macie2_delete_member <- function(id) {
 #' See [https://www.paws-r-sdk.com/docs/macie2_describe_buckets/](https://www.paws-r-sdk.com/docs/macie2_describe_buckets/) for full documentation.
 #'
 #' @param criteria The criteria to use to filter the query results.
-#' @param maxResults The maximum number of items to include in each page of the response. The
-#' default value is 50.
-#' @param nextToken The nextToken string that specifies which page of results to return in a
-#' paginated response.
+#' @param maxResults The maximum number of items to include in each page of the response. The default value is 50.
+#' @param nextToken The nextToken string that specifies which page of results to return in a paginated response.
 #' @param sortCriteria The criteria to use to sort the query results.
 #'
 #' @keywords internal
@@ -872,8 +726,7 @@ macie2_disable_macie <- function() {
 #'
 #' See [https://www.paws-r-sdk.com/docs/macie2_disable_organization_admin_account/](https://www.paws-r-sdk.com/docs/macie2_disable_organization_admin_account/) for full documentation.
 #'
-#' @param adminAccountId &#91;required&#93; The Amazon Web Services account ID of the delegated Amazon Macie
-#' administrator account.
+#' @param adminAccountId &#91;required&#93; The Amazon Web Services account ID of the delegated Amazon Macie administrator account.
 #'
 #' @keywords internal
 #'
@@ -969,8 +822,7 @@ macie2_disassociate_from_master_account <- function() {
 #'
 #' See [https://www.paws-r-sdk.com/docs/macie2_disassociate_member/](https://www.paws-r-sdk.com/docs/macie2_disassociate_member/) for full documentation.
 #'
-#' @param id &#91;required&#93; The unique identifier for the Amazon Macie resource that the request
-#' applies to.
+#' @param id &#91;required&#93; The unique identifier for the Amazon Macie resource that the request applies to.
 #'
 #' @keywords internal
 #'
@@ -1002,13 +854,9 @@ macie2_disassociate_member <- function(id) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/macie2_enable_macie/](https://www.paws-r-sdk.com/docs/macie2_enable_macie/) for full documentation.
 #'
-#' @param clientToken A unique, case-sensitive token that you provide to ensure the
-#' idempotency of the request.
-#' @param findingPublishingFrequency Specifies how often to publish updates to policy findings for the
-#' account. This includes publishing updates to Security Hub and Amazon
-#' EventBridge (formerly Amazon CloudWatch Events).
-#' @param status Specifies the new status for the account. To enable Amazon Macie and
-#' start all Macie activities for the account, set this value to ENABLED.
+#' @param clientToken A unique, case-sensitive token that you provide to ensure the idempotency of the request.
+#' @param findingPublishingFrequency Specifies how often to publish updates to policy findings for the account. This includes publishing updates to Security Hub and Amazon EventBridge (formerly Amazon CloudWatch Events).
+#' @param status Specifies the new status for the account. To enable Amazon Macie and start all Macie activities for the account, set this value to ENABLED.
 #'
 #' @keywords internal
 #'
@@ -1040,10 +888,8 @@ macie2_enable_macie <- function(clientToken = NULL, findingPublishingFrequency =
 #'
 #' See [https://www.paws-r-sdk.com/docs/macie2_enable_organization_admin_account/](https://www.paws-r-sdk.com/docs/macie2_enable_organization_admin_account/) for full documentation.
 #'
-#' @param adminAccountId &#91;required&#93; The Amazon Web Services account ID for the account to designate as the
-#' delegated Amazon Macie administrator account for the organization.
-#' @param clientToken A unique, case-sensitive token that you provide to ensure the
-#' idempotency of the request.
+#' @param adminAccountId &#91;required&#93; The Amazon Web Services account ID for the account to designate as the delegated Amazon Macie administrator account for the organization.
+#' @param clientToken A unique, case-sensitive token that you provide to ensure the idempotency of the request.
 #'
 #' @keywords internal
 #'
@@ -1106,8 +952,7 @@ macie2_get_administrator_account <- function() {
 #'
 #' See [https://www.paws-r-sdk.com/docs/macie2_get_allow_list/](https://www.paws-r-sdk.com/docs/macie2_get_allow_list/) for full documentation.
 #'
-#' @param id &#91;required&#93; The unique identifier for the Amazon Macie resource that the request
-#' applies to.
+#' @param id &#91;required&#93; The unique identifier for the Amazon Macie resource that the request applies to.
 #'
 #' @keywords internal
 #'
@@ -1234,8 +1079,7 @@ macie2_get_classification_export_configuration <- function() {
 #'
 #' See [https://www.paws-r-sdk.com/docs/macie2_get_classification_scope/](https://www.paws-r-sdk.com/docs/macie2_get_classification_scope/) for full documentation.
 #'
-#' @param id &#91;required&#93; The unique identifier for the Amazon Macie resource that the request
-#' applies to.
+#' @param id &#91;required&#93; The unique identifier for the Amazon Macie resource that the request applies to.
 #'
 #' @keywords internal
 #'
@@ -1266,8 +1110,7 @@ macie2_get_classification_scope <- function(id) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/macie2_get_custom_data_identifier/](https://www.paws-r-sdk.com/docs/macie2_get_custom_data_identifier/) for full documentation.
 #'
-#' @param id &#91;required&#93; The unique identifier for the Amazon Macie resource that the request
-#' applies to.
+#' @param id &#91;required&#93; The unique identifier for the Amazon Macie resource that the request applies to.
 #'
 #' @keywords internal
 #'
@@ -1299,20 +1142,15 @@ macie2_get_custom_data_identifier <- function(id) {
 #' See [https://www.paws-r-sdk.com/docs/macie2_get_finding_statistics/](https://www.paws-r-sdk.com/docs/macie2_get_finding_statistics/) for full documentation.
 #'
 #' @param findingCriteria The criteria to use to filter the query results.
-#' @param groupBy &#91;required&#93; The finding property to use to group the query results. Valid values
-#' are:
+#' @param groupBy &#91;required&#93; The finding property to use to group the query results. Valid values are:
 #' 
-#' -   classificationDetails.jobId - The unique identifier for the
-#'     classification job that produced the finding.
+#' -   classificationDetails.jobId - The unique identifier for the classification job that produced the finding.
 #' 
-#' -   resourcesAffected.s3Bucket.name - The name of the S3 bucket that the
-#'     finding applies to.
+#' -   resourcesAffected.s3Bucket.name - The name of the S3 bucket that the finding applies to.
 #' 
-#' -   severity.description - The severity level of the finding, such as
-#'     High or Medium.
+#' -   severity.description - The severity level of the finding, such as High or Medium.
 #' 
-#' -   type - The type of finding, such as Policy:IAMUser/S3BucketPublic
-#'     and SensitiveData:S3Object/Personal.
+#' -   type - The type of finding, such as Policy:IAMUser/S3BucketPublic and SensitiveData:S3Object/Personal.
 #' @param size The maximum number of items to include in each page of the response.
 #' @param sortCriteria The criteria to use to sort the query results.
 #'
@@ -1345,9 +1183,7 @@ macie2_get_finding_statistics <- function(findingCriteria = NULL, groupBy, size 
 #'
 #' See [https://www.paws-r-sdk.com/docs/macie2_get_findings/](https://www.paws-r-sdk.com/docs/macie2_get_findings/) for full documentation.
 #'
-#' @param findingIds &#91;required&#93; An array of strings that lists the unique identifiers for the findings
-#' to retrieve. You can specify as many as 50 unique identifiers in this
-#' array.
+#' @param findingIds &#91;required&#93; An array of strings that lists the unique identifiers for the findings to retrieve. You can specify as many as 50 unique identifiers in this array.
 #' @param sortCriteria The criteria for sorting the results of the request.
 #'
 #' @keywords internal
@@ -1379,8 +1215,7 @@ macie2_get_findings <- function(findingIds, sortCriteria = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/macie2_get_findings_filter/](https://www.paws-r-sdk.com/docs/macie2_get_findings_filter/) for full documentation.
 #'
-#' @param id &#91;required&#93; The unique identifier for the Amazon Macie resource that the request
-#' applies to.
+#' @param id &#91;required&#93; The unique identifier for the Amazon Macie resource that the request applies to.
 #'
 #' @keywords internal
 #'
@@ -1540,8 +1375,7 @@ macie2_get_master_account <- function() {
 #'
 #' See [https://www.paws-r-sdk.com/docs/macie2_get_member/](https://www.paws-r-sdk.com/docs/macie2_get_member/) for full documentation.
 #'
-#' @param id &#91;required&#93; The unique identifier for the Amazon Macie resource that the request
-#' applies to.
+#' @param id &#91;required&#93; The unique identifier for the Amazon Macie resource that the request applies to.
 #'
 #' @keywords internal
 #'
@@ -1573,8 +1407,7 @@ macie2_get_member <- function(id) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/macie2_get_resource_profile/](https://www.paws-r-sdk.com/docs/macie2_get_resource_profile/) for full documentation.
 #'
-#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the S3 bucket that the request applies
-#' to.
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the S3 bucket that the request applies to.
 #'
 #' @keywords internal
 #'
@@ -1701,8 +1534,7 @@ macie2_get_sensitive_data_occurrences_availability <- function(findingId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/macie2_get_sensitivity_inspection_template/](https://www.paws-r-sdk.com/docs/macie2_get_sensitivity_inspection_template/) for full documentation.
 #'
-#' @param id &#91;required&#93; The unique identifier for the Amazon Macie resource that the request
-#' applies to.
+#' @param id &#91;required&#93; The unique identifier for the Amazon Macie resource that the request applies to.
 #'
 #' @keywords internal
 #'
@@ -1734,17 +1566,11 @@ macie2_get_sensitivity_inspection_template <- function(id) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/macie2_get_usage_statistics/](https://www.paws-r-sdk.com/docs/macie2_get_usage_statistics/) for full documentation.
 #'
-#' @param filterBy An array of objects, one for each condition to use to filter the query
-#' results. If you specify more than one condition, Amazon Macie uses an
-#' AND operator to join the conditions.
+#' @param filterBy An array of objects, one for each condition to use to filter the query results. If you specify more than one condition, Amazon Macie uses an AND operator to join the conditions.
 #' @param maxResults The maximum number of items to include in each page of the response.
-#' @param nextToken The nextToken string that specifies which page of results to return in a
-#' paginated response.
+#' @param nextToken The nextToken string that specifies which page of results to return in a paginated response.
 #' @param sortBy The criteria to use to sort the query results.
-#' @param timeRange The inclusive time period to query usage data for. Valid values are:
-#' MONTH_TO_DATE, for the current calendar month to date; and,
-#' PAST_30_DAYS, for the preceding 30 days. If you don't specify a value,
-#' Amazon Macie provides usage data for the preceding 30 days.
+#' @param timeRange The inclusive time period to query usage data for. Valid values are: MONTH_TO_DATE, for the current calendar month to date; and, PAST_30_DAYS, for the preceding 30 days. If you don't specify a value, Amazon Macie provides usage data for the preceding 30 days.
 #'
 #' @keywords internal
 #'
@@ -1775,11 +1601,7 @@ macie2_get_usage_statistics <- function(filterBy = NULL, maxResults = NULL, next
 #'
 #' See [https://www.paws-r-sdk.com/docs/macie2_get_usage_totals/](https://www.paws-r-sdk.com/docs/macie2_get_usage_totals/) for full documentation.
 #'
-#' @param timeRange The inclusive time period to retrieve the data for. Valid values are:
-#' MONTH_TO_DATE, for the current calendar month to date; and,
-#' PAST_30_DAYS, for the preceding 30 days. If you don't specify a value
-#' for this parameter, Amazon Macie provides aggregated usage data for the
-#' preceding 30 days.
+#' @param timeRange The inclusive time period to retrieve the data for. Valid values are: MONTH_TO_DATE, for the current calendar month to date; and, PAST_30_DAYS, for the preceding 30 days. If you don't specify a value for this parameter, Amazon Macie provides aggregated usage data for the preceding 30 days.
 #'
 #' @keywords internal
 #'
@@ -1811,10 +1633,8 @@ macie2_get_usage_totals <- function(timeRange = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/macie2_list_allow_lists/](https://www.paws-r-sdk.com/docs/macie2_list_allow_lists/) for full documentation.
 #'
-#' @param maxResults The maximum number of items to include in each page of a paginated
-#' response.
-#' @param nextToken The nextToken string that specifies which page of results to return in a
-#' paginated response.
+#' @param maxResults The maximum number of items to include in each page of a paginated response.
+#' @param nextToken The nextToken string that specifies which page of results to return in a paginated response.
 #'
 #' @keywords internal
 #'
@@ -1846,15 +1666,9 @@ macie2_list_allow_lists <- function(maxResults = NULL, nextToken = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/macie2_list_automated_discovery_accounts/](https://www.paws-r-sdk.com/docs/macie2_list_automated_discovery_accounts/) for full documentation.
 #'
-#' @param accountIds The Amazon Web Services account ID for each account, for as many as 50
-#' accounts. To retrieve the status for multiple accounts, append the
-#' accountIds parameter and argument for each account, separated by an
-#' ampersand (&). To retrieve the status for all the accounts in an
-#' organization, omit this parameter.
-#' @param maxResults The maximum number of items to include in each page of a paginated
-#' response.
-#' @param nextToken The nextToken string that specifies which page of results to return in a
-#' paginated response.
+#' @param accountIds The Amazon Web Services account ID for each account, for as many as 50 accounts. To retrieve the status for multiple accounts, append the accountIds parameter and argument for each account, separated by an ampersand (&). To retrieve the status for all the accounts in an organization, omit this parameter.
+#' @param maxResults The maximum number of items to include in each page of a paginated response.
+#' @param nextToken The nextToken string that specifies which page of results to return in a paginated response.
 #'
 #' @keywords internal
 #'
@@ -1887,8 +1701,7 @@ macie2_list_automated_discovery_accounts <- function(accountIds = NULL, maxResul
 #'
 #' @param filterCriteria The criteria to use to filter the results.
 #' @param maxResults The maximum number of items to include in each page of the response.
-#' @param nextToken The nextToken string that specifies which page of results to return in a
-#' paginated response.
+#' @param nextToken The nextToken string that specifies which page of results to return in a paginated response.
 #' @param sortCriteria The criteria to use to sort the results.
 #'
 #' @keywords internal
@@ -1921,10 +1734,8 @@ macie2_list_classification_jobs <- function(filterCriteria = NULL, maxResults = 
 #'
 #' See [https://www.paws-r-sdk.com/docs/macie2_list_classification_scopes/](https://www.paws-r-sdk.com/docs/macie2_list_classification_scopes/) for full documentation.
 #'
-#' @param name The name of the classification scope to retrieve the unique identifier
-#' for.
-#' @param nextToken The nextToken string that specifies which page of results to return in a
-#' paginated response.
+#' @param name The name of the classification scope to retrieve the unique identifier for.
+#' @param nextToken The nextToken string that specifies which page of results to return in a paginated response.
 #'
 #' @keywords internal
 #'
@@ -1957,8 +1768,7 @@ macie2_list_classification_scopes <- function(name = NULL, nextToken = NULL) {
 #' See [https://www.paws-r-sdk.com/docs/macie2_list_custom_data_identifiers/](https://www.paws-r-sdk.com/docs/macie2_list_custom_data_identifiers/) for full documentation.
 #'
 #' @param maxResults The maximum number of items to include in each page of the response.
-#' @param nextToken The nextToken string that specifies which page of results to return in a
-#' paginated response.
+#' @param nextToken The nextToken string that specifies which page of results to return in a paginated response.
 #'
 #' @keywords internal
 #'
@@ -1991,8 +1801,7 @@ macie2_list_custom_data_identifiers <- function(maxResults = NULL, nextToken = N
 #'
 #' @param findingCriteria The criteria to use to filter the results.
 #' @param maxResults The maximum number of items to include in each page of the response.
-#' @param nextToken The nextToken string that specifies which page of results to return in a
-#' paginated response.
+#' @param nextToken The nextToken string that specifies which page of results to return in a paginated response.
 #' @param sortCriteria The criteria to use to sort the results.
 #'
 #' @keywords internal
@@ -2025,10 +1834,8 @@ macie2_list_findings <- function(findingCriteria = NULL, maxResults = NULL, next
 #'
 #' See [https://www.paws-r-sdk.com/docs/macie2_list_findings_filters/](https://www.paws-r-sdk.com/docs/macie2_list_findings_filters/) for full documentation.
 #'
-#' @param maxResults The maximum number of items to include in each page of a paginated
-#' response.
-#' @param nextToken The nextToken string that specifies which page of results to return in a
-#' paginated response.
+#' @param maxResults The maximum number of items to include in each page of a paginated response.
+#' @param nextToken The nextToken string that specifies which page of results to return in a paginated response.
 #'
 #' @keywords internal
 #'
@@ -2060,10 +1867,8 @@ macie2_list_findings_filters <- function(maxResults = NULL, nextToken = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/macie2_list_invitations/](https://www.paws-r-sdk.com/docs/macie2_list_invitations/) for full documentation.
 #'
-#' @param maxResults The maximum number of items to include in each page of a paginated
-#' response.
-#' @param nextToken The nextToken string that specifies which page of results to return in a
-#' paginated response.
+#' @param maxResults The maximum number of items to include in each page of a paginated response.
+#' @param nextToken The nextToken string that specifies which page of results to return in a paginated response.
 #'
 #' @keywords internal
 #'
@@ -2095,8 +1900,7 @@ macie2_list_invitations <- function(maxResults = NULL, nextToken = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/macie2_list_managed_data_identifiers/](https://www.paws-r-sdk.com/docs/macie2_list_managed_data_identifiers/) for full documentation.
 #'
-#' @param nextToken The nextToken string that specifies which page of results to return in a
-#' paginated response.
+#' @param nextToken The nextToken string that specifies which page of results to return in a paginated response.
 #'
 #' @keywords internal
 #'
@@ -2128,14 +1932,9 @@ macie2_list_managed_data_identifiers <- function(nextToken = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/macie2_list_members/](https://www.paws-r-sdk.com/docs/macie2_list_members/) for full documentation.
 #'
-#' @param maxResults The maximum number of items to include in each page of a paginated
-#' response.
-#' @param nextToken The nextToken string that specifies which page of results to return in a
-#' paginated response.
-#' @param onlyAssociated Specifies which accounts to include in the response, based on the status
-#' of an account's relationship with the administrator account. By default,
-#' the response includes only current member accounts. To include all
-#' accounts, set this value to false.
+#' @param maxResults The maximum number of items to include in each page of a paginated response.
+#' @param nextToken The nextToken string that specifies which page of results to return in a paginated response.
+#' @param onlyAssociated Specifies which accounts to include in the response, based on the status of an account's relationship with the administrator account. By default, the response includes only current member accounts. To include all accounts, set this value to false.
 #'
 #' @keywords internal
 #'
@@ -2167,10 +1966,8 @@ macie2_list_members <- function(maxResults = NULL, nextToken = NULL, onlyAssocia
 #'
 #' See [https://www.paws-r-sdk.com/docs/macie2_list_organization_admin_accounts/](https://www.paws-r-sdk.com/docs/macie2_list_organization_admin_accounts/) for full documentation.
 #'
-#' @param maxResults The maximum number of items to include in each page of a paginated
-#' response.
-#' @param nextToken The nextToken string that specifies which page of results to return in a
-#' paginated response.
+#' @param maxResults The maximum number of items to include in each page of a paginated response.
+#' @param nextToken The nextToken string that specifies which page of results to return in a paginated response.
 #'
 #' @keywords internal
 #'
@@ -2202,10 +1999,8 @@ macie2_list_organization_admin_accounts <- function(maxResults = NULL, nextToken
 #'
 #' See [https://www.paws-r-sdk.com/docs/macie2_list_resource_profile_artifacts/](https://www.paws-r-sdk.com/docs/macie2_list_resource_profile_artifacts/) for full documentation.
 #'
-#' @param nextToken The nextToken string that specifies which page of results to return in a
-#' paginated response.
-#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the S3 bucket that the request applies
-#' to.
+#' @param nextToken The nextToken string that specifies which page of results to return in a paginated response.
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the S3 bucket that the request applies to.
 #'
 #' @keywords internal
 #'
@@ -2237,12 +2032,9 @@ macie2_list_resource_profile_artifacts <- function(nextToken = NULL, resourceArn
 #'
 #' See [https://www.paws-r-sdk.com/docs/macie2_list_resource_profile_detections/](https://www.paws-r-sdk.com/docs/macie2_list_resource_profile_detections/) for full documentation.
 #'
-#' @param maxResults The maximum number of items to include in each page of a paginated
-#' response.
-#' @param nextToken The nextToken string that specifies which page of results to return in a
-#' paginated response.
-#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the S3 bucket that the request applies
-#' to.
+#' @param maxResults The maximum number of items to include in each page of a paginated response.
+#' @param nextToken The nextToken string that specifies which page of results to return in a paginated response.
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the S3 bucket that the request applies to.
 #'
 #' @keywords internal
 #'
@@ -2274,10 +2066,8 @@ macie2_list_resource_profile_detections <- function(maxResults = NULL, nextToken
 #'
 #' See [https://www.paws-r-sdk.com/docs/macie2_list_sensitivity_inspection_templates/](https://www.paws-r-sdk.com/docs/macie2_list_sensitivity_inspection_templates/) for full documentation.
 #'
-#' @param maxResults The maximum number of items to include in each page of a paginated
-#' response.
-#' @param nextToken The nextToken string that specifies which page of results to return in a
-#' paginated response.
+#' @param maxResults The maximum number of items to include in each page of a paginated response.
+#' @param nextToken The nextToken string that specifies which page of results to return in a paginated response.
 #'
 #' @keywords internal
 #'
@@ -2341,8 +2131,7 @@ macie2_list_tags_for_resource <- function(resourceArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/macie2_put_classification_export_configuration/](https://www.paws-r-sdk.com/docs/macie2_put_classification_export_configuration/) for full documentation.
 #'
-#' @param configuration &#91;required&#93; The location to store data classification results in, and the encryption
-#' settings to use when storing results in that location.
+#' @param configuration &#91;required&#93; The location to store data classification results in, and the encryption settings to use when storing results in that location.
 #'
 #' @keywords internal
 #'
@@ -2374,10 +2163,8 @@ macie2_put_classification_export_configuration <- function(configuration) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/macie2_put_findings_publication_configuration/](https://www.paws-r-sdk.com/docs/macie2_put_findings_publication_configuration/) for full documentation.
 #'
-#' @param clientToken A unique, case-sensitive token that you provide to ensure the
-#' idempotency of the request.
-#' @param securityHubConfiguration The configuration settings that determine which findings to publish to
-#' Security Hub.
+#' @param clientToken A unique, case-sensitive token that you provide to ensure the idempotency of the request.
+#' @param securityHubConfiguration The configuration settings that determine which findings to publish to Security Hub.
 #'
 #' @keywords internal
 #'
@@ -2410,12 +2197,9 @@ macie2_put_findings_publication_configuration <- function(clientToken = NULL, se
 #'
 #' See [https://www.paws-r-sdk.com/docs/macie2_search_resources/](https://www.paws-r-sdk.com/docs/macie2_search_resources/) for full documentation.
 #'
-#' @param bucketCriteria The filter conditions that determine which S3 buckets to include or
-#' exclude from the query results.
-#' @param maxResults The maximum number of items to include in each page of the response. The
-#' default value is 50.
-#' @param nextToken The nextToken string that specifies which page of results to return in a
-#' paginated response.
+#' @param bucketCriteria The filter conditions that determine which S3 buckets to include or exclude from the query results.
+#' @param maxResults The maximum number of items to include in each page of the response. The default value is 50.
+#' @param nextToken The nextToken string that specifies which page of results to return in a paginated response.
 #' @param sortCriteria The criteria to use to sort the results.
 #'
 #' @keywords internal
@@ -2449,12 +2233,9 @@ macie2_search_resources <- function(bucketCriteria = NULL, maxResults = NULL, ne
 #' See [https://www.paws-r-sdk.com/docs/macie2_tag_resource/](https://www.paws-r-sdk.com/docs/macie2_tag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
-#' @param tags &#91;required&#93; A map of key-value pairs that specifies the tags to associate with the
-#' resource.
+#' @param tags &#91;required&#93; A map of key-value pairs that specifies the tags to associate with the resource.
 #' 
-#' A resource can have a maximum of 50 tags. Each tag consists of a tag key
-#' and an associated tag value. The maximum length of a tag key is 128
-#' characters. The maximum length of a tag value is 256 characters.
+#' A resource can have a maximum of 50 tags. Each tag consists of a tag key and an associated tag value. The maximum length of a tag key is 128 characters. The maximum length of a tag value is 256 characters.
 #'
 #' @keywords internal
 #'
@@ -2485,26 +2266,11 @@ macie2_tag_resource <- function(resourceArn, tags) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/macie2_test_custom_data_identifier/](https://www.paws-r-sdk.com/docs/macie2_test_custom_data_identifier/) for full documentation.
 #'
-#' @param ignoreWords An array that lists specific character sequences (*ignore words*) to
-#' exclude from the results. If the text matched by the regular expression
-#' contains any string in this array, Amazon Macie ignores it. The array
-#' can contain as many as 10 ignore words. Each ignore word can contain
-#' 4-90 UTF-8 characters. Ignore words are case sensitive.
-#' @param keywords An array that lists specific character sequences (*keywords*), one of
-#' which must precede and be within proximity (maximumMatchDistance) of the
-#' regular expression to match. The array can contain as many as 50
-#' keywords. Each keyword can contain 3-90 UTF-8 characters. Keywords
-#' aren't case sensitive.
-#' @param maximumMatchDistance The maximum number of characters that can exist between the end of at
-#' least one complete character sequence specified by the keywords array
-#' and the end of the text that matches the regex pattern. If a complete
-#' keyword precedes all the text that matches the pattern and the keyword
-#' is within the specified distance, Amazon Macie includes the result. The
-#' distance can be 1-300 characters. The default value is 50.
-#' @param regex &#91;required&#93; The regular expression (*regex*) that defines the pattern to match. The
-#' expression can contain as many as 512 characters.
-#' @param sampleText &#91;required&#93; The sample text to inspect by using the custom data identifier. The text
-#' can contain as many as 1,000 characters.
+#' @param ignoreWords An array that lists specific character sequences (*ignore words*) to exclude from the results. If the text matched by the regular expression contains any string in this array, Amazon Macie ignores it. The array can contain as many as 10 ignore words. Each ignore word can contain 4-90 UTF-8 characters. Ignore words are case sensitive.
+#' @param keywords An array that lists specific character sequences (*keywords*), one of which must precede and be within proximity (maximumMatchDistance) of the regular expression to match. The array can contain as many as 50 keywords. Each keyword can contain 3-90 UTF-8 characters. Keywords aren't case sensitive.
+#' @param maximumMatchDistance The maximum number of characters that can exist between the end of at least one complete character sequence specified by the keywords array and the end of the text that matches the regex pattern. If a complete keyword precedes all the text that matches the pattern and the keyword is within the specified distance, Amazon Macie includes the result. The distance can be 1-300 characters. The default value is 50.
+#' @param regex &#91;required&#93; The regular expression (*regex*) that defines the pattern to match. The expression can contain as many as 512 characters.
+#' @param sampleText &#91;required&#93; The sample text to inspect by using the custom data identifier. The text can contain as many as 1,000 characters.
 #'
 #' @keywords internal
 #'
@@ -2536,9 +2302,7 @@ macie2_test_custom_data_identifier <- function(ignoreWords = NULL, keywords = NU
 #' See [https://www.paws-r-sdk.com/docs/macie2_untag_resource/](https://www.paws-r-sdk.com/docs/macie2_untag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
-#' @param tagKeys &#91;required&#93; One or more tags (keys) to remove from the resource. In an HTTP request
-#' to remove multiple tags, append the tagKeys parameter and argument for
-#' each tag to remove, separated by an ampersand (&).
+#' @param tagKeys &#91;required&#93; One or more tags (keys) to remove from the resource. In an HTTP request to remove multiple tags, append the tagKeys parameter and argument for each tag to remove, separated by an ampersand (&).
 #'
 #' @keywords internal
 #'
@@ -2569,20 +2333,12 @@ macie2_untag_resource <- function(resourceArn, tagKeys) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/macie2_update_allow_list/](https://www.paws-r-sdk.com/docs/macie2_update_allow_list/) for full documentation.
 #'
-#' @param criteria &#91;required&#93; The criteria that specify the text or text pattern to ignore. The
-#' criteria can be the location and name of an S3 object that lists
-#' specific text to ignore (s3WordsList), or a regular expression that
-#' defines a text pattern to ignore (regex).
+#' @param criteria &#91;required&#93; The criteria that specify the text or text pattern to ignore. The criteria can be the location and name of an S3 object that lists specific text to ignore (s3WordsList), or a regular expression that defines a text pattern to ignore (regex).
 #' 
-#' You can change a list's underlying criteria, such as the name of the S3
-#' object or the regular expression to use. However, you can't change the
-#' type from s3WordsList to regex or the other way around.
-#' @param description A custom description of the allow list. The description can contain as
-#' many as 512 characters.
-#' @param id &#91;required&#93; The unique identifier for the Amazon Macie resource that the request
-#' applies to.
-#' @param name &#91;required&#93; A custom name for the allow list. The name can contain as many as 128
-#' characters.
+#' You can change a list's underlying criteria, such as the name of the S3 object or the regular expression to use. However, you can't change the type from s3WordsList to regex or the other way around.
+#' @param description A custom description of the allow list. The description can contain as many as 512 characters.
+#' @param id &#91;required&#93; The unique identifier for the Amazon Macie resource that the request applies to.
+#' @param name &#91;required&#93; A custom name for the allow list. The name can contain as many as 128 characters.
 #'
 #' @keywords internal
 #'
@@ -2614,25 +2370,12 @@ macie2_update_allow_list <- function(criteria, description = NULL, id, name) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/macie2_update_automated_discovery_configuration/](https://www.paws-r-sdk.com/docs/macie2_update_automated_discovery_configuration/) for full documentation.
 #'
-#' @param autoEnableOrganizationMembers Specifies whether to automatically enable automated sensitive data
-#' discovery for accounts in the organization. Valid values are: ALL
-#' (default), enable it for all existing accounts and new member accounts;
-#' NEW, enable it only for new member accounts; and, NONE, don't enable it
-#' for any accounts.
+#' @param autoEnableOrganizationMembers Specifies whether to automatically enable automated sensitive data discovery for accounts in the organization. Valid values are: ALL (default), enable it for all existing accounts and new member accounts; NEW, enable it only for new member accounts; and, NONE, don't enable it for any accounts.
 #' 
-#' If you specify NEW or NONE, automated sensitive data discovery continues
-#' to be enabled for any existing accounts that it's currently enabled for.
-#' To enable or disable it for individual member accounts, specify NEW or
-#' NONE, and then enable or disable it for each account by using the
-#' BatchUpdateAutomatedDiscoveryAccounts operation.
-#' @param status &#91;required&#93; The new status of automated sensitive data discovery for the
-#' organization or account. Valid values are: ENABLED, start or resume all
-#' automated sensitive data discovery activities; and, DISABLED, stop
-#' performing all automated sensitive data discovery activities.
+#' If you specify NEW or NONE, automated sensitive data discovery continues to be enabled for any existing accounts that it's currently enabled for. To enable or disable it for individual member accounts, specify NEW or NONE, and then enable or disable it for each account by using the BatchUpdateAutomatedDiscoveryAccounts operation.
+#' @param status &#91;required&#93; The new status of automated sensitive data discovery for the organization or account. Valid values are: ENABLED, start or resume all automated sensitive data discovery activities; and, DISABLED, stop performing all automated sensitive data discovery activities.
 #' 
-#' If you specify DISABLED for an administrator account, you also disable
-#' automated sensitive data discovery for all member accounts in the
-#' organization.
+#' If you specify DISABLED for an administrator account, you also disable automated sensitive data discovery for all member accounts in the organization.
 #'
 #' @keywords internal
 #'
@@ -2666,34 +2409,17 @@ macie2_update_automated_discovery_configuration <- function(autoEnableOrganizati
 #' @param jobId &#91;required&#93; The unique identifier for the classification job.
 #' @param jobStatus &#91;required&#93; The new status for the job. Valid values are:
 #' 
-#' -   CANCELLED - Stops the job permanently and cancels it. This value is
-#'     valid only if the job's current status is IDLE, PAUSED, RUNNING, or
-#'     USER_PAUSED.
+#' -   CANCELLED - Stops the job permanently and cancels it. This value is valid only if the job's current status is IDLE, PAUSED, RUNNING, or USER_PAUSED.
 #' 
-#'     If you specify this value and the job's current status is RUNNING,
-#'     Amazon Macie immediately begins to stop all processing tasks for the
-#'     job. You can't resume or restart a job after you cancel it.
+#'     If you specify this value and the job's current status is RUNNING, Amazon Macie immediately begins to stop all processing tasks for the job. You can't resume or restart a job after you cancel it.
 #' 
-#' -   RUNNING - Resumes the job. This value is valid only if the job's
-#'     current status is USER_PAUSED.
+#' -   RUNNING - Resumes the job. This value is valid only if the job's current status is USER_PAUSED.
 #' 
-#'     If you paused the job while it was actively running and you specify
-#'     this value less than 30 days after you paused the job, Macie
-#'     immediately resumes processing from the point where you paused the
-#'     job. Otherwise, Macie resumes the job according to the schedule and
-#'     other settings for the job.
+#'     If you paused the job while it was actively running and you specify this value less than 30 days after you paused the job, Macie immediately resumes processing from the point where you paused the job. Otherwise, Macie resumes the job according to the schedule and other settings for the job.
 #' 
-#' -   USER_PAUSED - Pauses the job temporarily. This value is valid only
-#'     if the job's current status is IDLE, PAUSED, or RUNNING. If you
-#'     specify this value and the job's current status is RUNNING, Macie
-#'     immediately begins to pause all processing tasks for the job.
+#' -   USER_PAUSED - Pauses the job temporarily. This value is valid only if the job's current status is IDLE, PAUSED, or RUNNING. If you specify this value and the job's current status is RUNNING, Macie immediately begins to pause all processing tasks for the job.
 #' 
-#'     If you pause a one-time job and you don't resume it within 30 days,
-#'     the job expires and Macie cancels the job. If you pause a recurring
-#'     job when its status is RUNNING and you don't resume it within 30
-#'     days, the job run expires and Macie cancels the run. To check the
-#'     expiration date, refer to the UserPausedDetails.jobExpiresAt
-#'     property.
+#'     If you pause a one-time job and you don't resume it within 30 days, the job expires and Macie cancels the job. If you pause a recurring job when its status is RUNNING and you don't resume it within 30 days, the job run expires and Macie cancels the run. To check the expiration date, refer to the UserPausedDetails.jobExpiresAt property.
 #'
 #' @keywords internal
 #'
@@ -2724,10 +2450,8 @@ macie2_update_classification_job <- function(jobId, jobStatus) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/macie2_update_classification_scope/](https://www.paws-r-sdk.com/docs/macie2_update_classification_scope/) for full documentation.
 #'
-#' @param id &#91;required&#93; The unique identifier for the Amazon Macie resource that the request
-#' applies to.
-#' @param s3 The S3 buckets to add or remove from the exclusion list defined by the
-#' classification scope.
+#' @param id &#91;required&#93; The unique identifier for the Amazon Macie resource that the request applies to.
+#' @param s3 The S3 buckets to add or remove from the exclusion list defined by the classification scope.
 #'
 #' @keywords internal
 #'
@@ -2758,33 +2482,17 @@ macie2_update_classification_scope <- function(id, s3 = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/macie2_update_findings_filter/](https://www.paws-r-sdk.com/docs/macie2_update_findings_filter/) for full documentation.
 #'
-#' @param action The action to perform on findings that match the filter criteria
-#' (findingCriteria). Valid values are: ARCHIVE, suppress (automatically
-#' archive) the findings; and, NOOP, don't perform any action on the
-#' findings.
-#' @param clientToken A unique, case-sensitive token that you provide to ensure the
-#' idempotency of the request.
-#' @param description A custom description of the filter. The description can contain as many
-#' as 512 characters.
+#' @param action The action to perform on findings that match the filter criteria (findingCriteria). Valid values are: ARCHIVE, suppress (automatically archive) the findings; and, NOOP, don't perform any action on the findings.
+#' @param clientToken A unique, case-sensitive token that you provide to ensure the idempotency of the request.
+#' @param description A custom description of the filter. The description can contain as many as 512 characters.
 #' 
-#' We strongly recommend that you avoid including any sensitive data in the
-#' description of a filter. Other users of your account might be able to
-#' see this description, depending on the actions that they're allowed to
-#' perform in Amazon Macie.
+#' We strongly recommend that you avoid including any sensitive data in the description of a filter. Other users of your account might be able to see this description, depending on the actions that they're allowed to perform in Amazon Macie.
 #' @param findingCriteria The criteria to use to filter findings.
-#' @param id &#91;required&#93; The unique identifier for the Amazon Macie resource that the request
-#' applies to.
-#' @param name A custom name for the filter. The name must contain at least 3
-#' characters and can contain as many as 64 characters.
+#' @param id &#91;required&#93; The unique identifier for the Amazon Macie resource that the request applies to.
+#' @param name A custom name for the filter. The name must contain at least 3 characters and can contain as many as 64 characters.
 #' 
-#' We strongly recommend that you avoid including any sensitive data in the
-#' name of a filter. Other users of your account might be able to see this
-#' name, depending on the actions that they're allowed to perform in Amazon
-#' Macie.
-#' @param position The position of the filter in the list of saved filters on the Amazon
-#' Macie console. This value also determines the order in which the filter
-#' is applied to findings, relative to other filters that are also applied
-#' to the findings.
+#' We strongly recommend that you avoid including any sensitive data in the name of a filter. Other users of your account might be able to see this name, depending on the actions that they're allowed to perform in Amazon Macie.
+#' @param position The position of the filter in the list of saved filters on the Amazon Macie console. This value also determines the order in which the filter is applied to findings, relative to other filters that are also applied to the findings.
 #'
 #' @keywords internal
 #'
@@ -2816,12 +2524,8 @@ macie2_update_findings_filter <- function(action = NULL, clientToken = NULL, des
 #'
 #' See [https://www.paws-r-sdk.com/docs/macie2_update_macie_session/](https://www.paws-r-sdk.com/docs/macie2_update_macie_session/) for full documentation.
 #'
-#' @param findingPublishingFrequency Specifies how often to publish updates to policy findings for the
-#' account. This includes publishing updates to Security Hub and Amazon
-#' EventBridge (formerly Amazon CloudWatch Events).
-#' @param status Specifies a new status for the account. Valid values are: ENABLED,
-#' resume all Amazon Macie activities for the account; and, PAUSED, suspend
-#' all Macie activities for the account.
+#' @param findingPublishingFrequency Specifies how often to publish updates to policy findings for the account. This includes publishing updates to Security Hub and Amazon EventBridge (formerly Amazon CloudWatch Events).
+#' @param status Specifies a new status for the account. Valid values are: ENABLED, resume all Amazon Macie activities for the account; and, PAUSED, suspend all Macie activities for the account.
 #'
 #' @keywords internal
 #'
@@ -2853,11 +2557,8 @@ macie2_update_macie_session <- function(findingPublishingFrequency = NULL, statu
 #'
 #' See [https://www.paws-r-sdk.com/docs/macie2_update_member_session/](https://www.paws-r-sdk.com/docs/macie2_update_member_session/) for full documentation.
 #'
-#' @param id &#91;required&#93; The unique identifier for the Amazon Macie resource that the request
-#' applies to.
-#' @param status &#91;required&#93; Specifies the new status for the account. Valid values are: ENABLED,
-#' resume all Amazon Macie activities for the account; and, PAUSED, suspend
-#' all Macie activities for the account.
+#' @param id &#91;required&#93; The unique identifier for the Amazon Macie resource that the request applies to.
+#' @param status &#91;required&#93; Specifies the new status for the account. Valid values are: ENABLED, resume all Amazon Macie activities for the account; and, PAUSED, suspend all Macie activities for the account.
 #'
 #' @keywords internal
 #'
@@ -2889,8 +2590,7 @@ macie2_update_member_session <- function(id, status) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/macie2_update_organization_configuration/](https://www.paws-r-sdk.com/docs/macie2_update_organization_configuration/) for full documentation.
 #'
-#' @param autoEnable &#91;required&#93; Specifies whether to enable Amazon Macie automatically for accounts that
-#' are added to the organization in Organizations.
+#' @param autoEnable &#91;required&#93; Specifies whether to enable Amazon Macie automatically for accounts that are added to the organization in Organizations.
 #'
 #' @keywords internal
 #'
@@ -2921,12 +2621,8 @@ macie2_update_organization_configuration <- function(autoEnable) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/macie2_update_resource_profile/](https://www.paws-r-sdk.com/docs/macie2_update_resource_profile/) for full documentation.
 #'
-#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the S3 bucket that the request applies
-#' to.
-#' @param sensitivityScoreOverride The new sensitivity score for the bucket. Valid values are: 100, assign
-#' the maximum score and apply the *Sensitive* label to the bucket; and,
-#' null (empty), assign a score that Amazon Macie calculates automatically
-#' after you submit the request.
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the S3 bucket that the request applies to.
+#' @param sensitivityScoreOverride The new sensitivity score for the bucket. Valid values are: 100, assign the maximum score and apply the *Sensitive* label to the bucket; and, null (empty), assign a score that Amazon Macie calculates automatically after you submit the request.
 #'
 #' @keywords internal
 #'
@@ -2957,12 +2653,8 @@ macie2_update_resource_profile <- function(resourceArn, sensitivityScoreOverride
 #'
 #' See [https://www.paws-r-sdk.com/docs/macie2_update_resource_profile_detections/](https://www.paws-r-sdk.com/docs/macie2_update_resource_profile_detections/) for full documentation.
 #'
-#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the S3 bucket that the request applies
-#' to.
-#' @param suppressDataIdentifiers An array of objects, one for each custom data identifier or managed data
-#' identifier that detected a type of sensitive data to exclude from the
-#' bucket's score. To include all sensitive data types in the score, don't
-#' specify any values for this array.
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the S3 bucket that the request applies to.
+#' @param suppressDataIdentifiers An array of objects, one for each custom data identifier or managed data identifier that detected a type of sensitive data to exclude from the bucket's score. To include all sensitive data types in the score, don't specify any values for this array.
 #'
 #' @keywords internal
 #'
@@ -2994,10 +2686,8 @@ macie2_update_resource_profile_detections <- function(resourceArn, suppressDataI
 #'
 #' See [https://www.paws-r-sdk.com/docs/macie2_update_reveal_configuration/](https://www.paws-r-sdk.com/docs/macie2_update_reveal_configuration/) for full documentation.
 #'
-#' @param configuration &#91;required&#93; The KMS key to use to encrypt the sensitive data, and the status of the
-#' configuration for the Amazon Macie account.
-#' @param retrievalConfiguration The access method and settings to use when retrieving the sensitive
-#' data.
+#' @param configuration &#91;required&#93; The KMS key to use to encrypt the sensitive data, and the status of the configuration for the Amazon Macie account.
+#' @param retrievalConfiguration The access method and settings to use when retrieving the sensitive data.
 #'
 #' @keywords internal
 #'
@@ -3029,21 +2719,12 @@ macie2_update_reveal_configuration <- function(configuration, retrievalConfigura
 #'
 #' See [https://www.paws-r-sdk.com/docs/macie2_update_sensitivity_inspection_template/](https://www.paws-r-sdk.com/docs/macie2_update_sensitivity_inspection_template/) for full documentation.
 #'
-#' @param description A custom description of the template. The description can contain as
-#' many as 200 characters.
-#' @param excludes The managed data identifiers to explicitly exclude (not use) when
-#' performing automated sensitive data discovery.
+#' @param description A custom description of the template. The description can contain as many as 200 characters.
+#' @param excludes The managed data identifiers to explicitly exclude (not use) when performing automated sensitive data discovery.
 #' 
-#' To exclude an allow list or custom data identifier that's currently
-#' included by the template, update the values for the
-#' SensitivityInspectionTemplateIncludes.allowListIds and
-#' SensitivityInspectionTemplateIncludes.customDataIdentifierIds
-#' properties, respectively.
-#' @param id &#91;required&#93; The unique identifier for the Amazon Macie resource that the request
-#' applies to.
-#' @param includes The allow lists, custom data identifiers, and managed data identifiers
-#' to explicitly include (use) when performing automated sensitive data
-#' discovery.
+#' To exclude an allow list or custom data identifier that's currently included by the template, update the values for the SensitivityInspectionTemplateIncludes.allowListIds and SensitivityInspectionTemplateIncludes.customDataIdentifierIds properties, respectively.
+#' @param id &#91;required&#93; The unique identifier for the Amazon Macie resource that the request applies to.
+#' @param includes The allow lists, custom data identifiers, and managed data identifiers to explicitly include (use) when performing automated sensitive data discovery.
 #'
 #' @keywords internal
 #'

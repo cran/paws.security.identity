@@ -10,12 +10,9 @@ accessanalyzer_check_no_public_access(policyDocument, resourceType)
 \arguments{
 \item{policyDocument}{[required] The JSON policy document to evaluate for public access.}
 
-\item{resourceType}{[required] The type of resource to evaluate for public access. For example, to
-check for public access to Amazon S3 buckets, you can choose
-\verb{AWS::S3::Bucket} for the resource type.
+\item{resourceType}{[required] The type of resource to evaluate for public access. For example, to check for public access to Amazon S3 buckets, you can choose \verb{AWS::S3::Bucket} for the resource type.
 
-For resource types not supported as valid values, IAM Access Analyzer
-will return an error.}
+For resource types not supported as valid values, IAM Access Analyzer will return an error.}
 }
 \description{
 Checks whether a resource policy can grant public access to the specified resource type.

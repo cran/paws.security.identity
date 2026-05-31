@@ -11,23 +11,14 @@ waf_update_sql_injection_match_set(
 )
 }
 \arguments{
-\item{SqlInjectionMatchSetId}{[required] The \code{SqlInjectionMatchSetId} of the \code{SqlInjectionMatchSet} that you want
-to update. \code{SqlInjectionMatchSetId} is returned by
-\code{\link[=waf_create_sql_injection_match_set]{create_sql_injection_match_set}}
-and by
-\code{\link[=waf_list_sql_injection_match_sets]{list_sql_injection_match_sets}}.}
+\item{SqlInjectionMatchSetId}{[required] The \code{SqlInjectionMatchSetId} of the \code{SqlInjectionMatchSet} that you want to update. \code{SqlInjectionMatchSetId} is returned by \code{\link[=waf_create_sql_injection_match_set]{create_sql_injection_match_set}} and by \code{\link[=waf_list_sql_injection_match_sets]{list_sql_injection_match_sets}}.}
 
-\item{ChangeToken}{[required] The value returned by the most recent call to
-\code{\link[=waf_get_change_token]{get_change_token}}.}
+\item{ChangeToken}{[required] The value returned by the most recent call to \code{\link[=waf_get_change_token]{get_change_token}}.}
 
-\item{Updates}{[required] An array of \code{SqlInjectionMatchSetUpdate} objects that you want to insert
-into or delete from a SqlInjectionMatchSet. For more information, see
-the applicable data types:
+\item{Updates}{[required] An array of \code{SqlInjectionMatchSetUpdate} objects that you want to insert into or delete from a SqlInjectionMatchSet. For more information, see the applicable data types:
 \itemize{
-\item SqlInjectionMatchSetUpdate: Contains \code{Action} and
-\code{SqlInjectionMatchTuple}
-\item SqlInjectionMatchTuple: Contains \code{FieldToMatch} and
-\code{TextTransformation}
+\item SqlInjectionMatchSetUpdate: Contains \code{Action} and \code{SqlInjectionMatchTuple}
+\item SqlInjectionMatchTuple: Contains \code{FieldToMatch} and \code{TextTransformation}
 \item FieldToMatch: Contains \code{Data} and \code{Type}
 }}
 }

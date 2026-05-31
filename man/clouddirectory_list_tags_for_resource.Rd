@@ -11,14 +11,11 @@ clouddirectory_list_tags_for_resource(
 )
 }
 \arguments{
-\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the resource. Tagging is only
-supported for directories.}
+\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the resource. Tagging is only supported for directories.}
 
-\item{NextToken}{The pagination token. This is for future use. Currently pagination is
-not supported for tagging.}
+\item{NextToken}{The pagination token. This is for future use. Currently pagination is not supported for tagging.}
 
-\item{MaxResults}{The \code{MaxResults} parameter sets the maximum number of results returned
-in a single page. This is for future use and is not supported currently.}
+\item{MaxResults}{The \code{MaxResults} parameter sets the maximum number of results returned in a single page. This is for future use and is not supported currently.}
 }
 \description{
 Returns tags for a resource. Tagging is currently supported only for directories with a limit of 50 tags per directory. All 50 tags are returned for a given directory with this API call.

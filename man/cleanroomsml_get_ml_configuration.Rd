@@ -7,8 +7,7 @@
 cleanroomsml_get_ml_configuration(membershipIdentifier)
 }
 \arguments{
-\item{membershipIdentifier}{[required] The membership ID of the member that owns the ML configuration you want
-to return information about.}
+\item{membershipIdentifier}{[required] The membership ID of the member that owns the ML configuration you want to return information about.}
 }
 \description{
 Returns information about a specific ML configuration.

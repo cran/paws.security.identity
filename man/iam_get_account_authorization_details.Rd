@@ -13,28 +13,15 @@ iam_get_account_authorization_details(
 )
 }
 \arguments{
-\item{Filter}{A list of entity types used to filter the results. Only the entities
-that match the types you specify are included in the output. Use the
-value \code{LocalManagedPolicy} to include customer managed policies.
+\item{Filter}{A list of entity types used to filter the results. Only the entities that match the types you specify are included in the output. Use the value \code{LocalManagedPolicy} to include customer managed policies.
 
-The format for this parameter is a comma-separated (if more than one)
-list of strings. Each string value in the list must be one of the valid
-values listed below.}
+The format for this parameter is a comma-separated (if more than one) list of strings. Each string value in the list must be one of the valid values listed below.}
 
-\item{MaxItems}{Use this only when paginating results to indicate the maximum number of
-items you want in the response. If additional items exist beyond the
-maximum you specify, the \code{IsTruncated} response element is \code{true}.
+\item{MaxItems}{Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the \code{IsTruncated} response element is \code{true}.
 
-If you do not include this parameter, the number of items defaults to
-100. Note that IAM might return fewer results, even when there are more
-results available. In that case, the \code{IsTruncated} response element
-returns \code{true}, and \code{Marker} contains a value to include in the
-subsequent call that tells the service where to continue from.}
+If you do not include this parameter, the number of items defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the \code{IsTruncated} response element returns \code{true}, and \code{Marker} contains a value to include in the subsequent call that tells the service where to continue from.}
 
-\item{Marker}{Use this parameter only when paginating results and only after you
-receive a response indicating that the results are truncated. Set it to
-the value of the \code{Marker} element in the response that you received to
-indicate where the next call should start.}
+\item{Marker}{Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the \code{Marker} element in the response that you received to indicate where the next call should start.}
 }
 \description{
 Retrieves information about all IAM users, groups, roles, and policies in your Amazon Web Services account, including their relationships to one another. Use this operation to obtain a snapshot of the configuration of IAM permissions (users, groups, roles, and policies) in your account.

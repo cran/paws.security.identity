@@ -8,8 +8,7 @@ code vulnerabilities in}
 inspector2_batch_get_code_snippet(findingArns)
 }
 \arguments{
-\item{findingArns}{[required] An array of finding ARNs for the findings you want to retrieve code
-snippets from.}
+\item{findingArns}{[required] An array of finding ARNs for the findings you want to retrieve code snippets from.}
 }
 \description{
 Retrieves code snippets from findings that Amazon Inspector detected code vulnerabilities in.

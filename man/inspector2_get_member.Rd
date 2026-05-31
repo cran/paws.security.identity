@@ -7,8 +7,7 @@
 inspector2_get_member(accountId)
 }
 \arguments{
-\item{accountId}{[required] The Amazon Web Services account ID of the member account to retrieve
-information on.}
+\item{accountId}{[required] The Amazon Web Services account ID of the member account to retrieve information on.}
 }
 \description{
 Gets member information for your organization.

@@ -7,8 +7,7 @@
 wafv2_get_permission_policy(ResourceArn)
 }
 \arguments{
-\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the rule group for which you want to
-get the policy.}
+\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the rule group for which you want to get the policy.}
 }
 \description{
 Returns the IAM policy that is attached to the specified rule group.

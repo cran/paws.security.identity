@@ -8,11 +8,9 @@ resource}
 shield_associate_health_check(ProtectionId, HealthCheckArn)
 }
 \arguments{
-\item{ProtectionId}{[required] The unique identifier (ID) for the Protection object to add the health
-check association to.}
+\item{ProtectionId}{[required] The unique identifier (ID) for the Protection object to add the health check association to.}
 
-\item{HealthCheckArn}{[required] The Amazon Resource Name (ARN) of the health check to associate with the
-protection.}
+\item{HealthCheckArn}{[required] The Amazon Resource Name (ARN) of the health check to associate with the protection.}
 }
 \description{
 Adds health-based detection to the Shield Advanced protection for a resource. Shield Advanced health-based detection uses the health of your Amazon Web Services resource to improve responsiveness and accuracy in attack detection and response.

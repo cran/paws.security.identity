@@ -8,8 +8,7 @@ provided member accounts in your organization}
 inspector2_batch_update_member_ec_2_deep_inspection_status(accountIds)
 }
 \arguments{
-\item{accountIds}{[required] The unique identifiers for the Amazon Web Services accounts to change
-Amazon Inspector deep inspection status for.}
+\item{accountIds}{[required] The unique identifiers for the Amazon Web Services accounts to change Amazon Inspector deep inspection status for.}
 }
 \description{
 Activates or deactivates Amazon Inspector deep inspection for the provided member accounts in your organization. You must be the delegated administrator of an organization in Amazon Inspector to use this API.

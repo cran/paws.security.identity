@@ -14,9 +14,7 @@ acm_import_certificate(
 )
 }
 \arguments{
-\item{CertificateArn}{The \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Name (ARN)}
-of an imported certificate to replace. To import a new certificate, omit
-this field.}
+\item{CertificateArn}{The \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Name (ARN)} of an imported certificate to replace. To import a new certificate, omit this field.}
 
 \item{Certificate}{[required] The certificate to import.}
 

@@ -9,8 +9,7 @@ detective_untag_resource(ResourceArn, TagKeys)
 \arguments{
 \item{ResourceArn}{[required] The ARN of the behavior graph to remove the tags from.}
 
-\item{TagKeys}{[required] The tag keys of the tags to remove from the behavior graph. You can
-remove up to 50 tags at a time.}
+\item{TagKeys}{[required] The tag keys of the tags to remove from the behavior graph. You can remove up to 50 tags at a time.}
 }
 \description{
 Removes tags from a behavior graph.

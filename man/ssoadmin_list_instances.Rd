@@ -11,8 +11,7 @@ ssoadmin_list_instances(MaxResults = NULL, NextToken = NULL)
 \arguments{
 \item{MaxResults}{The maximum number of results to display for the instance.}
 
-\item{NextToken}{The pagination token for the list API. Initially the value is null. Use
-the output of previous API calls to make subsequent calls.}
+\item{NextToken}{The pagination token for the list API. Initially the value is null. Use the output of previous API calls to make subsequent calls.}
 }
 \description{
 Lists the details of the organization and account instances of IAM Identity Center that were created in or visible to the account calling this API.

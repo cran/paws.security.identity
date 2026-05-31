@@ -2,7 +2,7 @@
 % Please edit documentation in R/securityhub_operations.R
 \name{securityhub_describe_action_targets}
 \alias{securityhub_describe_action_targets}
-\title{Returns a list of the custom action targets in Security Hub in your
+\title{Returns a list of the custom action targets in Security Hub CSPM in your
 account}
 \usage{
 securityhub_describe_action_targets(
@@ -12,21 +12,16 @@ securityhub_describe_action_targets(
 )
 }
 \arguments{
-\item{ActionTargetArns}{A list of custom action target ARNs for the custom action targets to
-retrieve.}
+\item{ActionTargetArns}{A list of custom action target ARNs for the custom action targets to retrieve.}
 
-\item{NextToken}{The token that is required for pagination. On your first call to the
-\code{\link[=securityhub_describe_action_targets]{describe_action_targets}}
-operation, set the value of this parameter to \code{NULL}.
+\item{NextToken}{The token that is required for pagination. On your first call to the \code{\link[=securityhub_describe_action_targets]{describe_action_targets}} operation, set the value of this parameter to \code{NULL}.
 
-For subsequent calls to the operation, to continue listing data, set the
-value of this parameter to the value returned from the previous
-response.}
+For subsequent calls to the operation, to continue listing data, set the value of this parameter to the value returned from the previous response.}
 
 \item{MaxResults}{The maximum number of results to return.}
 }
 \description{
-Returns a list of the custom action targets in Security Hub in your account.
+Returns a list of the custom action targets in Security Hub CSPM in your account.
 
 See \url{https://www.paws-r-sdk.com/docs/securityhub_describe_action_targets/} for full documentation.
 }

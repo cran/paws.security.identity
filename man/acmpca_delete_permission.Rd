@@ -12,16 +12,11 @@ acmpca_delete_permission(
 )
 }
 \arguments{
-\item{CertificateAuthorityArn}{[required] The Amazon Resource Number (ARN) of the private CA that issued the
-permissions. You can find the CA's ARN by calling the
-\code{\link[=acmpca_list_certificate_authorities]{list_certificate_authorities}}
-action. This must have the following form:
+\item{CertificateAuthorityArn}{[required] The Amazon Resource Number (ARN) of the private CA that issued the permissions. You can find the CA's ARN by calling the \code{\link[=acmpca_list_certificate_authorities]{list_certificate_authorities}} action. This must have the following form:
 
 \code{arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 }.}
 
-\item{Principal}{[required] The Amazon Web Services service or identity that will have its CA
-permissions revoked. At this time, the only valid service principal is
-\code{acm.amazonaws.com}}
+\item{Principal}{[required] The Amazon Web Services service or identity that will have its CA permissions revoked. At this time, the only valid service principal is \code{acm.amazonaws.com}}
 
 \item{SourceAccount}{The Amazon Web Services account that calls this action.}
 }

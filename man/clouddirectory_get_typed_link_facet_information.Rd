@@ -7,8 +7,7 @@
 clouddirectory_get_typed_link_facet_information(SchemaArn, Name)
 }
 \arguments{
-\item{SchemaArn}{[required] The Amazon Resource Name (ARN) that is associated with the schema. For
-more information, see arns.}
+\item{SchemaArn}{[required] The Amazon Resource Name (ARN) that is associated with the schema. For more information, see arns.}
 
 \item{Name}{[required] The unique name of the typed link facet.}
 }

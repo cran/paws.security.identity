@@ -15,51 +15,29 @@ directoryservice_add_ip_routes(
 \arguments{
 \item{DirectoryId}{[required] Identifier (ID) of the directory to which to add the address block.}
 
-\item{IpRoutes}{[required] IP address blocks, using CIDR format, of the traffic to route. This is
-often the IP address block of the DNS server used for your self-managed
-domain.}
+\item{IpRoutes}{[required] IP address blocks, using CIDR format, of the traffic to route. This is often the IP address block of the DNS server used for your self-managed domain.}
 
-\item{UpdateSecurityGroupForDirectoryControllers}{If set to true, updates the inbound and outbound rules of the security
-group that has the description: "Amazon Web Services created security
-group for \emph{directory ID} directory controllers." Following are the new
-rules:
+\item{UpdateSecurityGroupForDirectoryControllers}{If set to true, updates the inbound and outbound rules of the security group that has the description: "Amazon Web Services created security group for \emph{directory ID} directory controllers." Following are the new rules:
 
 Inbound:
 \itemize{
-\item Type: Custom UDP Rule, Protocol: UDP, Range: 88, Source: Managed
-Microsoft AD VPC IPv4 CIDR
-\item Type: Custom UDP Rule, Protocol: UDP, Range: 123, Source: Managed
-Microsoft AD VPC IPv4 CIDR
-\item Type: Custom UDP Rule, Protocol: UDP, Range: 138, Source: Managed
-Microsoft AD VPC IPv4 CIDR
-\item Type: Custom UDP Rule, Protocol: UDP, Range: 389, Source: Managed
-Microsoft AD VPC IPv4 CIDR
-\item Type: Custom UDP Rule, Protocol: UDP, Range: 464, Source: Managed
-Microsoft AD VPC IPv4 CIDR
-\item Type: Custom UDP Rule, Protocol: UDP, Range: 445, Source: Managed
-Microsoft AD VPC IPv4 CIDR
-\item Type: Custom TCP Rule, Protocol: TCP, Range: 88, Source: Managed
-Microsoft AD VPC IPv4 CIDR
-\item Type: Custom TCP Rule, Protocol: TCP, Range: 135, Source: Managed
-Microsoft AD VPC IPv4 CIDR
-\item Type: Custom TCP Rule, Protocol: TCP, Range: 445, Source: Managed
-Microsoft AD VPC IPv4 CIDR
-\item Type: Custom TCP Rule, Protocol: TCP, Range: 464, Source: Managed
-Microsoft AD VPC IPv4 CIDR
-\item Type: Custom TCP Rule, Protocol: TCP, Range: 636, Source: Managed
-Microsoft AD VPC IPv4 CIDR
-\item Type: Custom TCP Rule, Protocol: TCP, Range: 1024-65535, Source:
-Managed Microsoft AD VPC IPv4 CIDR
-\item Type: Custom TCP Rule, Protocol: TCP, Range: 3268-33269, Source:
-Managed Microsoft AD VPC IPv4 CIDR
-\item Type: DNS (UDP), Protocol: UDP, Range: 53, Source: Managed Microsoft
-AD VPC IPv4 CIDR
-\item Type: DNS (TCP), Protocol: TCP, Range: 53, Source: Managed Microsoft
-AD VPC IPv4 CIDR
-\item Type: LDAP, Protocol: TCP, Range: 389, Source: Managed Microsoft AD
-VPC IPv4 CIDR
-\item Type: All ICMP, Protocol: All, Range: N/A, Source: Managed Microsoft
-AD VPC IPv4 CIDR
+\item Type: Custom UDP Rule, Protocol: UDP, Range: 88, Source: Managed Microsoft AD VPC IPv4 CIDR
+\item Type: Custom UDP Rule, Protocol: UDP, Range: 123, Source: Managed Microsoft AD VPC IPv4 CIDR
+\item Type: Custom UDP Rule, Protocol: UDP, Range: 138, Source: Managed Microsoft AD VPC IPv4 CIDR
+\item Type: Custom UDP Rule, Protocol: UDP, Range: 389, Source: Managed Microsoft AD VPC IPv4 CIDR
+\item Type: Custom UDP Rule, Protocol: UDP, Range: 464, Source: Managed Microsoft AD VPC IPv4 CIDR
+\item Type: Custom UDP Rule, Protocol: UDP, Range: 445, Source: Managed Microsoft AD VPC IPv4 CIDR
+\item Type: Custom TCP Rule, Protocol: TCP, Range: 88, Source: Managed Microsoft AD VPC IPv4 CIDR
+\item Type: Custom TCP Rule, Protocol: TCP, Range: 135, Source: Managed Microsoft AD VPC IPv4 CIDR
+\item Type: Custom TCP Rule, Protocol: TCP, Range: 445, Source: Managed Microsoft AD VPC IPv4 CIDR
+\item Type: Custom TCP Rule, Protocol: TCP, Range: 464, Source: Managed Microsoft AD VPC IPv4 CIDR
+\item Type: Custom TCP Rule, Protocol: TCP, Range: 636, Source: Managed Microsoft AD VPC IPv4 CIDR
+\item Type: Custom TCP Rule, Protocol: TCP, Range: 1024-65535, Source: Managed Microsoft AD VPC IPv4 CIDR
+\item Type: Custom TCP Rule, Protocol: TCP, Range: 3268-33269, Source: Managed Microsoft AD VPC IPv4 CIDR
+\item Type: DNS (UDP), Protocol: UDP, Range: 53, Source: Managed Microsoft AD VPC IPv4 CIDR
+\item Type: DNS (TCP), Protocol: TCP, Range: 53, Source: Managed Microsoft AD VPC IPv4 CIDR
+\item Type: LDAP, Protocol: TCP, Range: 389, Source: Managed Microsoft AD VPC IPv4 CIDR
+\item Type: All ICMP, Protocol: All, Range: N/A, Source: Managed Microsoft AD VPC IPv4 CIDR
 }
 
 Outbound:
@@ -67,8 +45,7 @@ Outbound:
 \item Type: All traffic, Protocol: All, Range: All, Destination: 0.0.0.0/0
 }
 
-These security rules impact an internal network interface that is not
-exposed publicly.}
+These security rules impact an internal network interface that is not exposed publicly.}
 }
 \description{
 If the DNS server for your self-managed domain uses a publicly addressable IP address, you must add a CIDR address block to correctly route traffic to and from your Microsoft AD on Amazon Web Services. \emph{AddIpRoutes} adds this address block. You can also use \emph{AddIpRoutes} to facilitate routing traffic that uses public IP ranges from your Microsoft AD on Amazon Web Services to a peer VPC.

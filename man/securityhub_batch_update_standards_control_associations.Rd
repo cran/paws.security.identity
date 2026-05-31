@@ -10,8 +10,9 @@ securityhub_batch_update_standards_control_associations(
 )
 }
 \arguments{
-\item{StandardsControlAssociationUpdates}{[required] Updates the enablement status of a security control in a specified
-standard.}
+\item{StandardsControlAssociationUpdates}{[required] Updates the enablement status of a security control in a specified standard.
+
+Calls to this operation return a \code{RESOURCE_NOT_FOUND_EXCEPTION} error when the standard subscription for the control has \code{StandardsControlsUpdatable} value \code{NOT_READY_FOR_UPDATES}.}
 }
 \description{
 For a batch of security controls and standards, this operation updates the enablement status of a control in a standard.

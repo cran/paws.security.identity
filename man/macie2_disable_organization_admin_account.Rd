@@ -8,8 +8,7 @@ for an organization in Organizations}
 macie2_disable_organization_admin_account(adminAccountId)
 }
 \arguments{
-\item{adminAccountId}{[required] The Amazon Web Services account ID of the delegated Amazon Macie
-administrator account.}
+\item{adminAccountId}{[required] The Amazon Web Services account ID of the delegated Amazon Macie administrator account.}
 }
 \description{
 Disables an account as the delegated Amazon Macie administrator account for an organization in Organizations.

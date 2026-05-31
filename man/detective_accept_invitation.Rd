@@ -8,8 +8,7 @@ behavior graph}
 detective_accept_invitation(GraphArn)
 }
 \arguments{
-\item{GraphArn}{[required] The ARN of the behavior graph that the member account is accepting the
-invitation for.
+\item{GraphArn}{[required] The ARN of the behavior graph that the member account is accepting the invitation for.
 
 The member account status in the behavior graph must be \code{INVITED}.}
 }

@@ -7,8 +7,7 @@
 clouddirectory_detach_typed_link(DirectoryArn, TypedLinkSpecifier)
 }
 \arguments{
-\item{DirectoryArn}{[required] The Amazon Resource Name (ARN) of the directory where you want to detach
-the typed link.}
+\item{DirectoryArn}{[required] The Amazon Resource Name (ARN) of the directory where you want to detach the typed link.}
 
 \item{TypedLinkSpecifier}{[required] Used to accept a typed link specifier as input.}
 }

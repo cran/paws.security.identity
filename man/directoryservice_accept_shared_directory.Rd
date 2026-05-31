@@ -8,8 +8,7 @@ owner account}
 directoryservice_accept_shared_directory(SharedDirectoryId)
 }
 \arguments{
-\item{SharedDirectoryId}{[required] Identifier of the shared directory in the directory consumer account.
-This identifier is different for each directory owner account.}
+\item{SharedDirectoryId}{[required] Identifier of the shared directory in the directory consumer account. This identifier is different for each directory owner account.}
 }
 \description{
 Accepts a directory sharing request that was sent from the directory owner account.

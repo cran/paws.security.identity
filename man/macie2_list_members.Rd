@@ -8,16 +8,11 @@ Amazon Macie administrator account}
 macie2_list_members(maxResults = NULL, nextToken = NULL, onlyAssociated = NULL)
 }
 \arguments{
-\item{maxResults}{The maximum number of items to include in each page of a paginated
-response.}
+\item{maxResults}{The maximum number of items to include in each page of a paginated response.}
 
-\item{nextToken}{The nextToken string that specifies which page of results to return in a
-paginated response.}
+\item{nextToken}{The nextToken string that specifies which page of results to return in a paginated response.}
 
-\item{onlyAssociated}{Specifies which accounts to include in the response, based on the status
-of an account's relationship with the administrator account. By default,
-the response includes only current member accounts. To include all
-accounts, set this value to false.}
+\item{onlyAssociated}{Specifies which accounts to include in the response, based on the status of an account's relationship with the administrator account. By default, the response includes only current member accounts. To include all accounts, set this value to false.}
 }
 \description{
 Retrieves information about the accounts that are associated with an Amazon Macie administrator account.

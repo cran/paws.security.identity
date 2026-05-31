@@ -12,16 +12,13 @@ cleanroomsml_list_audience_generation_jobs(
 )
 }
 \arguments{
-\item{nextToken}{The token value retrieved from a previous call to access the next page
-of results.}
+\item{nextToken}{The token value retrieved from a previous call to access the next page of results.}
 
 \item{maxResults}{The maximum size of the results that is returned per call.}
 
-\item{configuredAudienceModelArn}{The Amazon Resource Name (ARN) of the configured audience model that was
-used for the audience generation jobs that you are interested in.}
+\item{configuredAudienceModelArn}{The Amazon Resource Name (ARN) of the configured audience model that was used for the audience generation jobs that you are interested in.}
 
-\item{collaborationId}{The identifier of the collaboration that contains the audience
-generation jobs that you are interested in.}
+\item{collaborationId}{The identifier of the collaboration that contains the audience generation jobs that you are interested in.}
 }
 \description{
 Returns a list of audience generation jobs.

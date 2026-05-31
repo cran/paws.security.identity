@@ -8,11 +8,9 @@ list}
 fms_get_apps_list(ListId, DefaultList = NULL)
 }
 \arguments{
-\item{ListId}{[required] The ID of the Firewall Manager applications list that you want the
-details for.}
+\item{ListId}{[required] The ID of the Firewall Manager applications list that you want the details for.}
 
-\item{DefaultList}{Specifies whether the list to retrieve is a default list owned by
-Firewall Manager.}
+\item{DefaultList}{Specifies whether the list to retrieve is a default list owned by Firewall Manager.}
 }
 \description{
 Returns information about the specified Firewall Manager applications list.

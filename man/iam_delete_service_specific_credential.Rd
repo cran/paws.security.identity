@@ -10,20 +10,13 @@ iam_delete_service_specific_credential(
 )
 }
 \arguments{
-\item{UserName}{The name of the IAM user associated with the service-specific
-credential. If this value is not specified, then the operation assumes
-the user whose credentials are used to call the operation.
+\item{UserName}{The name of the IAM user associated with the service-specific credential. If this value is not specified, then the operation assumes the user whose credentials are used to call the operation.
 
-This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
-consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: _+=,.@-}
+This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-}
 
-\item{ServiceSpecificCredentialId}{[required] The unique identifier of the service-specific credential. You can get
-this value by calling
-\code{\link[=iam_list_service_specific_credentials]{list_service_specific_credentials}}.
+\item{ServiceSpecificCredentialId}{[required] The unique identifier of the service-specific credential. You can get this value by calling \code{\link[=iam_list_service_specific_credentials]{list_service_specific_credentials}}.
 
-This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
-that can consist of any upper or lowercased letter or digit.}
+This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters that can consist of any upper or lowercased letter or digit.}
 }
 \description{
 Deletes the specified service-specific credential.

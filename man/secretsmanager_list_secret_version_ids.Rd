@@ -14,25 +14,15 @@ secretsmanager_list_secret_version_ids(
 \arguments{
 \item{SecretId}{[required] The ARN or name of the secret whose versions you want to list.
 
-For an ARN, we recommend that you specify a complete ARN rather than a
-partial ARN. See \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/troubleshoot.html#ARN_secretnamehyphen}{Finding a secret from a partial ARN}.}
+For an ARN, we recommend that you specify a complete ARN rather than a partial ARN. See \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/troubleshoot.html#ARN_secretnamehyphen}{Finding a secret from a partial ARN}.}
 
 \item{MaxResults}{The number of results to include in the response.
 
-If there are more results available, in the response, Secrets Manager
-includes \code{NextToken}. To get the next results, call
-\code{\link[=secretsmanager_list_secret_version_ids]{list_secret_version_ids}}
-again with the value from \code{NextToken}.}
+If there are more results available, in the response, Secrets Manager includes \code{NextToken}. To get the next results, call \code{\link[=secretsmanager_list_secret_version_ids]{list_secret_version_ids}} again with the value from \code{NextToken}.}
 
-\item{NextToken}{A token that indicates where the output should continue from, if a
-previous call did not show all results. To get the next results, call
-\code{\link[=secretsmanager_list_secret_version_ids]{list_secret_version_ids}}
-again with this value.}
+\item{NextToken}{A token that indicates where the output should continue from, if a previous call did not show all results. To get the next results, call \code{\link[=secretsmanager_list_secret_version_ids]{list_secret_version_ids}} again with this value.}
 
-\item{IncludeDeprecated}{Specifies whether to include versions of secrets that don't have any
-staging labels attached to them. Versions without staging labels are
-considered deprecated and are subject to deletion by Secrets Manager. By
-default, versions without staging labels aren't included.}
+\item{IncludeDeprecated}{Specifies whether to include versions of secrets that don't have any staging labels attached to them. Versions without staging labels are considered deprecated and are subject to deletion by Secrets Manager. By default, versions without staging labels aren't included.}
 }
 \description{
 Lists the versions of a secret. Secrets Manager uses staging labels to indicate the different versions of a secret. For more information, see \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/#term_version}{Secrets Manager concepts: Versions}.

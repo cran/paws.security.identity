@@ -12,25 +12,24 @@ directoryservice_create_trust(
   TrustDirection,
   TrustType = NULL,
   ConditionalForwarderIpAddrs = NULL,
+  ConditionalForwarderIpv6Addrs = NULL,
   SelectiveAuth = NULL
 )
 }
 \arguments{
-\item{DirectoryId}{[required] The Directory ID of the Managed Microsoft AD directory for which to
-establish the trust relationship.}
+\item{DirectoryId}{[required] The Directory ID of the Managed Microsoft AD directory for which to establish the trust relationship.}
 
-\item{RemoteDomainName}{[required] The Fully Qualified Domain Name (FQDN) of the external domain for which
-to create the trust relationship.}
+\item{RemoteDomainName}{[required] The Fully Qualified Domain Name (FQDN) of the external domain for which to create the trust relationship.}
 
-\item{TrustPassword}{[required] The trust password. The trust password must be the same password that
-was used when creating the trust relationship on the external domain.}
+\item{TrustPassword}{[required] The trust password. The trust password must be the same password that was used when creating the trust relationship on the external domain.}
 
 \item{TrustDirection}{[required] The direction of the trust relationship.}
 
 \item{TrustType}{The trust relationship type. \code{Forest} is the default.}
 
-\item{ConditionalForwarderIpAddrs}{The IP addresses of the remote DNS server associated with
-RemoteDomainName.}
+\item{ConditionalForwarderIpAddrs}{The IP addresses of the remote DNS server associated with RemoteDomainName.}
+
+\item{ConditionalForwarderIpv6Addrs}{The IPv6 addresses of the remote DNS server associated with RemoteDomainName.}
 
 \item{SelectiveAuth}{Optional parameter to enable selective authentication for the trust.}
 }

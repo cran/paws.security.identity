@@ -13,15 +13,13 @@ clouddirectory_get_object_attributes(
 )
 }
 \arguments{
-\item{DirectoryArn}{[required] The Amazon Resource Name (ARN) that is associated with the Directory
-where the object resides.}
+\item{DirectoryArn}{[required] The Amazon Resource Name (ARN) that is associated with the Directory where the object resides.}
 
 \item{ObjectReference}{[required] Reference that identifies the object whose attributes will be retrieved.}
 
 \item{ConsistencyLevel}{The consistency level at which to retrieve the attributes on an object.}
 
-\item{SchemaFacet}{[required] Identifier for the facet whose attributes will be retrieved. See
-SchemaFacet for details.}
+\item{SchemaFacet}{[required] Identifier for the facet whose attributes will be retrieved. See SchemaFacet for details.}
 
 \item{AttributeNames}{[required] List of attribute names whose values will be retrieved.}
 }

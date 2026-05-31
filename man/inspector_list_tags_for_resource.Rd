@@ -7,8 +7,7 @@
 inspector_list_tags_for_resource(resourceArn)
 }
 \arguments{
-\item{resourceArn}{[required] The ARN that specifies the assessment template whose tags you want to
-list.}
+\item{resourceArn}{[required] The ARN that specifies the assessment template whose tags you want to list.}
 }
 \description{
 Lists all tags associated with an assessment template.

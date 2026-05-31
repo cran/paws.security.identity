@@ -7,15 +7,7 @@ NULL
 #' @description
 #' Amazon Cloud Directory
 #' 
-#' Amazon Cloud Directory is a component of the AWS Directory Service that
-#' simplifies the development and management of cloud-scale web, mobile,
-#' and IoT applications. This guide describes the Cloud Directory
-#' operations that you can call programmatically and includes detailed
-#' information on data types and errors. For information about Cloud
-#' Directory features, see [AWS Directory
-#' Service](https://aws.amazon.com/directoryservice/) and the [Amazon Cloud
-#' Directory Developer
-#' Guide](https://docs.aws.amazon.com/clouddirectory/latest/developerguide/what_is_cloud_directory.html).
+#' Amazon Cloud Directory is a component of the AWS Directory Service that simplifies the development and management of cloud-scale web, mobile, and IoT applications. This guide describes the Cloud Directory operations that you can call programmatically and includes detailed information on data types and errors. For information about Cloud Directory features, see [AWS Directory Service](https://aws.amazon.com/directoryservice/) and the [Amazon Cloud Directory Developer Guide](https://docs.aws.amazon.com/clouddirectory/latest/developerguide/what_is_cloud_directory.html).
 #'
 #' @param
 #' config
@@ -197,7 +189,7 @@ clouddirectory <- function(config = list(), credentials = list(), endpoint = NUL
 
 .clouddirectory$metadata <- list(
   service_name = "clouddirectory",
-  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "clouddirectory.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "clouddirectory.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "clouddirectory.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "clouddirectory.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "clouddirectory.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "clouddirectory.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "clouddirectory.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "clouddirectory.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "clouddirectory.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "clouddirectory.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "clouddirectory.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "clouddirectory.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "clouddirectory.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "clouddirectory.{region}.csp.hci.ic.gov", global = FALSE), "^eusc\\-(de)\\-\\w+\\-\\d+$" = list(endpoint = "clouddirectory.{region}.amazonaws.eu", global = FALSE)),
   service_id = "CloudDirectory",
   api_version = "2017-01-11",
   signing_name = "clouddirectory",

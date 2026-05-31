@@ -8,15 +8,9 @@ version used for the Amazon Web Services account}
 iam_set_security_token_service_preferences(GlobalEndpointTokenVersion)
 }
 \arguments{
-\item{GlobalEndpointTokenVersion}{[required] The version of the global endpoint token. Version 1 tokens are valid
-only in Amazon Web Services Regions that are available by default. These
-tokens do not work in manually enabled Regions, such as Asia Pacific
-(Hong Kong). Version 2 tokens are valid in all Regions. However, version
-2 tokens are longer and might affect systems where you temporarily store
-tokens.
+\item{GlobalEndpointTokenVersion}{[required] The version of the global endpoint token. Version 1 tokens are valid only in Amazon Web Services Regions that are available by default. These tokens do not work in manually enabled Regions, such as Asia Pacific (Hong Kong). Version 2 tokens are valid in all Regions. However, version 2 tokens are longer and might affect systems where you temporarily store tokens.
 
-For information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html}{Activating and deactivating STS in an Amazon Web Services Region}
-in the \emph{IAM User Guide}.}
+For information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html}{Activating and deactivating STS in an Amazon Web Services Region} in the \emph{IAM User Guide}.}
 }
 \description{
 Sets the specified version of the global endpoint token as the token version used for the Amazon Web Services account.

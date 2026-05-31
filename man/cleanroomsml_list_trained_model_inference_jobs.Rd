@@ -9,19 +9,20 @@ cleanroomsml_list_trained_model_inference_jobs(
   nextToken = NULL,
   maxResults = NULL,
   membershipIdentifier,
-  trainedModelArn = NULL
+  trainedModelArn = NULL,
+  trainedModelVersionIdentifier = NULL
 )
 }
 \arguments{
-\item{nextToken}{The token value retrieved from a previous call to access the next page
-of results.}
+\item{nextToken}{The token value retrieved from a previous call to access the next page of results.}
 
 \item{maxResults}{The maximum size of the results that is returned per call.}
 
 \item{membershipIdentifier}{[required] The membership}
 
-\item{trainedModelArn}{The Amazon Resource Name (ARN) of a trained model that was used to
-create the trained model inference jobs that you are interested in.}
+\item{trainedModelArn}{The Amazon Resource Name (ARN) of a trained model that was used to create the trained model inference jobs that you are interested in.}
+
+\item{trainedModelVersionIdentifier}{The version identifier of the trained model to filter inference jobs by. When specified, only inference jobs that used this specific version of the trained model are returned.}
 }
 \description{
 Returns a list of trained model inference jobs that match the request parameters.

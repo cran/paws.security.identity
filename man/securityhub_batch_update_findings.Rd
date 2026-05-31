@@ -2,8 +2,8 @@
 % Please edit documentation in R/securityhub_operations.R
 \name{securityhub_batch_update_findings}
 \alias{securityhub_batch_update_findings}
-\title{Used by Security Hub customers to update information about their
-investigation into a finding}
+\title{Used by Security Hub CSPM customers to update information about their
+investigation into one or more findings}
 \usage{
 securityhub_batch_update_findings(
   FindingIdentifiers,
@@ -19,14 +19,11 @@ securityhub_batch_update_findings(
 )
 }
 \arguments{
-\item{FindingIdentifiers}{[required] The list of findings to update.
-\code{\link[=securityhub_batch_update_findings]{batch_update_findings}} can be used
-to update up to 100 findings at a time.
+\item{FindingIdentifiers}{[required] The list of findings to update. \code{\link[=securityhub_batch_update_findings]{batch_update_findings}} can be used to update up to 100 findings at a time.
 
-For each finding, the list provides the finding identifier and the ARN
-of the finding provider.}
+For each finding, the list provides the finding identifier and the ARN of the finding provider.}
 
-\item{Note}{}
+\item{Note}{A user-defined note added to a finding.}
 
 \item{Severity}{Used to update the finding severity.}
 
@@ -36,27 +33,19 @@ The available values for \code{VerificationState} are as follows.
 \itemize{
 \item \code{UNKNOWN} – The default disposition of a security finding
 \item \code{TRUE_POSITIVE} – The security finding is confirmed
-\item \code{FALSE_POSITIVE} – The security finding was determined to be a false
-alarm
-\item \code{BENIGN_POSITIVE} – A special case of \code{TRUE_POSITIVE} where the
-finding doesn't pose any threat, is expected, or both
+\item \code{FALSE_POSITIVE} – The security finding was determined to be a false alarm
+\item \code{BENIGN_POSITIVE} – A special case of \code{TRUE_POSITIVE} where the finding doesn't pose any threat, is expected, or both
 }}
 
-\item{Confidence}{The updated value for the finding confidence. Confidence is defined as
-the likelihood that a finding accurately identifies the behavior or
-issue that it was intended to identify.
+\item{Confidence}{The updated value for the finding confidence. Confidence is defined as the likelihood that a finding accurately identifies the behavior or issue that it was intended to identify.
 
-Confidence is scored on a 0-100 basis using a ratio scale, where 0 means
-zero percent confidence and 100 means 100 percent confidence.}
+Confidence is scored on a 0-100 basis using a ratio scale, where 0 means zero percent confidence and 100 means 100 percent confidence.}
 
-\item{Criticality}{The updated value for the level of importance assigned to the resources
-associated with the findings.
+\item{Criticality}{The updated value for the level of importance assigned to the resources associated with the findings.
 
-A score of 0 means that the underlying resources have no criticality,
-and a score of 100 is reserved for the most critical resources.}
+A score of 0 means that the underlying resources have no criticality, and a score of 100 is reserved for the most critical resources.}
 
-\item{Types}{One or more finding types in the format of namespace/category/classifier
-that classify a finding.
+\item{Types}{One or more finding types in the format of namespace/category/classifier that classify a finding.
 
 Valid namespace values are as follows.
 \itemize{
@@ -67,18 +56,16 @@ Valid namespace values are as follows.
 \item Sensitive Data Identifications
 }}
 
-\item{UserDefinedFields}{A list of name/value string pairs associated with the finding. These are
-custom, user-defined fields added to a finding.}
+\item{UserDefinedFields}{A list of name/value string pairs associated with the finding. These are custom, user-defined fields added to a finding.}
 
 \item{Workflow}{Used to update the workflow status of a finding.
 
-The workflow status indicates the progress of the investigation into the
-finding.}
+The workflow status indicates the progress of the investigation into the finding.}
 
 \item{RelatedFindings}{A list of findings that are related to the updated findings.}
 }
 \description{
-Used by Security Hub customers to update information about their investigation into a finding. Requested by administrator accounts or member accounts. Administrator accounts can update findings for their account and their member accounts. Member accounts can update findings for their account.
+Used by Security Hub CSPM customers to update information about their investigation into one or more findings. Requested by administrator accounts or member accounts. Administrator accounts can update findings for their account and their member accounts. A member account can update findings only for their own account. Administrator and member accounts can use this operation to update the following fields and objects for one or more findings:
 
 See \url{https://www.paws-r-sdk.com/docs/securityhub_batch_update_findings/} for full documentation.
 }

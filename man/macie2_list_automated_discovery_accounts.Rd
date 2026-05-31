@@ -12,17 +12,11 @@ macie2_list_automated_discovery_accounts(
 )
 }
 \arguments{
-\item{accountIds}{The Amazon Web Services account ID for each account, for as many as 50
-accounts. To retrieve the status for multiple accounts, append the
-accountIds parameter and argument for each account, separated by an
-ampersand (&). To retrieve the status for all the accounts in an
-organization, omit this parameter.}
+\item{accountIds}{The Amazon Web Services account ID for each account, for as many as 50 accounts. To retrieve the status for multiple accounts, append the accountIds parameter and argument for each account, separated by an ampersand (&). To retrieve the status for all the accounts in an organization, omit this parameter.}
 
-\item{maxResults}{The maximum number of items to include in each page of a paginated
-response.}
+\item{maxResults}{The maximum number of items to include in each page of a paginated response.}
 
-\item{nextToken}{The nextToken string that specifies which page of results to return in a
-paginated response.}
+\item{nextToken}{The nextToken string that specifies which page of results to return in a paginated response.}
 }
 \description{
 Retrieves the status of automated sensitive data discovery for one or more accounts.

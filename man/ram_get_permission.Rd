@@ -7,19 +7,11 @@
 ram_get_permission(permissionArn, permissionVersion = NULL)
 }
 \arguments{
-\item{permissionArn}{[required] Specifies the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Name (ARN)}
-of the permission whose contents you want to retrieve. To find the ARN
-for a permission, use either the
-\code{\link[=ram_list_permissions]{list_permissions}} operation or go to the
-Permissions library page in the RAM console and then choose the name of
-the permission. The ARN is displayed on the detail page.}
+\item{permissionArn}{[required] Specifies the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Name (ARN)} of the permission whose contents you want to retrieve. To find the ARN for a permission, use either the \code{\link[=ram_list_permissions]{list_permissions}} operation or go to the Permissions library page in the RAM console and then choose the name of the permission. The ARN is displayed on the detail page.}
 
-\item{permissionVersion}{Specifies the version number of the RAM permission to retrieve. If you
-don't specify this parameter, the operation retrieves the default
-version.
+\item{permissionVersion}{Specifies the version number of the RAM permission to retrieve. If you don't specify this parameter, the operation retrieves the default version.
 
-To see the list of available versions, use
-\code{\link[=ram_list_permission_versions]{list_permission_versions}}.}
+To see the list of available versions, use \code{\link[=ram_list_permission_versions]{list_permission_versions}}.}
 }
 \description{
 Retrieves the contents of a managed permission in JSON format.

@@ -8,11 +8,9 @@ accounts}
 directoryservice_unshare_directory(DirectoryId, UnshareTarget)
 }
 \arguments{
-\item{DirectoryId}{[required] The identifier of the Managed Microsoft AD directory that you want to
-stop sharing.}
+\item{DirectoryId}{[required] The identifier of the Managed Microsoft AD directory that you want to stop sharing.}
 
-\item{UnshareTarget}{[required] Identifier for the directory consumer account with whom the directory
-has to be unshared.}
+\item{UnshareTarget}{[required] Identifier for the directory consumer account with whom the directory has to be unshared.}
 }
 \description{
 Stops the directory sharing between the directory owner and consumer accounts.

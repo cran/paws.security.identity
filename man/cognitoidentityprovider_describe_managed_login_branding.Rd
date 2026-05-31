@@ -12,15 +12,11 @@ cognitoidentityprovider_describe_managed_login_branding(
 )
 }
 \arguments{
-\item{UserPoolId}{[required] The ID of the user pool that contains the managed login branding style
-that you want to get information about.}
+\item{UserPoolId}{[required] The ID of the user pool that contains the managed login branding style that you want to get information about.}
 
-\item{ManagedLoginBrandingId}{[required] The ID of the managed login branding style that you want to get more
-information about.}
+\item{ManagedLoginBrandingId}{[required] The ID of the managed login branding style that you want to get more information about.}
 
-\item{ReturnMergedResources}{When \code{true}, returns values for branding options that are unchanged from
-Amazon Cognito defaults. When \code{false} or when you omit this parameter,
-returns only values that you customized in your branding style.}
+\item{ReturnMergedResources}{When \code{true}, returns values for branding options that are unchanged from Amazon Cognito defaults. When \code{false} or when you omit this parameter, returns only values that you customized in your branding style.}
 }
 \description{
 Given the ID of a managed login branding style, returns detailed information about the style.

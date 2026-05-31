@@ -12,19 +12,13 @@ guardduty_list_publishing_destinations(
 )
 }
 \arguments{
-\item{DetectorId}{[required] The detector ID for which you want to retrieve the publishing
-destination.
+\item{DetectorId}{[required] The detector ID for which you want to retrieve the publishing destination.
 
-To find the \code{detectorId} in the current Region, see the Settings page in
-the GuardDuty console, or run the
-\code{\link[=guardduty_list_detectors]{list_detectors}} API.}
+To find the \code{detectorId} in the current Region, see the Settings page in the GuardDuty console, or run the \code{\link[=guardduty_list_detectors]{list_detectors}} API.}
 
 \item{MaxResults}{The maximum number of results to return in the response.}
 
-\item{NextToken}{A token to use for paginating results that are returned in the response.
-Set the value of this parameter to null for the first request to a list
-action. For subsequent calls, use the \code{NextToken} value returned from
-the previous request to continue listing results after the first page.}
+\item{NextToken}{A token to use for paginating results that are returned in the response. Set the value of this parameter to null for the first request to a list action. For subsequent calls, use the \code{NextToken} value returned from the previous request to continue listing results after the first page.}
 }
 \description{
 Returns a list of publishing destinations associated with the specified \code{detectorId}.

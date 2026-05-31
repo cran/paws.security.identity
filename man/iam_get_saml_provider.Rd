@@ -8,11 +8,9 @@ SAML provider resource object was created or updated}
 iam_get_saml_provider(SAMLProviderArn)
 }
 \arguments{
-\item{SAMLProviderArn}{[required] The Amazon Resource Name (ARN) of the SAML provider resource object in
-IAM to get information about.
+\item{SAMLProviderArn}{[required] The Amazon Resource Name (ARN) of the SAML provider resource object in IAM to get information about.
 
-For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
-in the \emph{Amazon Web Services General Reference}.}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)} in the \emph{Amazon Web Services General Reference}.}
 }
 \description{
 Returns the SAML provider metadocument that was uploaded when the IAM SAML provider resource object was created or updated.

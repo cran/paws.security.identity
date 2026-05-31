@@ -7,16 +7,12 @@
 wafregional_disassociate_web_acl(ResourceArn)
 }
 \arguments{
-\item{ResourceArn}{[required] The ARN (Amazon Resource Name) of the resource from which the web ACL is
-being removed, either an application load balancer or Amazon API Gateway
-stage.
+\item{ResourceArn}{[required] The ARN (Amazon Resource Name) of the resource from which the web ACL is being removed, either an application load balancer or Amazon API Gateway stage.
 
 The ARN should be in one of the following formats:
 \itemize{
-\item For an Application Load Balancer:
-\code{arn:aws:elasticloadbalancing:region:account-id:loadbalancer/app/load-balancer-name/load-balancer-id }
-\item For an Amazon API Gateway stage:
-\verb{arn:aws:apigateway:region::/restapis/api-id/stages/stage-name }
+\item For an Application Load Balancer: \code{arn:aws:elasticloadbalancing:region:account-id:loadbalancer/app/load-balancer-name/load-balancer-id }
+\item For an Amazon API Gateway stage: \verb{arn:aws:apigateway:region::/restapis/api-id/stages/stage-name }
 }}
 }
 \description{

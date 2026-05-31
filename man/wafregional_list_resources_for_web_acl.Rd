@@ -7,11 +7,9 @@
 wafregional_list_resources_for_web_acl(WebACLId, ResourceType = NULL)
 }
 \arguments{
-\item{WebACLId}{[required] The unique identifier (ID) of the web ACL for which to list the
-associated resources.}
+\item{WebACLId}{[required] The unique identifier (ID) of the web ACL for which to list the associated resources.}
 
-\item{ResourceType}{The type of resource to list, either an application load balancer or
-Amazon API Gateway.}
+\item{ResourceType}{The type of resource to list, either an application load balancer or Amazon API Gateway.}
 }
 \description{
 This is \strong{AWS WAF Classic Regional} documentation. For more information, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic} in the developer guide.

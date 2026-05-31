@@ -7,15 +7,11 @@
 wafregional_update_rule(RuleId, ChangeToken, Updates)
 }
 \arguments{
-\item{RuleId}{[required] The \code{RuleId} of the \code{Rule} that you want to update. \code{RuleId} is returned
-by \code{\link[=wafregional_create_rule]{create_rule}} and by
-\code{\link[=wafregional_list_rules]{list_rules}}.}
+\item{RuleId}{[required] The \code{RuleId} of the \code{Rule} that you want to update. \code{RuleId} is returned by \code{\link[=wafregional_create_rule]{create_rule}} and by \code{\link[=wafregional_list_rules]{list_rules}}.}
 
-\item{ChangeToken}{[required] The value returned by the most recent call to
-\code{\link[=wafregional_get_change_token]{get_change_token}}.}
+\item{ChangeToken}{[required] The value returned by the most recent call to \code{\link[=wafregional_get_change_token]{get_change_token}}.}
 
-\item{Updates}{[required] An array of \code{RuleUpdate} objects that you want to insert into or delete
-from a Rule. For more information, see the applicable data types:
+\item{Updates}{[required] An array of \code{RuleUpdate} objects that you want to insert into or delete from a Rule. For more information, see the applicable data types:
 \itemize{
 \item RuleUpdate: Contains \code{Action} and \code{Predicate}
 \item Predicate: Contains \code{DataId}, \code{Negated}, and \code{Type}

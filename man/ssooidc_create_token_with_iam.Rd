@@ -2,8 +2,9 @@
 % Please edit documentation in R/ssooidc_operations.R
 \name{ssooidc_create_token_with_iam}
 \alias{ssooidc_create_token_with_iam}
-\title{Creates and returns access and refresh tokens for clients and
-applications that are authenticated using IAM entities}
+\title{Creates and returns access and refresh tokens for authorized client
+applications that are authenticated using any IAM entity, such as a
+service role or user}
 \usage{
 ssooidc_create_token_with_iam(
   clientId,
@@ -20,12 +21,9 @@ ssooidc_create_token_with_iam(
 )
 }
 \arguments{
-\item{clientId}{[required] The unique identifier string for the client or application. This value
-is an application ARN that has OAuth grants configured.}
+\item{clientId}{[required] The unique identifier string for the client or application. This value is an application ARN that has OAuth grants configured.}
 
-\item{grantType}{[required] Supports the following OAuth grant types: Authorization Code, Refresh
-Token, JWT Bearer, and Token Exchange. Specify one of the following
-values, depending on the grant type that you want:
+\item{grantType}{[required] Supports the following OAuth grant types: Authorization Code, Refresh Token, JWT Bearer, and Token Exchange. Specify one of the following values, depending on the grant type that you want:
 \itemize{
 \item Authorization Code - \code{authorization_code}
 \item Refresh Token - \code{refresh_token}
@@ -33,62 +31,35 @@ values, depending on the grant type that you want:
 \item Token Exchange - \code{urn:ietf:params:oauth:grant-type:token-exchange}
 }}
 
-\item{code}{Used only when calling this API for the Authorization Code grant type.
-This short-lived code is used to identify this authorization request.
-The code is obtained through a redirect from IAM Identity Center to a
-redirect URI persisted in the Authorization Code GrantOptions for the
-application.}
+\item{code}{Used only when calling this API for the Authorization Code grant type. This short-lived code is used to identify this authorization request. The code is obtained through a redirect from IAM Identity Center to a redirect URI persisted in the Authorization Code GrantOptions for the application.}
 
-\item{refreshToken}{Used only when calling this API for the Refresh Token grant type. This
-token is used to refresh short-lived tokens, such as the access token,
-that might expire.
+\item{refreshToken}{Used only when calling this API for the Refresh Token grant type. This token is used to refresh short-lived tokens, such as the access token, that might expire.
 
-For more information about the features and limitations of the current
-IAM Identity Center OIDC implementation, see \emph{Considerations for Using
-this Guide} in the \href{https://docs.aws.amazon.com/singlesignon/latest/OIDCAPIReference/Welcome.html}{IAM Identity Center OIDC API Reference}.}
+For more information about the features and limitations of the current IAM Identity Center OIDC implementation, see \emph{Considerations for Using this Guide} in the \href{https://docs.aws.amazon.com/singlesignon/latest/OIDCAPIReference/Welcome.html}{IAM Identity Center OIDC API Reference}.}
 
-\item{assertion}{Used only when calling this API for the JWT Bearer grant type. This
-value specifies the JSON Web Token (JWT) issued by a trusted token
-issuer. To authorize a trusted token issuer, configure the JWT Bearer
-GrantOptions for the application.}
+\item{assertion}{Used only when calling this API for the JWT Bearer grant type. This value specifies the JSON Web Token (JWT) issued by a trusted token issuer. To authorize a trusted token issuer, configure the JWT Bearer GrantOptions for the application.}
 
-\item{scope}{The list of scopes for which authorization is requested. The access
-token that is issued is limited to the scopes that are granted. If the
-value is not specified, IAM Identity Center authorizes all scopes
-configured for the application, including the following default scopes:
-\code{openid}, \code{aws}, \code{sts:identity_context}.}
+\item{scope}{The list of scopes for which authorization is requested. The access token that is issued is limited to the scopes that are granted. If the value is not specified, IAM Identity Center authorizes all scopes configured for the application, including the following default scopes: \code{openid}, \code{aws}, \code{sts:identity_context}.}
 
-\item{redirectUri}{Used only when calling this API for the Authorization Code grant type.
-This value specifies the location of the client or application that has
-registered to receive the authorization code.}
+\item{redirectUri}{Used only when calling this API for the Authorization Code grant type. This value specifies the location of the client or application that has registered to receive the authorization code.}
 
-\item{subjectToken}{Used only when calling this API for the Token Exchange grant type. This
-value specifies the subject of the exchange. The value of the subject
-token must be an access token issued by IAM Identity Center to a
-different client or application. The access token must have authorized
-scopes that indicate the requested application as a target audience.}
+\item{subjectToken}{Used only when calling this API for the Token Exchange grant type. This value specifies the subject of the exchange. The value of the subject token must be an access token issued by IAM Identity Center to a different client or application. The access token must have authorized scopes that indicate the requested application as a target audience.}
 
-\item{subjectTokenType}{Used only when calling this API for the Token Exchange grant type. This
-value specifies the type of token that is passed as the subject of the
-exchange. The following value is supported:
+\item{subjectTokenType}{Used only when calling this API for the Token Exchange grant type. This value specifies the type of token that is passed as the subject of the exchange. The following value is supported:
 \itemize{
 \item Access Token - \code{urn:ietf:params:oauth:token-type:access_token}
 }}
 
-\item{requestedTokenType}{Used only when calling this API for the Token Exchange grant type. This
-value specifies the type of token that the requester can receive. The
-following values are supported:
+\item{requestedTokenType}{Used only when calling this API for the Token Exchange grant type. This value specifies the type of token that the requester can receive. The following values are supported:
 \itemize{
 \item Access Token - \code{urn:ietf:params:oauth:token-type:access_token}
 \item Refresh Token - \code{urn:ietf:params:oauth:token-type:refresh_token}
 }}
 
-\item{codeVerifier}{Used only when calling this API for the Authorization Code grant type.
-This value is generated by the client and presented to validate the
-original code challenge value the client passed at authorization time.}
+\item{codeVerifier}{Used only when calling this API for the Authorization Code grant type. This value is generated by the client and presented to validate the original code challenge value the client passed at authorization time.}
 }
 \description{
-Creates and returns access and refresh tokens for clients and applications that are authenticated using IAM entities. The access token can be used to fetch short-lived credentials for the assigned Amazon Web Services accounts or to access application APIs using \code{bearer} authentication.
+Creates and returns access and refresh tokens for authorized client applications that are authenticated using any IAM entity, such as a service role or user. These tokens might contain defined scopes that specify permissions such as \code{read:profile} or \code{write:data}. Through downscoping, you can use the scopes parameter to request tokens with reduced permissions compared to the original client application's permissions or, if applicable, the refresh token's scopes. The access token can be used to fetch short-lived credentials for the assigned Amazon Web Services accounts or to access application APIs using \code{bearer} authentication.
 
 See \url{https://www.paws-r-sdk.com/docs/ssooidc_create_token_with_iam/} for full documentation.
 }

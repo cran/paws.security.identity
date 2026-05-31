@@ -17,11 +17,9 @@ detective_start_investigation(
 
 \item{EntityArn}{[required] The unique Amazon Resource Name (ARN) of the IAM user and IAM role.}
 
-\item{ScopeStartTime}{[required] The data and time when the investigation began. The value is an UTC
-ISO8601 formatted string. For example, \verb{2021-08-18T16:35:56.284Z}.}
+\item{ScopeStartTime}{[required] The data and time when the investigation began. The value is an UTC ISO8601 formatted string. For example, \verb{2021-08-18T16:35:56.284Z}.}
 
-\item{ScopeEndTime}{[required] The data and time when the investigation ended. The value is an UTC
-ISO8601 formatted string. For example, \verb{2021-08-18T16:35:56.284Z}.}
+\item{ScopeEndTime}{[required] The data and time when the investigation ended. The value is an UTC ISO8601 formatted string. For example, \verb{2021-08-18T16:35:56.284Z}.}
 }
 \description{
 Detective investigations lets you investigate IAM users and IAM roles using indicators of compromise. An indicator of compromise (IOC) is an artifact observed in or on a network, system, or environment that can (with a high level of confidence) identify malicious activity or a security incident. \code{\link[=detective_start_investigation]{start_investigation}} initiates an investigation on an entity in a behavior graph.

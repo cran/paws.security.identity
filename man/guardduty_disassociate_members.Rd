@@ -8,11 +8,9 @@ account) specified by the account IDs}
 guardduty_disassociate_members(DetectorId, AccountIds)
 }
 \arguments{
-\item{DetectorId}{[required] The unique ID of the detector of the GuardDuty account whose members you
-want to disassociate from the administrator account.}
+\item{DetectorId}{[required] The unique ID of the detector of the GuardDuty account whose members you want to disassociate from the administrator account.}
 
-\item{AccountIds}{[required] A list of account IDs of the GuardDuty member accounts that you want to
-disassociate from the administrator account.}
+\item{AccountIds}{[required] A list of account IDs of the GuardDuty member accounts that you want to disassociate from the administrator account.}
 }
 \description{
 Disassociates GuardDuty member accounts (from the current administrator account) specified by the account IDs.

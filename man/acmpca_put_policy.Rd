@@ -7,17 +7,9 @@
 acmpca_put_policy(ResourceArn, Policy)
 }
 \arguments{
-\item{ResourceArn}{[required] The Amazon Resource Number (ARN) of the private CA to associate with the
-policy. The ARN of the CA can be found by calling the
-\code{\link[=acmpca_list_certificate_authorities]{list_certificate_authorities}}
-action.}
+\item{ResourceArn}{[required] The Amazon Resource Number (ARN) of the private CA to associate with the policy. The ARN of the CA can be found by calling the \code{\link[=acmpca_list_certificate_authorities]{list_certificate_authorities}} action.}
 
-\item{Policy}{[required] The path and file name of a JSON-formatted IAM policy to attach to the
-specified private CA resource. If this policy does not contain all
-required statements or if it includes any statement that is not allowed,
-the \code{\link[=acmpca_put_policy]{put_policy}} action returns an
-\code{InvalidPolicyException}. For information about IAM policy and statement
-structure, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#access_policies-json}{Overview of JSON Policies}.}
+\item{Policy}{[required] The path and file name of a JSON-formatted IAM policy to attach to the specified private CA resource. If this policy does not contain all required statements or if it includes any statement that is not allowed, the \code{\link[=acmpca_put_policy]{put_policy}} action returns an \code{InvalidPolicyException}. For information about IAM policy and statement structure, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#access_policies-json}{Overview of JSON Policies}.}
 }
 \description{
 Attaches a resource-based policy to a private CA.

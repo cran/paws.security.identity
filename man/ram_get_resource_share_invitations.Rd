@@ -13,28 +13,13 @@ ram_get_resource_share_invitations(
 )
 }
 \arguments{
-\item{resourceShareInvitationArns}{Specifies the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
-of the resource share invitations you want information about.}
+\item{resourceShareInvitationArns}{Specifies the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)} of the resource share invitations you want information about.}
 
-\item{resourceShareArns}{Specifies that you want details about invitations only for the resource
-shares described by this list of \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}}
+\item{resourceShareArns}{Specifies that you want details about invitations only for the resource shares described by this list of \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}}
 
-\item{nextToken}{Specifies that you want to receive the next page of results. Valid only
-if you received a \code{NextToken} response in the previous request. If you
-did, it indicates that more output is available. Set this parameter to
-the value provided by the previous call's \code{NextToken} response to
-request the next page of results.}
+\item{nextToken}{Specifies that you want to receive the next page of results. Valid only if you received a \code{NextToken} response in the previous request. If you did, it indicates that more output is available. Set this parameter to the value provided by the previous call's \code{NextToken} response to request the next page of results.}
 
-\item{maxResults}{Specifies the total number of results that you want included on each
-page of the response. If you do not include this parameter, it defaults
-to a value that is specific to the operation. If additional items exist
-beyond the number you specify, the \code{NextToken} response element is
-returned with a value (not null). Include the specified value as the
-\code{NextToken} request parameter in the next call to the operation to get
-the next part of the results. Note that the service might return fewer
-results than the maximum even when there are more results available. You
-should check \code{NextToken} after every operation to ensure that you
-receive all of the results.}
+\item{maxResults}{Specifies the total number of results that you want included on each page of the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the number you specify, the \code{NextToken} response element is returned with a value (not null). Include the specified value as the \code{NextToken} request parameter in the next call to the operation to get the next part of the results. Note that the service might return fewer results than the maximum even when there are more results available. You should check \code{NextToken} after every operation to ensure that you receive all of the results.}
 }
 \description{
 Retrieves details about invitations that you have received for resource shares.

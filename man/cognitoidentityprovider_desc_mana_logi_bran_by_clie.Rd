@@ -12,15 +12,11 @@ cognitoidentityprovider_describe_managed_login_branding_by_client(
 )
 }
 \arguments{
-\item{UserPoolId}{[required] The ID of the user pool that contains the app client where you want more
-information about the managed login branding style.}
+\item{UserPoolId}{[required] The ID of the user pool that contains the app client where you want more information about the managed login branding style.}
 
-\item{ClientId}{[required] The app client that's assigned to the branding style that you want more
-information about.}
+\item{ClientId}{[required] The app client that's assigned to the branding style that you want more information about.}
 
-\item{ReturnMergedResources}{When \code{true}, returns values for branding options that are unchanged from
-Amazon Cognito defaults. When \code{false} or when you omit this parameter,
-returns only values that you customized in your branding style.}
+\item{ReturnMergedResources}{When \code{true}, returns values for branding options that are unchanged from Amazon Cognito defaults. When \code{false} or when you omit this parameter, returns only values that you customized in your branding style.}
 }
 \description{
 Given the ID of a user pool app client, returns detailed information about the style assigned to the app client.

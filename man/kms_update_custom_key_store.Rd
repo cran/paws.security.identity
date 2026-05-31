@@ -12,121 +12,71 @@ kms_update_custom_key_store(
   XksProxyUriEndpoint = NULL,
   XksProxyUriPath = NULL,
   XksProxyVpcEndpointServiceName = NULL,
+  XksProxyVpcEndpointServiceOwner = NULL,
   XksProxyAuthenticationCredential = NULL,
   XksProxyConnectivity = NULL
 )
 }
 \arguments{
-\item{CustomKeyStoreId}{[required] Identifies the custom key store that you want to update. Enter the ID of
-the custom key store. To find the ID of a custom key store, use the
-\code{\link[=kms_describe_custom_key_stores]{describe_custom_key_stores}}
-operation.}
+\item{CustomKeyStoreId}{[required] Identifies the custom key store that you want to update. Enter the ID of the custom key store. To find the ID of a custom key store, use the \code{\link[=kms_describe_custom_key_stores]{describe_custom_key_stores}} operation.}
 
-\item{NewCustomKeyStoreName}{Changes the friendly name of the custom key store to the value that you
-specify. The custom key store name must be unique in the Amazon Web
-Services account.
+\item{NewCustomKeyStoreName}{Changes the friendly name of the custom key store to the value that you specify. The custom key store name must be unique in the Amazon Web Services account.
 
-Do not include confidential or sensitive information in this field. This
-field may be displayed in plaintext in CloudTrail logs and other output.
+Do not include confidential or sensitive information in this field. This field may be displayed in plaintext in CloudTrail logs and other output.
 
-To change this value, an CloudHSM key store must be disconnected. An
-external key store can be connected or disconnected.}
+To change this value, the custom key store can be connected or disconnected.}
 
-\item{KeyStorePassword}{Enter the current password of the \code{kmsuser} crypto user (CU) in the
-CloudHSM cluster that is associated with the custom key store. This
-parameter is valid only for custom key stores with a
-\code{CustomKeyStoreType} of \code{AWS_CLOUDHSM}.
+\item{KeyStorePassword}{Enter the current password of the \code{kmsuser} crypto user (CU) in the CloudHSM cluster that is associated with the custom key store. This parameter is valid only for custom key stores with a \code{CustomKeyStoreType} of \code{AWS_CLOUDHSM}.
 
-This parameter tells KMS the current password of the \code{kmsuser} crypto
-user (CU). It does not set or change the password of any users in the
-CloudHSM cluster.
+This parameter tells KMS the current password of the \code{kmsuser} crypto user (CU). It does not set or change the password of any users in the CloudHSM cluster.
 
 To change this value, the CloudHSM key store must be disconnected.}
 
-\item{CloudHsmClusterId}{Associates the custom key store with a related CloudHSM cluster. This
-parameter is valid only for custom key stores with a
-\code{CustomKeyStoreType} of \code{AWS_CLOUDHSM}.
+\item{CloudHsmClusterId}{Associates the custom key store with a related CloudHSM cluster. This parameter is valid only for custom key stores with a \code{CustomKeyStoreType} of \code{AWS_CLOUDHSM}.
 
-Enter the cluster ID of the cluster that you used to create the custom
-key store or a cluster that shares a backup history and has the same
-cluster certificate as the original cluster. You cannot use this
-parameter to associate a custom key store with an unrelated cluster. In
-addition, the replacement cluster must \href{https://docs.aws.amazon.com/kms/latest/developerguide/create-keystore.html#before-keystore}{fulfill the requirements}
-for a cluster associated with a custom key store. To view the cluster
-certificate of a cluster, use the
-\href{https://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_DescribeClusters.html}{DescribeClusters}
-operation.
+Enter the cluster ID of the cluster that you used to create the custom key store or a cluster that shares a backup history and has the same cluster certificate as the original cluster. You cannot use this parameter to associate a custom key store with an unrelated cluster. In addition, the replacement cluster must \href{https://docs.aws.amazon.com/kms/latest/developerguide/create-keystore.html#before-keystore}{fulfill the requirements} for a cluster associated with a custom key store. To view the cluster certificate of a cluster, use the \href{https://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_DescribeClusters.html}{DescribeClusters} operation.
 
 To change this value, the CloudHSM key store must be disconnected.}
 
-\item{XksProxyUriEndpoint}{Changes the URI endpoint that KMS uses to connect to your external key
-store proxy (XKS proxy). This parameter is valid only for custom key
-stores with a \code{CustomKeyStoreType} of \code{EXTERNAL_KEY_STORE}.
+\item{XksProxyUriEndpoint}{Changes the URI endpoint that KMS uses to connect to your external key store proxy (XKS proxy). This parameter is valid only for custom key stores with a \code{CustomKeyStoreType} of \code{EXTERNAL_KEY_STORE}.
 
-For external key stores with an \code{XksProxyConnectivity} value of
-\code{PUBLIC_ENDPOINT}, the protocol must be HTTPS.
+For external key stores with an \code{XksProxyConnectivity} value of \code{PUBLIC_ENDPOINT}, the protocol must be HTTPS.
 
-For external key stores with an \code{XksProxyConnectivity} value of
-\code{VPC_ENDPOINT_SERVICE}, specify \verb{https://} followed by the private DNS
-name associated with the VPC endpoint service. Each external key store
-must use a different private DNS name.
+For external key stores with an \code{XksProxyConnectivity} value of \code{VPC_ENDPOINT_SERVICE}, specify \verb{https://} followed by the private DNS name associated with the VPC endpoint service. Each external key store must use a different private DNS name.
 
-The combined \code{XksProxyUriEndpoint} and \code{XksProxyUriPath} values must be
-unique in the Amazon Web Services account and Region.
+The combined \code{XksProxyUriEndpoint} and \code{XksProxyUriPath} values must be unique in the Amazon Web Services account and Region.
 
 To change this value, the external key store must be disconnected.}
 
-\item{XksProxyUriPath}{Changes the base path to the proxy APIs for this external key store. To
-find this value, see the documentation for your external key manager and
-external key store proxy (XKS proxy). This parameter is valid only for
-custom key stores with a \code{CustomKeyStoreType} of \code{EXTERNAL_KEY_STORE}.
+\item{XksProxyUriPath}{Changes the base path to the proxy APIs for this external key store. To find this value, see the documentation for your external key manager and external key store proxy (XKS proxy). This parameter is valid only for custom key stores with a \code{CustomKeyStoreType} of \code{EXTERNAL_KEY_STORE}.
 
-The value must start with \code{/} and must end with \verb{/kms/xks/v1}, where
-\code{v1} represents the version of the KMS external key store proxy API. You
-can include an optional prefix between the required elements such as
-\verb{/example/kms/xks/v1}.
+The value must start with \code{/} and must end with \verb{/kms/xks/v1}, where \code{v1} represents the version of the KMS external key store proxy API. You can include an optional prefix between the required elements such as \verb{/example/kms/xks/v1}.
 
-The combined \code{XksProxyUriEndpoint} and \code{XksProxyUriPath} values must be
-unique in the Amazon Web Services account and Region.
+The combined \code{XksProxyUriEndpoint} and \code{XksProxyUriPath} values must be unique in the Amazon Web Services account and Region.
 
-You can change this value when the external key store is connected or
-disconnected.}
+You can change this value when the external key store is connected or disconnected.}
 
-\item{XksProxyVpcEndpointServiceName}{Changes the name that KMS uses to identify the Amazon VPC endpoint
-service for your external key store proxy (XKS proxy). This parameter is
-valid when the \code{CustomKeyStoreType} is \code{EXTERNAL_KEY_STORE} and the
-\code{XksProxyConnectivity} is \code{VPC_ENDPOINT_SERVICE}.
+\item{XksProxyVpcEndpointServiceName}{Changes the name that KMS uses to identify the Amazon VPC endpoint service for your external key store proxy (XKS proxy). This parameter is valid when the \code{CustomKeyStoreType} is \code{EXTERNAL_KEY_STORE} and the \code{XksProxyConnectivity} is \code{VPC_ENDPOINT_SERVICE}.
 
 To change this value, the external key store must be disconnected.}
 
-\item{XksProxyAuthenticationCredential}{Changes the credentials that KMS uses to sign requests to the external
-key store proxy (XKS proxy). This parameter is valid only for custom key
-stores with a \code{CustomKeyStoreType} of \code{EXTERNAL_KEY_STORE}.
+\item{XksProxyVpcEndpointServiceOwner}{Changes the Amazon Web Services account ID that KMS uses to identify the Amazon VPC endpoint service for your external key store proxy (XKS proxy). This parameter is optional. If not specified, the current Amazon Web Services account ID for the VPC endpoint service will not be updated.
 
-You must specify both the \code{AccessKeyId} and \code{SecretAccessKey} value in
-the authentication credential, even if you are only updating one value.
+To change this value, the external key store must be disconnected.}
 
-This parameter doesn't establish or change your authentication
-credentials on the proxy. It just tells KMS the credential that you
-established with your external key store proxy. For example, if you
-rotate the credential on your external key store proxy, you can use this
-parameter to update the credential in KMS.
+\item{XksProxyAuthenticationCredential}{Changes the credentials that KMS uses to sign requests to the external key store proxy (XKS proxy). This parameter is valid only for custom key stores with a \code{CustomKeyStoreType} of \code{EXTERNAL_KEY_STORE}.
 
-You can change this value when the external key store is connected or
-disconnected.}
+You must specify both the \code{AccessKeyId} and \code{SecretAccessKey} value in the authentication credential, even if you are only updating one value.
 
-\item{XksProxyConnectivity}{Changes the connectivity setting for the external key store. To indicate
-that the external key store proxy uses a Amazon VPC endpoint service to
-communicate with KMS, specify \code{VPC_ENDPOINT_SERVICE}. Otherwise, specify
-\code{PUBLIC_ENDPOINT}.
+This parameter doesn't establish or change your authentication credentials on the proxy. It just tells KMS the credential that you established with your external key store proxy. For example, if you rotate the credential on your external key store proxy, you can use this parameter to update the credential in KMS.
 
-If you change the \code{XksProxyConnectivity} to \code{VPC_ENDPOINT_SERVICE}, you
-must also change the \code{XksProxyUriEndpoint} and add an
-\code{XksProxyVpcEndpointServiceName} value.
+You can change this value when the external key store is connected or disconnected.}
 
-If you change the \code{XksProxyConnectivity} to \code{PUBLIC_ENDPOINT}, you must
-also change the \code{XksProxyUriEndpoint} and specify a null or empty string
-for the \code{XksProxyVpcEndpointServiceName} value.
+\item{XksProxyConnectivity}{Changes the connectivity setting for the external key store. To indicate that the external key store proxy uses a Amazon VPC endpoint service to communicate with KMS, specify \code{VPC_ENDPOINT_SERVICE}. Otherwise, specify \code{PUBLIC_ENDPOINT}.
+
+If you change the \code{XksProxyConnectivity} to \code{VPC_ENDPOINT_SERVICE}, you must also change the \code{XksProxyUriEndpoint} and add an \code{XksProxyVpcEndpointServiceName} value.
+
+If you change the \code{XksProxyConnectivity} to \code{PUBLIC_ENDPOINT}, you must also change the \code{XksProxyUriEndpoint} and specify a null or empty string for the \code{XksProxyVpcEndpointServiceName} value.
 
 To change this value, the external key store must be disconnected.}
 }

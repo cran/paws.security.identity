@@ -7,13 +7,9 @@
 shield_describe_protection(ProtectionId = NULL, ResourceArn = NULL)
 }
 \arguments{
-\item{ProtectionId}{The unique identifier (ID) for the Protection object to describe. You
-must provide either the \code{ResourceArn} of the protected resource or the
-\code{ProtectionID} of the protection, but not both.}
+\item{ProtectionId}{The unique identifier (ID) for the Protection object to describe. You must provide either the \code{ResourceArn} of the protected resource or the \code{ProtectionID} of the protection, but not both.}
 
-\item{ResourceArn}{The ARN (Amazon Resource Name) of the protected Amazon Web Services
-resource. You must provide either the \code{ResourceArn} of the protected
-resource or the \code{ProtectionID} of the protection, but not both.}
+\item{ResourceArn}{The ARN (Amazon Resource Name) of the protected Amazon Web Services resource. You must provide either the \code{ResourceArn} of the protected resource or the \code{ProtectionID} of the protection, but not both.}
 }
 \description{
 Lists the details of a Protection object.

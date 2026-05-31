@@ -9,8 +9,7 @@ detective_reject_invitation(GraphArn)
 \arguments{
 \item{GraphArn}{[required] The ARN of the behavior graph to reject the invitation to.
 
-The member account's current member status in the behavior graph must be
-\code{INVITED}.}
+The member account's current member status in the behavior graph must be \code{INVITED}.}
 }
 \description{
 Rejects an invitation to contribute the account data to a behavior graph. This operation must be called by an invited member account that has the \code{INVITED} status.

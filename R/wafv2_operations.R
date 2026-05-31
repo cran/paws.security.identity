@@ -10,30 +10,24 @@ NULL
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafv2_associate_web_acl/](https://www.paws-r-sdk.com/docs/wafv2_associate_web_acl/) for full documentation.
 #'
-#' @param WebACLArn &#91;required&#93; The Amazon Resource Name (ARN) of the web ACL that you want to associate
-#' with the resource.
-#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to associate with the web
-#' ACL.
+#' @param WebACLArn &#91;required&#93; The Amazon Resource Name (ARN) of the web ACL that you want to associate with the resource.
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to associate with the web ACL.
 #' 
 #' The ARN must be in one of the following formats:
 #' 
-#' -   For an Application Load Balancer:
-#'     `arn:partition:elasticloadbalancing:region:account-id:loadbalancer/app/load-balancer-name/load-balancer-id `
+#' -   For an Application Load Balancer: `arn:partition:elasticloadbalancing:region:account-id:loadbalancer/app/load-balancer-name/load-balancer-id `
 #' 
-#' -   For an Amazon API Gateway REST API:
-#'     `arn:partition:apigateway:region::/restapis/api-id/stages/stage-name `
+#' -   For an Amazon API Gateway REST API: `arn:partition:apigateway:region::/restapis/api-id/stages/stage-name `
 #' 
-#' -   For an AppSync GraphQL API:
-#'     `arn:partition:appsync:region:account-id:apis/GraphQLApiId `
+#' -   For an AppSync GraphQL API: `arn:partition:appsync:region:account-id:apis/GraphQLApiId `
 #' 
-#' -   For an Amazon Cognito user pool:
-#'     `arn:partition:cognito-idp:region:account-id:userpool/user-pool-id `
+#' -   For an Amazon Cognito user pool: `arn:partition:cognito-idp:region:account-id:userpool/user-pool-id `
 #' 
-#' -   For an App Runner service:
-#'     `arn:partition:apprunner:region:account-id:service/apprunner-service-name/apprunner-service-id `
+#' -   For an App Runner service: `arn:partition:apprunner:region:account-id:service/apprunner-service-name/apprunner-service-id `
 #' 
-#' -   For an Amazon Web Services Verified Access instance:
-#'     `arn:partition:ec2:region:account-id:verified-access-instance/instance-id `
+#' -   For an Amazon Web Services Verified Access instance: `arn:partition:ec2:region:account-id:verified-access-instance/instance-id `
+#' 
+#' -   For an Amplify application: `arn:partition:amplify:region:account-id:apps/app-id `
 #'
 #' @keywords internal
 #'
@@ -65,18 +59,14 @@ wafv2_associate_web_acl <- function(WebACLArn, ResourceArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafv2_check_capacity/](https://www.paws-r-sdk.com/docs/wafv2_check_capacity/) for full documentation.
 #'
-#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
-#' CloudFront distribution.
+#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon CloudFront distribution. For an Amplify application, use `CLOUDFRONT`.
 #' 
-#' To work with CloudFront, you must also specify the Region US East (N.
-#' Virginia) as follows:
+#' To work with CloudFront, you must also specify the Region US East (N. Virginia) as follows:
 #' 
-#' -   CLI - Specify the Region when you use the CloudFront scope:
-#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' -   CLI - Specify the Region when you use the CloudFront scope: `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
-#' @param Rules &#91;required&#93; An array of Rule that you're configuring to use in a rule group or web
-#' ACL.
+#' @param Rules &#91;required&#93; An array of Rule that you're configuring to use in a rule group or web ACL.
 #'
 #' @keywords internal
 #'
@@ -107,22 +97,18 @@ wafv2_check_capacity <- function(Scope, Rules) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafv2_create_api_key/](https://www.paws-r-sdk.com/docs/wafv2_create_api_key/) for full documentation.
 #'
-#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
-#' CloudFront distribution.
+#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon CloudFront distribution. For an Amplify application, use `CLOUDFRONT`.
 #' 
-#' To work with CloudFront, you must also specify the Region US East (N.
-#' Virginia) as follows:
+#' To work with CloudFront, you must also specify the Region US East (N. Virginia) as follows:
 #' 
-#' -   CLI - Specify the Region when you use the CloudFront scope:
-#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' -   CLI - Specify the Region when you use the CloudFront scope: `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
 #' @param TokenDomains &#91;required&#93; The client application domains that you want to use this API key for.
 #' 
 #' Example JSON: `"TokenDomains": ["abc.com", "store.abc.com"]`
 #' 
-#' Public suffixes aren't allowed. For example, you can't use `gov.au` or
-#' `co.uk` as token domains.
+#' Public suffixes aren't allowed. For example, you can't use `gov.au` or `co.uk` as token domains.
 #'
 #' @keywords internal
 #'
@@ -154,46 +140,29 @@ wafv2_create_api_key <- function(Scope, TokenDomains) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafv2_create_ip_set/](https://www.paws-r-sdk.com/docs/wafv2_create_ip_set/) for full documentation.
 #'
-#' @param Name &#91;required&#93; The name of the IP set. You cannot change the name of an `IPSet` after
-#' you create it.
-#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
-#' CloudFront distribution.
+#' @param Name &#91;required&#93; The name of the IP set. You cannot change the name of an `IPSet` after you create it.
+#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon CloudFront distribution. For an Amplify application, use `CLOUDFRONT`.
 #' 
-#' To work with CloudFront, you must also specify the Region US East (N.
-#' Virginia) as follows:
+#' To work with CloudFront, you must also specify the Region US East (N. Virginia) as follows:
 #' 
-#' -   CLI - Specify the Region when you use the CloudFront scope:
-#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' -   CLI - Specify the Region when you use the CloudFront scope: `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
 #' @param Description A description of the IP set that helps with identification.
 #' @param IPAddressVersion &#91;required&#93; The version of the IP addresses, either `IPV4` or `IPV6`.
-#' @param Addresses &#91;required&#93; Contains an array of strings that specifies zero or more IP addresses or
-#' blocks of IP addresses that you want WAF to inspect for in incoming
-#' requests. All addresses must be specified using Classless Inter-Domain
-#' Routing (CIDR) notation. WAF supports all IPv4 and IPv6 CIDR ranges
-#' except for `/0`.
+#' @param Addresses &#91;required&#93; Contains an array of strings that specifies zero or more IP addresses or blocks of IP addresses that you want WAF to inspect for in incoming requests. All addresses must be specified using Classless Inter-Domain Routing (CIDR) notation. WAF supports all IPv4 and IPv6 CIDR ranges except for `/0`.
 #' 
 #' Example address strings:
 #' 
-#' -   For requests that originated from the IP address 192.0.2.44, specify
-#'     `192.0.2.44/32`.
+#' -   For requests that originated from the IP address 192.0.2.44, specify `192.0.2.44/32`.
 #' 
-#' -   For requests that originated from IP addresses from 192.0.2.0 to
-#'     192.0.2.255, specify `192.0.2.0/24`.
+#' -   For requests that originated from IP addresses from 192.0.2.0 to 192.0.2.255, specify `192.0.2.0/24`.
 #' 
-#' -   For requests that originated from the IP address
-#'     1111:0000:0000:0000:0000:0000:0000:0111, specify
-#'     `1111:0000:0000:0000:0000:0000:0000:0111/128`.
+#' -   For requests that originated from the IP address 1111:0000:0000:0000:0000:0000:0000:0111, specify `1111:0000:0000:0000:0000:0000:0000:0111/128`.
 #' 
-#' -   For requests that originated from IP addresses
-#'     1111:0000:0000:0000:0000:0000:0000:0000 to
-#'     1111:0000:0000:0000:ffff:ffff:ffff:ffff, specify
-#'     `1111:0000:0000:0000:0000:0000:0000:0000/64`.
+#' -   For requests that originated from IP addresses 1111:0000:0000:0000:0000:0000:0000:0000 to 1111:0000:0000:0000:ffff:ffff:ffff:ffff, specify `1111:0000:0000:0000:0000:0000:0000:0000/64`.
 #' 
-#' For more information about CIDR notation, see the Wikipedia entry
-#' [Classless Inter-Domain
-#' Routing](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing).
+#' For more information about CIDR notation, see the Wikipedia entry [Classless Inter-Domain Routing](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing).
 #' 
 #' Example JSON `Addresses` specifications:
 #' 
@@ -201,8 +170,7 @@ wafv2_create_api_key <- function(Scope, TokenDomains) {
 #' 
 #' -   Array with one address: `"Addresses": ["192.0.2.44/32"]`
 #' 
-#' -   Array with three addresses:
-#'     `"Addresses": ["192.0.2.44/32", "192.0.2.0/24", "192.0.0.0/16"]`
+#' -   Array with three addresses: `"Addresses": ["192.0.2.44/32", "192.0.2.0/24", "192.0.0.0/16"]`
 #' 
 #' -   INVALID specification: `"Addresses": [""]` INVALID
 #' @param Tags An array of key:value pairs to associate with the resource.
@@ -238,16 +206,12 @@ wafv2_create_ip_set <- function(Name, Scope, Description = NULL, IPAddressVersio
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafv2_create_regex_pattern_set/](https://www.paws-r-sdk.com/docs/wafv2_create_regex_pattern_set/) for full documentation.
 #'
-#' @param Name &#91;required&#93; The name of the set. You cannot change the name after you create the
-#' set.
-#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
-#' CloudFront distribution.
+#' @param Name &#91;required&#93; The name of the set. You cannot change the name after you create the set.
+#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon CloudFront distribution. For an Amplify application, use `CLOUDFRONT`.
 #' 
-#' To work with CloudFront, you must also specify the Region US East (N.
-#' Virginia) as follows:
+#' To work with CloudFront, you must also specify the Region US East (N. Virginia) as follows:
 #' 
-#' -   CLI - Specify the Region when you use the CloudFront scope:
-#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' -   CLI - Specify the Region when you use the CloudFront scope: `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
 #' @param Description A description of the set that helps with identification.
@@ -283,57 +247,28 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafv2_create_rule_group/](https://www.paws-r-sdk.com/docs/wafv2_create_rule_group/) for full documentation.
 #'
-#' @param Name &#91;required&#93; The name of the rule group. You cannot change the name of a rule group
-#' after you create it.
-#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
-#' CloudFront distribution.
+#' @param Name &#91;required&#93; The name of the rule group. You cannot change the name of a rule group after you create it.
+#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon CloudFront distribution. For an Amplify application, use `CLOUDFRONT`.
 #' 
-#' To work with CloudFront, you must also specify the Region US East (N.
-#' Virginia) as follows:
+#' To work with CloudFront, you must also specify the Region US East (N. Virginia) as follows:
 #' 
-#' -   CLI - Specify the Region when you use the CloudFront scope:
-#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' -   CLI - Specify the Region when you use the CloudFront scope: `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
 #' @param Capacity &#91;required&#93; The web ACL capacity units (WCUs) required for this rule group.
 #' 
-#' When you create your own rule group, you define this, and you cannot
-#' change it after creation. When you add or modify the rules in a rule
-#' group, WAF enforces this limit. You can check the capacity for a set of
-#' rules using [`check_capacity`][wafv2_check_capacity].
+#' When you create your own rule group, you define this, and you cannot change it after creation. When you add or modify the rules in a rule group, WAF enforces this limit. You can check the capacity for a set of rules using [`check_capacity`][wafv2_check_capacity].
 #' 
-#' WAF uses WCUs to calculate and control the operating resources that are
-#' used to run your rules, rule groups, and web ACLs. WAF calculates
-#' capacity differently for each rule type, to reflect the relative cost of
-#' each rule. Simple rules that cost little to run use fewer WCUs than more
-#' complex rules that use more processing power. Rule group capacity is
-#' fixed at creation, which helps users plan their web ACL WCU usage when
-#' they use a rule group. For more information, see [WAF web ACL capacity
-#' units
-#' (WCU)](https://docs.aws.amazon.com/waf/latest/developerguide/aws-waf-capacity-units.html)
-#' in the *WAF Developer Guide*.
+#' WAF uses WCUs to calculate and control the operating resources that are used to run your rules, rule groups, and web ACLs. WAF calculates capacity differently for each rule type, to reflect the relative cost of each rule. Simple rules that cost little to run use fewer WCUs than more complex rules that use more processing power. Rule group capacity is fixed at creation, which helps users plan their web ACL WCU usage when they use a rule group. For more information, see [WAF web ACL capacity units (WCU)](https://docs.aws.amazon.com/waf/latest/developerguide/aws-waf-capacity-units.html) in the *WAF Developer Guide*.
 #' @param Description A description of the rule group that helps with identification.
-#' @param Rules The Rule statements used to identify the web requests that you want to
-#' manage. Each rule includes one top-level statement that WAF uses to
-#' identify matching web requests, and parameters that govern how WAF
-#' handles them.
-#' @param VisibilityConfig &#91;required&#93; Defines and enables Amazon CloudWatch metrics and web request sample
-#' collection.
+#' @param Rules The Rule statements used to identify the web requests that you want to manage. Each rule includes one top-level statement that WAF uses to identify matching web requests, and parameters that govern how WAF handles them.
+#' @param VisibilityConfig &#91;required&#93; Defines and enables Amazon CloudWatch metrics and web request sample collection.
 #' @param Tags An array of key:value pairs to associate with the resource.
-#' @param CustomResponseBodies A map of custom response keys and content bodies. When you create a rule
-#' with a block action, you can send a custom response to the web request.
-#' You define these for the rule group, and then use them in the rules that
-#' you define in the rule group.
+#' @param CustomResponseBodies A map of custom response keys and content bodies. When you create a rule with a block action, you can send a custom response to the web request. You define these for the rule group, and then use them in the rules that you define in the rule group.
 #' 
-#' For information about customizing web requests and responses, see
-#' [Customizing web requests and responses in
-#' WAF](https://docs.aws.amazon.com/waf/latest/developerguide/waf-custom-request-response.html)
-#' in the *WAF Developer Guide*.
+#' For information about customizing web requests and responses, see [Customizing web requests and responses in WAF](https://docs.aws.amazon.com/waf/latest/developerguide/waf-custom-request-response.html) in the *WAF Developer Guide*.
 #' 
-#' For information about the limits on count and size for custom request
-#' and response settings, see [WAF
-#' quotas](https://docs.aws.amazon.com/waf/latest/developerguide/limits.html)
-#' in the *WAF Developer Guide*.
+#' For information about the limits on count and size for custom request and response settings, see [WAF quotas](https://docs.aws.amazon.com/waf/latest/developerguide/limits.html) in the *WAF Developer Guide*.
 #'
 #' @keywords internal
 #'
@@ -364,90 +299,48 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafv2_create_web_acl/](https://www.paws-r-sdk.com/docs/wafv2_create_web_acl/) for full documentation.
 #'
-#' @param Name &#91;required&#93; The name of the web ACL. You cannot change the name of a web ACL after
-#' you create it.
-#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
-#' CloudFront distribution.
+#' @param Name &#91;required&#93; The name of the web ACL. You cannot change the name of a web ACL after you create it.
+#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon CloudFront distribution. For an Amplify application, use `CLOUDFRONT`.
 #' 
-#' To work with CloudFront, you must also specify the Region US East (N.
-#' Virginia) as follows:
+#' To work with CloudFront, you must also specify the Region US East (N. Virginia) as follows:
 #' 
-#' -   CLI - Specify the Region when you use the CloudFront scope:
-#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' -   CLI - Specify the Region when you use the CloudFront scope: `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
-#' @param DefaultAction &#91;required&#93; The action to perform if none of the `Rules` contained in the `WebACL`
-#' match.
+#' @param DefaultAction &#91;required&#93; The action to perform if none of the `Rules` contained in the `WebACL` match.
 #' @param Description A description of the web ACL that helps with identification.
-#' @param Rules The Rule statements used to identify the web requests that you want to
-#' manage. Each rule includes one top-level statement that WAF uses to
-#' identify matching web requests, and parameters that govern how WAF
-#' handles them.
-#' @param VisibilityConfig &#91;required&#93; Defines and enables Amazon CloudWatch metrics and web request sample
-#' collection.
-#' @param DataProtectionConfig Specifies data protection to apply to the web request data that WAF
-#' stores for the web ACL. This is a web ACL level data protection option.
+#' @param Rules The Rule statements used to identify the web requests that you want to manage. Each rule includes one top-level statement that WAF uses to identify matching web requests, and parameters that govern how WAF handles them.
+#' @param VisibilityConfig &#91;required&#93; Defines and enables Amazon CloudWatch metrics and web request sample collection.
+#' @param DataProtectionConfig Specifies data protection to apply to the web request data for the web ACL. This is a web ACL level data protection option.
 #' 
-#' The data protection that you configure for the web ACL alters the data
-#' that's available for any other data collection activity, including WAF
-#' logging, web ACL request sampling, Amazon Web Services Managed Rules,
-#' and Amazon Security Lake data collection and management. Your other
-#' option for data protection is in the logging configuration, which only
-#' affects logging.
+#' The data protection that you configure for the web ACL alters the data that's available for any other data collection activity, including your WAF logging destinations, web ACL request sampling, and Amazon Security Lake data collection and management. Your other option for data protection is in the logging configuration, which only affects logging.
 #' @param Tags An array of key:value pairs to associate with the resource.
-#' @param CustomResponseBodies A map of custom response keys and content bodies. When you create a rule
-#' with a block action, you can send a custom response to the web request.
-#' You define these for the web ACL, and then use them in the rules and
-#' default actions that you define in the web ACL.
+#' @param CustomResponseBodies A map of custom response keys and content bodies. When you create a rule with a block action, you can send a custom response to the web request. You define these for the web ACL, and then use them in the rules and default actions that you define in the web ACL.
 #' 
-#' For information about customizing web requests and responses, see
-#' [Customizing web requests and responses in
-#' WAF](https://docs.aws.amazon.com/waf/latest/developerguide/waf-custom-request-response.html)
-#' in the *WAF Developer Guide*.
+#' For information about customizing web requests and responses, see [Customizing web requests and responses in WAF](https://docs.aws.amazon.com/waf/latest/developerguide/waf-custom-request-response.html) in the *WAF Developer Guide*.
 #' 
-#' For information about the limits on count and size for custom request
-#' and response settings, see [WAF
-#' quotas](https://docs.aws.amazon.com/waf/latest/developerguide/limits.html)
-#' in the *WAF Developer Guide*.
-#' @param CaptchaConfig Specifies how WAF should handle `CAPTCHA` evaluations for rules that
-#' don't have their own `CaptchaConfig` settings. If you don't specify
-#' this, WAF uses its default settings for `CaptchaConfig`.
-#' @param ChallengeConfig Specifies how WAF should handle challenge evaluations for rules that
-#' don't have their own `ChallengeConfig` settings. If you don't specify
-#' this, WAF uses its default settings for `ChallengeConfig`.
-#' @param TokenDomains Specifies the domains that WAF should accept in a web request token.
-#' This enables the use of tokens across multiple protected websites. When
-#' WAF provides a token, it uses the domain of the Amazon Web Services
-#' resource that the web ACL is protecting. If you don't specify a list of
-#' token domains, WAF accepts tokens only for the domain of the protected
-#' resource. With a token domain list, WAF accepts the resource's host
-#' domain plus all domains in the token domain list, including their
-#' prefixed subdomains.
+#' For information about the limits on count and size for custom request and response settings, see [WAF quotas](https://docs.aws.amazon.com/waf/latest/developerguide/limits.html) in the *WAF Developer Guide*.
+#' @param CaptchaConfig Specifies how WAF should handle `CAPTCHA` evaluations for rules that don't have their own `CaptchaConfig` settings. If you don't specify this, WAF uses its default settings for `CaptchaConfig`.
+#' @param ChallengeConfig Specifies how WAF should handle challenge evaluations for rules that don't have their own `ChallengeConfig` settings. If you don't specify this, WAF uses its default settings for `ChallengeConfig`.
+#' @param TokenDomains Specifies the domains that WAF should accept in a web request token. This enables the use of tokens across multiple protected websites. When WAF provides a token, it uses the domain of the Amazon Web Services resource that the web ACL is protecting. If you don't specify a list of token domains, WAF accepts tokens only for the domain of the protected resource. With a token domain list, WAF accepts the resource's host domain plus all domains in the token domain list, including their prefixed subdomains.
 #' 
-#' Example JSON:
-#' `"TokenDomains": { "mywebsite.com", "myotherwebsite.com" }`
+#' Example JSON: `"TokenDomains": { "mywebsite.com", "myotherwebsite.com" }`
 #' 
-#' Public suffixes aren't allowed. For example, you can't use `gov.au` or
-#' `co.uk` as token domains.
-#' @param AssociationConfig Specifies custom configurations for the associations between the web ACL
-#' and protected resources.
+#' Public suffixes aren't allowed. For example, you can't use `gov.au` or `co.uk` as token domains.
+#' @param AssociationConfig Specifies custom configurations for the associations between the web ACL and protected resources.
 #' 
-#' Use this to customize the maximum size of the request body that your
-#' protected resources forward to WAF for inspection. You can customize
-#' this setting for CloudFront, API Gateway, Amazon Cognito, App Runner, or
-#' Verified Access resources. The default setting is 16 KB (16,384 bytes).
+#' Use this to customize the maximum size of the request body that your protected resources forward to WAF for inspection. You can customize this setting for CloudFront, API Gateway, Amazon Cognito, App Runner, or Verified Access resources. The default setting is 16 KB (16,384 bytes).
 #' 
-#' You are charged additional fees when your protected resources forward
-#' body sizes that are larger than the default. For more information, see
-#' [WAF Pricing](https://aws.amazon.com/waf/pricing/).
+#' You are charged additional fees when your protected resources forward body sizes that are larger than the default. For more information, see [WAF Pricing](https://aws.amazon.com/waf/pricing/).
 #' 
-#' For Application Load Balancer and AppSync, the limit is fixed at 8 KB
-#' (8,192 bytes).
+#' For Application Load Balancer and AppSync, the limit is fixed at 8 KB (8,192 bytes).
+#' @param OnSourceDDoSProtectionConfig Specifies the type of DDoS protection to apply to web request data for a web ACL. For most scenarios, it is recommended to use the default protection level, `ACTIVE_UNDER_DDOS`. If a web ACL is associated with multiple Application Load Balancers, the changes you make to DDoS protection in that web ACL will apply to all associated Application Load Balancers.
+#' @param ApplicationConfig Configures the ability for the WAF console to store and retrieve application attributes during the web ACL creation process. Application attributes help WAF give recommendations for protection packs.
 #'
 #' @keywords internal
 #'
 #' @rdname wafv2_create_web_acl
-wafv2_create_web_acl <- function(Name, Scope, DefaultAction, Description = NULL, Rules = NULL, VisibilityConfig, DataProtectionConfig = NULL, Tags = NULL, CustomResponseBodies = NULL, CaptchaConfig = NULL, ChallengeConfig = NULL, TokenDomains = NULL, AssociationConfig = NULL) {
+wafv2_create_web_acl <- function(Name, Scope, DefaultAction, Description = NULL, Rules = NULL, VisibilityConfig, DataProtectionConfig = NULL, Tags = NULL, CustomResponseBodies = NULL, CaptchaConfig = NULL, ChallengeConfig = NULL, TokenDomains = NULL, AssociationConfig = NULL, OnSourceDDoSProtectionConfig = NULL, ApplicationConfig = NULL) {
   op <- new_operation(
     name = "CreateWebACL",
     http_method = "POST",
@@ -456,7 +349,7 @@ wafv2_create_web_acl <- function(Name, Scope, DefaultAction, Description = NULL,
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .wafv2$create_web_acl_input(Name = Name, Scope = Scope, DefaultAction = DefaultAction, Description = Description, Rules = Rules, VisibilityConfig = VisibilityConfig, DataProtectionConfig = DataProtectionConfig, Tags = Tags, CustomResponseBodies = CustomResponseBodies, CaptchaConfig = CaptchaConfig, ChallengeConfig = ChallengeConfig, TokenDomains = TokenDomains, AssociationConfig = AssociationConfig)
+  input <- .wafv2$create_web_acl_input(Name = Name, Scope = Scope, DefaultAction = DefaultAction, Description = Description, Rules = Rules, VisibilityConfig = VisibilityConfig, DataProtectionConfig = DataProtectionConfig, Tags = Tags, CustomResponseBodies = CustomResponseBodies, CaptchaConfig = CaptchaConfig, ChallengeConfig = ChallengeConfig, TokenDomains = TokenDomains, AssociationConfig = AssociationConfig, OnSourceDDoSProtectionConfig = OnSourceDDoSProtectionConfig, ApplicationConfig = ApplicationConfig)
   output <- .wafv2$create_web_acl_output()
   config <- get_config()
   svc <- .wafv2$service(config, op)
@@ -473,14 +366,11 @@ wafv2_create_web_acl <- function(Name, Scope, DefaultAction, Description = NULL,
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafv2_delete_api_key/](https://www.paws-r-sdk.com/docs/wafv2_delete_api_key/) for full documentation.
 #'
-#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
-#' CloudFront distribution.
+#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon CloudFront distribution. For an Amplify application, use `CLOUDFRONT`.
 #' 
-#' To work with CloudFront, you must also specify the Region US East (N.
-#' Virginia) as follows:
+#' To work with CloudFront, you must also specify the Region US East (N. Virginia) as follows:
 #' 
-#' -   CLI - Specify the Region when you use the CloudFront scope:
-#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' -   CLI - Specify the Region when you use the CloudFront scope: `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
 #' @param APIKey &#91;required&#93; The encrypted API key that you want to delete.
@@ -516,14 +406,7 @@ wafv2_delete_api_key <- function(Scope, APIKey) {
 #' See [https://www.paws-r-sdk.com/docs/wafv2_delete_firewall_manager_rule_groups/](https://www.paws-r-sdk.com/docs/wafv2_delete_firewall_manager_rule_groups/) for full documentation.
 #'
 #' @param WebACLArn &#91;required&#93; The Amazon Resource Name (ARN) of the web ACL.
-#' @param WebACLLockToken &#91;required&#93; A token used for optimistic locking. WAF returns a token to your `get`
-#' and `list` requests, to mark the state of the entity at the time of the
-#' request. To make changes to the entity associated with the token, you
-#' provide the token to operations like `update` and `delete`. WAF uses the
-#' token to ensure that no changes have been made to the entity since you
-#' last retrieved it. If a change has been made, the update fails with a
-#' `WAFOptimisticLockException`. If this happens, perform another `get`,
-#' and use the new token returned by that operation.
+#' @param WebACLLockToken &#91;required&#93; A token used for optimistic locking. WAF returns a token to your `get` and `list` requests, to mark the state of the entity at the time of the request. To make changes to the entity associated with the token, you provide the token to operations like `update` and `delete`. WAF uses the token to ensure that no changes have been made to the entity since you last retrieved it. If a change has been made, the update fails with a `WAFOptimisticLockException`. If this happens, perform another `get`, and use the new token returned by that operation.
 #'
 #' @keywords internal
 #'
@@ -554,29 +437,16 @@ wafv2_delete_firewall_manager_rule_groups <- function(WebACLArn, WebACLLockToken
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafv2_delete_ip_set/](https://www.paws-r-sdk.com/docs/wafv2_delete_ip_set/) for full documentation.
 #'
-#' @param Name &#91;required&#93; The name of the IP set. You cannot change the name of an `IPSet` after
-#' you create it.
-#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
-#' CloudFront distribution.
+#' @param Name &#91;required&#93; The name of the IP set. You cannot change the name of an `IPSet` after you create it.
+#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon CloudFront distribution. For an Amplify application, use `CLOUDFRONT`.
 #' 
-#' To work with CloudFront, you must also specify the Region US East (N.
-#' Virginia) as follows:
+#' To work with CloudFront, you must also specify the Region US East (N. Virginia) as follows:
 #' 
-#' -   CLI - Specify the Region when you use the CloudFront scope:
-#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' -   CLI - Specify the Region when you use the CloudFront scope: `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
-#' @param Id &#91;required&#93; A unique identifier for the set. This ID is returned in the responses to
-#' create and list commands. You provide it to operations like update and
-#' delete.
-#' @param LockToken &#91;required&#93; A token used for optimistic locking. WAF returns a token to your `get`
-#' and `list` requests, to mark the state of the entity at the time of the
-#' request. To make changes to the entity associated with the token, you
-#' provide the token to operations like `update` and `delete`. WAF uses the
-#' token to ensure that no changes have been made to the entity since you
-#' last retrieved it. If a change has been made, the update fails with a
-#' `WAFOptimisticLockException`. If this happens, perform another `get`,
-#' and use the new token returned by that operation.
+#' @param Id &#91;required&#93; A unique identifier for the set. This ID is returned in the responses to create and list commands. You provide it to operations like update and delete.
+#' @param LockToken &#91;required&#93; A token used for optimistic locking. WAF returns a token to your `get` and `list` requests, to mark the state of the entity at the time of the request. To make changes to the entity associated with the token, you provide the token to operations like `update` and `delete`. WAF uses the token to ensure that no changes have been made to the entity since you last retrieved it. If a change has been made, the update fails with a `WAFOptimisticLockException`. If this happens, perform another `get`, and use the new token returned by that operation.
 #'
 #' @keywords internal
 #'
@@ -607,22 +477,15 @@ wafv2_delete_ip_set <- function(Name, Scope, Id, LockToken) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafv2_delete_logging_configuration/](https://www.paws-r-sdk.com/docs/wafv2_delete_logging_configuration/) for full documentation.
 #'
-#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the web ACL from which you want to
-#' delete the LoggingConfiguration.
-#' @param LogType Used to distinguish between various logging options. Currently, there is
-#' one option.
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the web ACL from which you want to delete the LoggingConfiguration.
+#' @param LogType Used to distinguish between various logging options. Currently, there is one option.
 #' 
 #' Default: `WAF_LOGS`
-#' @param LogScope The owner of the logging configuration, which must be set to `CUSTOMER`
-#' for the configurations that you manage.
+#' @param LogScope The owner of the logging configuration, which must be set to `CUSTOMER` for the configurations that you manage.
 #' 
-#' The log scope `SECURITY_LAKE` indicates a configuration that is managed
-#' through Amazon Security Lake. You can use Security Lake to collect log
-#' and event data from various sources for normalization, analysis, and
-#' management. For information, see [Collecting data from Amazon Web
-#' Services
-#' services](https://docs.aws.amazon.com/security-lake/latest/userguide/internal-sources.html)
-#' in the *Amazon Security Lake user guide*.
+#' The log scope `SECURITY_LAKE` indicates a configuration that is managed through Amazon Security Lake. You can use Security Lake to collect log and event data from various sources for normalization, analysis, and management. For information, see [Collecting data from Amazon Web Services services](https://docs.aws.amazon.com/security-lake/latest/userguide/internal-sources.html) in the *Amazon Security Lake user guide*.
+#' 
+#' The log scope `CLOUDWATCH_TELEMETRY_RULE_MANAGED` indicates a configuration that is managed through Amazon CloudWatch Logs for telemetry data collection and analysis. For information, see [What is Amazon CloudWatch Logs ?](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html) in the *Amazon CloudWatch Logs user guide*.
 #' 
 #' Default: `CUSTOMER`
 #'
@@ -655,8 +518,7 @@ wafv2_delete_logging_configuration <- function(ResourceArn, LogType = NULL, LogS
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafv2_delete_permission_policy/](https://www.paws-r-sdk.com/docs/wafv2_delete_permission_policy/) for full documentation.
 #'
-#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the rule group from which you want to
-#' delete the policy.
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the rule group from which you want to delete the policy.
 #' 
 #' You must be the owner of the rule group to perform this operation.
 #'
@@ -689,29 +551,16 @@ wafv2_delete_permission_policy <- function(ResourceArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafv2_delete_regex_pattern_set/](https://www.paws-r-sdk.com/docs/wafv2_delete_regex_pattern_set/) for full documentation.
 #'
-#' @param Name &#91;required&#93; The name of the set. You cannot change the name after you create the
-#' set.
-#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
-#' CloudFront distribution.
+#' @param Name &#91;required&#93; The name of the set. You cannot change the name after you create the set.
+#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon CloudFront distribution. For an Amplify application, use `CLOUDFRONT`.
 #' 
-#' To work with CloudFront, you must also specify the Region US East (N.
-#' Virginia) as follows:
+#' To work with CloudFront, you must also specify the Region US East (N. Virginia) as follows:
 #' 
-#' -   CLI - Specify the Region when you use the CloudFront scope:
-#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' -   CLI - Specify the Region when you use the CloudFront scope: `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
-#' @param Id &#91;required&#93; A unique identifier for the set. This ID is returned in the responses to
-#' create and list commands. You provide it to operations like update and
-#' delete.
-#' @param LockToken &#91;required&#93; A token used for optimistic locking. WAF returns a token to your `get`
-#' and `list` requests, to mark the state of the entity at the time of the
-#' request. To make changes to the entity associated with the token, you
-#' provide the token to operations like `update` and `delete`. WAF uses the
-#' token to ensure that no changes have been made to the entity since you
-#' last retrieved it. If a change has been made, the update fails with a
-#' `WAFOptimisticLockException`. If this happens, perform another `get`,
-#' and use the new token returned by that operation.
+#' @param Id &#91;required&#93; A unique identifier for the set. This ID is returned in the responses to create and list commands. You provide it to operations like update and delete.
+#' @param LockToken &#91;required&#93; A token used for optimistic locking. WAF returns a token to your `get` and `list` requests, to mark the state of the entity at the time of the request. To make changes to the entity associated with the token, you provide the token to operations like `update` and `delete`. WAF uses the token to ensure that no changes have been made to the entity since you last retrieved it. If a change has been made, the update fails with a `WAFOptimisticLockException`. If this happens, perform another `get`, and use the new token returned by that operation.
 #'
 #' @keywords internal
 #'
@@ -742,29 +591,16 @@ wafv2_delete_regex_pattern_set <- function(Name, Scope, Id, LockToken) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafv2_delete_rule_group/](https://www.paws-r-sdk.com/docs/wafv2_delete_rule_group/) for full documentation.
 #'
-#' @param Name &#91;required&#93; The name of the rule group. You cannot change the name of a rule group
-#' after you create it.
-#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
-#' CloudFront distribution.
+#' @param Name &#91;required&#93; The name of the rule group. You cannot change the name of a rule group after you create it.
+#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon CloudFront distribution. For an Amplify application, use `CLOUDFRONT`.
 #' 
-#' To work with CloudFront, you must also specify the Region US East (N.
-#' Virginia) as follows:
+#' To work with CloudFront, you must also specify the Region US East (N. Virginia) as follows:
 #' 
-#' -   CLI - Specify the Region when you use the CloudFront scope:
-#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' -   CLI - Specify the Region when you use the CloudFront scope: `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
-#' @param Id &#91;required&#93; A unique identifier for the rule group. This ID is returned in the
-#' responses to create and list commands. You provide it to operations like
-#' update and delete.
-#' @param LockToken &#91;required&#93; A token used for optimistic locking. WAF returns a token to your `get`
-#' and `list` requests, to mark the state of the entity at the time of the
-#' request. To make changes to the entity associated with the token, you
-#' provide the token to operations like `update` and `delete`. WAF uses the
-#' token to ensure that no changes have been made to the entity since you
-#' last retrieved it. If a change has been made, the update fails with a
-#' `WAFOptimisticLockException`. If this happens, perform another `get`,
-#' and use the new token returned by that operation.
+#' @param Id &#91;required&#93; A unique identifier for the rule group. This ID is returned in the responses to create and list commands. You provide it to operations like update and delete.
+#' @param LockToken &#91;required&#93; A token used for optimistic locking. WAF returns a token to your `get` and `list` requests, to mark the state of the entity at the time of the request. To make changes to the entity associated with the token, you provide the token to operations like `update` and `delete`. WAF uses the token to ensure that no changes have been made to the entity since you last retrieved it. If a change has been made, the update fails with a `WAFOptimisticLockException`. If this happens, perform another `get`, and use the new token returned by that operation.
 #'
 #' @keywords internal
 #'
@@ -795,29 +631,16 @@ wafv2_delete_rule_group <- function(Name, Scope, Id, LockToken) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafv2_delete_web_acl/](https://www.paws-r-sdk.com/docs/wafv2_delete_web_acl/) for full documentation.
 #'
-#' @param Name &#91;required&#93; The name of the web ACL. You cannot change the name of a web ACL after
-#' you create it.
-#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
-#' CloudFront distribution.
+#' @param Name &#91;required&#93; The name of the web ACL. You cannot change the name of a web ACL after you create it.
+#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon CloudFront distribution. For an Amplify application, use `CLOUDFRONT`.
 #' 
-#' To work with CloudFront, you must also specify the Region US East (N.
-#' Virginia) as follows:
+#' To work with CloudFront, you must also specify the Region US East (N. Virginia) as follows:
 #' 
-#' -   CLI - Specify the Region when you use the CloudFront scope:
-#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' -   CLI - Specify the Region when you use the CloudFront scope: `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
-#' @param Id &#91;required&#93; The unique identifier for the web ACL. This ID is returned in the
-#' responses to create and list commands. You provide it to operations like
-#' update and delete.
-#' @param LockToken &#91;required&#93; A token used for optimistic locking. WAF returns a token to your `get`
-#' and `list` requests, to mark the state of the entity at the time of the
-#' request. To make changes to the entity associated with the token, you
-#' provide the token to operations like `update` and `delete`. WAF uses the
-#' token to ensure that no changes have been made to the entity since you
-#' last retrieved it. If a change has been made, the update fails with a
-#' `WAFOptimisticLockException`. If this happens, perform another `get`,
-#' and use the new token returned by that operation.
+#' @param Id &#91;required&#93; The unique identifier for the web ACL. This ID is returned in the responses to create and list commands. You provide it to operations like update and delete.
+#' @param LockToken &#91;required&#93; A token used for optimistic locking. WAF returns a token to your `get` and `list` requests, to mark the state of the entity at the time of the request. To make changes to the entity associated with the token, you provide the token to operations like `update` and `delete`. WAF uses the token to ensure that no changes have been made to the entity since you last retrieved it. If a change has been made, the update fails with a `WAFOptimisticLockException`. If this happens, perform another `get`, and use the new token returned by that operation.
 #'
 #' @keywords internal
 #'
@@ -850,14 +673,11 @@ wafv2_delete_web_acl <- function(Name, Scope, Id, LockToken) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafv2_describe_all_managed_products/](https://www.paws-r-sdk.com/docs/wafv2_describe_all_managed_products/) for full documentation.
 #'
-#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
-#' CloudFront distribution.
+#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon CloudFront distribution. For an Amplify application, use `CLOUDFRONT`.
 #' 
-#' To work with CloudFront, you must also specify the Region US East (N.
-#' Virginia) as follows:
+#' To work with CloudFront, you must also specify the Region US East (N. Virginia) as follows:
 #' 
-#' -   CLI - Specify the Region when you use the CloudFront scope:
-#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' -   CLI - Specify the Region when you use the CloudFront scope: `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
 #'
@@ -891,16 +711,12 @@ wafv2_describe_all_managed_products <- function(Scope) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafv2_describe_managed_products_by_vendor/](https://www.paws-r-sdk.com/docs/wafv2_describe_managed_products_by_vendor/) for full documentation.
 #'
-#' @param VendorName &#91;required&#93; The name of the managed rule group vendor. You use this, along with the
-#' rule group name, to identify a rule group.
-#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
-#' CloudFront distribution.
+#' @param VendorName &#91;required&#93; The name of the managed rule group vendor. You use this, along with the rule group name, to identify a rule group.
+#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon CloudFront distribution. For an Amplify application, use `CLOUDFRONT`.
 #' 
-#' To work with CloudFront, you must also specify the Region US East (N.
-#' Virginia) as follows:
+#' To work with CloudFront, you must also specify the Region US East (N. Virginia) as follows:
 #' 
-#' -   CLI - Specify the Region when you use the CloudFront scope:
-#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' -   CLI - Specify the Region when you use the CloudFront scope: `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
 #'
@@ -934,23 +750,16 @@ wafv2_describe_managed_products_by_vendor <- function(VendorName, Scope) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafv2_describe_managed_rule_group/](https://www.paws-r-sdk.com/docs/wafv2_describe_managed_rule_group/) for full documentation.
 #'
-#' @param VendorName &#91;required&#93; The name of the managed rule group vendor. You use this, along with the
-#' rule group name, to identify a rule group.
-#' @param Name &#91;required&#93; The name of the managed rule group. You use this, along with the vendor
-#' name, to identify the rule group.
-#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
-#' CloudFront distribution.
+#' @param VendorName &#91;required&#93; The name of the managed rule group vendor. You use this, along with the rule group name, to identify a rule group.
+#' @param Name &#91;required&#93; The name of the managed rule group. You use this, along with the vendor name, to identify the rule group.
+#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon CloudFront distribution. For an Amplify application, use `CLOUDFRONT`.
 #' 
-#' To work with CloudFront, you must also specify the Region US East (N.
-#' Virginia) as follows:
+#' To work with CloudFront, you must also specify the Region US East (N. Virginia) as follows:
 #' 
-#' -   CLI - Specify the Region when you use the CloudFront scope:
-#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' -   CLI - Specify the Region when you use the CloudFront scope: `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
-#' @param VersionName The version of the rule group. You can only use a version that is not
-#' scheduled for expiration. If you don't provide this, WAF uses the
-#' vendor's default version.
+#' @param VersionName The version of the rule group. You can only use a version that is not scheduled for expiration. If you don't provide this, WAF uses the vendor's default version.
 #'
 #' @keywords internal
 #'
@@ -982,28 +791,23 @@ wafv2_describe_managed_rule_group <- function(VendorName, Name, Scope, VersionNa
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafv2_disassociate_web_acl/](https://www.paws-r-sdk.com/docs/wafv2_disassociate_web_acl/) for full documentation.
 #'
-#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to disassociate from the
-#' web ACL.
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to disassociate from the web ACL.
 #' 
 #' The ARN must be in one of the following formats:
 #' 
-#' -   For an Application Load Balancer:
-#'     `arn:partition:elasticloadbalancing:region:account-id:loadbalancer/app/load-balancer-name/load-balancer-id `
+#' -   For an Application Load Balancer: `arn:partition:elasticloadbalancing:region:account-id:loadbalancer/app/load-balancer-name/load-balancer-id `
 #' 
-#' -   For an Amazon API Gateway REST API:
-#'     `arn:partition:apigateway:region::/restapis/api-id/stages/stage-name `
+#' -   For an Amazon API Gateway REST API: `arn:partition:apigateway:region::/restapis/api-id/stages/stage-name `
 #' 
-#' -   For an AppSync GraphQL API:
-#'     `arn:partition:appsync:region:account-id:apis/GraphQLApiId `
+#' -   For an AppSync GraphQL API: `arn:partition:appsync:region:account-id:apis/GraphQLApiId `
 #' 
-#' -   For an Amazon Cognito user pool:
-#'     `arn:partition:cognito-idp:region:account-id:userpool/user-pool-id `
+#' -   For an Amazon Cognito user pool: `arn:partition:cognito-idp:region:account-id:userpool/user-pool-id `
 #' 
-#' -   For an App Runner service:
-#'     `arn:partition:apprunner:region:account-id:service/apprunner-service-name/apprunner-service-id `
+#' -   For an App Runner service: `arn:partition:apprunner:region:account-id:service/apprunner-service-name/apprunner-service-id `
 #' 
-#' -   For an Amazon Web Services Verified Access instance:
-#'     `arn:partition:ec2:region:account-id:verified-access-instance/instance-id `
+#' -   For an Amazon Web Services Verified Access instance: `arn:partition:ec2:region:account-id:verified-access-instance/instance-id `
+#' 
+#' -   For an Amplify application: `arn:partition:amplify:region:account-id:apps/app-id `
 #'
 #' @keywords internal
 #'
@@ -1067,14 +871,11 @@ wafv2_generate_mobile_sdk_release_url <- function(Platform, ReleaseVersion) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafv2_get_decrypted_api_key/](https://www.paws-r-sdk.com/docs/wafv2_get_decrypted_api_key/) for full documentation.
 #'
-#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
-#' CloudFront distribution.
+#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon CloudFront distribution. For an Amplify application, use `CLOUDFRONT`.
 #' 
-#' To work with CloudFront, you must also specify the Region US East (N.
-#' Virginia) as follows:
+#' To work with CloudFront, you must also specify the Region US East (N. Virginia) as follows:
 #' 
-#' -   CLI - Specify the Region when you use the CloudFront scope:
-#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' -   CLI - Specify the Region when you use the CloudFront scope: `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
 #' @param APIKey &#91;required&#93; The encrypted API key.
@@ -1108,21 +909,15 @@ wafv2_get_decrypted_api_key <- function(Scope, APIKey) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafv2_get_ip_set/](https://www.paws-r-sdk.com/docs/wafv2_get_ip_set/) for full documentation.
 #'
-#' @param Name &#91;required&#93; The name of the IP set. You cannot change the name of an `IPSet` after
-#' you create it.
-#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
-#' CloudFront distribution.
+#' @param Name &#91;required&#93; The name of the IP set. You cannot change the name of an `IPSet` after you create it.
+#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon CloudFront distribution. For an Amplify application, use `CLOUDFRONT`.
 #' 
-#' To work with CloudFront, you must also specify the Region US East (N.
-#' Virginia) as follows:
+#' To work with CloudFront, you must also specify the Region US East (N. Virginia) as follows:
 #' 
-#' -   CLI - Specify the Region when you use the CloudFront scope:
-#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' -   CLI - Specify the Region when you use the CloudFront scope: `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
-#' @param Id &#91;required&#93; A unique identifier for the set. This ID is returned in the responses to
-#' create and list commands. You provide it to operations like update and
-#' delete.
+#' @param Id &#91;required&#93; A unique identifier for the set. This ID is returned in the responses to create and list commands. You provide it to operations like update and delete.
 #'
 #' @keywords internal
 #'
@@ -1153,22 +948,15 @@ wafv2_get_ip_set <- function(Name, Scope, Id) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafv2_get_logging_configuration/](https://www.paws-r-sdk.com/docs/wafv2_get_logging_configuration/) for full documentation.
 #'
-#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the web ACL for which you want to get
-#' the LoggingConfiguration.
-#' @param LogType Used to distinguish between various logging options. Currently, there is
-#' one option.
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the web ACL for which you want to get the LoggingConfiguration.
+#' @param LogType Used to distinguish between various logging options. Currently, there is one option.
 #' 
 #' Default: `WAF_LOGS`
-#' @param LogScope The owner of the logging configuration, which must be set to `CUSTOMER`
-#' for the configurations that you manage.
+#' @param LogScope The owner of the logging configuration, which must be set to `CUSTOMER` for the configurations that you manage.
 #' 
-#' The log scope `SECURITY_LAKE` indicates a configuration that is managed
-#' through Amazon Security Lake. You can use Security Lake to collect log
-#' and event data from various sources for normalization, analysis, and
-#' management. For information, see [Collecting data from Amazon Web
-#' Services
-#' services](https://docs.aws.amazon.com/security-lake/latest/userguide/internal-sources.html)
-#' in the *Amazon Security Lake user guide*.
+#' The log scope `SECURITY_LAKE` indicates a configuration that is managed through Amazon Security Lake. You can use Security Lake to collect log and event data from various sources for normalization, analysis, and management. For information, see [Collecting data from Amazon Web Services services](https://docs.aws.amazon.com/security-lake/latest/userguide/internal-sources.html) in the *Amazon Security Lake user guide*.
+#' 
+#' The log scope `CLOUDWATCH_TELEMETRY_RULE_MANAGED` indicates a configuration that is managed through Amazon CloudWatch Logs for telemetry data collection and analysis. For information, see [What is Amazon CloudWatch Logs ?](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html) in the *Amazon CloudWatch Logs user guide*.
 #' 
 #' Default: `CUSTOMER`
 #'
@@ -1201,24 +989,17 @@ wafv2_get_logging_configuration <- function(ResourceArn, LogType = NULL, LogScop
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafv2_get_managed_rule_set/](https://www.paws-r-sdk.com/docs/wafv2_get_managed_rule_set/) for full documentation.
 #'
-#' @param Name &#91;required&#93; The name of the managed rule set. You use this, along with the rule set
-#' ID, to identify the rule set.
+#' @param Name &#91;required&#93; The name of the managed rule set. You use this, along with the rule set ID, to identify the rule set.
 #' 
-#' This name is assigned to the corresponding managed rule group, which
-#' your customers can access and use.
-#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
-#' CloudFront distribution.
+#' This name is assigned to the corresponding managed rule group, which your customers can access and use.
+#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon CloudFront distribution. For an Amplify application, use `CLOUDFRONT`.
 #' 
-#' To work with CloudFront, you must also specify the Region US East (N.
-#' Virginia) as follows:
+#' To work with CloudFront, you must also specify the Region US East (N. Virginia) as follows:
 #' 
-#' -   CLI - Specify the Region when you use the CloudFront scope:
-#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' -   CLI - Specify the Region when you use the CloudFront scope: `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
-#' @param Id &#91;required&#93; A unique identifier for the managed rule set. The ID is returned in the
-#' responses to commands like `list`. You provide it to operations like
-#' `get` and `update`.
+#' @param Id &#91;required&#93; A unique identifier for the managed rule set. The ID is returned in the responses to commands like `list`. You provide it to operations like `get` and `update`.
 #'
 #' @keywords internal
 #'
@@ -1282,8 +1063,7 @@ wafv2_get_mobile_sdk_release <- function(Platform, ReleaseVersion) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafv2_get_permission_policy/](https://www.paws-r-sdk.com/docs/wafv2_get_permission_policy/) for full documentation.
 #'
-#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the rule group for which you want to
-#' get the policy.
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the rule group for which you want to get the policy.
 #'
 #' @keywords internal
 #'
@@ -1315,28 +1095,17 @@ wafv2_get_permission_policy <- function(ResourceArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafv2_get_rate_based_statement_managed_keys/](https://www.paws-r-sdk.com/docs/wafv2_get_rate_based_statement_managed_keys/) for full documentation.
 #'
-#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
-#' CloudFront distribution.
+#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon CloudFront distribution. For an Amplify application, use `CLOUDFRONT`.
 #' 
-#' To work with CloudFront, you must also specify the Region US East (N.
-#' Virginia) as follows:
+#' To work with CloudFront, you must also specify the Region US East (N. Virginia) as follows:
 #' 
-#' -   CLI - Specify the Region when you use the CloudFront scope:
-#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' -   CLI - Specify the Region when you use the CloudFront scope: `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
-#' @param WebACLName &#91;required&#93; The name of the web ACL. You cannot change the name of a web ACL after
-#' you create it.
-#' @param WebACLId &#91;required&#93; The unique identifier for the web ACL. This ID is returned in the
-#' responses to create and list commands. You provide it to operations like
-#' update and delete.
-#' @param RuleGroupRuleName The name of the rule group reference statement in your web ACL. This is
-#' required only when you have the rate-based rule nested inside a rule
-#' group.
-#' @param RuleName &#91;required&#93; The name of the rate-based rule to get the keys for. If you have the
-#' rule defined inside a rule group that you're using in your web ACL, also
-#' provide the name of the rule group reference statement in the request
-#' parameter `RuleGroupRuleName`.
+#' @param WebACLName &#91;required&#93; The name of the web ACL. You cannot change the name of a web ACL after you create it.
+#' @param WebACLId &#91;required&#93; The unique identifier for the web ACL. This ID is returned in the responses to create and list commands. You provide it to operations like update and delete.
+#' @param RuleGroupRuleName The name of the rule group reference statement in your web ACL. This is required only when you have the rate-based rule nested inside a rule group.
+#' @param RuleName &#91;required&#93; The name of the rate-based rule to get the keys for. If you have the rule defined inside a rule group that you're using in your web ACL, also provide the name of the rule group reference statement in the request parameter `RuleGroupRuleName`.
 #'
 #' @keywords internal
 #'
@@ -1367,21 +1136,15 @@ wafv2_get_rate_based_statement_managed_keys <- function(Scope, WebACLName, WebAC
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafv2_get_regex_pattern_set/](https://www.paws-r-sdk.com/docs/wafv2_get_regex_pattern_set/) for full documentation.
 #'
-#' @param Name &#91;required&#93; The name of the set. You cannot change the name after you create the
-#' set.
-#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
-#' CloudFront distribution.
+#' @param Name &#91;required&#93; The name of the set. You cannot change the name after you create the set.
+#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon CloudFront distribution. For an Amplify application, use `CLOUDFRONT`.
 #' 
-#' To work with CloudFront, you must also specify the Region US East (N.
-#' Virginia) as follows:
+#' To work with CloudFront, you must also specify the Region US East (N. Virginia) as follows:
 #' 
-#' -   CLI - Specify the Region when you use the CloudFront scope:
-#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' -   CLI - Specify the Region when you use the CloudFront scope: `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
-#' @param Id &#91;required&#93; A unique identifier for the set. This ID is returned in the responses to
-#' create and list commands. You provide it to operations like update and
-#' delete.
+#' @param Id &#91;required&#93; A unique identifier for the set. This ID is returned in the responses to create and list commands. You provide it to operations like update and delete.
 #'
 #' @keywords internal
 #'
@@ -1412,21 +1175,15 @@ wafv2_get_regex_pattern_set <- function(Name, Scope, Id) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafv2_get_rule_group/](https://www.paws-r-sdk.com/docs/wafv2_get_rule_group/) for full documentation.
 #'
-#' @param Name The name of the rule group. You cannot change the name of a rule group
-#' after you create it.
-#' @param Scope Specifies whether this is for a global resource type, such as a Amazon
-#' CloudFront distribution.
+#' @param Name The name of the rule group. You cannot change the name of a rule group after you create it.
+#' @param Scope Specifies whether this is for a global resource type, such as a Amazon CloudFront distribution. For an Amplify application, use `CLOUDFRONT`.
 #' 
-#' To work with CloudFront, you must also specify the Region US East (N.
-#' Virginia) as follows:
+#' To work with CloudFront, you must also specify the Region US East (N. Virginia) as follows:
 #' 
-#' -   CLI - Specify the Region when you use the CloudFront scope:
-#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' -   CLI - Specify the Region when you use the CloudFront scope: `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
-#' @param Id A unique identifier for the rule group. This ID is returned in the
-#' responses to create and list commands. You provide it to operations like
-#' update and delete.
+#' @param Id A unique identifier for the rule group. This ID is returned in the responses to create and list commands. You provide it to operations like update and delete.
 #' @param ARN The Amazon Resource Name (ARN) of the entity.
 #'
 #' @keywords internal
@@ -1461,32 +1218,17 @@ wafv2_get_rule_group <- function(Name = NULL, Scope = NULL, Id = NULL, ARN = NUL
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafv2_get_sampled_requests/](https://www.paws-r-sdk.com/docs/wafv2_get_sampled_requests/) for full documentation.
 #'
-#' @param WebAclArn &#91;required&#93; The Amazon resource name (ARN) of the `WebACL` for which you want a
-#' sample of requests.
-#' @param RuleMetricName &#91;required&#93; The metric name assigned to the `Rule` or `RuleGroup` dimension for
-#' which you want a sample of requests.
-#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
-#' CloudFront distribution.
+#' @param WebAclArn &#91;required&#93; The Amazon resource name (ARN) of the `WebACL` for which you want a sample of requests.
+#' @param RuleMetricName &#91;required&#93; The metric name assigned to the `Rule` or `RuleGroup` dimension for which you want a sample of requests.
+#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon CloudFront distribution. For an Amplify application, use `CLOUDFRONT`.
 #' 
-#' To work with CloudFront, you must also specify the Region US East (N.
-#' Virginia) as follows:
+#' To work with CloudFront, you must also specify the Region US East (N. Virginia) as follows:
 #' 
-#' -   CLI - Specify the Region when you use the CloudFront scope:
-#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' -   CLI - Specify the Region when you use the CloudFront scope: `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
-#' @param TimeWindow &#91;required&#93; The start date and time and the end date and time of the range for which
-#' you want [`get_sampled_requests`][wafv2_get_sampled_requests] to return
-#' a sample of requests. You must specify the times in Coordinated
-#' Universal Time (UTC) format. UTC format includes the special designator,
-#' `Z`. For example, `"2016-09-27T14:50Z"`. You can specify any time range
-#' in the previous three hours. If you specify a start time that's earlier
-#' than three hours ago, WAF sets it to three hours ago.
-#' @param MaxItems &#91;required&#93; The number of requests that you want WAF to return from among the first
-#' 5,000 requests that your Amazon Web Services resource received during
-#' the time range. If your resource received fewer requests than the value
-#' of `MaxItems`, [`get_sampled_requests`][wafv2_get_sampled_requests]
-#' returns information about all of them.
+#' @param TimeWindow &#91;required&#93; The start date and time and the end date and time of the range for which you want [`get_sampled_requests`][wafv2_get_sampled_requests] to return a sample of requests. You must specify the times in Coordinated Universal Time (UTC) format. UTC format includes the special designator, `Z`. For example, `"2016-09-27T14:50Z"`. You can specify any time range in the previous three hours. If you specify a start time that's earlier than three hours ago, WAF sets it to three hours ago.
+#' @param MaxItems &#91;required&#93; The number of requests that you want WAF to return from among the first 5,000 requests that your Amazon Web Services resource received during the time range. If your resource received fewer requests than the value of `MaxItems`, [`get_sampled_requests`][wafv2_get_sampled_requests] returns information about all of them.
 #'
 #' @keywords internal
 #'
@@ -1510,6 +1252,47 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 }
 .wafv2$operations$get_sampled_requests <- wafv2_get_sampled_requests
 
+#' Retrieves aggregated statistics about the top URI paths accessed by bot
+#' traffic for a specified web ACL and time window
+#'
+#' @description
+#' Retrieves aggregated statistics about the top URI paths accessed by bot traffic for a specified web ACL and time window. You can use this operation to analyze which paths on your web application receive the most bot traffic and identify the specific bots accessing those paths. The operation supports filtering by bot category, organization, or name, and allows you to drill down into specific path prefixes to view detailed URI-level statistics.
+#'
+#' See [https://www.paws-r-sdk.com/docs/wafv2_get_top_path_statistics_by_traffic/](https://www.paws-r-sdk.com/docs/wafv2_get_top_path_statistics_by_traffic/) for full documentation.
+#'
+#' @param WebAclArn &#91;required&#93; The Amazon Resource Name (ARN) of the web ACL for which you want to retrieve path statistics.
+#' @param Scope &#91;required&#93; Specifies whether the web ACL is for an Amazon Web Services CloudFront distribution or for a regional application. A regional application can be an Application Load Balancer, an AppSync GraphQL API, an Amazon Cognito user pool, an Amazon Web Services App Runner service, or an Amazon Web Services Verified Access instance.
+#' @param UriPathPrefix A URI path prefix to filter the results. When you specify this parameter, the operation returns statistics for individual URIs within the specified path prefix. For example, if you specify `/api`, the response includes statistics for paths like `/api/v1/users` and `/api/v2/orders`. If you don't specify this parameter, the operation returns top-level path statistics.
+#' @param TimeWindow &#91;required&#93; The time window for which you want to retrieve path statistics. The time window must be within the data retention period for your web ACL.
+#' @param BotCategory Filters the results to include only traffic from bots in the specified category. For example, you can filter by `ai` to see only AI crawler traffic, or `search_engine` to see only search engine bot traffic. When you apply this filter, the `Source` field is populated in the response.
+#' @param BotOrganization Filters the results to include only traffic from bots belonging to the specified organization. For example, you can filter by `openai` or `google`. When you apply this filter, the `Source` field is populated in the response.
+#' @param BotName Filters the results to include only traffic from the specified bot. For example, you can filter by `gptbot` or `googlebot`. When you apply this filter, the `Source` field is populated in the response.
+#' @param Limit &#91;required&#93; The maximum number of path statistics to return. Valid values are 1 to 100.
+#' @param NumberOfTopTrafficBotsPerPath &#91;required&#93; The maximum number of top bots to include in the statistics for each path. Valid values are 1 to 10.
+#' @param NextMarker When you request a list of objects with a `Limit` setting, if the number of objects that are still available for retrieval exceeds the limit, WAF returns a `NextMarker` value in the response. To retrieve the next batch of objects, provide the marker from the prior call in your next request.
+#'
+#' @keywords internal
+#'
+#' @rdname wafv2_get_top_path_statistics_by_traffic
+wafv2_get_top_path_statistics_by_traffic <- function(WebAclArn, Scope, UriPathPrefix = NULL, TimeWindow, BotCategory = NULL, BotOrganization = NULL, BotName = NULL, Limit, NumberOfTopTrafficBotsPerPath, NextMarker = NULL) {
+  op <- new_operation(
+    name = "GetTopPathStatisticsByTraffic",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .wafv2$get_top_path_statistics_by_traffic_input(WebAclArn = WebAclArn, Scope = Scope, UriPathPrefix = UriPathPrefix, TimeWindow = TimeWindow, BotCategory = BotCategory, BotOrganization = BotOrganization, BotName = BotName, Limit = Limit, NumberOfTopTrafficBotsPerPath = NumberOfTopTrafficBotsPerPath, NextMarker = NextMarker)
+  output <- .wafv2$get_top_path_statistics_by_traffic_output()
+  config <- get_config()
+  svc <- .wafv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wafv2$operations$get_top_path_statistics_by_traffic <- wafv2_get_top_path_statistics_by_traffic
+
 #' Retrieves the specified WebACL
 #'
 #' @description
@@ -1517,26 +1300,21 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafv2_get_web_acl/](https://www.paws-r-sdk.com/docs/wafv2_get_web_acl/) for full documentation.
 #'
-#' @param Name &#91;required&#93; The name of the web ACL. You cannot change the name of a web ACL after
-#' you create it.
-#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
-#' CloudFront distribution.
+#' @param Name The name of the web ACL. You cannot change the name of a web ACL after you create it.
+#' @param Scope Specifies whether this is for a global resource type, such as a Amazon CloudFront distribution. For an Amplify application, use `CLOUDFRONT`.
 #' 
-#' To work with CloudFront, you must also specify the Region US East (N.
-#' Virginia) as follows:
+#' To work with CloudFront, you must also specify the Region US East (N. Virginia) as follows:
 #' 
-#' -   CLI - Specify the Region when you use the CloudFront scope:
-#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' -   CLI - Specify the Region when you use the CloudFront scope: `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
-#' @param Id &#91;required&#93; The unique identifier for the web ACL. This ID is returned in the
-#' responses to create and list commands. You provide it to operations like
-#' update and delete.
+#' @param Id The unique identifier for the web ACL. This ID is returned in the responses to create and list commands. You provide it to operations like update and delete.
+#' @param ARN The Amazon Resource Name (ARN) of the web ACL that you want to retrieve.
 #'
 #' @keywords internal
 #'
 #' @rdname wafv2_get_web_acl
-wafv2_get_web_acl <- function(Name, Scope, Id) {
+wafv2_get_web_acl <- function(Name = NULL, Scope = NULL, Id = NULL, ARN = NULL) {
   op <- new_operation(
     name = "GetWebACL",
     http_method = "POST",
@@ -1545,7 +1323,7 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .wafv2$get_web_acl_input(Name = Name, Scope = Scope, Id = Id)
+  input <- .wafv2$get_web_acl_input(Name = Name, Scope = Scope, Id = Id, ARN = ARN)
   output <- .wafv2$get_web_acl_output()
   config <- get_config()
   svc <- .wafv2$service(config, op)
@@ -1562,28 +1340,23 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafv2_get_web_acl_for_resource/](https://www.paws-r-sdk.com/docs/wafv2_get_web_acl_for_resource/) for full documentation.
 #'
-#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource whose web ACL you want to
-#' retrieve.
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource whose web ACL you want to retrieve.
 #' 
 #' The ARN must be in one of the following formats:
 #' 
-#' -   For an Application Load Balancer:
-#'     `arn:partition:elasticloadbalancing:region:account-id:loadbalancer/app/load-balancer-name/load-balancer-id `
+#' -   For an Application Load Balancer: `arn:partition:elasticloadbalancing:region:account-id:loadbalancer/app/load-balancer-name/load-balancer-id `
 #' 
-#' -   For an Amazon API Gateway REST API:
-#'     `arn:partition:apigateway:region::/restapis/api-id/stages/stage-name `
+#' -   For an Amazon API Gateway REST API: `arn:partition:apigateway:region::/restapis/api-id/stages/stage-name `
 #' 
-#' -   For an AppSync GraphQL API:
-#'     `arn:partition:appsync:region:account-id:apis/GraphQLApiId `
+#' -   For an AppSync GraphQL API: `arn:partition:appsync:region:account-id:apis/GraphQLApiId `
 #' 
-#' -   For an Amazon Cognito user pool:
-#'     `arn:partition:cognito-idp:region:account-id:userpool/user-pool-id `
+#' -   For an Amazon Cognito user pool: `arn:partition:cognito-idp:region:account-id:userpool/user-pool-id `
 #' 
-#' -   For an App Runner service:
-#'     `arn:partition:apprunner:region:account-id:service/apprunner-service-name/apprunner-service-id `
+#' -   For an App Runner service: `arn:partition:apprunner:region:account-id:service/apprunner-service-name/apprunner-service-id `
 #' 
-#' -   For an Amazon Web Services Verified Access instance:
-#'     `arn:partition:ec2:region:account-id:verified-access-instance/instance-id `
+#' -   For an Amazon Web Services Verified Access instance: `arn:partition:ec2:region:account-id:verified-access-instance/instance-id `
+#' 
+#' -   For an Amplify application: `arn:partition:amplify:region:account-id:apps/app-id `
 #'
 #' @keywords internal
 #'
@@ -1615,24 +1388,15 @@ wafv2_get_web_acl_for_resource <- function(ResourceArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafv2_list_api_keys/](https://www.paws-r-sdk.com/docs/wafv2_list_api_keys/) for full documentation.
 #'
-#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
-#' CloudFront distribution.
+#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon CloudFront distribution. For an Amplify application, use `CLOUDFRONT`.
 #' 
-#' To work with CloudFront, you must also specify the Region US East (N.
-#' Virginia) as follows:
+#' To work with CloudFront, you must also specify the Region US East (N. Virginia) as follows:
 #' 
-#' -   CLI - Specify the Region when you use the CloudFront scope:
-#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' -   CLI - Specify the Region when you use the CloudFront scope: `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
-#' @param NextMarker When you request a list of objects with a `Limit` setting, if the number
-#' of objects that are still available for retrieval exceeds the limit, WAF
-#' returns a `NextMarker` value in the response. To retrieve the next batch
-#' of objects, provide the marker from the prior call in your next request.
-#' @param Limit The maximum number of objects that you want WAF to return for this
-#' request. If more objects are available, in the response, WAF provides a
-#' `NextMarker` value that you can use in a subsequent call to get the next
-#' batch of objects.
+#' @param NextMarker When you request a list of objects with a `Limit` setting, if the number of objects that are still available for retrieval exceeds the limit, WAF returns a `NextMarker` value in the response. To retrieve the next batch of objects, provide the marker from the prior call in your next request.
+#' @param Limit The maximum number of objects that you want WAF to return for this request. If more objects are available, in the response, WAF provides a `NextMarker` value that you can use in a subsequent call to get the next batch of objects.
 #'
 #' @keywords internal
 #'
@@ -1664,28 +1428,17 @@ wafv2_list_api_keys <- function(Scope, NextMarker = NULL, Limit = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafv2_list_available_managed_rule_group_versions/](https://www.paws-r-sdk.com/docs/wafv2_list_available_managed_rule_group_versions/) for full documentation.
 #'
-#' @param VendorName &#91;required&#93; The name of the managed rule group vendor. You use this, along with the
-#' rule group name, to identify a rule group.
-#' @param Name &#91;required&#93; The name of the managed rule group. You use this, along with the vendor
-#' name, to identify the rule group.
-#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
-#' CloudFront distribution.
+#' @param VendorName &#91;required&#93; The name of the managed rule group vendor. You use this, along with the rule group name, to identify a rule group.
+#' @param Name &#91;required&#93; The name of the managed rule group. You use this, along with the vendor name, to identify the rule group.
+#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon CloudFront distribution. For an Amplify application, use `CLOUDFRONT`.
 #' 
-#' To work with CloudFront, you must also specify the Region US East (N.
-#' Virginia) as follows:
+#' To work with CloudFront, you must also specify the Region US East (N. Virginia) as follows:
 #' 
-#' -   CLI - Specify the Region when you use the CloudFront scope:
-#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' -   CLI - Specify the Region when you use the CloudFront scope: `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
-#' @param NextMarker When you request a list of objects with a `Limit` setting, if the number
-#' of objects that are still available for retrieval exceeds the limit, WAF
-#' returns a `NextMarker` value in the response. To retrieve the next batch
-#' of objects, provide the marker from the prior call in your next request.
-#' @param Limit The maximum number of objects that you want WAF to return for this
-#' request. If more objects are available, in the response, WAF provides a
-#' `NextMarker` value that you can use in a subsequent call to get the next
-#' batch of objects.
+#' @param NextMarker When you request a list of objects with a `Limit` setting, if the number of objects that are still available for retrieval exceeds the limit, WAF returns a `NextMarker` value in the response. To retrieve the next batch of objects, provide the marker from the prior call in your next request.
+#' @param Limit The maximum number of objects that you want WAF to return for this request. If more objects are available, in the response, WAF provides a `NextMarker` value that you can use in a subsequent call to get the next batch of objects.
 #'
 #' @keywords internal
 #'
@@ -1717,24 +1470,15 @@ wafv2_list_available_managed_rule_group_versions <- function(VendorName, Name, S
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafv2_list_available_managed_rule_groups/](https://www.paws-r-sdk.com/docs/wafv2_list_available_managed_rule_groups/) for full documentation.
 #'
-#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
-#' CloudFront distribution.
+#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon CloudFront distribution. For an Amplify application, use `CLOUDFRONT`.
 #' 
-#' To work with CloudFront, you must also specify the Region US East (N.
-#' Virginia) as follows:
+#' To work with CloudFront, you must also specify the Region US East (N. Virginia) as follows:
 #' 
-#' -   CLI - Specify the Region when you use the CloudFront scope:
-#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' -   CLI - Specify the Region when you use the CloudFront scope: `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
-#' @param NextMarker When you request a list of objects with a `Limit` setting, if the number
-#' of objects that are still available for retrieval exceeds the limit, WAF
-#' returns a `NextMarker` value in the response. To retrieve the next batch
-#' of objects, provide the marker from the prior call in your next request.
-#' @param Limit The maximum number of objects that you want WAF to return for this
-#' request. If more objects are available, in the response, WAF provides a
-#' `NextMarker` value that you can use in a subsequent call to get the next
-#' batch of objects.
+#' @param NextMarker When you request a list of objects with a `Limit` setting, if the number of objects that are still available for retrieval exceeds the limit, WAF returns a `NextMarker` value in the response. To retrieve the next batch of objects, provide the marker from the prior call in your next request.
+#' @param Limit The maximum number of objects that you want WAF to return for this request. If more objects are available, in the response, WAF provides a `NextMarker` value that you can use in a subsequent call to get the next batch of objects.
 #'
 #' @keywords internal
 #'
@@ -1766,24 +1510,15 @@ wafv2_list_available_managed_rule_groups <- function(Scope, NextMarker = NULL, L
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafv2_list_ip_sets/](https://www.paws-r-sdk.com/docs/wafv2_list_ip_sets/) for full documentation.
 #'
-#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
-#' CloudFront distribution.
+#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon CloudFront distribution. For an Amplify application, use `CLOUDFRONT`.
 #' 
-#' To work with CloudFront, you must also specify the Region US East (N.
-#' Virginia) as follows:
+#' To work with CloudFront, you must also specify the Region US East (N. Virginia) as follows:
 #' 
-#' -   CLI - Specify the Region when you use the CloudFront scope:
-#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' -   CLI - Specify the Region when you use the CloudFront scope: `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
-#' @param NextMarker When you request a list of objects with a `Limit` setting, if the number
-#' of objects that are still available for retrieval exceeds the limit, WAF
-#' returns a `NextMarker` value in the response. To retrieve the next batch
-#' of objects, provide the marker from the prior call in your next request.
-#' @param Limit The maximum number of objects that you want WAF to return for this
-#' request. If more objects are available, in the response, WAF provides a
-#' `NextMarker` value that you can use in a subsequent call to get the next
-#' batch of objects.
+#' @param NextMarker When you request a list of objects with a `Limit` setting, if the number of objects that are still available for retrieval exceeds the limit, WAF returns a `NextMarker` value in the response. To retrieve the next batch of objects, provide the marker from the prior call in your next request.
+#' @param Limit The maximum number of objects that you want WAF to return for this request. If more objects are available, in the response, WAF provides a `NextMarker` value that you can use in a subsequent call to get the next batch of objects.
 #'
 #' @keywords internal
 #'
@@ -1814,34 +1549,20 @@ wafv2_list_ip_sets <- function(Scope, NextMarker = NULL, Limit = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafv2_list_logging_configurations/](https://www.paws-r-sdk.com/docs/wafv2_list_logging_configurations/) for full documentation.
 #'
-#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
-#' CloudFront distribution.
+#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon CloudFront distribution. For an Amplify application, use `CLOUDFRONT`.
 #' 
-#' To work with CloudFront, you must also specify the Region US East (N.
-#' Virginia) as follows:
+#' To work with CloudFront, you must also specify the Region US East (N. Virginia) as follows:
 #' 
-#' -   CLI - Specify the Region when you use the CloudFront scope:
-#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' -   CLI - Specify the Region when you use the CloudFront scope: `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
-#' @param NextMarker When you request a list of objects with a `Limit` setting, if the number
-#' of objects that are still available for retrieval exceeds the limit, WAF
-#' returns a `NextMarker` value in the response. To retrieve the next batch
-#' of objects, provide the marker from the prior call in your next request.
-#' @param Limit The maximum number of objects that you want WAF to return for this
-#' request. If more objects are available, in the response, WAF provides a
-#' `NextMarker` value that you can use in a subsequent call to get the next
-#' batch of objects.
-#' @param LogScope The owner of the logging configuration, which must be set to `CUSTOMER`
-#' for the configurations that you manage.
+#' @param NextMarker When you request a list of objects with a `Limit` setting, if the number of objects that are still available for retrieval exceeds the limit, WAF returns a `NextMarker` value in the response. To retrieve the next batch of objects, provide the marker from the prior call in your next request.
+#' @param Limit The maximum number of objects that you want WAF to return for this request. If more objects are available, in the response, WAF provides a `NextMarker` value that you can use in a subsequent call to get the next batch of objects.
+#' @param LogScope The owner of the logging configuration, which must be set to `CUSTOMER` for the configurations that you manage.
 #' 
-#' The log scope `SECURITY_LAKE` indicates a configuration that is managed
-#' through Amazon Security Lake. You can use Security Lake to collect log
-#' and event data from various sources for normalization, analysis, and
-#' management. For information, see [Collecting data from Amazon Web
-#' Services
-#' services](https://docs.aws.amazon.com/security-lake/latest/userguide/internal-sources.html)
-#' in the *Amazon Security Lake user guide*.
+#' The log scope `SECURITY_LAKE` indicates a configuration that is managed through Amazon Security Lake. You can use Security Lake to collect log and event data from various sources for normalization, analysis, and management. For information, see [Collecting data from Amazon Web Services services](https://docs.aws.amazon.com/security-lake/latest/userguide/internal-sources.html) in the *Amazon Security Lake user guide*.
+#' 
+#' The log scope `CLOUDWATCH_TELEMETRY_RULE_MANAGED` indicates a configuration that is managed through Amazon CloudWatch Logs for telemetry data collection and analysis. For information, see [What is Amazon CloudWatch Logs ?](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html) in the *Amazon CloudWatch Logs user guide*.
 #' 
 #' Default: `CUSTOMER`
 #'
@@ -1874,24 +1595,15 @@ wafv2_list_logging_configurations <- function(Scope, NextMarker = NULL, Limit = 
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafv2_list_managed_rule_sets/](https://www.paws-r-sdk.com/docs/wafv2_list_managed_rule_sets/) for full documentation.
 #'
-#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
-#' CloudFront distribution.
+#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon CloudFront distribution. For an Amplify application, use `CLOUDFRONT`.
 #' 
-#' To work with CloudFront, you must also specify the Region US East (N.
-#' Virginia) as follows:
+#' To work with CloudFront, you must also specify the Region US East (N. Virginia) as follows:
 #' 
-#' -   CLI - Specify the Region when you use the CloudFront scope:
-#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' -   CLI - Specify the Region when you use the CloudFront scope: `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
-#' @param NextMarker When you request a list of objects with a `Limit` setting, if the number
-#' of objects that are still available for retrieval exceeds the limit, WAF
-#' returns a `NextMarker` value in the response. To retrieve the next batch
-#' of objects, provide the marker from the prior call in your next request.
-#' @param Limit The maximum number of objects that you want WAF to return for this
-#' request. If more objects are available, in the response, WAF provides a
-#' `NextMarker` value that you can use in a subsequent call to get the next
-#' batch of objects.
+#' @param NextMarker When you request a list of objects with a `Limit` setting, if the number of objects that are still available for retrieval exceeds the limit, WAF returns a `NextMarker` value in the response. To retrieve the next batch of objects, provide the marker from the prior call in your next request.
+#' @param Limit The maximum number of objects that you want WAF to return for this request. If more objects are available, in the response, WAF provides a `NextMarker` value that you can use in a subsequent call to get the next batch of objects.
 #'
 #' @keywords internal
 #'
@@ -1924,14 +1636,8 @@ wafv2_list_managed_rule_sets <- function(Scope, NextMarker = NULL, Limit = NULL)
 #' See [https://www.paws-r-sdk.com/docs/wafv2_list_mobile_sdk_releases/](https://www.paws-r-sdk.com/docs/wafv2_list_mobile_sdk_releases/) for full documentation.
 #'
 #' @param Platform &#91;required&#93; The device platform to retrieve the list for.
-#' @param NextMarker When you request a list of objects with a `Limit` setting, if the number
-#' of objects that are still available for retrieval exceeds the limit, WAF
-#' returns a `NextMarker` value in the response. To retrieve the next batch
-#' of objects, provide the marker from the prior call in your next request.
-#' @param Limit The maximum number of objects that you want WAF to return for this
-#' request. If more objects are available, in the response, WAF provides a
-#' `NextMarker` value that you can use in a subsequent call to get the next
-#' batch of objects.
+#' @param NextMarker When you request a list of objects with a `Limit` setting, if the number of objects that are still available for retrieval exceeds the limit, WAF returns a `NextMarker` value in the response. To retrieve the next batch of objects, provide the marker from the prior call in your next request.
+#' @param Limit The maximum number of objects that you want WAF to return for this request. If more objects are available, in the response, WAF provides a `NextMarker` value that you can use in a subsequent call to get the next batch of objects.
 #'
 #' @keywords internal
 #'
@@ -1963,24 +1669,15 @@ wafv2_list_mobile_sdk_releases <- function(Platform, NextMarker = NULL, Limit = 
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafv2_list_regex_pattern_sets/](https://www.paws-r-sdk.com/docs/wafv2_list_regex_pattern_sets/) for full documentation.
 #'
-#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
-#' CloudFront distribution.
+#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon CloudFront distribution. For an Amplify application, use `CLOUDFRONT`.
 #' 
-#' To work with CloudFront, you must also specify the Region US East (N.
-#' Virginia) as follows:
+#' To work with CloudFront, you must also specify the Region US East (N. Virginia) as follows:
 #' 
-#' -   CLI - Specify the Region when you use the CloudFront scope:
-#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' -   CLI - Specify the Region when you use the CloudFront scope: `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
-#' @param NextMarker When you request a list of objects with a `Limit` setting, if the number
-#' of objects that are still available for retrieval exceeds the limit, WAF
-#' returns a `NextMarker` value in the response. To retrieve the next batch
-#' of objects, provide the marker from the prior call in your next request.
-#' @param Limit The maximum number of objects that you want WAF to return for this
-#' request. If more objects are available, in the response, WAF provides a
-#' `NextMarker` value that you can use in a subsequent call to get the next
-#' batch of objects.
+#' @param NextMarker When you request a list of objects with a `Limit` setting, if the number of objects that are still available for retrieval exceeds the limit, WAF returns a `NextMarker` value in the response. To retrieve the next batch of objects, provide the marker from the prior call in your next request.
+#' @param Limit The maximum number of objects that you want WAF to return for this request. If more objects are available, in the response, WAF provides a `NextMarker` value that you can use in a subsequent call to get the next batch of objects.
 #'
 #' @keywords internal
 #'
@@ -2015,13 +1712,9 @@ wafv2_list_regex_pattern_sets <- function(Scope, NextMarker = NULL, Limit = NULL
 #' @param WebACLArn &#91;required&#93; The Amazon Resource Name (ARN) of the web ACL.
 #' @param ResourceType Retrieves the web ACLs that are used by the specified resource type.
 #' 
-#' For Amazon CloudFront, don't use this call. Instead, use the CloudFront
-#' call `ListDistributionsByWebACLId`. For information, see
-#' [ListDistributionsByWebACLId](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_ListDistributionsByWebACLId.html)
-#' in the *Amazon CloudFront API Reference*.
+#' For Amazon CloudFront, don't use this call. Instead, use the CloudFront call `ListDistributionsByWebACLId`. For information, see [ListDistributionsByWebACLId](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_ListDistributionsByWebACLId.html) in the *Amazon CloudFront API Reference*.
 #' 
-#' If you don't provide a resource type, the call uses the resource type
-#' `APPLICATION_LOAD_BALANCER`.
+#' If you don't provide a resource type, the call uses the resource type `APPLICATION_LOAD_BALANCER`.
 #' 
 #' Default: `APPLICATION_LOAD_BALANCER`
 #'
@@ -2055,24 +1748,15 @@ wafv2_list_resources_for_web_acl <- function(WebACLArn, ResourceType = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafv2_list_rule_groups/](https://www.paws-r-sdk.com/docs/wafv2_list_rule_groups/) for full documentation.
 #'
-#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
-#' CloudFront distribution.
+#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon CloudFront distribution. For an Amplify application, use `CLOUDFRONT`.
 #' 
-#' To work with CloudFront, you must also specify the Region US East (N.
-#' Virginia) as follows:
+#' To work with CloudFront, you must also specify the Region US East (N. Virginia) as follows:
 #' 
-#' -   CLI - Specify the Region when you use the CloudFront scope:
-#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' -   CLI - Specify the Region when you use the CloudFront scope: `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
-#' @param NextMarker When you request a list of objects with a `Limit` setting, if the number
-#' of objects that are still available for retrieval exceeds the limit, WAF
-#' returns a `NextMarker` value in the response. To retrieve the next batch
-#' of objects, provide the marker from the prior call in your next request.
-#' @param Limit The maximum number of objects that you want WAF to return for this
-#' request. If more objects are available, in the response, WAF provides a
-#' `NextMarker` value that you can use in a subsequent call to get the next
-#' batch of objects.
+#' @param NextMarker When you request a list of objects with a `Limit` setting, if the number of objects that are still available for retrieval exceeds the limit, WAF returns a `NextMarker` value in the response. To retrieve the next batch of objects, provide the marker from the prior call in your next request.
+#' @param Limit The maximum number of objects that you want WAF to return for this request. If more objects are available, in the response, WAF provides a `NextMarker` value that you can use in a subsequent call to get the next batch of objects.
 #'
 #' @keywords internal
 #'
@@ -2103,14 +1787,8 @@ wafv2_list_rule_groups <- function(Scope, NextMarker = NULL, Limit = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafv2_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/wafv2_list_tags_for_resource/) for full documentation.
 #'
-#' @param NextMarker When you request a list of objects with a `Limit` setting, if the number
-#' of objects that are still available for retrieval exceeds the limit, WAF
-#' returns a `NextMarker` value in the response. To retrieve the next batch
-#' of objects, provide the marker from the prior call in your next request.
-#' @param Limit The maximum number of objects that you want WAF to return for this
-#' request. If more objects are available, in the response, WAF provides a
-#' `NextMarker` value that you can use in a subsequent call to get the next
-#' batch of objects.
+#' @param NextMarker When you request a list of objects with a `Limit` setting, if the number of objects that are still available for retrieval exceeds the limit, WAF returns a `NextMarker` value in the response. To retrieve the next batch of objects, provide the marker from the prior call in your next request.
+#' @param Limit The maximum number of objects that you want WAF to return for this request. If more objects are available, in the response, WAF provides a `NextMarker` value that you can use in a subsequent call to get the next batch of objects.
 #' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
 #'
 #' @keywords internal
@@ -2143,24 +1821,15 @@ wafv2_list_tags_for_resource <- function(NextMarker = NULL, Limit = NULL, Resour
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafv2_list_web_ac_ls/](https://www.paws-r-sdk.com/docs/wafv2_list_web_ac_ls/) for full documentation.
 #'
-#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
-#' CloudFront distribution.
+#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon CloudFront distribution. For an Amplify application, use `CLOUDFRONT`.
 #' 
-#' To work with CloudFront, you must also specify the Region US East (N.
-#' Virginia) as follows:
+#' To work with CloudFront, you must also specify the Region US East (N. Virginia) as follows:
 #' 
-#' -   CLI - Specify the Region when you use the CloudFront scope:
-#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' -   CLI - Specify the Region when you use the CloudFront scope: `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
-#' @param NextMarker When you request a list of objects with a `Limit` setting, if the number
-#' of objects that are still available for retrieval exceeds the limit, WAF
-#' returns a `NextMarker` value in the response. To retrieve the next batch
-#' of objects, provide the marker from the prior call in your next request.
-#' @param Limit The maximum number of objects that you want WAF to return for this
-#' request. If more objects are available, in the response, WAF provides a
-#' `NextMarker` value that you can use in a subsequent call to get the next
-#' batch of objects.
+#' @param NextMarker When you request a list of objects with a `Limit` setting, if the number of objects that are still available for retrieval exceeds the limit, WAF returns a `NextMarker` value in the response. To retrieve the next batch of objects, provide the marker from the prior call in your next request.
+#' @param Limit The maximum number of objects that you want WAF to return for this request. If more objects are available, in the response, WAF provides a `NextMarker` value that you can use in a subsequent call to get the next batch of objects.
 #'
 #' @keywords internal
 #'
@@ -2224,36 +1893,20 @@ wafv2_put_logging_configuration <- function(LoggingConfiguration) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafv2_put_managed_rule_set_versions/](https://www.paws-r-sdk.com/docs/wafv2_put_managed_rule_set_versions/) for full documentation.
 #'
-#' @param Name &#91;required&#93; The name of the managed rule set. You use this, along with the rule set
-#' ID, to identify the rule set.
+#' @param Name &#91;required&#93; The name of the managed rule set. You use this, along with the rule set ID, to identify the rule set.
 #' 
-#' This name is assigned to the corresponding managed rule group, which
-#' your customers can access and use.
-#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
-#' CloudFront distribution.
+#' This name is assigned to the corresponding managed rule group, which your customers can access and use.
+#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon CloudFront distribution. For an Amplify application, use `CLOUDFRONT`.
 #' 
-#' To work with CloudFront, you must also specify the Region US East (N.
-#' Virginia) as follows:
+#' To work with CloudFront, you must also specify the Region US East (N. Virginia) as follows:
 #' 
-#' -   CLI - Specify the Region when you use the CloudFront scope:
-#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' -   CLI - Specify the Region when you use the CloudFront scope: `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
-#' @param Id &#91;required&#93; A unique identifier for the managed rule set. The ID is returned in the
-#' responses to commands like `list`. You provide it to operations like
-#' `get` and `update`.
-#' @param LockToken &#91;required&#93; A token used for optimistic locking. WAF returns a token to your `get`
-#' and `list` requests, to mark the state of the entity at the time of the
-#' request. To make changes to the entity associated with the token, you
-#' provide the token to operations like `update` and `delete`. WAF uses the
-#' token to ensure that no changes have been made to the entity since you
-#' last retrieved it. If a change has been made, the update fails with a
-#' `WAFOptimisticLockException`. If this happens, perform another `get`,
-#' and use the new token returned by that operation.
-#' @param RecommendedVersion The version of the named managed rule group that you'd like your
-#' customers to choose, from among your version offerings.
-#' @param VersionsToPublish The versions of the named managed rule group that you want to offer to
-#' your customers.
+#' @param Id &#91;required&#93; A unique identifier for the managed rule set. The ID is returned in the responses to commands like `list`. You provide it to operations like `get` and `update`.
+#' @param LockToken &#91;required&#93; A token used for optimistic locking. WAF returns a token to your `get` and `list` requests, to mark the state of the entity at the time of the request. To make changes to the entity associated with the token, you provide the token to operations like `update` and `delete`. WAF uses the token to ensure that no changes have been made to the entity since you last retrieved it. If a change has been made, the update fails with a `WAFOptimisticLockException`. If this happens, perform another `get`, and use the new token returned by that operation.
+#' @param RecommendedVersion The version of the named managed rule group that you'd like your customers to choose, from among your version offerings.
+#' @param VersionsToPublish The versions of the named managed rule group that you want to offer to your customers.
 #'
 #' @keywords internal
 #'
@@ -2284,28 +1937,22 @@ wafv2_put_managed_rule_set_versions <- function(Name, Scope, Id, LockToken, Reco
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafv2_put_permission_policy/](https://www.paws-r-sdk.com/docs/wafv2_put_permission_policy/) for full documentation.
 #'
-#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the RuleGroup to which you want to
-#' attach the policy.
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the RuleGroup to which you want to attach the policy.
 #' @param Policy &#91;required&#93; The policy to attach to the specified rule group.
 #' 
 #' The policy specifications must conform to the following:
 #' 
 #' -   The policy must be composed using IAM Policy version 2012-10-17.
 #' 
-#' -   The policy must include specifications for `Effect`, `Action`, and
-#'     `Principal`.
+#' -   The policy must include specifications for `Effect`, `Action`, and `Principal`.
 #' 
 #' -   `Effect` must specify `Allow`.
 #' 
-#' -   `Action` must specify `wafv2:CreateWebACL`, `wafv2:UpdateWebACL`,
-#'     and `wafv2:PutFirewallManagerRuleGroups` and may optionally specify
-#'     `wafv2:GetRuleGroup`. WAF rejects any extra actions or wildcard
-#'     actions in the policy.
+#' -   `Action` must specify `wafv2:CreateWebACL`, `wafv2:UpdateWebACL`, and `wafv2:PutFirewallManagerRuleGroups` and may optionally specify `wafv2:GetRuleGroup`. WAF rejects any extra actions or wildcard actions in the policy.
 #' 
 #' -   The policy must not include a `Resource` parameter.
 #' 
-#' For more information, see [IAM
-#' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html).
+#' For more information, see [IAM Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html).
 #'
 #' @keywords internal
 #'
@@ -2400,48 +2047,29 @@ wafv2_untag_resource <- function(ResourceARN, TagKeys) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafv2_update_ip_set/](https://www.paws-r-sdk.com/docs/wafv2_update_ip_set/) for full documentation.
 #'
-#' @param Name &#91;required&#93; The name of the IP set. You cannot change the name of an `IPSet` after
-#' you create it.
-#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
-#' CloudFront distribution.
+#' @param Name &#91;required&#93; The name of the IP set. You cannot change the name of an `IPSet` after you create it.
+#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon CloudFront distribution. For an Amplify application, use `CLOUDFRONT`.
 #' 
-#' To work with CloudFront, you must also specify the Region US East (N.
-#' Virginia) as follows:
+#' To work with CloudFront, you must also specify the Region US East (N. Virginia) as follows:
 #' 
-#' -   CLI - Specify the Region when you use the CloudFront scope:
-#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' -   CLI - Specify the Region when you use the CloudFront scope: `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
-#' @param Id &#91;required&#93; A unique identifier for the set. This ID is returned in the responses to
-#' create and list commands. You provide it to operations like update and
-#' delete.
+#' @param Id &#91;required&#93; A unique identifier for the set. This ID is returned in the responses to create and list commands. You provide it to operations like update and delete.
 #' @param Description A description of the IP set that helps with identification.
-#' @param Addresses &#91;required&#93; Contains an array of strings that specifies zero or more IP addresses or
-#' blocks of IP addresses that you want WAF to inspect for in incoming
-#' requests. All addresses must be specified using Classless Inter-Domain
-#' Routing (CIDR) notation. WAF supports all IPv4 and IPv6 CIDR ranges
-#' except for `/0`.
+#' @param Addresses &#91;required&#93; Contains an array of strings that specifies zero or more IP addresses or blocks of IP addresses that you want WAF to inspect for in incoming requests. All addresses must be specified using Classless Inter-Domain Routing (CIDR) notation. WAF supports all IPv4 and IPv6 CIDR ranges except for `/0`.
 #' 
 #' Example address strings:
 #' 
-#' -   For requests that originated from the IP address 192.0.2.44, specify
-#'     `192.0.2.44/32`.
+#' -   For requests that originated from the IP address 192.0.2.44, specify `192.0.2.44/32`.
 #' 
-#' -   For requests that originated from IP addresses from 192.0.2.0 to
-#'     192.0.2.255, specify `192.0.2.0/24`.
+#' -   For requests that originated from IP addresses from 192.0.2.0 to 192.0.2.255, specify `192.0.2.0/24`.
 #' 
-#' -   For requests that originated from the IP address
-#'     1111:0000:0000:0000:0000:0000:0000:0111, specify
-#'     `1111:0000:0000:0000:0000:0000:0000:0111/128`.
+#' -   For requests that originated from the IP address 1111:0000:0000:0000:0000:0000:0000:0111, specify `1111:0000:0000:0000:0000:0000:0000:0111/128`.
 #' 
-#' -   For requests that originated from IP addresses
-#'     1111:0000:0000:0000:0000:0000:0000:0000 to
-#'     1111:0000:0000:0000:ffff:ffff:ffff:ffff, specify
-#'     `1111:0000:0000:0000:0000:0000:0000:0000/64`.
+#' -   For requests that originated from IP addresses 1111:0000:0000:0000:0000:0000:0000:0000 to 1111:0000:0000:0000:ffff:ffff:ffff:ffff, specify `1111:0000:0000:0000:0000:0000:0000:0000/64`.
 #' 
-#' For more information about CIDR notation, see the Wikipedia entry
-#' [Classless Inter-Domain
-#' Routing](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing).
+#' For more information about CIDR notation, see the Wikipedia entry [Classless Inter-Domain Routing](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing).
 #' 
 #' Example JSON `Addresses` specifications:
 #' 
@@ -2449,18 +2077,10 @@ wafv2_untag_resource <- function(ResourceARN, TagKeys) {
 #' 
 #' -   Array with one address: `"Addresses": ["192.0.2.44/32"]`
 #' 
-#' -   Array with three addresses:
-#'     `"Addresses": ["192.0.2.44/32", "192.0.2.0/24", "192.0.0.0/16"]`
+#' -   Array with three addresses: `"Addresses": ["192.0.2.44/32", "192.0.2.0/24", "192.0.0.0/16"]`
 #' 
 #' -   INVALID specification: `"Addresses": [""]` INVALID
-#' @param LockToken &#91;required&#93; A token used for optimistic locking. WAF returns a token to your `get`
-#' and `list` requests, to mark the state of the entity at the time of the
-#' request. To make changes to the entity associated with the token, you
-#' provide the token to operations like `update` and `delete`. WAF uses the
-#' token to ensure that no changes have been made to the entity since you
-#' last retrieved it. If a change has been made, the update fails with a
-#' `WAFOptimisticLockException`. If this happens, perform another `get`,
-#' and use the new token returned by that operation.
+#' @param LockToken &#91;required&#93; A token used for optimistic locking. WAF returns a token to your `get` and `list` requests, to mark the state of the entity at the time of the request. To make changes to the entity associated with the token, you provide the token to operations like `update` and `delete`. WAF uses the token to ensure that no changes have been made to the entity since you last retrieved it. If a change has been made, the update fails with a `WAFOptimisticLockException`. If this happens, perform another `get`, and use the new token returned by that operation.
 #'
 #' @keywords internal
 #'
@@ -2491,38 +2111,22 @@ wafv2_update_ip_set <- function(Name, Scope, Id, Description = NULL, Addresses, 
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafv2_update_managed_rule_set_version_expiry_date/](https://www.paws-r-sdk.com/docs/wafv2_update_managed_rule_set_version_expiry_date/) for full documentation.
 #'
-#' @param Name &#91;required&#93; The name of the managed rule set. You use this, along with the rule set
-#' ID, to identify the rule set.
+#' @param Name &#91;required&#93; The name of the managed rule set. You use this, along with the rule set ID, to identify the rule set.
 #' 
-#' This name is assigned to the corresponding managed rule group, which
-#' your customers can access and use.
-#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
-#' CloudFront distribution.
+#' This name is assigned to the corresponding managed rule group, which your customers can access and use.
+#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon CloudFront distribution. For an Amplify application, use `CLOUDFRONT`.
 #' 
-#' To work with CloudFront, you must also specify the Region US East (N.
-#' Virginia) as follows:
+#' To work with CloudFront, you must also specify the Region US East (N. Virginia) as follows:
 #' 
-#' -   CLI - Specify the Region when you use the CloudFront scope:
-#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' -   CLI - Specify the Region when you use the CloudFront scope: `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
-#' @param Id &#91;required&#93; A unique identifier for the managed rule set. The ID is returned in the
-#' responses to commands like `list`. You provide it to operations like
-#' `get` and `update`.
-#' @param LockToken &#91;required&#93; A token used for optimistic locking. WAF returns a token to your `get`
-#' and `list` requests, to mark the state of the entity at the time of the
-#' request. To make changes to the entity associated with the token, you
-#' provide the token to operations like `update` and `delete`. WAF uses the
-#' token to ensure that no changes have been made to the entity since you
-#' last retrieved it. If a change has been made, the update fails with a
-#' `WAFOptimisticLockException`. If this happens, perform another `get`,
-#' and use the new token returned by that operation.
-#' @param VersionToExpire &#91;required&#93; The version that you want to remove from your list of offerings for the
-#' named managed rule group.
+#' @param Id &#91;required&#93; A unique identifier for the managed rule set. The ID is returned in the responses to commands like `list`. You provide it to operations like `get` and `update`.
+#' @param LockToken &#91;required&#93; A token used for optimistic locking. WAF returns a token to your `get` and `list` requests, to mark the state of the entity at the time of the request. To make changes to the entity associated with the token, you provide the token to operations like `update` and `delete`. WAF uses the token to ensure that no changes have been made to the entity since you last retrieved it. If a change has been made, the update fails with a `WAFOptimisticLockException`. If this happens, perform another `get`, and use the new token returned by that operation.
+#' @param VersionToExpire &#91;required&#93; The version that you want to remove from your list of offerings for the named managed rule group.
 #' @param ExpiryTimestamp &#91;required&#93; The time that you want the version to expire.
 #' 
-#' Times are in Coordinated Universal Time (UTC) format. UTC format
-#' includes the special designator, Z. For example, "2016-09-27T14:50Z".
+#' Times are in Coordinated Universal Time (UTC) format. UTC format includes the special designator, Z. For example, "2016-09-27T14:50Z".
 #'
 #' @keywords internal
 #'
@@ -2553,31 +2157,18 @@ wafv2_update_managed_rule_set_version_expiry_date <- function(Name, Scope, Id, L
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafv2_update_regex_pattern_set/](https://www.paws-r-sdk.com/docs/wafv2_update_regex_pattern_set/) for full documentation.
 #'
-#' @param Name &#91;required&#93; The name of the set. You cannot change the name after you create the
-#' set.
-#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
-#' CloudFront distribution.
+#' @param Name &#91;required&#93; The name of the set. You cannot change the name after you create the set.
+#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon CloudFront distribution. For an Amplify application, use `CLOUDFRONT`.
 #' 
-#' To work with CloudFront, you must also specify the Region US East (N.
-#' Virginia) as follows:
+#' To work with CloudFront, you must also specify the Region US East (N. Virginia) as follows:
 #' 
-#' -   CLI - Specify the Region when you use the CloudFront scope:
-#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' -   CLI - Specify the Region when you use the CloudFront scope: `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
-#' @param Id &#91;required&#93; A unique identifier for the set. This ID is returned in the responses to
-#' create and list commands. You provide it to operations like update and
-#' delete.
+#' @param Id &#91;required&#93; A unique identifier for the set. This ID is returned in the responses to create and list commands. You provide it to operations like update and delete.
 #' @param Description A description of the set that helps with identification.
 #' @param RegularExpressionList &#91;required&#93; 
-#' @param LockToken &#91;required&#93; A token used for optimistic locking. WAF returns a token to your `get`
-#' and `list` requests, to mark the state of the entity at the time of the
-#' request. To make changes to the entity associated with the token, you
-#' provide the token to operations like `update` and `delete`. WAF uses the
-#' token to ensure that no changes have been made to the entity since you
-#' last retrieved it. If a change has been made, the update fails with a
-#' `WAFOptimisticLockException`. If this happens, perform another `get`,
-#' and use the new token returned by that operation.
+#' @param LockToken &#91;required&#93; A token used for optimistic locking. WAF returns a token to your `get` and `list` requests, to mark the state of the entity at the time of the request. To make changes to the entity associated with the token, you provide the token to operations like `update` and `delete`. WAF uses the token to ensure that no changes have been made to the entity since you last retrieved it. If a change has been made, the update fails with a `WAFOptimisticLockException`. If this happens, perform another `get`, and use the new token returned by that operation.
 #'
 #' @keywords internal
 #'
@@ -2608,50 +2199,24 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafv2_update_rule_group/](https://www.paws-r-sdk.com/docs/wafv2_update_rule_group/) for full documentation.
 #'
-#' @param Name &#91;required&#93; The name of the rule group. You cannot change the name of a rule group
-#' after you create it.
-#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
-#' CloudFront distribution.
+#' @param Name &#91;required&#93; The name of the rule group. You cannot change the name of a rule group after you create it.
+#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon CloudFront distribution. For an Amplify application, use `CLOUDFRONT`.
 #' 
-#' To work with CloudFront, you must also specify the Region US East (N.
-#' Virginia) as follows:
+#' To work with CloudFront, you must also specify the Region US East (N. Virginia) as follows:
 #' 
-#' -   CLI - Specify the Region when you use the CloudFront scope:
-#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' -   CLI - Specify the Region when you use the CloudFront scope: `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
-#' @param Id &#91;required&#93; A unique identifier for the rule group. This ID is returned in the
-#' responses to create and list commands. You provide it to operations like
-#' update and delete.
+#' @param Id &#91;required&#93; A unique identifier for the rule group. This ID is returned in the responses to create and list commands. You provide it to operations like update and delete.
 #' @param Description A description of the rule group that helps with identification.
-#' @param Rules The Rule statements used to identify the web requests that you want to
-#' manage. Each rule includes one top-level statement that WAF uses to
-#' identify matching web requests, and parameters that govern how WAF
-#' handles them.
-#' @param VisibilityConfig &#91;required&#93; Defines and enables Amazon CloudWatch metrics and web request sample
-#' collection.
-#' @param LockToken &#91;required&#93; A token used for optimistic locking. WAF returns a token to your `get`
-#' and `list` requests, to mark the state of the entity at the time of the
-#' request. To make changes to the entity associated with the token, you
-#' provide the token to operations like `update` and `delete`. WAF uses the
-#' token to ensure that no changes have been made to the entity since you
-#' last retrieved it. If a change has been made, the update fails with a
-#' `WAFOptimisticLockException`. If this happens, perform another `get`,
-#' and use the new token returned by that operation.
-#' @param CustomResponseBodies A map of custom response keys and content bodies. When you create a rule
-#' with a block action, you can send a custom response to the web request.
-#' You define these for the rule group, and then use them in the rules that
-#' you define in the rule group.
+#' @param Rules The Rule statements used to identify the web requests that you want to manage. Each rule includes one top-level statement that WAF uses to identify matching web requests, and parameters that govern how WAF handles them.
+#' @param VisibilityConfig &#91;required&#93; Defines and enables Amazon CloudWatch metrics and web request sample collection.
+#' @param LockToken &#91;required&#93; A token used for optimistic locking. WAF returns a token to your `get` and `list` requests, to mark the state of the entity at the time of the request. To make changes to the entity associated with the token, you provide the token to operations like `update` and `delete`. WAF uses the token to ensure that no changes have been made to the entity since you last retrieved it. If a change has been made, the update fails with a `WAFOptimisticLockException`. If this happens, perform another `get`, and use the new token returned by that operation.
+#' @param CustomResponseBodies A map of custom response keys and content bodies. When you create a rule with a block action, you can send a custom response to the web request. You define these for the rule group, and then use them in the rules that you define in the rule group.
 #' 
-#' For information about customizing web requests and responses, see
-#' [Customizing web requests and responses in
-#' WAF](https://docs.aws.amazon.com/waf/latest/developerguide/waf-custom-request-response.html)
-#' in the *WAF Developer Guide*.
+#' For information about customizing web requests and responses, see [Customizing web requests and responses in WAF](https://docs.aws.amazon.com/waf/latest/developerguide/waf-custom-request-response.html) in the *WAF Developer Guide*.
 #' 
-#' For information about the limits on count and size for custom request
-#' and response settings, see [WAF
-#' quotas](https://docs.aws.amazon.com/waf/latest/developerguide/limits.html)
-#' in the *WAF Developer Guide*.
+#' For information about the limits on count and size for custom request and response settings, see [WAF quotas](https://docs.aws.amazon.com/waf/latest/developerguide/limits.html) in the *WAF Developer Guide*.
 #'
 #' @keywords internal
 #'
@@ -2682,100 +2247,55 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafv2_update_web_acl/](https://www.paws-r-sdk.com/docs/wafv2_update_web_acl/) for full documentation.
 #'
-#' @param Name &#91;required&#93; The name of the web ACL. You cannot change the name of a web ACL after
-#' you create it.
-#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
-#' CloudFront distribution.
+#' @param Name &#91;required&#93; The name of the web ACL. You cannot change the name of a web ACL after you create it.
+#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon CloudFront distribution. For an Amplify application, use `CLOUDFRONT`.
 #' 
-#' To work with CloudFront, you must also specify the Region US East (N.
-#' Virginia) as follows:
+#' To work with CloudFront, you must also specify the Region US East (N. Virginia) as follows:
 #' 
-#' -   CLI - Specify the Region when you use the CloudFront scope:
-#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' -   CLI - Specify the Region when you use the CloudFront scope: `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
-#' @param Id &#91;required&#93; The unique identifier for the web ACL. This ID is returned in the
-#' responses to create and list commands. You provide it to operations like
-#' update and delete.
-#' @param DefaultAction &#91;required&#93; The action to perform if none of the `Rules` contained in the `WebACL`
-#' match.
+#' @param Id &#91;required&#93; The unique identifier for the web ACL. This ID is returned in the responses to create and list commands. You provide it to operations like update and delete.
+#' @param DefaultAction &#91;required&#93; The action to perform if none of the `Rules` contained in the `WebACL` match.
 #' @param Description A description of the web ACL that helps with identification.
-#' @param Rules The Rule statements used to identify the web requests that you want to
-#' manage. Each rule includes one top-level statement that WAF uses to
-#' identify matching web requests, and parameters that govern how WAF
-#' handles them.
-#' @param VisibilityConfig &#91;required&#93; Defines and enables Amazon CloudWatch metrics and web request sample
-#' collection.
-#' @param DataProtectionConfig Specifies data protection to apply to the web request data that WAF
-#' stores for the web ACL. This is a web ACL level data protection option.
+#' @param Rules The Rule statements used to identify the web requests that you want to manage. Each rule includes one top-level statement that WAF uses to identify matching web requests, and parameters that govern how WAF handles them.
+#' @param VisibilityConfig &#91;required&#93; Defines and enables Amazon CloudWatch metrics and web request sample collection.
+#' @param DataProtectionConfig Specifies data protection to apply to the web request data for the web ACL. This is a web ACL level data protection option.
 #' 
-#' The data protection that you configure for the web ACL alters the data
-#' that's available for any other data collection activity, including WAF
-#' logging, web ACL request sampling, Amazon Web Services Managed Rules,
-#' and Amazon Security Lake data collection and management. Your other
-#' option for data protection is in the logging configuration, which only
-#' affects logging.
-#' @param LockToken &#91;required&#93; A token used for optimistic locking. WAF returns a token to your `get`
-#' and `list` requests, to mark the state of the entity at the time of the
-#' request. To make changes to the entity associated with the token, you
-#' provide the token to operations like `update` and `delete`. WAF uses the
-#' token to ensure that no changes have been made to the entity since you
-#' last retrieved it. If a change has been made, the update fails with a
-#' `WAFOptimisticLockException`. If this happens, perform another `get`,
-#' and use the new token returned by that operation.
-#' @param CustomResponseBodies A map of custom response keys and content bodies. When you create a rule
-#' with a block action, you can send a custom response to the web request.
-#' You define these for the web ACL, and then use them in the rules and
-#' default actions that you define in the web ACL.
+#' The data protection that you configure for the web ACL alters the data that's available for any other data collection activity, including your WAF logging destinations, web ACL request sampling, and Amazon Security Lake data collection and management. Your other option for data protection is in the logging configuration, which only affects logging.
+#' @param LockToken &#91;required&#93; A token used for optimistic locking. WAF returns a token to your `get` and `list` requests, to mark the state of the entity at the time of the request. To make changes to the entity associated with the token, you provide the token to operations like `update` and `delete`. WAF uses the token to ensure that no changes have been made to the entity since you last retrieved it. If a change has been made, the update fails with a `WAFOptimisticLockException`. If this happens, perform another `get`, and use the new token returned by that operation.
+#' @param CustomResponseBodies A map of custom response keys and content bodies. When you create a rule with a block action, you can send a custom response to the web request. You define these for the web ACL, and then use them in the rules and default actions that you define in the web ACL.
 #' 
-#' For information about customizing web requests and responses, see
-#' [Customizing web requests and responses in
-#' WAF](https://docs.aws.amazon.com/waf/latest/developerguide/waf-custom-request-response.html)
-#' in the *WAF Developer Guide*.
+#' For information about customizing web requests and responses, see [Customizing web requests and responses in WAF](https://docs.aws.amazon.com/waf/latest/developerguide/waf-custom-request-response.html) in the *WAF Developer Guide*.
 #' 
-#' For information about the limits on count and size for custom request
-#' and response settings, see [WAF
-#' quotas](https://docs.aws.amazon.com/waf/latest/developerguide/limits.html)
-#' in the *WAF Developer Guide*.
-#' @param CaptchaConfig Specifies how WAF should handle `CAPTCHA` evaluations for rules that
-#' don't have their own `CaptchaConfig` settings. If you don't specify
-#' this, WAF uses its default settings for `CaptchaConfig`.
-#' @param ChallengeConfig Specifies how WAF should handle challenge evaluations for rules that
-#' don't have their own `ChallengeConfig` settings. If you don't specify
-#' this, WAF uses its default settings for `ChallengeConfig`.
-#' @param TokenDomains Specifies the domains that WAF should accept in a web request token.
-#' This enables the use of tokens across multiple protected websites. When
-#' WAF provides a token, it uses the domain of the Amazon Web Services
-#' resource that the web ACL is protecting. If you don't specify a list of
-#' token domains, WAF accepts tokens only for the domain of the protected
-#' resource. With a token domain list, WAF accepts the resource's host
-#' domain plus all domains in the token domain list, including their
-#' prefixed subdomains.
+#' For information about the limits on count and size for custom request and response settings, see [WAF quotas](https://docs.aws.amazon.com/waf/latest/developerguide/limits.html) in the *WAF Developer Guide*.
+#' @param CaptchaConfig Specifies how WAF should handle `CAPTCHA` evaluations for rules that don't have their own `CaptchaConfig` settings. If you don't specify this, WAF uses its default settings for `CaptchaConfig`.
+#' @param ChallengeConfig Specifies how WAF should handle challenge evaluations for rules that don't have their own `ChallengeConfig` settings. If you don't specify this, WAF uses its default settings for `ChallengeConfig`.
+#' @param TokenDomains Specifies the domains that WAF should accept in a web request token. This enables the use of tokens across multiple protected websites. When WAF provides a token, it uses the domain of the Amazon Web Services resource that the web ACL is protecting. If you don't specify a list of token domains, WAF accepts tokens only for the domain of the protected resource. With a token domain list, WAF accepts the resource's host domain plus all domains in the token domain list, including their prefixed subdomains.
 #' 
-#' Example JSON:
-#' `"TokenDomains": { "mywebsite.com", "myotherwebsite.com" }`
+#' Example JSON: `"TokenDomains": { "mywebsite.com", "myotherwebsite.com" }`
 #' 
-#' Public suffixes aren't allowed. For example, you can't use `gov.au` or
-#' `co.uk` as token domains.
-#' @param AssociationConfig Specifies custom configurations for the associations between the web ACL
-#' and protected resources.
+#' Public suffixes aren't allowed. For example, you can't use `gov.au` or `co.uk` as token domains.
+#' @param AssociationConfig Specifies custom configurations for the associations between the web ACL and protected resources.
 #' 
-#' Use this to customize the maximum size of the request body that your
-#' protected resources forward to WAF for inspection. You can customize
-#' this setting for CloudFront, API Gateway, Amazon Cognito, App Runner, or
-#' Verified Access resources. The default setting is 16 KB (16,384 bytes).
+#' Use this to customize the maximum size of the request body that your protected resources forward to WAF for inspection. You can customize this setting for CloudFront, API Gateway, Amazon Cognito, App Runner, or Verified Access resources. The default setting is 16 KB (16,384 bytes).
 #' 
-#' You are charged additional fees when your protected resources forward
-#' body sizes that are larger than the default. For more information, see
-#' [WAF Pricing](https://aws.amazon.com/waf/pricing/).
+#' You are charged additional fees when your protected resources forward body sizes that are larger than the default. For more information, see [WAF Pricing](https://aws.amazon.com/waf/pricing/).
 #' 
-#' For Application Load Balancer and AppSync, the limit is fixed at 8 KB
-#' (8,192 bytes).
+#' For Application Load Balancer and AppSync, the limit is fixed at 8 KB (8,192 bytes).
+#' @param OnSourceDDoSProtectionConfig Specifies the type of DDoS protection to apply to web request data for a web ACL. For most scenarios, it is recommended to use the default protection level, `ACTIVE_UNDER_DDOS`. If a web ACL is associated with multiple Application Load Balancers, the changes you make to DDoS protection in that web ACL will apply to all associated Application Load Balancers.
+#' @param ApplicationConfig Configures the ability for the WAF console to store and retrieve application attributes. Application attributes help WAF give recommendations for protection packs.
+#' 
+#' When using [`update_web_acl`][wafv2_update_web_acl], `ApplicationConfig` follows these rules:
+#' 
+#' -   If you omit `ApplicationConfig` from the request, all existing entries in the web ACL are retained.
+#' 
+#' -   If you include `ApplicationConfig`, entries must match the existing values exactly. Any attempt to modify existing entries will result in an error.
 #'
 #' @keywords internal
 #'
 #' @rdname wafv2_update_web_acl
-wafv2_update_web_acl <- function(Name, Scope, Id, DefaultAction, Description = NULL, Rules = NULL, VisibilityConfig, DataProtectionConfig = NULL, LockToken, CustomResponseBodies = NULL, CaptchaConfig = NULL, ChallengeConfig = NULL, TokenDomains = NULL, AssociationConfig = NULL) {
+wafv2_update_web_acl <- function(Name, Scope, Id, DefaultAction, Description = NULL, Rules = NULL, VisibilityConfig, DataProtectionConfig = NULL, LockToken, CustomResponseBodies = NULL, CaptchaConfig = NULL, ChallengeConfig = NULL, TokenDomains = NULL, AssociationConfig = NULL, OnSourceDDoSProtectionConfig = NULL, ApplicationConfig = NULL) {
   op <- new_operation(
     name = "UpdateWebACL",
     http_method = "POST",
@@ -2784,7 +2304,7 @@ wafv2_update_web_acl <- function(Name, Scope, Id, DefaultAction, Description = N
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .wafv2$update_web_acl_input(Name = Name, Scope = Scope, Id = Id, DefaultAction = DefaultAction, Description = Description, Rules = Rules, VisibilityConfig = VisibilityConfig, DataProtectionConfig = DataProtectionConfig, LockToken = LockToken, CustomResponseBodies = CustomResponseBodies, CaptchaConfig = CaptchaConfig, ChallengeConfig = ChallengeConfig, TokenDomains = TokenDomains, AssociationConfig = AssociationConfig)
+  input <- .wafv2$update_web_acl_input(Name = Name, Scope = Scope, Id = Id, DefaultAction = DefaultAction, Description = Description, Rules = Rules, VisibilityConfig = VisibilityConfig, DataProtectionConfig = DataProtectionConfig, LockToken = LockToken, CustomResponseBodies = CustomResponseBodies, CaptchaConfig = CaptchaConfig, ChallengeConfig = ChallengeConfig, TokenDomains = TokenDomains, AssociationConfig = AssociationConfig, OnSourceDDoSProtectionConfig = OnSourceDDoSProtectionConfig, ApplicationConfig = ApplicationConfig)
   output <- .wafv2$update_web_acl_output()
   config <- get_config()
   svc <- .wafv2$service(config, op)

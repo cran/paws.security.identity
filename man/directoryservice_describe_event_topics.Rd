@@ -8,13 +8,9 @@ messages from the specified directory}
 directoryservice_describe_event_topics(DirectoryId = NULL, TopicNames = NULL)
 }
 \arguments{
-\item{DirectoryId}{The Directory ID for which to get the list of associated Amazon SNS
-topics. If this member is null, associations for all Directory IDs are
-returned.}
+\item{DirectoryId}{The Directory ID for which to get the list of associated Amazon SNS topics. If this member is null, associations for all Directory IDs are returned.}
 
-\item{TopicNames}{A list of Amazon SNS topic names for which to obtain the information. If
-this member is null, all associations for the specified Directory ID are
-returned.
+\item{TopicNames}{A list of Amazon SNS topic names for which to obtain the information. If this member is null, all associations for the specified Directory ID are returned.
 
 An empty list results in an \code{InvalidParameterException} being thrown.}
 }

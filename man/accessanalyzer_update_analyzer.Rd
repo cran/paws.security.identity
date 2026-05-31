@@ -9,7 +9,7 @@ accessanalyzer_update_analyzer(analyzerName, configuration = NULL)
 \arguments{
 \item{analyzerName}{[required] The name of the analyzer to modify.}
 
-\item{configuration}{}
+\item{configuration}{Contains information about the configuration of an analyzer for an Amazon Web Services organization or account.}
 }
 \description{
 Modifies the configuration of an existing analyzer.

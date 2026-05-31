@@ -6,25 +6,22 @@
 \usage{
 ssoadmin_update_application(
   ApplicationArn,
-  Description = NULL,
   Name = NULL,
-  PortalOptions = NULL,
-  Status = NULL
+  Description = NULL,
+  Status = NULL,
+  PortalOptions = NULL
 )
 }
 \arguments{
-\item{ApplicationArn}{[required] Specifies the ARN of the application. For more information about ARNs,
-see Amazon Resource Names (ARNs) and Amazon Web Services Service
-Namespaces in the \emph{Amazon Web Services General Reference}.}
-
-\item{Description}{The description of the .}
+\item{ApplicationArn}{[required] Specifies the ARN of the application. For more information about ARNs, see Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces in the \emph{Amazon Web Services General Reference}.}
 
 \item{Name}{Specifies the updated name for the application.}
 
-\item{PortalOptions}{A structure that describes the options for the portal associated with an
-application.}
+\item{Description}{The description of the .}
 
 \item{Status}{Specifies whether the application is enabled or disabled.}
+
+\item{PortalOptions}{A structure that describes the options for the portal associated with an application.}
 }
 \description{
 Updates application properties.

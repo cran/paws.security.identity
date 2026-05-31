@@ -11,11 +11,9 @@ pcaconnectorad_get_service_principal_name(
 )
 }
 \arguments{
-\item{ConnectorArn}{[required] The Amazon Resource Name (ARN) that was returned when you called
-\code{\link[=pcaconnectorad_create_connector]{create_connector}}.}
+\item{ConnectorArn}{[required] The Amazon Resource Name (ARN) that was returned when you called \code{\link[=pcaconnectorad_create_connector]{create_connector}}.}
 
-\item{DirectoryRegistrationArn}{[required] The Amazon Resource Name (ARN) that was returned when you called
-\code{\link[=pcaconnectorad_create_directory_registration]{create_directory_registration}}.}
+\item{DirectoryRegistrationArn}{[required] The Amazon Resource Name (ARN) that was returned when you called \code{\link[=pcaconnectorad_create_directory_registration]{create_directory_registration}}.}
 }
 \description{
 Lists the service principal name that the connector uses to authenticate with Active Directory.

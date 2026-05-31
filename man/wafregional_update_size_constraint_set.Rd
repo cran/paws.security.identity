@@ -11,22 +11,14 @@ wafregional_update_size_constraint_set(
 )
 }
 \arguments{
-\item{SizeConstraintSetId}{[required] The \code{SizeConstraintSetId} of the SizeConstraintSet that you want to
-update. \code{SizeConstraintSetId} is returned by
-\code{\link[=wafregional_create_size_constraint_set]{create_size_constraint_set}}
-and by
-\code{\link[=wafregional_list_size_constraint_sets]{list_size_constraint_sets}}.}
+\item{SizeConstraintSetId}{[required] The \code{SizeConstraintSetId} of the SizeConstraintSet that you want to update. \code{SizeConstraintSetId} is returned by \code{\link[=wafregional_create_size_constraint_set]{create_size_constraint_set}} and by \code{\link[=wafregional_list_size_constraint_sets]{list_size_constraint_sets}}.}
 
-\item{ChangeToken}{[required] The value returned by the most recent call to
-\code{\link[=wafregional_get_change_token]{get_change_token}}.}
+\item{ChangeToken}{[required] The value returned by the most recent call to \code{\link[=wafregional_get_change_token]{get_change_token}}.}
 
-\item{Updates}{[required] An array of \code{SizeConstraintSetUpdate} objects that you want to insert
-into or delete from a SizeConstraintSet. For more information, see the
-applicable data types:
+\item{Updates}{[required] An array of \code{SizeConstraintSetUpdate} objects that you want to insert into or delete from a SizeConstraintSet. For more information, see the applicable data types:
 \itemize{
 \item SizeConstraintSetUpdate: Contains \code{Action} and \code{SizeConstraint}
-\item SizeConstraint: Contains \code{FieldToMatch}, \code{TextTransformation},
-\code{ComparisonOperator}, and \code{Size}
+\item SizeConstraint: Contains \code{FieldToMatch}, \code{TextTransformation}, \code{ComparisonOperator}, and \code{Size}
 \item FieldToMatch: Contains \code{Data} and \code{Type}
 }}
 }

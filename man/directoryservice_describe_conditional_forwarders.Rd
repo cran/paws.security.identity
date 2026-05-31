@@ -10,12 +10,9 @@ directoryservice_describe_conditional_forwarders(
 )
 }
 \arguments{
-\item{DirectoryId}{[required] The directory ID for which to get the list of associated conditional
-forwarders.}
+\item{DirectoryId}{[required] The directory ID for which to get the list of associated conditional forwarders.}
 
-\item{RemoteDomainNames}{The fully qualified domain names (FQDN) of the remote domains for which
-to get the list of associated conditional forwarders. If this member is
-null, all conditional forwarders are returned.}
+\item{RemoteDomainNames}{The fully qualified domain names (FQDN) of the remote domains for which to get the list of associated conditional forwarders. If this member is null, all conditional forwarders are returned.}
 }
 \description{
 Obtains information about the conditional forwarders for this account.

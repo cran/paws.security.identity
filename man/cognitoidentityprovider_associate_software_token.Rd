@@ -12,15 +12,11 @@ cognitoidentityprovider_associate_software_token(
 )
 }
 \arguments{
-\item{AccessToken}{A valid access token that Amazon Cognito issued to the user whose
-software token you want to generate. You can provide either an access
-token or a session ID in the request.}
+\item{AccessToken}{A valid access token that Amazon Cognito issued to the currently signed-in user. Must include a scope claim for \code{aws.cognito.signin.user.admin}.
 
-\item{Session}{The session identifier that maintains the state of authentication
-requests and challenge responses. In
-\code{\link[=cognitoidentityprovider_associate_software_token]{associate_software_token}},
-this is the session ID from a successful sign-in. You can provide either
-an access token or a session ID in the request.}
+You can provide either an access token or a session ID in the request.}
+
+\item{Session}{The session identifier that maintains the state of authentication requests and challenge responses. In \code{\link[=cognitoidentityprovider_associate_software_token]{associate_software_token}}, this is the session ID from a successful sign-in. You can provide either an access token or a session ID in the request.}
 }
 \description{
 Begins setup of time-based one-time password (TOTP) multi-factor authentication (MFA) for a user, with a unique private key that Amazon Cognito generates and returns in the API response. You can authorize an \code{\link[=cognitoidentityprovider_associate_software_token]{associate_software_token}} request with either the user's access token, or a session string from a challenge response that you received from Amazon Cognito.

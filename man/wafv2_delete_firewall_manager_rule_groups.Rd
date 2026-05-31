@@ -10,14 +10,7 @@ wafv2_delete_firewall_manager_rule_groups(WebACLArn, WebACLLockToken)
 \arguments{
 \item{WebACLArn}{[required] The Amazon Resource Name (ARN) of the web ACL.}
 
-\item{WebACLLockToken}{[required] A token used for optimistic locking. WAF returns a token to your \code{get}
-and \code{list} requests, to mark the state of the entity at the time of the
-request. To make changes to the entity associated with the token, you
-provide the token to operations like \code{update} and \code{delete}. WAF uses the
-token to ensure that no changes have been made to the entity since you
-last retrieved it. If a change has been made, the update fails with a
-\code{WAFOptimisticLockException}. If this happens, perform another \code{get},
-and use the new token returned by that operation.}
+\item{WebACLLockToken}{[required] A token used for optimistic locking. WAF returns a token to your \code{get} and \code{list} requests, to mark the state of the entity at the time of the request. To make changes to the entity associated with the token, you provide the token to operations like \code{update} and \code{delete}. WAF uses the token to ensure that no changes have been made to the entity since you last retrieved it. If a change has been made, the update fails with a \code{WAFOptimisticLockException}. If this happens, perform another \code{get}, and use the new token returned by that operation.}
 }
 \description{
 Deletes all rule groups that are managed by Firewall Manager from the specified WebACL.

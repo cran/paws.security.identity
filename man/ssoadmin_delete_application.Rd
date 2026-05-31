@@ -7,9 +7,7 @@
 ssoadmin_delete_application(ApplicationArn)
 }
 \arguments{
-\item{ApplicationArn}{[required] Specifies the ARN of the application. For more information about ARNs,
-see Amazon Resource Names (ARNs) and Amazon Web Services Service
-Namespaces in the \emph{Amazon Web Services General Reference}.}
+\item{ApplicationArn}{[required] Specifies the ARN of the application. For more information about ARNs, see Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces in the \emph{Amazon Web Services General Reference}.}
 }
 \description{
 Deletes the association with the application. The connected service resource still exists.

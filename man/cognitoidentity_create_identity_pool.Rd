@@ -21,34 +21,24 @@ cognitoidentity_create_identity_pool(
 
 \item{AllowUnauthenticatedIdentities}{[required] TRUE if the identity pool supports unauthenticated logins.}
 
-\item{AllowClassicFlow}{Enables or disables the Basic (Classic) authentication flow. For more
-information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flow.html}{Identity Pools (Federated Identities) Authentication Flow}
-in the \emph{Amazon Cognito Developer Guide}.}
+\item{AllowClassicFlow}{Enables or disables the Basic (Classic) authentication flow. For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flow.html}{Identity Pools (Federated Identities) Authentication Flow} in the \emph{Amazon Cognito Developer Guide}.}
 
 \item{SupportedLoginProviders}{Optional key:value pairs mapping provider names to provider app IDs.}
 
-\item{DeveloperProviderName}{The "domain" by which Cognito will refer to your users. This name acts
-as a placeholder that allows your backend and the Cognito service to
-communicate about the developer provider. For the
-\code{DeveloperProviderName}, you can use letters as well as period (\code{.}),
-underscore (\verb{_}), and dash (\code{-}).
+\item{DeveloperProviderName}{The "domain" by which Cognito will refer to your users. This name acts as a placeholder that allows your backend and the Cognito service to communicate about the developer provider. For the \code{DeveloperProviderName}, you can use letters as well as period (\code{.}), underscore (\verb{_}), and dash (\code{-}).
 
-Once you have set a developer provider name, you cannot change it.
-Please take care in setting this parameter.}
+Once you have set a developer provider name, you cannot change it. Please take care in setting this parameter.}
 
 \item{OpenIdConnectProviderARNs}{The Amazon Resource Names (ARN) of the OpenID Connect providers.}
 
 \item{CognitoIdentityProviders}{An array of Amazon Cognito user pools and their client IDs.}
 
-\item{SamlProviderARNs}{An array of Amazon Resource Names (ARNs) of the SAML provider for your
-identity pool.}
+\item{SamlProviderARNs}{An array of Amazon Resource Names (ARNs) of the SAML provider for your identity pool.}
 
-\item{IdentityPoolTags}{Tags to assign to the identity pool. A tag is a label that you can apply
-to identity pools to categorize and manage them in different ways, such
-as by purpose, owner, environment, or other criteria.}
+\item{IdentityPoolTags}{Tags to assign to the identity pool. A tag is a label that you can apply to identity pools to categorize and manage them in different ways, such as by purpose, owner, environment, or other criteria.}
 }
 \description{
-Creates a new identity pool. The identity pool is a store of user identity information that is specific to your AWS account. The keys for \code{SupportedLoginProviders} are as follows:
+Creates a new identity pool. The identity pool is a store of user identity information that is specific to your Amazon Web Services account. The keys for \code{SupportedLoginProviders} are as follows:
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentity_create_identity_pool/} for full documentation.
 }

@@ -14,50 +14,23 @@ ram_associate_resource_share_permission(
 )
 }
 \arguments{
-\item{resourceShareArn}{[required] Specifies the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Name (ARN)}
-of the resource share to which you want to add or replace permissions.}
+\item{resourceShareArn}{[required] Specifies the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Name (ARN)} of the resource share to which you want to add or replace permissions.}
 
-\item{permissionArn}{[required] Specifies the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Name (ARN)}
-of the RAM permission to associate with the resource share. To find the
-ARN for a permission, use either the
-\code{\link[=ram_list_permissions]{list_permissions}} operation or go to the
-Permissions library page in the RAM console and then choose the name of
-the permission. The ARN is displayed on the detail page.}
+\item{permissionArn}{[required] Specifies the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Name (ARN)} of the RAM permission to associate with the resource share. To find the ARN for a permission, use either the \code{\link[=ram_list_permissions]{list_permissions}} operation or go to the Permissions library page in the RAM console and then choose the name of the permission. The ARN is displayed on the detail page.}
 
-\item{replace}{Specifies whether the specified permission should replace the existing
-permission associated with the resource share. Use \code{true} to replace the
-current permissions. Use \code{false} to add the permission to a resource
-share that currently doesn't have a permission. The default value is
-\code{false}.
+\item{replace}{Specifies whether the specified permission should replace the existing permission associated with the resource share. Use \code{true} to replace the current permissions. Use \code{false} to add the permission to a resource share that currently doesn't have a permission. The default value is \code{false}.
 
-A resource share can have only one permission per resource type. If a
-resource share already has a permission for the specified resource type
-and you don't set \code{replace} to \code{true} then the operation returns an
-error. This helps prevent accidental overwriting of a permission.}
+A resource share can have only one permission per resource type. If a resource share already has a permission for the specified resource type and you don't set \code{replace} to \code{true} then the operation returns an error. This helps prevent accidental overwriting of a permission.}
 
-\item{clientToken}{Specifies a unique, case-sensitive identifier that you provide to ensure
-the idempotency of the request. This lets you safely retry the request
-without accidentally performing the same operation a second time.
-Passing the same value to a later call to an operation requires that you
-also pass the same value for all other parameters. We recommend that you
-use a \href{https://en.wikipedia.org/wiki/Universally_unique_identifier}{UUID type of value.}.
+\item{clientToken}{Specifies a unique, case-sensitive identifier that you provide to ensure the idempotency of the request. This lets you safely retry the request without accidentally performing the same operation a second time. Passing the same value to a later call to an operation requires that you also pass the same value for all other parameters. We recommend that you use a \href{https://en.wikipedia.org/wiki/Universally_unique_identifier}{UUID type of value.}.
 
-If you don't provide this value, then Amazon Web Services generates a
-random one for you.
+If you don't provide this value, then Amazon Web Services generates a random one for you.
 
-If you retry the operation with the same \code{ClientToken}, but with
-different parameters, the retry fails with an
-\code{IdempotentParameterMismatch} error.}
+If you retry the operation with the same \code{ClientToken}, but with different parameters, the retry fails with an \code{IdempotentParameterMismatch} error.}
 
-\item{permissionVersion}{Specifies the version of the RAM permission to associate with the
-resource share. You can specify \emph{only} the version that is currently set
-as the default version for the permission. If you also set the \code{replace}
-pararameter to \code{true}, then this operation updates an outdated version
-of the permission to the current default version.
+\item{permissionVersion}{Specifies the version of the RAM permission to associate with the resource share. You can specify \emph{only} the version that is currently set as the default version for the permission. If you also set the \code{replace} pararameter to \code{true}, then this operation updates an outdated version of the permission to the current default version.
 
-You don't need to specify this parameter because the default behavior is
-to use the version that is currently set as the default version for the
-permission. This parameter is supported for backwards compatibility.}
+You don't need to specify this parameter because the default behavior is to use the version that is currently set as the default version for the permission. This parameter is supported for backwards compatibility.}
 }
 \description{
 Adds or replaces the RAM permission for a resource type included in a resource share. You can have exactly one permission associated with each resource type in the resource share. You can add a new RAM permission only if there are currently no resources of that resource type currently in the resource share.

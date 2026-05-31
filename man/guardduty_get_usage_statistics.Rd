@@ -15,26 +15,19 @@ guardduty_get_usage_statistics(
 )
 }
 \arguments{
-\item{DetectorId}{[required] The ID of the detector that specifies the GuardDuty service whose usage
-statistics you want to retrieve.
+\item{DetectorId}{[required] The ID of the detector that specifies the GuardDuty service whose usage statistics you want to retrieve.
 
-To find the \code{detectorId} in the current Region, see the Settings page in
-the GuardDuty console, or run the
-\code{\link[=guardduty_list_detectors]{list_detectors}} API.}
+To find the \code{detectorId} in the current Region, see the Settings page in the GuardDuty console, or run the \code{\link[=guardduty_list_detectors]{list_detectors}} API.}
 
 \item{UsageStatisticType}{[required] The type of usage statistics to retrieve.}
 
 \item{UsageCriteria}{[required] Represents the criteria used for querying usage.}
 
-\item{Unit}{The currency unit you would like to view your usage statistics in.
-Current valid values are USD.}
+\item{Unit}{The currency unit you would like to view your usage statistics in. Current valid values are USD.}
 
 \item{MaxResults}{The maximum number of results to return in the response.}
 
-\item{NextToken}{A token to use for paginating results that are returned in the response.
-Set the value of this parameter to null for the first request to a list
-action. For subsequent calls, use the NextToken value returned from the
-previous request to continue listing results after the first page.}
+\item{NextToken}{A token to use for paginating results that are returned in the response. Set the value of this parameter to null for the first request to a list action. For subsequent calls, use the NextToken value returned from the previous request to continue listing results after the first page.}
 }
 \description{
 Lists Amazon GuardDuty usage statistics over the last 30 days for the specified detector ID. For newly enabled detectors or data sources, the cost returned will include only the usage so far under 30 days. This may differ from the cost metrics in the console, which project usage over 30 days to provide a monthly cost estimate. For more information, see \href{https://docs.aws.amazon.com/guardduty/latest/ug/monitoring_costs.html#usage-calculations}{Understanding How Usage Costs are Calculated}.

@@ -13,9 +13,7 @@ detective_list_datasource_packages(
 \arguments{
 \item{GraphArn}{[required] The ARN of the behavior graph.}
 
-\item{NextToken}{For requests to get the next page of results, the pagination token that
-was returned with the previous set of results. The initial request does
-not include a pagination token.}
+\item{NextToken}{For requests to get the next page of results, the pagination token that was returned with the previous set of results. The initial request does not include a pagination token.}
 
 \item{MaxResults}{The maximum number of results to return.}
 }

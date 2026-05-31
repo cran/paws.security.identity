@@ -12,23 +12,13 @@ cognitoidentityprovider_admin_list_groups_for_user(
 )
 }
 \arguments{
-\item{Username}{[required] The username of the user that you want to query or modify. The value of
-this parameter is typically your user's username, but it can be any of
-their alias attributes. If \code{username} isn't an alias attribute in your
-user pool, this value must be the \code{sub} of a local user or the username
-of a user from a third-party IdP.}
+\item{Username}{[required] The name of the user that you want to query or modify. The value of this parameter is typically your user's username, but it can be any of their alias attributes. If \code{username} isn't an alias attribute in your user pool, this value must be the \code{sub} of a local user or the username of a user from a third-party IdP.}
 
 \item{UserPoolId}{[required] The ID of the user pool where you want to view a user's groups.}
 
-\item{Limit}{The maximum number of groups that you want Amazon Cognito to return in
-the response.}
+\item{Limit}{The maximum number of groups that you want Amazon Cognito to return in the response.}
 
-\item{NextToken}{This API operation returns a limited number of results. The pagination
-token is an identifier that you can present in an additional API request
-with the same parameters. When you include the pagination token, Amazon
-Cognito returns the next set of items after the current list. Subsequent
-requests return a new pagination token. By use of this token, you can
-paginate through the full list of items.}
+\item{NextToken}{This API operation returns a limited number of results. The pagination token is an identifier that you can present in an additional API request with the same parameters. When you include the pagination token, Amazon Cognito returns the next set of items after the current list. Subsequent requests return a new pagination token. By use of this token, you can paginate through the full list of items.}
 }
 \description{
 Lists the groups that a user belongs to. User pool groups are identifiers that you can reference from the contents of ID and access tokens, and set preferred IAM roles for identity-pool authentication. For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-user-groups.html}{Adding groups to a user pool}.

@@ -10,27 +10,24 @@ secretsmanager_list_secrets(
   MaxResults = NULL,
   NextToken = NULL,
   Filters = NULL,
-  SortOrder = NULL
+  SortOrder = NULL,
+  SortBy = NULL
 )
 }
 \arguments{
-\item{IncludePlannedDeletion}{Specifies whether to include secrets scheduled for deletion. By default,
-secrets scheduled for deletion aren't included.}
+\item{IncludePlannedDeletion}{Specifies whether to include secrets scheduled for deletion. By default, secrets scheduled for deletion aren't included.}
 
 \item{MaxResults}{The number of results to include in the response.
 
-If there are more results available, in the response, Secrets Manager
-includes \code{NextToken}. To get the next results, call
-\code{\link[=secretsmanager_list_secrets]{list_secrets}} again with the value from
-\code{NextToken}.}
+If there are more results available, in the response, Secrets Manager includes \code{NextToken}. To get the next results, call \code{\link[=secretsmanager_list_secrets]{list_secrets}} again with the value from \code{NextToken}.}
 
-\item{NextToken}{A token that indicates where the output should continue from, if a
-previous call did not show all results. To get the next results, call
-\code{\link[=secretsmanager_list_secrets]{list_secrets}} again with this value.}
+\item{NextToken}{A token that indicates where the output should continue from, if a previous call did not show all results. To get the next results, call \code{\link[=secretsmanager_list_secrets]{list_secrets}} again with this value.}
 
 \item{Filters}{The filters to apply to the list of secrets.}
 
 \item{SortOrder}{Secrets are listed by \code{CreatedDate}.}
+
+\item{SortBy}{If not specified, secrets are listed by \code{CreatedDate}.}
 }
 \description{
 Lists the secrets that are stored by Secrets Manager in the Amazon Web Services account, not including secrets that are marked for deletion. To see secrets marked for deletion, use the Secrets Manager console.

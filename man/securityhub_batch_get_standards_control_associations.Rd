@@ -10,11 +10,7 @@ securityhub_batch_get_standards_control_associations(
 )
 }
 \arguments{
-\item{StandardsControlAssociationIds}{[required] An array with one or more objects that includes a security control
-(identified with \code{SecurityControlId}, \code{SecurityControlArn}, or a mix of
-both parameters) and the Amazon Resource Name (ARN) of a standard. This
-field is used to query the enablement status of a control in a specified
-standard. The security control ID or ARN is the same across standards.}
+\item{StandardsControlAssociationIds}{[required] An array with one or more objects that includes a security control (identified with \code{SecurityControlId}, \code{SecurityControlArn}, or a mix of both parameters) and the Amazon Resource Name (ARN) of a standard. This field is used to query the enablement status of a control in a specified standard. The security control ID or ARN is the same across standards.}
 }
 \description{
 For a batch of security controls and standards, identifies whether each control is currently enabled or disabled in a standard.

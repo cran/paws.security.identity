@@ -10,9 +10,7 @@ guardduty_get_member_detectors(DetectorId, AccountIds)
 \arguments{
 \item{DetectorId}{[required] The detector ID for the administrator account.
 
-To find the \code{detectorId} in the current Region, see the Settings page in
-the GuardDuty console, or run the
-\code{\link[=guardduty_list_detectors]{list_detectors}} API.}
+To find the \code{detectorId} in the current Region, see the Settings page in the GuardDuty console, or run the \code{\link[=guardduty_list_detectors]{list_detectors}} API.}
 
 \item{AccountIds}{[required] A list of member account IDs.}
 }

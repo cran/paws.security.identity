@@ -2,8 +2,8 @@
 % Please edit documentation in R/ram_operations.R
 \name{ram_associate_resource_share}
 \alias{ram_associate_resource_share}
-\title{Adds the specified list of principals and list of resources to a
-resource share}
+\title{Adds the specified list of principals, resources, and source constraints
+to a resource share}
 \usage{
 ram_associate_resource_share(
   resourceShareArn,
@@ -14,56 +14,36 @@ ram_associate_resource_share(
 )
 }
 \arguments{
-\item{resourceShareArn}{[required] Specifies the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Name (ARN)}
-of the resource share that you want to add principals or resources to.}
+\item{resourceShareArn}{[required] Specifies the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Name (ARN)} of the resource share that you want to add principals or resources to.}
 
-\item{resourceArns}{Specifies a list of \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
-of the resources that you want to share. This can be \code{null} if you want
-to add only principals.}
+\item{resourceArns}{Specifies a list of \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)} of the resources that you want to share. This can be \code{null} if you want to add only principals.}
 
-\item{principals}{Specifies a list of principals to whom you want to the resource share.
-This can be \code{null} if you want to add only resources.
+\item{principals}{Specifies a list of principals to whom you want to the resource share. This can be \code{null} if you want to add only resources.
 
-What the principals can do with the resources in the share is determined
-by the RAM permissions that you associate with the resource share. See
-\code{\link[=ram_associate_resource_share_permission]{associate_resource_share_permission}}.
+What the principals can do with the resources in the share is determined by the RAM permissions that you associate with the resource share. See \code{\link[=ram_associate_resource_share_permission]{associate_resource_share_permission}}.
 
 You can include the following values:
 \itemize{
 \item An Amazon Web Services account ID, for example: \code{123456789012}
-\item An \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Name (ARN)}
-of an organization in Organizations, for example:
-\verb{organizations::123456789012:organization/o-exampleorgid}
-\item An ARN of an organizational unit (OU) in Organizations, for example:
-\verb{organizations::123456789012:ou/o-exampleorgid/ou-examplerootid-exampleouid123}
-\item An ARN of an IAM role, for example:
-\verb{iam::123456789012:role/rolename}
+\item An \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Name (ARN)} of an organization in Organizations, for example: \verb{organizations::123456789012:organization/o-exampleorgid}
+\item An ARN of an organizational unit (OU) in Organizations, for example: \verb{organizations::123456789012:ou/o-exampleorgid/ou-examplerootid-exampleouid123}
+\item An ARN of an IAM role, for example: \verb{iam::123456789012:role/rolename}
 \item An ARN of an IAM user, for example: \verb{iam::123456789012user/username}
+\item A service principal name, for example: \code{service-id.amazonaws.com}
 }
 
-Not all resource types can be shared with IAM roles and users. For more
-information, see \href{https://docs.aws.amazon.com/ram/latest/userguide/#permissions-rbp-supported-resource-types}{Sharing with IAM roles and users}
-in the \emph{Resource Access Manager User Guide}.}
+Not all resource types can be shared with IAM roles and users. For more information, see \href{https://docs.aws.amazon.com/ram/latest/userguide/#permissions-rbp-supported-resource-types}{Sharing with IAM roles and users} in the \emph{Resource Access Manager User Guide}.}
 
-\item{clientToken}{Specifies a unique, case-sensitive identifier that you provide to ensure
-the idempotency of the request. This lets you safely retry the request
-without accidentally performing the same operation a second time.
-Passing the same value to a later call to an operation requires that you
-also pass the same value for all other parameters. We recommend that you
-use a \href{https://en.wikipedia.org/wiki/Universally_unique_identifier}{UUID type of value.}.
+\item{clientToken}{Specifies a unique, case-sensitive identifier that you provide to ensure the idempotency of the request. This lets you safely retry the request without accidentally performing the same operation a second time. Passing the same value to a later call to an operation requires that you also pass the same value for all other parameters. We recommend that you use a \href{https://en.wikipedia.org/wiki/Universally_unique_identifier}{UUID type of value.}.
 
-If you don't provide this value, then Amazon Web Services generates a
-random one for you.
+If you don't provide this value, then Amazon Web Services generates a random one for you.
 
-If you retry the operation with the same \code{ClientToken}, but with
-different parameters, the retry fails with an
-\code{IdempotentParameterMismatch} error.}
+If you retry the operation with the same \code{ClientToken}, but with different parameters, the retry fails with an \code{IdempotentParameterMismatch} error.}
 
-\item{sources}{Specifies from which source accounts the service principal has access to
-the resources in this resource share.}
+\item{sources}{Specifies source constraints (accounts, ARNs, organization IDs, or organization paths) that limit when service principals can access resources in this resource share. When a service principal attempts to access a shared resource, validation is performed to ensure the request originates from one of the specified sources. This helps prevent confused deputy attacks by applying constraints on where service principals can access resources from.}
 }
 \description{
-Adds the specified list of principals and list of resources to a resource share. Principals that already have access to this resource share immediately receive access to the added resources. Newly added principals immediately receive access to the resources shared in this resource share.
+Adds the specified list of principals, resources, and source constraints to a resource share. Principals that already have access to this resource share immediately receive access to the added resources. Newly added principals immediately receive access to the resources shared in this resource share.
 
 See \url{https://www.paws-r-sdk.com/docs/ram_associate_resource_share/} for full documentation.
 }

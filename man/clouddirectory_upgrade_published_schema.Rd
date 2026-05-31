@@ -17,14 +17,9 @@ clouddirectory_upgrade_published_schema(
 
 \item{PublishedSchemaArn}{[required] The ARN of the published schema to be upgraded.}
 
-\item{MinorVersion}{[required] Identifies the minor version of the published schema that will be
-created. This parameter is NOT optional.}
+\item{MinorVersion}{[required] Identifies the minor version of the published schema that will be created. This parameter is NOT optional.}
 
-\item{DryRun}{Used for testing whether the Development schema provided is backwards
-compatible, or not, with the publish schema provided by the user to be
-upgraded. If schema compatibility fails, an exception would be thrown
-else the call would succeed. This parameter is optional and defaults to
-false.}
+\item{DryRun}{Used for testing whether the Development schema provided is backwards compatible, or not, with the publish schema provided by the user to be upgraded. If schema compatibility fails, an exception would be thrown else the call would succeed. This parameter is optional and defaults to false.}
 }
 \description{
 Upgrades a published schema under a new minor version revision using the current contents of \code{DevelopmentSchemaArn}.

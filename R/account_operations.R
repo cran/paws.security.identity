@@ -12,37 +12,18 @@ NULL
 #'
 #' See [https://www.paws-r-sdk.com/docs/account_accept_primary_email_update/](https://www.paws-r-sdk.com/docs/account_accept_primary_email_update/) for full documentation.
 #'
-#' @param AccountId &#91;required&#93; Specifies the 12-digit account ID number of the Amazon Web Services
-#' account that you want to access or modify with this operation. To use
-#' this parameter, the caller must be an identity in the [organization's
-#' management
-#' account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#account)
-#' or a delegated administrator account. The specified account ID must be a
-#' member account in the same organization. The organization must have [all
-#' features
-#' enabled](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html),
-#' and the organization must have [trusted
-#' access](https://docs.aws.amazon.com/organizations/latest/userguide/)
-#' enabled for the Account Management service, and optionally a [delegated
-#' admin](https://docs.aws.amazon.com/organizations/latest/userguide/)
-#' account assigned.
+#' @param AccountId &#91;required&#93; Specifies the 12-digit account ID number of the Amazon Web Services account that you want to access or modify with this operation. To use this parameter, the caller must be an identity in the [organization's management account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#account) or a delegated administrator account. The specified account ID must be a member account in the same organization. The organization must have [all features enabled](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html), and the organization must have [trusted access](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html) enabled for the Account Management service, and optionally a [delegated admin](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#delegated-admin) account assigned.
 #' 
-#' This operation can only be called from the management account or the
-#' delegated administrator account of an organization for a member account.
+#' This operation can only be called from the management account or the delegated administrator account of an organization for a member account.
 #' 
 #' The management account can't specify its own `AccountId`.
-#' @param Otp &#91;required&#93; The OTP code sent to the `PrimaryEmail` specified on the
-#' [`start_primary_email_update`][account_start_primary_email_update] API
-#' call.
-#' @param PrimaryEmail &#91;required&#93; The new primary email address for use with the specified account. This
-#' must match the `PrimaryEmail` from the
-#' [`start_primary_email_update`][account_start_primary_email_update] API
-#' call.
+#' @param PrimaryEmail &#91;required&#93; The new primary email address for use with the specified account. This must match the `PrimaryEmail` from the [`start_primary_email_update`][account_start_primary_email_update] API call.
+#' @param Otp &#91;required&#93; The OTP code sent to the `PrimaryEmail` specified on the [`start_primary_email_update`][account_start_primary_email_update] API call.
 #'
 #' @keywords internal
 #'
 #' @rdname account_accept_primary_email_update
-account_accept_primary_email_update <- function(AccountId, Otp, PrimaryEmail) {
+account_accept_primary_email_update <- function(AccountId, PrimaryEmail, Otp) {
   op <- new_operation(
     name = "AcceptPrimaryEmailUpdate",
     http_method = "POST",
@@ -51,7 +32,7 @@ account_accept_primary_email_update <- function(AccountId, Otp, PrimaryEmail) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .account$accept_primary_email_update_input(AccountId = AccountId, Otp = Otp, PrimaryEmail = PrimaryEmail)
+  input <- .account$accept_primary_email_update_input(AccountId = AccountId, PrimaryEmail = PrimaryEmail, Otp = Otp)
   output <- .account$accept_primary_email_update_output()
   config <- get_config()
   svc <- .account$service(config, op)
@@ -69,39 +50,21 @@ account_accept_primary_email_update <- function(AccountId, Otp, PrimaryEmail) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/account_delete_alternate_contact/](https://www.paws-r-sdk.com/docs/account_delete_alternate_contact/) for full documentation.
 #'
-#' @param AccountId Specifies the 12 digit account ID number of the Amazon Web Services
-#' account that you want to access or modify with this operation.
-#' 
-#' If you do not specify this parameter, it defaults to the Amazon Web
-#' Services account of the identity used to call the operation.
-#' 
-#' To use this parameter, the caller must be an identity in the
-#' [organization's management
-#' account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#account)
-#' or a delegated administrator account, and the specified account ID must
-#' be a member account in the same organization. The organization must have
-#' [all features
-#' enabled](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html),
-#' and the organization must have [trusted
-#' access](https://docs.aws.amazon.com/organizations/latest/userguide/)
-#' enabled for the Account Management service, and optionally a [delegated
-#' admin](https://docs.aws.amazon.com/organizations/latest/userguide/)
-#' account assigned.
-#' 
-#' The management account can't specify its own `AccountId`; it must call
-#' the operation in standalone context by not including the `AccountId`
-#' parameter.
-#' 
-#' To call this operation on an account that is not a member of an
-#' organization, then don't specify this parameter, and call the operation
-#' using an identity belonging to the account whose contacts you wish to
-#' retrieve or modify.
 #' @param AlternateContactType &#91;required&#93; Specifies which of the alternate contacts to delete.
+#' @param AccountId Specifies the 12 digit account ID number of the Amazon Web Services account that you want to access or modify with this operation.
+#' 
+#' If you do not specify this parameter, it defaults to the Amazon Web Services account of the identity used to call the operation.
+#' 
+#' To use this parameter, the caller must be an identity in the [organization's management account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#account) or a delegated administrator account, and the specified account ID must be a member account in the same organization. The organization must have [all features enabled](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html), and the organization must have [trusted access](https://docs.aws.amazon.com/organizations/latest/userguide/services-that-can-integrate-account.html) enabled for the Account Management service, and optionally a [delegated administrator](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#delegated-admin) account assigned.
+#' 
+#' The management account can't specify its own `AccountId`; it must call the operation in standalone context by not including the `AccountId` parameter.
+#' 
+#' To call this operation on an account that is not a member of an organization, then don't specify this parameter, and call the operation using an identity belonging to the account whose contacts you wish to retrieve or modify.
 #'
 #' @keywords internal
 #'
 #' @rdname account_delete_alternate_contact
-account_delete_alternate_contact <- function(AccountId = NULL, AlternateContactType) {
+account_delete_alternate_contact <- function(AlternateContactType, AccountId = NULL) {
   op <- new_operation(
     name = "DeleteAlternateContact",
     http_method = "POST",
@@ -110,7 +73,7 @@ account_delete_alternate_contact <- function(AccountId = NULL, AlternateContactT
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .account$delete_alternate_contact_input(AccountId = AccountId, AlternateContactType = AlternateContactType)
+  input <- .account$delete_alternate_contact_input(AlternateContactType = AlternateContactType, AccountId = AccountId)
   output <- .account$delete_alternate_contact_output()
   config <- get_config()
   svc <- .account$service(config, op)
@@ -127,37 +90,12 @@ account_delete_alternate_contact <- function(AccountId = NULL, AlternateContactT
 #'
 #' See [https://www.paws-r-sdk.com/docs/account_disable_region/](https://www.paws-r-sdk.com/docs/account_disable_region/) for full documentation.
 #'
-#' @param AccountId Specifies the 12-digit account ID number of the Amazon Web Services
-#' account that you want to access or modify with this operation. If you
-#' don't specify this parameter, it defaults to the Amazon Web Services
-#' account of the identity used to call the operation. To use this
-#' parameter, the caller must be an identity in the [organization's
-#' management
-#' account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#account)
-#' or a delegated administrator account. The specified account ID must be a
-#' member account in the same organization. The organization must have [all
-#' features
-#' enabled](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html),
-#' and the organization must have [trusted
-#' access](https://docs.aws.amazon.com/organizations/latest/userguide/)
-#' enabled for the Account Management service, and optionally a [delegated
-#' admin](https://docs.aws.amazon.com/organizations/latest/userguide/)
-#' account assigned.
+#' @param AccountId Specifies the 12-digit account ID number of the Amazon Web Services account that you want to access or modify with this operation. If you don't specify this parameter, it defaults to the Amazon Web Services account of the identity used to call the operation. To use this parameter, the caller must be an identity in the [organization's management account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#account) or a delegated administrator account. The specified account ID must be a member account in the same organization. The organization must have [all features enabled](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html), and the organization must have [trusted access](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html) enabled for the Account Management service, and optionally a [delegated admin](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#delegated-admin) account assigned.
 #' 
-#' The management account can't specify its own `AccountId`. It must call
-#' the operation in standalone context by not including the `AccountId`
-#' parameter.
+#' The management account can't specify its own `AccountId`. It must call the operation in standalone context by not including the `AccountId` parameter.
 #' 
-#' To call this operation on an account that is not a member of an
-#' organization, don't specify this parameter. Instead, call the operation
-#' using an identity belonging to the account whose contacts you wish to
-#' retrieve or modify.
-#' @param RegionName &#91;required&#93; Specifies the Region-code for a given Region name (for example,
-#' `af-south-1`). When you disable a Region, Amazon Web Services performs
-#' actions to deactivate that Region in your account, such as destroying
-#' IAM resources in the Region. This process takes a few minutes for most
-#' accounts, but this can take several hours. You cannot enable the Region
-#' until the disabling process is fully completed.
+#' To call this operation on an account that is not a member of an organization, don't specify this parameter. Instead, call the operation using an identity belonging to the account whose contacts you wish to retrieve or modify.
+#' @param RegionName &#91;required&#93; Specifies the Region-code for a given Region name (for example, `af-south-1`). When you disable a Region, Amazon Web Services performs actions to deactivate that Region in your account, such as destroying IAM resources in the Region. This process takes a few minutes for most accounts, but this can take several hours. You cannot enable the Region until the disabling process is fully completed.
 #'
 #' @keywords internal
 #'
@@ -188,38 +126,12 @@ account_disable_region <- function(AccountId = NULL, RegionName) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/account_enable_region/](https://www.paws-r-sdk.com/docs/account_enable_region/) for full documentation.
 #'
-#' @param AccountId Specifies the 12-digit account ID number of the Amazon Web Services
-#' account that you want to access or modify with this operation. If you
-#' don't specify this parameter, it defaults to the Amazon Web Services
-#' account of the identity used to call the operation. To use this
-#' parameter, the caller must be an identity in the [organization's
-#' management
-#' account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#account)
-#' or a delegated administrator account. The specified account ID must be a
-#' member account in the same organization. The organization must have [all
-#' features
-#' enabled](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html),
-#' and the organization must have [trusted
-#' access](https://docs.aws.amazon.com/organizations/latest/userguide/)
-#' enabled for the Account Management service, and optionally a [delegated
-#' admin](https://docs.aws.amazon.com/organizations/latest/userguide/)
-#' account assigned.
+#' @param AccountId Specifies the 12-digit account ID number of the Amazon Web Services account that you want to access or modify with this operation. If you don't specify this parameter, it defaults to the Amazon Web Services account of the identity used to call the operation. To use this parameter, the caller must be an identity in the [organization's management account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#account) or a delegated administrator account. The specified account ID must be a member account in the same organization. The organization must have [all features enabled](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html), and the organization must have [trusted access](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html) enabled for the Account Management service, and optionally a [delegated admin](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#delegated-admin) account assigned.
 #' 
-#' The management account can't specify its own `AccountId`. It must call
-#' the operation in standalone context by not including the `AccountId`
-#' parameter.
+#' The management account can't specify its own `AccountId`. It must call the operation in standalone context by not including the `AccountId` parameter.
 #' 
-#' To call this operation on an account that is not a member of an
-#' organization, don't specify this parameter. Instead, call the operation
-#' using an identity belonging to the account whose contacts you wish to
-#' retrieve or modify.
-#' @param RegionName &#91;required&#93; Specifies the Region-code for a given Region name (for example,
-#' `af-south-1`). When you enable a Region, Amazon Web Services performs
-#' actions to prepare your account in that Region, such as distributing
-#' your IAM resources to the Region. This process takes a few minutes for
-#' most accounts, but it can take several hours. You cannot use the Region
-#' until this process is complete. Furthermore, you cannot disable the
-#' Region until the enabling process is fully completed.
+#' To call this operation on an account that is not a member of an organization, don't specify this parameter. Instead, call the operation using an identity belonging to the account whose contacts you wish to retrieve or modify.
+#' @param RegionName &#91;required&#93; Specifies the Region-code for a given Region name (for example, `af-south-1`). When you enable a Region, Amazon Web Services performs actions to prepare your account in that Region, such as distributing your IAM resources to the Region. This process takes a few minutes for most accounts, but it can take several hours. You cannot use the Region until this process is complete. Furthermore, you cannot disable the Region until the enabling process is fully completed.
 #'
 #' @keywords internal
 #'
@@ -243,6 +155,46 @@ account_enable_region <- function(AccountId = NULL, RegionName) {
 }
 .account$operations$enable_region <- account_enable_region
 
+#' Retrieves information about the specified account including its account
+#' name, account ID, account creation date and time, and account state
+#'
+#' @description
+#' Retrieves information about the specified account including its account name, account ID, account creation date and time, and account state. To use this API, an IAM user or role must have the `account:GetAccountInformation` IAM permission.
+#'
+#' See [https://www.paws-r-sdk.com/docs/account_get_account_information/](https://www.paws-r-sdk.com/docs/account_get_account_information/) for full documentation.
+#'
+#' @param AccountId Specifies the 12 digit account ID number of the Amazon Web Services account that you want to access or modify with this operation.
+#' 
+#' If you do not specify this parameter, it defaults to the Amazon Web Services account of the identity used to call the operation.
+#' 
+#' To use this parameter, the caller must be an identity in the [organization's management account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#account) or a delegated administrator account, and the specified account ID must be a member account in the same organization. The organization must have [all features enabled](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html), and the organization must have [trusted access](https://docs.aws.amazon.com/organizations/latest/userguide/services-that-can-integrate-account.html) enabled for the Account Management service, and optionally a [delegated administrator](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#delegated-admin) account assigned.
+#' 
+#' The management account can't specify its own `AccountId`; it must call the operation in standalone context by not including the `AccountId` parameter.
+#' 
+#' To call this operation on an account that is not a member of an organization, then don't specify this parameter, and call the operation using an identity belonging to the account whose contacts you wish to retrieve or modify.
+#'
+#' @keywords internal
+#'
+#' @rdname account_get_account_information
+account_get_account_information <- function(AccountId = NULL) {
+  op <- new_operation(
+    name = "GetAccountInformation",
+    http_method = "POST",
+    http_path = "/getAccountInformation",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .account$get_account_information_input(AccountId = AccountId)
+  output <- .account$get_account_information_output()
+  config <- get_config()
+  svc <- .account$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.account$operations$get_account_information <- account_get_account_information
+
 #' Retrieves the specified alternate contact attached to an Amazon Web
 #' Services account
 #'
@@ -251,39 +203,21 @@ account_enable_region <- function(AccountId = NULL, RegionName) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/account_get_alternate_contact/](https://www.paws-r-sdk.com/docs/account_get_alternate_contact/) for full documentation.
 #'
-#' @param AccountId Specifies the 12 digit account ID number of the Amazon Web Services
-#' account that you want to access or modify with this operation.
-#' 
-#' If you do not specify this parameter, it defaults to the Amazon Web
-#' Services account of the identity used to call the operation.
-#' 
-#' To use this parameter, the caller must be an identity in the
-#' [organization's management
-#' account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#account)
-#' or a delegated administrator account, and the specified account ID must
-#' be a member account in the same organization. The organization must have
-#' [all features
-#' enabled](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html),
-#' and the organization must have [trusted
-#' access](https://docs.aws.amazon.com/organizations/latest/userguide/)
-#' enabled for the Account Management service, and optionally a [delegated
-#' admin](https://docs.aws.amazon.com/organizations/latest/userguide/)
-#' account assigned.
-#' 
-#' The management account can't specify its own `AccountId`; it must call
-#' the operation in standalone context by not including the `AccountId`
-#' parameter.
-#' 
-#' To call this operation on an account that is not a member of an
-#' organization, then don't specify this parameter, and call the operation
-#' using an identity belonging to the account whose contacts you wish to
-#' retrieve or modify.
 #' @param AlternateContactType &#91;required&#93; Specifies which alternate contact you want to retrieve.
+#' @param AccountId Specifies the 12 digit account ID number of the Amazon Web Services account that you want to access or modify with this operation.
+#' 
+#' If you do not specify this parameter, it defaults to the Amazon Web Services account of the identity used to call the operation.
+#' 
+#' To use this parameter, the caller must be an identity in the [organization's management account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#account) or a delegated administrator account, and the specified account ID must be a member account in the same organization. The organization must have [all features enabled](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html), and the organization must have [trusted access](https://docs.aws.amazon.com/organizations/latest/userguide/services-that-can-integrate-account.html) enabled for the Account Management service, and optionally a [delegated administrator](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#delegated-admin) account assigned.
+#' 
+#' The management account can't specify its own `AccountId`; it must call the operation in standalone context by not including the `AccountId` parameter.
+#' 
+#' To call this operation on an account that is not a member of an organization, then don't specify this parameter, and call the operation using an identity belonging to the account whose contacts you wish to retrieve or modify.
 #'
 #' @keywords internal
 #'
 #' @rdname account_get_alternate_contact
-account_get_alternate_contact <- function(AccountId = NULL, AlternateContactType) {
+account_get_alternate_contact <- function(AlternateContactType, AccountId = NULL) {
   op <- new_operation(
     name = "GetAlternateContact",
     http_method = "POST",
@@ -292,7 +226,7 @@ account_get_alternate_contact <- function(AccountId = NULL, AlternateContactType
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .account$get_alternate_contact_input(AccountId = AccountId, AlternateContactType = AlternateContactType)
+  input <- .account$get_alternate_contact_input(AlternateContactType = AlternateContactType, AccountId = AccountId)
   output <- .account$get_alternate_contact_output()
   config <- get_config()
   svc <- .account$service(config, op)
@@ -310,31 +244,11 @@ account_get_alternate_contact <- function(AccountId = NULL, AlternateContactType
 #'
 #' See [https://www.paws-r-sdk.com/docs/account_get_contact_information/](https://www.paws-r-sdk.com/docs/account_get_contact_information/) for full documentation.
 #'
-#' @param AccountId Specifies the 12-digit account ID number of the Amazon Web Services
-#' account that you want to access or modify with this operation. If you
-#' don't specify this parameter, it defaults to the Amazon Web Services
-#' account of the identity used to call the operation. To use this
-#' parameter, the caller must be an identity in the [organization's
-#' management
-#' account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#account)
-#' or a delegated administrator account. The specified account ID must be a
-#' member account in the same organization. The organization must have [all
-#' features
-#' enabled](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html),
-#' and the organization must have [trusted
-#' access](https://docs.aws.amazon.com/organizations/latest/userguide/)
-#' enabled for the Account Management service, and optionally a [delegated
-#' admin](https://docs.aws.amazon.com/organizations/latest/userguide/)
-#' account assigned.
+#' @param AccountId Specifies the 12-digit account ID number of the Amazon Web Services account that you want to access or modify with this operation. If you don't specify this parameter, it defaults to the Amazon Web Services account of the identity used to call the operation. To use this parameter, the caller must be an identity in the [organization's management account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#account) or a delegated administrator account. The specified account ID must be a member account in the same organization. The organization must have [all features enabled](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html), and the organization must have [trusted access](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html) enabled for the Account Management service, and optionally a [delegated admin](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#delegated-admin) account assigned.
 #' 
-#' The management account can't specify its own `AccountId`. It must call
-#' the operation in standalone context by not including the `AccountId`
-#' parameter.
+#' The management account can't specify its own `AccountId`. It must call the operation in standalone context by not including the `AccountId` parameter.
 #' 
-#' To call this operation on an account that is not a member of an
-#' organization, don't specify this parameter. Instead, call the operation
-#' using an identity belonging to the account whose contacts you wish to
-#' retrieve or modify.
+#' To call this operation on an account that is not a member of an organization, don't specify this parameter. Instead, call the operation using an identity belonging to the account whose contacts you wish to retrieve or modify.
 #'
 #' @keywords internal
 #'
@@ -358,6 +272,47 @@ account_get_contact_information <- function(AccountId = NULL) {
 }
 .account$operations$get_contact_information <- account_get_contact_information
 
+#' Retrieves information about the GovCloud account linked to the specified
+#' standard account (if it exists) including the GovCloud account ID and
+#' state
+#'
+#' @description
+#' Retrieves information about the GovCloud account linked to the specified standard account (if it exists) including the GovCloud account ID and state. To use this API, an IAM user or role must have the `account:GetGovCloudAccountInformation` IAM permission.
+#'
+#' See [https://www.paws-r-sdk.com/docs/account_get_gov_cloud_account_information/](https://www.paws-r-sdk.com/docs/account_get_gov_cloud_account_information/) for full documentation.
+#'
+#' @param StandardAccountId Specifies the 12 digit account ID number of the Amazon Web Services account that you want to access or modify with this operation.
+#' 
+#' If you do not specify this parameter, it defaults to the Amazon Web Services account of the identity used to call the operation.
+#' 
+#' To use this parameter, the caller must be an identity in the [organization's management account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#account) or a delegated administrator account, and the specified account ID must be a member account in the same organization. The organization must have [all features enabled](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html), and the organization must have [trusted access](https://docs.aws.amazon.com/organizations/latest/userguide/services-that-can-integrate-account.html) enabled for the Account Management service, and optionally a [delegated administrator](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#delegated-admin) account assigned.
+#' 
+#' The management account can't specify its own `AccountId`; it must call the operation in standalone context by not including the `AccountId` parameter.
+#' 
+#' To call this operation on an account that is not a member of an organization, then don't specify this parameter, and call the operation using an identity belonging to the account whose contacts you wish to retrieve or modify.
+#'
+#' @keywords internal
+#'
+#' @rdname account_get_gov_cloud_account_information
+account_get_gov_cloud_account_information <- function(StandardAccountId = NULL) {
+  op <- new_operation(
+    name = "GetGovCloudAccountInformation",
+    http_method = "POST",
+    http_path = "/getGovCloudAccountInformation",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .account$get_gov_cloud_account_information_input(StandardAccountId = StandardAccountId)
+  output <- .account$get_gov_cloud_account_information_output()
+  config <- get_config()
+  svc <- .account$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.account$operations$get_gov_cloud_account_information <- account_get_gov_cloud_account_information
+
 #' Retrieves the primary email address for the specified account
 #'
 #' @description
@@ -365,23 +320,9 @@ account_get_contact_information <- function(AccountId = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/account_get_primary_email/](https://www.paws-r-sdk.com/docs/account_get_primary_email/) for full documentation.
 #'
-#' @param AccountId &#91;required&#93; Specifies the 12-digit account ID number of the Amazon Web Services
-#' account that you want to access or modify with this operation. To use
-#' this parameter, the caller must be an identity in the [organization's
-#' management
-#' account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#account)
-#' or a delegated administrator account. The specified account ID must be a
-#' member account in the same organization. The organization must have [all
-#' features
-#' enabled](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html),
-#' and the organization must have [trusted
-#' access](https://docs.aws.amazon.com/organizations/latest/userguide/)
-#' enabled for the Account Management service, and optionally a [delegated
-#' admin](https://docs.aws.amazon.com/organizations/latest/userguide/)
-#' account assigned.
+#' @param AccountId &#91;required&#93; Specifies the 12-digit account ID number of the Amazon Web Services account that you want to access or modify with this operation. To use this parameter, the caller must be an identity in the [organization's management account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#account) or a delegated administrator account. The specified account ID must be a member account in the same organization. The organization must have [all features enabled](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html), and the organization must have [trusted access](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html) enabled for the Account Management service, and optionally a [delegated admin](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#delegated-admin) account assigned.
 #' 
-#' This operation can only be called from the management account or the
-#' delegated administrator account of an organization for a member account.
+#' This operation can only be called from the management account or the delegated administrator account of an organization for a member account.
 #' 
 #' The management account can't specify its own `AccountId`.
 #'
@@ -414,34 +355,12 @@ account_get_primary_email <- function(AccountId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/account_get_region_opt_status/](https://www.paws-r-sdk.com/docs/account_get_region_opt_status/) for full documentation.
 #'
-#' @param AccountId Specifies the 12-digit account ID number of the Amazon Web Services
-#' account that you want to access or modify with this operation. If you
-#' don't specify this parameter, it defaults to the Amazon Web Services
-#' account of the identity used to call the operation. To use this
-#' parameter, the caller must be an identity in the [organization's
-#' management
-#' account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#account)
-#' or a delegated administrator account. The specified account ID must be a
-#' member account in the same organization. The organization must have [all
-#' features
-#' enabled](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html),
-#' and the organization must have [trusted
-#' access](https://docs.aws.amazon.com/organizations/latest/userguide/)
-#' enabled for the Account Management service, and optionally a [delegated
-#' admin](https://docs.aws.amazon.com/organizations/latest/userguide/)
-#' account assigned.
+#' @param AccountId Specifies the 12-digit account ID number of the Amazon Web Services account that you want to access or modify with this operation. If you don't specify this parameter, it defaults to the Amazon Web Services account of the identity used to call the operation. To use this parameter, the caller must be an identity in the [organization's management account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#account) or a delegated administrator account. The specified account ID must be a member account in the same organization. The organization must have [all features enabled](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html), and the organization must have [trusted access](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html) enabled for the Account Management service, and optionally a [delegated admin](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#delegated-admin) account assigned.
 #' 
-#' The management account can't specify its own `AccountId`. It must call
-#' the operation in standalone context by not including the `AccountId`
-#' parameter.
+#' The management account can't specify its own `AccountId`. It must call the operation in standalone context by not including the `AccountId` parameter.
 #' 
-#' To call this operation on an account that is not a member of an
-#' organization, don't specify this parameter. Instead, call the operation
-#' using an identity belonging to the account whose contacts you wish to
-#' retrieve or modify.
-#' @param RegionName &#91;required&#93; Specifies the Region-code for a given Region name (for example,
-#' `af-south-1`). This function will return the status of whatever Region
-#' you pass into this parameter.
+#' To call this operation on an account that is not a member of an organization, don't specify this parameter. Instead, call the operation using an identity belonging to the account whose contacts you wish to retrieve or modify.
+#' @param RegionName &#91;required&#93; Specifies the Region-code for a given Region name (for example, `af-south-1`). This function will return the status of whatever Region you pass into this parameter.
 #'
 #' @keywords internal
 #'
@@ -473,48 +392,14 @@ account_get_region_opt_status <- function(AccountId = NULL, RegionName) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/account_list_regions/](https://www.paws-r-sdk.com/docs/account_list_regions/) for full documentation.
 #'
-#' @param AccountId Specifies the 12-digit account ID number of the Amazon Web Services
-#' account that you want to access or modify with this operation. If you
-#' don't specify this parameter, it defaults to the Amazon Web Services
-#' account of the identity used to call the operation. To use this
-#' parameter, the caller must be an identity in the [organization's
-#' management
-#' account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#account)
-#' or a delegated administrator account. The specified account ID must be a
-#' member account in the same organization. The organization must have [all
-#' features
-#' enabled](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html),
-#' and the organization must have [trusted
-#' access](https://docs.aws.amazon.com/organizations/latest/userguide/)
-#' enabled for the Account Management service, and optionally a [delegated
-#' admin](https://docs.aws.amazon.com/organizations/latest/userguide/)
-#' account assigned.
+#' @param AccountId Specifies the 12-digit account ID number of the Amazon Web Services account that you want to access or modify with this operation. If you don't specify this parameter, it defaults to the Amazon Web Services account of the identity used to call the operation. To use this parameter, the caller must be an identity in the [organization's management account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#account) or a delegated administrator account. The specified account ID must be a member account in the same organization. The organization must have [all features enabled](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html), and the organization must have [trusted access](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html) enabled for the Account Management service, and optionally a [delegated admin](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#delegated-admin) account assigned.
 #' 
-#' The management account can't specify its own `AccountId`. It must call
-#' the operation in standalone context by not including the `AccountId`
-#' parameter.
+#' The management account can't specify its own `AccountId`. It must call the operation in standalone context by not including the `AccountId` parameter.
 #' 
-#' To call this operation on an account that is not a member of an
-#' organization, don't specify this parameter. Instead, call the operation
-#' using an identity belonging to the account whose contacts you wish to
-#' retrieve or modify.
-#' @param MaxResults The total number of items to return in the command’s output. If the
-#' total number of items available is more than the value specified, a
-#' `NextToken` is provided in the command’s output. To resume pagination,
-#' provide the `NextToken` value in the `starting-token` argument of a
-#' subsequent command. Do not use the `NextToken` response element directly
-#' outside of the Amazon Web Services CLI. For usage examples, see
-#' [Pagination](https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-pagination.html)
-#' in the *Amazon Web Services Command Line Interface User Guide*.
-#' @param NextToken A token used to specify where to start paginating. This is the
-#' `NextToken` from a previously truncated response. For usage examples,
-#' see
-#' [Pagination](https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-pagination.html)
-#' in the *Amazon Web Services Command Line Interface User Guide*.
-#' @param RegionOptStatusContains A list of Region statuses (Enabling, Enabled, Disabling, Disabled,
-#' Enabled_by_default) to use to filter the list of Regions for a given
-#' account. For example, passing in a value of ENABLING will only return a
-#' list of Regions with a Region status of ENABLING.
+#' To call this operation on an account that is not a member of an organization, don't specify this parameter. Instead, call the operation using an identity belonging to the account whose contacts you wish to retrieve or modify.
+#' @param MaxResults The total number of items to return in the command’s output. If the total number of items available is more than the value specified, a `NextToken` is provided in the command’s output. To resume pagination, provide the `NextToken` value in the `starting-token` argument of a subsequent command. Do not use the `NextToken` response element directly outside of the Amazon Web Services CLI. For usage examples, see [Pagination](https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-pagination.html) in the *Amazon Web Services Command Line Interface User Guide*.
+#' @param NextToken A token used to specify where to start paginating. This is the `NextToken` from a previously truncated response. For usage examples, see [Pagination](https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-pagination.html) in the *Amazon Web Services Command Line Interface User Guide*.
+#' @param RegionOptStatusContains A list of Region statuses (Enabling, Enabled, Disabling, Disabled, Enabled_by_default) to use to filter the list of Regions for a given account. For example, passing in a value of ENABLING will only return a list of Regions with a Region status of ENABLING.
 #'
 #' @keywords internal
 #'
@@ -538,6 +423,46 @@ account_list_regions <- function(AccountId = NULL, MaxResults = NULL, NextToken 
 }
 .account$operations$list_regions <- account_list_regions
 
+#' Updates the account name of the specified account
+#'
+#' @description
+#' Updates the account name of the specified account. To use this API, IAM principals must have the `account:PutAccountName` IAM permission.
+#'
+#' See [https://www.paws-r-sdk.com/docs/account_put_account_name/](https://www.paws-r-sdk.com/docs/account_put_account_name/) for full documentation.
+#'
+#' @param AccountName &#91;required&#93; The name of the account.
+#' @param AccountId Specifies the 12 digit account ID number of the Amazon Web Services account that you want to access or modify with this operation.
+#' 
+#' If you do not specify this parameter, it defaults to the Amazon Web Services account of the identity used to call the operation.
+#' 
+#' To use this parameter, the caller must be an identity in the [organization's management account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#account) or a delegated administrator account, and the specified account ID must be a member account in the same organization. The organization must have [all features enabled](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html), and the organization must have [trusted access](https://docs.aws.amazon.com/organizations/latest/userguide/services-that-can-integrate-account.html) enabled for the Account Management service, and optionally a [delegated administrator](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#delegated-admin) account assigned.
+#' 
+#' The management account can't specify its own `AccountId`; it must call the operation in standalone context by not including the `AccountId` parameter.
+#' 
+#' To call this operation on an account that is not a member of an organization, then don't specify this parameter, and call the operation using an identity belonging to the account whose contacts you wish to retrieve or modify.
+#'
+#' @keywords internal
+#'
+#' @rdname account_put_account_name
+account_put_account_name <- function(AccountName, AccountId = NULL) {
+  op <- new_operation(
+    name = "PutAccountName",
+    http_method = "POST",
+    http_path = "/putAccountName",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .account$put_account_name_input(AccountName = AccountName, AccountId = AccountId)
+  output <- .account$put_account_name_output()
+  config <- get_config()
+  svc <- .account$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.account$operations$put_account_name <- account_put_account_name
+
 #' Modifies the specified alternate contact attached to an Amazon Web
 #' Services account
 #'
@@ -546,43 +471,25 @@ account_list_regions <- function(AccountId = NULL, MaxResults = NULL, NextToken 
 #'
 #' See [https://www.paws-r-sdk.com/docs/account_put_alternate_contact/](https://www.paws-r-sdk.com/docs/account_put_alternate_contact/) for full documentation.
 #'
-#' @param AccountId Specifies the 12 digit account ID number of the Amazon Web Services
-#' account that you want to access or modify with this operation.
-#' 
-#' If you do not specify this parameter, it defaults to the Amazon Web
-#' Services account of the identity used to call the operation.
-#' 
-#' To use this parameter, the caller must be an identity in the
-#' [organization's management
-#' account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#account)
-#' or a delegated administrator account, and the specified account ID must
-#' be a member account in the same organization. The organization must have
-#' [all features
-#' enabled](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html),
-#' and the organization must have [trusted
-#' access](https://docs.aws.amazon.com/organizations/latest/userguide/)
-#' enabled for the Account Management service, and optionally a [delegated
-#' admin](https://docs.aws.amazon.com/organizations/latest/userguide/)
-#' account assigned.
-#' 
-#' The management account can't specify its own `AccountId`; it must call
-#' the operation in standalone context by not including the `AccountId`
-#' parameter.
-#' 
-#' To call this operation on an account that is not a member of an
-#' organization, then don't specify this parameter, and call the operation
-#' using an identity belonging to the account whose contacts you wish to
-#' retrieve or modify.
-#' @param AlternateContactType &#91;required&#93; Specifies which alternate contact you want to create or update.
-#' @param EmailAddress &#91;required&#93; Specifies an email address for the alternate contact.
 #' @param Name &#91;required&#93; Specifies a name for the alternate contact.
-#' @param PhoneNumber &#91;required&#93; Specifies a phone number for the alternate contact.
 #' @param Title &#91;required&#93; Specifies a title for the alternate contact.
+#' @param EmailAddress &#91;required&#93; Specifies an email address for the alternate contact.
+#' @param PhoneNumber &#91;required&#93; Specifies a phone number for the alternate contact.
+#' @param AlternateContactType &#91;required&#93; Specifies which alternate contact you want to create or update.
+#' @param AccountId Specifies the 12 digit account ID number of the Amazon Web Services account that you want to access or modify with this operation.
+#' 
+#' If you do not specify this parameter, it defaults to the Amazon Web Services account of the identity used to call the operation.
+#' 
+#' To use this parameter, the caller must be an identity in the [organization's management account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#account) or a delegated administrator account, and the specified account ID must be a member account in the same organization. The organization must have [all features enabled](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html), and the organization must have [trusted access](https://docs.aws.amazon.com/organizations/latest/userguide/services-that-can-integrate-account.html) enabled for the Account Management service, and optionally a [delegated administrator](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#delegated-admin) account assigned.
+#' 
+#' The management account can't specify its own `AccountId`; it must call the operation in standalone context by not including the `AccountId` parameter.
+#' 
+#' To call this operation on an account that is not a member of an organization, then don't specify this parameter, and call the operation using an identity belonging to the account whose contacts you wish to retrieve or modify.
 #'
 #' @keywords internal
 #'
 #' @rdname account_put_alternate_contact
-account_put_alternate_contact <- function(AccountId = NULL, AlternateContactType, EmailAddress, Name, PhoneNumber, Title) {
+account_put_alternate_contact <- function(Name, Title, EmailAddress, PhoneNumber, AlternateContactType, AccountId = NULL) {
   op <- new_operation(
     name = "PutAlternateContact",
     http_method = "POST",
@@ -591,7 +498,7 @@ account_put_alternate_contact <- function(AccountId = NULL, AlternateContactType
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .account$put_alternate_contact_input(AccountId = AccountId, AlternateContactType = AlternateContactType, EmailAddress = EmailAddress, Name = Name, PhoneNumber = PhoneNumber, Title = Title)
+  input <- .account$put_alternate_contact_input(Name = Name, Title = Title, EmailAddress = EmailAddress, PhoneNumber = PhoneNumber, AlternateContactType = AlternateContactType, AccountId = AccountId)
   output <- .account$put_alternate_contact_output()
   config <- get_config()
   svc <- .account$service(config, op)
@@ -609,38 +516,17 @@ account_put_alternate_contact <- function(AccountId = NULL, AlternateContactType
 #'
 #' See [https://www.paws-r-sdk.com/docs/account_put_contact_information/](https://www.paws-r-sdk.com/docs/account_put_contact_information/) for full documentation.
 #'
-#' @param AccountId Specifies the 12-digit account ID number of the Amazon Web Services
-#' account that you want to access or modify with this operation. If you
-#' don't specify this parameter, it defaults to the Amazon Web Services
-#' account of the identity used to call the operation. To use this
-#' parameter, the caller must be an identity in the [organization's
-#' management
-#' account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#account)
-#' or a delegated administrator account. The specified account ID must be a
-#' member account in the same organization. The organization must have [all
-#' features
-#' enabled](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html),
-#' and the organization must have [trusted
-#' access](https://docs.aws.amazon.com/organizations/latest/userguide/)
-#' enabled for the Account Management service, and optionally a [delegated
-#' admin](https://docs.aws.amazon.com/organizations/latest/userguide/)
-#' account assigned.
+#' @param ContactInformation &#91;required&#93; Contains the details of the primary contact information associated with an Amazon Web Services account.
+#' @param AccountId Specifies the 12-digit account ID number of the Amazon Web Services account that you want to access or modify with this operation. If you don't specify this parameter, it defaults to the Amazon Web Services account of the identity used to call the operation. To use this parameter, the caller must be an identity in the [organization's management account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#account) or a delegated administrator account. The specified account ID must be a member account in the same organization. The organization must have [all features enabled](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html), and the organization must have [trusted access](https://docs.aws.amazon.com/organizations/latest/userguide/services-that-can-integrate-account.html) enabled for the Account Management service, and optionally a [delegated administrator](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#delegated-admin) account assigned.
 #' 
-#' The management account can't specify its own `AccountId`. It must call
-#' the operation in standalone context by not including the `AccountId`
-#' parameter.
+#' The management account can't specify its own `AccountId`. It must call the operation in standalone context by not including the `AccountId` parameter.
 #' 
-#' To call this operation on an account that is not a member of an
-#' organization, don't specify this parameter. Instead, call the operation
-#' using an identity belonging to the account whose contacts you wish to
-#' retrieve or modify.
-#' @param ContactInformation &#91;required&#93; Contains the details of the primary contact information associated with
-#' an Amazon Web Services account.
+#' To call this operation on an account that is not a member of an organization, don't specify this parameter. Instead, call the operation using an identity belonging to the account whose contacts you wish to retrieve or modify.
 #'
 #' @keywords internal
 #'
 #' @rdname account_put_contact_information
-account_put_contact_information <- function(AccountId = NULL, ContactInformation) {
+account_put_contact_information <- function(ContactInformation, AccountId = NULL) {
   op <- new_operation(
     name = "PutContactInformation",
     http_method = "POST",
@@ -649,7 +535,7 @@ account_put_contact_information <- function(AccountId = NULL, ContactInformation
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .account$put_contact_information_input(AccountId = AccountId, ContactInformation = ContactInformation)
+  input <- .account$put_contact_information_input(ContactInformation = ContactInformation, AccountId = AccountId)
   output <- .account$put_contact_information_output()
   config <- get_config()
   svc <- .account$service(config, op)
@@ -667,27 +553,12 @@ account_put_contact_information <- function(AccountId = NULL, ContactInformation
 #'
 #' See [https://www.paws-r-sdk.com/docs/account_start_primary_email_update/](https://www.paws-r-sdk.com/docs/account_start_primary_email_update/) for full documentation.
 #'
-#' @param AccountId &#91;required&#93; Specifies the 12-digit account ID number of the Amazon Web Services
-#' account that you want to access or modify with this operation. To use
-#' this parameter, the caller must be an identity in the [organization's
-#' management
-#' account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#account)
-#' or a delegated administrator account. The specified account ID must be a
-#' member account in the same organization. The organization must have [all
-#' features
-#' enabled](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html),
-#' and the organization must have [trusted
-#' access](https://docs.aws.amazon.com/organizations/latest/userguide/)
-#' enabled for the Account Management service, and optionally a [delegated
-#' admin](https://docs.aws.amazon.com/organizations/latest/userguide/)
-#' account assigned.
+#' @param AccountId &#91;required&#93; Specifies the 12-digit account ID number of the Amazon Web Services account that you want to access or modify with this operation. To use this parameter, the caller must be an identity in the [organization's management account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#account) or a delegated administrator account. The specified account ID must be a member account in the same organization. The organization must have [all features enabled](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html), and the organization must have [trusted access](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html) enabled for the Account Management service, and optionally a [delegated admin](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#delegated-admin) account assigned.
 #' 
-#' This operation can only be called from the management account or the
-#' delegated administrator account of an organization for a member account.
+#' This operation can only be called from the management account or the delegated administrator account of an organization for a member account.
 #' 
 #' The management account can't specify its own `AccountId`.
-#' @param PrimaryEmail &#91;required&#93; The new primary email address (also known as the root user email
-#' address) to use in the specified account.
+#' @param PrimaryEmail &#91;required&#93; The new primary email address (also known as the root user email address) to use in the specified account.
 #'
 #' @keywords internal
 #'

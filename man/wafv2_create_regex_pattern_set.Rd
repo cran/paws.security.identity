@@ -15,17 +15,13 @@ wafv2_create_regex_pattern_set(
 )
 }
 \arguments{
-\item{Name}{[required] The name of the set. You cannot change the name after you create the
-set.}
+\item{Name}{[required] The name of the set. You cannot change the name after you create the set.}
 
-\item{Scope}{[required] Specifies whether this is for a global resource type, such as a Amazon
-CloudFront distribution.
+\item{Scope}{[required] Specifies whether this is for a global resource type, such as a Amazon CloudFront distribution. For an Amplify application, use \code{CLOUDFRONT}.
 
-To work with CloudFront, you must also specify the Region US East (N.
-Virginia) as follows:
+To work with CloudFront, you must also specify the Region US East (N. Virginia) as follows:
 \itemize{
-\item CLI - Specify the Region when you use the CloudFront scope:
-\code{--scope=CLOUDFRONT --region=us-east-1}.
+\item CLI - Specify the Region when you use the CloudFront scope: \code{--scope=CLOUDFRONT --region=us-east-1}.
 \item API and SDKs - For all calls, use the Region endpoint us-east-1.
 }}
 

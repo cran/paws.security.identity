@@ -13,37 +13,17 @@ ram_list_pending_invitation_resources(
 )
 }
 \arguments{
-\item{resourceShareInvitationArn}{[required] Specifies the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Name (ARN)}
-of the invitation. You can use
-\code{\link[=ram_get_resource_share_invitations]{get_resource_share_invitations}}
-to find the ARN of the invitation.}
+\item{resourceShareInvitationArn}{[required] Specifies the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Name (ARN)} of the invitation. You can use \code{\link[=ram_get_resource_share_invitations]{get_resource_share_invitations}} to find the ARN of the invitation.}
 
-\item{nextToken}{Specifies that you want to receive the next page of results. Valid only
-if you received a \code{NextToken} response in the previous request. If you
-did, it indicates that more output is available. Set this parameter to
-the value provided by the previous call's \code{NextToken} response to
-request the next page of results.}
+\item{nextToken}{Specifies that you want to receive the next page of results. Valid only if you received a \code{NextToken} response in the previous request. If you did, it indicates that more output is available. Set this parameter to the value provided by the previous call's \code{NextToken} response to request the next page of results.}
 
-\item{maxResults}{Specifies the total number of results that you want included on each
-page of the response. If you do not include this parameter, it defaults
-to a value that is specific to the operation. If additional items exist
-beyond the number you specify, the \code{NextToken} response element is
-returned with a value (not null). Include the specified value as the
-\code{NextToken} request parameter in the next call to the operation to get
-the next part of the results. Note that the service might return fewer
-results than the maximum even when there are more results available. You
-should check \code{NextToken} after every operation to ensure that you
-receive all of the results.}
+\item{maxResults}{Specifies the total number of results that you want included on each page of the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the number you specify, the \code{NextToken} response element is returned with a value (not null). Include the specified value as the \code{NextToken} request parameter in the next call to the operation to get the next part of the results. Note that the service might return fewer results than the maximum even when there are more results available. You should check \code{NextToken} after every operation to ensure that you receive all of the results.}
 
-\item{resourceRegionScope}{Specifies that you want the results to include only resources that have
-the specified scope.
+\item{resourceRegionScope}{Specifies that you want the results to include only resources that have the specified scope.
 \itemize{
-\item \code{ALL} – the results include both global and regional resources or
-resource types.
-\item \code{GLOBAL} – the results include only global resources or resource
-types.
-\item \code{REGIONAL} – the results include only regional resources or resource
-types.
+\item \code{ALL} – the results include both global and regional resources or resource types.
+\item \code{GLOBAL} – the results include only global resources or resource types.
+\item \code{REGIONAL} – the results include only regional resources or resource types.
 }
 
 The default value is \code{ALL}.}

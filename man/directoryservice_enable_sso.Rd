@@ -9,19 +9,11 @@ directoryservice_enable_sso(DirectoryId, UserName = NULL, Password = NULL)
 \arguments{
 \item{DirectoryId}{[required] The identifier of the directory for which to enable single-sign on.}
 
-\item{UserName}{The username of an alternate account to use to enable single-sign on.
-This is only used for AD Connector directories. This account must have
-privileges to add a service principal name.
+\item{UserName}{The username of an alternate account to use to enable single-sign on. This is only used for AD Connector directories. This account must have privileges to add a service principal name.
 
-If the AD Connector service account does not have privileges to add a
-service principal name, you can specify an alternate account with the
-\emph{UserName} and \emph{Password} parameters. These credentials are only used to
-enable single sign-on and are not stored by the service. The AD
-Connector service account is not changed.}
+If the AD Connector service account does not have privileges to add a service principal name, you can specify an alternate account with the \emph{UserName} and \emph{Password} parameters. These credentials are only used to enable single sign-on and are not stored by the service. The AD Connector service account is not changed.}
 
-\item{Password}{The password of an alternate account to use to enable single-sign on.
-This is only used for AD Connector directories. For more information,
-see the \emph{UserName} parameter.}
+\item{Password}{The password of an alternate account to use to enable single-sign on. This is only used for AD Connector directories. For more information, see the \emph{UserName} parameter.}
 }
 \description{
 Enables single sign-on for a directory. Single sign-on allows users in your directory to access certain Amazon Web Services services from a computer joined to the directory without having to enter their credentials separately.

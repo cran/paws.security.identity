@@ -8,16 +8,13 @@ default (operative) version}
 iam_set_default_policy_version(PolicyArn, VersionId)
 }
 \arguments{
-\item{PolicyArn}{[required] The Amazon Resource Name (ARN) of the IAM policy whose default version
-you want to set.
+\item{PolicyArn}{[required] The Amazon Resource Name (ARN) of the IAM policy whose default version you want to set.
 
-For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
-in the \emph{Amazon Web Services General Reference}.}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)} in the \emph{Amazon Web Services General Reference}.}
 
 \item{VersionId}{[required] The version of the policy to set as the default (operative) version.
 
-For more information about managed policy versions, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-versioning.html}{Versioning for managed policies}
-in the \emph{IAM User Guide}.}
+For more information about managed policy versions, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-versioning.html}{Versioning for managed policies} in the \emph{IAM User Guide}.}
 }
 \description{
 Sets the specified version of the specified policy as the policy's default (operative) version.

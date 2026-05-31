@@ -8,8 +8,7 @@ sensitivity score for an S3 bucket}
 macie2_get_resource_profile(resourceArn)
 }
 \arguments{
-\item{resourceArn}{[required] The Amazon Resource Name (ARN) of the S3 bucket that the request applies
-to.}
+\item{resourceArn}{[required] The Amazon Resource Name (ARN) of the S3 bucket that the request applies to.}
 }
 \description{
 Retrieves (queries) sensitive data discovery statistics and the sensitivity score for an S3 bucket.

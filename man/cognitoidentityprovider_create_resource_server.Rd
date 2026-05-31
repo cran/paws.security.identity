@@ -14,21 +14,13 @@ cognitoidentityprovider_create_resource_server(
 \arguments{
 \item{UserPoolId}{[required] The ID of the user pool where you want to create a resource server.}
 
-\item{Identifier}{[required] A unique resource server identifier for the resource server. The
-identifier can be an API friendly name like \code{solar-system-data}. You can
-also set an API URL like \verb{https://solar-system-data-api.example.com} as
-your identifier.
+\item{Identifier}{[required] A unique resource server identifier for the resource server. The identifier can be an API friendly name like \code{solar-system-data}. You can also set an API URL like \verb{https://solar-system-data-api.example.com} as your identifier.
 
-Amazon Cognito represents scopes in the access token in the format
-\verb{$resource-server-identifier/$scope}. Longer scope-identifier strings
-increase the size of your access tokens.}
+Amazon Cognito represents scopes in the access token in the format \verb{$resource-server-identifier/$scope}. Longer scope-identifier strings increase the size of your access tokens.}
 
 \item{Name}{[required] A friendly name for the resource server.}
 
-\item{Scopes}{A list of custom scopes. Each scope is a key-value map with the keys
-\code{ScopeName} and \code{ScopeDescription}. The name of a custom scope is a
-combination of \code{ScopeName} and the resource server \code{Name} in this
-request, for example \code{MyResourceServerName/MyScopeName}.}
+\item{Scopes}{A list of custom scopes. Each scope is a key-value map with the keys \code{ScopeName} and \code{ScopeDescription}. The name of a custom scope is a combination of \code{ScopeName} and the resource server \code{Name} in this request, for example \code{MyResourceServerName/MyScopeName}.}
 }
 \description{
 Creates a new OAuth2.0 resource server and defines custom scopes within it. Resource servers are associated with custom scopes and machine-to-machine (M2M) authorization. For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-define-resource-servers.html}{Access control with resource servers}.

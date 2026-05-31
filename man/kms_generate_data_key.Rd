@@ -15,97 +15,51 @@ kms_generate_data_key(
 )
 }
 \arguments{
-\item{KeyId}{[required] Specifies the symmetric encryption KMS key that encrypts the data key.
-You cannot specify an asymmetric KMS key or a KMS key in a custom key
-store. To get the type and origin of your KMS key, use the
-\code{\link[=kms_describe_key]{describe_key}} operation.
+\item{KeyId}{[required] Specifies the symmetric encryption KMS key that encrypts the data key. You cannot specify an asymmetric KMS key or a KMS key in a custom key store. To get the type and origin of your KMS key, use the \code{\link[=kms_describe_key]{describe_key}} operation.
 
-To specify a KMS key, use its key ID, key ARN, alias name, or alias ARN.
-When using an alias name, prefix it with \code{"alias/"}. To specify a KMS
-key in a different Amazon Web Services account, you must use the key ARN
-or alias ARN.
+To specify a KMS key, use its key ID, key ARN, alias name, or alias ARN. When using an alias name, prefix it with \code{"alias/"}. To specify a KMS key in a different Amazon Web Services account, you must use the key ARN or alias ARN.
 
 For example:
 \itemize{
 \item Key ID: \verb{1234abcd-12ab-34cd-56ef-1234567890ab}
-\item Key ARN:
-\verb{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
+\item Key ARN: \verb{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
 \item Alias name: \code{alias/ExampleAlias}
 \item Alias ARN: \code{arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias}
 }
 
-To get the key ID and key ARN for a KMS key, use
-\code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}. To
-get the alias name and alias ARN, use
-\code{\link[=kms_list_aliases]{list_aliases}}.}
+To get the key ID and key ARN for a KMS key, use \code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}. To get the alias name and alias ARN, use \code{\link[=kms_list_aliases]{list_aliases}}.}
 
-\item{EncryptionContext}{Specifies the encryption context that will be used when encrypting the
-data key.
+\item{EncryptionContext}{Specifies the encryption context that will be used when encrypting the data key.
 
-Do not include confidential or sensitive information in this field. This
-field may be displayed in plaintext in CloudTrail logs and other output.
+Do not include confidential or sensitive information in this field. This field may be displayed in plaintext in CloudTrail logs and other output.
 
-An \emph{encryption context} is a collection of non-secret key-value pairs
-that represent additional authenticated data. When you use an encryption
-context to encrypt data, you must specify the same (an exact
-case-sensitive match) encryption context to decrypt the data. An
-encryption context is supported only on operations with symmetric
-encryption KMS keys. On operations with symmetric encryption KMS keys,
-an encryption context is optional, but it is strongly recommended.
+An \emph{encryption context} is a collection of non-secret key-value pairs that represent additional authenticated data. When you use an encryption context to encrypt data, you must specify the same (an exact case-sensitive match) encryption context to decrypt the data. An encryption context is supported only on operations with symmetric encryption KMS keys. On operations with symmetric encryption KMS keys, an encryption context is optional, but it is strongly recommended.
 
-For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context}{Encryption context}
-in the \emph{Key Management Service Developer Guide}.}
+For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/encrypt_context.html}{Encryption context} in the \emph{Key Management Service Developer Guide}.}
 
-\item{NumberOfBytes}{Specifies the length of the data key in bytes. For example, use the
-value 64 to generate a 512-bit data key (64 bytes is 512 bits). For
-128-bit (16-byte) and 256-bit (32-byte) data keys, use the \code{KeySpec}
-parameter.
+\item{NumberOfBytes}{Specifies the length of the data key in bytes. For example, use the value 64 to generate a 512-bit data key (64 bytes is 512 bits). For 128-bit (16-byte) and 256-bit (32-byte) data keys, use the \code{KeySpec} parameter.
 
-You must specify either the \code{KeySpec} or the \code{NumberOfBytes} parameter
-(but not both) in every \code{\link[=kms_generate_data_key]{generate_data_key}}
-request.}
+You must specify either the \code{KeySpec} or the \code{NumberOfBytes} parameter (but not both) in every \code{\link[=kms_generate_data_key]{generate_data_key}} request.}
 
-\item{KeySpec}{Specifies the length of the data key. Use \code{AES_128} to generate a
-128-bit symmetric key, or \code{AES_256} to generate a 256-bit symmetric key.
+\item{KeySpec}{Specifies the length of the data key. Use \code{AES_128} to generate a 128-bit symmetric key, or \code{AES_256} to generate a 256-bit symmetric key.
 
-You must specify either the \code{KeySpec} or the \code{NumberOfBytes} parameter
-(but not both) in every \code{\link[=kms_generate_data_key]{generate_data_key}}
-request.}
+You must specify either the \code{KeySpec} or the \code{NumberOfBytes} parameter (but not both) in every \code{\link[=kms_generate_data_key]{generate_data_key}} request.}
 
 \item{GrantTokens}{A list of grant tokens.
 
-Use a grant token when your permission to call this operation comes from
-a new grant that has not yet achieved \emph{eventual consistency}. For more
-information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token}{Grant token}
-and \href{https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#using-grant-token}{Using a grant token}
-in the \emph{Key Management Service Developer Guide}.}
+Use a grant token when your permission to call this operation comes from a new grant that has not yet achieved \emph{eventual consistency}. For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token}{Grant token} and \href{https://docs.aws.amazon.com/kms/latest/developerguide/using-grant-token.html}{Using a grant token} in the \emph{Key Management Service Developer Guide}.}
 
-\item{Recipient}{A signed \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/#term-attestdoc}{attestation document}
-from an Amazon Web Services Nitro enclave and the encryption algorithm
-to use with the enclave's public key. The only valid encryption
-algorithm is \code{RSAES_OAEP_SHA_256}.
+\item{Recipient}{A signed \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/#term-attestdoc}{attestation document} from an Amazon Web Services Nitro enclave or NitroTPM, and the encryption algorithm to use with the public key in the attestation document. The only valid encryption algorithm is \code{RSAES_OAEP_SHA_256}.
 
-This parameter only supports attestation documents for Amazon Web
-Services Nitro Enclaves. To include this parameter, use the \href{https://docs.aws.amazon.com/enclaves/latest/user/developing-applications.html#sdk}{Amazon Web Services Nitro Enclaves SDK}
-or any Amazon Web Services SDK.
+This parameter supports the \href{https://docs.aws.amazon.com/enclaves/latest/user/developing-applications.html#sdk}{Amazon Web Services Nitro Enclaves SDK} or any Amazon Web Services SDK for Amazon Web Services Nitro Enclaves. It supports any Amazon Web Services SDK for Amazon Web Services NitroTPM.
 
-When you use this parameter, instead of returning the plaintext data
-key, KMS encrypts the plaintext data key under the public key in the
-attestation document, and returns the resulting ciphertext in the
-\code{CiphertextForRecipient} field in the response. This ciphertext can be
-decrypted only with the private key in the enclave. The \code{CiphertextBlob}
-field in the response contains a copy of the data key encrypted under
-the KMS key specified by the \code{KeyId} parameter. The \code{Plaintext} field in
-the response is null or empty.
+When you use this parameter, instead of returning the plaintext data key, KMS encrypts the plaintext data key under the public key in the attestation document, and returns the resulting ciphertext in the \code{CiphertextForRecipient} field in the response. This ciphertext can be decrypted only with the private key in the enclave. The \code{CiphertextBlob} field in the response contains a copy of the data key encrypted under the KMS key specified by the \code{KeyId} parameter. The \code{Plaintext} field in the response is null or empty.
 
-For information about the interaction between KMS and Amazon Web
-Services Nitro Enclaves, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/services-nitro-enclaves.html}{How Amazon Web Services Nitro Enclaves uses KMS}
-in the \emph{Key Management Service Developer Guide}.}
+For information about the interaction between KMS and Amazon Web Services Nitro Enclaves or Amazon Web Services NitroTPM, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/cryptographic-attestation.html}{Cryptographic attestation support in KMS} in the \emph{Key Management Service Developer Guide}.}
 
 \item{DryRun}{Checks if your request will succeed. \code{DryRun} is an optional parameter.
 
-To learn more about how to use this parameter, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html}{Testing your KMS API calls}
-in the \emph{Key Management Service Developer Guide}.}
+To learn more about how to use this parameter, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html}{Testing your permissions} in the \emph{Key Management Service Developer Guide}.}
 }
 \description{
 Returns a unique symmetric data key for use outside of KMS. This operation returns a plaintext copy of the data key and a copy that is encrypted under a symmetric encryption KMS key that you specify. The bytes in the plaintext key are random; they are not related to the caller or the KMS key. You can use the plaintext key to encrypt your data outside of KMS and store the encrypted data key with the encrypted data.

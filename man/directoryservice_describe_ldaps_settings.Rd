@@ -14,8 +14,7 @@ directoryservice_describe_ldaps_settings(
 \arguments{
 \item{DirectoryId}{[required] The identifier of the directory.}
 
-\item{Type}{The type of LDAP security to enable. Currently only the value \code{Client}
-is supported.}
+\item{Type}{The type of LDAP security to enable. Currently only the value \code{Client} is supported.}
 
 \item{NextToken}{The type of next token used for pagination.}
 

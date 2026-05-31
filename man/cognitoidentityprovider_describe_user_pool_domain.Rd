@@ -8,9 +8,7 @@ configuration}
 cognitoidentityprovider_describe_user_pool_domain(Domain)
 }
 \arguments{
-\item{Domain}{[required] The domain that you want to describe. For custom domains, this is the
-fully-qualified domain name, such as \code{auth.example.com}. For Amazon
-Cognito prefix domains, this is the prefix alone, such as \code{auth}.}
+\item{Domain}{[required] The domain that you want to describe. For custom domains, this is the fully-qualified domain name, such as \code{auth.example.com}. For Amazon Cognito prefix domains, this is the prefix alone, such as \code{auth}.}
 }
 \description{
 Given a user pool domain name, returns information about the domain configuration.

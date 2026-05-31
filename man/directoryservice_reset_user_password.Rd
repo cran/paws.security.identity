@@ -8,8 +8,7 @@ AD directory}
 directoryservice_reset_user_password(DirectoryId, UserName, NewPassword)
 }
 \arguments{
-\item{DirectoryId}{[required] Identifier of the Managed Microsoft AD or Simple AD directory in which
-the user resides.}
+\item{DirectoryId}{[required] Identifier of the Managed Microsoft AD or Simple AD directory in which the user resides.}
 
 \item{UserName}{[required] The user name of the user whose password will be reset.}
 

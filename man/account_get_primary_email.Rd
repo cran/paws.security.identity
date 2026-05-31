@@ -7,17 +7,9 @@
 account_get_primary_email(AccountId)
 }
 \arguments{
-\item{AccountId}{[required] Specifies the 12-digit account ID number of the Amazon Web Services
-account that you want to access or modify with this operation. To use
-this parameter, the caller must be an identity in the \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#account}{organization's management account}
-or a delegated administrator account. The specified account ID must be a
-member account in the same organization. The organization must have \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html}{all features enabled},
-and the organization must have \href{https://docs.aws.amazon.com/organizations/latest/userguide/}{trusted access}
-enabled for the Account Management service, and optionally a \href{https://docs.aws.amazon.com/organizations/latest/userguide/}{delegated admin}
-account assigned.
+\item{AccountId}{[required] Specifies the 12-digit account ID number of the Amazon Web Services account that you want to access or modify with this operation. To use this parameter, the caller must be an identity in the \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#account}{organization's management account} or a delegated administrator account. The specified account ID must be a member account in the same organization. The organization must have \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html}{all features enabled}, and the organization must have \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html}{trusted access} enabled for the Account Management service, and optionally a \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#delegated-admin}{delegated admin} account assigned.
 
-This operation can only be called from the management account or the
-delegated administrator account of an organization for a member account.
+This operation can only be called from the management account or the delegated administrator account of an organization for a member account.
 
 The management account can't specify its own \code{AccountId}.}
 }

@@ -12,8 +12,7 @@ detective_start_monitoring_member(GraphArn, AccountId)
 
 \item{AccountId}{[required] The account ID of the member account to try to enable.
 
-The account must be an invited member account with a status of
-\code{ACCEPTED_BUT_DISABLED}.}
+The account must be an invited member account with a status of \code{ACCEPTED_BUT_DISABLED}.}
 }
 \description{
 Sends a request to enable data ingest for a member account that has a status of \code{ACCEPTED_BUT_DISABLED}.

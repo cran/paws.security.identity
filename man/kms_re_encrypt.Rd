@@ -5,7 +5,7 @@
 \title{Decrypts ciphertext and then reencrypts it entirely within KMS}
 \usage{
 kms_re_encrypt(
-  CiphertextBlob,
+  CiphertextBlob = NULL,
   SourceEncryptionContext = NULL,
   SourceKeyId = NULL,
   DestinationKeyId,
@@ -13,136 +13,89 @@ kms_re_encrypt(
   SourceEncryptionAlgorithm = NULL,
   DestinationEncryptionAlgorithm = NULL,
   GrantTokens = NULL,
-  DryRun = NULL
+  DryRun = NULL,
+  DryRunModifiers = NULL
 )
 }
 \arguments{
-\item{CiphertextBlob}{[required] Ciphertext of the data to reencrypt.}
+\item{CiphertextBlob}{Ciphertext of the data to reencrypt.
 
-\item{SourceEncryptionContext}{Specifies the encryption context to use to decrypt the ciphertext. Enter
-the same encryption context that was used to encrypt the ciphertext.
+This parameter is required in all cases except when \code{DryRun} is \code{true} and \code{DryRunModifiers} is set to \code{IGNORE_CIPHERTEXT}.}
 
-An \emph{encryption context} is a collection of non-secret key-value pairs
-that represent additional authenticated data. When you use an encryption
-context to encrypt data, you must specify the same (an exact
-case-sensitive match) encryption context to decrypt the data. An
-encryption context is supported only on operations with symmetric
-encryption KMS keys. On operations with symmetric encryption KMS keys,
-an encryption context is optional, but it is strongly recommended.
+\item{SourceEncryptionContext}{Specifies the encryption context to use to decrypt the ciphertext. Enter the same encryption context that was used to encrypt the ciphertext.
 
-For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context}{Encryption context}
-in the \emph{Key Management Service Developer Guide}.}
+An \emph{encryption context} is a collection of non-secret key-value pairs that represent additional authenticated data. When you use an encryption context to encrypt data, you must specify the same (an exact case-sensitive match) encryption context to decrypt the data. An encryption context is supported only on operations with symmetric encryption KMS keys. On operations with symmetric encryption KMS keys, an encryption context is optional, but it is strongly recommended.
 
-\item{SourceKeyId}{Specifies the KMS key that KMS will use to decrypt the ciphertext before
-it is re-encrypted.
+For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/encrypt_context.html}{Encryption context} in the \emph{Key Management Service Developer Guide}.}
 
-Enter a key ID of the KMS key that was used to encrypt the ciphertext.
-If you identify a different KMS key, the \code{\link[=kms_re_encrypt]{re_encrypt}}
-operation throws an \code{IncorrectKeyException}.
+\item{SourceKeyId}{Specifies the KMS key that KMS will use to decrypt the ciphertext before it is re-encrypted.
 
-This parameter is required only when the ciphertext was encrypted under
-an asymmetric KMS key. If you used a symmetric encryption KMS key, KMS
-can get the KMS key from metadata that it adds to the symmetric
-ciphertext blob. However, it is always recommended as a best practice.
-This practice ensures that you use the KMS key that you intend.
+Enter a key ID of the KMS key that was used to encrypt the ciphertext. If you identify a different KMS key, the \code{\link[=kms_re_encrypt]{re_encrypt}} operation throws an \code{IncorrectKeyException}.
 
-To specify a KMS key, use its key ID, key ARN, alias name, or alias ARN.
-When using an alias name, prefix it with \code{"alias/"}. To specify a KMS
-key in a different Amazon Web Services account, you must use the key ARN
-or alias ARN.
+This parameter is required only when the ciphertext was encrypted under an asymmetric KMS key or when \code{DryRun} is \code{true} and \code{DryRunModifiers} is set to \code{IGNORE_CIPHERTEXT}. If you used a symmetric encryption KMS key, KMS can get the KMS key from metadata that it adds to the symmetric ciphertext blob. However, it is always recommended as a best practice. This practice ensures that you use the KMS key that you intend.
+
+To specify a KMS key, use its key ID, key ARN, alias name, or alias ARN. When using an alias name, prefix it with \code{"alias/"}. To specify a KMS key in a different Amazon Web Services account, you should use the key ARN or alias ARN.
 
 For example:
 \itemize{
 \item Key ID: \verb{1234abcd-12ab-34cd-56ef-1234567890ab}
-\item Key ARN:
-\verb{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
+\item Key ARN: \verb{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
 \item Alias name: \code{alias/ExampleAlias}
 \item Alias ARN: \code{arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias}
 }
 
-To get the key ID and key ARN for a KMS key, use
-\code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}. To
-get the alias name and alias ARN, use
-\code{\link[=kms_list_aliases]{list_aliases}}.}
+To get the key ID and key ARN for a KMS key, use \code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}. To get the alias name and alias ARN, use \code{\link[=kms_list_aliases]{list_aliases}}.}
 
-\item{DestinationKeyId}{[required] A unique identifier for the KMS key that is used to reencrypt the data.
-Specify a symmetric encryption KMS key or an asymmetric KMS key with a
-\code{KeyUsage} value of \code{ENCRYPT_DECRYPT}. To find the \code{KeyUsage} value of a
-KMS key, use the \code{\link[=kms_describe_key]{describe_key}} operation.
+\item{DestinationKeyId}{[required] A unique identifier for the KMS key that is used to reencrypt the data. Specify a symmetric encryption KMS key or an asymmetric KMS key with a \code{KeyUsage} value of \code{ENCRYPT_DECRYPT}. To find the \code{KeyUsage} value of a KMS key, use the \code{\link[=kms_describe_key]{describe_key}} operation.
 
-To specify a KMS key, use its key ID, key ARN, alias name, or alias ARN.
-When using an alias name, prefix it with \code{"alias/"}. To specify a KMS
-key in a different Amazon Web Services account, you must use the key ARN
-or alias ARN.
+To specify a KMS key, use its key ID, key ARN, alias name, or alias ARN. When using an alias name, prefix it with \code{"alias/"}. To specify a KMS key in a different Amazon Web Services account, you must use the key ARN or alias ARN.
 
 For example:
 \itemize{
 \item Key ID: \verb{1234abcd-12ab-34cd-56ef-1234567890ab}
-\item Key ARN:
-\verb{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
+\item Key ARN: \verb{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
 \item Alias name: \code{alias/ExampleAlias}
 \item Alias ARN: \code{arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias}
 }
 
-To get the key ID and key ARN for a KMS key, use
-\code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}. To
-get the alias name and alias ARN, use
-\code{\link[=kms_list_aliases]{list_aliases}}.}
+To get the key ID and key ARN for a KMS key, use \code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}. To get the alias name and alias ARN, use \code{\link[=kms_list_aliases]{list_aliases}}.}
 
 \item{DestinationEncryptionContext}{Specifies that encryption context to use when the reencrypting the data.
 
-Do not include confidential or sensitive information in this field. This
-field may be displayed in plaintext in CloudTrail logs and other output.
+Do not include confidential or sensitive information in this field. This field may be displayed in plaintext in CloudTrail logs and other output.
 
-A destination encryption context is valid only when the destination KMS
-key is a symmetric encryption KMS key. The standard ciphertext format
-for asymmetric KMS keys does not include fields for metadata.
+A destination encryption context is valid only when the destination KMS key is a symmetric encryption KMS key. The standard ciphertext format for asymmetric KMS keys does not include fields for metadata.
 
-An \emph{encryption context} is a collection of non-secret key-value pairs
-that represent additional authenticated data. When you use an encryption
-context to encrypt data, you must specify the same (an exact
-case-sensitive match) encryption context to decrypt the data. An
-encryption context is supported only on operations with symmetric
-encryption KMS keys. On operations with symmetric encryption KMS keys,
-an encryption context is optional, but it is strongly recommended.
+An \emph{encryption context} is a collection of non-secret key-value pairs that represent additional authenticated data. When you use an encryption context to encrypt data, you must specify the same (an exact case-sensitive match) encryption context to decrypt the data. An encryption context is supported only on operations with symmetric encryption KMS keys. On operations with symmetric encryption KMS keys, an encryption context is optional, but it is strongly recommended.
 
-For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context}{Encryption context}
-in the \emph{Key Management Service Developer Guide}.}
+For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/encrypt_context.html}{Encryption context} in the \emph{Key Management Service Developer Guide}.}
 
-\item{SourceEncryptionAlgorithm}{Specifies the encryption algorithm that KMS will use to decrypt the
-ciphertext before it is reencrypted. The default value,
-\code{SYMMETRIC_DEFAULT}, represents the algorithm used for symmetric
-encryption KMS keys.
+\item{SourceEncryptionAlgorithm}{Specifies the encryption algorithm that KMS will use to decrypt the ciphertext before it is reencrypted. The default value, \code{SYMMETRIC_DEFAULT}, represents the algorithm used for symmetric encryption KMS keys.
 
-Specify the same algorithm that was used to encrypt the ciphertext. If
-you specify a different algorithm, the decrypt attempt fails.
+Specify the same algorithm that was used to encrypt the ciphertext. If you specify a different algorithm, the decrypt attempt fails.
 
-This parameter is required only when the ciphertext was encrypted under
-an asymmetric KMS key.}
+This parameter is required only when the ciphertext was encrypted under an asymmetric KMS key.}
 
-\item{DestinationEncryptionAlgorithm}{Specifies the encryption algorithm that KMS will use to reecrypt the
-data after it has decrypted it. The default value, \code{SYMMETRIC_DEFAULT},
-represents the encryption algorithm used for symmetric encryption KMS
-keys.
+\item{DestinationEncryptionAlgorithm}{Specifies the encryption algorithm that KMS will use to reecrypt the data after it has decrypted it. The default value, \code{SYMMETRIC_DEFAULT}, represents the encryption algorithm used for symmetric encryption KMS keys.
 
-This parameter is required only when the destination KMS key is an
-asymmetric KMS key.}
+This parameter is required only when the destination KMS key is an asymmetric KMS key.}
 
 \item{GrantTokens}{A list of grant tokens.
 
-Use a grant token when your permission to call this operation comes from
-a new grant that has not yet achieved \emph{eventual consistency}. For more
-information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token}{Grant token}
-and \href{https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#using-grant-token}{Using a grant token}
-in the \emph{Key Management Service Developer Guide}.}
+Use a grant token when your permission to call this operation comes from a new grant that has not yet achieved \emph{eventual consistency}. For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token}{Grant token} and \href{https://docs.aws.amazon.com/kms/latest/developerguide/using-grant-token.html}{Using a grant token} in the \emph{Key Management Service Developer Guide}.}
 
 \item{DryRun}{Checks if your request will succeed. \code{DryRun} is an optional parameter.
 
-To learn more about how to use this parameter, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html}{Testing your KMS API calls}
-in the \emph{Key Management Service Developer Guide}.}
+To learn more about how to use this parameter, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html}{Testing your permissions} in the \emph{Key Management Service Developer Guide}.}
+
+\item{DryRunModifiers}{Specifies the modifiers to apply to the dry run operation. \code{DryRunModifiers} is an optional parameter that only applies when \code{DryRun} is set to \code{true}.
+
+When set to \code{IGNORE_CIPHERTEXT}, KMS performs only authorization validation without ciphertext validation. This allows you to test permissions without requiring a valid ciphertext blob.
+
+To learn more about how to use this parameter, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html}{Testing your permissions} in the \emph{Key Management Service Developer Guide}.}
 }
 \description{
-Decrypts ciphertext and then reencrypts it entirely within KMS. You can use this operation to change the KMS key under which data is encrypted, such as when you \href{https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html#rotate-keys-manually}{manually rotate} a KMS key or change the KMS key that protects a ciphertext. You can also use it to reencrypt ciphertext under the same KMS key, such as to change the \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context}{encryption context} of a ciphertext.
+Decrypts ciphertext and then reencrypts it entirely within KMS. You can use this operation to change the KMS key under which data is encrypted, such as when you \href{https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys-manually.html}{manually rotate} a KMS key or change the KMS key that protects a ciphertext. You can also use it to reencrypt ciphertext under the same KMS key, such as to change the \href{https://docs.aws.amazon.com/kms/latest/developerguide/encrypt_context.html}{encryption context} of a ciphertext.
 
 See \url{https://www.paws-r-sdk.com/docs/kms_re_encrypt/} for full documentation.
 }

@@ -9,8 +9,7 @@ secretsmanager_describe_secret(SecretId)
 \arguments{
 \item{SecretId}{[required] The ARN or name of the secret.
 
-For an ARN, we recommend that you specify a complete ARN rather than a
-partial ARN. See \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/troubleshoot.html#ARN_secretnamehyphen}{Finding a secret from a partial ARN}.}
+For an ARN, we recommend that you specify a complete ARN rather than a partial ARN. See \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/troubleshoot.html#ARN_secretnamehyphen}{Finding a secret from a partial ARN}.}
 }
 \description{
 Retrieves the details of a secret. It does not include the encrypted secret value. Secrets Manager only returns fields that have a value in the response.

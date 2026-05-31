@@ -7,11 +7,9 @@
 secretsmanager_delete_resource_policy(SecretId)
 }
 \arguments{
-\item{SecretId}{[required] The ARN or name of the secret to delete the attached resource-based
-policy for.
+\item{SecretId}{[required] The ARN or name of the secret to delete the attached resource-based policy for.
 
-For an ARN, we recommend that you specify a complete ARN rather than a
-partial ARN. See \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/troubleshoot.html#ARN_secretnamehyphen}{Finding a secret from a partial ARN}.}
+For an ARN, we recommend that you specify a complete ARN rather than a partial ARN. See \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/troubleshoot.html#ARN_secretnamehyphen}{Finding a secret from a partial ARN}.}
 }
 \description{
 Deletes the resource-based permission policy attached to the secret. To attach a policy to a secret, use \code{\link[=secretsmanager_put_resource_policy]{put_resource_policy}}.

@@ -12,8 +12,7 @@ clouddirectory_list_typed_link_facet_names(
 )
 }
 \arguments{
-\item{SchemaArn}{[required] The Amazon Resource Name (ARN) that is associated with the schema. For
-more information, see arns.}
+\item{SchemaArn}{[required] The Amazon Resource Name (ARN) that is associated with the schema. For more information, see arns.}
 
 \item{NextToken}{The pagination token.}
 

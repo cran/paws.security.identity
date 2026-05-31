@@ -7,10 +7,7 @@ NULL
 #' @description
 #' Certificate Manager
 #' 
-#' You can use Certificate Manager (ACM) to manage SSL/TLS certificates for
-#' your Amazon Web Services-based websites and applications. For more
-#' information about using ACM, see the [Certificate Manager User
-#' Guide](https://docs.aws.amazon.com/acm/latest/userguide/).
+#' You can use Certificate Manager (ACM) to manage SSL/TLS certificates for your Amazon Web Services-based websites and applications. For more information about using ACM, see the [Certificate Manager User Guide](https://docs.aws.amazon.com/acm/latest/userguide/).
 #'
 #' @param
 #' config
@@ -98,7 +95,7 @@ NULL
 #'  \link[=acm_add_tags_to_certificate]{add_tags_to_certificate} \tab Adds one or more tags to an ACM certificate\cr
 #'  \link[=acm_delete_certificate]{delete_certificate} \tab Deletes a certificate and its associated private key\cr
 #'  \link[=acm_describe_certificate]{describe_certificate} \tab Returns detailed metadata about the specified ACM certificate\cr
-#'  \link[=acm_export_certificate]{export_certificate} \tab Exports a private certificate issued by a private certificate authority (CA) for use anywhere\cr
+#'  \link[=acm_export_certificate]{export_certificate} \tab Exports a private certificate issued by a private certificate authority (CA) or a public certificate for use anywhere\cr
 #'  \link[=acm_get_account_configuration]{get_account_configuration} \tab Returns the account configuration options associated with an Amazon Web Services account\cr
 #'  \link[=acm_get_certificate]{get_certificate} \tab Retrieves a certificate and its certificate chain\cr
 #'  \link[=acm_import_certificate]{import_certificate} \tab Imports a certificate into Certificate Manager (ACM) to use with services that are integrated with ACM\cr
@@ -109,6 +106,8 @@ NULL
 #'  \link[=acm_renew_certificate]{renew_certificate} \tab Renews an eligible ACM certificate\cr
 #'  \link[=acm_request_certificate]{request_certificate} \tab Requests an ACM certificate for use with other Amazon Web Services services\cr
 #'  \link[=acm_resend_validation_email]{resend_validation_email} \tab Resends the email that requests domain ownership validation\cr
+#'  \link[=acm_revoke_certificate]{revoke_certificate} \tab Revokes a public ACM certificate\cr
+#'  \link[=acm_search_certificates]{search_certificates} \tab Retrieves a list of certificates matching search criteria\cr
 #'  \link[=acm_update_certificate_options]{update_certificate_options} \tab Updates a certificate
 #' }
 #'
@@ -141,7 +140,7 @@ acm <- function(config = list(), credentials = list(), endpoint = NULL, region =
 
 .acm$metadata <- list(
   service_name = "acm",
-  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "acm.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "acm.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "acm.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "acm.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "acm.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "acm.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "acm.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "acm.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "acm.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "acm.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "acm.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "acm.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "acm.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "acm.{region}.csp.hci.ic.gov", global = FALSE), "^eusc\\-(de)\\-\\w+\\-\\d+$" = list(endpoint = "acm.{region}.amazonaws.eu", global = FALSE)),
   service_id = "ACM",
   api_version = "2015-12-08",
   signing_name = "acm",

@@ -7,8 +7,7 @@
 wafregional_delete_logging_configuration(ResourceArn)
 }
 \arguments{
-\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the web ACL from which you want to
-delete the LoggingConfiguration.}
+\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the web ACL from which you want to delete the LoggingConfiguration.}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic} in the developer guide.

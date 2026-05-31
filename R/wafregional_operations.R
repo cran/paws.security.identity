@@ -11,16 +11,13 @@ NULL
 #' See [https://www.paws-r-sdk.com/docs/wafregional_associate_web_acl/](https://www.paws-r-sdk.com/docs/wafregional_associate_web_acl/) for full documentation.
 #'
 #' @param WebACLId &#91;required&#93; A unique identifier (ID) for the web ACL.
-#' @param ResourceArn &#91;required&#93; The ARN (Amazon Resource Name) of the resource to be protected, either
-#' an application load balancer or Amazon API Gateway stage.
+#' @param ResourceArn &#91;required&#93; The ARN (Amazon Resource Name) of the resource to be protected, either an application load balancer or Amazon API Gateway stage.
 #' 
 #' The ARN should be in one of the following formats:
 #' 
-#' -   For an Application Load Balancer:
-#'     `arn:aws:elasticloadbalancing:region:account-id:loadbalancer/app/load-balancer-name/load-balancer-id `
+#' -   For an Application Load Balancer: `arn:aws:elasticloadbalancing:region:account-id:loadbalancer/app/load-balancer-name/load-balancer-id `
 #' 
-#' -   For an Amazon API Gateway stage:
-#'     `arn:aws:apigateway:region::/restapis/api-id/stages/stage-name `
+#' -   For an Amazon API Gateway stage: `arn:aws:apigateway:region::/restapis/api-id/stages/stage-name `
 #'
 #' @keywords internal
 #'
@@ -51,10 +48,8 @@ wafregional_associate_web_acl <- function(WebACLId, ResourceArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafregional_create_byte_match_set/](https://www.paws-r-sdk.com/docs/wafregional_create_byte_match_set/) for full documentation.
 #'
-#' @param Name &#91;required&#93; A friendly name or description of the ByteMatchSet. You can't change
-#' `Name` after you create a `ByteMatchSet`.
-#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
-#' [`get_change_token`][wafregional_get_change_token].
+#' @param Name &#91;required&#93; A friendly name or description of the ByteMatchSet. You can't change `Name` after you create a `ByteMatchSet`.
+#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to [`get_change_token`][wafregional_get_change_token].
 #'
 #' @keywords internal
 #'
@@ -85,10 +80,8 @@ wafregional_create_byte_match_set <- function(Name, ChangeToken) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafregional_create_geo_match_set/](https://www.paws-r-sdk.com/docs/wafregional_create_geo_match_set/) for full documentation.
 #'
-#' @param Name &#91;required&#93; A friendly name or description of the GeoMatchSet. You can't change
-#' `Name` after you create the `GeoMatchSet`.
-#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
-#' [`get_change_token`][wafregional_get_change_token].
+#' @param Name &#91;required&#93; A friendly name or description of the GeoMatchSet. You can't change `Name` after you create the `GeoMatchSet`.
+#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to [`get_change_token`][wafregional_get_change_token].
 #'
 #' @keywords internal
 #'
@@ -119,10 +112,8 @@ wafregional_create_geo_match_set <- function(Name, ChangeToken) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafregional_create_ip_set/](https://www.paws-r-sdk.com/docs/wafregional_create_ip_set/) for full documentation.
 #'
-#' @param Name &#91;required&#93; A friendly name or description of the IPSet. You can't change `Name`
-#' after you create the `IPSet`.
-#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
-#' [`get_change_token`][wafregional_get_change_token].
+#' @param Name &#91;required&#93; A friendly name or description of the IPSet. You can't change `Name` after you create the `IPSet`.
+#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to [`get_change_token`][wafregional_get_change_token].
 #'
 #' @keywords internal
 #'
@@ -153,29 +144,11 @@ wafregional_create_ip_set <- function(Name, ChangeToken) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafregional_create_rate_based_rule/](https://www.paws-r-sdk.com/docs/wafregional_create_rate_based_rule/) for full documentation.
 #'
-#' @param Name &#91;required&#93; A friendly name or description of the RateBasedRule. You can't change
-#' the name of a `RateBasedRule` after you create it.
-#' @param MetricName &#91;required&#93; A friendly name or description for the metrics for this `RateBasedRule`.
-#' The name can contain only alphanumeric characters (A-Z, a-z, 0-9), with
-#' maximum length 128 and minimum length one. It can't contain whitespace
-#' or metric names reserved for AWS WAF, including "All" and
-#' "Default_Action." You can't change the name of the metric after you
-#' create the `RateBasedRule`.
-#' @param RateKey &#91;required&#93; The field that AWS WAF uses to determine if requests are likely arriving
-#' from a single source and thus subject to rate monitoring. The only valid
-#' value for `RateKey` is `IP`. `IP` indicates that requests that arrive
-#' from the same IP address are subject to the `RateLimit` that is
-#' specified in the `RateBasedRule`.
-#' @param RateLimit &#91;required&#93; The maximum number of requests, which have an identical value in the
-#' field that is specified by `RateKey`, allowed in a five-minute period.
-#' If the number of requests exceeds the `RateLimit` and the other
-#' predicates specified in the rule are also met, AWS WAF triggers the
-#' action that is specified for this rule.
-#' @param ChangeToken &#91;required&#93; The `ChangeToken` that you used to submit the
-#' [`create_rate_based_rule`][wafregional_create_rate_based_rule] request.
-#' You can also use this value to query the status of the request. For more
-#' information, see
-#' [`get_change_token_status`][wafregional_get_change_token_status].
+#' @param Name &#91;required&#93; A friendly name or description of the RateBasedRule. You can't change the name of a `RateBasedRule` after you create it.
+#' @param MetricName &#91;required&#93; A friendly name or description for the metrics for this `RateBasedRule`. The name can contain only alphanumeric characters (A-Z, a-z, 0-9), with maximum length 128 and minimum length one. It can't contain whitespace or metric names reserved for AWS WAF, including "All" and "Default_Action." You can't change the name of the metric after you create the `RateBasedRule`.
+#' @param RateKey &#91;required&#93; The field that AWS WAF uses to determine if requests are likely arriving from a single source and thus subject to rate monitoring. The only valid value for `RateKey` is `IP`. `IP` indicates that requests that arrive from the same IP address are subject to the `RateLimit` that is specified in the `RateBasedRule`.
+#' @param RateLimit &#91;required&#93; The maximum number of requests, which have an identical value in the field that is specified by `RateKey`, allowed in a five-minute period. If the number of requests exceeds the `RateLimit` and the other predicates specified in the rule are also met, AWS WAF triggers the action that is specified for this rule.
+#' @param ChangeToken &#91;required&#93; The `ChangeToken` that you used to submit the [`create_rate_based_rule`][wafregional_create_rate_based_rule] request. You can also use this value to query the status of the request. For more information, see [`get_change_token_status`][wafregional_get_change_token_status].
 #' @param Tags 
 #'
 #' @keywords internal
@@ -207,10 +180,8 @@ wafregional_create_rate_based_rule <- function(Name, MetricName, RateKey, RateLi
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafregional_create_regex_match_set/](https://www.paws-r-sdk.com/docs/wafregional_create_regex_match_set/) for full documentation.
 #'
-#' @param Name &#91;required&#93; A friendly name or description of the RegexMatchSet. You can't change
-#' `Name` after you create a `RegexMatchSet`.
-#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
-#' [`get_change_token`][wafregional_get_change_token].
+#' @param Name &#91;required&#93; A friendly name or description of the RegexMatchSet. You can't change `Name` after you create a `RegexMatchSet`.
+#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to [`get_change_token`][wafregional_get_change_token].
 #'
 #' @keywords internal
 #'
@@ -241,10 +212,8 @@ wafregional_create_regex_match_set <- function(Name, ChangeToken) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafregional_create_regex_pattern_set/](https://www.paws-r-sdk.com/docs/wafregional_create_regex_pattern_set/) for full documentation.
 #'
-#' @param Name &#91;required&#93; A friendly name or description of the RegexPatternSet. You can't change
-#' `Name` after you create a `RegexPatternSet`.
-#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
-#' [`get_change_token`][wafregional_get_change_token].
+#' @param Name &#91;required&#93; A friendly name or description of the RegexPatternSet. You can't change `Name` after you create a `RegexPatternSet`.
+#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to [`get_change_token`][wafregional_get_change_token].
 #'
 #' @keywords internal
 #'
@@ -275,15 +244,9 @@ wafregional_create_regex_pattern_set <- function(Name, ChangeToken) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafregional_create_rule/](https://www.paws-r-sdk.com/docs/wafregional_create_rule/) for full documentation.
 #'
-#' @param Name &#91;required&#93; A friendly name or description of the Rule. You can't change the name of
-#' a `Rule` after you create it.
-#' @param MetricName &#91;required&#93; A friendly name or description for the metrics for this `Rule`. The name
-#' can contain only alphanumeric characters (A-Z, a-z, 0-9), with maximum
-#' length 128 and minimum length one. It can't contain whitespace or metric
-#' names reserved for AWS WAF, including "All" and "Default_Action." You
-#' can't change the name of the metric after you create the `Rule`.
-#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
-#' [`get_change_token`][wafregional_get_change_token].
+#' @param Name &#91;required&#93; A friendly name or description of the Rule. You can't change the name of a `Rule` after you create it.
+#' @param MetricName &#91;required&#93; A friendly name or description for the metrics for this `Rule`. The name can contain only alphanumeric characters (A-Z, a-z, 0-9), with maximum length 128 and minimum length one. It can't contain whitespace or metric names reserved for AWS WAF, including "All" and "Default_Action." You can't change the name of the metric after you create the `Rule`.
+#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to [`get_change_token`][wafregional_get_change_token].
 #' @param Tags 
 #'
 #' @keywords internal
@@ -315,16 +278,9 @@ wafregional_create_rule <- function(Name, MetricName, ChangeToken, Tags = NULL) 
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafregional_create_rule_group/](https://www.paws-r-sdk.com/docs/wafregional_create_rule_group/) for full documentation.
 #'
-#' @param Name &#91;required&#93; A friendly name or description of the RuleGroup. You can't change `Name`
-#' after you create a `RuleGroup`.
-#' @param MetricName &#91;required&#93; A friendly name or description for the metrics for this `RuleGroup`. The
-#' name can contain only alphanumeric characters (A-Z, a-z, 0-9), with
-#' maximum length 128 and minimum length one. It can't contain whitespace
-#' or metric names reserved for AWS WAF, including "All" and
-#' "Default_Action." You can't change the name of the metric after you
-#' create the `RuleGroup`.
-#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
-#' [`get_change_token`][wafregional_get_change_token].
+#' @param Name &#91;required&#93; A friendly name or description of the RuleGroup. You can't change `Name` after you create a `RuleGroup`.
+#' @param MetricName &#91;required&#93; A friendly name or description for the metrics for this `RuleGroup`. The name can contain only alphanumeric characters (A-Z, a-z, 0-9), with maximum length 128 and minimum length one. It can't contain whitespace or metric names reserved for AWS WAF, including "All" and "Default_Action." You can't change the name of the metric after you create the `RuleGroup`.
+#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to [`get_change_token`][wafregional_get_change_token].
 #' @param Tags 
 #'
 #' @keywords internal
@@ -356,10 +312,8 @@ wafregional_create_rule_group <- function(Name, MetricName, ChangeToken, Tags = 
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafregional_create_size_constraint_set/](https://www.paws-r-sdk.com/docs/wafregional_create_size_constraint_set/) for full documentation.
 #'
-#' @param Name &#91;required&#93; A friendly name or description of the SizeConstraintSet. You can't
-#' change `Name` after you create a `SizeConstraintSet`.
-#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
-#' [`get_change_token`][wafregional_get_change_token].
+#' @param Name &#91;required&#93; A friendly name or description of the SizeConstraintSet. You can't change `Name` after you create a `SizeConstraintSet`.
+#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to [`get_change_token`][wafregional_get_change_token].
 #'
 #' @keywords internal
 #'
@@ -390,11 +344,8 @@ wafregional_create_size_constraint_set <- function(Name, ChangeToken) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafregional_create_sql_injection_match_set/](https://www.paws-r-sdk.com/docs/wafregional_create_sql_injection_match_set/) for full documentation.
 #'
-#' @param Name &#91;required&#93; A friendly name or description for the SqlInjectionMatchSet that you're
-#' creating. You can't change `Name` after you create the
-#' `SqlInjectionMatchSet`.
-#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
-#' [`get_change_token`][wafregional_get_change_token].
+#' @param Name &#91;required&#93; A friendly name or description for the SqlInjectionMatchSet that you're creating. You can't change `Name` after you create the `SqlInjectionMatchSet`.
+#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to [`get_change_token`][wafregional_get_change_token].
 #'
 #' @keywords internal
 #'
@@ -425,19 +376,10 @@ wafregional_create_sql_injection_match_set <- function(Name, ChangeToken) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafregional_create_web_acl/](https://www.paws-r-sdk.com/docs/wafregional_create_web_acl/) for full documentation.
 #'
-#' @param Name &#91;required&#93; A friendly name or description of the WebACL. You can't change `Name`
-#' after you create the `WebACL`.
-#' @param MetricName &#91;required&#93; A friendly name or description for the metrics for this `WebACL`.The
-#' name can contain only alphanumeric characters (A-Z, a-z, 0-9), with
-#' maximum length 128 and minimum length one. It can't contain whitespace
-#' or metric names reserved for AWS WAF, including "All" and
-#' "Default_Action." You can't change `MetricName` after you create the
-#' `WebACL`.
-#' @param DefaultAction &#91;required&#93; The action that you want AWS WAF to take when a request doesn't match
-#' the criteria specified in any of the `Rule` objects that are associated
-#' with the `WebACL`.
-#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
-#' [`get_change_token`][wafregional_get_change_token].
+#' @param Name &#91;required&#93; A friendly name or description of the WebACL. You can't change `Name` after you create the `WebACL`.
+#' @param MetricName &#91;required&#93; A friendly name or description for the metrics for this `WebACL`.The name can contain only alphanumeric characters (A-Z, a-z, 0-9), with maximum length 128 and minimum length one. It can't contain whitespace or metric names reserved for AWS WAF, including "All" and "Default_Action." You can't change `MetricName` after you create the `WebACL`.
+#' @param DefaultAction &#91;required&#93; The action that you want AWS WAF to take when a request doesn't match the criteria specified in any of the `Rule` objects that are associated with the `WebACL`.
+#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to [`get_change_token`][wafregional_get_change_token].
 #' @param Tags 
 #'
 #' @keywords internal
@@ -471,23 +413,14 @@ wafregional_create_web_acl <- function(Name, MetricName, DefaultAction, ChangeTo
 #' See [https://www.paws-r-sdk.com/docs/wafregional_create_web_acl_migration_stack/](https://www.paws-r-sdk.com/docs/wafregional_create_web_acl_migration_stack/) for full documentation.
 #'
 #' @param WebACLId &#91;required&#93; The UUID of the WAF Classic web ACL that you want to migrate to WAF v2.
-#' @param S3BucketName &#91;required&#93; The name of the Amazon S3 bucket to store the CloudFormation template
-#' in. The S3 bucket must be configured as follows for the migration:
+#' @param S3BucketName &#91;required&#93; The name of the Amazon S3 bucket to store the CloudFormation template in. The S3 bucket must be configured as follows for the migration:
 #' 
-#' -   The bucket name must start with `aws-waf-migration-`. For example,
-#'     `aws-waf-migration-my-web-acl`.
+#' -   The bucket name must start with `aws-waf-migration-`. For example, `aws-waf-migration-my-web-acl`.
 #' 
-#' -   The bucket must be in the Region where you are deploying the
-#'     template. For example, for a web ACL in us-west-2, you must use an
-#'     Amazon S3 bucket in us-west-2 and you must deploy the template stack
-#'     to us-west-2.
+#' -   The bucket must be in the Region where you are deploying the template. For example, for a web ACL in us-west-2, you must use an Amazon S3 bucket in us-west-2 and you must deploy the template stack to us-west-2.
 #' 
-#' -   The bucket policies must permit the migration process to write data.
-#'     For listings of the bucket policies, see the Examples section.
-#' @param IgnoreUnsupportedType &#91;required&#93; Indicates whether to exclude entities that can't be migrated or to stop
-#' the migration. Set this to true to ignore unsupported entities in the
-#' web ACL during the migration. Otherwise, if AWS WAF encounters
-#' unsupported entities, it stops the process and throws an exception.
+#' -   The bucket policies must permit the migration process to write data. For listings of the bucket policies, see the Examples section.
+#' @param IgnoreUnsupportedType &#91;required&#93; Indicates whether to exclude entities that can't be migrated or to stop the migration. Set this to true to ignore unsupported entities in the web ACL during the migration. Otherwise, if AWS WAF encounters unsupported entities, it stops the process and throws an exception.
 #'
 #' @keywords internal
 #'
@@ -518,10 +451,8 @@ wafregional_create_web_acl_migration_stack <- function(WebACLId, S3BucketName, I
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafregional_create_xss_match_set/](https://www.paws-r-sdk.com/docs/wafregional_create_xss_match_set/) for full documentation.
 #'
-#' @param Name &#91;required&#93; A friendly name or description for the XssMatchSet that you're creating.
-#' You can't change `Name` after you create the `XssMatchSet`.
-#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
-#' [`get_change_token`][wafregional_get_change_token].
+#' @param Name &#91;required&#93; A friendly name or description for the XssMatchSet that you're creating. You can't change `Name` after you create the `XssMatchSet`.
+#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to [`get_change_token`][wafregional_get_change_token].
 #'
 #' @keywords internal
 #'
@@ -552,12 +483,8 @@ wafregional_create_xss_match_set <- function(Name, ChangeToken) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafregional_delete_byte_match_set/](https://www.paws-r-sdk.com/docs/wafregional_delete_byte_match_set/) for full documentation.
 #'
-#' @param ByteMatchSetId &#91;required&#93; The `ByteMatchSetId` of the ByteMatchSet that you want to delete.
-#' `ByteMatchSetId` is returned by
-#' [`create_byte_match_set`][wafregional_create_byte_match_set] and by
-#' [`list_byte_match_sets`][wafregional_list_byte_match_sets].
-#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
-#' [`get_change_token`][wafregional_get_change_token].
+#' @param ByteMatchSetId &#91;required&#93; The `ByteMatchSetId` of the ByteMatchSet that you want to delete. `ByteMatchSetId` is returned by [`create_byte_match_set`][wafregional_create_byte_match_set] and by [`list_byte_match_sets`][wafregional_list_byte_match_sets].
+#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to [`get_change_token`][wafregional_get_change_token].
 #'
 #' @keywords internal
 #'
@@ -588,12 +515,8 @@ wafregional_delete_byte_match_set <- function(ByteMatchSetId, ChangeToken) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafregional_delete_geo_match_set/](https://www.paws-r-sdk.com/docs/wafregional_delete_geo_match_set/) for full documentation.
 #'
-#' @param GeoMatchSetId &#91;required&#93; The `GeoMatchSetID` of the GeoMatchSet that you want to delete.
-#' `GeoMatchSetId` is returned by
-#' [`create_geo_match_set`][wafregional_create_geo_match_set] and by
-#' [`list_geo_match_sets`][wafregional_list_geo_match_sets].
-#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
-#' [`get_change_token`][wafregional_get_change_token].
+#' @param GeoMatchSetId &#91;required&#93; The `GeoMatchSetID` of the GeoMatchSet that you want to delete. `GeoMatchSetId` is returned by [`create_geo_match_set`][wafregional_create_geo_match_set] and by [`list_geo_match_sets`][wafregional_list_geo_match_sets].
+#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to [`get_change_token`][wafregional_get_change_token].
 #'
 #' @keywords internal
 #'
@@ -624,11 +547,8 @@ wafregional_delete_geo_match_set <- function(GeoMatchSetId, ChangeToken) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafregional_delete_ip_set/](https://www.paws-r-sdk.com/docs/wafregional_delete_ip_set/) for full documentation.
 #'
-#' @param IPSetId &#91;required&#93; The `IPSetId` of the IPSet that you want to delete. `IPSetId` is
-#' returned by [`create_ip_set`][wafregional_create_ip_set] and by
-#' [`list_ip_sets`][wafregional_list_ip_sets].
-#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
-#' [`get_change_token`][wafregional_get_change_token].
+#' @param IPSetId &#91;required&#93; The `IPSetId` of the IPSet that you want to delete. `IPSetId` is returned by [`create_ip_set`][wafregional_create_ip_set] and by [`list_ip_sets`][wafregional_list_ip_sets].
+#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to [`get_change_token`][wafregional_get_change_token].
 #'
 #' @keywords internal
 #'
@@ -659,8 +579,7 @@ wafregional_delete_ip_set <- function(IPSetId, ChangeToken) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafregional_delete_logging_configuration/](https://www.paws-r-sdk.com/docs/wafregional_delete_logging_configuration/) for full documentation.
 #'
-#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the web ACL from which you want to
-#' delete the LoggingConfiguration.
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the web ACL from which you want to delete the LoggingConfiguration.
 #'
 #' @keywords internal
 #'
@@ -691,8 +610,7 @@ wafregional_delete_logging_configuration <- function(ResourceArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafregional_delete_permission_policy/](https://www.paws-r-sdk.com/docs/wafregional_delete_permission_policy/) for full documentation.
 #'
-#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the RuleGroup from which you want to
-#' delete the policy.
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the RuleGroup from which you want to delete the policy.
 #' 
 #' The user making the request must be the owner of the RuleGroup.
 #'
@@ -725,12 +643,8 @@ wafregional_delete_permission_policy <- function(ResourceArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafregional_delete_rate_based_rule/](https://www.paws-r-sdk.com/docs/wafregional_delete_rate_based_rule/) for full documentation.
 #'
-#' @param RuleId &#91;required&#93; The `RuleId` of the RateBasedRule that you want to delete. `RuleId` is
-#' returned by
-#' [`create_rate_based_rule`][wafregional_create_rate_based_rule] and by
-#' [`list_rate_based_rules`][wafregional_list_rate_based_rules].
-#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
-#' [`get_change_token`][wafregional_get_change_token].
+#' @param RuleId &#91;required&#93; The `RuleId` of the RateBasedRule that you want to delete. `RuleId` is returned by [`create_rate_based_rule`][wafregional_create_rate_based_rule] and by [`list_rate_based_rules`][wafregional_list_rate_based_rules].
+#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to [`get_change_token`][wafregional_get_change_token].
 #'
 #' @keywords internal
 #'
@@ -761,12 +675,8 @@ wafregional_delete_rate_based_rule <- function(RuleId, ChangeToken) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafregional_delete_regex_match_set/](https://www.paws-r-sdk.com/docs/wafregional_delete_regex_match_set/) for full documentation.
 #'
-#' @param RegexMatchSetId &#91;required&#93; The `RegexMatchSetId` of the RegexMatchSet that you want to delete.
-#' `RegexMatchSetId` is returned by
-#' [`create_regex_match_set`][wafregional_create_regex_match_set] and by
-#' [`list_regex_match_sets`][wafregional_list_regex_match_sets].
-#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
-#' [`get_change_token`][wafregional_get_change_token].
+#' @param RegexMatchSetId &#91;required&#93; The `RegexMatchSetId` of the RegexMatchSet that you want to delete. `RegexMatchSetId` is returned by [`create_regex_match_set`][wafregional_create_regex_match_set] and by [`list_regex_match_sets`][wafregional_list_regex_match_sets].
+#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to [`get_change_token`][wafregional_get_change_token].
 #'
 #' @keywords internal
 #'
@@ -797,12 +707,8 @@ wafregional_delete_regex_match_set <- function(RegexMatchSetId, ChangeToken) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafregional_delete_regex_pattern_set/](https://www.paws-r-sdk.com/docs/wafregional_delete_regex_pattern_set/) for full documentation.
 #'
-#' @param RegexPatternSetId &#91;required&#93; The `RegexPatternSetId` of the RegexPatternSet that you want to delete.
-#' `RegexPatternSetId` is returned by
-#' [`create_regex_pattern_set`][wafregional_create_regex_pattern_set] and
-#' by [`list_regex_pattern_sets`][wafregional_list_regex_pattern_sets].
-#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
-#' [`get_change_token`][wafregional_get_change_token].
+#' @param RegexPatternSetId &#91;required&#93; The `RegexPatternSetId` of the RegexPatternSet that you want to delete. `RegexPatternSetId` is returned by [`create_regex_pattern_set`][wafregional_create_regex_pattern_set] and by [`list_regex_pattern_sets`][wafregional_list_regex_pattern_sets].
+#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to [`get_change_token`][wafregional_get_change_token].
 #'
 #' @keywords internal
 #'
@@ -833,11 +739,8 @@ wafregional_delete_regex_pattern_set <- function(RegexPatternSetId, ChangeToken)
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafregional_delete_rule/](https://www.paws-r-sdk.com/docs/wafregional_delete_rule/) for full documentation.
 #'
-#' @param RuleId &#91;required&#93; The `RuleId` of the Rule that you want to delete. `RuleId` is returned
-#' by [`create_rule`][wafregional_create_rule] and by
-#' [`list_rules`][wafregional_list_rules].
-#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
-#' [`get_change_token`][wafregional_get_change_token].
+#' @param RuleId &#91;required&#93; The `RuleId` of the Rule that you want to delete. `RuleId` is returned by [`create_rule`][wafregional_create_rule] and by [`list_rules`][wafregional_list_rules].
+#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to [`get_change_token`][wafregional_get_change_token].
 #'
 #' @keywords internal
 #'
@@ -868,12 +771,8 @@ wafregional_delete_rule <- function(RuleId, ChangeToken) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafregional_delete_rule_group/](https://www.paws-r-sdk.com/docs/wafregional_delete_rule_group/) for full documentation.
 #'
-#' @param RuleGroupId &#91;required&#93; The `RuleGroupId` of the RuleGroup that you want to delete.
-#' `RuleGroupId` is returned by
-#' [`create_rule_group`][wafregional_create_rule_group] and by
-#' [`list_rule_groups`][wafregional_list_rule_groups].
-#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
-#' [`get_change_token`][wafregional_get_change_token].
+#' @param RuleGroupId &#91;required&#93; The `RuleGroupId` of the RuleGroup that you want to delete. `RuleGroupId` is returned by [`create_rule_group`][wafregional_create_rule_group] and by [`list_rule_groups`][wafregional_list_rule_groups].
+#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to [`get_change_token`][wafregional_get_change_token].
 #'
 #' @keywords internal
 #'
@@ -904,13 +803,8 @@ wafregional_delete_rule_group <- function(RuleGroupId, ChangeToken) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafregional_delete_size_constraint_set/](https://www.paws-r-sdk.com/docs/wafregional_delete_size_constraint_set/) for full documentation.
 #'
-#' @param SizeConstraintSetId &#91;required&#93; The `SizeConstraintSetId` of the SizeConstraintSet that you want to
-#' delete. `SizeConstraintSetId` is returned by
-#' [`create_size_constraint_set`][wafregional_create_size_constraint_set]
-#' and by
-#' [`list_size_constraint_sets`][wafregional_list_size_constraint_sets].
-#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
-#' [`get_change_token`][wafregional_get_change_token].
+#' @param SizeConstraintSetId &#91;required&#93; The `SizeConstraintSetId` of the SizeConstraintSet that you want to delete. `SizeConstraintSetId` is returned by [`create_size_constraint_set`][wafregional_create_size_constraint_set] and by [`list_size_constraint_sets`][wafregional_list_size_constraint_sets].
+#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to [`get_change_token`][wafregional_get_change_token].
 #'
 #' @keywords internal
 #'
@@ -941,13 +835,8 @@ wafregional_delete_size_constraint_set <- function(SizeConstraintSetId, ChangeTo
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafregional_delete_sql_injection_match_set/](https://www.paws-r-sdk.com/docs/wafregional_delete_sql_injection_match_set/) for full documentation.
 #'
-#' @param SqlInjectionMatchSetId &#91;required&#93; The `SqlInjectionMatchSetId` of the SqlInjectionMatchSet that you want
-#' to delete. `SqlInjectionMatchSetId` is returned by
-#' [`create_sql_injection_match_set`][wafregional_create_sql_injection_match_set]
-#' and by
-#' [`list_sql_injection_match_sets`][wafregional_list_sql_injection_match_sets].
-#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
-#' [`get_change_token`][wafregional_get_change_token].
+#' @param SqlInjectionMatchSetId &#91;required&#93; The `SqlInjectionMatchSetId` of the SqlInjectionMatchSet that you want to delete. `SqlInjectionMatchSetId` is returned by [`create_sql_injection_match_set`][wafregional_create_sql_injection_match_set] and by [`list_sql_injection_match_sets`][wafregional_list_sql_injection_match_sets].
+#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to [`get_change_token`][wafregional_get_change_token].
 #'
 #' @keywords internal
 #'
@@ -978,11 +867,8 @@ wafregional_delete_sql_injection_match_set <- function(SqlInjectionMatchSetId, C
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafregional_delete_web_acl/](https://www.paws-r-sdk.com/docs/wafregional_delete_web_acl/) for full documentation.
 #'
-#' @param WebACLId &#91;required&#93; The `WebACLId` of the WebACL that you want to delete. `WebACLId` is
-#' returned by [`create_web_acl`][wafregional_create_web_acl] and by
-#' [`list_web_ac_ls`][wafregional_list_web_ac_ls].
-#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
-#' [`get_change_token`][wafregional_get_change_token].
+#' @param WebACLId &#91;required&#93; The `WebACLId` of the WebACL that you want to delete. `WebACLId` is returned by [`create_web_acl`][wafregional_create_web_acl] and by [`list_web_ac_ls`][wafregional_list_web_ac_ls].
+#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to [`get_change_token`][wafregional_get_change_token].
 #'
 #' @keywords internal
 #'
@@ -1013,12 +899,8 @@ wafregional_delete_web_acl <- function(WebACLId, ChangeToken) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafregional_delete_xss_match_set/](https://www.paws-r-sdk.com/docs/wafregional_delete_xss_match_set/) for full documentation.
 #'
-#' @param XssMatchSetId &#91;required&#93; The `XssMatchSetId` of the XssMatchSet that you want to delete.
-#' `XssMatchSetId` is returned by
-#' [`create_xss_match_set`][wafregional_create_xss_match_set] and by
-#' [`list_xss_match_sets`][wafregional_list_xss_match_sets].
-#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
-#' [`get_change_token`][wafregional_get_change_token].
+#' @param XssMatchSetId &#91;required&#93; The `XssMatchSetId` of the XssMatchSet that you want to delete. `XssMatchSetId` is returned by [`create_xss_match_set`][wafregional_create_xss_match_set] and by [`list_xss_match_sets`][wafregional_list_xss_match_sets].
+#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to [`get_change_token`][wafregional_get_change_token].
 #'
 #' @keywords internal
 #'
@@ -1049,17 +931,13 @@ wafregional_delete_xss_match_set <- function(XssMatchSetId, ChangeToken) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafregional_disassociate_web_acl/](https://www.paws-r-sdk.com/docs/wafregional_disassociate_web_acl/) for full documentation.
 #'
-#' @param ResourceArn &#91;required&#93; The ARN (Amazon Resource Name) of the resource from which the web ACL is
-#' being removed, either an application load balancer or Amazon API Gateway
-#' stage.
+#' @param ResourceArn &#91;required&#93; The ARN (Amazon Resource Name) of the resource from which the web ACL is being removed, either an application load balancer or Amazon API Gateway stage.
 #' 
 #' The ARN should be in one of the following formats:
 #' 
-#' -   For an Application Load Balancer:
-#'     `arn:aws:elasticloadbalancing:region:account-id:loadbalancer/app/load-balancer-name/load-balancer-id `
+#' -   For an Application Load Balancer: `arn:aws:elasticloadbalancing:region:account-id:loadbalancer/app/load-balancer-name/load-balancer-id `
 #' 
-#' -   For an Amazon API Gateway stage:
-#'     `arn:aws:apigateway:region::/restapis/api-id/stages/stage-name `
+#' -   For an Amazon API Gateway stage: `arn:aws:apigateway:region::/restapis/api-id/stages/stage-name `
 #'
 #' @keywords internal
 #'
@@ -1090,10 +968,7 @@ wafregional_disassociate_web_acl <- function(ResourceArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafregional_get_byte_match_set/](https://www.paws-r-sdk.com/docs/wafregional_get_byte_match_set/) for full documentation.
 #'
-#' @param ByteMatchSetId &#91;required&#93; The `ByteMatchSetId` of the ByteMatchSet that you want to get.
-#' `ByteMatchSetId` is returned by
-#' [`create_byte_match_set`][wafregional_create_byte_match_set] and by
-#' [`list_byte_match_sets`][wafregional_list_byte_match_sets].
+#' @param ByteMatchSetId &#91;required&#93; The `ByteMatchSetId` of the ByteMatchSet that you want to get. `ByteMatchSetId` is returned by [`create_byte_match_set`][wafregional_create_byte_match_set] and by [`list_byte_match_sets`][wafregional_list_byte_match_sets].
 #'
 #' @keywords internal
 #'
@@ -1155,9 +1030,7 @@ wafregional_get_change_token <- function() {
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafregional_get_change_token_status/](https://www.paws-r-sdk.com/docs/wafregional_get_change_token_status/) for full documentation.
 #'
-#' @param ChangeToken &#91;required&#93; The change token for which you want to get the status. This change token
-#' was previously returned in the
-#' [`get_change_token`][wafregional_get_change_token] response.
+#' @param ChangeToken &#91;required&#93; The change token for which you want to get the status. This change token was previously returned in the [`get_change_token`][wafregional_get_change_token] response.
 #'
 #' @keywords internal
 #'
@@ -1188,10 +1061,7 @@ wafregional_get_change_token_status <- function(ChangeToken) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafregional_get_geo_match_set/](https://www.paws-r-sdk.com/docs/wafregional_get_geo_match_set/) for full documentation.
 #'
-#' @param GeoMatchSetId &#91;required&#93; The `GeoMatchSetId` of the GeoMatchSet that you want to get.
-#' `GeoMatchSetId` is returned by
-#' [`create_geo_match_set`][wafregional_create_geo_match_set] and by
-#' [`list_geo_match_sets`][wafregional_list_geo_match_sets].
+#' @param GeoMatchSetId &#91;required&#93; The `GeoMatchSetId` of the GeoMatchSet that you want to get. `GeoMatchSetId` is returned by [`create_geo_match_set`][wafregional_create_geo_match_set] and by [`list_geo_match_sets`][wafregional_list_geo_match_sets].
 #'
 #' @keywords internal
 #'
@@ -1222,9 +1092,7 @@ wafregional_get_geo_match_set <- function(GeoMatchSetId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafregional_get_ip_set/](https://www.paws-r-sdk.com/docs/wafregional_get_ip_set/) for full documentation.
 #'
-#' @param IPSetId &#91;required&#93; The `IPSetId` of the IPSet that you want to get. `IPSetId` is returned
-#' by [`create_ip_set`][wafregional_create_ip_set] and by
-#' [`list_ip_sets`][wafregional_list_ip_sets].
+#' @param IPSetId &#91;required&#93; The `IPSetId` of the IPSet that you want to get. `IPSetId` is returned by [`create_ip_set`][wafregional_create_ip_set] and by [`list_ip_sets`][wafregional_list_ip_sets].
 #'
 #' @keywords internal
 #'
@@ -1255,8 +1123,7 @@ wafregional_get_ip_set <- function(IPSetId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafregional_get_logging_configuration/](https://www.paws-r-sdk.com/docs/wafregional_get_logging_configuration/) for full documentation.
 #'
-#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the web ACL for which you want to get
-#' the LoggingConfiguration.
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the web ACL for which you want to get the LoggingConfiguration.
 #'
 #' @keywords internal
 #'
@@ -1287,8 +1154,7 @@ wafregional_get_logging_configuration <- function(ResourceArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafregional_get_permission_policy/](https://www.paws-r-sdk.com/docs/wafregional_get_permission_policy/) for full documentation.
 #'
-#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the RuleGroup for which you want to
-#' get the policy.
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the RuleGroup for which you want to get the policy.
 #'
 #' @keywords internal
 #'
@@ -1319,10 +1185,7 @@ wafregional_get_permission_policy <- function(ResourceArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafregional_get_rate_based_rule/](https://www.paws-r-sdk.com/docs/wafregional_get_rate_based_rule/) for full documentation.
 #'
-#' @param RuleId &#91;required&#93; The `RuleId` of the RateBasedRule that you want to get. `RuleId` is
-#' returned by
-#' [`create_rate_based_rule`][wafregional_create_rate_based_rule] and by
-#' [`list_rate_based_rules`][wafregional_list_rate_based_rules].
+#' @param RuleId &#91;required&#93; The `RuleId` of the RateBasedRule that you want to get. `RuleId` is returned by [`create_rate_based_rule`][wafregional_create_rate_based_rule] and by [`list_rate_based_rules`][wafregional_list_rate_based_rules].
 #'
 #' @keywords internal
 #'
@@ -1353,12 +1216,8 @@ wafregional_get_rate_based_rule <- function(RuleId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafregional_get_rate_based_rule_managed_keys/](https://www.paws-r-sdk.com/docs/wafregional_get_rate_based_rule_managed_keys/) for full documentation.
 #'
-#' @param RuleId &#91;required&#93; The `RuleId` of the RateBasedRule for which you want to get a list of
-#' `ManagedKeys`. `RuleId` is returned by
-#' [`create_rate_based_rule`][wafregional_create_rate_based_rule] and by
-#' [`list_rate_based_rules`][wafregional_list_rate_based_rules].
-#' @param NextMarker A null value and not currently used. Do not include this in your
-#' request.
+#' @param RuleId &#91;required&#93; The `RuleId` of the RateBasedRule for which you want to get a list of `ManagedKeys`. `RuleId` is returned by [`create_rate_based_rule`][wafregional_create_rate_based_rule] and by [`list_rate_based_rules`][wafregional_list_rate_based_rules].
+#' @param NextMarker A null value and not currently used. Do not include this in your request.
 #'
 #' @keywords internal
 #'
@@ -1389,10 +1248,7 @@ wafregional_get_rate_based_rule_managed_keys <- function(RuleId, NextMarker = NU
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafregional_get_regex_match_set/](https://www.paws-r-sdk.com/docs/wafregional_get_regex_match_set/) for full documentation.
 #'
-#' @param RegexMatchSetId &#91;required&#93; The `RegexMatchSetId` of the RegexMatchSet that you want to get.
-#' `RegexMatchSetId` is returned by
-#' [`create_regex_match_set`][wafregional_create_regex_match_set] and by
-#' [`list_regex_match_sets`][wafregional_list_regex_match_sets].
+#' @param RegexMatchSetId &#91;required&#93; The `RegexMatchSetId` of the RegexMatchSet that you want to get. `RegexMatchSetId` is returned by [`create_regex_match_set`][wafregional_create_regex_match_set] and by [`list_regex_match_sets`][wafregional_list_regex_match_sets].
 #'
 #' @keywords internal
 #'
@@ -1423,10 +1279,7 @@ wafregional_get_regex_match_set <- function(RegexMatchSetId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafregional_get_regex_pattern_set/](https://www.paws-r-sdk.com/docs/wafregional_get_regex_pattern_set/) for full documentation.
 #'
-#' @param RegexPatternSetId &#91;required&#93; The `RegexPatternSetId` of the RegexPatternSet that you want to get.
-#' `RegexPatternSetId` is returned by
-#' [`create_regex_pattern_set`][wafregional_create_regex_pattern_set] and
-#' by [`list_regex_pattern_sets`][wafregional_list_regex_pattern_sets].
+#' @param RegexPatternSetId &#91;required&#93; The `RegexPatternSetId` of the RegexPatternSet that you want to get. `RegexPatternSetId` is returned by [`create_regex_pattern_set`][wafregional_create_regex_pattern_set] and by [`list_regex_pattern_sets`][wafregional_list_regex_pattern_sets].
 #'
 #' @keywords internal
 #'
@@ -1457,9 +1310,7 @@ wafregional_get_regex_pattern_set <- function(RegexPatternSetId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafregional_get_rule/](https://www.paws-r-sdk.com/docs/wafregional_get_rule/) for full documentation.
 #'
-#' @param RuleId &#91;required&#93; The `RuleId` of the Rule that you want to get. `RuleId` is returned by
-#' [`create_rule`][wafregional_create_rule] and by
-#' [`list_rules`][wafregional_list_rules].
+#' @param RuleId &#91;required&#93; The `RuleId` of the Rule that you want to get. `RuleId` is returned by [`create_rule`][wafregional_create_rule] and by [`list_rules`][wafregional_list_rules].
 #'
 #' @keywords internal
 #'
@@ -1490,9 +1341,7 @@ wafregional_get_rule <- function(RuleId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafregional_get_rule_group/](https://www.paws-r-sdk.com/docs/wafregional_get_rule_group/) for full documentation.
 #'
-#' @param RuleGroupId &#91;required&#93; The `RuleGroupId` of the RuleGroup that you want to get. `RuleGroupId`
-#' is returned by [`create_rule_group`][wafregional_create_rule_group] and
-#' by [`list_rule_groups`][wafregional_list_rule_groups].
+#' @param RuleGroupId &#91;required&#93; The `RuleGroupId` of the RuleGroup that you want to get. `RuleGroupId` is returned by [`create_rule_group`][wafregional_create_rule_group] and by [`list_rule_groups`][wafregional_list_rule_groups].
 #'
 #' @keywords internal
 #'
@@ -1523,31 +1372,14 @@ wafregional_get_rule_group <- function(RuleGroupId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafregional_get_sampled_requests/](https://www.paws-r-sdk.com/docs/wafregional_get_sampled_requests/) for full documentation.
 #'
-#' @param WebAclId &#91;required&#93; The `WebACLId` of the `WebACL` for which you want
-#' [`get_sampled_requests`][wafregional_get_sampled_requests] to return a
-#' sample of requests.
+#' @param WebAclId &#91;required&#93; The `WebACLId` of the `WebACL` for which you want [`get_sampled_requests`][wafregional_get_sampled_requests] to return a sample of requests.
 #' @param RuleId &#91;required&#93; `RuleId` is one of three values:
 #' 
-#' -   The `RuleId` of the `Rule` or the `RuleGroupId` of the `RuleGroup`
-#'     for which you want
-#'     [`get_sampled_requests`][wafregional_get_sampled_requests] to return
-#'     a sample of requests.
+#' -   The `RuleId` of the `Rule` or the `RuleGroupId` of the `RuleGroup` for which you want [`get_sampled_requests`][wafregional_get_sampled_requests] to return a sample of requests.
 #' 
-#' -   `Default_Action`, which causes
-#'     [`get_sampled_requests`][wafregional_get_sampled_requests] to return
-#'     a sample of the requests that didn't match any of the rules in the
-#'     specified `WebACL`.
-#' @param TimeWindow &#91;required&#93; The start date and time and the end date and time of the range for which
-#' you want [`get_sampled_requests`][wafregional_get_sampled_requests] to
-#' return a sample of requests. You must specify the times in Coordinated
-#' Universal Time (UTC) format. UTC format includes the special designator,
-#' `Z`. For example, `"2016-09-27T14:50Z"`. You can specify any time range
-#' in the previous three hours.
-#' @param MaxItems &#91;required&#93; The number of requests that you want AWS WAF to return from among the
-#' first 5,000 requests that your AWS resource received during the time
-#' range. If your resource received fewer requests than the value of
-#' `MaxItems`, [`get_sampled_requests`][wafregional_get_sampled_requests]
-#' returns information about all of them.
+#' -   `Default_Action`, which causes [`get_sampled_requests`][wafregional_get_sampled_requests] to return a sample of the requests that didn't match any of the rules in the specified `WebACL`.
+#' @param TimeWindow &#91;required&#93; The start date and time and the end date and time of the range for which you want [`get_sampled_requests`][wafregional_get_sampled_requests] to return a sample of requests. You must specify the times in Coordinated Universal Time (UTC) format. UTC format includes the special designator, `Z`. For example, `"2016-09-27T14:50Z"`. You can specify any time range in the previous three hours.
+#' @param MaxItems &#91;required&#93; The number of requests that you want AWS WAF to return from among the first 5,000 requests that your AWS resource received during the time range. If your resource received fewer requests than the value of `MaxItems`, [`get_sampled_requests`][wafregional_get_sampled_requests] returns information about all of them.
 #'
 #' @keywords internal
 #'
@@ -1578,11 +1410,7 @@ wafregional_get_sampled_requests <- function(WebAclId, RuleId, TimeWindow, MaxIt
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafregional_get_size_constraint_set/](https://www.paws-r-sdk.com/docs/wafregional_get_size_constraint_set/) for full documentation.
 #'
-#' @param SizeConstraintSetId &#91;required&#93; The `SizeConstraintSetId` of the SizeConstraintSet that you want to get.
-#' `SizeConstraintSetId` is returned by
-#' [`create_size_constraint_set`][wafregional_create_size_constraint_set]
-#' and by
-#' [`list_size_constraint_sets`][wafregional_list_size_constraint_sets].
+#' @param SizeConstraintSetId &#91;required&#93; The `SizeConstraintSetId` of the SizeConstraintSet that you want to get. `SizeConstraintSetId` is returned by [`create_size_constraint_set`][wafregional_create_size_constraint_set] and by [`list_size_constraint_sets`][wafregional_list_size_constraint_sets].
 #'
 #' @keywords internal
 #'
@@ -1613,11 +1441,7 @@ wafregional_get_size_constraint_set <- function(SizeConstraintSetId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafregional_get_sql_injection_match_set/](https://www.paws-r-sdk.com/docs/wafregional_get_sql_injection_match_set/) for full documentation.
 #'
-#' @param SqlInjectionMatchSetId &#91;required&#93; The `SqlInjectionMatchSetId` of the SqlInjectionMatchSet that you want
-#' to get. `SqlInjectionMatchSetId` is returned by
-#' [`create_sql_injection_match_set`][wafregional_create_sql_injection_match_set]
-#' and by
-#' [`list_sql_injection_match_sets`][wafregional_list_sql_injection_match_sets].
+#' @param SqlInjectionMatchSetId &#91;required&#93; The `SqlInjectionMatchSetId` of the SqlInjectionMatchSet that you want to get. `SqlInjectionMatchSetId` is returned by [`create_sql_injection_match_set`][wafregional_create_sql_injection_match_set] and by [`list_sql_injection_match_sets`][wafregional_list_sql_injection_match_sets].
 #'
 #' @keywords internal
 #'
@@ -1648,9 +1472,7 @@ wafregional_get_sql_injection_match_set <- function(SqlInjectionMatchSetId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafregional_get_web_acl/](https://www.paws-r-sdk.com/docs/wafregional_get_web_acl/) for full documentation.
 #'
-#' @param WebACLId &#91;required&#93; The `WebACLId` of the WebACL that you want to get. `WebACLId` is
-#' returned by [`create_web_acl`][wafregional_create_web_acl] and by
-#' [`list_web_ac_ls`][wafregional_list_web_ac_ls].
+#' @param WebACLId &#91;required&#93; The `WebACLId` of the WebACL that you want to get. `WebACLId` is returned by [`create_web_acl`][wafregional_create_web_acl] and by [`list_web_ac_ls`][wafregional_list_web_ac_ls].
 #'
 #' @keywords internal
 #'
@@ -1681,16 +1503,13 @@ wafregional_get_web_acl <- function(WebACLId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafregional_get_web_acl_for_resource/](https://www.paws-r-sdk.com/docs/wafregional_get_web_acl_for_resource/) for full documentation.
 #'
-#' @param ResourceArn &#91;required&#93; The ARN (Amazon Resource Name) of the resource for which to get the web
-#' ACL, either an application load balancer or Amazon API Gateway stage.
+#' @param ResourceArn &#91;required&#93; The ARN (Amazon Resource Name) of the resource for which to get the web ACL, either an application load balancer or Amazon API Gateway stage.
 #' 
 #' The ARN should be in one of the following formats:
 #' 
-#' -   For an Application Load Balancer:
-#'     `arn:aws:elasticloadbalancing:region:account-id:loadbalancer/app/load-balancer-name/load-balancer-id `
+#' -   For an Application Load Balancer: `arn:aws:elasticloadbalancing:region:account-id:loadbalancer/app/load-balancer-name/load-balancer-id `
 #' 
-#' -   For an Amazon API Gateway stage:
-#'     `arn:aws:apigateway:region::/restapis/api-id/stages/stage-name `
+#' -   For an Amazon API Gateway stage: `arn:aws:apigateway:region::/restapis/api-id/stages/stage-name `
 #'
 #' @keywords internal
 #'
@@ -1721,10 +1540,7 @@ wafregional_get_web_acl_for_resource <- function(ResourceArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafregional_get_xss_match_set/](https://www.paws-r-sdk.com/docs/wafregional_get_xss_match_set/) for full documentation.
 #'
-#' @param XssMatchSetId &#91;required&#93; The `XssMatchSetId` of the XssMatchSet that you want to get.
-#' `XssMatchSetId` is returned by
-#' [`create_xss_match_set`][wafregional_create_xss_match_set] and by
-#' [`list_xss_match_sets`][wafregional_list_xss_match_sets].
+#' @param XssMatchSetId &#91;required&#93; The `XssMatchSetId` of the XssMatchSet that you want to get. `XssMatchSetId` is returned by [`create_xss_match_set`][wafregional_create_xss_match_set] and by [`list_xss_match_sets`][wafregional_list_xss_match_sets].
 #'
 #' @keywords internal
 #'
@@ -1755,19 +1571,9 @@ wafregional_get_xss_match_set <- function(XssMatchSetId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafregional_list_activated_rules_in_rule_group/](https://www.paws-r-sdk.com/docs/wafregional_list_activated_rules_in_rule_group/) for full documentation.
 #'
-#' @param RuleGroupId The `RuleGroupId` of the RuleGroup for which you want to get a list of
-#' ActivatedRule objects.
-#' @param NextMarker If you specify a value for `Limit` and you have more `ActivatedRules`
-#' than the value of `Limit`, AWS WAF returns a `NextMarker` value in the
-#' response that allows you to list another group of `ActivatedRules`. For
-#' the second and subsequent
-#' [`list_activated_rules_in_rule_group`][wafregional_list_activated_rules_in_rule_group]
-#' requests, specify the value of `NextMarker` from the previous response
-#' to get information about another batch of `ActivatedRules`.
-#' @param Limit Specifies the number of `ActivatedRules` that you want AWS WAF to return
-#' for this request. If you have more `ActivatedRules` than the number that
-#' you specify for `Limit`, the response includes a `NextMarker` value that
-#' you can use to get another batch of `ActivatedRules`.
+#' @param RuleGroupId The `RuleGroupId` of the RuleGroup for which you want to get a list of ActivatedRule objects.
+#' @param NextMarker If you specify a value for `Limit` and you have more `ActivatedRules` than the value of `Limit`, AWS WAF returns a `NextMarker` value in the response that allows you to list another group of `ActivatedRules`. For the second and subsequent [`list_activated_rules_in_rule_group`][wafregional_list_activated_rules_in_rule_group] requests, specify the value of `NextMarker` from the previous response to get information about another batch of `ActivatedRules`.
+#' @param Limit Specifies the number of `ActivatedRules` that you want AWS WAF to return for this request. If you have more `ActivatedRules` than the number that you specify for `Limit`, the response includes a `NextMarker` value that you can use to get another batch of `ActivatedRules`.
 #'
 #' @keywords internal
 #'
@@ -1798,17 +1604,8 @@ wafregional_list_activated_rules_in_rule_group <- function(RuleGroupId = NULL, N
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafregional_list_byte_match_sets/](https://www.paws-r-sdk.com/docs/wafregional_list_byte_match_sets/) for full documentation.
 #'
-#' @param NextMarker If you specify a value for `Limit` and you have more `ByteMatchSets`
-#' than the value of `Limit`, AWS WAF returns a `NextMarker` value in the
-#' response that allows you to list another group of `ByteMatchSets`. For
-#' the second and subsequent
-#' [`list_byte_match_sets`][wafregional_list_byte_match_sets] requests,
-#' specify the value of `NextMarker` from the previous response to get
-#' information about another batch of `ByteMatchSets`.
-#' @param Limit Specifies the number of `ByteMatchSet` objects that you want AWS WAF to
-#' return for this request. If you have more `ByteMatchSets` objects than
-#' the number you specify for `Limit`, the response includes a `NextMarker`
-#' value that you can use to get another batch of `ByteMatchSet` objects.
+#' @param NextMarker If you specify a value for `Limit` and you have more `ByteMatchSets` than the value of `Limit`, AWS WAF returns a `NextMarker` value in the response that allows you to list another group of `ByteMatchSets`. For the second and subsequent [`list_byte_match_sets`][wafregional_list_byte_match_sets] requests, specify the value of `NextMarker` from the previous response to get information about another batch of `ByteMatchSets`.
+#' @param Limit Specifies the number of `ByteMatchSet` objects that you want AWS WAF to return for this request. If you have more `ByteMatchSets` objects than the number you specify for `Limit`, the response includes a `NextMarker` value that you can use to get another batch of `ByteMatchSet` objects.
 #'
 #' @keywords internal
 #'
@@ -1839,17 +1636,8 @@ wafregional_list_byte_match_sets <- function(NextMarker = NULL, Limit = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafregional_list_geo_match_sets/](https://www.paws-r-sdk.com/docs/wafregional_list_geo_match_sets/) for full documentation.
 #'
-#' @param NextMarker If you specify a value for `Limit` and you have more `GeoMatchSet`s than
-#' the value of `Limit`, AWS WAF returns a `NextMarker` value in the
-#' response that allows you to list another group of `GeoMatchSet` objects.
-#' For the second and subsequent
-#' [`list_geo_match_sets`][wafregional_list_geo_match_sets] requests,
-#' specify the value of `NextMarker` from the previous response to get
-#' information about another batch of `GeoMatchSet` objects.
-#' @param Limit Specifies the number of `GeoMatchSet` objects that you want AWS WAF to
-#' return for this request. If you have more `GeoMatchSet` objects than the
-#' number you specify for `Limit`, the response includes a `NextMarker`
-#' value that you can use to get another batch of `GeoMatchSet` objects.
+#' @param NextMarker If you specify a value for `Limit` and you have more `GeoMatchSet`s than the value of `Limit`, AWS WAF returns a `NextMarker` value in the response that allows you to list another group of `GeoMatchSet` objects. For the second and subsequent [`list_geo_match_sets`][wafregional_list_geo_match_sets] requests, specify the value of `NextMarker` from the previous response to get information about another batch of `GeoMatchSet` objects.
+#' @param Limit Specifies the number of `GeoMatchSet` objects that you want AWS WAF to return for this request. If you have more `GeoMatchSet` objects than the number you specify for `Limit`, the response includes a `NextMarker` value that you can use to get another batch of `GeoMatchSet` objects.
 #'
 #' @keywords internal
 #'
@@ -1880,15 +1668,8 @@ wafregional_list_geo_match_sets <- function(NextMarker = NULL, Limit = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafregional_list_ip_sets/](https://www.paws-r-sdk.com/docs/wafregional_list_ip_sets/) for full documentation.
 #'
-#' @param NextMarker AWS WAF returns a `NextMarker` value in the response that allows you to
-#' list another group of `IPSets`. For the second and subsequent
-#' [`list_ip_sets`][wafregional_list_ip_sets] requests, specify the value
-#' of `NextMarker` from the previous response to get information about
-#' another batch of `IPSets`.
-#' @param Limit Specifies the number of `IPSet` objects that you want AWS WAF to return
-#' for this request. If you have more `IPSet` objects than the number you
-#' specify for `Limit`, the response includes a `NextMarker` value that you
-#' can use to get another batch of `IPSet` objects.
+#' @param NextMarker AWS WAF returns a `NextMarker` value in the response that allows you to list another group of `IPSets`. For the second and subsequent [`list_ip_sets`][wafregional_list_ip_sets] requests, specify the value of `NextMarker` from the previous response to get information about another batch of `IPSets`.
+#' @param Limit Specifies the number of `IPSet` objects that you want AWS WAF to return for this request. If you have more `IPSet` objects than the number you specify for `Limit`, the response includes a `NextMarker` value that you can use to get another batch of `IPSet` objects.
 #'
 #' @keywords internal
 #'
@@ -1919,19 +1700,8 @@ wafregional_list_ip_sets <- function(NextMarker = NULL, Limit = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafregional_list_logging_configurations/](https://www.paws-r-sdk.com/docs/wafregional_list_logging_configurations/) for full documentation.
 #'
-#' @param NextMarker If you specify a value for `Limit` and you have more
-#' `LoggingConfigurations` than the value of `Limit`, AWS WAF returns a
-#' `NextMarker` value in the response that allows you to list another group
-#' of `LoggingConfigurations`. For the second and subsequent
-#' [`list_logging_configurations`][wafregional_list_logging_configurations]
-#' requests, specify the value of `NextMarker` from the previous response
-#' to get information about another batch of
-#' [`list_logging_configurations`][wafregional_list_logging_configurations].
-#' @param Limit Specifies the number of `LoggingConfigurations` that you want AWS WAF to
-#' return for this request. If you have more `LoggingConfigurations` than
-#' the number that you specify for `Limit`, the response includes a
-#' `NextMarker` value that you can use to get another batch of
-#' `LoggingConfigurations`.
+#' @param NextMarker If you specify a value for `Limit` and you have more `LoggingConfigurations` than the value of `Limit`, AWS WAF returns a `NextMarker` value in the response that allows you to list another group of `LoggingConfigurations`. For the second and subsequent [`list_logging_configurations`][wafregional_list_logging_configurations] requests, specify the value of `NextMarker` from the previous response to get information about another batch of [`list_logging_configurations`][wafregional_list_logging_configurations].
+#' @param Limit Specifies the number of `LoggingConfigurations` that you want AWS WAF to return for this request. If you have more `LoggingConfigurations` than the number that you specify for `Limit`, the response includes a `NextMarker` value that you can use to get another batch of `LoggingConfigurations`.
 #'
 #' @keywords internal
 #'
@@ -1962,16 +1732,8 @@ wafregional_list_logging_configurations <- function(NextMarker = NULL, Limit = N
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafregional_list_rate_based_rules/](https://www.paws-r-sdk.com/docs/wafregional_list_rate_based_rules/) for full documentation.
 #'
-#' @param NextMarker If you specify a value for `Limit` and you have more `Rules` than the
-#' value of `Limit`, AWS WAF returns a `NextMarker` value in the response
-#' that allows you to list another group of `Rules`. For the second and
-#' subsequent [`list_rate_based_rules`][wafregional_list_rate_based_rules]
-#' requests, specify the value of `NextMarker` from the previous response
-#' to get information about another batch of `Rules`.
-#' @param Limit Specifies the number of `Rules` that you want AWS WAF to return for this
-#' request. If you have more `Rules` than the number that you specify for
-#' `Limit`, the response includes a `NextMarker` value that you can use to
-#' get another batch of `Rules`.
+#' @param NextMarker If you specify a value for `Limit` and you have more `Rules` than the value of `Limit`, AWS WAF returns a `NextMarker` value in the response that allows you to list another group of `Rules`. For the second and subsequent [`list_rate_based_rules`][wafregional_list_rate_based_rules] requests, specify the value of `NextMarker` from the previous response to get information about another batch of `Rules`.
+#' @param Limit Specifies the number of `Rules` that you want AWS WAF to return for this request. If you have more `Rules` than the number that you specify for `Limit`, the response includes a `NextMarker` value that you can use to get another batch of `Rules`.
 #'
 #' @keywords internal
 #'
@@ -2002,17 +1764,8 @@ wafregional_list_rate_based_rules <- function(NextMarker = NULL, Limit = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafregional_list_regex_match_sets/](https://www.paws-r-sdk.com/docs/wafregional_list_regex_match_sets/) for full documentation.
 #'
-#' @param NextMarker If you specify a value for `Limit` and you have more `RegexMatchSet`
-#' objects than the value of `Limit`, AWS WAF returns a `NextMarker` value
-#' in the response that allows you to list another group of
-#' `ByteMatchSets`. For the second and subsequent
-#' [`list_regex_match_sets`][wafregional_list_regex_match_sets] requests,
-#' specify the value of `NextMarker` from the previous response to get
-#' information about another batch of `RegexMatchSet` objects.
-#' @param Limit Specifies the number of `RegexMatchSet` objects that you want AWS WAF to
-#' return for this request. If you have more `RegexMatchSet` objects than
-#' the number you specify for `Limit`, the response includes a `NextMarker`
-#' value that you can use to get another batch of `RegexMatchSet` objects.
+#' @param NextMarker If you specify a value for `Limit` and you have more `RegexMatchSet` objects than the value of `Limit`, AWS WAF returns a `NextMarker` value in the response that allows you to list another group of `ByteMatchSets`. For the second and subsequent [`list_regex_match_sets`][wafregional_list_regex_match_sets] requests, specify the value of `NextMarker` from the previous response to get information about another batch of `RegexMatchSet` objects.
+#' @param Limit Specifies the number of `RegexMatchSet` objects that you want AWS WAF to return for this request. If you have more `RegexMatchSet` objects than the number you specify for `Limit`, the response includes a `NextMarker` value that you can use to get another batch of `RegexMatchSet` objects.
 #'
 #' @keywords internal
 #'
@@ -2043,18 +1796,8 @@ wafregional_list_regex_match_sets <- function(NextMarker = NULL, Limit = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafregional_list_regex_pattern_sets/](https://www.paws-r-sdk.com/docs/wafregional_list_regex_pattern_sets/) for full documentation.
 #'
-#' @param NextMarker If you specify a value for `Limit` and you have more `RegexPatternSet`
-#' objects than the value of `Limit`, AWS WAF returns a `NextMarker` value
-#' in the response that allows you to list another group of
-#' `RegexPatternSet` objects. For the second and subsequent
-#' [`list_regex_pattern_sets`][wafregional_list_regex_pattern_sets]
-#' requests, specify the value of `NextMarker` from the previous response
-#' to get information about another batch of `RegexPatternSet` objects.
-#' @param Limit Specifies the number of `RegexPatternSet` objects that you want AWS WAF
-#' to return for this request. If you have more `RegexPatternSet` objects
-#' than the number you specify for `Limit`, the response includes a
-#' `NextMarker` value that you can use to get another batch of
-#' `RegexPatternSet` objects.
+#' @param NextMarker If you specify a value for `Limit` and you have more `RegexPatternSet` objects than the value of `Limit`, AWS WAF returns a `NextMarker` value in the response that allows you to list another group of `RegexPatternSet` objects. For the second and subsequent [`list_regex_pattern_sets`][wafregional_list_regex_pattern_sets] requests, specify the value of `NextMarker` from the previous response to get information about another batch of `RegexPatternSet` objects.
+#' @param Limit Specifies the number of `RegexPatternSet` objects that you want AWS WAF to return for this request. If you have more `RegexPatternSet` objects than the number you specify for `Limit`, the response includes a `NextMarker` value that you can use to get another batch of `RegexPatternSet` objects.
 #'
 #' @keywords internal
 #'
@@ -2085,10 +1828,8 @@ wafregional_list_regex_pattern_sets <- function(NextMarker = NULL, Limit = NULL)
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafregional_list_resources_for_web_acl/](https://www.paws-r-sdk.com/docs/wafregional_list_resources_for_web_acl/) for full documentation.
 #'
-#' @param WebACLId &#91;required&#93; The unique identifier (ID) of the web ACL for which to list the
-#' associated resources.
-#' @param ResourceType The type of resource to list, either an application load balancer or
-#' Amazon API Gateway.
+#' @param WebACLId &#91;required&#93; The unique identifier (ID) of the web ACL for which to list the associated resources.
+#' @param ResourceType The type of resource to list, either an application load balancer or Amazon API Gateway.
 #'
 #' @keywords internal
 #'
@@ -2119,16 +1860,8 @@ wafregional_list_resources_for_web_acl <- function(WebACLId, ResourceType = NULL
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafregional_list_rule_groups/](https://www.paws-r-sdk.com/docs/wafregional_list_rule_groups/) for full documentation.
 #'
-#' @param NextMarker If you specify a value for `Limit` and you have more `RuleGroups` than
-#' the value of `Limit`, AWS WAF returns a `NextMarker` value in the
-#' response that allows you to list another group of `RuleGroups`. For the
-#' second and subsequent [`list_rule_groups`][wafregional_list_rule_groups]
-#' requests, specify the value of `NextMarker` from the previous response
-#' to get information about another batch of `RuleGroups`.
-#' @param Limit Specifies the number of `RuleGroups` that you want AWS WAF to return for
-#' this request. If you have more `RuleGroups` than the number that you
-#' specify for `Limit`, the response includes a `NextMarker` value that you
-#' can use to get another batch of `RuleGroups`.
+#' @param NextMarker If you specify a value for `Limit` and you have more `RuleGroups` than the value of `Limit`, AWS WAF returns a `NextMarker` value in the response that allows you to list another group of `RuleGroups`. For the second and subsequent [`list_rule_groups`][wafregional_list_rule_groups] requests, specify the value of `NextMarker` from the previous response to get information about another batch of `RuleGroups`.
+#' @param Limit Specifies the number of `RuleGroups` that you want AWS WAF to return for this request. If you have more `RuleGroups` than the number that you specify for `Limit`, the response includes a `NextMarker` value that you can use to get another batch of `RuleGroups`.
 #'
 #' @keywords internal
 #'
@@ -2159,16 +1892,8 @@ wafregional_list_rule_groups <- function(NextMarker = NULL, Limit = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafregional_list_rules/](https://www.paws-r-sdk.com/docs/wafregional_list_rules/) for full documentation.
 #'
-#' @param NextMarker If you specify a value for `Limit` and you have more `Rules` than the
-#' value of `Limit`, AWS WAF returns a `NextMarker` value in the response
-#' that allows you to list another group of `Rules`. For the second and
-#' subsequent [`list_rules`][wafregional_list_rules] requests, specify the
-#' value of `NextMarker` from the previous response to get information
-#' about another batch of `Rules`.
-#' @param Limit Specifies the number of `Rules` that you want AWS WAF to return for this
-#' request. If you have more `Rules` than the number that you specify for
-#' `Limit`, the response includes a `NextMarker` value that you can use to
-#' get another batch of `Rules`.
+#' @param NextMarker If you specify a value for `Limit` and you have more `Rules` than the value of `Limit`, AWS WAF returns a `NextMarker` value in the response that allows you to list another group of `Rules`. For the second and subsequent [`list_rules`][wafregional_list_rules] requests, specify the value of `NextMarker` from the previous response to get information about another batch of `Rules`.
+#' @param Limit Specifies the number of `Rules` that you want AWS WAF to return for this request. If you have more `Rules` than the number that you specify for `Limit`, the response includes a `NextMarker` value that you can use to get another batch of `Rules`.
 #'
 #' @keywords internal
 #'
@@ -2199,18 +1924,8 @@ wafregional_list_rules <- function(NextMarker = NULL, Limit = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafregional_list_size_constraint_sets/](https://www.paws-r-sdk.com/docs/wafregional_list_size_constraint_sets/) for full documentation.
 #'
-#' @param NextMarker If you specify a value for `Limit` and you have more
-#' `SizeConstraintSets` than the value of `Limit`, AWS WAF returns a
-#' `NextMarker` value in the response that allows you to list another group
-#' of `SizeConstraintSets`. For the second and subsequent
-#' [`list_size_constraint_sets`][wafregional_list_size_constraint_sets]
-#' requests, specify the value of `NextMarker` from the previous response
-#' to get information about another batch of `SizeConstraintSets`.
-#' @param Limit Specifies the number of `SizeConstraintSet` objects that you want AWS
-#' WAF to return for this request. If you have more `SizeConstraintSets`
-#' objects than the number you specify for `Limit`, the response includes a
-#' `NextMarker` value that you can use to get another batch of
-#' `SizeConstraintSet` objects.
+#' @param NextMarker If you specify a value for `Limit` and you have more `SizeConstraintSets` than the value of `Limit`, AWS WAF returns a `NextMarker` value in the response that allows you to list another group of `SizeConstraintSets`. For the second and subsequent [`list_size_constraint_sets`][wafregional_list_size_constraint_sets] requests, specify the value of `NextMarker` from the previous response to get information about another batch of `SizeConstraintSets`.
+#' @param Limit Specifies the number of `SizeConstraintSet` objects that you want AWS WAF to return for this request. If you have more `SizeConstraintSets` objects than the number you specify for `Limit`, the response includes a `NextMarker` value that you can use to get another batch of `SizeConstraintSet` objects.
 #'
 #' @keywords internal
 #'
@@ -2241,17 +1956,8 @@ wafregional_list_size_constraint_sets <- function(NextMarker = NULL, Limit = NUL
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafregional_list_sql_injection_match_sets/](https://www.paws-r-sdk.com/docs/wafregional_list_sql_injection_match_sets/) for full documentation.
 #'
-#' @param NextMarker If you specify a value for `Limit` and you have more
-#' SqlInjectionMatchSet objects than the value of `Limit`, AWS WAF returns
-#' a `NextMarker` value in the response that allows you to list another
-#' group of `SqlInjectionMatchSets`. For the second and subsequent
-#' [`list_sql_injection_match_sets`][wafregional_list_sql_injection_match_sets]
-#' requests, specify the value of `NextMarker` from the previous response
-#' to get information about another batch of `SqlInjectionMatchSets`.
-#' @param Limit Specifies the number of SqlInjectionMatchSet objects that you want AWS
-#' WAF to return for this request. If you have more `SqlInjectionMatchSet`
-#' objects than the number you specify for `Limit`, the response includes a
-#' `NextMarker` value that you can use to get another batch of `Rules`.
+#' @param NextMarker If you specify a value for `Limit` and you have more SqlInjectionMatchSet objects than the value of `Limit`, AWS WAF returns a `NextMarker` value in the response that allows you to list another group of `SqlInjectionMatchSets`. For the second and subsequent [`list_sql_injection_match_sets`][wafregional_list_sql_injection_match_sets] requests, specify the value of `NextMarker` from the previous response to get information about another batch of `SqlInjectionMatchSets`.
+#' @param Limit Specifies the number of SqlInjectionMatchSet objects that you want AWS WAF to return for this request. If you have more `SqlInjectionMatchSet` objects than the number you specify for `Limit`, the response includes a `NextMarker` value that you can use to get another batch of `Rules`.
 #'
 #' @keywords internal
 #'
@@ -2282,17 +1988,8 @@ wafregional_list_sql_injection_match_sets <- function(NextMarker = NULL, Limit =
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafregional_list_subscribed_rule_groups/](https://www.paws-r-sdk.com/docs/wafregional_list_subscribed_rule_groups/) for full documentation.
 #'
-#' @param NextMarker If you specify a value for `Limit` and you have more
-#' `ByteMatchSets`subscribed rule groups than the value of `Limit`, AWS WAF
-#' returns a `NextMarker` value in the response that allows you to list
-#' another group of subscribed rule groups. For the second and subsequent
-#' `ListSubscribedRuleGroupsRequest` requests, specify the value of
-#' `NextMarker` from the previous response to get information about another
-#' batch of subscribed rule groups.
-#' @param Limit Specifies the number of subscribed rule groups that you want AWS WAF to
-#' return for this request. If you have more objects than the number you
-#' specify for `Limit`, the response includes a `NextMarker` value that you
-#' can use to get another batch of objects.
+#' @param NextMarker If you specify a value for `Limit` and you have more `ByteMatchSets`subscribed rule groups than the value of `Limit`, AWS WAF returns a `NextMarker` value in the response that allows you to list another group of subscribed rule groups. For the second and subsequent `ListSubscribedRuleGroupsRequest` requests, specify the value of `NextMarker` from the previous response to get information about another batch of subscribed rule groups.
+#' @param Limit Specifies the number of subscribed rule groups that you want AWS WAF to return for this request. If you have more objects than the number you specify for `Limit`, the response includes a `NextMarker` value that you can use to get another batch of objects.
 #'
 #' @keywords internal
 #'
@@ -2356,17 +2053,8 @@ wafregional_list_tags_for_resource <- function(NextMarker = NULL, Limit = NULL, 
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafregional_list_web_ac_ls/](https://www.paws-r-sdk.com/docs/wafregional_list_web_ac_ls/) for full documentation.
 #'
-#' @param NextMarker If you specify a value for `Limit` and you have more `WebACL` objects
-#' than the number that you specify for `Limit`, AWS WAF returns a
-#' `NextMarker` value in the response that allows you to list another group
-#' of `WebACL` objects. For the second and subsequent
-#' [`list_web_ac_ls`][wafregional_list_web_ac_ls] requests, specify the
-#' value of `NextMarker` from the previous response to get information
-#' about another batch of `WebACL` objects.
-#' @param Limit Specifies the number of `WebACL` objects that you want AWS WAF to return
-#' for this request. If you have more `WebACL` objects than the number that
-#' you specify for `Limit`, the response includes a `NextMarker` value that
-#' you can use to get another batch of `WebACL` objects.
+#' @param NextMarker If you specify a value for `Limit` and you have more `WebACL` objects than the number that you specify for `Limit`, AWS WAF returns a `NextMarker` value in the response that allows you to list another group of `WebACL` objects. For the second and subsequent [`list_web_ac_ls`][wafregional_list_web_ac_ls] requests, specify the value of `NextMarker` from the previous response to get information about another batch of `WebACL` objects.
+#' @param Limit Specifies the number of `WebACL` objects that you want AWS WAF to return for this request. If you have more `WebACL` objects than the number that you specify for `Limit`, the response includes a `NextMarker` value that you can use to get another batch of `WebACL` objects.
 #'
 #' @keywords internal
 #'
@@ -2397,17 +2085,8 @@ wafregional_list_web_ac_ls <- function(NextMarker = NULL, Limit = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafregional_list_xss_match_sets/](https://www.paws-r-sdk.com/docs/wafregional_list_xss_match_sets/) for full documentation.
 #'
-#' @param NextMarker If you specify a value for `Limit` and you have more XssMatchSet objects
-#' than the value of `Limit`, AWS WAF returns a `NextMarker` value in the
-#' response that allows you to list another group of `XssMatchSets`. For
-#' the second and subsequent
-#' [`list_xss_match_sets`][wafregional_list_xss_match_sets] requests,
-#' specify the value of `NextMarker` from the previous response to get
-#' information about another batch of `XssMatchSets`.
-#' @param Limit Specifies the number of XssMatchSet objects that you want AWS WAF to
-#' return for this request. If you have more `XssMatchSet` objects than the
-#' number you specify for `Limit`, the response includes a `NextMarker`
-#' value that you can use to get another batch of `Rules`.
+#' @param NextMarker If you specify a value for `Limit` and you have more XssMatchSet objects than the value of `Limit`, AWS WAF returns a `NextMarker` value in the response that allows you to list another group of `XssMatchSets`. For the second and subsequent [`list_xss_match_sets`][wafregional_list_xss_match_sets] requests, specify the value of `NextMarker` from the previous response to get information about another batch of `XssMatchSets`.
+#' @param Limit Specifies the number of XssMatchSet objects that you want AWS WAF to return for this request. If you have more `XssMatchSet` objects than the number you specify for `Limit`, the response includes a `NextMarker` value that you can use to get another batch of `Rules`.
 #'
 #' @keywords internal
 #'
@@ -2438,12 +2117,9 @@ wafregional_list_xss_match_sets <- function(NextMarker = NULL, Limit = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafregional_put_logging_configuration/](https://www.paws-r-sdk.com/docs/wafregional_put_logging_configuration/) for full documentation.
 #'
-#' @param LoggingConfiguration &#91;required&#93; The Amazon Kinesis Data Firehose that contains the inspected traffic
-#' information, the redacted fields details, and the Amazon Resource Name
-#' (ARN) of the web ACL to monitor.
+#' @param LoggingConfiguration &#91;required&#93; The Amazon Kinesis Data Firehose that contains the inspected traffic information, the redacted fields details, and the Amazon Resource Name (ARN) of the web ACL to monitor.
 #' 
-#' When specifying `Type` in `RedactedFields`, you must use one of the
-#' following values: `URI`, `QUERY_STRING`, `HEADER`, or `METHOD`.
+#' When specifying `Type` in `RedactedFields`, you must use one of the following values: `URI`, `QUERY_STRING`, `HEADER`, or `METHOD`.
 #'
 #' @keywords internal
 #'
@@ -2474,8 +2150,7 @@ wafregional_put_logging_configuration <- function(LoggingConfiguration) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafregional_put_permission_policy/](https://www.paws-r-sdk.com/docs/wafregional_put_permission_policy/) for full documentation.
 #'
-#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the RuleGroup to which you want to
-#' attach the policy.
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the RuleGroup to which you want to attach the policy.
 #' @param Policy &#91;required&#93; The policy to attach to the specified RuleGroup.
 #'
 #' @keywords internal
@@ -2571,20 +2246,13 @@ wafregional_untag_resource <- function(ResourceARN, TagKeys) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafregional_update_byte_match_set/](https://www.paws-r-sdk.com/docs/wafregional_update_byte_match_set/) for full documentation.
 #'
-#' @param ByteMatchSetId &#91;required&#93; The `ByteMatchSetId` of the ByteMatchSet that you want to update.
-#' `ByteMatchSetId` is returned by
-#' [`create_byte_match_set`][wafregional_create_byte_match_set] and by
-#' [`list_byte_match_sets`][wafregional_list_byte_match_sets].
-#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
-#' [`get_change_token`][wafregional_get_change_token].
-#' @param Updates &#91;required&#93; An array of `ByteMatchSetUpdate` objects that you want to insert into or
-#' delete from a ByteMatchSet. For more information, see the applicable
-#' data types:
+#' @param ByteMatchSetId &#91;required&#93; The `ByteMatchSetId` of the ByteMatchSet that you want to update. `ByteMatchSetId` is returned by [`create_byte_match_set`][wafregional_create_byte_match_set] and by [`list_byte_match_sets`][wafregional_list_byte_match_sets].
+#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to [`get_change_token`][wafregional_get_change_token].
+#' @param Updates &#91;required&#93; An array of `ByteMatchSetUpdate` objects that you want to insert into or delete from a ByteMatchSet. For more information, see the applicable data types:
 #' 
 #' -   ByteMatchSetUpdate: Contains `Action` and `ByteMatchTuple`
 #' 
-#' -   ByteMatchTuple: Contains `FieldToMatch`, `PositionalConstraint`,
-#'     `TargetString`, and `TextTransformation`
+#' -   ByteMatchTuple: Contains `FieldToMatch`, `PositionalConstraint`, `TargetString`, and `TextTransformation`
 #' 
 #' -   FieldToMatch: Contains `Data` and `Type`
 #'
@@ -2617,23 +2285,15 @@ wafregional_update_byte_match_set <- function(ByteMatchSetId, ChangeToken, Updat
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafregional_update_geo_match_set/](https://www.paws-r-sdk.com/docs/wafregional_update_geo_match_set/) for full documentation.
 #'
-#' @param GeoMatchSetId &#91;required&#93; The `GeoMatchSetId` of the GeoMatchSet that you want to update.
-#' `GeoMatchSetId` is returned by
-#' [`create_geo_match_set`][wafregional_create_geo_match_set] and by
-#' [`list_geo_match_sets`][wafregional_list_geo_match_sets].
-#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
-#' [`get_change_token`][wafregional_get_change_token].
-#' @param Updates &#91;required&#93; An array of `GeoMatchSetUpdate` objects that you want to insert into or
-#' delete from an GeoMatchSet. For more information, see the applicable
-#' data types:
+#' @param GeoMatchSetId &#91;required&#93; The `GeoMatchSetId` of the GeoMatchSet that you want to update. `GeoMatchSetId` is returned by [`create_geo_match_set`][wafregional_create_geo_match_set] and by [`list_geo_match_sets`][wafregional_list_geo_match_sets].
+#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to [`get_change_token`][wafregional_get_change_token].
+#' @param Updates &#91;required&#93; An array of `GeoMatchSetUpdate` objects that you want to insert into or delete from an GeoMatchSet. For more information, see the applicable data types:
 #' 
 #' -   GeoMatchSetUpdate: Contains `Action` and `GeoMatchConstraint`
 #' 
 #' -   GeoMatchConstraint: Contains `Type` and `Value`
 #' 
-#'     You can have only one `Type` and `Value` per `GeoMatchConstraint`.
-#'     To add multiple countries, include multiple `GeoMatchSetUpdate`
-#'     objects in your request.
+#'     You can have only one `Type` and `Value` per `GeoMatchConstraint`. To add multiple countries, include multiple `GeoMatchSetUpdate` objects in your request.
 #'
 #' @keywords internal
 #'
@@ -2664,13 +2324,9 @@ wafregional_update_geo_match_set <- function(GeoMatchSetId, ChangeToken, Updates
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafregional_update_ip_set/](https://www.paws-r-sdk.com/docs/wafregional_update_ip_set/) for full documentation.
 #'
-#' @param IPSetId &#91;required&#93; The `IPSetId` of the IPSet that you want to update. `IPSetId` is
-#' returned by [`create_ip_set`][wafregional_create_ip_set] and by
-#' [`list_ip_sets`][wafregional_list_ip_sets].
-#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
-#' [`get_change_token`][wafregional_get_change_token].
-#' @param Updates &#91;required&#93; An array of `IPSetUpdate` objects that you want to insert into or delete
-#' from an IPSet. For more information, see the applicable data types:
+#' @param IPSetId &#91;required&#93; The `IPSetId` of the IPSet that you want to update. `IPSetId` is returned by [`create_ip_set`][wafregional_create_ip_set] and by [`list_ip_sets`][wafregional_list_ip_sets].
+#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to [`get_change_token`][wafregional_get_change_token].
+#' @param Updates &#91;required&#93; An array of `IPSetUpdate` objects that you want to insert into or delete from an IPSet. For more information, see the applicable data types:
 #' 
 #' -   IPSetUpdate: Contains `Action` and `IPSetDescriptor`
 #' 
@@ -2707,19 +2363,10 @@ wafregional_update_ip_set <- function(IPSetId, ChangeToken, Updates) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafregional_update_rate_based_rule/](https://www.paws-r-sdk.com/docs/wafregional_update_rate_based_rule/) for full documentation.
 #'
-#' @param RuleId &#91;required&#93; The `RuleId` of the `RateBasedRule` that you want to update. `RuleId` is
-#' returned by
-#' [`create_rate_based_rule`][wafregional_create_rate_based_rule] and by
-#' [`list_rate_based_rules`][wafregional_list_rate_based_rules].
-#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
-#' [`get_change_token`][wafregional_get_change_token].
-#' @param Updates &#91;required&#93; An array of `RuleUpdate` objects that you want to insert into or delete
-#' from a RateBasedRule.
-#' @param RateLimit &#91;required&#93; The maximum number of requests, which have an identical value in the
-#' field specified by the `RateKey`, allowed in a five-minute period. If
-#' the number of requests exceeds the `RateLimit` and the other predicates
-#' specified in the rule are also met, AWS WAF triggers the action that is
-#' specified for this rule.
+#' @param RuleId &#91;required&#93; The `RuleId` of the `RateBasedRule` that you want to update. `RuleId` is returned by [`create_rate_based_rule`][wafregional_create_rate_based_rule] and by [`list_rate_based_rules`][wafregional_list_rate_based_rules].
+#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to [`get_change_token`][wafregional_get_change_token].
+#' @param Updates &#91;required&#93; An array of `RuleUpdate` objects that you want to insert into or delete from a RateBasedRule.
+#' @param RateLimit &#91;required&#93; The maximum number of requests, which have an identical value in the field specified by the `RateKey`, allowed in a five-minute period. If the number of requests exceeds the `RateLimit` and the other predicates specified in the rule are also met, AWS WAF triggers the action that is specified for this rule.
 #'
 #' @keywords internal
 #'
@@ -2750,15 +2397,9 @@ wafregional_update_rate_based_rule <- function(RuleId, ChangeToken, Updates, Rat
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafregional_update_regex_match_set/](https://www.paws-r-sdk.com/docs/wafregional_update_regex_match_set/) for full documentation.
 #'
-#' @param RegexMatchSetId &#91;required&#93; The `RegexMatchSetId` of the RegexMatchSet that you want to update.
-#' `RegexMatchSetId` is returned by
-#' [`create_regex_match_set`][wafregional_create_regex_match_set] and by
-#' [`list_regex_match_sets`][wafregional_list_regex_match_sets].
-#' @param Updates &#91;required&#93; An array of `RegexMatchSetUpdate` objects that you want to insert into
-#' or delete from a RegexMatchSet. For more information, see
-#' RegexMatchTuple.
-#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
-#' [`get_change_token`][wafregional_get_change_token].
+#' @param RegexMatchSetId &#91;required&#93; The `RegexMatchSetId` of the RegexMatchSet that you want to update. `RegexMatchSetId` is returned by [`create_regex_match_set`][wafregional_create_regex_match_set] and by [`list_regex_match_sets`][wafregional_list_regex_match_sets].
+#' @param Updates &#91;required&#93; An array of `RegexMatchSetUpdate` objects that you want to insert into or delete from a RegexMatchSet. For more information, see RegexMatchTuple.
+#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to [`get_change_token`][wafregional_get_change_token].
 #'
 #' @keywords internal
 #'
@@ -2789,14 +2430,9 @@ wafregional_update_regex_match_set <- function(RegexMatchSetId, Updates, ChangeT
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafregional_update_regex_pattern_set/](https://www.paws-r-sdk.com/docs/wafregional_update_regex_pattern_set/) for full documentation.
 #'
-#' @param RegexPatternSetId &#91;required&#93; The `RegexPatternSetId` of the RegexPatternSet that you want to update.
-#' `RegexPatternSetId` is returned by
-#' [`create_regex_pattern_set`][wafregional_create_regex_pattern_set] and
-#' by [`list_regex_pattern_sets`][wafregional_list_regex_pattern_sets].
-#' @param Updates &#91;required&#93; An array of `RegexPatternSetUpdate` objects that you want to insert into
-#' or delete from a RegexPatternSet.
-#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
-#' [`get_change_token`][wafregional_get_change_token].
+#' @param RegexPatternSetId &#91;required&#93; The `RegexPatternSetId` of the RegexPatternSet that you want to update. `RegexPatternSetId` is returned by [`create_regex_pattern_set`][wafregional_create_regex_pattern_set] and by [`list_regex_pattern_sets`][wafregional_list_regex_pattern_sets].
+#' @param Updates &#91;required&#93; An array of `RegexPatternSetUpdate` objects that you want to insert into or delete from a RegexPatternSet.
+#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to [`get_change_token`][wafregional_get_change_token].
 #'
 #' @keywords internal
 #'
@@ -2827,13 +2463,9 @@ wafregional_update_regex_pattern_set <- function(RegexPatternSetId, Updates, Cha
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafregional_update_rule/](https://www.paws-r-sdk.com/docs/wafregional_update_rule/) for full documentation.
 #'
-#' @param RuleId &#91;required&#93; The `RuleId` of the `Rule` that you want to update. `RuleId` is returned
-#' by [`create_rule`][wafregional_create_rule] and by
-#' [`list_rules`][wafregional_list_rules].
-#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
-#' [`get_change_token`][wafregional_get_change_token].
-#' @param Updates &#91;required&#93; An array of `RuleUpdate` objects that you want to insert into or delete
-#' from a Rule. For more information, see the applicable data types:
+#' @param RuleId &#91;required&#93; The `RuleId` of the `Rule` that you want to update. `RuleId` is returned by [`create_rule`][wafregional_create_rule] and by [`list_rules`][wafregional_list_rules].
+#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to [`get_change_token`][wafregional_get_change_token].
+#' @param Updates &#91;required&#93; An array of `RuleUpdate` objects that you want to insert into or delete from a Rule. For more information, see the applicable data types:
 #' 
 #' -   RuleUpdate: Contains `Action` and `Predicate`
 #' 
@@ -2870,22 +2502,13 @@ wafregional_update_rule <- function(RuleId, ChangeToken, Updates) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafregional_update_rule_group/](https://www.paws-r-sdk.com/docs/wafregional_update_rule_group/) for full documentation.
 #'
-#' @param RuleGroupId &#91;required&#93; The `RuleGroupId` of the RuleGroup that you want to update.
-#' `RuleGroupId` is returned by
-#' [`create_rule_group`][wafregional_create_rule_group] and by
-#' [`list_rule_groups`][wafregional_list_rule_groups].
-#' @param Updates &#91;required&#93; An array of `RuleGroupUpdate` objects that you want to insert into or
-#' delete from a RuleGroup.
+#' @param RuleGroupId &#91;required&#93; The `RuleGroupId` of the RuleGroup that you want to update. `RuleGroupId` is returned by [`create_rule_group`][wafregional_create_rule_group] and by [`list_rule_groups`][wafregional_list_rule_groups].
+#' @param Updates &#91;required&#93; An array of `RuleGroupUpdate` objects that you want to insert into or delete from a RuleGroup.
 #' 
 #' You can only insert `REGULAR` rules into a rule group.
 #' 
-#' `ActivatedRule|OverrideAction` applies only when updating or adding a
-#' `RuleGroup` to a `WebACL`. In this case you do not use
-#' `ActivatedRule|Action`. For all other update requests,
-#' `ActivatedRule|Action` is used instead of
-#' `ActivatedRule|OverrideAction`.
-#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
-#' [`get_change_token`][wafregional_get_change_token].
+#' `ActivatedRule|OverrideAction` applies only when updating or adding a `RuleGroup` to a `WebACL`. In this case you do not use `ActivatedRule|Action`. For all other update requests, `ActivatedRule|Action` is used instead of `ActivatedRule|OverrideAction`.
+#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to [`get_change_token`][wafregional_get_change_token].
 #'
 #' @keywords internal
 #'
@@ -2916,21 +2539,13 @@ wafregional_update_rule_group <- function(RuleGroupId, Updates, ChangeToken) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafregional_update_size_constraint_set/](https://www.paws-r-sdk.com/docs/wafregional_update_size_constraint_set/) for full documentation.
 #'
-#' @param SizeConstraintSetId &#91;required&#93; The `SizeConstraintSetId` of the SizeConstraintSet that you want to
-#' update. `SizeConstraintSetId` is returned by
-#' [`create_size_constraint_set`][wafregional_create_size_constraint_set]
-#' and by
-#' [`list_size_constraint_sets`][wafregional_list_size_constraint_sets].
-#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
-#' [`get_change_token`][wafregional_get_change_token].
-#' @param Updates &#91;required&#93; An array of `SizeConstraintSetUpdate` objects that you want to insert
-#' into or delete from a SizeConstraintSet. For more information, see the
-#' applicable data types:
+#' @param SizeConstraintSetId &#91;required&#93; The `SizeConstraintSetId` of the SizeConstraintSet that you want to update. `SizeConstraintSetId` is returned by [`create_size_constraint_set`][wafregional_create_size_constraint_set] and by [`list_size_constraint_sets`][wafregional_list_size_constraint_sets].
+#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to [`get_change_token`][wafregional_get_change_token].
+#' @param Updates &#91;required&#93; An array of `SizeConstraintSetUpdate` objects that you want to insert into or delete from a SizeConstraintSet. For more information, see the applicable data types:
 #' 
 #' -   SizeConstraintSetUpdate: Contains `Action` and `SizeConstraint`
 #' 
-#' -   SizeConstraint: Contains `FieldToMatch`, `TextTransformation`,
-#'     `ComparisonOperator`, and `Size`
+#' -   SizeConstraint: Contains `FieldToMatch`, `TextTransformation`, `ComparisonOperator`, and `Size`
 #' 
 #' -   FieldToMatch: Contains `Data` and `Type`
 #'
@@ -2963,22 +2578,13 @@ wafregional_update_size_constraint_set <- function(SizeConstraintSetId, ChangeTo
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafregional_update_sql_injection_match_set/](https://www.paws-r-sdk.com/docs/wafregional_update_sql_injection_match_set/) for full documentation.
 #'
-#' @param SqlInjectionMatchSetId &#91;required&#93; The `SqlInjectionMatchSetId` of the `SqlInjectionMatchSet` that you want
-#' to update. `SqlInjectionMatchSetId` is returned by
-#' [`create_sql_injection_match_set`][wafregional_create_sql_injection_match_set]
-#' and by
-#' [`list_sql_injection_match_sets`][wafregional_list_sql_injection_match_sets].
-#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
-#' [`get_change_token`][wafregional_get_change_token].
-#' @param Updates &#91;required&#93; An array of `SqlInjectionMatchSetUpdate` objects that you want to insert
-#' into or delete from a SqlInjectionMatchSet. For more information, see
-#' the applicable data types:
+#' @param SqlInjectionMatchSetId &#91;required&#93; The `SqlInjectionMatchSetId` of the `SqlInjectionMatchSet` that you want to update. `SqlInjectionMatchSetId` is returned by [`create_sql_injection_match_set`][wafregional_create_sql_injection_match_set] and by [`list_sql_injection_match_sets`][wafregional_list_sql_injection_match_sets].
+#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to [`get_change_token`][wafregional_get_change_token].
+#' @param Updates &#91;required&#93; An array of `SqlInjectionMatchSetUpdate` objects that you want to insert into or delete from a SqlInjectionMatchSet. For more information, see the applicable data types:
 #' 
-#' -   SqlInjectionMatchSetUpdate: Contains `Action` and
-#'     `SqlInjectionMatchTuple`
+#' -   SqlInjectionMatchSetUpdate: Contains `Action` and `SqlInjectionMatchTuple`
 #' 
-#' -   SqlInjectionMatchTuple: Contains `FieldToMatch` and
-#'     `TextTransformation`
+#' -   SqlInjectionMatchTuple: Contains `FieldToMatch` and `TextTransformation`
 #' 
 #' -   FieldToMatch: Contains `Data` and `Type`
 #'
@@ -3011,30 +2617,18 @@ wafregional_update_sql_injection_match_set <- function(SqlInjectionMatchSetId, C
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafregional_update_web_acl/](https://www.paws-r-sdk.com/docs/wafregional_update_web_acl/) for full documentation.
 #'
-#' @param WebACLId &#91;required&#93; The `WebACLId` of the WebACL that you want to update. `WebACLId` is
-#' returned by [`create_web_acl`][wafregional_create_web_acl] and by
-#' [`list_web_ac_ls`][wafregional_list_web_ac_ls].
-#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
-#' [`get_change_token`][wafregional_get_change_token].
+#' @param WebACLId &#91;required&#93; The `WebACLId` of the WebACL that you want to update. `WebACLId` is returned by [`create_web_acl`][wafregional_create_web_acl] and by [`list_web_ac_ls`][wafregional_list_web_ac_ls].
+#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to [`get_change_token`][wafregional_get_change_token].
 #' @param Updates An array of updates to make to the WebACL.
 #' 
-#' An array of `WebACLUpdate` objects that you want to insert into or
-#' delete from a WebACL. For more information, see the applicable data
-#' types:
+#' An array of `WebACLUpdate` objects that you want to insert into or delete from a WebACL. For more information, see the applicable data types:
 #' 
 #' -   WebACLUpdate: Contains `Action` and `ActivatedRule`
 #' 
-#' -   ActivatedRule: Contains `Action`, `OverrideAction`, `Priority`,
-#'     `RuleId`, and `Type`. `ActivatedRule|OverrideAction` applies only
-#'     when updating or adding a `RuleGroup` to a `WebACL`. In this case,
-#'     you do not use `ActivatedRule|Action`. For all other update
-#'     requests, `ActivatedRule|Action` is used instead of
-#'     `ActivatedRule|OverrideAction`.
+#' -   ActivatedRule: Contains `Action`, `OverrideAction`, `Priority`, `RuleId`, and `Type`. `ActivatedRule|OverrideAction` applies only when updating or adding a `RuleGroup` to a `WebACL`. In this case, you do not use `ActivatedRule|Action`. For all other update requests, `ActivatedRule|Action` is used instead of `ActivatedRule|OverrideAction`.
 #' 
 #' -   WafAction: Contains `Type`
-#' @param DefaultAction A default action for the web ACL, either ALLOW or BLOCK. AWS WAF
-#' performs the default action if a request doesn't match the criteria in
-#' any of the rules in a web ACL.
+#' @param DefaultAction A default action for the web ACL, either ALLOW or BLOCK. AWS WAF performs the default action if a request doesn't match the criteria in any of the rules in a web ACL.
 #'
 #' @keywords internal
 #'
@@ -3065,15 +2659,9 @@ wafregional_update_web_acl <- function(WebACLId, ChangeToken, Updates = NULL, De
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafregional_update_xss_match_set/](https://www.paws-r-sdk.com/docs/wafregional_update_xss_match_set/) for full documentation.
 #'
-#' @param XssMatchSetId &#91;required&#93; The `XssMatchSetId` of the `XssMatchSet` that you want to update.
-#' `XssMatchSetId` is returned by
-#' [`create_xss_match_set`][wafregional_create_xss_match_set] and by
-#' [`list_xss_match_sets`][wafregional_list_xss_match_sets].
-#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
-#' [`get_change_token`][wafregional_get_change_token].
-#' @param Updates &#91;required&#93; An array of `XssMatchSetUpdate` objects that you want to insert into or
-#' delete from an XssMatchSet. For more information, see the applicable
-#' data types:
+#' @param XssMatchSetId &#91;required&#93; The `XssMatchSetId` of the `XssMatchSet` that you want to update. `XssMatchSetId` is returned by [`create_xss_match_set`][wafregional_create_xss_match_set] and by [`list_xss_match_sets`][wafregional_list_xss_match_sets].
+#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to [`get_change_token`][wafregional_get_change_token].
+#' @param Updates &#91;required&#93; An array of `XssMatchSetUpdate` objects that you want to insert into or delete from an XssMatchSet. For more information, see the applicable data types:
 #' 
 #' -   XssMatchSetUpdate: Contains `Action` and `XssMatchTuple`
 #' 

@@ -9,42 +9,38 @@ kms_list_grants(
   Marker = NULL,
   KeyId,
   GrantId = NULL,
-  GranteePrincipal = NULL
+  GranteePrincipal = NULL,
+  GranteeServicePrincipal = NULL
 )
 }
 \arguments{
-\item{Limit}{Use this parameter to specify the maximum number of items to return.
-When this value is present, KMS does not return more than the specified
-number of items, but it might return fewer.
+\item{Limit}{Use this parameter to specify the maximum number of items to return. When this value is present, KMS does not return more than the specified number of items, but it might return fewer.
 
-This value is optional. If you include a value, it must be between 1 and
-100, inclusive. If you do not include a value, it defaults to 50.}
+This value is optional. If you include a value, it must be between 1 and 100, inclusive. If you do not include a value, it defaults to 50.}
 
-\item{Marker}{Use this parameter in a subsequent request after you receive a response
-with truncated results. Set it to the value of \code{NextMarker} from the
-truncated response you just received.}
+\item{Marker}{Use this parameter in a subsequent request after you receive a response with truncated results. Set it to the value of \code{NextMarker} from the truncated response you just received.}
 
-\item{KeyId}{[required] Returns only grants for the specified KMS key. This parameter is
-required.
+\item{KeyId}{[required] Returns only grants for the specified KMS key. This parameter is required.
 
-Specify the key ID or key ARN of the KMS key. To specify a KMS key in a
-different Amazon Web Services account, you must use the key ARN.
+Specify the key ID or key ARN of the KMS key. To specify a KMS key in a different Amazon Web Services account, you must use the key ARN.
 
 For example:
 \itemize{
 \item Key ID: \verb{1234abcd-12ab-34cd-56ef-1234567890ab}
-\item Key ARN:
-\verb{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
+\item Key ARN: \verb{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
 }
 
-To get the key ID and key ARN for a KMS key, use
-\code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
+To get the key ID and key ARN for a KMS key, use \code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
 
-\item{GrantId}{Returns only the grant with the specified grant ID. The grant ID
-uniquely identifies the grant.}
+\item{GrantId}{Returns only the grant with the specified grant ID. The grant ID uniquely identifies the grant.}
 
-\item{GranteePrincipal}{Returns only grants where the specified principal is the grantee
-principal for the grant.}
+\item{GranteePrincipal}{Returns only grants where the specified principal is the grantee principal for the grant.
+
+You can specify either \code{GranteePrincipal} or \code{GranteeServicePrincipal}, but not both.}
+
+\item{GranteeServicePrincipal}{Returns only grants where the specified Amazon Web Services service principal is the grantee service principal for the grant. This filter is only usable by callers in a service principal.
+
+You can specify either \code{GranteePrincipal} or \code{GranteeServicePrincipal}, but not both.}
 }
 \description{
 Gets a list of all grants for the specified KMS key.

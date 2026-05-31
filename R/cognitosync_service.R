@@ -5,27 +5,11 @@ NULL
 #' Amazon Cognito Sync
 #'
 #' @description
-#' Amazon Cognito Sync provides an AWS service and client library that
-#' enable cross-device syncing of application-related user data. High-level
-#' client libraries are available for both iOS and Android. You can use
-#' these libraries to persist data locally so that it's available even if
-#' the device is offline. Developer credentials don't need to be stored on
-#' the mobile device to access the service. You can use Amazon Cognito to
-#' obtain a normalized user ID and credentials. User data is persisted in a
-#' dataset that can store up to 1 MB of key-value pairs, and you can have
-#' up to 20 datasets per user identity.
+#' Amazon Cognito Sync provides an AWS service and client library that enable cross-device syncing of application-related user data. High-level client libraries are available for both iOS and Android. You can use these libraries to persist data locally so that it's available even if the device is offline. Developer credentials don't need to be stored on the mobile device to access the service. You can use Amazon Cognito to obtain a normalized user ID and credentials. User data is persisted in a dataset that can store up to 1 MB of key-value pairs, and you can have up to 20 datasets per user identity.
 #' 
-#' With Amazon Cognito Sync, the data stored for each identity is
-#' accessible only to credentials assigned to that identity. In order to
-#' use the Cognito Sync service, you need to make API calls using
-#' credentials retrieved with [Amazon Cognito Identity
-#' service](https://docs.aws.amazon.com/cognitoidentity/latest/APIReference/Welcome.html).
+#' With Amazon Cognito Sync, the data stored for each identity is accessible only to credentials assigned to that identity. In order to use the Cognito Sync service, you need to make API calls using credentials retrieved with [Amazon Cognito Identity service](https://docs.aws.amazon.com/cognitoidentity/latest/APIReference/Welcome.html).
 #' 
-#' If you want to use Cognito Sync in an Android or iOS application, you
-#' will probably want to make API calls via the AWS Mobile SDK. To learn
-#' more, see the [Developer Guide for
-#' Android](https://docs.amplify.aws/android/) and the [Developer Guide for
-#' iOS](https://docs.amplify.aws/swift/).
+#' If you want to use Cognito Sync in an Android or iOS application, you will probably want to make API calls via the AWS Mobile SDK. To learn more, see the [Developer Guide for Android](https://docs.amplify.aws/android/) and the [Developer Guide for iOS](https://docs.amplify.aws/swift/).
 #'
 #' @param
 #' config
@@ -158,7 +142,7 @@ cognitosync <- function(config = list(), credentials = list(), endpoint = NULL, 
 
 .cognitosync$metadata <- list(
   service_name = "cognito-sync",
-  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "cognito-sync.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "cognito-sync.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "cognito-sync.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "cognito-sync.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "cognito-sync.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "cognito-sync.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "cognito-sync.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "cognito-sync.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "cognito-sync.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "cognito-sync.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "cognito-sync.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "cognito-sync.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "cognito-sync.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "cognito-sync.{region}.csp.hci.ic.gov", global = FALSE), "^eusc\\-(de)\\-\\w+\\-\\d+$" = list(endpoint = "cognito-sync.{region}.amazonaws.eu", global = FALSE)),
   service_id = "Cognito Sync",
   api_version = "2014-06-30",
   signing_name = "cognito-sync",

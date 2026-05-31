@@ -10,8 +10,7 @@ ssoadmin_delete_application_authentication_method(
 )
 }
 \arguments{
-\item{ApplicationArn}{[required] Specifies the ARN of the application with the authentication method to
-delete.}
+\item{ApplicationArn}{[required] Specifies the ARN of the application with the authentication method to delete.}
 
 \item{AuthenticationMethodType}{[required] Specifies the authentication method type to delete from the application.}
 }

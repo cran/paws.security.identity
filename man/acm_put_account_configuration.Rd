@@ -9,13 +9,7 @@ acm_put_account_configuration(ExpiryEvents = NULL, IdempotencyToken)
 \arguments{
 \item{ExpiryEvents}{Specifies expiration events associated with an account.}
 
-\item{IdempotencyToken}{[required] Customer-chosen string used to distinguish between calls to
-\code{\link[=acm_put_account_configuration]{put_account_configuration}}.
-Idempotency tokens time out after one hour. If you call
-\code{\link[=acm_put_account_configuration]{put_account_configuration}} multiple
-times with the same unexpired idempotency token, ACM treats it as the
-same request and returns the original result. If you change the
-idempotency token for each call, ACM treats each call as a new request.}
+\item{IdempotencyToken}{[required] Customer-chosen string used to distinguish between calls to \code{\link[=acm_put_account_configuration]{put_account_configuration}}. Idempotency tokens time out after one hour. If you call \code{\link[=acm_put_account_configuration]{put_account_configuration}} multiple times with the same unexpired idempotency token, ACM treats it as the same request and returns the original result. If you change the idempotency token for each call, ACM treats each call as a new request.}
 }
 \description{
 Adds or modifies account-level configurations in ACM.

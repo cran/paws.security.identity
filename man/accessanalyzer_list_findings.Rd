@@ -13,8 +13,7 @@ accessanalyzer_list_findings(
 )
 }
 \arguments{
-\item{analyzerArn}{[required] The \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources}{ARN of the analyzer}
-to retrieve findings from.}
+\item{analyzerArn}{[required] The \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources}{ARN of the analyzer} to retrieve findings from.}
 
 \item{filter}{A filter to match for the findings to return.}
 

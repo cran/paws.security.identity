@@ -7,11 +7,7 @@ NULL
 #' @description
 #' Security Token Service
 #' 
-#' Security Token Service (STS) enables you to request temporary,
-#' limited-privilege credentials for users. This guide provides
-#' descriptions of the STS API. For more information about using this
-#' service, see [Temporary Security
-#' Credentials](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html).
+#' Security Token Service (STS) enables you to request temporary, limited-privilege credentials for users. This guide provides descriptions of the STS API. For more information about using this service, see [Temporary Security Credentials](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html).
 #'
 #' @param
 #' config
@@ -125,8 +121,10 @@ NULL
 #'  \link[=sts_decode_authorization_message]{decode_authorization_message} \tab Decodes additional information about the authorization status of a request from an encoded message returned in response to an Amazon Web Services request\cr
 #'  \link[=sts_get_access_key_info]{get_access_key_info} \tab Returns the account identifier for the specified access key ID\cr
 #'  \link[=sts_get_caller_identity]{get_caller_identity} \tab Returns details about the IAM user or role whose credentials are used to call the operation\cr
+#'  \link[=sts_get_delegated_access_token]{get_delegated_access_token} \tab Exchanges a trade-in token for temporary Amazon Web Services credentials with the permissions associated with the assumed principal\cr
 #'  \link[=sts_get_federation_token]{get_federation_token} \tab Returns a set of temporary security credentials (consisting of an access key ID, a secret access key, and a security token) for a user\cr
-#'  \link[=sts_get_session_token]{get_session_token} \tab Returns a set of temporary credentials for an Amazon Web Services account or IAM user
+#'  \link[=sts_get_session_token]{get_session_token} \tab Returns a set of temporary credentials for an Amazon Web Services account or IAM user\cr
+#'  \link[=sts_get_web_identity_token]{get_web_identity_token} \tab Returns a signed JSON Web Token (JWT) that represents the calling Amazon Web Services identity
 #' }
 #'
 #' @return
@@ -158,7 +156,7 @@ sts <- function(config = list(), credentials = list(), endpoint = NULL, region =
 
 .sts$metadata <- list(
   service_name = "sts",
-  endpoints = list("aws-global" = list(endpoint = "sts.amazonaws.com", global = TRUE, signing_region = "us-east-1"), "us-east-1" = list(endpoint = "sts.amazonaws.com", global = TRUE), "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "sts.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "sts.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "sts.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "sts.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "sts.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "sts.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "sts.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("aws-global" = list(endpoint = "sts.amazonaws.com", global = TRUE, signing_region = "us-east-1"), "us-east-1" = list(endpoint = "sts.amazonaws.com", global = TRUE), "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "sts.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "sts.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "sts.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "sts.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "sts.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "sts.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "sts.{region}.csp.hci.ic.gov", global = FALSE), "^eusc\\-(de)\\-\\w+\\-\\d+$" = list(endpoint = "sts.{region}.amazonaws.eu", global = FALSE)),
   service_id = "STS",
   api_version = "2011-06-15",
   signing_name = "sts",

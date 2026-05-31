@@ -8,8 +8,7 @@ organization}
 inspector2_disable_delegated_admin_account(delegatedAdminAccountId)
 }
 \arguments{
-\item{delegatedAdminAccountId}{[required] The Amazon Web Services account ID of the current Amazon Inspector
-delegated administrator.}
+\item{delegatedAdminAccountId}{[required] The Amazon Web Services account ID of the current Amazon Inspector delegated administrator.}
 }
 \description{
 Disables the Amazon Inspector delegated administrator for your organization.

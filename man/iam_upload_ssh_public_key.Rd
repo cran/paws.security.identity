@@ -9,25 +9,15 @@ iam_upload_ssh_public_key(UserName, SSHPublicKeyBody)
 \arguments{
 \item{UserName}{[required] The name of the IAM user to associate the SSH public key with.
 
-This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
-consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: _+=,.@-}
+This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-}
 
-\item{SSHPublicKeyBody}{[required] The SSH public key. The public key must be encoded in ssh-rsa format or
-PEM format. The minimum bit-length of the public key is 2048 bits. For
-example, you can generate a 2048-bit key, and the resulting PEM file is
-1679 bytes long.
+\item{SSHPublicKeyBody}{[required] The SSH public key. The public key must be encoded in ssh-rsa format or PEM format. The minimum bit-length of the public key is 2048 bits. For example, you can generate a 2048-bit key, and the resulting PEM file is 1679 bytes long.
 
-The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} used to
-validate this parameter is a string of characters consisting of the
-following:
+The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} used to validate this parameter is a string of characters consisting of the following:
 \itemize{
-\item Any printable ASCII character ranging from the space character
-(\code{U+0020}) through the end of the ASCII character range
-\item The printable characters in the Basic Latin and Latin-1 Supplement
-character set (through \verb{U+00FF})
-\item The special characters tab (\code{U+0009}), line feed (\verb{U+000A}), and
-carriage return (\verb{U+000D})
+\item Any printable ASCII character ranging from the space character (\code{U+0020}) through the end of the ASCII character range
+\item The printable characters in the Basic Latin and Latin-1 Supplement character set (through \verb{U+00FF})
+\item The special characters tab (\code{U+0009}), line feed (\verb{U+000A}), and carriage return (\verb{U+000D})
 }}
 }
 \description{

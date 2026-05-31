@@ -11,7 +11,8 @@ directoryservice_create_directory(
   Description = NULL,
   Size,
   VpcSettings = NULL,
-  Tags = NULL
+  Tags = NULL,
+  NetworkType = NULL
 )
 }
 \arguments{
@@ -19,45 +20,34 @@ directoryservice_create_directory(
 
 \item{ShortName}{The NetBIOS name of the directory, such as \code{CORP}.}
 
-\item{Password}{[required] The password for the directory administrator. The directory creation
-process creates a directory administrator account with the user name
-\code{Administrator} and this password.
+\item{Password}{[required] The password for the directory administrator. The directory creation process creates a directory administrator account with the user name \code{Administrator} and this password.
 
-If you need to change the password for the administrator account, you
-can use the
-\code{\link[=directoryservice_reset_user_password]{reset_user_password}} API call.
+If you need to change the password for the administrator account, you can use the \code{\link[=directoryservice_reset_user_password]{reset_user_password}} API call.
 
-The regex pattern for this string is made up of the following
-conditions:
+The regex pattern for this string is made up of the following conditions:
 \itemize{
 \item Length (?=^.\{8,64\}$) – Must be between 8 and 64 characters
 }
 
-AND any 3 of the following password complexity rules required by Active
-Directory:
+AND any 3 of the following password complexity rules required by Active Directory:
 \itemize{
-\item Numbers and upper case and lowercase
-(?=.\emph{\\d)(?=.}[A-Z])(?=.*[a-z])
-\item Numbers and special characters and lower case
-(?=.\emph{\\d)(?=.}[^A-Za-z0-9\\s])(?=.*[a-z])
-\item Special characters and upper case and lower case
-(?=.\emph{[^A-Za-z0-9\\s])(?=.}[A-Z])(?=.*[a-z])
-\item Numbers and upper case and special characters
-(?=.\emph{\\d)(?=.}[A-Z])(?=.*[^A-Za-z0-9\\s])
+\item Numbers and upper case and lowercase (?=.\emph{\\d)(?=.}[A-Z])(?=.*[a-z])
+\item Numbers and special characters and lower case (?=.\emph{\\d)(?=.}[^A-Za-z0-9\\s])(?=.*[a-z])
+\item Special characters and upper case and lower case (?=.\emph{[^A-Za-z0-9\\s])(?=.}[A-Z])(?=.*[a-z])
+\item Numbers and upper case and special characters (?=.\emph{\\d)(?=.}[A-Z])(?=.*[^A-Za-z0-9\\s])
 }
 
-For additional information about how Active Directory passwords are
-enforced, see \href{https://learn.microsoft.com/en-us/windows/security/threat-protection/security-policy-settings/password-must-meet-complexity-requirements}{Password must meet complexity requirements}
-on the Microsoft website.}
+For additional information about how Active Directory passwords are enforced, see \href{https://learn.microsoft.com/en-us/windows/security/threat-protection/security-policy-settings/password-must-meet-complexity-requirements}{Password must meet complexity requirements} on the Microsoft website.}
 
 \item{Description}{A description for the directory.}
 
 \item{Size}{[required] The size of the directory.}
 
-\item{VpcSettings}{A DirectoryVpcSettings object that contains additional information for
-the operation.}
+\item{VpcSettings}{A DirectoryVpcSettings object that contains additional information for the operation.}
 
 \item{Tags}{The tags to be assigned to the Simple AD directory.}
+
+\item{NetworkType}{The network type for your directory. Simple AD supports IPv4 and Dual-stack only.}
 }
 \description{
 Creates a Simple AD directory. For more information, see \href{https://docs.aws.amazon.com/directoryservice/latest/admin-guide/directory_simple_ad.html}{Simple Active Directory} in the \emph{Directory Service Admin Guide}.

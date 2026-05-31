@@ -17,14 +17,11 @@ directoryservice_create_computer(
 
 \item{ComputerName}{[required] The name of the computer account.}
 
-\item{Password}{[required] A one-time password that is used to join the computer to the directory.
-You should generate a random, strong password to use for this parameter.}
+\item{Password}{[required] A one-time password that is used to join the computer to the directory. You should generate a random, strong password to use for this parameter.}
 
-\item{OrganizationalUnitDistinguishedName}{The fully-qualified distinguished name of the organizational unit to
-place the computer account in.}
+\item{OrganizationalUnitDistinguishedName}{The fully-qualified distinguished name of the organizational unit to place the computer account in.}
 
-\item{ComputerAttributes}{An array of Attribute objects that contain any LDAP attributes to apply
-to the computer account.}
+\item{ComputerAttributes}{An array of Attribute objects that contain any LDAP attributes to apply to the computer account.}
 }
 \description{
 Creates an Active Directory computer object in the specified directory.

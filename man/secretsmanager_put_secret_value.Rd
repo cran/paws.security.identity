@@ -2,8 +2,8 @@
 % Please edit documentation in R/secretsmanager_operations.R
 \name{secretsmanager_put_secret_value}
 \alias{secretsmanager_put_secret_value}
-\title{Creates a new version with a new encrypted secret value and attaches it
-to the secret}
+\title{Creates a new version of your secret by creating a new encrypted value
+and attaching it to the secret}
 \usage{
 secretsmanager_put_secret_value(
   SecretId,
@@ -17,94 +17,53 @@ secretsmanager_put_secret_value(
 \arguments{
 \item{SecretId}{[required] The ARN or name of the secret to add a new version to.
 
-For an ARN, we recommend that you specify a complete ARN rather than a
-partial ARN. See \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/troubleshoot.html#ARN_secretnamehyphen}{Finding a secret from a partial ARN}.
+For an ARN, we recommend that you specify a complete ARN rather than a partial ARN. See \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/troubleshoot.html#ARN_secretnamehyphen}{Finding a secret from a partial ARN}.
 
-If the secret doesn't already exist, use
-\code{\link[=secretsmanager_create_secret]{create_secret}} instead.}
+If the secret doesn't already exist, use \code{\link[=secretsmanager_create_secret]{create_secret}} instead.}
 
 \item{ClientRequestToken}{A unique identifier for the new version of the secret.
 
-If you use the Amazon Web Services CLI or one of the Amazon Web Services
-SDKs to call this operation, then you can leave this parameter empty.
-The CLI or SDK generates a random UUID for you and includes it as the
-value for this parameter in the request.
+If you use the Amazon Web Services CLI or one of the Amazon Web Services SDKs to call this operation, then you can leave this parameter empty. The CLI or SDK generates a random UUID for you and includes it as the value for this parameter in the request.
 
-If you generate a raw HTTP request to the Secrets Manager service
-endpoint, then you must generate a \code{ClientRequestToken} and include it
-in the request.
+If you generate a raw HTTP request to the Secrets Manager service endpoint, then you must generate a \code{ClientRequestToken} and include it in the request.
 
-This value helps ensure idempotency. Secrets Manager uses this value to
-prevent the accidental creation of duplicate versions if there are
-failures and retries during a rotation. We recommend that you generate a
-\href{https://en.wikipedia.org/wiki/Universally_unique_identifier}{UUID-type}
-value to ensure uniqueness of your versions within the specified secret.
+This value helps ensure idempotency. Secrets Manager uses this value to prevent the accidental creation of duplicate versions if there are failures and retries during a rotation. We recommend that you generate a \href{https://en.wikipedia.org/wiki/Universally_unique_identifier}{UUID-type} value to ensure uniqueness of your versions within the specified secret.
 \itemize{
-\item If the \code{ClientRequestToken} value isn't already associated with a
-version of the secret then a new version of the secret is created.
-\item If a version with this value already exists and that version's
-\code{SecretString} or \code{SecretBinary} values are the same as those in the
-request then the request is ignored. The operation is idempotent.
-\item If a version with this value already exists and the version of the
-\code{SecretString} and \code{SecretBinary} values are different from those in
-the request, then the request fails because you can't modify a
-secret version. You can only create new versions to store new secret
-values.
+\item If the \code{ClientRequestToken} value isn't already associated with a version of the secret then a new version of the secret is created.
+\item If a version with this value already exists and that version's \code{SecretString} or \code{SecretBinary} values are the same as those in the request then the request is ignored. The operation is idempotent.
+\item If a version with this value already exists and the version of the \code{SecretString} and \code{SecretBinary} values are different from those in the request, then the request fails because you can't modify a secret version. You can only create new versions to store new secret values.
 }
 
 This value becomes the \code{VersionId} of the new version.}
 
-\item{SecretBinary}{The binary data to encrypt and store in the new version of the secret.
-To use this parameter in the command-line tools, we recommend that you
-store your binary data in a file and then pass the contents of the file
-as a parameter.
+\item{SecretBinary}{The binary data to encrypt and store in the new version of the secret. To use this parameter in the command-line tools, we recommend that you store your binary data in a file and then pass the contents of the file as a parameter.
 
 You must include \code{SecretBinary} or \code{SecretString}, but not both.
 
 You can't access this value from the Secrets Manager console.
 
-Sensitive: This field contains sensitive information, so the service
-does not include it in CloudTrail log entries. If you create your own
-log entries, you must also avoid logging the information in this field.}
+Sensitive: This field contains sensitive information, so the service does not include it in CloudTrail log entries. If you create your own log entries, you must also avoid logging the information in this field.}
 
 \item{SecretString}{The text to encrypt and store in the new version of the secret.
 
 You must include \code{SecretBinary} or \code{SecretString}, but not both.
 
-We recommend you create the secret string as JSON key/value pairs, as
-shown in the example.
+We recommend you create the secret string as JSON key/value pairs, as shown in the example.
 
-Sensitive: This field contains sensitive information, so the service
-does not include it in CloudTrail log entries. If you create your own
-log entries, you must also avoid logging the information in this field.}
+Sensitive: This field contains sensitive information, so the service does not include it in CloudTrail log entries. If you create your own log entries, you must also avoid logging the information in this field.}
 
-\item{VersionStages}{A list of staging labels to attach to this version of the secret.
-Secrets Manager uses staging labels to track versions of a secret
-through the rotation process.
+\item{VersionStages}{A list of staging labels to attach to this version of the secret. Secrets Manager uses staging labels to track versions of a secret through the rotation process.
 
-If you specify a staging label that's already associated with a
-different version of the same secret, then Secrets Manager removes the
-label from the other version and attaches it to this version. If you
-specify \code{AWSCURRENT}, and it is already attached to another version,
-then Secrets Manager also moves the staging label \code{AWSPREVIOUS} to the
-version that \code{AWSCURRENT} was removed from.
+If you specify a staging label that's already associated with a different version of the same secret, then Secrets Manager removes the label from the other version and attaches it to this version. If you specify \code{AWSCURRENT}, and it is already attached to another version, then Secrets Manager also moves the staging label \code{AWSPREVIOUS} to the version that \code{AWSCURRENT} was removed from.
 
-If you don't include \code{VersionStages}, then Secrets Manager automatically
-moves the staging label \code{AWSCURRENT} to this version.}
+If you don't include \code{VersionStages}, then Secrets Manager automatically moves the staging label \code{AWSCURRENT} to this version.}
 
-\item{RotationToken}{A unique identifier that indicates the source of the request. For
-cross-account rotation (when you rotate a secret in one account by using
-a Lambda rotation function in another account) and the Lambda rotation
-function assumes an IAM role to call Secrets Manager, Secrets Manager
-validates the identity with the rotation token. For more information,
-see \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets.html}{How rotation works}.
+\item{RotationToken}{A unique identifier that indicates the source of the request. Required for secret rotations using an IAM assumed role or cross-account rotation, in which you rotate a secret in one account by using a Lambda rotation function in another account. In both cases, the rotation function assumes an IAM role to call Secrets Manager, and then Secrets Manager validates the identity using the token. For more information, see \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets.html}{How rotation works} and \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotate-secrets_lambda.html}{Rotation by Lambda functions}.
 
-Sensitive: This field contains sensitive information, so the service
-does not include it in CloudTrail log entries. If you create your own
-log entries, you must also avoid logging the information in this field.}
+Sensitive: This field contains sensitive information, so the service does not include it in CloudTrail log entries. If you create your own log entries, you must also avoid logging the information in this field.}
 }
 \description{
-Creates a new version with a new encrypted secret value and attaches it to the secret. The version can contain a new \code{SecretString} value or a new \code{SecretBinary} value.
+Creates a new version of your secret by creating a new encrypted value and attaching it to the secret. version can contain a new \code{SecretString} value or a new \code{SecretBinary} value.
 
 See \url{https://www.paws-r-sdk.com/docs/secretsmanager_put_secret_value/} for full documentation.
 }

@@ -9,25 +9,22 @@ inspector2_create_filter(
   description = NULL,
   filterCriteria,
   name,
-  reason = NULL,
-  tags = NULL
+  tags = NULL,
+  reason = NULL
 )
 }
 \arguments{
-\item{action}{[required] Defines the action that is to be applied to the findings that match the
-filter.}
+\item{action}{[required] Defines the action that is to be applied to the findings that match the filter.}
 
 \item{description}{A description of the filter.}
 
 \item{filterCriteria}{[required] Defines the criteria to be used in the filter for querying findings.}
 
-\item{name}{[required] The name of the filter. Minimum length of 3. Maximum length of 64. Valid
-characters include alphanumeric characters, dot (.), underscore (_),
-and dash (-). Spaces are not allowed.}
-
-\item{reason}{The reason for creating the filter.}
+\item{name}{[required] The name of the filter. Minimum length of 3. Maximum length of 64. Valid characters include alphanumeric characters, dot (.), underscore (_), and dash (-). Spaces are not allowed.}
 
 \item{tags}{A list of tags for the filter.}
+
+\item{reason}{The reason for creating the filter.}
 }
 \description{
 Creates a filter resource using specified filter criteria. When the filter action is set to \code{SUPPRESS} this action creates a suppression rule.

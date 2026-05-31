@@ -20,8 +20,7 @@ clouddirectory_list_index(
 
 \item{IndexReference}{[required] The reference to the index to list.}
 
-\item{MaxResults}{The maximum number of objects in a single page to retrieve from the
-index during a request. For more information, see \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/limits.html}{Amazon Cloud Directory Limits}.}
+\item{MaxResults}{The maximum number of objects in a single page to retrieve from the index during a request. For more information, see \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/limits.html}{Amazon Cloud Directory Limits}.}
 
 \item{NextToken}{The pagination token.}
 

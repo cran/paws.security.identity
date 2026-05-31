@@ -7,11 +7,10 @@
 cognitoidentityprovider_list_tags_for_resource(ResourceArn)
 }
 \arguments{
-\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the user pool that the tags are
-assigned to.}
+\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the user pool that the tags are assigned to.}
 }
 \description{
-Lists the tags that are assigned to an Amazon Cognito user pool.
+Lists the tags that are assigned to an Amazon Cognito user pool. For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/tagging.html}{Tagging resources}.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_list_tags_for_resource/} for full documentation.
 }

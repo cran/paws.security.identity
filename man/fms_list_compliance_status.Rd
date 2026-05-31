@@ -9,20 +9,9 @@ fms_list_compliance_status(PolicyId, NextToken = NULL, MaxResults = NULL)
 \arguments{
 \item{PolicyId}{[required] The ID of the Firewall Manager policy that you want the details for.}
 
-\item{NextToken}{If you specify a value for \code{MaxResults} and you have more
-\code{PolicyComplianceStatus} objects than the number that you specify for
-\code{MaxResults}, Firewall Manager returns a \code{NextToken} value in the
-response that allows you to list another group of
-\code{PolicyComplianceStatus} objects. For the second and subsequent
-\code{\link[=fms_list_compliance_status]{list_compliance_status}} requests, specify
-the value of \code{NextToken} from the previous response to get information
-about another batch of \code{PolicyComplianceStatus} objects.}
+\item{NextToken}{If you specify a value for \code{MaxResults} and you have more \code{PolicyComplianceStatus} objects than the number that you specify for \code{MaxResults}, Firewall Manager returns a \code{NextToken} value in the response that allows you to list another group of \code{PolicyComplianceStatus} objects. For the second and subsequent \code{\link[=fms_list_compliance_status]{list_compliance_status}} requests, specify the value of \code{NextToken} from the previous response to get information about another batch of \code{PolicyComplianceStatus} objects.}
 
-\item{MaxResults}{Specifies the number of \code{PolicyComplianceStatus} objects that you want
-Firewall Manager to return for this request. If you have more
-\code{PolicyComplianceStatus} objects than the number that you specify for
-\code{MaxResults}, the response includes a \code{NextToken} value that you can use
-to get another batch of \code{PolicyComplianceStatus} objects.}
+\item{MaxResults}{Specifies the number of \code{PolicyComplianceStatus} objects that you want Firewall Manager to return for this request. If you have more \code{PolicyComplianceStatus} objects than the number that you specify for \code{MaxResults}, the response includes a \code{NextToken} value that you can use to get another batch of \code{PolicyComplianceStatus} objects.}
 }
 \description{
 Returns an array of \code{PolicyComplianceStatus} objects. Use \code{PolicyComplianceStatus} to get a summary of which member accounts are protected by the specified policy.

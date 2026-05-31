@@ -8,11 +8,9 @@ topic that Firewall Manager uses to record SNS logs}
 fms_put_notification_channel(SnsTopicArn, SnsRoleName)
 }
 \arguments{
-\item{SnsTopicArn}{[required] The Amazon Resource Name (ARN) of the SNS topic that collects
-notifications from Firewall Manager.}
+\item{SnsTopicArn}{[required] The Amazon Resource Name (ARN) of the SNS topic that collects notifications from Firewall Manager.}
 
-\item{SnsRoleName}{[required] The Amazon Resource Name (ARN) of the IAM role that allows Amazon SNS to
-record Firewall Manager activity.}
+\item{SnsRoleName}{[required] The Amazon Resource Name (ARN) of the IAM role that allows Amazon SNS to record Firewall Manager activity.}
 }
 \description{
 Designates the IAM role and Amazon Simple Notification Service (SNS) topic that Firewall Manager uses to record SNS logs.

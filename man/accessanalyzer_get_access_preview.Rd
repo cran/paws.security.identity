@@ -9,8 +9,7 @@ accessanalyzer_get_access_preview(accessPreviewId, analyzerArn)
 \arguments{
 \item{accessPreviewId}{[required] The unique ID for the access preview.}
 
-\item{analyzerArn}{[required] The \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources}{ARN of the analyzer}
-used to generate the access preview.}
+\item{analyzerArn}{[required] The \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources}{ARN of the analyzer} used to generate the access preview.}
 }
 \description{
 Retrieves information about an access preview for the specified analyzer.

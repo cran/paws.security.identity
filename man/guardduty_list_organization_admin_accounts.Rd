@@ -9,10 +9,7 @@ guardduty_list_organization_admin_accounts(MaxResults = NULL, NextToken = NULL)
 \arguments{
 \item{MaxResults}{The maximum number of results to return in the response.}
 
-\item{NextToken}{A token to use for paginating results that are returned in the response.
-Set the value of this parameter to null for the first request to a list
-action. For subsequent calls, use the \code{NextToken} value returned from
-the previous request to continue listing results after the first page.}
+\item{NextToken}{A token to use for paginating results that are returned in the response. Set the value of this parameter to null for the first request to a list action. For subsequent calls, use the \code{NextToken} value returned from the previous request to continue listing results after the first page.}
 }
 \description{
 Lists the accounts designated as GuardDuty delegated administrators. Only the organization's management account can run this API operation.

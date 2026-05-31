@@ -9,8 +9,7 @@ cleanroomsml_delete_configured_audience_model_policy(
 )
 }
 \arguments{
-\item{configuredAudienceModelArn}{[required] The Amazon Resource Name (ARN) of the configured audience model policy
-that you want to delete.}
+\item{configuredAudienceModelArn}{[required] The Amazon Resource Name (ARN) of the configured audience model policy that you want to delete.}
 }
 \description{
 Deletes the specified configured audience model policy.

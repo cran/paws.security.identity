@@ -8,11 +8,9 @@ information for an AD Connector or Microsoft AD directory}
 directoryservice_update_radius(DirectoryId, RadiusSettings)
 }
 \arguments{
-\item{DirectoryId}{[required] The identifier of the directory for which to update the RADIUS server
-information.}
+\item{DirectoryId}{[required] The identifier of the directory for which to update the RADIUS server information.}
 
-\item{RadiusSettings}{[required] A RadiusSettings object that contains information about the RADIUS
-server.}
+\item{RadiusSettings}{[required] A RadiusSettings object that contains information about the RADIUS server.}
 }
 \description{
 Updates the Remote Authentication Dial In User Service (RADIUS) server information for an AD Connector or Microsoft AD directory.

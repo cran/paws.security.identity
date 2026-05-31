@@ -5,20 +5,26 @@
 \title{Returns information about the service-specific credentials associated
 with the specified IAM user}
 \usage{
-iam_list_service_specific_credentials(UserName = NULL, ServiceName = NULL)
+iam_list_service_specific_credentials(
+  UserName = NULL,
+  ServiceName = NULL,
+  AllUsers = NULL,
+  Marker = NULL,
+  MaxItems = NULL
+)
 }
 \arguments{
-\item{UserName}{The name of the user whose service-specific credentials you want
-information about. If this value is not specified, then the operation
-assumes the user whose credentials are used to call the operation.
+\item{UserName}{The name of the user whose service-specific credentials you want information about. If this value is not specified, then the operation assumes the user whose credentials are used to call the operation.
 
-This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
-consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: _+=,.@-}
+This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-}
 
-\item{ServiceName}{Filters the returned results to only those for the specified Amazon Web
-Services service. If not specified, then Amazon Web Services returns
-service-specific credentials for all services.}
+\item{ServiceName}{Filters the returned results to only those for the specified Amazon Web Services service. If not specified, then Amazon Web Services returns service-specific credentials for all services.}
+
+\item{AllUsers}{A flag indicating whether to list service specific credentials for all users. This parameter cannot be specified together with UserName. When true, returns all credentials associated with the specified service.}
+
+\item{Marker}{Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the Marker from the response that you received to indicate where the next call should start.}
+
+\item{MaxItems}{Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the IsTruncated response element is true.}
 }
 \description{
 Returns information about the service-specific credentials associated with the specified IAM user. If none exists, the operation returns an empty list. The service-specific credentials returned by this operation are used only for authenticating the IAM user to a specific service. For more information about using service-specific credentials to authenticate to an Amazon Web Services service, see \href{https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-gc.html}{Set up service-specific credentials} in the CodeCommit User Guide.

@@ -10,70 +10,31 @@ NULL
 #'
 #' See [https://www.paws-r-sdk.com/docs/acmpca_create_certificate_authority/](https://www.paws-r-sdk.com/docs/acmpca_create_certificate_authority/) for full documentation.
 #'
-#' @param CertificateAuthorityConfiguration &#91;required&#93; Name and bit size of the private key algorithm, the name of the signing
-#' algorithm, and X.500 certificate subject information.
-#' @param RevocationConfiguration Contains information to enable support for Online Certificate Status
-#' Protocol (OCSP), certificate revocation list (CRL), both protocols, or
-#' neither. By default, both certificate validation mechanisms are
-#' disabled.
+#' @param CertificateAuthorityConfiguration &#91;required&#93; Name and bit size of the private key algorithm, the name of the signing algorithm, and X.500 certificate subject information.
+#' @param RevocationConfiguration Contains information to enable support for Online Certificate Status Protocol (OCSP), certificate revocation list (CRL), both protocols, or neither. By default, both certificate validation mechanisms are disabled.
 #' 
 #' The following requirements apply to revocation configurations.
 #' 
-#' -   A configuration disabling CRLs or OCSP must contain only the
-#'     `Enabled=False` parameter, and will fail if other parameters such as
-#'     `CustomCname` or `ExpirationInDays` are included.
+#' -   A configuration disabling CRLs or OCSP must contain only the `Enabled=False` parameter, and will fail if other parameters such as `CustomCname` or `ExpirationInDays` are included.
 #' 
-#' -   In a CRL configuration, the `S3BucketName` parameter must conform to
-#'     [Amazon S3 bucket naming
-#'     rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html).
+#' -   In a CRL configuration, the `S3BucketName` parameter must conform to [Amazon S3 bucket naming rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html).
 #' 
-#' -   A configuration containing a custom Canonical Name (CNAME) parameter
-#'     for CRLs or OCSP must conform to
-#'     [RFC2396](https://www.ietf.org/rfc/rfc2396.txt) restrictions on the
-#'     use of special characters in a CNAME.
+#' -   A configuration containing a custom Canonical Name (CNAME) parameter for CRLs or OCSP must conform to [RFC2396](https://www.ietf.org/rfc/rfc2396.txt) restrictions on the use of special characters in a CNAME.
 #' 
-#' -   In a CRL or OCSP configuration, the value of a CNAME parameter must
-#'     not include a protocol prefix such as "http://" or "https://".
+#' -   In a CRL or OCSP configuration, the value of a CNAME parameter must not include a protocol prefix such as "http://" or "https://".
 #' 
-#' For more information, see the
-#' [OcspConfiguration](https://docs.aws.amazon.com/privateca/latest/APIReference/API_OcspConfiguration.html)
-#' and
-#' [CrlConfiguration](https://docs.aws.amazon.com/privateca/latest/APIReference/API_CrlConfiguration.html)
-#' types.
+#' For more information, see the [OcspConfiguration](https://docs.aws.amazon.com/privateca/latest/APIReference/API_OcspConfiguration.html) and [CrlConfiguration](https://docs.aws.amazon.com/privateca/latest/APIReference/API_CrlConfiguration.html) types.
 #' @param CertificateAuthorityType &#91;required&#93; The type of the certificate authority.
-#' @param IdempotencyToken Custom string that can be used to distinguish between calls to the
-#' **CreateCertificateAuthority** action. Idempotency tokens for
-#' **CreateCertificateAuthority** time out after five minutes. Therefore,
-#' if you call **CreateCertificateAuthority** multiple times with the same
-#' idempotency token within five minutes, Amazon Web Services Private CA
-#' recognizes that you are requesting only certificate authority and will
-#' issue only one. If you change the idempotency token for each call,
-#' Amazon Web Services Private CA recognizes that you are requesting
-#' multiple certificate authorities.
-#' @param KeyStorageSecurityStandard Specifies a cryptographic key management compliance standard used for
-#' handling CA keys.
+#' @param IdempotencyToken Custom string that can be used to distinguish between calls to the **CreateCertificateAuthority** action. Idempotency tokens for **CreateCertificateAuthority** time out after five minutes. Therefore, if you call **CreateCertificateAuthority** multiple times with the same idempotency token within five minutes, Amazon Web Services Private CA recognizes that you are requesting only certificate authority and will issue only one. If you change the idempotency token for each call, Amazon Web Services Private CA recognizes that you are requesting multiple certificate authorities.
+#' @param KeyStorageSecurityStandard Specifies a cryptographic key management compliance standard for handling and protecting CA keys.
 #' 
 #' Default: FIPS_140_2_LEVEL_3_OR_HIGHER
 #' 
-#' Some Amazon Web Services Regions do not support the default. When
-#' creating a CA in these Regions, you must provide
-#' `FIPS_140_2_LEVEL_2_OR_HIGHER` as the argument for
-#' `KeyStorageSecurityStandard`. Failure to do this results in an
-#' `InvalidArgsException` with the message, "A certificate authority cannot
-#' be created in this region with the specified security standard."
+#' Some Amazon Web Services Regions don't support the default value. When you create a CA in these Regions, you must use `CCPC_LEVEL_1_OR_HIGHER` for the `KeyStorageSecurityStandard` parameter. If you don't, the operation returns an `InvalidArgsException` with this message: "A certificate authority cannot be created in this region with the specified security standard."
 #' 
-#' For information about security standard support in various Regions, see
-#' [Storage and security compliance of Amazon Web Services Private CA
-#' private
-#' keys](https://docs.aws.amazon.com/privateca/latest/userguide/data-protection.html#private-keys).
-#' @param Tags Key-value pairs that will be attached to the new private CA. You can
-#' associate up to 50 tags with a private CA. For information using tags
-#' with IAM to manage permissions, see [Controlling Access Using IAM
-#' Tags](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_iam-tags.html).
-#' @param UsageMode Specifies whether the CA issues general-purpose certificates that
-#' typically require a revocation mechanism, or short-lived certificates
-#' that may optionally omit revocation because they expire quickly.
-#' Short-lived certificate validity is limited to seven days.
+#' For information about security standard support in different Amazon Web Services Regions, see [Storage and security compliance of Amazon Web Services Private CA private keys](https://docs.aws.amazon.com/privateca/latest/userguide/data-protection.html#private-keys).
+#' @param Tags Key-value pairs that will be attached to the new private CA. You can associate up to 50 tags with a private CA. For information using tags with IAM to manage permissions, see [Controlling Access Using IAM Tags](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_iam-tags.html).
+#' @param UsageMode Specifies whether the CA issues general-purpose certificates that typically require a revocation mechanism, or short-lived certificates that may optionally omit revocation because they expire quickly. Short-lived certificate validity is limited to seven days.
 #' 
 #' The default value is GENERAL_PURPOSE.
 #'
@@ -107,13 +68,11 @@ acmpca_create_certificate_authority <- function(CertificateAuthorityConfiguratio
 #'
 #' See [https://www.paws-r-sdk.com/docs/acmpca_create_certificate_authority_audit_report/](https://www.paws-r-sdk.com/docs/acmpca_create_certificate_authority_audit_report/) for full documentation.
 #'
-#' @param CertificateAuthorityArn &#91;required&#93; The Amazon Resource Name (ARN) of the CA to be audited. This is of the
-#' form:
+#' @param CertificateAuthorityArn &#91;required&#93; The Amazon Resource Name (ARN) of the CA to be audited. This is of the form:
 #' 
 #' `arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 `.
 #' @param S3BucketName &#91;required&#93; The name of the S3 bucket that will contain the audit report.
-#' @param AuditReportResponseFormat &#91;required&#93; The format in which to create the report. This can be either **JSON** or
-#' **CSV**.
+#' @param AuditReportResponseFormat &#91;required&#93; The format in which to create the report. This can be either **JSON** or **CSV**.
 #'
 #' @keywords internal
 #'
@@ -145,20 +104,12 @@ acmpca_create_certificate_authority_audit_report <- function(CertificateAuthorit
 #'
 #' See [https://www.paws-r-sdk.com/docs/acmpca_create_permission/](https://www.paws-r-sdk.com/docs/acmpca_create_permission/) for full documentation.
 #'
-#' @param CertificateAuthorityArn &#91;required&#93; The Amazon Resource Name (ARN) of the CA that grants the permissions.
-#' You can find the ARN by calling the
-#' [`list_certificate_authorities`][acmpca_list_certificate_authorities]
-#' action. This must have the following form:
+#' @param CertificateAuthorityArn &#91;required&#93; The Amazon Resource Name (ARN) of the CA that grants the permissions. You can find the ARN by calling the [`list_certificate_authorities`][acmpca_list_certificate_authorities] action. This must have the following form:
 #' 
 #' `arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 `.
-#' @param Principal &#91;required&#93; The Amazon Web Services service or identity that receives the
-#' permission. At this time, the only valid principal is
-#' `acm.amazonaws.com`.
+#' @param Principal &#91;required&#93; The Amazon Web Services service or identity that receives the permission. At this time, the only valid principal is `acm.amazonaws.com`.
 #' @param SourceAccount The ID of the calling account.
-#' @param Actions &#91;required&#93; The actions that the specified Amazon Web Services service principal can
-#' use. These include [`issue_certificate`][acmpca_issue_certificate],
-#' [`get_certificate`][acmpca_get_certificate], and
-#' [`list_permissions`][acmpca_list_permissions].
+#' @param Actions &#91;required&#93; The actions that the specified Amazon Web Services service principal can use. These include [`issue_certificate`][acmpca_issue_certificate], [`get_certificate`][acmpca_get_certificate], and [`list_permissions`][acmpca_list_permissions].
 #'
 #' @keywords internal
 #'
@@ -189,13 +140,10 @@ acmpca_create_permission <- function(CertificateAuthorityArn, Principal, SourceA
 #'
 #' See [https://www.paws-r-sdk.com/docs/acmpca_delete_certificate_authority/](https://www.paws-r-sdk.com/docs/acmpca_delete_certificate_authority/) for full documentation.
 #'
-#' @param CertificateAuthorityArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called
-#' [`create_certificate_authority`][acmpca_create_certificate_authority].
-#' This must have the following form:
+#' @param CertificateAuthorityArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called [`create_certificate_authority`][acmpca_create_certificate_authority]. This must have the following form:
 #' 
 #' `arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 `.
-#' @param PermanentDeletionTimeInDays The number of days to make a CA restorable after it has been deleted.
-#' This can be anywhere from 7 to 30 days, with 30 being the default.
+#' @param PermanentDeletionTimeInDays The number of days to make a CA restorable after it has been deleted. This can be anywhere from 7 to 30 days, with 30 being the default.
 #'
 #' @keywords internal
 #'
@@ -227,15 +175,10 @@ acmpca_delete_certificate_authority <- function(CertificateAuthorityArn, Permane
 #'
 #' See [https://www.paws-r-sdk.com/docs/acmpca_delete_permission/](https://www.paws-r-sdk.com/docs/acmpca_delete_permission/) for full documentation.
 #'
-#' @param CertificateAuthorityArn &#91;required&#93; The Amazon Resource Number (ARN) of the private CA that issued the
-#' permissions. You can find the CA's ARN by calling the
-#' [`list_certificate_authorities`][acmpca_list_certificate_authorities]
-#' action. This must have the following form:
+#' @param CertificateAuthorityArn &#91;required&#93; The Amazon Resource Number (ARN) of the private CA that issued the permissions. You can find the CA's ARN by calling the [`list_certificate_authorities`][acmpca_list_certificate_authorities] action. This must have the following form:
 #' 
 #' `arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 `.
-#' @param Principal &#91;required&#93; The Amazon Web Services service or identity that will have its CA
-#' permissions revoked. At this time, the only valid service principal is
-#' `acm.amazonaws.com`
+#' @param Principal &#91;required&#93; The Amazon Web Services service or identity that will have its CA permissions revoked. At this time, the only valid service principal is `acm.amazonaws.com`
 #' @param SourceAccount The Amazon Web Services account that calls this action.
 #'
 #' @keywords internal
@@ -267,11 +210,7 @@ acmpca_delete_permission <- function(CertificateAuthorityArn, Principal, SourceA
 #'
 #' See [https://www.paws-r-sdk.com/docs/acmpca_delete_policy/](https://www.paws-r-sdk.com/docs/acmpca_delete_policy/) for full documentation.
 #'
-#' @param ResourceArn &#91;required&#93; The Amazon Resource Number (ARN) of the private CA that will have its
-#' policy deleted. You can find the CA's ARN by calling the
-#' [`list_certificate_authorities`][acmpca_list_certificate_authorities]
-#' action. The ARN value must have the form
-#' `arn:aws:acm-pca:region:account:certificate-authority/01234567-89ab-cdef-0123-0123456789ab`.
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Number (ARN) of the private CA that will have its policy deleted. You can find the CA's ARN by calling the [`list_certificate_authorities`][acmpca_list_certificate_authorities] action. The ARN value must have the form `arn:aws:acm-pca:region:account:certificate-authority/01234567-89ab-cdef-0123-0123456789ab`.
 #'
 #' @keywords internal
 #'
@@ -303,9 +242,7 @@ acmpca_delete_policy <- function(ResourceArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/acmpca_describe_certificate_authority/](https://www.paws-r-sdk.com/docs/acmpca_describe_certificate_authority/) for full documentation.
 #'
-#' @param CertificateAuthorityArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called
-#' [`create_certificate_authority`][acmpca_create_certificate_authority].
-#' This must be of the form:
+#' @param CertificateAuthorityArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called [`create_certificate_authority`][acmpca_create_certificate_authority]. This must be of the form:
 #' 
 #' `arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 `.
 #'
@@ -339,13 +276,10 @@ acmpca_describe_certificate_authority <- function(CertificateAuthorityArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/acmpca_describe_certificate_authority_audit_report/](https://www.paws-r-sdk.com/docs/acmpca_describe_certificate_authority_audit_report/) for full documentation.
 #'
-#' @param CertificateAuthorityArn &#91;required&#93; The Amazon Resource Name (ARN) of the private CA. This must be of the
-#' form:
+#' @param CertificateAuthorityArn &#91;required&#93; The Amazon Resource Name (ARN) of the private CA. This must be of the form:
 #' 
 #' `arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 `.
-#' @param AuditReportId &#91;required&#93; The report ID returned by calling the
-#' [`create_certificate_authority_audit_report`][acmpca_create_certificate_authority_audit_report]
-#' action.
+#' @param AuditReportId &#91;required&#93; The report ID returned by calling the [`create_certificate_authority_audit_report`][acmpca_create_certificate_authority_audit_report] action.
 #'
 #' @keywords internal
 #'
@@ -373,17 +307,14 @@ acmpca_describe_certificate_authority_audit_report <- function(CertificateAuthor
 #' with you
 #'
 #' @description
-#' Retrieves a certificate from your private CA or one that has been shared with you. The ARN of the certificate is returned when you call the [`issue_certificate`][acmpca_issue_certificate] action. You must specify both the ARN of your private CA and the ARN of the issued certificate when calling the **GetCertificate** action. You can retrieve the certificate if it is in the **ISSUED** state. You can call the [`create_certificate_authority_audit_report`][acmpca_create_certificate_authority_audit_report] action to create a report that contains information about all of the certificates issued and revoked by your private CA.
+#' Retrieves a certificate from your private CA or one that has been shared with you. The ARN of the certificate is returned when you call the [`issue_certificate`][acmpca_issue_certificate] action. You must specify both the ARN of your private CA and the ARN of the issued certificate when calling the **GetCertificate** action. You can retrieve the certificate if it is in the **ISSUED**, **EXPIRED**, or **REVOKED** state. You can call the [`create_certificate_authority_audit_report`][acmpca_create_certificate_authority_audit_report] action to create a report that contains information about all of the certificates issued and revoked by your private CA.
 #'
 #' See [https://www.paws-r-sdk.com/docs/acmpca_get_certificate/](https://www.paws-r-sdk.com/docs/acmpca_get_certificate/) for full documentation.
 #'
-#' @param CertificateAuthorityArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called
-#' [`create_certificate_authority`][acmpca_create_certificate_authority].
-#' This must be of the form:
+#' @param CertificateAuthorityArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called [`create_certificate_authority`][acmpca_create_certificate_authority]. This must be of the form:
 #' 
 #' `arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 `.
-#' @param CertificateArn &#91;required&#93; The ARN of the issued certificate. The ARN contains the certificate
-#' serial number and must be in the following form:
+#' @param CertificateArn &#91;required&#93; The ARN of the issued certificate. The ARN contains the certificate serial number and must be in the following form:
 #' 
 #' `arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012/certificate/286535153982981100925020015808220737245 `
 #'
@@ -451,9 +382,7 @@ acmpca_get_certificate_authority_certificate <- function(CertificateAuthorityArn
 #'
 #' See [https://www.paws-r-sdk.com/docs/acmpca_get_certificate_authority_csr/](https://www.paws-r-sdk.com/docs/acmpca_get_certificate_authority_csr/) for full documentation.
 #'
-#' @param CertificateAuthorityArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called the
-#' [`create_certificate_authority`][acmpca_create_certificate_authority]
-#' action. This must be of the form:
+#' @param CertificateAuthorityArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called the [`create_certificate_authority`][acmpca_create_certificate_authority] action. This must be of the form:
 #' 
 #' `arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 `
 #'
@@ -486,11 +415,7 @@ acmpca_get_certificate_authority_csr <- function(CertificateAuthorityArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/acmpca_get_policy/](https://www.paws-r-sdk.com/docs/acmpca_get_policy/) for full documentation.
 #'
-#' @param ResourceArn &#91;required&#93; The Amazon Resource Number (ARN) of the private CA that will have its
-#' policy retrieved. You can find the CA's ARN by calling the
-#' ListCertificateAuthorities action.
-#' 
-#'      </p> 
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Number (ARN) of the private CA that will have its policy retrieved. You can find the CA's ARN by calling the ListCertificateAuthorities action.
 #'
 #' @keywords internal
 #'
@@ -522,22 +447,13 @@ acmpca_get_policy <- function(ResourceArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/acmpca_import_certificate_authority_certificate/](https://www.paws-r-sdk.com/docs/acmpca_import_certificate_authority_certificate/) for full documentation.
 #'
-#' @param CertificateAuthorityArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called
-#' [`create_certificate_authority`][acmpca_create_certificate_authority].
-#' This must be of the form:
+#' @param CertificateAuthorityArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called [`create_certificate_authority`][acmpca_create_certificate_authority]. This must be of the form:
 #' 
 #' `arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 `
-#' @param Certificate &#91;required&#93; The PEM-encoded certificate for a private CA. This may be a self-signed
-#' certificate in the case of a root CA, or it may be signed by another CA
-#' that you control.
-#' @param CertificateChain A PEM-encoded file that contains all of your certificates, other than
-#' the certificate you're importing, chaining up to your root CA. Your
-#' Amazon Web Services Private CA-hosted or on-premises root certificate is
-#' the last in the chain, and each certificate in the chain signs the one
-#' preceding.
+#' @param Certificate &#91;required&#93; The PEM-encoded certificate for a private CA. This may be a self-signed certificate in the case of a root CA, or it may be signed by another CA that you control.
+#' @param CertificateChain A PEM-encoded file that contains all of your certificates, other than the certificate you're importing, chaining up to your root CA. Your Amazon Web Services Private CA-hosted or on-premises root certificate is the last in the chain, and each certificate in the chain signs the one preceding.
 #' 
-#' This parameter must be supplied when you import a subordinate CA. When
-#' you import a root CA, there is no chain.
+#' This parameter must be supplied when you import a subordinate CA. When you import a root CA, there is no chain.
 #'
 #' @keywords internal
 #'
@@ -569,105 +485,46 @@ acmpca_import_certificate_authority_certificate <- function(CertificateAuthority
 #'
 #' See [https://www.paws-r-sdk.com/docs/acmpca_issue_certificate/](https://www.paws-r-sdk.com/docs/acmpca_issue_certificate/) for full documentation.
 #'
-#' @param ApiPassthrough Specifies X.509 certificate information to be included in the issued
-#' certificate. An `APIPassthrough` or `APICSRPassthrough` template variant
-#' must be selected, or else this parameter is ignored. For more
-#' information about using these templates, see [Understanding Certificate
-#' Templates](https://docs.aws.amazon.com/privateca/latest/userguide/UsingTemplates.html).
+#' @param ApiPassthrough Specifies X.509 certificate information to be included in the issued certificate. An `APIPassthrough` or `APICSRPassthrough` template variant must be selected, or else this parameter is ignored. For more information about using these templates, see [Understanding Certificate Templates](https://docs.aws.amazon.com/privateca/latest/userguide/UsingTemplates.html).
 #' 
-#' If conflicting or duplicate certificate information is supplied during
-#' certificate issuance, Amazon Web Services Private CA applies [order of
-#' operation
-#' rules](https://docs.aws.amazon.com/privateca/latest/userguide/UsingTemplates.html#template-order-of-operations)
-#' to determine what information is used.
-#' @param CertificateAuthorityArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called
-#' [`create_certificate_authority`][acmpca_create_certificate_authority].
-#' This must be of the form:
+#' If conflicting or duplicate certificate information is supplied during certificate issuance, Amazon Web Services Private CA applies [order of operation rules](https://docs.aws.amazon.com/privateca/latest/userguide/UsingTemplates.html#template-order-of-operations) to determine what information is used.
+#' @param CertificateAuthorityArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called [`create_certificate_authority`][acmpca_create_certificate_authority]. This must be of the form:
 #' 
 #' `arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 `
-#' @param Csr &#91;required&#93; The certificate signing request (CSR) for the certificate you want to
-#' issue. As an example, you can use the following OpenSSL command to
-#' create the CSR and a 2048 bit RSA private key.
+#' @param Csr &#91;required&#93; The certificate signing request (CSR) for the certificate you want to issue. As an example, you can use the following OpenSSL command to create the CSR and a 2048 bit RSA private key.
 #' 
 #' `openssl req -new -newkey rsa:2048 -days 365 -keyout private/test_cert_priv_key.pem -out csr/test_cert_.csr`
 #' 
-#' If you have a configuration file, you can then use the following OpenSSL
-#' command. The `usr_cert` block in the configuration file contains your
-#' X509 version 3 extensions.
+#' If you have a configuration file, you can then use the following OpenSSL command. The `usr_cert` block in the configuration file contains your X509 version 3 extensions.
 #' 
 #' `openssl req -new -config openssl_rsa.cnf -extensions usr_cert -newkey rsa:2048 -days 365 -keyout private/test_cert_priv_key.pem -out csr/test_cert_.csr`
 #' 
-#' Note: A CSR must provide either a *subject name* or a *subject
-#' alternative name* or the request will be rejected.
-#' @param SigningAlgorithm &#91;required&#93; The name of the algorithm that will be used to sign the certificate to
-#' be issued.
+#' Note: A CSR must provide either a *subject name* or a *subject alternative name* or the request will be rejected.
+#' @param SigningAlgorithm &#91;required&#93; The name of the algorithm that will be used to sign the certificate to be issued.
 #' 
-#' This parameter should not be confused with the `SigningAlgorithm`
-#' parameter used to sign a CSR in the
-#' [`create_certificate_authority`][acmpca_create_certificate_authority]
-#' action.
+#' This parameter should not be confused with the `SigningAlgorithm` parameter used to sign a CSR in the [`create_certificate_authority`][acmpca_create_certificate_authority] action.
 #' 
-#' The specified signing algorithm family (RSA or ECDSA) must match the
-#' algorithm family of the CA's secret key.
-#' @param TemplateArn Specifies a custom configuration template to use when issuing a
-#' certificate. If this parameter is not provided, Amazon Web Services
-#' Private CA defaults to the `EndEntityCertificate/V1` template. For CA
-#' certificates, you should choose the shortest path length that meets your
-#' needs. The path length is indicated by the PathLen*N* portion of the
-#' ARN, where *N* is the [CA
-#' depth](https://docs.aws.amazon.com/privateca/latest/userguide/PcaTerms.html#terms-cadepth).
+#' The specified signing algorithm family (RSA or ECDSA) must match the algorithm family of the CA's secret key.
+#' @param TemplateArn Specifies a custom configuration template to use when issuing a certificate. If this parameter is not provided, Amazon Web Services Private CA defaults to the `EndEntityCertificate/V1` template. For CA certificates, you should choose the shortest path length that meets your needs. The path length is indicated by the PathLen*N* portion of the ARN, where *N* is the [CA depth](https://docs.aws.amazon.com/privateca/latest/userguide/PcaTerms.html#terms-cadepth).
 #' 
-#' Note: The CA depth configured on a subordinate CA certificate must not
-#' exceed the limit set by its parents in the CA hierarchy.
+#' Note: The CA depth configured on a subordinate CA certificate must not exceed the limit set by its parents in the CA hierarchy.
 #' 
-#' For a list of `TemplateArn` values supported by Amazon Web Services
-#' Private CA, see [Understanding Certificate
-#' Templates](https://docs.aws.amazon.com/privateca/latest/userguide/UsingTemplates.html).
-#' @param Validity &#91;required&#93; Information describing the end of the validity period of the
-#' certificate. This parameter sets the “Not After” date for the
-#' certificate.
+#' For a list of `TemplateArn` values supported by Amazon Web Services Private CA, see [Understanding Certificate Templates](https://docs.aws.amazon.com/privateca/latest/userguide/UsingTemplates.html).
+#' @param Validity &#91;required&#93; Information describing the end of the validity period of the certificate. This parameter sets the “Not After” date for the certificate.
 #' 
-#' Certificate validity is the period of time during which a certificate is
-#' valid. Validity can be expressed as an explicit date and time when the
-#' certificate expires, or as a span of time after issuance, stated in
-#' days, months, or years. For more information, see
-#' [Validity](https://datatracker.ietf.org/doc/html/rfc5280#section-4.1.2.5)
-#' in RFC 5280.
+#' Certificate validity is the period of time during which a certificate is valid. Validity can be expressed as an explicit date and time when the certificate expires, or as a span of time after issuance, stated in days, months, or years. For more information, see [Validity](https://datatracker.ietf.org/doc/html/rfc5280#section-4.1.2.5) in RFC 5280.
 #' 
-#' This value is unaffected when `ValidityNotBefore` is also specified. For
-#' example, if `Validity` is set to 20 days in the future, the certificate
-#' will expire 20 days from issuance time regardless of the
-#' `ValidityNotBefore` value.
+#' This value is unaffected when `ValidityNotBefore` is also specified. For example, if `Validity` is set to 20 days in the future, the certificate will expire 20 days from issuance time regardless of the `ValidityNotBefore` value.
 #' 
-#' The end of the validity period configured on a certificate must not
-#' exceed the limit set on its parents in the CA hierarchy.
-#' @param ValidityNotBefore Information describing the start of the validity period of the
-#' certificate. This parameter sets the “Not Before" date for the
-#' certificate.
+#' The end of the validity period configured on a certificate must not exceed the limit set on its parents in the CA hierarchy.
+#' @param ValidityNotBefore Information describing the start of the validity period of the certificate. This parameter sets the “Not Before" date for the certificate.
 #' 
-#' By default, when issuing a certificate, Amazon Web Services Private CA
-#' sets the "Not Before" date to the issuance time minus 60 minutes. This
-#' compensates for clock inconsistencies across computer systems. The
-#' `ValidityNotBefore` parameter can be used to customize the “Not Before”
-#' value.
+#' By default, when issuing a certificate, Amazon Web Services Private CA sets the "Not Before" date to the issuance time minus 60 minutes. This compensates for clock inconsistencies across computer systems. The `ValidityNotBefore` parameter can be used to customize the “Not Before” value.
 #' 
-#' Unlike the `Validity` parameter, the `ValidityNotBefore` parameter is
-#' optional.
+#' Unlike the `Validity` parameter, the `ValidityNotBefore` parameter is optional.
 #' 
-#' The `ValidityNotBefore` value is expressed as an explicit date and time,
-#' using the `Validity` type value `ABSOLUTE`. For more information, see
-#' [Validity](https://docs.aws.amazon.com/privateca/latest/APIReference/API_Validity.html)
-#' in this API reference and
-#' [Validity](https://datatracker.ietf.org/doc/html/rfc5280#section-4.1.2.5)
-#' in RFC 5280.
-#' @param IdempotencyToken Alphanumeric string that can be used to distinguish between calls to the
-#' **IssueCertificate** action. Idempotency tokens for **IssueCertificate**
-#' time out after five minutes. Therefore, if you call **IssueCertificate**
-#' multiple times with the same idempotency token within five minutes,
-#' Amazon Web Services Private CA recognizes that you are requesting only
-#' one certificate and will issue only one. If you change the idempotency
-#' token for each call, Amazon Web Services Private CA recognizes that you
-#' are requesting multiple certificates.
+#' The `ValidityNotBefore` value is expressed as an explicit date and time, using the `Validity` type value `ABSOLUTE`. For more information, see [Validity](https://docs.aws.amazon.com/privateca/latest/APIReference/API_Validity.html) in this API reference and [Validity](https://datatracker.ietf.org/doc/html/rfc5280#section-4.1.2.5) in RFC 5280.
+#' @param IdempotencyToken Alphanumeric string that can be used to distinguish between calls to the **IssueCertificate** action. Idempotency tokens for **IssueCertificate** time out after five minutes. Therefore, if you call **IssueCertificate** multiple times with the same idempotency token within five minutes, Amazon Web Services Private CA recognizes that you are requesting only one certificate and will issue only one. If you change the idempotency token for each call, Amazon Web Services Private CA recognizes that you are requesting multiple certificates.
 #'
 #' @keywords internal
 #'
@@ -699,19 +556,11 @@ acmpca_issue_certificate <- function(ApiPassthrough = NULL, CertificateAuthority
 #'
 #' See [https://www.paws-r-sdk.com/docs/acmpca_list_certificate_authorities/](https://www.paws-r-sdk.com/docs/acmpca_list_certificate_authorities/) for full documentation.
 #'
-#' @param MaxResults Use this parameter when paginating results to specify the maximum number
-#' of items to return in the response on each page. If additional items
-#' exist beyond the number you specify, the `NextToken` element is sent in
-#' the response. Use this `NextToken` value in a subsequent request to
-#' retrieve additional items.
+#' @param MaxResults Use this parameter when paginating results to specify the maximum number of items to return in the response on each page. If additional items exist beyond the number you specify, the `NextToken` element is sent in the response. Use this `NextToken` value in a subsequent request to retrieve additional items.
 #' 
-#' Although the maximum value is 1000, the action only returns a maximum of
-#' 100 items.
-#' @param NextToken Use this parameter when paginating results in a subsequent request after
-#' you receive a response with truncated results. Set it to the value of
-#' the `NextToken` parameter from the response you just received.
-#' @param ResourceOwner Use this parameter to filter the returned set of certificate authorities
-#' based on their owner. The default is SELF.
+#' Although the maximum value is 1000, the action only returns a maximum of 100 items.
+#' @param NextToken Use this parameter when paginating results in a subsequent request after you receive a response with truncated results. Set it to the value of the `NextToken` parameter from the response you just received.
+#' @param ResourceOwner Use this parameter to filter the returned set of certificate authorities based on their owner. The default is SELF.
 #'
 #' @keywords internal
 #'
@@ -743,22 +592,9 @@ acmpca_list_certificate_authorities <- function(MaxResults = NULL, NextToken = N
 #'
 #' See [https://www.paws-r-sdk.com/docs/acmpca_list_permissions/](https://www.paws-r-sdk.com/docs/acmpca_list_permissions/) for full documentation.
 #'
-#' @param MaxResults When paginating results, use this parameter to specify the maximum
-#' number of items to return in the response. If additional items exist
-#' beyond the number you specify, the **NextToken** element is sent in the
-#' response. Use this **NextToken** value in a subsequent request to
-#' retrieve additional items.
-#' @param NextToken When paginating results, use this parameter in a subsequent request
-#' after you receive a response with truncated results. Set it to the value
-#' of **NextToken** from the response you just received.
-#' @param CertificateAuthorityArn &#91;required&#93; The Amazon Resource Number (ARN) of the private CA to inspect. You can
-#' find the ARN by calling the
-#' [`list_certificate_authorities`][acmpca_list_certificate_authorities]
-#' action. This must be of the form:
-#' `arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012`
-#' You can get a private CA's ARN by running the
-#' [`list_certificate_authorities`][acmpca_list_certificate_authorities]
-#' action.
+#' @param MaxResults When paginating results, use this parameter to specify the maximum number of items to return in the response. If additional items exist beyond the number you specify, the **NextToken** element is sent in the response. Use this **NextToken** value in a subsequent request to retrieve additional items.
+#' @param NextToken When paginating results, use this parameter in a subsequent request after you receive a response with truncated results. Set it to the value of **NextToken** from the response you just received.
+#' @param CertificateAuthorityArn &#91;required&#93; The Amazon Resource Number (ARN) of the private CA to inspect. You can find the ARN by calling the [`list_certificate_authorities`][acmpca_list_certificate_authorities] action. This must be of the form: `arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012` You can get a private CA's ARN by running the [`list_certificate_authorities`][acmpca_list_certificate_authorities] action.
 #'
 #' @keywords internal
 #'
@@ -790,17 +626,9 @@ acmpca_list_permissions <- function(MaxResults = NULL, NextToken = NULL, Certifi
 #'
 #' See [https://www.paws-r-sdk.com/docs/acmpca_list_tags/](https://www.paws-r-sdk.com/docs/acmpca_list_tags/) for full documentation.
 #'
-#' @param MaxResults Use this parameter when paginating results to specify the maximum number
-#' of items to return in the response. If additional items exist beyond the
-#' number you specify, the **NextToken** element is sent in the response.
-#' Use this **NextToken** value in a subsequent request to retrieve
-#' additional items.
-#' @param NextToken Use this parameter when paginating results in a subsequent request after
-#' you receive a response with truncated results. Set it to the value of
-#' **NextToken** from the response you just received.
-#' @param CertificateAuthorityArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called the
-#' [`create_certificate_authority`][acmpca_create_certificate_authority]
-#' action. This must be of the form:
+#' @param MaxResults Use this parameter when paginating results to specify the maximum number of items to return in the response. If additional items exist beyond the number you specify, the **NextToken** element is sent in the response. Use this **NextToken** value in a subsequent request to retrieve additional items.
+#' @param NextToken Use this parameter when paginating results in a subsequent request after you receive a response with truncated results. Set it to the value of **NextToken** from the response you just received.
+#' @param CertificateAuthorityArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called the [`create_certificate_authority`][acmpca_create_certificate_authority] action. This must be of the form:
 #' 
 #' `arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 `
 #'
@@ -833,17 +661,8 @@ acmpca_list_tags <- function(MaxResults = NULL, NextToken = NULL, CertificateAut
 #'
 #' See [https://www.paws-r-sdk.com/docs/acmpca_put_policy/](https://www.paws-r-sdk.com/docs/acmpca_put_policy/) for full documentation.
 #'
-#' @param ResourceArn &#91;required&#93; The Amazon Resource Number (ARN) of the private CA to associate with the
-#' policy. The ARN of the CA can be found by calling the
-#' [`list_certificate_authorities`][acmpca_list_certificate_authorities]
-#' action.
-#' @param Policy &#91;required&#93; The path and file name of a JSON-formatted IAM policy to attach to the
-#' specified private CA resource. If this policy does not contain all
-#' required statements or if it includes any statement that is not allowed,
-#' the [`put_policy`][acmpca_put_policy] action returns an
-#' `InvalidPolicyException`. For information about IAM policy and statement
-#' structure, see [Overview of JSON
-#' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#access_policies-json).
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Number (ARN) of the private CA to associate with the policy. The ARN of the CA can be found by calling the [`list_certificate_authorities`][acmpca_list_certificate_authorities] action.
+#' @param Policy &#91;required&#93; The path and file name of a JSON-formatted IAM policy to attach to the specified private CA resource. If this policy does not contain all required statements or if it includes any statement that is not allowed, the [`put_policy`][acmpca_put_policy] action returns an `InvalidPolicyException`. For information about IAM policy and statement structure, see [Overview of JSON Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#access_policies-json).
 #'
 #' @keywords internal
 #'
@@ -874,9 +693,7 @@ acmpca_put_policy <- function(ResourceArn, Policy) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/acmpca_restore_certificate_authority/](https://www.paws-r-sdk.com/docs/acmpca_restore_certificate_authority/) for full documentation.
 #'
-#' @param CertificateAuthorityArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called the
-#' [`create_certificate_authority`][acmpca_create_certificate_authority]
-#' action. This must be of the form:
+#' @param CertificateAuthorityArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called the [`create_certificate_authority`][acmpca_create_certificate_authority] action. This must be of the form:
 #' 
 #' `arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 `
 #'
@@ -910,23 +727,14 @@ acmpca_restore_certificate_authority <- function(CertificateAuthorityArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/acmpca_revoke_certificate/](https://www.paws-r-sdk.com/docs/acmpca_revoke_certificate/) for full documentation.
 #'
-#' @param CertificateAuthorityArn &#91;required&#93; Amazon Resource Name (ARN) of the private CA that issued the certificate
-#' to be revoked. This must be of the form:
+#' @param CertificateAuthorityArn &#91;required&#93; Amazon Resource Name (ARN) of the private CA that issued the certificate to be revoked. This must be of the form:
 #' 
 #' `arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 `
-#' @param CertificateSerial &#91;required&#93; Serial number of the certificate to be revoked. This must be in
-#' hexadecimal format. You can retrieve the serial number by calling
-#' [`get_certificate`][acmpca_get_certificate] with the Amazon Resource
-#' Name (ARN) of the certificate you want and the ARN of your private CA.
-#' The **GetCertificate** action retrieves the certificate in the PEM
-#' format. You can use the following OpenSSL command to list the
-#' certificate in text format and copy the hexadecimal serial number.
+#' @param CertificateSerial &#91;required&#93; Serial number of the certificate to be revoked. This must be in hexadecimal format. You can retrieve the serial number by calling [`get_certificate`][acmpca_get_certificate] with the Amazon Resource Name (ARN) of the certificate you want and the ARN of your private CA. The **GetCertificate** action retrieves the certificate in the PEM format. You can use the following OpenSSL command to list the certificate in text format and copy the hexadecimal serial number.
 #' 
 #' `openssl x509 -in file_path -text -noout`
 #' 
-#' You can also copy the serial number from the console or use the
-#' [DescribeCertificate](https://docs.aws.amazon.com/acm/latest/APIReference/API_DescribeCertificate.html)
-#' action in the *Certificate Manager API Reference*.
+#' You can also copy the serial number from the console or use the [DescribeCertificate](https://docs.aws.amazon.com/acm/latest/APIReference/API_DescribeCertificate.html) action in the *Certificate Manager API Reference*.
 #' @param RevocationReason &#91;required&#93; Specifies why you revoked the certificate.
 #'
 #' @keywords internal
@@ -958,9 +766,7 @@ acmpca_revoke_certificate <- function(CertificateAuthorityArn, CertificateSerial
 #'
 #' See [https://www.paws-r-sdk.com/docs/acmpca_tag_certificate_authority/](https://www.paws-r-sdk.com/docs/acmpca_tag_certificate_authority/) for full documentation.
 #'
-#' @param CertificateAuthorityArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called
-#' [`create_certificate_authority`][acmpca_create_certificate_authority].
-#' This must be of the form:
+#' @param CertificateAuthorityArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called [`create_certificate_authority`][acmpca_create_certificate_authority]. This must be of the form:
 #' 
 #' `arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 `
 #' @param Tags &#91;required&#93; List of tags to be associated with the CA.
@@ -994,9 +800,7 @@ acmpca_tag_certificate_authority <- function(CertificateAuthorityArn, Tags) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/acmpca_untag_certificate_authority/](https://www.paws-r-sdk.com/docs/acmpca_untag_certificate_authority/) for full documentation.
 #'
-#' @param CertificateAuthorityArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called
-#' [`create_certificate_authority`][acmpca_create_certificate_authority].
-#' This must be of the form:
+#' @param CertificateAuthorityArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called [`create_certificate_authority`][acmpca_create_certificate_authority]. This must be of the form:
 #' 
 #' `arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 `
 #' @param Tags &#91;required&#93; List of tags to be removed from the CA.
@@ -1031,51 +835,22 @@ acmpca_untag_certificate_authority <- function(CertificateAuthorityArn, Tags) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/acmpca_update_certificate_authority/](https://www.paws-r-sdk.com/docs/acmpca_update_certificate_authority/) for full documentation.
 #'
-#' @param CertificateAuthorityArn &#91;required&#93; Amazon Resource Name (ARN) of the private CA that issued the certificate
-#' to be revoked. This must be of the form:
+#' @param CertificateAuthorityArn &#91;required&#93; Amazon Resource Name (ARN) of the private CA that issued the certificate to be revoked. This must be of the form:
 #' 
 #' `arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 `
-#' @param RevocationConfiguration Contains information to enable support for Online Certificate Status
-#' Protocol (OCSP), certificate revocation list (CRL), both protocols, or
-#' neither. If you don't supply this parameter, existing capibilites remain
-#' unchanged. For more information, see the
-#' [OcspConfiguration](https://docs.aws.amazon.com/privateca/latest/APIReference/API_OcspConfiguration.html)
-#' and
-#' [CrlConfiguration](https://docs.aws.amazon.com/privateca/latest/APIReference/API_CrlConfiguration.html)
-#' types.
+#' @param RevocationConfiguration Contains information to enable support for Online Certificate Status Protocol (OCSP), certificate revocation list (CRL), both protocols, or neither. If you don't supply this parameter, existing capibilites remain unchanged. For more information, see the [OcspConfiguration](https://docs.aws.amazon.com/privateca/latest/APIReference/API_OcspConfiguration.html) and [CrlConfiguration](https://docs.aws.amazon.com/privateca/latest/APIReference/API_CrlConfiguration.html) types.
 #' 
 #' The following requirements apply to revocation configurations.
 #' 
-#' -   A configuration disabling CRLs or OCSP must contain only the
-#'     `Enabled=False` parameter, and will fail if other parameters such as
-#'     `CustomCname` or `ExpirationInDays` are included.
+#' -   A configuration disabling CRLs or OCSP must contain only the `Enabled=False` parameter, and will fail if other parameters such as `CustomCname` or `ExpirationInDays` are included.
 #' 
-#' -   In a CRL configuration, the `S3BucketName` parameter must conform to
-#'     [Amazon S3 bucket naming
-#'     rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html).
+#' -   In a CRL configuration, the `S3BucketName` parameter must conform to [Amazon S3 bucket naming rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html).
 #' 
-#' -   A configuration containing a custom Canonical Name (CNAME) parameter
-#'     for CRLs or OCSP must conform to
-#'     [RFC2396](https://www.ietf.org/rfc/rfc2396.txt) restrictions on the
-#'     use of special characters in a CNAME.
+#' -   A configuration containing a custom Canonical Name (CNAME) parameter for CRLs or OCSP must conform to [RFC2396](https://www.ietf.org/rfc/rfc2396.txt) restrictions on the use of special characters in a CNAME.
 #' 
-#' -   In a CRL or OCSP configuration, the value of a CNAME parameter must
-#'     not include a protocol prefix such as "http://" or "https://".
+#' -   In a CRL or OCSP configuration, the value of a CNAME parameter must not include a protocol prefix such as "http://" or "https://".
 #' 
-#' If you update the `S3BucketName` of
-#' [CrlConfiguration](https://docs.aws.amazon.com/privateca/latest/APIReference/API_CrlConfiguration.html),
-#' you can break revocation for existing certificates. In other words, if
-#' you call
-#' [`update_certificate_authority`][acmpca_update_certificate_authority] to
-#' update the CRL configuration's S3 bucket name, Amazon Web Services
-#' Private CA only writes CRLs to the new S3 bucket. Certificates issued
-#' prior to this point will have the old S3 bucket name in your CRL
-#' Distribution Point (CDP) extension, essentially breaking revocation. If
-#' you must update the S3 bucket, you'll need to reissue old certificates
-#' to keep the revocation working. Alternatively, you can use a
-#' [CustomCname](https://docs.aws.amazon.com/privateca/latest/APIReference/API_CrlConfiguration.html#privateca-Type-CrlConfiguration-CustomCname)
-#' in your CRL configuration if you might need to change the S3 bucket name
-#' in the future.
+#' If you update the `S3BucketName` of [CrlConfiguration](https://docs.aws.amazon.com/privateca/latest/APIReference/API_CrlConfiguration.html), you can break revocation for existing certificates. In other words, if you call [`update_certificate_authority`][acmpca_update_certificate_authority] to update the CRL configuration's S3 bucket name, Amazon Web Services Private CA only writes CRLs to the new S3 bucket. Certificates issued prior to this point will have the old S3 bucket name in your CRL Distribution Point (CDP) extension, essentially breaking revocation. If you must update the S3 bucket, you'll need to reissue old certificates to keep the revocation working. Alternatively, you can use a [CustomCname](https://docs.aws.amazon.com/privateca/latest/APIReference/API_CrlConfiguration.html#privateca-Type-CrlConfiguration-CustomCname) in your CRL configuration if you might need to change the S3 bucket name in the future.
 #' @param Status Status of your private CA.
 #'
 #' @keywords internal

@@ -8,8 +8,7 @@ notifications about a specified event to a specified SNS topic}
 inspector_unsubscribe_from_event(resourceArn, event, topicArn)
 }
 \arguments{
-\item{resourceArn}{[required] The ARN of the assessment template that is used during the event for
-which you want to stop receiving SNS notifications.}
+\item{resourceArn}{[required] The ARN of the assessment template that is used during the event for which you want to stop receiving SNS notifications.}
 
 \item{event}{[required] The event for which you want to stop receiving SNS notifications.}
 

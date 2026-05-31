@@ -8,8 +8,7 @@ Macie currently provides}
 macie2_list_managed_data_identifiers(nextToken = NULL)
 }
 \arguments{
-\item{nextToken}{The nextToken string that specifies which page of results to return in a
-paginated response.}
+\item{nextToken}{The nextToken string that specifies which page of results to return in a paginated response.}
 }
 \description{
 Retrieves information about all the managed data identifiers that Amazon Macie currently provides.

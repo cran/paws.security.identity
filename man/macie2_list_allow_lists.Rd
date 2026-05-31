@@ -8,11 +8,9 @@ account}
 macie2_list_allow_lists(maxResults = NULL, nextToken = NULL)
 }
 \arguments{
-\item{maxResults}{The maximum number of items to include in each page of a paginated
-response.}
+\item{maxResults}{The maximum number of items to include in each page of a paginated response.}
 
-\item{nextToken}{The nextToken string that specifies which page of results to return in a
-paginated response.}
+\item{nextToken}{The nextToken string that specifies which page of results to return in a paginated response.}
 }
 \description{
 Retrieves a subset of information about all the allow lists for an account.

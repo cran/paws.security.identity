@@ -7,8 +7,7 @@
 ssoadmin_delete_instance(InstanceArn)
 }
 \arguments{
-\item{InstanceArn}{[required] The ARN of the instance of IAM Identity Center under which the operation
-will run.}
+\item{InstanceArn}{[required] The ARN of the instance of IAM Identity Center under which the operation will run.}
 }
 \description{
 Deletes the instance of IAM Identity Center. Only the account that owns the instance can call this API. Neither the delegated administrator nor member account can delete the organization instance, but those roles can delete their own instance.

@@ -7,8 +7,7 @@
 macie2_get_classification_scope(id)
 }
 \arguments{
-\item{id}{[required] The unique identifier for the Amazon Macie resource that the request
-applies to.}
+\item{id}{[required] The unique identifier for the Amazon Macie resource that the request applies to.}
 }
 \description{
 Retrieves the classification scope settings for an account.

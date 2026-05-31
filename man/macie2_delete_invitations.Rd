@@ -8,8 +8,7 @@ specific accounts}
 macie2_delete_invitations(accountIds)
 }
 \arguments{
-\item{accountIds}{[required] An array that lists Amazon Web Services account IDs, one for each
-account that sent an invitation to delete.}
+\item{accountIds}{[required] An array that lists Amazon Web Services account IDs, one for each account that sent an invitation to delete.}
 }
 \description{
 Deletes Amazon Macie membership invitations that were received from specific accounts.

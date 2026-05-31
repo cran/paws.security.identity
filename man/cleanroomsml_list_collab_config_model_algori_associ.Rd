@@ -12,13 +12,11 @@ cleanroomsml_list_collaboration_configured_model_algorithm_associations(
 )
 }
 \arguments{
-\item{nextToken}{The token value retrieved from a previous call to access the next page
-of results.}
+\item{nextToken}{The token value retrieved from a previous call to access the next page of results.}
 
 \item{maxResults}{The maximum size of the results that is returned per call.}
 
-\item{collaborationIdentifier}{[required] The collaboration ID of the collaboration that contains the configured
-model algorithm associations that you are interested in.}
+\item{collaborationIdentifier}{[required] The collaboration ID of the collaboration that contains the configured model algorithm associations that you are interested in.}
 }
 \description{
 Returns a list of the configured model algorithm associations in a collaboration.

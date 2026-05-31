@@ -5,12 +5,7 @@ NULL
 #' PcaConnectorAd
 #'
 #' @description
-#' Amazon Web Services Private CA Connector for Active Directory creates a
-#' connector between Amazon Web Services Private CA and Active Directory
-#' (AD) that enables you to provision security certificates for AD signed
-#' by a private CA that you own. For more information, see [Amazon Web
-#' Services Private CA Connector for Active
-#' Directory](https://docs.aws.amazon.com/privateca/latest/userguide/).
+#' Amazon Web Services Private CA Connector for Active Directory creates a connector between Amazon Web Services Private CA and Active Directory (AD) that enables you to provision security certificates for AD signed by a private CA that you own. For more information, see [Amazon Web Services Private CA Connector for Active Directory](https://docs.aws.amazon.com/privateca/latest/userguide/).
 #'
 #' @param
 #' config
@@ -151,7 +146,7 @@ pcaconnectorad <- function(config = list(), credentials = list(), endpoint = NUL
 
 .pcaconnectorad$metadata <- list(
   service_name = "pcaconnectorad",
-  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "pca-connector-ad.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "pca-connector-ad.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "pca-connector-ad.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "pca-connector-ad.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "pca-connector-ad.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "pca-connector-ad.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "pca-connector-ad.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "pca-connector-ad.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "pca-connector-ad.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "pca-connector-ad.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "pca-connector-ad.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "pca-connector-ad.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "pca-connector-ad.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "pca-connector-ad.{region}.csp.hci.ic.gov", global = FALSE), "^eusc\\-(de)\\-\\w+\\-\\d+$" = list(endpoint = "pca-connector-ad.{region}.amazonaws.eu", global = FALSE)),
   service_id = "Pca Connector Ad",
   api_version = "2018-05-10",
   signing_name = "pca-connector-ad",

@@ -8,40 +8,26 @@ symmetric encryption KMS key}
 kms_enable_key_rotation(KeyId, RotationPeriodInDays = NULL)
 }
 \arguments{
-\item{KeyId}{[required] Identifies a symmetric encryption KMS key. You cannot enable automatic
-rotation of \href{https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html}{asymmetric KMS keys},
-\href{https://docs.aws.amazon.com/kms/latest/developerguide/hmac.html}{HMAC KMS keys},
-KMS keys with \href{https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html}{imported key material},
-or KMS keys in a \href{https://docs.aws.amazon.com/kms/latest/developerguide/}{custom key store}. To
-enable or disable automatic rotation of a set of related \href{https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-update.html#multi-region-rotate}{multi-Region keys},
-set the property on the primary key.
+\item{KeyId}{[required] Identifies a symmetric encryption KMS key. You cannot enable automatic rotation of \href{https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html}{asymmetric KMS keys}, \href{https://docs.aws.amazon.com/kms/latest/developerguide/hmac.html}{HMAC KMS keys}, KMS keys with \href{https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html}{imported key material}, or KMS keys in a \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-store-overview.html}{custom key store}. To enable or disable automatic rotation of a set of related \href{https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html#multi-region-rotate}{multi-Region keys}, set the property on the primary key.
 
 Specify the key ID or key ARN of the KMS key.
 
 For example:
 \itemize{
 \item Key ID: \verb{1234abcd-12ab-34cd-56ef-1234567890ab}
-\item Key ARN:
-\verb{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
+\item Key ARN: \verb{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
 }
 
-To get the key ID and key ARN for a KMS key, use
-\code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
+To get the key ID and key ARN for a KMS key, use \code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
 
-\item{RotationPeriodInDays}{Use this parameter to specify a custom period of time between each
-rotation date. If no value is specified, the default value is 365 days.
+\item{RotationPeriodInDays}{Use this parameter to specify a custom period of time between each rotation date. If no value is specified, the default value is 365 days.
 
-The rotation period defines the number of days after you enable
-automatic key rotation that KMS will rotate your key material, and the
-number of days between each automatic rotation thereafter.
+The rotation period defines the number of days after you enable automatic key rotation that KMS will rotate your key material, and the number of days between each automatic rotation thereafter.
 
-You can use the
-\href{https://docs.aws.amazon.com/kms/latest/developerguide/conditions-kms.html#conditions-kms-rotation-period-in-days}{\code{kms:RotationPeriodInDays}}
-condition key to further constrain the values that principals can
-specify in the \code{RotationPeriodInDays} parameter.}
+You can use the \href{https://docs.aws.amazon.com/kms/latest/developerguide/conditions-kms.html#conditions-kms-rotation-period-in-days}{\code{kms:RotationPeriodInDays}} condition key to further constrain the values that principals can specify in the \code{RotationPeriodInDays} parameter.}
 }
 \description{
-Enables \href{https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html#rotating-keys-enable-disable}{automatic rotation of the key material} of the specified symmetric encryption KMS key.
+Enables \href{https://docs.aws.amazon.com/kms/latest/developerguide/}{automatic rotation of the key material} of the specified symmetric encryption KMS key.
 
 See \url{https://www.paws-r-sdk.com/docs/kms_enable_key_rotation/} for full documentation.
 }

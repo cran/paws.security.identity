@@ -11,9 +11,7 @@ clouddirectory_update_link_attributes(
 )
 }
 \arguments{
-\item{DirectoryArn}{[required] The Amazon Resource Name (ARN) that is associated with the Directory
-where the updated typed link resides. For more information, see arns or
-\href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink}{Typed Links}.}
+\item{DirectoryArn}{[required] The Amazon Resource Name (ARN) that is associated with the Directory where the updated typed link resides. For more information, see arns or \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink}{Typed Links}.}
 
 \item{TypedLinkSpecifier}{[required] Allows a typed link specifier to be accepted as input.}
 

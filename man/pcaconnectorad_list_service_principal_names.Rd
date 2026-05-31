@@ -12,18 +12,11 @@ pcaconnectorad_list_service_principal_names(
 )
 }
 \arguments{
-\item{DirectoryRegistrationArn}{[required] The Amazon Resource Name (ARN) that was returned when you called
-\code{\link[=pcaconnectorad_create_directory_registration]{create_directory_registration}}.}
+\item{DirectoryRegistrationArn}{[required] The Amazon Resource Name (ARN) that was returned when you called \code{\link[=pcaconnectorad_create_directory_registration]{create_directory_registration}}.}
 
-\item{MaxResults}{Use this parameter when paginating results to specify the maximum number
-of items to return in the response on each page. If additional items
-exist beyond the number you specify, the \code{NextToken} element is sent in
-the response. Use this \code{NextToken} value in a subsequent request to
-retrieve additional items.}
+\item{MaxResults}{Use this parameter when paginating results to specify the maximum number of items to return in the response on each page. If additional items exist beyond the number you specify, the \code{NextToken} element is sent in the response. Use this \code{NextToken} value in a subsequent request to retrieve additional items.}
 
-\item{NextToken}{Use this parameter when paginating results in a subsequent request after
-you receive a response with truncated results. Set it to the value of
-the \code{NextToken} parameter from the response you just received.}
+\item{NextToken}{Use this parameter when paginating results in a subsequent request after you receive a response with truncated results. Set it to the value of the \code{NextToken} parameter from the response you just received.}
 }
 \description{
 Lists the service principal names that the connector uses to authenticate with Active Directory.

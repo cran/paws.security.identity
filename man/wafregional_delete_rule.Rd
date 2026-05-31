@@ -7,12 +7,9 @@
 wafregional_delete_rule(RuleId, ChangeToken)
 }
 \arguments{
-\item{RuleId}{[required] The \code{RuleId} of the Rule that you want to delete. \code{RuleId} is returned
-by \code{\link[=wafregional_create_rule]{create_rule}} and by
-\code{\link[=wafregional_list_rules]{list_rules}}.}
+\item{RuleId}{[required] The \code{RuleId} of the Rule that you want to delete. \code{RuleId} is returned by \code{\link[=wafregional_create_rule]{create_rule}} and by \code{\link[=wafregional_list_rules]{list_rules}}.}
 
-\item{ChangeToken}{[required] The value returned by the most recent call to
-\code{\link[=wafregional_get_change_token]{get_change_token}}.}
+\item{ChangeToken}{[required] The value returned by the most recent call to \code{\link[=wafregional_get_change_token]{get_change_token}}.}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic} in the developer guide.

@@ -10,8 +10,7 @@ securitylake_delete_custom_log_source(sourceName, sourceVersion = NULL)
 \arguments{
 \item{sourceName}{[required] The source name of custom log source that you want to delete.}
 
-\item{sourceVersion}{The source version for the third-party custom source. You can limit the
-custom source removal to the specified source version.}
+\item{sourceVersion}{The source version for the third-party custom source. You can limit the custom source removal to the specified source version.}
 }
 \description{
 Removes a custom log source from Amazon Security Lake, to stop sending data from the custom source to Security Lake.

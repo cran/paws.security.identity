@@ -12,13 +12,11 @@ cleanroomsml_put_configured_audience_model_policy(
 )
 }
 \arguments{
-\item{configuredAudienceModelArn}{[required] The Amazon Resource Name (ARN) of the configured audience model that the
-resource policy will govern.}
+\item{configuredAudienceModelArn}{[required] The Amazon Resource Name (ARN) of the configured audience model that the resource policy will govern.}
 
 \item{configuredAudienceModelPolicy}{[required] The IAM resource policy.}
 
-\item{previousPolicyHash}{A cryptographic hash of the contents of the policy used to prevent
-unexpected concurrent modification of the policy.}
+\item{previousPolicyHash}{A cryptographic hash of the contents of the policy used to prevent unexpected concurrent modification of the policy.}
 
 \item{policyExistenceCondition}{Use this to prevent unexpected concurrent modification of the policy.}
 }

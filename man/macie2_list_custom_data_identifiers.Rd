@@ -10,8 +10,7 @@ macie2_list_custom_data_identifiers(maxResults = NULL, nextToken = NULL)
 \arguments{
 \item{maxResults}{The maximum number of items to include in each page of the response.}
 
-\item{nextToken}{The nextToken string that specifies which page of results to return in a
-paginated response.}
+\item{nextToken}{The nextToken string that specifies which page of results to return in a paginated response.}
 }
 \description{
 Retrieves a subset of information about the custom data identifiers for an account.

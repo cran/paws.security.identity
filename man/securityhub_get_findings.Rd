@@ -12,25 +12,17 @@ securityhub_get_findings(
 )
 }
 \arguments{
-\item{Filters}{The finding attributes used to define a condition to filter the returned
-findings.
+\item{Filters}{The finding attributes used to define a condition to filter the returned findings.
 
-You can filter by up to 10 finding attributes. For each attribute, you
-can provide up to 20 filter values.
+You can filter by up to 10 finding attributes. For each attribute, you can provide up to 20 filter values.
 
-Note that in the available filter fields, \code{WorkflowState} is deprecated.
-To search for a finding based on its workflow status, use
-\code{WorkflowStatus}.}
+Note that in the available filter fields, \code{WorkflowState} is deprecated. To search for a finding based on its workflow status, use \code{WorkflowStatus}.}
 
 \item{SortCriteria}{The finding attributes used to sort the list of returned findings.}
 
-\item{NextToken}{The token that is required for pagination. On your first call to the
-\code{\link[=securityhub_get_findings]{get_findings}} operation, set the value of
-this parameter to \code{NULL}.
+\item{NextToken}{The token that is required for pagination. On your first call to the \code{\link[=securityhub_get_findings]{get_findings}} operation, set the value of this parameter to \code{NULL}.
 
-For subsequent calls to the operation, to continue listing data, set the
-value of this parameter to the value returned from the previous
-response.}
+For subsequent calls to the operation, to continue listing data, set the value of this parameter to the value returned from the previous response.}
 
 \item{MaxResults}{The maximum number of findings to return.}
 }

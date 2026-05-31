@@ -3,33 +3,35 @@
 \name{kms_list_retirable_grants}
 \alias{kms_list_retirable_grants}
 \title{Returns information about all grants in the Amazon Web Services account
-and Region that have the specified retiring principal}
+and Region that have the specified retiring principal or retiring
+service principal}
 \usage{
-kms_list_retirable_grants(Limit = NULL, Marker = NULL, RetiringPrincipal)
+kms_list_retirable_grants(
+  Limit = NULL,
+  Marker = NULL,
+  RetiringPrincipal = NULL,
+  RetiringServicePrincipal = NULL
+)
 }
 \arguments{
-\item{Limit}{Use this parameter to specify the maximum number of items to return.
-When this value is present, KMS does not return more than the specified
-number of items, but it might return fewer.
+\item{Limit}{Use this parameter to specify the maximum number of items to return. When this value is present, KMS does not return more than the specified number of items, but it might return fewer.
 
-This value is optional. If you include a value, it must be between 1 and
-100, inclusive. If you do not include a value, it defaults to 50.}
+This value is optional. If you include a value, it must be between 1 and 100, inclusive. If you do not include a value, it defaults to 50.}
 
-\item{Marker}{Use this parameter in a subsequent request after you receive a response
-with truncated results. Set it to the value of \code{NextMarker} from the
-truncated response you just received.}
+\item{Marker}{Use this parameter in a subsequent request after you receive a response with truncated results. Set it to the value of \code{NextMarker} from the truncated response you just received.}
 
-\item{RetiringPrincipal}{[required] The retiring principal for which to list grants. Enter a principal in
-your Amazon Web Services account.
+\item{RetiringPrincipal}{The retiring principal for which to list grants. Enter a principal in your Amazon Web Services account.
 
-To specify the retiring principal, use the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Name (ARN)}
-of an Amazon Web Services principal. Valid principals include Amazon Web
-Services accounts, IAM users, IAM roles, federated users, and assumed
-role users. For help with the ARN syntax for a principal, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns}{IAM ARNs}
-in the \emph{Identity and Access Management User Guide} .}
+To specify the retiring principal, use the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Name (ARN)} of an Amazon Web Services principal. Valid principals include Amazon Web Services accounts, IAM users, IAM roles, federated users, and assumed role users. For help with the ARN syntax for a principal, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns}{IAM ARNs} in the \emph{Identity and Access Management User Guide} .
+
+You must specify either \code{RetiringPrincipal} or \code{RetiringServicePrincipal}, but not both.}
+
+\item{RetiringServicePrincipal}{The retiring service principal for which to list grants. This filter is only usable by callers in a service principal.
+
+You must specify either \code{RetiringPrincipal} or \code{RetiringServicePrincipal}, but not both.}
 }
 \description{
-Returns information about all grants in the Amazon Web Services account and Region that have the specified retiring principal.
+Returns information about all grants in the Amazon Web Services account and Region that have the specified retiring principal or retiring service principal.
 
 See \url{https://www.paws-r-sdk.com/docs/kms_list_retirable_grants/} for full documentation.
 }

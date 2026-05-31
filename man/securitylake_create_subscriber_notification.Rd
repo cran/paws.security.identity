@@ -8,8 +8,7 @@ the sources that the subscriber consumes in Security Lake}
 securitylake_create_subscriber_notification(configuration, subscriberId)
 }
 \arguments{
-\item{configuration}{[required] Specify the configuration using which you want to create the subscriber
-notification.}
+\item{configuration}{[required] Specify the configuration using which you want to create the subscriber notification.}
 
 \item{subscriberId}{[required] The subscriber ID for the notification subscription.}
 }

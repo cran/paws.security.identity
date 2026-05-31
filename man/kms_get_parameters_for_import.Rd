@@ -8,65 +8,42 @@ reimport key material for a KMS key}
 kms_get_parameters_for_import(KeyId, WrappingAlgorithm, WrappingKeySpec)
 }
 \arguments{
-\item{KeyId}{[required] The identifier of the KMS key that will be associated with the imported
-key material. The \code{Origin} of the KMS key must be \code{EXTERNAL}.
+\item{KeyId}{[required] The identifier of the KMS key that will be associated with the imported key material. The \code{Origin} of the KMS key must be \code{EXTERNAL}.
 
-All KMS key types are supported, including multi-Region keys. However,
-you cannot import key material into a KMS key in a custom key store.
+All KMS key types are supported, including multi-Region keys. However, you cannot import key material into a KMS key in a custom key store.
 
 Specify the key ID or key ARN of the KMS key.
 
 For example:
 \itemize{
 \item Key ID: \verb{1234abcd-12ab-34cd-56ef-1234567890ab}
-\item Key ARN:
-\verb{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
+\item Key ARN: \verb{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
 }
 
-To get the key ID and key ARN for a KMS key, use
-\code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
+To get the key ID and key ARN for a KMS key, use \code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
 
-\item{WrappingAlgorithm}{[required] The algorithm you will use with the RSA public key (\code{PublicKey}) in the
-response to protect your key material during import. For more
-information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys-get-public-key-and-token.html#select-wrapping-algorithm}{Select a wrapping algorithm}
-in the \emph{Key Management Service Developer Guide}.
+\item{WrappingAlgorithm}{[required] The algorithm you will use with the RSA public key (\code{PublicKey}) in the response to protect your key material during import. For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys-get-public-key-and-token.html#select-wrapping-algorithm}{Select a wrapping algorithm} in the \emph{Key Management Service Developer Guide}.
 
-For RSA_AES wrapping algorithms, you encrypt your key material with an
-AES key that you generate, then encrypt your AES key with the RSA public
-key from KMS. For RSAES wrapping algorithms, you encrypt your key
-material directly with the RSA public key from KMS.
+For RSA_AES wrapping algorithms, you encrypt your key material with an AES key that you generate, then encrypt your AES key with the RSA public key from KMS. For RSAES wrapping algorithms, you encrypt your key material directly with the RSA public key from KMS.
 
-The wrapping algorithms that you can use depend on the type of key
-material that you are importing. To import an RSA private key, you must
-use an RSA_AES wrapping algorithm.
+The wrapping algorithms that you can use depend on the type of key material that you are importing. To import an RSA private key, you must use an RSA_AES wrapping algorithm.
 \itemize{
-\item \strong{RSA_AES_KEY_WRAP_SHA_256} — Supported for wrapping RSA and ECC
-key material.
-\item \strong{RSA_AES_KEY_WRAP_SHA_1} — Supported for wrapping RSA and ECC key
-material.
-\item \strong{RSAES_OAEP_SHA_256} — Supported for all types of key material,
-except RSA key material (private key).
+\item \strong{RSA_AES_KEY_WRAP_SHA_256} — Supported for wrapping RSA and ECC key material.
+\item \strong{RSA_AES_KEY_WRAP_SHA_1} — Supported for wrapping RSA and ECC key material.
+\item \strong{RSAES_OAEP_SHA_256} — Supported for all types of key material, except RSA key material (private key).
 
-You cannot use the RSAES_OAEP_SHA_256 wrapping algorithm with the
-RSA_2048 wrapping key spec to wrap ECC_NIST_P521 key material.
-\item \strong{RSAES_OAEP_SHA_1} — Supported for all types of key material,
-except RSA key material (private key).
+You cannot use the RSAES_OAEP_SHA_256 wrapping algorithm with the RSA_2048 wrapping key spec to wrap ECC_NIST_P521 key material.
+\item \strong{RSAES_OAEP_SHA_1} — Supported for all types of key material, except RSA key material (private key).
 
-You cannot use the RSAES_OAEP_SHA_1 wrapping algorithm with the
-RSA_2048 wrapping key spec to wrap ECC_NIST_P521 key material.
-\item \strong{RSAES_PKCS1_V1_5} (Deprecated) — As of October 10, 2023, KMS does
-not support the RSAES_PKCS1_V1_5 wrapping algorithm.
+You cannot use the RSAES_OAEP_SHA_1 wrapping algorithm with the RSA_2048 wrapping key spec to wrap ECC_NIST_P521 key material.
+\item \strong{RSAES_PKCS1_V1_5} (Deprecated) — As of October 10, 2023, KMS does not support the RSAES_PKCS1_V1_5 wrapping algorithm.
 }}
 
-\item{WrappingKeySpec}{[required] The type of RSA public key to return in the response. You will use this
-wrapping key with the specified wrapping algorithm to protect your key
-material during import.
+\item{WrappingKeySpec}{[required] The type of RSA public key to return in the response. You will use this wrapping key with the specified wrapping algorithm to protect your key material during import.
 
 Use the longest RSA wrapping key that is practical.
 
-You cannot use an RSA_2048 public key to directly wrap an ECC_NIST_P521
-private key. Instead, use an RSA_AES wrapping algorithm or choose a
-longer RSA public key.}
+You cannot use an RSA_2048 public key to directly wrap an ECC_NIST_P521 private key. Instead, use an RSA_AES wrapping algorithm or choose a longer RSA public key.}
 }
 \description{
 Returns the public key and an import token you need to import or reimport key material for a KMS key.

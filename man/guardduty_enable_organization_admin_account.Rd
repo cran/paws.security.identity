@@ -8,8 +8,7 @@ your GuardDuty delegated administrator}
 guardduty_enable_organization_admin_account(AdminAccountId)
 }
 \arguments{
-\item{AdminAccountId}{[required] The Amazon Web Services account ID for the organization account to be
-enabled as a GuardDuty delegated administrator.}
+\item{AdminAccountId}{[required] The Amazon Web Services account ID for the organization account to be enabled as a GuardDuty delegated administrator.}
 }
 \description{
 Designates an Amazon Web Services account within the organization as your GuardDuty delegated administrator. Only the organization's management account can run this API operation.

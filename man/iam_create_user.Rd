@@ -7,46 +7,25 @@
 iam_create_user(Path = NULL, UserName, PermissionsBoundary = NULL, Tags = NULL)
 }
 \arguments{
-\item{Path}{The path for the user name. For more information about paths, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html}{IAM identifiers}
-in the \emph{IAM User Guide}.
+\item{Path}{The path for the user name. For more information about paths, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html}{IAM identifiers} in the \emph{IAM User Guide}.
 
-This parameter is optional. If it is not included, it defaults to a
-slash (/).
+This parameter is optional. If it is not included, it defaults to a slash (/).
 
-This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
-consisting of either a forward slash (/) by itself or a string that must
-begin and end with forward slashes. In addition, it can contain any
-ASCII character from the ! (\code{U+0021}) through the DEL character
-(\verb{U+007F}), including most punctuation characters, digits, and upper and
-lowercased letters.}
+This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (\code{U+0021}) through the DEL character (\verb{U+007F}), including most punctuation characters, digits, and upper and lowercased letters.}
 
 \item{UserName}{[required] The name of the user to create.
 
-IAM user, group, role, and policy names must be unique within the
-account. Names are not distinguished by case. For example, you cannot
-create resources named both "MyResource" and "myresource".}
+IAM user, group, role, and policy names must be unique within the account. Names are not distinguished by case. For example, you cannot create resources named both "MyResource" and "myresource".}
 
-\item{PermissionsBoundary}{The ARN of the managed policy that is used to set the permissions
-boundary for the user.
+\item{PermissionsBoundary}{The ARN of the managed policy that is used to set the permissions boundary for the user.
 
-A permissions boundary policy defines the maximum permissions that
-identity-based policies can grant to an entity, but does not grant
-permissions. Permissions boundaries do not define the maximum
-permissions that a resource-based policy can grant to an entity. To
-learn more, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html}{Permissions boundaries for IAM entities}
-in the \emph{IAM User Guide}.
+A permissions boundary policy defines the maximum permissions that identity-based policies can grant to an entity, but does not grant permissions. Permissions boundaries do not define the maximum permissions that a resource-based policy can grant to an entity. To learn more, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html}{Permissions boundaries for IAM entities} in the \emph{IAM User Guide}.
 
-For more information about policy types, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#access_policy-types}{Policy types}
-in the \emph{IAM User Guide}.}
+For more information about policy types, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#access_policy-types}{Policy types} in the \emph{IAM User Guide}.}
 
-\item{Tags}{A list of tags that you want to attach to the new user. Each tag
-consists of a key name and an associated value. For more information
-about tagging, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html}{Tagging IAM resources}
-in the \emph{IAM User Guide}.
+\item{Tags}{A list of tags that you want to attach to the new user. Each tag consists of a key name and an associated value. For more information about tagging, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html}{Tagging IAM resources} in the \emph{IAM User Guide}.
 
-If any one of the tags is invalid or if you exceed the allowed maximum
-number of tags, then the entire request fails and the resource is not
-created.}
+If any one of the tags is invalid or if you exceed the allowed maximum number of tags, then the entire request fails and the resource is not created.}
 }
 \description{
 Creates a new IAM user for your Amazon Web Services account.

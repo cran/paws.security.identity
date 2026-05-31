@@ -5,16 +5,14 @@
 \title{Provides the number of days left for each data source used in the free
 trial period}
 \usage{
-guardduty_get_remaining_free_trial_days(DetectorId, AccountIds = NULL)
+guardduty_get_remaining_free_trial_days(DetectorId, AccountIds)
 }
 \arguments{
 \item{DetectorId}{[required] The unique ID of the detector of the GuardDuty member account.
 
-To find the \code{detectorId} in the current Region, see the Settings page in
-the GuardDuty console, or run the
-\code{\link[=guardduty_list_detectors]{list_detectors}} API.}
+To find the \code{detectorId} in the current Region, see the Settings page in the GuardDuty console, or run the \code{\link[=guardduty_list_detectors]{list_detectors}} API.}
 
-\item{AccountIds}{A list of account identifiers of the GuardDuty member account.}
+\item{AccountIds}{[required] A list of account identifiers of the GuardDuty member account.}
 }
 \description{
 Provides the number of days left for each data source used in the free trial period.

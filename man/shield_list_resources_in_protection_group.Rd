@@ -11,31 +11,17 @@ shield_list_resources_in_protection_group(
 )
 }
 \arguments{
-\item{ProtectionGroupId}{[required] The name of the protection group. You use this to identify the
-protection group in lists and to manage the protection group, for
-example to update, delete, or describe it.}
+\item{ProtectionGroupId}{[required] The name of the protection group. You use this to identify the protection group in lists and to manage the protection group, for example to update, delete, or describe it.}
 
-\item{NextToken}{When you request a list of objects from Shield Advanced, if the response
-does not include all of the remaining available objects, Shield Advanced
-includes a \code{NextToken} value in the response. You can retrieve the next
-batch of objects by requesting the list again and providing the token
-that was returned by the prior call in your request.
+\item{NextToken}{When you request a list of objects from Shield Advanced, if the response does not include all of the remaining available objects, Shield Advanced includes a \code{NextToken} value in the response. You can retrieve the next batch of objects by requesting the list again and providing the token that was returned by the prior call in your request.
 
-You can indicate the maximum number of objects that you want Shield
-Advanced to return for a single call with the \code{MaxResults} setting.
-Shield Advanced will not return more than \code{MaxResults} objects, but may
-return fewer, even if more objects are still available.
+You can indicate the maximum number of objects that you want Shield Advanced to return for a single call with the \code{MaxResults} setting. Shield Advanced will not return more than \code{MaxResults} objects, but may return fewer, even if more objects are still available.
 
-Whenever more objects remain that Shield Advanced has not yet returned
-to you, the response will include a \code{NextToken} value.
+Whenever more objects remain that Shield Advanced has not yet returned to you, the response will include a \code{NextToken} value.
 
 On your first call to a list operation, leave this setting empty.}
 
-\item{MaxResults}{The greatest number of objects that you want Shield Advanced to return
-to the list request. Shield Advanced might return fewer objects than you
-indicate in this setting, even if more objects are available. If there
-are more objects remaining, Shield Advanced will always also return a
-\code{NextToken} value in the response.
+\item{MaxResults}{The greatest number of objects that you want Shield Advanced to return to the list request. Shield Advanced might return fewer objects than you indicate in this setting, even if more objects are available. If there are more objects remaining, Shield Advanced will always also return a \code{NextToken} value in the response.
 
 The default setting is 20.}
 }

@@ -15,18 +15,15 @@ cleanroomsml_update_configured_audience_model(
 )
 }
 \arguments{
-\item{configuredAudienceModelArn}{[required] The Amazon Resource Name (ARN) of the configured audience model that you
-want to update.}
+\item{configuredAudienceModelArn}{[required] The Amazon Resource Name (ARN) of the configured audience model that you want to update.}
 
 \item{outputConfig}{The new output configuration.}
 
-\item{audienceModelArn}{The Amazon Resource Name (ARN) of the new audience model that you want
-to use.}
+\item{audienceModelArn}{The Amazon Resource Name (ARN) of the new audience model that you want to use.}
 
 \item{sharedAudienceMetrics}{The new value for whether to share audience metrics.}
 
-\item{minMatchingSeedSize}{The minimum number of users from the seed audience that must match with
-users in the training data of the audience model.}
+\item{minMatchingSeedSize}{The minimum number of users from the seed audience that must match with users in the training data of the audience model.}
 
 \item{audienceSizeConfig}{The new audience size configuration.}
 

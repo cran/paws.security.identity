@@ -8,26 +8,17 @@ scope}
 wafv2_list_api_keys(Scope, NextMarker = NULL, Limit = NULL)
 }
 \arguments{
-\item{Scope}{[required] Specifies whether this is for a global resource type, such as a Amazon
-CloudFront distribution.
+\item{Scope}{[required] Specifies whether this is for a global resource type, such as a Amazon CloudFront distribution. For an Amplify application, use \code{CLOUDFRONT}.
 
-To work with CloudFront, you must also specify the Region US East (N.
-Virginia) as follows:
+To work with CloudFront, you must also specify the Region US East (N. Virginia) as follows:
 \itemize{
-\item CLI - Specify the Region when you use the CloudFront scope:
-\code{--scope=CLOUDFRONT --region=us-east-1}.
+\item CLI - Specify the Region when you use the CloudFront scope: \code{--scope=CLOUDFRONT --region=us-east-1}.
 \item API and SDKs - For all calls, use the Region endpoint us-east-1.
 }}
 
-\item{NextMarker}{When you request a list of objects with a \code{Limit} setting, if the number
-of objects that are still available for retrieval exceeds the limit, WAF
-returns a \code{NextMarker} value in the response. To retrieve the next batch
-of objects, provide the marker from the prior call in your next request.}
+\item{NextMarker}{When you request a list of objects with a \code{Limit} setting, if the number of objects that are still available for retrieval exceeds the limit, WAF returns a \code{NextMarker} value in the response. To retrieve the next batch of objects, provide the marker from the prior call in your next request.}
 
-\item{Limit}{The maximum number of objects that you want WAF to return for this
-request. If more objects are available, in the response, WAF provides a
-\code{NextMarker} value that you can use in a subsequent call to get the next
-batch of objects.}
+\item{Limit}{The maximum number of objects that you want WAF to return for this request. If more objects are available, in the response, WAF provides a \code{NextMarker} value that you can use in a subsequent call to get the next batch of objects.}
 }
 \description{
 Retrieves a list of the API keys that you've defined for the specified scope.

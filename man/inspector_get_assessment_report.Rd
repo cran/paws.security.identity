@@ -8,15 +8,11 @@ results of a specified assessment run}
 inspector_get_assessment_report(assessmentRunArn, reportFileFormat, reportType)
 }
 \arguments{
-\item{assessmentRunArn}{[required] The ARN that specifies the assessment run for which you want to generate
-a report.}
+\item{assessmentRunArn}{[required] The ARN that specifies the assessment run for which you want to generate a report.}
 
-\item{reportFileFormat}{[required] Specifies the file format (html or pdf) of the assessment report that
-you want to generate.}
+\item{reportFileFormat}{[required] Specifies the file format (html or pdf) of the assessment report that you want to generate.}
 
-\item{reportType}{[required] Specifies the type of the assessment report that you want to generate.
-There are two types of assessment reports: a finding report and a full
-report. For more information, see \href{https://docs.aws.amazon.com/inspector/v1/userguide/inspector_reports.html}{Assessment Reports}.}
+\item{reportType}{[required] Specifies the type of the assessment report that you want to generate. There are two types of assessment reports: a finding report and a full report. For more information, see \href{https://docs.aws.amazon.com/inspector/v1/userguide/inspector_reports.html}{Assessment Reports}.}
 }
 \description{
 Produces an assessment report that includes detailed and comprehensive results of a specified assessment run.

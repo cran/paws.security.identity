@@ -13,9 +13,7 @@ guardduty_get_coverage_statistics(
 \arguments{
 \item{DetectorId}{[required] The unique ID of the GuardDuty detector.
 
-To find the \code{detectorId} in the current Region, see the Settings page in
-the GuardDuty console, or run the
-\code{\link[=guardduty_list_detectors]{list_detectors}} API.}
+To find the \code{detectorId} in the current Region, see the Settings page in the GuardDuty console, or run the \code{\link[=guardduty_list_detectors]{list_detectors}} API.}
 
 \item{FilterCriteria}{Represents the criteria used to filter the coverage statistics.}
 

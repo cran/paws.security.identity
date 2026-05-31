@@ -7,16 +7,9 @@
 waf_list_ip_sets(NextMarker = NULL, Limit = NULL)
 }
 \arguments{
-\item{NextMarker}{AWS WAF returns a \code{NextMarker} value in the response that allows you to
-list another group of \code{IPSets}. For the second and subsequent
-\code{\link[=waf_list_ip_sets]{list_ip_sets}} requests, specify the value of
-\code{NextMarker} from the previous response to get information about another
-batch of \code{IPSets}.}
+\item{NextMarker}{AWS WAF returns a \code{NextMarker} value in the response that allows you to list another group of \code{IPSets}. For the second and subsequent \code{\link[=waf_list_ip_sets]{list_ip_sets}} requests, specify the value of \code{NextMarker} from the previous response to get information about another batch of \code{IPSets}.}
 
-\item{Limit}{Specifies the number of \code{IPSet} objects that you want AWS WAF to return
-for this request. If you have more \code{IPSet} objects than the number you
-specify for \code{Limit}, the response includes a \code{NextMarker} value that you
-can use to get another batch of \code{IPSet} objects.}
+\item{Limit}{Specifies the number of \code{IPSet} objects that you want AWS WAF to return for this request. If you have more \code{IPSet} objects than the number you specify for \code{Limit}, the response includes a \code{NextMarker} value that you can use to get another batch of \code{IPSet} objects.}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic} in the developer guide.

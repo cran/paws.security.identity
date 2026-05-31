@@ -15,8 +15,7 @@ cloudhsmv2_modify_cluster(
 
 \item{BackupRetentionPolicy}{A policy that defines how the service retains backups.}
 
-\item{ClusterId}{[required] The identifier (ID) of the cluster that you want to modify. To find the
-cluster ID, use \code{\link[=cloudhsmv2_describe_clusters]{describe_clusters}}.}
+\item{ClusterId}{[required] The identifier (ID) of the cluster that you want to modify. To find the cluster ID, use \code{\link[=cloudhsmv2_describe_clusters]{describe_clusters}}.}
 }
 \description{
 Modifies CloudHSM cluster.

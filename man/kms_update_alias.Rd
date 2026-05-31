@@ -7,37 +7,25 @@
 kms_update_alias(AliasName, TargetKeyId)
 }
 \arguments{
-\item{AliasName}{[required] Identifies the alias that is changing its KMS key. This value must begin
-with \verb{alias/} followed by the alias name, such as \code{alias/ExampleAlias}.
-You cannot use \code{\link[=kms_update_alias]{update_alias}} to change the alias
-name.
+\item{AliasName}{[required] Identifies the alias that is changing its KMS key. This value must begin with \verb{alias/} followed by the alias name, such as \code{alias/ExampleAlias}. You cannot use \code{\link[=kms_update_alias]{update_alias}} to change the alias name.
 
-Do not include confidential or sensitive information in this field. This
-field may be displayed in plaintext in CloudTrail logs and other output.}
+Do not include confidential or sensitive information in this field. This field may be displayed in plaintext in CloudTrail logs and other output.}
 
-\item{TargetKeyId}{[required] Identifies the \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-cmk}{customer managed key}
-to associate with the alias. You don't have permission to associate an
-alias with an \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk}{Amazon Web Services managed key}.
+\item{TargetKeyId}{[required] Identifies the \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-mgn-key}{customer managed key} to associate with the alias. You don't have permission to associate an alias with an \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-key}{Amazon Web Services managed key}.
 
-The KMS key must be in the same Amazon Web Services account and Region
-as the alias. Also, the new target KMS key must be the same type as the
-current target KMS key (both symmetric or both asymmetric or both HMAC)
-and they must have the same key usage.
+The KMS key must be in the same Amazon Web Services account and Region as the alias. Also, the new target KMS key must be the same type as the current target KMS key (both symmetric or both asymmetric or both HMAC) and they must have the same key usage.
 
 Specify the key ID or key ARN of the KMS key.
 
 For example:
 \itemize{
 \item Key ID: \verb{1234abcd-12ab-34cd-56ef-1234567890ab}
-\item Key ARN:
-\verb{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
+\item Key ARN: \verb{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
 }
 
-To get the key ID and key ARN for a KMS key, use
-\code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.
+To get the key ID and key ARN for a KMS key, use \code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.
 
-To verify that the alias is mapped to the correct KMS key, use
-\code{\link[=kms_list_aliases]{list_aliases}}.}
+To verify that the alias is mapped to the correct KMS key, use \code{\link[=kms_list_aliases]{list_aliases}}.}
 }
 \description{
 Associates an existing KMS alias with a different KMS key. Each alias is associated with only one KMS key at a time, although a KMS key can have multiple aliases. The alias and the KMS key must be in the same Amazon Web Services account and Region.

@@ -15,13 +15,9 @@ pcaconnectorad_create_template(
 \arguments{
 \item{ClientToken}{Idempotency token.}
 
-\item{ConnectorArn}{[required] The Amazon Resource Name (ARN) that was returned when you called
-\code{\link[=pcaconnectorad_create_connector]{create_connector}}.}
+\item{ConnectorArn}{[required] The Amazon Resource Name (ARN) that was returned when you called \code{\link[=pcaconnectorad_create_connector]{create_connector}}.}
 
-\item{Definition}{[required] Template configuration to define the information included in
-certificates. Define certificate validity and renewal periods,
-certificate request handling and enrollment options, key usage
-extensions, application policies, and cryptography settings.}
+\item{Definition}{[required] Template configuration to define the information included in certificates. Define certificate validity and renewal periods, certificate request handling and enrollment options, key usage extensions, application policies, and cryptography settings.}
 
 \item{Name}{[required] Name of the template. The template name must be unique.}
 

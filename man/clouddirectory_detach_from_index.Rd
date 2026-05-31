@@ -7,8 +7,7 @@
 clouddirectory_detach_from_index(DirectoryArn, IndexReference, TargetReference)
 }
 \arguments{
-\item{DirectoryArn}{[required] The Amazon Resource Name (ARN) of the directory the index and object
-exist in.}
+\item{DirectoryArn}{[required] The Amazon Resource Name (ARN) of the directory the index and object exist in.}
 
 \item{IndexReference}{[required] A reference to the index object.}
 

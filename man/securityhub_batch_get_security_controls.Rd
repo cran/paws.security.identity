@@ -8,9 +8,7 @@ Amazon Web Services account and Amazon Web Services Region}
 securityhub_batch_get_security_controls(SecurityControlIds)
 }
 \arguments{
-\item{SecurityControlIds}{[required] A list of security controls (identified with \code{SecurityControlId},
-\code{SecurityControlArn}, or a mix of both parameters). The security control
-ID or Amazon Resource Name (ARN) is the same across standards.}
+\item{SecurityControlIds}{[required] A list of security controls (identified with \code{SecurityControlId}, \code{SecurityControlArn}, or a mix of both parameters). The security control ID or Amazon Resource Name (ARN) is the same across standards.}
 }
 \description{
 Provides details about a batch of security controls for the current Amazon Web Services account and Amazon Web Services Region.

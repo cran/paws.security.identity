@@ -13,24 +13,13 @@ wafregional_create_web_acl(
 )
 }
 \arguments{
-\item{Name}{[required] A friendly name or description of the WebACL. You can't change \code{Name}
-after you create the \code{WebACL}.}
+\item{Name}{[required] A friendly name or description of the WebACL. You can't change \code{Name} after you create the \code{WebACL}.}
 
-\item{MetricName}{[required] A friendly name or description for the metrics for this \code{WebACL}.The
-name can contain only alphanumeric characters (A-Z, a-z, 0-9), with
-maximum length 128 and minimum length one. It can't contain whitespace
-or metric names reserved for AWS WAF, including "All" and
-"Default_Action." You can't change \code{MetricName} after you create the
-\code{WebACL}.}
+\item{MetricName}{[required] A friendly name or description for the metrics for this \code{WebACL}.The name can contain only alphanumeric characters (A-Z, a-z, 0-9), with maximum length 128 and minimum length one. It can't contain whitespace or metric names reserved for AWS WAF, including "All" and "Default_Action." You can't change \code{MetricName} after you create the \code{WebACL}.}
 
-\item{DefaultAction}{[required] The action that you want AWS WAF to take when a request doesn't match
-the criteria specified in any of the \code{Rule} objects that are associated
-with the \code{WebACL}.}
+\item{DefaultAction}{[required] The action that you want AWS WAF to take when a request doesn't match the criteria specified in any of the \code{Rule} objects that are associated with the \code{WebACL}.}
 
-\item{ChangeToken}{[required] The value returned by the most recent call to
-\code{\link[=wafregional_get_change_token]{get_change_token}}.}
-
-\item{Tags}{}
+\item{ChangeToken}{[required] The value returned by the most recent call to \code{\link[=wafregional_get_change_token]{get_change_token}}.}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic} in the developer guide.

@@ -11,8 +11,7 @@ detective_update_investigation_state(GraphArn, InvestigationId, State)
 
 \item{InvestigationId}{[required] The investigation ID of the investigation report.}
 
-\item{State}{[required] The current state of the investigation. An archived investigation
-indicates you have completed reviewing the investigation.}
+\item{State}{[required] The current state of the investigation. An archived investigation indicates you have completed reviewing the investigation.}
 }
 \description{
 Updates the state of an investigation.

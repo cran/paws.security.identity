@@ -10,11 +10,9 @@ cleanroomsml_delete_ml_input_channel_data(
 )
 }
 \arguments{
-\item{mlInputChannelArn}{[required] The Amazon Resource Name (ARN) of the ML input channel that you want to
-delete.}
+\item{mlInputChannelArn}{[required] The Amazon Resource Name (ARN) of the ML input channel that you want to delete.}
 
-\item{membershipIdentifier}{[required] The membership ID of the membership that contains the ML input channel
-you want to delete.}
+\item{membershipIdentifier}{[required] The membership ID of the membership that contains the ML input channel you want to delete.}
 }
 \description{
 Provides the information necessary to delete an ML input channel.

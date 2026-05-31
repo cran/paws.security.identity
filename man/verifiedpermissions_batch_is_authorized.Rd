@@ -12,18 +12,21 @@ verifiedpermissions_batch_is_authorized(
 )
 }
 \arguments{
-\item{policyStoreId}{[required] Specifies the ID of the policy store. Policies in this policy store will
-be used to make the authorization decisions for the input.}
+\item{policyStoreId}{[required] Specifies the ID of the policy store. Policies in this policy store will be used to make the authorization decisions for the input.
 
-\item{entities}{Specifies the list of resources and principals and their associated
-attributes that Verified Permissions can examine when evaluating the
-policies.
+To specify a policy store, use its ID or alias name. When using an alias name, prefix it with \verb{policy-store-alias/}. For example:
+\itemize{
+\item ID: \code{PSEXAMPLEabcdefg111111}
+\item Alias name: \code{policy-store-alias/example-policy-store}
+}
 
-You can include only principal and resource entities in this parameter;
-you can't include actions. You must specify actions in the schema.}
+To view aliases, use \code{\link[=verifiedpermissions_list_policy_store_aliases]{list_policy_store_aliases}}.}
 
-\item{requests}{[required] An array of up to 30 requests that you want Verified Permissions to
-evaluate.}
+\item{entities}{(Optional) Specifies the list of resources and principals and their associated attributes that Verified Permissions can examine when evaluating the policies. These additional entities and their attributes can be referenced and checked by conditional elements in the policies in the specified policy store.
+
+You can include only principal and resource entities in this parameter; you can't include actions. You must specify actions in the schema.}
+
+\item{requests}{[required] An array of up to 30 requests that you want Verified Permissions to evaluate.}
 }
 \description{
 Makes a series of decisions about multiple authorization requests for one principal or resource. Each request contains the equivalent content of an \code{\link[=verifiedpermissions_is_authorized]{is_authorized}} request: principal, action, resource, and context. Either the \code{principal} or the \code{resource} parameter must be identical across all requests. For example, Verified Permissions won't evaluate a pair of requests where \code{bob} views \code{photo1} and \code{alice} views \code{photo2}. Authorization of \code{bob} to view \code{photo1} and \code{photo2}, or \code{bob} and \code{alice} to view \code{photo1}, are valid batches.

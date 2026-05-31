@@ -8,17 +8,11 @@ permission}
 ram_tag_resource(resourceShareArn = NULL, tags, resourceArn = NULL)
 }
 \arguments{
-\item{resourceShareArn}{Specifies the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Name (ARN)}
-of the resource share that you want to add tags to. You must specify
-\emph{either} \code{resourceShareArn}, or \code{resourceArn}, but not both.}
+\item{resourceShareArn}{Specifies the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Name (ARN)} of the resource share that you want to add tags to. You must specify \emph{either} \code{resourceShareArn}, or \code{resourceArn}, but not both.}
 
-\item{tags}{[required] A list of one or more tag key and value pairs. The tag key must be
-present and not be an empty string. The tag value must be present but
-can be an empty string.}
+\item{tags}{[required] A list of one or more tag key and value pairs. The tag key must be present and not be an empty string. The tag value must be present but can be an empty string.}
 
-\item{resourceArn}{Specifies the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Name (ARN)}
-of the managed permission that you want to add tags to. You must specify
-\emph{either} \code{resourceArn}, or \code{resourceShareArn}, but not both.}
+\item{resourceArn}{Specifies the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Name (ARN)} of the managed permission that you want to add tags to. You must specify \emph{either} \code{resourceArn}, or \code{resourceShareArn}, but not both.}
 }
 \description{
 Adds the specified tag keys and values to a resource share or managed permission. If you choose a resource share, the tags are attached to only the resource share, not to the resources that are in the resource share.

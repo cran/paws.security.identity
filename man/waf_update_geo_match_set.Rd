@@ -7,24 +7,16 @@
 waf_update_geo_match_set(GeoMatchSetId, ChangeToken, Updates)
 }
 \arguments{
-\item{GeoMatchSetId}{[required] The \code{GeoMatchSetId} of the GeoMatchSet that you want to update.
-\code{GeoMatchSetId} is returned by
-\code{\link[=waf_create_geo_match_set]{create_geo_match_set}} and by
-\code{\link[=waf_list_geo_match_sets]{list_geo_match_sets}}.}
+\item{GeoMatchSetId}{[required] The \code{GeoMatchSetId} of the GeoMatchSet that you want to update. \code{GeoMatchSetId} is returned by \code{\link[=waf_create_geo_match_set]{create_geo_match_set}} and by \code{\link[=waf_list_geo_match_sets]{list_geo_match_sets}}.}
 
-\item{ChangeToken}{[required] The value returned by the most recent call to
-\code{\link[=waf_get_change_token]{get_change_token}}.}
+\item{ChangeToken}{[required] The value returned by the most recent call to \code{\link[=waf_get_change_token]{get_change_token}}.}
 
-\item{Updates}{[required] An array of \code{GeoMatchSetUpdate} objects that you want to insert into or
-delete from an GeoMatchSet. For more information, see the applicable
-data types:
+\item{Updates}{[required] An array of \code{GeoMatchSetUpdate} objects that you want to insert into or delete from an GeoMatchSet. For more information, see the applicable data types:
 \itemize{
 \item GeoMatchSetUpdate: Contains \code{Action} and \code{GeoMatchConstraint}
 \item GeoMatchConstraint: Contains \code{Type} and \code{Value}
 
-You can have only one \code{Type} and \code{Value} per \code{GeoMatchConstraint}.
-To add multiple countries, include multiple \code{GeoMatchSetUpdate}
-objects in your request.
+You can have only one \code{Type} and \code{Value} per \code{GeoMatchConstraint}. To add multiple countries, include multiple \code{GeoMatchSetUpdate} objects in your request.
 }}
 }
 \description{

@@ -9,8 +9,7 @@ cleanroomsml_put_ml_configuration(membershipIdentifier, defaultOutputLocation)
 \arguments{
 \item{membershipIdentifier}{[required] The membership ID of the member that is being configured.}
 
-\item{defaultOutputLocation}{[required] The default Amazon S3 location where ML output is stored for the
-specified member.}
+\item{defaultOutputLocation}{[required] The default Amazon S3 location where ML output is stored for the specified member.}
 }
 \description{
 Assigns information about an ML configuration.

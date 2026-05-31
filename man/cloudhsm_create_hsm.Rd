@@ -22,24 +22,24 @@ cloudhsm_create_hsm(
 
 \item{EniIp}{The IP address to assign to the HSM's ENI.
 
-If an IP address is not specified, an IP address will be randomly chosen
-from the CIDR range of the subnet.}
+If an IP address is not specified, an IP address will be randomly chosen from the CIDR range of the subnet.}
 
-\item{IamRoleArn}{[required] The ARN of an IAM role to enable the AWS CloudHSM service to allocate an
-ENI on your behalf.}
+\item{IamRoleArn}{[required] The ARN of an IAM role to enable the AWS CloudHSM service to allocate an ENI on your behalf.}
 
 \item{ExternalId}{The external ID from \code{IamRoleArn}, if present.}
 
-\item{SubscriptionType}{[required]}
+\item{SubscriptionType}{[required] Specifies the type of subscription for the HSM.
+\itemize{
+\item \strong{PRODUCTION} - The HSM is being used in a production environment.
+\item \strong{TRIAL} - The HSM is being used in a product trial.
+}}
 
-\item{ClientToken}{A user-defined token to ensure idempotence. Subsequent calls to this
-operation with the same token will be ignored.}
+\item{ClientToken}{A user-defined token to ensure idempotence. Subsequent calls to this operation with the same token will be ignored.}
 
-\item{SyslogIp}{The IP address for the syslog monitoring server. The AWS CloudHSM
-service only supports one syslog monitoring server.}
+\item{SyslogIp}{The IP address for the syslog monitoring server. The AWS CloudHSM service only supports one syslog monitoring server.}
 }
 \description{
-This is documentation for \strong{AWS CloudHSM Classic}. For more information, see \href{https://aws.amazon.com/cloudhsm/faqs/}{AWS CloudHSM Classic FAQs}, the AWS CloudHSM Classic User Guide, and the \href{https://docs.aws.amazon.com/cloudhsm/classic/APIReference/}{AWS CloudHSM Classic API Reference}.
+This is documentation for \strong{AWS CloudHSM Classic}. For more information, see \href{https://aws.amazon.com/cloudhsm/faqs/}{AWS CloudHSM Classic FAQs}, the AWS CloudHSM Classic User Guide, and the AWS CloudHSM Classic API Reference.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudhsm_create_hsm/} for full documentation.
 }

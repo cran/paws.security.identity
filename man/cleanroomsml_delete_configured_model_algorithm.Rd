@@ -7,8 +7,7 @@
 cleanroomsml_delete_configured_model_algorithm(configuredModelAlgorithmArn)
 }
 \arguments{
-\item{configuredModelAlgorithmArn}{[required] The Amazon Resource Name (ARN) of the configured model algorithm that
-you want to delete.}
+\item{configuredModelAlgorithmArn}{[required] The Amazon Resource Name (ARN) of the configured model algorithm that you want to delete.}
 }
 \description{
 Deletes a configured model algorithm.

@@ -13,26 +13,17 @@ macie2_create_allow_list(
 )
 }
 \arguments{
-\item{clientToken}{[required] A unique, case-sensitive token that you provide to ensure the
-idempotency of the request.}
+\item{clientToken}{[required] A unique, case-sensitive token that you provide to ensure the idempotency of the request.}
 
-\item{criteria}{[required] The criteria that specify the text or text pattern to ignore. The
-criteria can be the location and name of an S3 object that lists
-specific text to ignore (s3WordsList), or a regular expression (regex)
-that defines a text pattern to ignore.}
+\item{criteria}{[required] The criteria that specify the text or text pattern to ignore. The criteria can be the location and name of an S3 object that lists specific text to ignore (s3WordsList), or a regular expression (regex) that defines a text pattern to ignore.}
 
-\item{description}{A custom description of the allow list. The description can contain as
-many as 512 characters.}
+\item{description}{A custom description of the allow list. The description can contain as many as 512 characters.}
 
-\item{name}{[required] A custom name for the allow list. The name can contain as many as 128
-characters.}
+\item{name}{[required] A custom name for the allow list. The name can contain as many as 128 characters.}
 
-\item{tags}{A map of key-value pairs that specifies the tags to associate with the
-allow list.
+\item{tags}{A map of key-value pairs that specifies the tags to associate with the allow list.
 
-An allow list can have a maximum of 50 tags. Each tag consists of a tag
-key and an associated tag value. The maximum length of a tag key is 128
-characters. The maximum length of a tag value is 256 characters.}
+An allow list can have a maximum of 50 tags. Each tag consists of a tag key and an associated tag value. The maximum length of a tag key is 128 characters. The maximum length of a tag value is 256 characters.}
 }
 \description{
 Creates and defines the settings for an allow list.

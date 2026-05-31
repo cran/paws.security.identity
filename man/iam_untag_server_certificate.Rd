@@ -7,15 +7,11 @@
 iam_untag_server_certificate(ServerCertificateName, TagKeys)
 }
 \arguments{
-\item{ServerCertificateName}{[required] The name of the IAM server certificate from which you want to remove
-tags.
+\item{ServerCertificateName}{[required] The name of the IAM server certificate from which you want to remove tags.
 
-This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
-consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: _+=,.@-}
+This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-}
 
-\item{TagKeys}{[required] A list of key names as a simple array of strings. The tags with matching
-keys are removed from the specified IAM server certificate.}
+\item{TagKeys}{[required] A list of key names as a simple array of strings. The tags with matching keys are removed from the specified IAM server certificate.}
 }
 \description{
 Removes the specified tags from the IAM server certificate. For more information about tagging, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html}{Tagging IAM resources} in the \emph{IAM User Guide}.

@@ -12,15 +12,13 @@ clouddirectory_get_link_attributes(
 )
 }
 \arguments{
-\item{DirectoryArn}{[required] The Amazon Resource Name (ARN) that is associated with the Directory
-where the typed link resides. For more information, see arns or \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink}{Typed Links}.}
+\item{DirectoryArn}{[required] The Amazon Resource Name (ARN) that is associated with the Directory where the typed link resides. For more information, see arns or \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink}{Typed Links}.}
 
 \item{TypedLinkSpecifier}{[required] Allows a typed link specifier to be accepted as input.}
 
 \item{AttributeNames}{[required] A list of attribute names whose values will be retrieved.}
 
-\item{ConsistencyLevel}{The consistency level at which to retrieve the attributes on a typed
-link.}
+\item{ConsistencyLevel}{The consistency level at which to retrieve the attributes on a typed link.}
 }
 \description{
 Retrieves attributes that are associated with a typed link.

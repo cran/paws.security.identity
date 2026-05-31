@@ -2,7 +2,7 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_change_password}
 \alias{cognitoidentityprovider_change_password}
-\title{Changes the password for a specified user in a user pool}
+\title{Changes the password for the currently signed-in user}
 \usage{
 cognitoidentityprovider_change_password(
   PreviousPassword = NULL,
@@ -11,17 +11,14 @@ cognitoidentityprovider_change_password(
 )
 }
 \arguments{
-\item{PreviousPassword}{The user's previous password. Required if the user has a password. If
-the user has no password and only signs in with passwordless
-authentication options, you can omit this parameter.}
+\item{PreviousPassword}{The user's previous password. Required if the user has a password. If the user has no password and only signs in with passwordless authentication options, you can omit this parameter.}
 
 \item{ProposedPassword}{[required] A new password that you prompted the user to enter in your application.}
 
-\item{AccessToken}{[required] A valid access token that Amazon Cognito issued to the user whose
-password you want to change.}
+\item{AccessToken}{[required] A valid access token that Amazon Cognito issued to the user whose password you want to change.}
 }
 \description{
-Changes the password for a specified user in a user pool.
+Changes the password for the currently signed-in user.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_change_password/} for full documentation.
 }

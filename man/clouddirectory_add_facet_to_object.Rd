@@ -12,11 +12,9 @@ clouddirectory_add_facet_to_object(
 )
 }
 \arguments{
-\item{DirectoryArn}{[required] The Amazon Resource Name (ARN) that is associated with the Directory
-where the object resides. For more information, see arns.}
+\item{DirectoryArn}{[required] The Amazon Resource Name (ARN) that is associated with the Directory where the object resides. For more information, see arns.}
 
-\item{SchemaFacet}{[required] Identifiers for the facet that you are adding to the object. See
-SchemaFacet for details.}
+\item{SchemaFacet}{[required] Identifiers for the facet that you are adding to the object. See SchemaFacet for details.}
 
 \item{ObjectAttributeList}{Attributes on the facet that you are adding to the object.}
 

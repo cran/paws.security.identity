@@ -7,9 +7,7 @@
 waf_get_rule_group(RuleGroupId)
 }
 \arguments{
-\item{RuleGroupId}{[required] The \code{RuleGroupId} of the RuleGroup that you want to get. \code{RuleGroupId}
-is returned by \code{\link[=waf_create_rule_group]{create_rule_group}} and by
-\code{\link[=waf_list_rule_groups]{list_rule_groups}}.}
+\item{RuleGroupId}{[required] The \code{RuleGroupId} of the RuleGroup that you want to get. \code{RuleGroupId} is returned by \code{\link[=waf_create_rule_group]{create_rule_group}} and by \code{\link[=waf_list_rule_groups]{list_rule_groups}}.}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic} in the developer guide.

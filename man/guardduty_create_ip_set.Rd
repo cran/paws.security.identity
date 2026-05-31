@@ -12,32 +12,30 @@ guardduty_create_ip_set(
   Location,
   Activate,
   ClientToken = NULL,
-  Tags = NULL
+  Tags = NULL,
+  ExpectedBucketOwner = NULL
 )
 }
 \arguments{
-\item{DetectorId}{[required] The unique ID of the detector of the GuardDuty account for which you
-want to create an IPSet.
+\item{DetectorId}{[required] The unique ID of the detector of the GuardDuty account for which you want to create an IPSet.
 
-To find the \code{detectorId} in the current Region, see the Settings page in
-the GuardDuty console, or run the
-\code{\link[=guardduty_list_detectors]{list_detectors}} API.}
+To find the \code{detectorId} in the current Region, see the Settings page in the GuardDuty console, or run the \code{\link[=guardduty_list_detectors]{list_detectors}} API.}
 
 \item{Name}{[required] The user-friendly name to identify the IPSet.
 
-Allowed characters are alphanumeric, whitespace, dash (-), and
-underscores (_).}
+Allowed characters are alphanumeric, whitespace, dash (-), and underscores (_).}
 
 \item{Format}{[required] The format of the file that contains the IPSet.}
 
 \item{Location}{[required] The URI of the file that contains the IPSet.}
 
-\item{Activate}{[required] A Boolean value that indicates whether GuardDuty is to start using the
-uploaded IPSet.}
+\item{Activate}{[required] A Boolean value that indicates whether GuardDuty is to start using the uploaded IPSet.}
 
 \item{ClientToken}{The idempotency token for the create request.}
 
 \item{Tags}{The tags to be added to a new IP set resource.}
+
+\item{ExpectedBucketOwner}{The Amazon Web Services account ID that owns the Amazon S3 bucket specified in the \strong{location} parameter.}
 }
 \description{
 Creates a new IPSet, which is called a trusted IP list in the console user interface. An IPSet is a list of IP addresses that are trusted for secure communication with Amazon Web Services infrastructure and applications. GuardDuty doesn't generate findings for IP addresses that are included in IPSets. Only users from the administrator account can use this operation.

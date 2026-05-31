@@ -14,16 +14,21 @@ verifiedpermissions_update_identity_source(
 )
 }
 \arguments{
-\item{policyStoreId}{[required] Specifies the ID of the policy store that contains the identity source
-that you want to update.}
+\item{policyStoreId}{[required] Specifies the ID of the policy store that contains the identity source that you want to update.
+
+To specify a policy store, use its ID or alias name. When using an alias name, prefix it with \verb{policy-store-alias/}. For example:
+\itemize{
+\item ID: \code{PSEXAMPLEabcdefg111111}
+\item Alias name: \code{policy-store-alias/example-policy-store}
+}
+
+To view aliases, use \code{\link[=verifiedpermissions_list_policy_store_aliases]{list_policy_store_aliases}}.}
 
 \item{identitySourceId}{[required] Specifies the ID of the identity source that you want to update.}
 
-\item{updateConfiguration}{[required] Specifies the details required to communicate with the identity provider
-(IdP) associated with this identity source.}
+\item{updateConfiguration}{[required] Specifies the details required to communicate with the identity provider (IdP) associated with this identity source.}
 
-\item{principalEntityType}{Specifies the data type of principals generated for identities
-authenticated by the identity source.}
+\item{principalEntityType}{Specifies the data type of principals generated for identities authenticated by the identity source.}
 }
 \description{
 Updates the specified identity source to use a new identity provider (IdP), or to change the mapping of identities from the IdP to a different principal entity type.

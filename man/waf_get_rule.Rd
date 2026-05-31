@@ -7,8 +7,7 @@
 waf_get_rule(RuleId)
 }
 \arguments{
-\item{RuleId}{[required] The \code{RuleId} of the Rule that you want to get. \code{RuleId} is returned by
-\code{\link[=waf_create_rule]{create_rule}} and by \code{\link[=waf_list_rules]{list_rules}}.}
+\item{RuleId}{[required] The \code{RuleId} of the Rule that you want to get. \code{RuleId} is returned by \code{\link[=waf_create_rule]{create_rule}} and by \code{\link[=waf_list_rules]{list_rules}}.}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic} in the developer guide.

@@ -15,50 +15,27 @@ guardduty_update_organization_configuration(
 \arguments{
 \item{DetectorId}{[required] The ID of the detector that configures the delegated administrator.
 
-To find the \code{detectorId} in the current Region, see the Settings page in
-the GuardDuty console, or run the
-\code{\link[=guardduty_list_detectors]{list_detectors}} API.}
+To find the \code{detectorId} in the current Region, see the Settings page in the GuardDuty console, or run the \code{\link[=guardduty_list_detectors]{list_detectors}} API.}
 
-\item{AutoEnable}{Represents whether to automatically enable member accounts in the
-organization. This applies to only new member accounts, not the existing
-member accounts. When a new account joins the organization, the chosen
-features will be enabled for them by default.
+\item{AutoEnable}{Represents whether to automatically enable member accounts in the organization. This applies to only new member accounts, not the existing member accounts. When a new account joins the organization, the chosen features will be enabled for them by default.
 
-Even though this is still supported, we recommend using
-\code{AutoEnableOrganizationMembers} to achieve the similar results. You must
-provide a value for either \code{autoEnableOrganizationMembers} or
-\code{autoEnable}.}
+Even though this is still supported, we recommend using \code{AutoEnableOrganizationMembers} to achieve the similar results. You must provide a value for either \code{autoEnableOrganizationMembers} or \code{autoEnable}.}
 
 \item{DataSources}{Describes which data sources will be updated.}
 
 \item{Features}{A list of features that will be configured for the organization.}
 
-\item{AutoEnableOrganizationMembers}{Indicates the auto-enablement configuration of GuardDuty for the member
-accounts in the organization. You must provide a value for either
-\code{autoEnableOrganizationMembers} or \code{autoEnable}.
+\item{AutoEnableOrganizationMembers}{Indicates the auto-enablement configuration of GuardDuty for the member accounts in the organization. You must provide a value for either \code{autoEnableOrganizationMembers} or \code{autoEnable}.
 
-Use one of the following configuration values for
-\code{autoEnableOrganizationMembers}:
+Use one of the following configuration values for \code{autoEnableOrganizationMembers}:
 \itemize{
-\item \code{NEW}: Indicates that when a new account joins the organization,
-they will have GuardDuty enabled automatically.
-\item \code{ALL}: Indicates that all accounts in the organization have
-GuardDuty enabled automatically. This includes \code{NEW} accounts that
-join the organization and accounts that may have been suspended or
-removed from the organization in GuardDuty.
+\item \code{NEW}: Indicates that when a new account joins the organization, they will have GuardDuty enabled automatically.
+\item \code{ALL}: Indicates that all accounts in the organization have GuardDuty enabled automatically. This includes \code{NEW} accounts that join the organization and accounts that may have been suspended or removed from the organization in GuardDuty.
 
-It may take up to 24 hours to update the configuration for all the
-member accounts.
-\item \code{NONE}: Indicates that GuardDuty will not be automatically enabled
-for any account in the organization. The administrator must manage
-GuardDuty for each account in the organization individually.
+It may take up to 24 hours to update the configuration for all the member accounts.
+\item \code{NONE}: Indicates that GuardDuty will not be automatically enabled for any account in the organization. The administrator must manage GuardDuty for each account in the organization individually.
 
-When you update the auto-enable setting from \code{ALL} or \code{NEW} to
-\code{NONE}, this action doesn't disable the corresponding option for
-your existing accounts. This configuration will apply to the new
-accounts that join the organization. After you update the
-auto-enable settings, no new account will have the corresponding
-option as enabled.
+When you update the auto-enable setting from \code{ALL} or \code{NEW} to \code{NONE}, this action doesn't disable the corresponding option for your existing accounts. This configuration will apply to the new accounts that join the organization. After you update the auto-enable settings, no new account will have the corresponding option as enabled.
 }}
 }
 \description{

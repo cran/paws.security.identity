@@ -7,8 +7,7 @@
 inspector2_update_organization_configuration(autoEnable)
 }
 \arguments{
-\item{autoEnable}{[required] Defines which scan types are enabled automatically for new members of
-your Amazon Inspector organization.}
+\item{autoEnable}{[required] Defines which scan types are enabled automatically for new members of your Amazon Inspector organization.}
 }
 \description{
 Updates the configurations for your Amazon Inspector organization.

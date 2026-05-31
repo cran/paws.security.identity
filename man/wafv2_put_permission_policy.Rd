@@ -7,21 +7,16 @@
 wafv2_put_permission_policy(ResourceArn, Policy)
 }
 \arguments{
-\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the RuleGroup to which you want to
-attach the policy.}
+\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the RuleGroup to which you want to attach the policy.}
 
 \item{Policy}{[required] The policy to attach to the specified rule group.
 
 The policy specifications must conform to the following:
 \itemize{
 \item The policy must be composed using IAM Policy version 2012-10-17.
-\item The policy must include specifications for \code{Effect}, \code{Action}, and
-\code{Principal}.
+\item The policy must include specifications for \code{Effect}, \code{Action}, and \code{Principal}.
 \item \code{Effect} must specify \code{Allow}.
-\item \code{Action} must specify \code{wafv2:CreateWebACL}, \code{wafv2:UpdateWebACL},
-and \code{wafv2:PutFirewallManagerRuleGroups} and may optionally specify
-\code{wafv2:GetRuleGroup}. WAF rejects any extra actions or wildcard
-actions in the policy.
+\item \code{Action} must specify \code{wafv2:CreateWebACL}, \code{wafv2:UpdateWebACL}, and \code{wafv2:PutFirewallManagerRuleGroups} and may optionally specify \code{wafv2:GetRuleGroup}. WAF rejects any extra actions or wildcard actions in the policy.
 \item The policy must not include a \code{Resource} parameter.
 }
 

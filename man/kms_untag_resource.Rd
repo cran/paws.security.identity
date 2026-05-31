@@ -14,17 +14,15 @@ Specify the key ID or key ARN of the KMS key.
 For example:
 \itemize{
 \item Key ID: \verb{1234abcd-12ab-34cd-56ef-1234567890ab}
-\item Key ARN:
-\verb{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
+\item Key ARN: \verb{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
 }
 
-To get the key ID and key ARN for a KMS key, use
-\code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
+To get the key ID and key ARN for a KMS key, use \code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
 
 \item{TagKeys}{[required] One or more tag keys. Specify only the tag keys, not the tag values.}
 }
 \description{
-Deletes tags from a \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-cmk}{customer managed key}. To delete a tag, specify the tag key and the KMS key.
+Deletes tags from a \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-mgn-key}{customer managed key}. To delete a tag, specify the tag key and the KMS key.
 
 See \url{https://www.paws-r-sdk.com/docs/kms_untag_resource/} for full documentation.
 }

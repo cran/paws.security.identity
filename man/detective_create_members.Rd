@@ -14,21 +14,13 @@ detective_create_members(
 \arguments{
 \item{GraphArn}{[required] The ARN of the behavior graph.}
 
-\item{Message}{Customized message text to include in the invitation email message to
-the invited member accounts.}
+\item{Message}{Customized message text to include in the invitation email message to the invited member accounts.}
 
-\item{DisableEmailNotification}{if set to \code{true}, then the invited accounts do not receive email
-notifications. By default, this is set to \code{false}, and the invited
-accounts receive email notifications.
+\item{DisableEmailNotification}{if set to \code{true}, then the invited accounts do not receive email notifications. By default, this is set to \code{false}, and the invited accounts receive email notifications.
 
-Organization accounts in the organization behavior graph do not receive
-email notifications.}
+Organization accounts in the organization behavior graph do not receive email notifications.}
 
-\item{Accounts}{[required] The list of Amazon Web Services accounts to invite or to enable. You can
-invite or enable up to 50 accounts at a time. For each invited account,
-the account list contains the account identifier and the Amazon Web
-Services account root user email address. For organization accounts in
-the organization behavior graph, the email address is not required.}
+\item{Accounts}{[required] The list of Amazon Web Services accounts to invite or to enable. You can invite or enable up to 50 accounts at a time. For each invited account, the account list contains the account identifier and the Amazon Web Services account root user email address. For organization accounts in the organization behavior graph, the email address is not required.}
 }
 \description{
 \code{\link[=detective_create_members]{create_members}} is used to send invitations to accounts. For the organization behavior graph, the Detective administrator account uses \code{\link[=detective_create_members]{create_members}} to enable organization accounts as member accounts.

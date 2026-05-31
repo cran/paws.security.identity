@@ -7,13 +7,11 @@
 cloudhsmv2_put_resource_policy(ResourceArn = NULL, Policy = NULL)
 }
 \arguments{
-\item{ResourceArn}{Amazon Resource Name (ARN) of the resource to which you want to attach a
-policy.}
+\item{ResourceArn}{Amazon Resource Name (ARN) of the resource to which you want to attach a policy.}
 
 \item{Policy}{The policy you want to associate with a resource.
 
-For an example policy, see \href{https://docs.aws.amazon.com/cloudhsm/latest/userguide/sharing.html}{Working with shared backups}
-in the CloudHSM User Guide}
+For an example policy, see \href{https://docs.aws.amazon.com/cloudhsm/latest/userguide/sharing.html}{Working with shared backups} in the CloudHSM User Guide}
 }
 \description{
 Creates or updates an CloudHSM resource policy. A resource policy helps you to define the IAM entity (for example, an Amazon Web Services account) that can manage your CloudHSM resources. The following resources support CloudHSM resource policies:

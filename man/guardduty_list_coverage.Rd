@@ -13,17 +13,11 @@ guardduty_list_coverage(
 )
 }
 \arguments{
-\item{DetectorId}{[required] The unique ID of the detector whose coverage details you want to
-retrieve.
+\item{DetectorId}{[required] The unique ID of the detector whose coverage details you want to retrieve.
 
-To find the \code{detectorId} in the current Region, see the Settings page in
-the GuardDuty console, or run the
-\code{\link[=guardduty_list_detectors]{list_detectors}} API.}
+To find the \code{detectorId} in the current Region, see the Settings page in the GuardDuty console, or run the \code{\link[=guardduty_list_detectors]{list_detectors}} API.}
 
-\item{NextToken}{A token to use for paginating results that are returned in the response.
-Set the value of this parameter to null for the first request to a list
-action. For subsequent calls, use the NextToken value returned from the
-previous request to continue listing results after the first page.}
+\item{NextToken}{A token to use for paginating results that are returned in the response. Set the value of this parameter to null for the first request to a list action. For subsequent calls, use the NextToken value returned from the previous request to continue listing results after the first page.}
 
 \item{MaxResults}{The maximum number of results to return in the response.}
 

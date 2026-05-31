@@ -53,27 +53,11 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-This is \strong{AWS WAF Classic Regional} documentation. For more
-information, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}
-in the developer guide.
+This is \strong{AWS WAF Classic Regional} documentation. For more information, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic} in the developer guide.
 
-\strong{For the latest version of AWS WAF}, use the AWS WAFV2 API and see the
-\href{https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html}{AWS WAF Developer Guide}.
-With the latest version, AWS WAF has a single set of endpoints for
-regional and global use.
+\strong{For the latest version of AWS WAF}, use the AWS WAFV2 API and see the \href{https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html}{AWS WAF Developer Guide}. With the latest version, AWS WAF has a single set of endpoints for regional and global use.
 
-This is the \emph{AWS WAF Regional Classic API Reference} for using AWS WAF
-Classic with the AWS resources, Elastic Load Balancing (ELB) Application
-Load Balancers and API Gateway APIs. The AWS WAF Classic actions and
-data types listed in the reference are available for protecting Elastic
-Load Balancing (ELB) Application Load Balancers and API Gateway APIs.
-You can use these actions and data types by means of the endpoints
-listed in \href{https://docs.aws.amazon.com/general/latest/gr/rande.html#waf_region}{AWS Regions and Endpoints}.
-This guide is for developers who need detailed information about the AWS
-WAF Classic API actions, data types, and errors. For detailed
-information about AWS WAF Classic features and an overview of how to use
-the AWS WAF Classic API, see the \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}
-in the developer guide.
+This is the \emph{AWS WAF Regional Classic API Reference} for using AWS WAF Classic with the AWS resources, Elastic Load Balancing (ELB) Application Load Balancers and API Gateway APIs. The AWS WAF Classic actions and data types listed in the reference are available for protecting Elastic Load Balancing (ELB) Application Load Balancers and API Gateway APIs. You can use these actions and data types by means of the endpoints listed in \href{https://docs.aws.amazon.com/general/latest/gr/rande.html#waf_region}{AWS Regions and Endpoints}. This guide is for developers who need detailed information about the AWS WAF Classic API actions, data types, and errors. For detailed information about AWS WAF Classic features and an overview of how to use the AWS WAF Classic API, see the \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic} in the developer guide.
 }
 \section{Service syntax}{
 

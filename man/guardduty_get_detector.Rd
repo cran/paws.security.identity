@@ -9,9 +9,7 @@ guardduty_get_detector(DetectorId)
 \arguments{
 \item{DetectorId}{[required] The unique ID of the detector that you want to get.
 
-To find the \code{detectorId} in the current Region, see the Settings page in
-the GuardDuty console, or run the
-\code{\link[=guardduty_list_detectors]{list_detectors}} API.}
+To find the \code{detectorId} in the current Region, see the Settings page in the GuardDuty console, or run the \code{\link[=guardduty_list_detectors]{list_detectors}} API.}
 }
 \description{
 Retrieves a GuardDuty detector specified by the detectorId.

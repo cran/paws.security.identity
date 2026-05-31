@@ -7,8 +7,7 @@
 securityhub_get_security_control_definition(SecurityControlId)
 }
 \arguments{
-\item{SecurityControlId}{[required] The ID of the security control to retrieve the definition for. This
-field doesn’t accept an Amazon Resource Name (ARN).}
+\item{SecurityControlId}{[required] The ID of the security control to retrieve the definition for. This field doesn’t accept an Amazon Resource Name (ARN).}
 }
 \description{
 Retrieves the definition of a security control. The definition includes the control title, description, Region availability, parameter definitions, and other details.

@@ -7,8 +7,7 @@
 wafregional_get_logging_configuration(ResourceArn)
 }
 \arguments{
-\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the web ACL for which you want to get
-the LoggingConfiguration.}
+\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the web ACL for which you want to get the LoggingConfiguration.}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic} in the developer guide.

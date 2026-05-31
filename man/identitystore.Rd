@@ -53,15 +53,11 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-The Identity Store service used by IAM Identity Center provides a single
-place to retrieve all of your identities (users and groups). For more
-information, see the \href{https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html}{IAM Identity Center User Guide}.
+The Identity Store service used by IAM Identity Center provides a single place to retrieve all of your identities (users and groups). For more information, see the \href{https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html}{IAM Identity Center User Guide}.
 
-This reference guide describes the identity store operations that you
-can call programmatically and includes detailed information about data
-types and errors.
+This reference guide describes the identity store operations that you can call programmatically and includes detailed information about data types and errors.
 
-IAM Identity Center uses the \code{sso} and \code{identitystore} API namespaces.
+IAM Identity Center uses the \code{sso}, \code{sso-directory}, and \code{identitystore} API namespaces. The \code{sso-directory} and \code{identitystore} namespaces authorize access to data in the Identity Store. Make sure your policies with IAM actions from these two namespaces are consistent to avoid conflicting authorization to the same data.
 }
 \section{Service syntax}{
 
@@ -119,8 +115,8 @@ IAM Identity Center uses the \code{sso} and \code{identitystore} API namespaces.
 \link[=identitystore_list_group_memberships_for_member]{list_group_memberships_for_member} \tab For the specified member in the specified identity store, returns the list of all GroupMembership objects and returns results in paginated form\cr
 \link[=identitystore_list_groups]{list_groups} \tab Lists all groups in the identity store\cr
 \link[=identitystore_list_users]{list_users} \tab Lists all users in the identity store\cr
-\link[=identitystore_update_group]{update_group} \tab For the specified group in the specified identity store, updates the group metadata and attributes\cr
-\link[=identitystore_update_user]{update_user} \tab For the specified user in the specified identity store, updates the user metadata and attributes
+\link[=identitystore_update_group]{update_group} \tab Updates the specified group metadata and attributes in the specified identity store\cr
+\link[=identitystore_update_user]{update_user} \tab Updates the specified user metadata and attributes in the specified identity store
 }
 }
 

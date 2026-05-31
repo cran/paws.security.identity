@@ -7,8 +7,7 @@
 clouddirectory_delete_object(DirectoryArn, ObjectReference)
 }
 \arguments{
-\item{DirectoryArn}{[required] The Amazon Resource Name (ARN) that is associated with the Directory
-where the object resides. For more information, see arns.}
+\item{DirectoryArn}{[required] The Amazon Resource Name (ARN) that is associated with the Directory where the object resides. For more information, see arns.}
 
 \item{ObjectReference}{[required] A reference that identifies the object.}
 }

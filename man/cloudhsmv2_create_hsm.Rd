@@ -8,17 +8,11 @@ cluster}
 cloudhsmv2_create_hsm(ClusterId, AvailabilityZone, IpAddress = NULL)
 }
 \arguments{
-\item{ClusterId}{[required] The identifier (ID) of the HSM's cluster. To find the cluster ID, use
-\code{\link[=cloudhsmv2_describe_clusters]{describe_clusters}}.}
+\item{ClusterId}{[required] The identifier (ID) of the HSM's cluster. To find the cluster ID, use \code{\link[=cloudhsmv2_describe_clusters]{describe_clusters}}.}
 
-\item{AvailabilityZone}{[required] The Availability Zone where you are creating the HSM. To find the
-cluster's Availability Zones, use
-\code{\link[=cloudhsmv2_describe_clusters]{describe_clusters}}.}
+\item{AvailabilityZone}{[required] The Availability Zone where you are creating the HSM. To find the cluster's Availability Zones, use \code{\link[=cloudhsmv2_describe_clusters]{describe_clusters}}.}
 
-\item{IpAddress}{The HSM's IP address. If you specify an IP address, use an available
-address from the subnet that maps to the Availability Zone where you are
-creating the HSM. If you don't specify an IP address, one is chosen for
-you from that subnet.}
+\item{IpAddress}{The HSM's IP address. If you specify an IP address, use an available address from the subnet that maps to the Availability Zone where you are creating the HSM. If you don't specify an IP address, one is chosen for you from that subnet.}
 }
 \description{
 Creates a new hardware security module (HSM) in the specified CloudHSM cluster.

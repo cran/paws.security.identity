@@ -5,27 +5,11 @@ NULL
 #' AWS WAF
 #'
 #' @description
-#' This is **AWS WAF Classic** documentation. For more information, see
-#' [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
+#' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
+#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the [AWS WAF Developer Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html). With the latest version, AWS WAF has a single set of endpoints for regional and global use.
 #' 
-#' This is the *AWS WAF Classic API Reference* for using AWS WAF Classic
-#' with Amazon CloudFront. The AWS WAF Classic actions and data types
-#' listed in the reference are available for protecting Amazon CloudFront
-#' distributions. You can use these actions and data types via the endpoint
-#' *waf.amazonaws.com*. This guide is for developers who need detailed
-#' information about the AWS WAF Classic API actions, data types, and
-#' errors. For detailed information about AWS WAF Classic features and an
-#' overview of how to use the AWS WAF Classic API, see the [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
+#' This is the *AWS WAF Classic API Reference* for using AWS WAF Classic with Amazon CloudFront. The AWS WAF Classic actions and data types listed in the reference are available for protecting Amazon CloudFront distributions. You can use these actions and data types via the endpoint *waf.amazonaws.com*. This guide is for developers who need detailed information about the AWS WAF Classic API actions, data types, and errors. For detailed information about AWS WAF Classic features and an overview of how to use the AWS WAF Classic API, see the [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
 #' @param
 #' config
@@ -220,7 +204,7 @@ waf <- function(config = list(), credentials = list(), endpoint = NULL, region =
 
 .waf$metadata <- list(
   service_name = "waf",
-  endpoints = list("aws-global" = list(endpoint = "waf.amazonaws.com", global = TRUE, signing_region = "us-east-1"), "us-east-1" = list(endpoint = "waf.amazonaws.com", global = TRUE), "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "waf.amazonaws.com", global = FALSE, signing_region = "us-east-1"), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "waf.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "waf.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "waf.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "waf.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "waf.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "waf.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("aws-global" = list(endpoint = "waf.amazonaws.com", global = TRUE, signing_region = "us-east-1"), "us-east-1" = list(endpoint = "waf.amazonaws.com", global = TRUE), "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "waf.amazonaws.com", global = FALSE, signing_region = "us-east-1"), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "waf.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "waf.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "waf.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "waf.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "waf.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "waf.{region}.csp.hci.ic.gov", global = FALSE), "^eusc\\-(de)\\-\\w+\\-\\d+$" = list(endpoint = "waf.{region}.amazonaws.eu", global = FALSE)),
   service_id = "WAF",
   api_version = "2015-08-24",
   signing_name = "waf",

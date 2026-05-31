@@ -7,8 +7,7 @@
 fms_delete_resource_set(Identifier)
 }
 \arguments{
-\item{Identifier}{[required] A unique identifier for the resource set, used in a request to refer to
-the resource set.}
+\item{Identifier}{[required] A unique identifier for the resource set, used in a request to refer to the resource set.}
 }
 \description{
 Deletes the specified ResourceSet.

@@ -10,11 +10,9 @@ cleanroomsml_get_collaboration_ml_input_channel(
 )
 }
 \arguments{
-\item{mlInputChannelArn}{[required] The Amazon Resource Name (ARN) of the ML input channel that you want to
-get.}
+\item{mlInputChannelArn}{[required] The Amazon Resource Name (ARN) of the ML input channel that you want to get.}
 
-\item{collaborationIdentifier}{[required] The collaboration ID of the collaboration that contains the ML input
-channel that you want to get.}
+\item{collaborationIdentifier}{[required] The collaboration ID of the collaboration that contains the ML input channel that you want to get.}
 }
 \description{
 Returns information about a specific ML input channel in a collaboration.

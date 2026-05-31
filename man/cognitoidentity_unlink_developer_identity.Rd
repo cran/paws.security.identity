@@ -18,8 +18,7 @@ cognitoidentity_unlink_developer_identity(
 
 \item{DeveloperProviderName}{[required] The "domain" by which Cognito will refer to your users.}
 
-\item{DeveloperUserIdentifier}{[required] A unique ID used by your backend authentication process to identify a
-user.}
+\item{DeveloperUserIdentifier}{[required] A unique ID used by your backend authentication process to identify a user.}
 }
 \description{
 Unlinks a \code{DeveloperUserIdentifier} from an existing identity. Unlinked developer users will be considered new identities next time they are seen. If, for a given Cognito identity, you remove all federated identities as well as the developer user identifier, the Cognito identity becomes inaccessible.

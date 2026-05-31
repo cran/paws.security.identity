@@ -11,13 +11,11 @@ cleanroomsml_list_ml_input_channels(
 )
 }
 \arguments{
-\item{nextToken}{The token value retrieved from a previous call to access the next page
-of results.}
+\item{nextToken}{The token value retrieved from a previous call to access the next page of results.}
 
 \item{maxResults}{The maximum number of ML input channels to return.}
 
-\item{membershipIdentifier}{[required] The membership ID of the membership that contains the ML input channels
-that you want to list.}
+\item{membershipIdentifier}{[required] The membership ID of the membership that contains the ML input channels that you want to list.}
 }
 \description{
 Returns a list of ML input channels.

@@ -8,15 +8,11 @@ Language (SAML) identity provider in IAM}
 iam_untag_saml_provider(SAMLProviderArn, TagKeys)
 }
 \arguments{
-\item{SAMLProviderArn}{[required] The ARN of the SAML identity provider in IAM from which you want to
-remove tags.
+\item{SAMLProviderArn}{[required] The ARN of the SAML identity provider in IAM from which you want to remove tags.
 
-This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
-consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: _+=,.@-}
+This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-}
 
-\item{TagKeys}{[required] A list of key names as a simple array of strings. The tags with matching
-keys are removed from the specified SAML identity provider.}
+\item{TagKeys}{[required] A list of key names as a simple array of strings. The tags with matching keys are removed from the specified SAML identity provider.}
 }
 \description{
 Removes the specified tags from the specified Security Assertion Markup Language (SAML) identity provider in IAM. For more information about these providers, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_oidc.html}{About web identity federation}. For more information about tagging, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html}{Tagging IAM resources} in the \emph{IAM User Guide}.

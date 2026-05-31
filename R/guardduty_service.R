@@ -5,32 +5,11 @@ NULL
 #' Amazon GuardDuty
 #'
 #' @description
-#' Amazon GuardDuty is a continuous security monitoring service that
-#' analyzes and processes the following foundational data sources - VPC
-#' flow logs, Amazon Web Services CloudTrail management event logs,
-#' CloudTrail S3 data event logs, EKS audit logs, DNS logs, Amazon EBS
-#' volume data, runtime activity belonging to container workloads, such as
-#' Amazon EKS, Amazon ECS (including Amazon Web Services Fargate), and
-#' Amazon EC2 instances. It uses threat intelligence feeds, such as lists
-#' of malicious IPs and domains, and machine learning to identify
-#' unexpected, potentially unauthorized, and malicious activity within your
-#' Amazon Web Services environment. This can include issues like
-#' escalations of privileges, uses of exposed credentials, or communication
-#' with malicious IPs, domains, or presence of malware on your Amazon EC2
-#' instances and container workloads. For example, GuardDuty can detect
-#' compromised EC2 instances and container workloads serving malware, or
-#' mining bitcoin.
+#' Amazon GuardDuty is a continuous security monitoring service that analyzes and processes the following foundational data sources - VPC flow logs, Amazon Web Services CloudTrail management event logs, CloudTrail S3 data event logs, EKS audit logs, DNS logs, Amazon EBS volume data, runtime activity belonging to container workloads, such as Amazon EKS, Amazon ECS (including Amazon Web Services Fargate), and Amazon EC2 instances. It uses threat intelligence feeds, such as lists of malicious IPs and domains, and machine learning to identify unexpected, potentially unauthorized, and malicious activity within your Amazon Web Services environment. This can include issues like escalations of privileges, uses of exposed credentials, or communication with malicious IPs, domains, or presence of malware on your Amazon EC2 instances and container workloads. For example, GuardDuty can detect compromised EC2 instances and container workloads serving malware, or mining bitcoin.
 #' 
-#' GuardDuty also monitors Amazon Web Services account access behavior for
-#' signs of compromise, such as unauthorized infrastructure deployments
-#' like EC2 instances deployed in a Region that has never been used, or
-#' unusual API calls like a password policy change to reduce password
-#' strength.
+#' GuardDuty also monitors Amazon Web Services account access behavior for signs of compromise, such as unauthorized infrastructure deployments like EC2 instances deployed in a Region that has never been used, or unusual API calls like a password policy change to reduce password strength.
 #' 
-#' GuardDuty informs you about the status of your Amazon Web Services
-#' environment by producing security findings that you can view in the
-#' GuardDuty console or through Amazon EventBridge. For more information,
-#' see the *\href{https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html}{Amazon GuardDuty User Guide}* .
+#' GuardDuty informs you about the status of your Amazon Web Services environment by producing security findings that you can view in the GuardDuty console or through Amazon EventBridge. For more information, see the *\href{https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html}{Amazon GuardDuty User Guide}* .
 #'
 #' @param
 #' config
@@ -125,7 +104,9 @@ NULL
 #'  \link[=guardduty_create_members]{create_members} \tab Creates member accounts of the current Amazon Web Services account by specifying a list of Amazon Web Services account IDs\cr
 #'  \link[=guardduty_create_publishing_destination]{create_publishing_destination} \tab Creates a publishing destination where you can export your GuardDuty findings\cr
 #'  \link[=guardduty_create_sample_findings]{create_sample_findings} \tab Generates sample findings of types specified by the list of finding types\cr
+#'  \link[=guardduty_create_threat_entity_set]{create_threat_entity_set} \tab Creates a new threat entity set\cr
 #'  \link[=guardduty_create_threat_intel_set]{create_threat_intel_set} \tab Creates a new ThreatIntelSet\cr
+#'  \link[=guardduty_create_trusted_entity_set]{create_trusted_entity_set} \tab Creates a new trusted entity set\cr
 #'  \link[=guardduty_decline_invitations]{decline_invitations} \tab Declines invitations sent to the current member account by Amazon Web Services accounts specified by their account IDs\cr
 #'  \link[=guardduty_delete_detector]{delete_detector} \tab Deletes an Amazon GuardDuty detector that is specified by the detector ID\cr
 #'  \link[=guardduty_delete_filter]{delete_filter} \tab Deletes the filter specified by the filter name\cr
@@ -134,7 +115,9 @@ NULL
 #'  \link[=guardduty_delete_malware_protection_plan]{delete_malware_protection_plan} \tab Deletes the Malware Protection plan ID associated with the Malware Protection plan resource\cr
 #'  \link[=guardduty_delete_members]{delete_members} \tab Deletes GuardDuty member accounts (to the current GuardDuty administrator account) specified by the account IDs\cr
 #'  \link[=guardduty_delete_publishing_destination]{delete_publishing_destination} \tab Deletes the publishing definition with the specified destinationId\cr
+#'  \link[=guardduty_delete_threat_entity_set]{delete_threat_entity_set} \tab Deletes the threat entity set that is associated with the specified threatEntitySetId\cr
 #'  \link[=guardduty_delete_threat_intel_set]{delete_threat_intel_set} \tab Deletes the ThreatIntelSet specified by the ThreatIntelSet ID\cr
+#'  \link[=guardduty_delete_trusted_entity_set]{delete_trusted_entity_set} \tab Deletes the trusted entity set that is associated with the specified trustedEntitySetId\cr
 #'  \link[=guardduty_describe_malware_scans]{describe_malware_scans} \tab Returns a list of malware scans\cr
 #'  \link[=guardduty_describe_organization_configuration]{describe_organization_configuration} \tab Returns information about the account selected as the delegated administrator for GuardDuty\cr
 #'  \link[=guardduty_describe_publishing_destination]{describe_publishing_destination} \tab Returns information about the publishing destination specified by the provided destinationId\cr
@@ -152,13 +135,16 @@ NULL
 #'  \link[=guardduty_get_invitations_count]{get_invitations_count} \tab Returns the count of all GuardDuty membership invitations that were sent to the current member account except the currently accepted invitation\cr
 #'  \link[=guardduty_get_ip_set]{get_ip_set} \tab Retrieves the IPSet specified by the ipSetId\cr
 #'  \link[=guardduty_get_malware_protection_plan]{get_malware_protection_plan} \tab Retrieves the Malware Protection plan details associated with a Malware Protection plan ID\cr
+#'  \link[=guardduty_get_malware_scan]{get_malware_scan} \tab Retrieves the detailed information for a specific malware scan\cr
 #'  \link[=guardduty_get_malware_scan_settings]{get_malware_scan_settings} \tab Returns the details of the malware scan settings\cr
 #'  \link[=guardduty_get_master_account]{get_master_account} \tab Provides the details for the GuardDuty administrator account associated with the current GuardDuty member account\cr
 #'  \link[=guardduty_get_member_detectors]{get_member_detectors} \tab Describes which data sources are enabled for the member account's detector\cr
 #'  \link[=guardduty_get_members]{get_members} \tab Retrieves GuardDuty member accounts (of the current GuardDuty administrator account) specified by the account IDs\cr
 #'  \link[=guardduty_get_organization_statistics]{get_organization_statistics} \tab Retrieves how many active member accounts have each feature enabled within GuardDuty\cr
 #'  \link[=guardduty_get_remaining_free_trial_days]{get_remaining_free_trial_days} \tab Provides the number of days left for each data source used in the free trial period\cr
+#'  \link[=guardduty_get_threat_entity_set]{get_threat_entity_set} \tab Retrieves the threat entity set associated with the specified threatEntitySetId\cr
 #'  \link[=guardduty_get_threat_intel_set]{get_threat_intel_set} \tab Retrieves the ThreatIntelSet that is specified by the ThreatIntelSet ID\cr
+#'  \link[=guardduty_get_trusted_entity_set]{get_trusted_entity_set} \tab Retrieves the trusted entity set associated with the specified trustedEntitySetId\cr
 #'  \link[=guardduty_get_usage_statistics]{get_usage_statistics} \tab Lists Amazon GuardDuty usage statistics over the last 30 days for the specified detector ID\cr
 #'  \link[=guardduty_invite_members]{invite_members} \tab Invites Amazon Web Services accounts to become members of an organization administered by the Amazon Web Services account that invokes this API\cr
 #'  \link[=guardduty_list_coverage]{list_coverage} \tab Lists coverage details for your GuardDuty account\cr
@@ -168,11 +154,15 @@ NULL
 #'  \link[=guardduty_list_invitations]{list_invitations} \tab Lists all GuardDuty membership invitations that were sent to the current Amazon Web Services account\cr
 #'  \link[=guardduty_list_ip_sets]{list_ip_sets} \tab Lists the IPSets of the GuardDuty service specified by the detector ID\cr
 #'  \link[=guardduty_list_malware_protection_plans]{list_malware_protection_plans} \tab Lists the Malware Protection plan IDs associated with the protected resources in your Amazon Web Services account\cr
+#'  \link[=guardduty_list_malware_scans]{list_malware_scans} \tab Returns a list of malware scans\cr
 #'  \link[=guardduty_list_members]{list_members} \tab Lists details about all member accounts for the current GuardDuty administrator account\cr
 #'  \link[=guardduty_list_organization_admin_accounts]{list_organization_admin_accounts} \tab Lists the accounts designated as GuardDuty delegated administrators\cr
 #'  \link[=guardduty_list_publishing_destinations]{list_publishing_destinations} \tab Returns a list of publishing destinations associated with the specified detectorId\cr
 #'  \link[=guardduty_list_tags_for_resource]{list_tags_for_resource} \tab Lists tags for a resource\cr
+#'  \link[=guardduty_list_threat_entity_sets]{list_threat_entity_sets} \tab Lists the threat entity sets associated with the specified GuardDuty detector ID\cr
 #'  \link[=guardduty_list_threat_intel_sets]{list_threat_intel_sets} \tab Lists the ThreatIntelSets of the GuardDuty service specified by the detector ID\cr
+#'  \link[=guardduty_list_trusted_entity_sets]{list_trusted_entity_sets} \tab Lists the trusted entity sets associated with the specified GuardDuty detector ID\cr
+#'  \link[=guardduty_send_object_malware_scan]{send_object_malware_scan} \tab Initiates a malware scan for a specific S3 object\cr
 #'  \link[=guardduty_start_malware_scan]{start_malware_scan} \tab Initiates the malware scan\cr
 #'  \link[=guardduty_start_monitoring_members]{start_monitoring_members} \tab Turns on GuardDuty monitoring of the specified member accounts\cr
 #'  \link[=guardduty_stop_monitoring_members]{stop_monitoring_members} \tab Stops GuardDuty monitoring for the specified member accounts\cr
@@ -188,7 +178,9 @@ NULL
 #'  \link[=guardduty_update_member_detectors]{update_member_detectors} \tab Contains information on member accounts to be updated\cr
 #'  \link[=guardduty_update_organization_configuration]{update_organization_configuration} \tab Configures the delegated administrator account with the provided values\cr
 #'  \link[=guardduty_update_publishing_destination]{update_publishing_destination} \tab Updates information about the publishing destination specified by the destinationId\cr
-#'  \link[=guardduty_update_threat_intel_set]{update_threat_intel_set} \tab Updates the ThreatIntelSet specified by the ThreatIntelSet ID
+#'  \link[=guardduty_update_threat_entity_set]{update_threat_entity_set} \tab Updates the threat entity set associated with the specified threatEntitySetId\cr
+#'  \link[=guardduty_update_threat_intel_set]{update_threat_intel_set} \tab Updates the ThreatIntelSet specified by the ThreatIntelSet ID\cr
+#'  \link[=guardduty_update_trusted_entity_set]{update_trusted_entity_set} \tab Updates the trusted entity set associated with the specified trustedEntitySetId
 #' }
 #'
 #' @return
@@ -220,11 +212,11 @@ guardduty <- function(config = list(), credentials = list(), endpoint = NULL, re
 
 .guardduty$metadata <- list(
   service_name = "guardduty",
-  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "guardduty.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "guardduty.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "guardduty.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "guardduty.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "guardduty.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "guardduty.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "guardduty.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "guardduty.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "guardduty.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "guardduty.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "guardduty.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "guardduty.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "guardduty.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "guardduty.{region}.csp.hci.ic.gov", global = FALSE), "^eusc\\-(de)\\-\\w+\\-\\d+$" = list(endpoint = "guardduty.{region}.amazonaws.eu", global = FALSE)),
   service_id = "GuardDuty",
   api_version = "2017-11-28",
   signing_name = "guardduty",
-  json_version = "1.1",
+  json_version = "",
   target_prefix = ""
 )
 

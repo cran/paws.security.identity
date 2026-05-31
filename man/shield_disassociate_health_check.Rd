@@ -8,11 +8,9 @@ resource}
 shield_disassociate_health_check(ProtectionId, HealthCheckArn)
 }
 \arguments{
-\item{ProtectionId}{[required] The unique identifier (ID) for the Protection object to remove the
-health check association from.}
+\item{ProtectionId}{[required] The unique identifier (ID) for the Protection object to remove the health check association from.}
 
-\item{HealthCheckArn}{[required] The Amazon Resource Name (ARN) of the health check that is associated
-with the protection.}
+\item{HealthCheckArn}{[required] The Amazon Resource Name (ARN) of the health check that is associated with the protection.}
 }
 \description{
 Removes health-based detection from the Shield Advanced protection for a resource. Shield Advanced health-based detection uses the health of your Amazon Web Services resource to improve responsiveness and accuracy in attack detection and response.

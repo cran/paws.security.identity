@@ -10,8 +10,7 @@ directoryservice_enable_ldaps(DirectoryId, Type)
 \arguments{
 \item{DirectoryId}{[required] The identifier of the directory.}
 
-\item{Type}{[required] The type of LDAP security to enable. Currently only the value \code{Client}
-is supported.}
+\item{Type}{[required] The type of LDAP security to enable. Currently only the value \code{Client} is supported.}
 }
 \description{
 Activates the switch for the specific directory to always use LDAP secure calls.

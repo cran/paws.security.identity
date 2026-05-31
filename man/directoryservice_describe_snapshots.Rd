@@ -13,16 +13,11 @@ directoryservice_describe_snapshots(
 )
 }
 \arguments{
-\item{DirectoryId}{The identifier of the directory for which to retrieve snapshot
-information.}
+\item{DirectoryId}{The identifier of the directory for which to retrieve snapshot information.}
 
-\item{SnapshotIds}{A list of identifiers of the snapshots to obtain the information for. If
-this member is null or empty, all snapshots are returned using the
-\emph{Limit} and \emph{NextToken} members.}
+\item{SnapshotIds}{A list of identifiers of the snapshots to obtain the information for. If this member is null or empty, all snapshots are returned using the \emph{Limit} and \emph{NextToken} members.}
 
-\item{NextToken}{The \emph{DescribeSnapshotsResult.NextToken} value from a previous call to
-\code{\link[=directoryservice_describe_snapshots]{describe_snapshots}}. Pass null
-if this is the first call.}
+\item{NextToken}{The \emph{DescribeSnapshotsResult.NextToken} value from a previous call to \code{\link[=directoryservice_describe_snapshots]{describe_snapshots}}. Pass null if this is the first call.}
 
 \item{Limit}{The maximum number of objects to return.}
 }

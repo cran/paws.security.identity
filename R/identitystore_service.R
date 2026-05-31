@@ -5,16 +5,11 @@ NULL
 #' AWS SSO Identity Store
 #'
 #' @description
-#' The Identity Store service used by IAM Identity Center provides a single
-#' place to retrieve all of your identities (users and groups). For more
-#' information, see the [IAM Identity Center User
-#' Guide](https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html).
+#' The Identity Store service used by IAM Identity Center provides a single place to retrieve all of your identities (users and groups). For more information, see the [IAM Identity Center User Guide](https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html).
 #' 
-#' This reference guide describes the identity store operations that you
-#' can call programmatically and includes detailed information about data
-#' types and errors.
+#' This reference guide describes the identity store operations that you can call programmatically and includes detailed information about data types and errors.
 #' 
-#' IAM Identity Center uses the `sso` and `identitystore` API namespaces.
+#' IAM Identity Center uses the `sso`, `sso-directory`, and `identitystore` API namespaces. The `sso-directory` and `identitystore` namespaces authorize access to data in the Identity Store. Make sure your policies with IAM actions from these two namespaces are consistent to avoid conflicting authorization to the same data.
 #'
 #' @param
 #' config
@@ -116,8 +111,8 @@ NULL
 #'  \link[=identitystore_list_group_memberships_for_member]{list_group_memberships_for_member} \tab For the specified member in the specified identity store, returns the list of all GroupMembership objects and returns results in paginated form\cr
 #'  \link[=identitystore_list_groups]{list_groups} \tab Lists all groups in the identity store\cr
 #'  \link[=identitystore_list_users]{list_users} \tab Lists all users in the identity store\cr
-#'  \link[=identitystore_update_group]{update_group} \tab For the specified group in the specified identity store, updates the group metadata and attributes\cr
-#'  \link[=identitystore_update_user]{update_user} \tab For the specified user in the specified identity store, updates the user metadata and attributes
+#'  \link[=identitystore_update_group]{update_group} \tab Updates the specified group metadata and attributes in the specified identity store\cr
+#'  \link[=identitystore_update_user]{update_user} \tab Updates the specified user metadata and attributes in the specified identity store
 #' }
 #'
 #' @return
@@ -149,7 +144,7 @@ identitystore <- function(config = list(), credentials = list(), endpoint = NULL
 
 .identitystore$metadata <- list(
   service_name = "identitystore",
-  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "identitystore.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "identitystore.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "identitystore.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "identitystore.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "identitystore.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "identitystore.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "identitystore.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "identitystore.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "identitystore.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "identitystore.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "identitystore.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "identitystore.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "identitystore.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "identitystore.{region}.csp.hci.ic.gov", global = FALSE), "^eusc\\-(de)\\-\\w+\\-\\d+$" = list(endpoint = "identitystore.{region}.amazonaws.eu", global = FALSE)),
   service_id = "identitystore",
   api_version = "2020-06-15",
   signing_name = "identitystore",

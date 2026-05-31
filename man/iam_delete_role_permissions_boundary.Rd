@@ -7,8 +7,7 @@
 iam_delete_role_permissions_boundary(RoleName)
 }
 \arguments{
-\item{RoleName}{[required] The name (friendly name, not ARN) of the IAM role from which you want to
-remove the permissions boundary.}
+\item{RoleName}{[required] The name (friendly name, not ARN) of the IAM role from which you want to remove the permissions boundary.}
 }
 \description{
 Deletes the permissions boundary for the specified IAM role.

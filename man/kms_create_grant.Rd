@@ -6,130 +6,89 @@
 \usage{
 kms_create_grant(
   KeyId,
-  GranteePrincipal,
+  GranteePrincipal = NULL,
   RetiringPrincipal = NULL,
   Operations,
   Constraints = NULL,
   GrantTokens = NULL,
   Name = NULL,
-  DryRun = NULL
+  DryRun = NULL,
+  GranteeServicePrincipal = NULL,
+  RetiringServicePrincipal = NULL
 )
 }
 \arguments{
-\item{KeyId}{[required] Identifies the KMS key for the grant. The grant gives principals
-permission to use this KMS key.
+\item{KeyId}{[required] Identifies the KMS key for the grant. The grant gives principals permission to use this KMS key.
 
-Specify the key ID or key ARN of the KMS key. To specify a KMS key in a
-different Amazon Web Services account, you must use the key ARN.
+Specify the key ID or key ARN of the KMS key. To specify a KMS key in a different Amazon Web Services account, you must use the key ARN.
 
 For example:
 \itemize{
 \item Key ID: \verb{1234abcd-12ab-34cd-56ef-1234567890ab}
-\item Key ARN:
-\verb{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
+\item Key ARN: \verb{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
 }
 
-To get the key ID and key ARN for a KMS key, use
-\code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
+To get the key ID and key ARN for a KMS key, use \code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
 
-\item{GranteePrincipal}{[required] The identity that gets the permissions specified in the grant.
+\item{GranteePrincipal}{The identity that gets the permissions specified in the grant.
 
-To specify the grantee principal, use the Amazon Resource Name (ARN) of
-an Amazon Web Services principal. Valid principals include Amazon Web
-Services accounts, IAM users, IAM roles, federated users, and assumed
-role users. For help with the ARN syntax for a principal, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns}{IAM ARNs}
-in the \emph{Identity and Access Management User Guide} .}
+To specify the grantee principal, use the Amazon Resource Name (ARN) of an Amazon Web Services principal. Valid principals include Amazon Web Services accounts, IAM users, IAM roles, federated users, and assumed role users. For help with the ARN syntax for a principal, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns}{IAM ARNs} in the \emph{Identity and Access Management User Guide} .
 
-\item{RetiringPrincipal}{The principal that has permission to use the
-\code{\link[=kms_retire_grant]{retire_grant}} operation to retire the grant.
+You must specify either \code{GranteePrincipal} or \code{GranteeServicePrincipal}, but not both.}
 
-To specify the principal, use the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Name (ARN)}
-of an Amazon Web Services principal. Valid principals include Amazon Web
-Services accounts, IAM users, IAM roles, federated users, and assumed
-role users. For help with the ARN syntax for a principal, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns}{IAM ARNs}
-in the \emph{Identity and Access Management User Guide} .
+\item{RetiringPrincipal}{The principal that has permission to use the \code{\link[=kms_retire_grant]{retire_grant}} operation to retire the grant.
 
-The grant determines the retiring principal. Other principals might have
-permission to retire the grant or revoke the grant. For details, see
-\code{\link[=kms_revoke_grant]{revoke_grant}} and \href{https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant-delete}{Retiring and revoking grants}
-in the \emph{Key Management Service Developer Guide}.}
+To specify the principal, use the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Name (ARN)} of an Amazon Web Services principal. Valid principals include Amazon Web Services accounts, IAM users, IAM roles, federated users, and assumed role users. For help with the ARN syntax for a principal, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns}{IAM ARNs} in the \emph{Identity and Access Management User Guide} .
+
+The grant determines the retiring principal. Other principals might have permission to retire the grant or revoke the grant. For details, see \code{\link[=kms_revoke_grant]{revoke_grant}} and \href{https://docs.aws.amazon.com/kms/latest/developerguide/grant-delete.html}{Retiring and revoking grants} in the \emph{Key Management Service Developer Guide}.
+
+You can specify either \code{RetiringPrincipal} or \code{RetiringServicePrincipal}, but not both.}
 
 \item{Operations}{[required] A list of operations that the grant permits.
 
-This list must include only operations that are permitted in a grant.
-Also, the operation must be supported on the KMS key. For example, you
-cannot create a grant for a symmetric encryption KMS key that allows the
-\code{\link[=kms_sign]{sign}} operation, or a grant for an asymmetric KMS key that
-allows the \code{\link[=kms_generate_data_key]{generate_data_key}} operation. If
-you try, KMS returns a \code{ValidationError} exception. For details, see
-\href{https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#terms-grant-operations}{Grant operations}
-in the \emph{Key Management Service Developer Guide}.}
+This list must include only operations that are permitted in a grant. Also, the operation must be supported on the KMS key. For example, you cannot create a grant for a symmetric encryption KMS key that allows the \code{\link[=kms_sign]{sign}} operation, or a grant for an asymmetric KMS key that allows the \code{\link[=kms_generate_data_key]{generate_data_key}} operation. If you try, KMS returns a \code{ValidationError} exception. For details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#terms-grant-operations}{Grant operations} in the \emph{Key Management Service Developer Guide}.}
 
 \item{Constraints}{Specifies a grant constraint.
 
-Do not include confidential or sensitive information in this field. This
-field may be displayed in plaintext in CloudTrail logs and other output.
+Do not include confidential or sensitive information in this field. This field may be displayed in plaintext in CloudTrail logs and other output.
 
-KMS supports the \code{EncryptionContextEquals} and \code{EncryptionContextSubset}
-grant constraints, which allow the permissions in the grant only when
-the encryption context in the request matches
-(\code{EncryptionContextEquals}) or includes (\code{EncryptionContextSubset}) the
-encryption context specified in the constraint.
+KMS supports the following grant constraints.
+\itemize{
+\item \code{EncryptionContextEquals} and \code{EncryptionContextSubset} — These encryption context grant constraints allow the permissions in the grant only when the encryption context in the request matches (\code{EncryptionContextEquals}) or includes (\code{EncryptionContextSubset}) the encryption context specified in the constraint.
 
-The encryption context grant constraints are supported only on \href{https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#terms-grant-operations}{grant operations}
-that include an \code{EncryptionContext} parameter, such as cryptographic
-operations on symmetric encryption KMS keys. Grants with grant
-constraints can include the \code{\link[=kms_describe_key]{describe_key}} and
-\code{\link[=kms_retire_grant]{retire_grant}} operations, but the constraint
-doesn't apply to these operations. If a grant with a grant constraint
-includes the \code{\link[=kms_create_grant]{create_grant}} operation, the
-constraint requires that any grants created with the
-\code{\link[=kms_create_grant]{create_grant}} permission have an equally strict or
-stricter encryption context constraint.
+Encryption context grant constraints are supported only on \href{https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#terms-grant-operations}{grant operations} that include an \code{EncryptionContext} parameter, such as cryptographic operations on symmetric encryption KMS keys. You cannot use an encryption context grant constraint for cryptographic operations with asymmetric KMS keys or HMAC KMS keys. Operations with these keys don't support an encryption context. Grants with encryption context grant constraints can include the \code{\link[=kms_describe_key]{describe_key}} and \code{\link[=kms_retire_grant]{retire_grant}} operations, but the constraint doesn't apply to these operations. If a grant with an encryption context grant constraint includes the \code{\link[=kms_create_grant]{create_grant}} operation, the constraint requires that any grants created with the \code{\link[=kms_create_grant]{create_grant}} permission have an equally strict or stricter encryption context constraint.
 
-You cannot use an encryption context grant constraint for cryptographic
-operations with asymmetric KMS keys or HMAC KMS keys. Operations with
-these keys don't support an encryption context.
+Each constraint value can include up to 8 encryption context pairs. The encryption context value in each constraint cannot exceed 384 characters. For more information about encryption context, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context}{Encryption context} in the \emph{Key Management Service Developer Guide} .
+\item \code{SourceArn} — This grant constraint allows the permissions in the grant only when the request is made on behalf of a specific Amazon Web Services resource, identified by its \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Name (ARN)}. This is effectively the same as having the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html#condition-keys-sourcearn}{aws:SourceArn} global condition key in the grant. The SourceArn constraint is supported on grants for all types of KMS keys and can also be applied to the \code{\link[=kms_describe_key]{describe_key}} operation when specified in the request. However, it does not apply to \code{\link[=kms_retire_grant]{retire_grant}} operation.
+}
 
-Each constraint value can include up to 8 encryption context pairs. The
-encryption context value in each constraint cannot exceed 384
-characters. For information about grant constraints, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/create-grant-overview.html#grant-constraints}{Using grant constraints}
-in the \emph{Key Management Service Developer Guide}. For more information
-about encryption context, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context}{Encryption context}
-in the \emph{Key Management Service Developer Guide} .}
+For information about grant constraints, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/create-grant-overview.html#grant-constraints}{Using grant constraints} in the \emph{Key Management Service Developer Guide}.}
 
 \item{GrantTokens}{A list of grant tokens.
 
-Use a grant token when your permission to call this operation comes from
-a new grant that has not yet achieved \emph{eventual consistency}. For more
-information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token}{Grant token}
-and \href{https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#using-grant-token}{Using a grant token}
-in the \emph{Key Management Service Developer Guide}.}
+Use a grant token when your permission to call this operation comes from a new grant that has not yet achieved \emph{eventual consistency}. For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token}{Grant token} and \href{https://docs.aws.amazon.com/kms/latest/developerguide/using-grant-token.html}{Using a grant token} in the \emph{Key Management Service Developer Guide}.}
 
-\item{Name}{A friendly name for the grant. Use this value to prevent the unintended
-creation of duplicate grants when retrying this request.
+\item{Name}{A friendly name for the grant. Use this value to prevent the unintended creation of duplicate grants when retrying this request.
 
-Do not include confidential or sensitive information in this field. This
-field may be displayed in plaintext in CloudTrail logs and other output.
+Do not include confidential or sensitive information in this field. This field may be displayed in plaintext in CloudTrail logs and other output.
 
-When this value is absent, all \code{\link[=kms_create_grant]{create_grant}}
-requests result in a new grant with a unique \code{GrantId} even if all the
-supplied parameters are identical. This can result in unintended
-duplicates when you retry the \code{\link[=kms_create_grant]{create_grant}}
-request.
+When this value is absent, all \code{\link[=kms_create_grant]{create_grant}} requests result in a new grant with a unique \code{GrantId} even if all the supplied parameters are identical. This can result in unintended duplicates when you retry the \code{\link[=kms_create_grant]{create_grant}} request.
 
-When this value is present, you can retry a
-\code{\link[=kms_create_grant]{create_grant}} request with identical parameters; if
-the grant already exists, the original \code{GrantId} is returned without
-creating a new grant. Note that the returned grant token is unique with
-every \code{\link[=kms_create_grant]{create_grant}} request, even when a duplicate
-\code{GrantId} is returned. All grant tokens for the same grant ID can be
-used interchangeably.}
+When this value is present, you can retry a \code{\link[=kms_create_grant]{create_grant}} request with identical parameters; if the grant already exists, the original \code{GrantId} is returned without creating a new grant. Note that the returned grant token is unique with every \code{\link[=kms_create_grant]{create_grant}} request, even when a duplicate \code{GrantId} is returned. All grant tokens for the same grant ID can be used interchangeably.}
 
 \item{DryRun}{Checks if your request will succeed. \code{DryRun} is an optional parameter.
 
-To learn more about how to use this parameter, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html}{Testing your KMS API calls}
-in the \emph{Key Management Service Developer Guide}.}
+To learn more about how to use this parameter, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html}{Testing your permissions} in the \emph{Key Management Service Developer Guide}.}
+
+\item{GranteeServicePrincipal}{The Amazon Web Services \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_principal.html#principal-services}{service principal} that gets the permissions specified in the grant.
+
+When you specify a \code{GranteeServicePrincipal}, you must also specify a \code{SourceArn} grant constraint. In addition, you must specify either a \code{RetiringPrincipal} or a \code{RetiringServicePrincipal}.
+
+You must specify either \code{GranteePrincipal} or \code{GranteeServicePrincipal}, but not both.}
+
+\item{RetiringServicePrincipal}{The Amazon Web Services \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_principal.html#principal-services}{service principal} that has permission to use the \code{\link[=kms_retire_grant]{retire_grant}} operation to retire the grant.
+
+You can specify either \code{RetiringPrincipal} or \code{RetiringServicePrincipal}, but not both.}
 }
 \description{
 Adds a grant to a KMS key.

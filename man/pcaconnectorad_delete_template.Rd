@@ -7,8 +7,7 @@
 pcaconnectorad_delete_template(TemplateArn)
 }
 \arguments{
-\item{TemplateArn}{[required] The Amazon Resource Name (ARN) that was returned when you called
-\code{\link[=pcaconnectorad_create_template]{create_template}}.}
+\item{TemplateArn}{[required] The Amazon Resource Name (ARN) that was returned when you called \code{\link[=pcaconnectorad_create_template]{create_template}}.}
 }
 \description{
 Deletes a template. Certificates issued using the template are still valid until they are revoked or expired.

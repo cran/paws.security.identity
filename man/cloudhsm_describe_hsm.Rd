@@ -7,14 +7,12 @@
 cloudhsm_describe_hsm(HsmArn = NULL, HsmSerialNumber = NULL)
 }
 \arguments{
-\item{HsmArn}{The ARN of the HSM. Either the \code{HsmArn} or the \code{SerialNumber} parameter
-must be specified.}
+\item{HsmArn}{The ARN of the HSM. Either the \code{HsmArn} or the \code{SerialNumber} parameter must be specified.}
 
-\item{HsmSerialNumber}{The serial number of the HSM. Either the \code{HsmArn} or the
-\code{HsmSerialNumber} parameter must be specified.}
+\item{HsmSerialNumber}{The serial number of the HSM. Either the \code{HsmArn} or the \code{HsmSerialNumber} parameter must be specified.}
 }
 \description{
-This is documentation for \strong{AWS CloudHSM Classic}. For more information, see \href{https://aws.amazon.com/cloudhsm/faqs/}{AWS CloudHSM Classic FAQs}, the AWS CloudHSM Classic User Guide, and the \href{https://docs.aws.amazon.com/cloudhsm/classic/APIReference/}{AWS CloudHSM Classic API Reference}.
+This is documentation for \strong{AWS CloudHSM Classic}. For more information, see \href{https://aws.amazon.com/cloudhsm/faqs/}{AWS CloudHSM Classic FAQs}, the AWS CloudHSM Classic User Guide, and the AWS CloudHSM Classic API Reference.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudhsm_describe_hsm/} for full documentation.
 }

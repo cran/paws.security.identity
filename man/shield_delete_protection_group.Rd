@@ -7,9 +7,7 @@
 shield_delete_protection_group(ProtectionGroupId)
 }
 \arguments{
-\item{ProtectionGroupId}{[required] The name of the protection group. You use this to identify the
-protection group in lists and to manage the protection group, for
-example to update, delete, or describe it.}
+\item{ProtectionGroupId}{[required] The name of the protection group. You use this to identify the protection group in lists and to manage the protection group, for example to update, delete, or describe it.}
 }
 \description{
 Removes the specified protection group.

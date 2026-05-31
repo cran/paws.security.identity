@@ -8,8 +8,7 @@ organization}
 inspector2_update_org_ec_2_deep_inspection_configuration(orgPackagePaths)
 }
 \arguments{
-\item{orgPackagePaths}{[required] The Amazon Inspector deep inspection custom paths you are adding for
-your organization.}
+\item{orgPackagePaths}{[required] The Amazon Inspector deep inspection custom paths you are adding for your organization.}
 }
 \description{
 Updates the Amazon Inspector deep inspection custom paths for your organization. You must be an Amazon Inspector delegated administrator to use this API.

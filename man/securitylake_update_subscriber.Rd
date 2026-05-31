@@ -14,14 +14,11 @@ securitylake_update_subscriber(
 )
 }
 \arguments{
-\item{sources}{The supported Amazon Web Services services from which logs and events
-are collected. For the list of supported Amazon Web Services services,
-see the \href{https://docs.aws.amazon.com/security-lake/latest/userguide/internal-sources.html}{Amazon Security Lake User Guide}.}
+\item{sources}{The supported Amazon Web Services services from which logs and events are collected. For the list of supported Amazon Web Services services, see the \href{https://docs.aws.amazon.com/security-lake/latest/userguide/internal-sources.html}{Amazon Security Lake User Guide}.}
 
 \item{subscriberDescription}{The description of the Security Lake account subscriber.}
 
-\item{subscriberId}{[required] A value created by Security Lake that uniquely identifies your
-subscription.}
+\item{subscriberId}{[required] A value created by Security Lake that uniquely identifies your subscription.}
 
 \item{subscriberIdentity}{The Amazon Web Services identity used to access your data.}
 

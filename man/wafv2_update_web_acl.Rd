@@ -18,110 +18,71 @@ wafv2_update_web_acl(
   CaptchaConfig = NULL,
   ChallengeConfig = NULL,
   TokenDomains = NULL,
-  AssociationConfig = NULL
+  AssociationConfig = NULL,
+  OnSourceDDoSProtectionConfig = NULL,
+  ApplicationConfig = NULL
 )
 }
 \arguments{
-\item{Name}{[required] The name of the web ACL. You cannot change the name of a web ACL after
-you create it.}
+\item{Name}{[required] The name of the web ACL. You cannot change the name of a web ACL after you create it.}
 
-\item{Scope}{[required] Specifies whether this is for a global resource type, such as a Amazon
-CloudFront distribution.
+\item{Scope}{[required] Specifies whether this is for a global resource type, such as a Amazon CloudFront distribution. For an Amplify application, use \code{CLOUDFRONT}.
 
-To work with CloudFront, you must also specify the Region US East (N.
-Virginia) as follows:
+To work with CloudFront, you must also specify the Region US East (N. Virginia) as follows:
 \itemize{
-\item CLI - Specify the Region when you use the CloudFront scope:
-\code{--scope=CLOUDFRONT --region=us-east-1}.
+\item CLI - Specify the Region when you use the CloudFront scope: \code{--scope=CLOUDFRONT --region=us-east-1}.
 \item API and SDKs - For all calls, use the Region endpoint us-east-1.
 }}
 
-\item{Id}{[required] The unique identifier for the web ACL. This ID is returned in the
-responses to create and list commands. You provide it to operations like
-update and delete.}
+\item{Id}{[required] The unique identifier for the web ACL. This ID is returned in the responses to create and list commands. You provide it to operations like update and delete.}
 
-\item{DefaultAction}{[required] The action to perform if none of the \code{Rules} contained in the \code{WebACL}
-match.}
+\item{DefaultAction}{[required] The action to perform if none of the \code{Rules} contained in the \code{WebACL} match.}
 
 \item{Description}{A description of the web ACL that helps with identification.}
 
-\item{Rules}{The Rule statements used to identify the web requests that you want to
-manage. Each rule includes one top-level statement that WAF uses to
-identify matching web requests, and parameters that govern how WAF
-handles them.}
+\item{Rules}{The Rule statements used to identify the web requests that you want to manage. Each rule includes one top-level statement that WAF uses to identify matching web requests, and parameters that govern how WAF handles them.}
 
-\item{VisibilityConfig}{[required] Defines and enables Amazon CloudWatch metrics and web request sample
-collection.}
+\item{VisibilityConfig}{[required] Defines and enables Amazon CloudWatch metrics and web request sample collection.}
 
-\item{DataProtectionConfig}{Specifies data protection to apply to the web request data that WAF
-stores for the web ACL. This is a web ACL level data protection option.
+\item{DataProtectionConfig}{Specifies data protection to apply to the web request data for the web ACL. This is a web ACL level data protection option.
 
-The data protection that you configure for the web ACL alters the data
-that's available for any other data collection activity, including WAF
-logging, web ACL request sampling, Amazon Web Services Managed Rules,
-and Amazon Security Lake data collection and management. Your other
-option for data protection is in the logging configuration, which only
-affects logging.}
+The data protection that you configure for the web ACL alters the data that's available for any other data collection activity, including your WAF logging destinations, web ACL request sampling, and Amazon Security Lake data collection and management. Your other option for data protection is in the logging configuration, which only affects logging.}
 
-\item{LockToken}{[required] A token used for optimistic locking. WAF returns a token to your \code{get}
-and \code{list} requests, to mark the state of the entity at the time of the
-request. To make changes to the entity associated with the token, you
-provide the token to operations like \code{update} and \code{delete}. WAF uses the
-token to ensure that no changes have been made to the entity since you
-last retrieved it. If a change has been made, the update fails with a
-\code{WAFOptimisticLockException}. If this happens, perform another \code{get},
-and use the new token returned by that operation.}
+\item{LockToken}{[required] A token used for optimistic locking. WAF returns a token to your \code{get} and \code{list} requests, to mark the state of the entity at the time of the request. To make changes to the entity associated with the token, you provide the token to operations like \code{update} and \code{delete}. WAF uses the token to ensure that no changes have been made to the entity since you last retrieved it. If a change has been made, the update fails with a \code{WAFOptimisticLockException}. If this happens, perform another \code{get}, and use the new token returned by that operation.}
 
-\item{CustomResponseBodies}{A map of custom response keys and content bodies. When you create a rule
-with a block action, you can send a custom response to the web request.
-You define these for the web ACL, and then use them in the rules and
-default actions that you define in the web ACL.
+\item{CustomResponseBodies}{A map of custom response keys and content bodies. When you create a rule with a block action, you can send a custom response to the web request. You define these for the web ACL, and then use them in the rules and default actions that you define in the web ACL.
 
-For information about customizing web requests and responses, see
-\href{https://docs.aws.amazon.com/waf/latest/developerguide/waf-custom-request-response.html}{Customizing web requests and responses in WAF}
-in the \emph{WAF Developer Guide}.
+For information about customizing web requests and responses, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/waf-custom-request-response.html}{Customizing web requests and responses in WAF} in the \emph{WAF Developer Guide}.
 
-For information about the limits on count and size for custom request
-and response settings, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/limits.html}{WAF quotas}
-in the \emph{WAF Developer Guide}.}
+For information about the limits on count and size for custom request and response settings, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/limits.html}{WAF quotas} in the \emph{WAF Developer Guide}.}
 
-\item{CaptchaConfig}{Specifies how WAF should handle \code{CAPTCHA} evaluations for rules that
-don't have their own \code{CaptchaConfig} settings. If you don't specify
-this, WAF uses its default settings for \code{CaptchaConfig}.}
+\item{CaptchaConfig}{Specifies how WAF should handle \code{CAPTCHA} evaluations for rules that don't have their own \code{CaptchaConfig} settings. If you don't specify this, WAF uses its default settings for \code{CaptchaConfig}.}
 
-\item{ChallengeConfig}{Specifies how WAF should handle challenge evaluations for rules that
-don't have their own \code{ChallengeConfig} settings. If you don't specify
-this, WAF uses its default settings for \code{ChallengeConfig}.}
+\item{ChallengeConfig}{Specifies how WAF should handle challenge evaluations for rules that don't have their own \code{ChallengeConfig} settings. If you don't specify this, WAF uses its default settings for \code{ChallengeConfig}.}
 
-\item{TokenDomains}{Specifies the domains that WAF should accept in a web request token.
-This enables the use of tokens across multiple protected websites. When
-WAF provides a token, it uses the domain of the Amazon Web Services
-resource that the web ACL is protecting. If you don't specify a list of
-token domains, WAF accepts tokens only for the domain of the protected
-resource. With a token domain list, WAF accepts the resource's host
-domain plus all domains in the token domain list, including their
-prefixed subdomains.
+\item{TokenDomains}{Specifies the domains that WAF should accept in a web request token. This enables the use of tokens across multiple protected websites. When WAF provides a token, it uses the domain of the Amazon Web Services resource that the web ACL is protecting. If you don't specify a list of token domains, WAF accepts tokens only for the domain of the protected resource. With a token domain list, WAF accepts the resource's host domain plus all domains in the token domain list, including their prefixed subdomains.
 
-Example JSON:
-\verb{"TokenDomains": \{ "mywebsite.com", "myotherwebsite.com" \}}
+Example JSON: \verb{"TokenDomains": \{ "mywebsite.com", "myotherwebsite.com" \}}
 
-Public suffixes aren't allowed. For example, you can't use \code{gov.au} or
-\code{co.uk} as token domains.}
+Public suffixes aren't allowed. For example, you can't use \code{gov.au} or \code{co.uk} as token domains.}
 
-\item{AssociationConfig}{Specifies custom configurations for the associations between the web ACL
-and protected resources.
+\item{AssociationConfig}{Specifies custom configurations for the associations between the web ACL and protected resources.
 
-Use this to customize the maximum size of the request body that your
-protected resources forward to WAF for inspection. You can customize
-this setting for CloudFront, API Gateway, Amazon Cognito, App Runner, or
-Verified Access resources. The default setting is 16 KB (16,384 bytes).
+Use this to customize the maximum size of the request body that your protected resources forward to WAF for inspection. You can customize this setting for CloudFront, API Gateway, Amazon Cognito, App Runner, or Verified Access resources. The default setting is 16 KB (16,384 bytes).
 
-You are charged additional fees when your protected resources forward
-body sizes that are larger than the default. For more information, see
-\href{https://aws.amazon.com/waf/pricing/}{WAF Pricing}.
+You are charged additional fees when your protected resources forward body sizes that are larger than the default. For more information, see \href{https://aws.amazon.com/waf/pricing/}{WAF Pricing}.
 
-For Application Load Balancer and AppSync, the limit is fixed at 8 KB
-(8,192 bytes).}
+For Application Load Balancer and AppSync, the limit is fixed at 8 KB (8,192 bytes).}
+
+\item{OnSourceDDoSProtectionConfig}{Specifies the type of DDoS protection to apply to web request data for a web ACL. For most scenarios, it is recommended to use the default protection level, \code{ACTIVE_UNDER_DDOS}. If a web ACL is associated with multiple Application Load Balancers, the changes you make to DDoS protection in that web ACL will apply to all associated Application Load Balancers.}
+
+\item{ApplicationConfig}{Configures the ability for the WAF console to store and retrieve application attributes. Application attributes help WAF give recommendations for protection packs.
+
+When using \code{\link[=wafv2_update_web_acl]{update_web_acl}}, \code{ApplicationConfig} follows these rules:
+\itemize{
+\item If you omit \code{ApplicationConfig} from the request, all existing entries in the web ACL are retained.
+\item If you include \code{ApplicationConfig}, entries must match the existing values exactly. Any attempt to modify existing entries will result in an error.
+}}
 }
 \description{
 Updates the specified WebACL. While updating a web ACL, WAF provides continuous coverage to the resources that you have associated with the web ACL.

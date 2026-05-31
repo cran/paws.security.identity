@@ -8,18 +8,13 @@ managed policy, including the policy document}
 iam_get_policy_version(PolicyArn, VersionId)
 }
 \arguments{
-\item{PolicyArn}{[required] The Amazon Resource Name (ARN) of the managed policy that you want
-information about.
+\item{PolicyArn}{[required] The Amazon Resource Name (ARN) of the managed policy that you want information about.
 
-For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
-in the \emph{Amazon Web Services General Reference}.}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)} in the \emph{Amazon Web Services General Reference}.}
 
 \item{VersionId}{[required] Identifies the policy version to retrieve.
 
-This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
-that consists of the lowercase letter 'v' followed by one or two digits,
-and optionally followed by a period '.' and a string of letters and
-digits.}
+This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters that consists of the lowercase letter 'v' followed by one or two digits, and optionally followed by a period '.' and a string of letters and digits.}
 }
 \description{
 Retrieves information about the specified version of the specified managed policy, including the policy document.

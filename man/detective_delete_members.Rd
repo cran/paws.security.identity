@@ -9,9 +9,7 @@ detective_delete_members(GraphArn, AccountIds)
 \arguments{
 \item{GraphArn}{[required] The ARN of the behavior graph to remove members from.}
 
-\item{AccountIds}{[required] The list of Amazon Web Services account identifiers for the member
-accounts to remove from the behavior graph. You can remove up to 50
-member accounts at a time.}
+\item{AccountIds}{[required] The list of Amazon Web Services account identifiers for the member accounts to remove from the behavior graph. You can remove up to 50 member accounts at a time.}
 }
 \description{
 Removes the specified member accounts from the behavior graph. The removed accounts no longer contribute data to the behavior graph. This operation can only be called by the administrator account for the behavior graph.

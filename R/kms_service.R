@@ -7,93 +7,41 @@ NULL
 #' @description
 #' Key Management Service
 #' 
-#' Key Management Service (KMS) is an encryption and key management web
-#' service. This guide describes the KMS operations that you can call
-#' programmatically. For general information about KMS, see the [*Key
-#' Management Service Developer
-#' Guide*](https://docs.aws.amazon.com/kms/latest/developerguide/) .
+#' Key Management Service (KMS) is an encryption and key management web service. This guide describes the KMS operations that you can call programmatically. For general information about KMS, see the [*Key Management Service Developer Guide*](https://docs.aws.amazon.com/kms/latest/developerguide/) .
 #' 
-#' KMS has replaced the term *customer master key (CMK)* with *KMS key* and
-#' *KMS key*. The concept has not changed. To prevent breaking changes, KMS
-#' is keeping some variations of this term.
+#' KMS has replaced the term *customer master key (CMK)* with *Key Management Service key* and *KMS key*. The concept has not changed. To prevent breaking changes, KMS is keeping some variations of this term.
 #' 
-#' Amazon Web Services provides SDKs that consist of libraries and sample
-#' code for various programming languages and platforms (Java, Ruby, .Net,
-#' macOS, Android, etc.). The SDKs provide a convenient way to create
-#' programmatic access to KMS and other Amazon Web Services services. For
-#' example, the SDKs take care of tasks such as signing requests (see
-#' below), managing errors, and retrying requests automatically. For more
-#' information about the Amazon Web Services SDKs, including how to
-#' download and install them, see [Tools for Amazon Web
-#' Services](https://aws.amazon.com/developer/tools/).
+#' Amazon Web Services provides SDKs that consist of libraries and sample code for various programming languages and platforms (Java, Rust, Python, Ruby, .Net, macOS, Android, etc.). The SDKs provide a convenient way to create programmatic access to KMS and other Amazon Web Services services. For example, the SDKs take care of tasks such as signing requests (see below), managing errors, and retrying requests automatically. For more information about the Amazon Web Services SDKs, including how to download and install them, see [Tools for Amazon Web Services](https://builder.aws.com/build/tools).
 #' 
-#' We recommend that you use the Amazon Web Services SDKs to make
-#' programmatic API calls to KMS.
+#' We recommend that you use the Amazon Web Services SDKs to make programmatic API calls to KMS.
 #' 
-#' If you need to use FIPS 140-2 validated cryptographic modules when
-#' communicating with Amazon Web Services, use the FIPS endpoint in your
-#' preferred Amazon Web Services Region. For more information about the
-#' available FIPS endpoints, see [Service
-#' endpoints](https://docs.aws.amazon.com/general/latest/gr/kms.html#kms_region)
-#' in the Key Management Service topic of the *Amazon Web Services General
-#' Reference*.
+#' If you need to use FIPS 140-2 validated cryptographic modules when communicating with Amazon Web Services, use one of the FIPS endpoints in your preferred Amazon Web Services Region. If you need communicate over IPv6, use the dual-stack endpoint in your preferred Amazon Web Services Region. For more information see [Service endpoints](https://docs.aws.amazon.com/general/latest/gr/kms.html#kms_region) in the Key Management Service topic of the *Amazon Web Services General Reference* and [Dual-stack endpoint support](https://docs.aws.amazon.com/kms/latest/developerguide/ipv6-kms.html) in the KMS Developer Guide.
 #' 
-#' All KMS API calls must be signed and be transmitted using Transport
-#' Layer Security (TLS). KMS recommends you always use the latest supported
-#' TLS version. Clients must also support cipher suites with Perfect
-#' Forward Secrecy (PFS) such as Ephemeral Diffie-Hellman (DHE) or Elliptic
-#' Curve Ephemeral Diffie-Hellman (ECDHE). Most modern systems such as Java
-#' 7 and later support these modes.
+#' All KMS API calls must be signed and be transmitted using Transport Layer Security (TLS). KMS recommends you always use the latest supported TLS version. Clients must also support cipher suites with Perfect Forward Secrecy (PFS) such as Ephemeral Diffie-Hellman (DHE) or Elliptic Curve Ephemeral Diffie-Hellman (ECDHE). Most modern systems such as Java 7 and later support these modes.
 #' 
 #' **Signing Requests**
 #' 
-#' Requests must be signed using an access key ID and a secret access key.
-#' We strongly recommend that you do not use your Amazon Web Services
-#' account root access key ID and secret access key for everyday work. You
-#' can use the access key ID and secret access key for an IAM user or you
-#' can use the Security Token Service (STS) to generate temporary security
-#' credentials and use those to sign requests.
+#' Requests must be signed using an access key ID and a secret access key. We strongly recommend that you do not use your Amazon Web Services account root access key ID and secret access key for everyday work. You can use the access key ID and secret access key for an IAM user or you can use the Security Token Service (STS) to generate temporary security credentials and use those to sign requests.
 #' 
-#' All KMS requests must be signed with [Signature Version
-#' 4](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html).
+#' All KMS requests must be signed with [Signature Version 4](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html).
 #' 
 #' **Logging API Requests**
 #' 
-#' KMS supports CloudTrail, a service that logs Amazon Web Services API
-#' calls and related events for your Amazon Web Services account and
-#' delivers them to an Amazon S3 bucket that you specify. By using the
-#' information collected by CloudTrail, you can determine what requests
-#' were made to KMS, who made the request, when it was made, and so on. To
-#' learn more about CloudTrail, including how to turn it on and find your
-#' log files, see the [CloudTrail User
-#' Guide](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/).
+#' KMS supports CloudTrail, a service that logs Amazon Web Services API calls and related events for your Amazon Web Services account and delivers them to an Amazon S3 bucket that you specify. By using the information collected by CloudTrail, you can determine what requests were made to KMS, who made the request, when it was made, and so on. To learn more about CloudTrail, including how to turn it on and find your log files, see the [CloudTrail User Guide](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/).
 #' 
 #' **Additional Resources**
 #' 
-#' For more information about credentials and request signing, see the
-#' following:
+#' For more information about credentials and request signing, see the following:
 #' 
-#' -   [Amazon Web Services Security
-#'     Credentials](https://docs.aws.amazon.com/IAM/latest/UserGuide/security-creds.html) -
-#'     This topic provides general information about the types of
-#'     credentials used to access Amazon Web Services.
+#' -   [Amazon Web Services Security Credentials](https://docs.aws.amazon.com/IAM/latest/UserGuide/security-creds.html) - This topic provides general information about the types of credentials used to access Amazon Web Services.
 #' 
-#' -   [Temporary Security
-#'     Credentials](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html) -
-#'     This section of the *IAM User Guide* describes how to create and use
-#'     temporary security credentials.
+#' -   [Temporary Security Credentials](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html) - This section of the *IAM User Guide* describes how to create and use temporary security credentials.
 #' 
-#' -   [Signature Version 4 Signing
-#'     Process](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html) -
-#'     This set of topics walks you through the process of signing a
-#'     request using an access key ID and a secret access key.
+#' -   [Signature Version 4 Signing Process](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html) - This set of topics walks you through the process of signing a request using an access key ID and a secret access key.
 #' 
 #' **Commonly Used API Operations**
 #' 
-#' Of the API operations discussed in this guide, the following will prove
-#' the most useful for most applications. You will likely perform
-#' operations other than these, such as creating keys and assigning
-#' policies, by using the console.
+#' Of the API operations discussed in this guide, the following will prove the most useful for most applications. You will likely perform operations other than these, such as creating keys and assigning policies, by using the console.
 #' 
 #' -   [`encrypt`][kms_encrypt]
 #' 
@@ -212,6 +160,7 @@ NULL
 #'  \link[=kms_generate_data_key_without_plaintext]{generate_data_key_without_plaintext} \tab Returns a unique symmetric data key for use outside of KMS\cr
 #'  \link[=kms_generate_mac]{generate_mac} \tab Generates a hash-based message authentication code (HMAC) for a message using an HMAC KMS key and a MAC algorithm that the key supports\cr
 #'  \link[=kms_generate_random]{generate_random} \tab Returns a random byte string that is cryptographically secure\cr
+#'  \link[=kms_get_key_last_usage]{get_key_last_usage} \tab Returns usage information about the last successful cryptographic operation performed with a specified KMS key, including the operation type, timestamp, and associated CloudTrail event ID\cr
 #'  \link[=kms_get_key_policy]{get_key_policy} \tab Gets a key policy attached to the specified KMS key\cr
 #'  \link[=kms_get_key_rotation_status]{get_key_rotation_status} \tab Provides detailed information about the rotation status for a KMS key, including whether automatic rotation of the key material is enabled for the specified KMS key, the rotation period, and the next scheduled rotation date\cr
 #'  \link[=kms_get_parameters_for_import]{get_parameters_for_import} \tab Returns the public key and an import token you need to import or reimport key material for a KMS key\cr
@@ -220,10 +169,10 @@ NULL
 #'  \link[=kms_list_aliases]{list_aliases} \tab Gets a list of aliases in the caller's Amazon Web Services account and region\cr
 #'  \link[=kms_list_grants]{list_grants} \tab Gets a list of all grants for the specified KMS key\cr
 #'  \link[=kms_list_key_policies]{list_key_policies} \tab Gets the names of the key policies that are attached to a KMS key\cr
-#'  \link[=kms_list_key_rotations]{list_key_rotations} \tab Returns information about all completed key material rotations for the specified KMS key\cr
+#'  \link[=kms_list_key_rotations]{list_key_rotations} \tab Returns information about the key materials associated with the specified KMS key\cr
 #'  \link[=kms_list_keys]{list_keys} \tab Gets a list of all KMS keys in the caller's Amazon Web Services account and Region\cr
 #'  \link[=kms_list_resource_tags]{list_resource_tags} \tab Returns all tags on the specified KMS key\cr
-#'  \link[=kms_list_retirable_grants]{list_retirable_grants} \tab Returns information about all grants in the Amazon Web Services account and Region that have the specified retiring principal\cr
+#'  \link[=kms_list_retirable_grants]{list_retirable_grants} \tab Returns information about all grants in the Amazon Web Services account and Region that have the specified retiring principal or retiring service principal\cr
 #'  \link[=kms_put_key_policy]{put_key_policy} \tab Attaches a key policy to the specified KMS key\cr
 #'  \link[=kms_re_encrypt]{re_encrypt} \tab Decrypts ciphertext and then reencrypts it entirely within KMS\cr
 #'  \link[=kms_replicate_key]{replicate_key} \tab Replicates a multi-Region key into the specified Region\cr
@@ -271,7 +220,7 @@ kms <- function(config = list(), credentials = list(), endpoint = NULL, region =
 
 .kms$metadata <- list(
   service_name = "kms",
-  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "kms.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "kms.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "kms.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "kms.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "kms.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "kms.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "kms.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "kms.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "kms.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "kms.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "kms.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "kms.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "kms.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "kms.{region}.csp.hci.ic.gov", global = FALSE), "^eusc\\-(de)\\-\\w+\\-\\d+$" = list(endpoint = "kms.{region}.amazonaws.eu", global = FALSE)),
   service_id = "KMS",
   api_version = "2014-11-01",
   signing_name = "kms",

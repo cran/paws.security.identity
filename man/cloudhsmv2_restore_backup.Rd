@@ -8,8 +8,7 @@ state}
 cloudhsmv2_restore_backup(BackupId)
 }
 \arguments{
-\item{BackupId}{[required] The ID of the backup to be restored. To find the ID of a backup, use the
-\code{\link[=cloudhsmv2_describe_backups]{describe_backups}} operation.}
+\item{BackupId}{[required] The ID of the backup to be restored. To find the ID of a backup, use the \code{\link[=cloudhsmv2_describe_backups]{describe_backups}} operation.}
 }
 \description{
 Restores a specified CloudHSM backup that is in the \code{PENDING_DELETION} state. For more information on deleting a backup, see \code{\link[=cloudhsmv2_delete_backup]{delete_backup}}.

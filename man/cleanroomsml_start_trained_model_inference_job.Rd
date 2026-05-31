@@ -8,6 +8,7 @@ cleanroomsml_start_trained_model_inference_job(
   membershipIdentifier,
   name,
   trainedModelArn,
+  trainedModelVersionIdentifier = NULL,
   configuredModelAlgorithmAssociationArn = NULL,
   resourceConfig,
   outputConfiguration,
@@ -16,28 +17,26 @@ cleanroomsml_start_trained_model_inference_job(
   containerExecutionParameters = NULL,
   environment = NULL,
   kmsKeyArn = NULL,
-  tags = NULL
+  tags = NULL,
+  mlModelInferencePayerAccountId = NULL
 )
 }
 \arguments{
-\item{membershipIdentifier}{[required] The membership ID of the membership that contains the trained model
-inference job.}
+\item{membershipIdentifier}{[required] The membership ID of the membership that contains the trained model inference job.}
 
 \item{name}{[required] The name of the trained model inference job.}
 
-\item{trainedModelArn}{[required] The Amazon Resource Name (ARN) of the trained model that is used for
-this trained model inference job.}
+\item{trainedModelArn}{[required] The Amazon Resource Name (ARN) of the trained model that is used for this trained model inference job.}
 
-\item{configuredModelAlgorithmAssociationArn}{The Amazon Resource Name (ARN) of the configured model algorithm
-association that is used for this trained model inference job.}
+\item{trainedModelVersionIdentifier}{The version identifier of the trained model to use for inference. This specifies which version of the trained model should be used to generate predictions on the input data.}
+
+\item{configuredModelAlgorithmAssociationArn}{The Amazon Resource Name (ARN) of the configured model algorithm association that is used for this trained model inference job.}
 
 \item{resourceConfig}{[required] Defines the resource configuration for the trained model inference job.}
 
-\item{outputConfiguration}{[required] Defines the output configuration information for the trained model
-inference job.}
+\item{outputConfiguration}{[required] Defines the output configuration information for the trained model inference job.}
 
-\item{dataSource}{[required] Defines the data source that is used for the trained model inference
-job.}
+\item{dataSource}{[required] Defines the data source that is used for the trained model inference job.}
 
 \item{description}{The description of the trained model inference job.}
 
@@ -45,35 +44,22 @@ job.}
 
 \item{environment}{The environment variables to set in the Docker container.}
 
-\item{kmsKeyArn}{The Amazon Resource Name (ARN) of the KMS key. This key is used to
-encrypt and decrypt customer-owned data in the ML inference job and
-associated data.}
+\item{kmsKeyArn}{The Amazon Resource Name (ARN) of the KMS key. This key is used to encrypt and decrypt customer-owned data in the ML inference job and associated data.}
 
-\item{tags}{The optional metadata that you apply to the resource to help you
-categorize and organize them. Each tag consists of a key and an optional
-value, both of which you define.
+\item{tags}{The optional metadata that you apply to the resource to help you categorize and organize them. Each tag consists of a key and an optional value, both of which you define.
 
 The following basic restrictions apply to tags:
 \itemize{
 \item Maximum number of tags per resource - 50.
-\item For each resource, each tag key must be unique, and each tag key can
-have only one value.
+\item For each resource, each tag key must be unique, and each tag key can have only one value.
 \item Maximum key length - 128 Unicode characters in UTF-8.
 \item Maximum value length - 256 Unicode characters in UTF-8.
-\item If your tagging schema is used across multiple services and
-resources, remember that other services may have restrictions on
-allowed characters. Generally allowed characters are: letters,
-numbers, and spaces representable in UTF-8, and the following
-characters: + - = . _ : / @.
+\item If your tagging schema is used across multiple services and resources, remember that other services may have restrictions on allowed characters. Generally allowed characters are: letters, numbers, and spaces representable in UTF-8, and the following characters: + - = . _ : / @.
 \item Tag keys and values are case sensitive.
-\item Do not use aws:, AWS:, or any upper or lowercase combination of such
-as a prefix for keys as it is reserved for AWS use. You cannot edit
-or delete tag keys with this prefix. Values can have this prefix. If
-a tag value has aws as its prefix but the key does not, then Clean
-Rooms ML considers it to be a user tag and will count against the
-limit of 50 tags. Tags with only the key prefix of aws do not count
-against your tags per resource limit.
+\item Do not use aws:, AWS:, or any upper or lowercase combination of such as a prefix for keys as it is reserved for AWS use. You cannot edit or delete tag keys with this prefix. Values can have this prefix. If a tag value has aws as its prefix but the key does not, then Clean Rooms ML considers it to be a user tag and will count against the limit of 50 tags. Tags with only the key prefix of aws do not count against your tags per resource limit.
 }}
+
+\item{mlModelInferencePayerAccountId}{The account ID of the member that is responsible for paying for model inference costs.}
 }
 \description{
 Defines the information necessary to begin a trained model inference job.

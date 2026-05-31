@@ -11,26 +11,13 @@ macie2_update_automated_discovery_configuration(
 )
 }
 \arguments{
-\item{autoEnableOrganizationMembers}{Specifies whether to automatically enable automated sensitive data
-discovery for accounts in the organization. Valid values are: ALL
-(default), enable it for all existing accounts and new member accounts;
-NEW, enable it only for new member accounts; and, NONE, don't enable it
-for any accounts.
+\item{autoEnableOrganizationMembers}{Specifies whether to automatically enable automated sensitive data discovery for accounts in the organization. Valid values are: ALL (default), enable it for all existing accounts and new member accounts; NEW, enable it only for new member accounts; and, NONE, don't enable it for any accounts.
 
-If you specify NEW or NONE, automated sensitive data discovery continues
-to be enabled for any existing accounts that it's currently enabled for.
-To enable or disable it for individual member accounts, specify NEW or
-NONE, and then enable or disable it for each account by using the
-BatchUpdateAutomatedDiscoveryAccounts operation.}
+If you specify NEW or NONE, automated sensitive data discovery continues to be enabled for any existing accounts that it's currently enabled for. To enable or disable it for individual member accounts, specify NEW or NONE, and then enable or disable it for each account by using the BatchUpdateAutomatedDiscoveryAccounts operation.}
 
-\item{status}{[required] The new status of automated sensitive data discovery for the
-organization or account. Valid values are: ENABLED, start or resume all
-automated sensitive data discovery activities; and, DISABLED, stop
-performing all automated sensitive data discovery activities.
+\item{status}{[required] The new status of automated sensitive data discovery for the organization or account. Valid values are: ENABLED, start or resume all automated sensitive data discovery activities; and, DISABLED, stop performing all automated sensitive data discovery activities.
 
-If you specify DISABLED for an administrator account, you also disable
-automated sensitive data discovery for all member accounts in the
-organization.}
+If you specify DISABLED for an administrator account, you also disable automated sensitive data discovery for all member accounts in the organization.}
 }
 \description{
 Changes the configuration settings and status of automated sensitive data discovery for an organization or standalone account.

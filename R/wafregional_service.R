@@ -5,31 +5,11 @@ NULL
 #' AWS WAF Regional
 #'
 #' @description
-#' This is **AWS WAF Classic Regional** documentation. For more
-#' information, see [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
+#' This is **AWS WAF Classic Regional** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
+#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the [AWS WAF Developer Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html). With the latest version, AWS WAF has a single set of endpoints for regional and global use.
 #' 
-#' This is the *AWS WAF Regional Classic API Reference* for using AWS WAF
-#' Classic with the AWS resources, Elastic Load Balancing (ELB) Application
-#' Load Balancers and API Gateway APIs. The AWS WAF Classic actions and
-#' data types listed in the reference are available for protecting Elastic
-#' Load Balancing (ELB) Application Load Balancers and API Gateway APIs.
-#' You can use these actions and data types by means of the endpoints
-#' listed in [AWS Regions and
-#' Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#waf_region).
-#' This guide is for developers who need detailed information about the AWS
-#' WAF Classic API actions, data types, and errors. For detailed
-#' information about AWS WAF Classic features and an overview of how to use
-#' the AWS WAF Classic API, see the [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
+#' This is the *AWS WAF Regional Classic API Reference* for using AWS WAF Classic with the AWS resources, Elastic Load Balancing (ELB) Application Load Balancers and API Gateway APIs. The AWS WAF Classic actions and data types listed in the reference are available for protecting Elastic Load Balancing (ELB) Application Load Balancers and API Gateway APIs. You can use these actions and data types by means of the endpoints listed in [AWS Regions and Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#waf_region). This guide is for developers who need detailed information about the AWS WAF Classic API actions, data types, and errors. For detailed information about AWS WAF Classic features and an overview of how to use the AWS WAF Classic API, see the [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
 #' @param
 #' config
@@ -228,7 +208,7 @@ wafregional <- function(config = list(), credentials = list(), endpoint = NULL, 
 
 .wafregional$metadata <- list(
   service_name = "waf-regional",
-  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "waf-regional.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "waf-regional.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "waf-regional.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "waf-regional.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "waf-regional.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "waf-regional.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "waf-regional.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "waf-regional.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "waf-regional.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "waf-regional.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "waf-regional.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "waf-regional.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "waf-regional.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "waf-regional.{region}.csp.hci.ic.gov", global = FALSE), "^eusc\\-(de)\\-\\w+\\-\\d+$" = list(endpoint = "waf-regional.{region}.amazonaws.eu", global = FALSE)),
   service_id = "WAF Regional",
   api_version = "2016-11-28",
   signing_name = "waf-regional",

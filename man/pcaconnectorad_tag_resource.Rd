@@ -7,11 +7,9 @@
 pcaconnectorad_tag_resource(ResourceArn, Tags)
 }
 \arguments{
-\item{ResourceArn}{[required] The Amazon Resource Name (ARN) that was returned when you created the
-resource.}
+\item{ResourceArn}{[required] The Amazon Resource Name (ARN) that was returned when you created the resource.}
 
-\item{Tags}{[required] Metadata assigned to a directory registration consisting of a key-value
-pair.}
+\item{Tags}{[required] Metadata assigned to a directory registration consisting of a key-value pair.}
 }
 \description{
 Adds one or more tags to your resource.

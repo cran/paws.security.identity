@@ -18,11 +18,9 @@ NULL
 #' 
 #' -   Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
-#' -   Key ARN:
-#'     `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
+#' -   Key ARN: `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
-#' To get the key ID and key ARN for a KMS key, use
-#' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
+#' To get the key ID and key ARN for a KMS key, use [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
 #'
 #' @keywords internal
 #'
@@ -49,14 +47,11 @@ kms_cancel_key_deletion <- function(KeyId) {
 #' Connects or reconnects a custom key store to its backing key store
 #'
 #' @description
-#' Connects or reconnects a [custom key store](https://docs.aws.amazon.com/kms/latest/developerguide/) to its backing key store. For an CloudHSM key store, [`connect_custom_key_store`][kms_connect_custom_key_store] connects the key store to its associated CloudHSM cluster. For an external key store, [`connect_custom_key_store`][kms_connect_custom_key_store] connects the key store to the external key store proxy that communicates with your external key manager.
+#' Connects or reconnects a [custom key store](https://docs.aws.amazon.com/kms/latest/developerguide/key-store-overview.html) to its backing key store. For an CloudHSM key store, [`connect_custom_key_store`][kms_connect_custom_key_store] connects the key store to its associated CloudHSM cluster. For an external key store, [`connect_custom_key_store`][kms_connect_custom_key_store] connects the key store to the external key store proxy that communicates with your external key manager.
 #'
 #' See [https://www.paws-r-sdk.com/docs/kms_connect_custom_key_store/](https://www.paws-r-sdk.com/docs/kms_connect_custom_key_store/) for full documentation.
 #'
-#' @param CustomKeyStoreId &#91;required&#93; Enter the key store ID of the custom key store that you want to connect.
-#' To find the ID of a custom key store, use the
-#' [`describe_custom_key_stores`][kms_describe_custom_key_stores]
-#' operation.
+#' @param CustomKeyStoreId &#91;required&#93; Enter the key store ID of the custom key store that you want to connect. To find the ID of a custom key store, use the [`describe_custom_key_stores`][kms_describe_custom_key_stores] operation.
 #'
 #' @keywords internal
 #'
@@ -87,27 +82,16 @@ kms_connect_custom_key_store <- function(CustomKeyStoreId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/kms_create_alias/](https://www.paws-r-sdk.com/docs/kms_create_alias/) for full documentation.
 #'
-#' @param AliasName &#91;required&#93; Specifies the alias name. This value must begin with `alias/` followed
-#' by a name, such as `alias/ExampleAlias`.
+#' @param AliasName &#91;required&#93; Specifies the alias name. This value must begin with `alias/` followed by a name, such as `alias/ExampleAlias`.
 #' 
-#' Do not include confidential or sensitive information in this field. This
-#' field may be displayed in plaintext in CloudTrail logs and other output.
+#' Do not include confidential or sensitive information in this field. This field may be displayed in plaintext in CloudTrail logs and other output.
 #' 
-#' The `AliasName` value must be string of 1-256 characters. It can contain
-#' only alphanumeric characters, forward slashes (/), underscores (_), and
-#' dashes (-). The alias name cannot begin with `alias/aws/`. The
-#' `alias/aws/` prefix is reserved for [Amazon Web Services managed
-#' keys](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk).
-#' @param TargetKeyId &#91;required&#93; Associates the alias with the specified [customer managed
-#' key](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-cmk).
-#' The KMS key must be in the same Amazon Web Services Region.
+#' The `AliasName` value must be string of 1-256 characters. It can contain only alphanumeric characters, forward slashes (/), underscores (_), and dashes (-). The alias name cannot begin with `alias/aws/`. The `alias/aws/` prefix is reserved for [Amazon Web Services managed keys](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-key).
+#' @param TargetKeyId &#91;required&#93; Associates the alias with the specified [customer managed key](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-mgn-key). The KMS key must be in the same Amazon Web Services Region.
 #' 
-#' A valid key ID is required. If you supply a null or empty string value,
-#' this operation returns an error.
+#' A valid key ID is required. If you supply a null or empty string value, this operation returns an error.
 #' 
-#' For help finding the key ID and ARN, see [Finding the Key ID and
-#' ARN](https://docs.aws.amazon.com/kms/latest/developerguide/viewing-keys.html#find-cmk-id-arn)
-#' in the *Key Management Service Developer Guide* .
+#' For help finding the key ID and ARN, see [Find the key ID and key ARN](https://docs.aws.amazon.com/kms/latest/developerguide/find-cmk-id-arn.html) in the *Key Management Service Developer Guide* .
 #' 
 #' Specify the key ID or key ARN of the KMS key.
 #' 
@@ -115,11 +99,9 @@ kms_connect_custom_key_store <- function(CustomKeyStoreId) {
 #' 
 #' -   Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
-#' -   Key ARN:
-#'     `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
+#' -   Key ARN: `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
-#' To get the key ID and key ARN for a KMS key, use
-#' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
+#' To get the key ID and key ARN for a KMS key, use [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
 #'
 #' @keywords internal
 #'
@@ -146,167 +128,78 @@ kms_create_alias <- function(AliasName, TargetKeyId) {
 #' Creates a custom key store backed by a key store that you own and manage
 #'
 #' @description
-#' Creates a [custom key store](https://docs.aws.amazon.com/kms/latest/developerguide/) backed by a key store that you own and manage. When you use a KMS key in a custom key store for a cryptographic operation, the cryptographic operation is actually performed in your key store using your keys. KMS supports [CloudHSM key stores](https://docs.aws.amazon.com/kms/latest/developerguide/keystore-cloudhsm.html) backed by an [CloudHSM cluster](https://docs.aws.amazon.com/cloudhsm/latest/userguide/clusters.html) and [external key stores](https://docs.aws.amazon.com/kms/latest/developerguide/keystore-external.html) backed by an external key store proxy and external key manager outside of Amazon Web Services.
+#' Creates a [custom key store](https://docs.aws.amazon.com/kms/latest/developerguide/key-store-overview.html) backed by a key store that you own and manage. When you use a KMS key in a custom key store for a cryptographic operation, the cryptographic operation is actually performed in your key store using your keys. KMS supports [CloudHSM key stores](https://docs.aws.amazon.com/kms/latest/developerguide/keystore-cloudhsm.html) backed by an [CloudHSM cluster](https://docs.aws.amazon.com/cloudhsm/latest/userguide/clusters.html) and [external key stores](https://docs.aws.amazon.com/kms/latest/developerguide/keystore-external.html) backed by an external key store proxy and external key manager outside of Amazon Web Services.
 #'
 #' See [https://www.paws-r-sdk.com/docs/kms_create_custom_key_store/](https://www.paws-r-sdk.com/docs/kms_create_custom_key_store/) for full documentation.
 #'
-#' @param CustomKeyStoreName &#91;required&#93; Specifies a friendly name for the custom key store. The name must be
-#' unique in your Amazon Web Services account and Region. This parameter is
-#' required for all custom key stores.
+#' @param CustomKeyStoreName &#91;required&#93; Specifies a friendly name for the custom key store. The name must be unique in your Amazon Web Services account and Region. This parameter is required for all custom key stores.
 #' 
-#' Do not include confidential or sensitive information in this field. This
-#' field may be displayed in plaintext in CloudTrail logs and other output.
-#' @param CloudHsmClusterId Identifies the CloudHSM cluster for an CloudHSM key store. This
-#' parameter is required for custom key stores with `CustomKeyStoreType` of
-#' `AWS_CLOUDHSM`.
+#' Do not include confidential or sensitive information in this field. This field may be displayed in plaintext in CloudTrail logs and other output.
+#' @param CloudHsmClusterId Identifies the CloudHSM cluster for an CloudHSM key store. This parameter is required for custom key stores with `CustomKeyStoreType` of `AWS_CLOUDHSM`.
 #' 
-#' Enter the cluster ID of any active CloudHSM cluster that is not already
-#' associated with a custom key store. To find the cluster ID, use the
-#' [DescribeClusters](https://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_DescribeClusters.html)
-#' operation.
-#' @param TrustAnchorCertificate Specifies the certificate for an CloudHSM key store. This parameter is
-#' required for custom key stores with a `CustomKeyStoreType` of
-#' `AWS_CLOUDHSM`.
+#' Enter the cluster ID of any active CloudHSM cluster that is not already associated with a custom key store. To find the cluster ID, use the [DescribeClusters](https://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_DescribeClusters.html) operation.
+#' @param TrustAnchorCertificate Specifies the certificate for an CloudHSM key store. This parameter is required for custom key stores with a `CustomKeyStoreType` of `AWS_CLOUDHSM`.
 #' 
-#' Enter the content of the trust anchor certificate for the CloudHSM
-#' cluster. This is the content of the `customerCA.crt` file that you
-#' created when you [initialized the
-#' cluster](https://docs.aws.amazon.com/cloudhsm/latest/userguide/initialize-cluster.html).
-#' @param KeyStorePassword Specifies the `kmsuser` password for an CloudHSM key store. This
-#' parameter is required for custom key stores with a `CustomKeyStoreType`
-#' of `AWS_CLOUDHSM`.
+#' Enter the content of the trust anchor certificate for the CloudHSM cluster. This is the content of the `customerCA.crt` file that you created when you [initialized the cluster](https://docs.aws.amazon.com/cloudhsm/latest/userguide/initialize-cluster.html).
+#' @param KeyStorePassword Specifies the `kmsuser` password for an CloudHSM key store. This parameter is required for custom key stores with a `CustomKeyStoreType` of `AWS_CLOUDHSM`.
 #' 
-#' Enter the password of the [`kmsuser` crypto user (CU)
-#' account](https://docs.aws.amazon.com/kms/latest/developerguide/#concept-kmsuser)
-#' in the specified CloudHSM cluster. KMS logs into the cluster as this
-#' user to manage key material on your behalf.
+#' Enter the password of the [`kmsuser` crypto user (CU) account](https://docs.aws.amazon.com/kms/latest/developerguide/keystore-cloudhsm.html#concept-kmsuser) in the specified CloudHSM cluster. KMS logs into the cluster as this user to manage key material on your behalf.
 #' 
-#' The password must be a string of 7 to 32 characters. Its value is case
-#' sensitive.
+#' The password must be a string of 7 to 32 characters. Its value is case sensitive.
 #' 
-#' This parameter tells KMS the `kmsuser` account password; it does not
-#' change the password in the CloudHSM cluster.
-#' @param CustomKeyStoreType Specifies the type of custom key store. The default value is
-#' `AWS_CLOUDHSM`.
+#' This parameter tells KMS the `kmsuser` account password; it does not change the password in the CloudHSM cluster.
+#' @param CustomKeyStoreType Specifies the type of custom key store. The default value is `AWS_CLOUDHSM`.
 #' 
-#' For a custom key store backed by an CloudHSM cluster, omit the parameter
-#' or enter `AWS_CLOUDHSM`. For a custom key store backed by an external
-#' key manager outside of Amazon Web Services, enter `EXTERNAL_KEY_STORE`.
-#' You cannot change this property after the key store is created.
-#' @param XksProxyUriEndpoint Specifies the endpoint that KMS uses to send requests to the external
-#' key store proxy (XKS proxy). This parameter is required for custom key
-#' stores with a `CustomKeyStoreType` of `EXTERNAL_KEY_STORE`.
+#' For a custom key store backed by an CloudHSM cluster, omit the parameter or enter `AWS_CLOUDHSM`. For a custom key store backed by an external key manager outside of Amazon Web Services, enter `EXTERNAL_KEY_STORE`. You cannot change this property after the key store is created.
+#' @param XksProxyUriEndpoint Specifies the endpoint that KMS uses to send requests to the external key store proxy (XKS proxy). This parameter is required for custom key stores with a `CustomKeyStoreType` of `EXTERNAL_KEY_STORE`.
 #' 
-#' The protocol must be HTTPS. KMS communicates on port 443. Do not specify
-#' the port in the `XksProxyUriEndpoint` value.
+#' The protocol must be HTTPS. KMS communicates on port 443. Do not specify the port in the `XksProxyUriEndpoint` value.
 #' 
-#' For external key stores with `XksProxyConnectivity` value of
-#' `VPC_ENDPOINT_SERVICE`, specify `https://` followed by the private DNS
-#' name of the VPC endpoint service.
+#' For external key stores with `XksProxyConnectivity` value of `VPC_ENDPOINT_SERVICE`, specify `https://` followed by the private DNS name of the VPC endpoint service.
 #' 
-#' For external key stores with `PUBLIC_ENDPOINT` connectivity, this
-#' endpoint must be reachable before you create the custom key store. KMS
-#' connects to the external key store proxy while creating the custom key
-#' store. For external key stores with `VPC_ENDPOINT_SERVICE` connectivity,
-#' KMS connects when you call the
-#' [`connect_custom_key_store`][kms_connect_custom_key_store] operation.
+#' For external key stores with `PUBLIC_ENDPOINT` connectivity, this endpoint must be reachable before you create the custom key store. KMS connects to the external key store proxy while creating the custom key store. For external key stores with `VPC_ENDPOINT_SERVICE` connectivity, KMS connects when you call the [`connect_custom_key_store`][kms_connect_custom_key_store] operation.
 #' 
-#' The value of this parameter must begin with `https://`. The remainder
-#' can contain upper and lower case letters (A-Z and a-z), numbers (0-9),
-#' dots (`.`), and hyphens (`-`). Additional slashes (`/` and `\`) are not
-#' permitted.
+#' The value of this parameter must begin with `https://`. The remainder can contain upper and lower case letters (A-Z and a-z), numbers (0-9), dots (`.`), and hyphens (`-`). Additional slashes (`/` and `\`) are not permitted.
 #' 
 #' **Uniqueness requirements:**
 #' 
-#' -   The combined `XksProxyUriEndpoint` and `XksProxyUriPath` values must
-#'     be unique in the Amazon Web Services account and Region.
+#' -   The combined `XksProxyUriEndpoint` and `XksProxyUriPath` values must be unique in the Amazon Web Services account and Region.
 #' 
-#' -   An external key store with `PUBLIC_ENDPOINT` connectivity cannot use
-#'     the same `XksProxyUriEndpoint` value as an external key store with
-#'     `VPC_ENDPOINT_SERVICE` connectivity in this Amazon Web Services
-#'     Region.
+#' -   An external key store with `PUBLIC_ENDPOINT` connectivity cannot use the same `XksProxyUriEndpoint` value as an external key store with `VPC_ENDPOINT_SERVICE` connectivity in this Amazon Web Services Region.
 #' 
-#' -   Each external key store with `VPC_ENDPOINT_SERVICE` connectivity
-#'     must have its own private DNS name. The `XksProxyUriEndpoint` value
-#'     for external key stores with `VPC_ENDPOINT_SERVICE` connectivity
-#'     (private DNS name) must be unique in the Amazon Web Services account
-#'     and Region.
-#' @param XksProxyUriPath Specifies the base path to the proxy APIs for this external key store.
-#' To find this value, see the documentation for your external key store
-#' proxy. This parameter is required for all custom key stores with a
-#' `CustomKeyStoreType` of `EXTERNAL_KEY_STORE`.
+#' -   Each external key store with `VPC_ENDPOINT_SERVICE` connectivity must have its own private DNS name. The `XksProxyUriEndpoint` value for external key stores with `VPC_ENDPOINT_SERVICE` connectivity (private DNS name) must be unique in the Amazon Web Services account and Region.
+#' @param XksProxyUriPath Specifies the base path to the proxy APIs for this external key store. To find this value, see the documentation for your external key store proxy. This parameter is required for all custom key stores with a `CustomKeyStoreType` of `EXTERNAL_KEY_STORE`.
 #' 
-#' The value must start with `/` and must end with `/kms/xks/v1` where `v1`
-#' represents the version of the KMS external key store proxy API. This
-#' path can include an optional prefix between the required elements such
-#' as `/prefix/kms/xks/v1`.
+#' The value must start with `/` and must end with `/kms/xks/v1` where `v1` represents the version of the KMS external key store proxy API. This path can include an optional prefix between the required elements such as `/prefix/kms/xks/v1`.
 #' 
 #' **Uniqueness requirements:**
 #' 
-#' -   The combined `XksProxyUriEndpoint` and `XksProxyUriPath` values must
-#'     be unique in the Amazon Web Services account and Region.
-#' @param XksProxyVpcEndpointServiceName Specifies the name of the Amazon VPC endpoint service for interface
-#' endpoints that is used to communicate with your external key store proxy
-#' (XKS proxy). This parameter is required when the value of
-#' `CustomKeyStoreType` is `EXTERNAL_KEY_STORE` and the value of
-#' `XksProxyConnectivity` is `VPC_ENDPOINT_SERVICE`.
+#' -   The combined `XksProxyUriEndpoint` and `XksProxyUriPath` values must be unique in the Amazon Web Services account and Region.
+#' @param XksProxyVpcEndpointServiceName Specifies the name of the Amazon VPC endpoint service for interface endpoints that is used to communicate with your external key store proxy (XKS proxy). This parameter is required when the value of `CustomKeyStoreType` is `EXTERNAL_KEY_STORE` and the value of `XksProxyConnectivity` is `VPC_ENDPOINT_SERVICE`.
 #' 
-#' The Amazon VPC endpoint service must [fulfill all
-#' requirements](https://docs.aws.amazon.com/kms/latest/developerguide/create-xks-keystore.html#xks-requirements)
-#' for use with an external key store.
+#' The Amazon VPC endpoint service must [fulfill all requirements](https://docs.aws.amazon.com/kms/latest/developerguide/create-xks-keystore.html#xks-requirements) for use with an external key store.
 #' 
 #' **Uniqueness requirements:**
 #' 
-#' -   External key stores with `VPC_ENDPOINT_SERVICE` connectivity can
-#'     share an Amazon VPC, but each external key store must have its own
-#'     VPC endpoint service and private DNS name.
-#' @param XksProxyAuthenticationCredential Specifies an authentication credential for the external key store proxy
-#' (XKS proxy). This parameter is required for all custom key stores with a
-#' `CustomKeyStoreType` of `EXTERNAL_KEY_STORE`.
+#' -   External key stores with `VPC_ENDPOINT_SERVICE` connectivity can share an Amazon VPC, but each external key store must have its own VPC endpoint service and private DNS name.
+#' @param XksProxyVpcEndpointServiceOwner Specifies the Amazon Web Services account ID that owns the Amazon VPC service endpoint for the interface that is used to communicate with your external key store proxy (XKS proxy). This parameter is optional. If not provided, the Amazon Web Services account ID calling the action will be used.
+#' @param XksProxyAuthenticationCredential Specifies an authentication credential for the external key store proxy (XKS proxy). This parameter is required for all custom key stores with a `CustomKeyStoreType` of `EXTERNAL_KEY_STORE`.
 #' 
-#' The `XksProxyAuthenticationCredential` has two required elements:
-#' `RawSecretAccessKey`, a secret key, and `AccessKeyId`, a unique
-#' identifier for the `RawSecretAccessKey`. For character requirements, see
-#' [XksProxyAuthenticationCredentialType](https://docs.aws.amazon.com/kms/latest/APIReference/API_XksProxyAuthenticationCredentialType.html).
+#' The `XksProxyAuthenticationCredential` has two required elements: `RawSecretAccessKey`, a secret key, and `AccessKeyId`, a unique identifier for the `RawSecretAccessKey`. For character requirements, see XksProxyAuthenticationCredentialType.
 #' 
-#' KMS uses this authentication credential to sign requests to the external
-#' key store proxy on your behalf. This credential is unrelated to Identity
-#' and Access Management (IAM) and Amazon Web Services credentials.
+#' KMS uses this authentication credential to sign requests to the external key store proxy on your behalf. This credential is unrelated to Identity and Access Management (IAM) and Amazon Web Services credentials.
 #' 
-#' This parameter doesn't set or change the authentication credentials on
-#' the XKS proxy. It just tells KMS the credential that you established on
-#' your external key store proxy. If you rotate your proxy authentication
-#' credential, use the
-#' [`update_custom_key_store`][kms_update_custom_key_store] operation to
-#' provide the new credential to KMS.
-#' @param XksProxyConnectivity Indicates how KMS communicates with the external key store proxy. This
-#' parameter is required for custom key stores with a `CustomKeyStoreType`
-#' of `EXTERNAL_KEY_STORE`.
+#' This parameter doesn't set or change the authentication credentials on the XKS proxy. It just tells KMS the credential that you established on your external key store proxy. If you rotate your proxy authentication credential, use the [`update_custom_key_store`][kms_update_custom_key_store] operation to provide the new credential to KMS.
+#' @param XksProxyConnectivity Indicates how KMS communicates with the external key store proxy. This parameter is required for custom key stores with a `CustomKeyStoreType` of `EXTERNAL_KEY_STORE`.
 #' 
-#' If the external key store proxy uses a public endpoint, specify
-#' `PUBLIC_ENDPOINT`. If the external key store proxy uses a Amazon VPC
-#' endpoint service for communication with KMS, specify
-#' `VPC_ENDPOINT_SERVICE`. For help making this choice, see [Choosing a
-#' connectivity
-#' option](https://docs.aws.amazon.com/kms/latest/developerguide/choose-xks-connectivity.html#choose-xks-connectivity)
-#' in the *Key Management Service Developer Guide*.
+#' If the external key store proxy uses a public endpoint, specify `PUBLIC_ENDPOINT`. If the external key store proxy uses a Amazon VPC endpoint service for communication with KMS, specify `VPC_ENDPOINT_SERVICE`. For help making this choice, see [Choosing a connectivity option](https://docs.aws.amazon.com/kms/latest/developerguide/choose-xks-connectivity.html) in the *Key Management Service Developer Guide*.
 #' 
-#' An Amazon VPC endpoint service keeps your communication with KMS in a
-#' private address space entirely within Amazon Web Services, but it
-#' requires more configuration, including establishing a Amazon VPC with
-#' multiple subnets, a VPC endpoint service, a network load balancer, and a
-#' verified private DNS name. A public endpoint is simpler to set up, but
-#' it might be slower and might not fulfill your security requirements. You
-#' might consider testing with a public endpoint, and then establishing a
-#' VPC endpoint service for production tasks. Note that this choice does
-#' not determine the location of the external key store proxy. Even if you
-#' choose a VPC endpoint service, the proxy can be hosted within the VPC or
-#' outside of Amazon Web Services such as in your corporate data center.
+#' An Amazon VPC endpoint service keeps your communication with KMS in a private address space entirely within Amazon Web Services, but it requires more configuration, including establishing a Amazon VPC with multiple subnets, a VPC endpoint service, a network load balancer, and a verified private DNS name. A public endpoint is simpler to set up, but it might be slower and might not fulfill your security requirements. You might consider testing with a public endpoint, and then establishing a VPC endpoint service for production tasks. Note that this choice does not determine the location of the external key store proxy. Even if you choose a VPC endpoint service, the proxy can be hosted within the VPC or outside of Amazon Web Services such as in your corporate data center.
 #'
 #' @keywords internal
 #'
 #' @rdname kms_create_custom_key_store
-kms_create_custom_key_store <- function(CustomKeyStoreName, CloudHsmClusterId = NULL, TrustAnchorCertificate = NULL, KeyStorePassword = NULL, CustomKeyStoreType = NULL, XksProxyUriEndpoint = NULL, XksProxyUriPath = NULL, XksProxyVpcEndpointServiceName = NULL, XksProxyAuthenticationCredential = NULL, XksProxyConnectivity = NULL) {
+kms_create_custom_key_store <- function(CustomKeyStoreName, CloudHsmClusterId = NULL, TrustAnchorCertificate = NULL, KeyStorePassword = NULL, CustomKeyStoreType = NULL, XksProxyUriEndpoint = NULL, XksProxyUriPath = NULL, XksProxyVpcEndpointServiceName = NULL, XksProxyVpcEndpointServiceOwner = NULL, XksProxyAuthenticationCredential = NULL, XksProxyConnectivity = NULL) {
   op <- new_operation(
     name = "CreateCustomKeyStore",
     http_method = "POST",
@@ -315,7 +208,7 @@ kms_create_custom_key_store <- function(CustomKeyStoreName, CloudHsmClusterId = 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .kms$create_custom_key_store_input(CustomKeyStoreName = CustomKeyStoreName, CloudHsmClusterId = CloudHsmClusterId, TrustAnchorCertificate = TrustAnchorCertificate, KeyStorePassword = KeyStorePassword, CustomKeyStoreType = CustomKeyStoreType, XksProxyUriEndpoint = XksProxyUriEndpoint, XksProxyUriPath = XksProxyUriPath, XksProxyVpcEndpointServiceName = XksProxyVpcEndpointServiceName, XksProxyAuthenticationCredential = XksProxyAuthenticationCredential, XksProxyConnectivity = XksProxyConnectivity)
+  input <- .kms$create_custom_key_store_input(CustomKeyStoreName = CustomKeyStoreName, CloudHsmClusterId = CloudHsmClusterId, TrustAnchorCertificate = TrustAnchorCertificate, KeyStorePassword = KeyStorePassword, CustomKeyStoreType = CustomKeyStoreType, XksProxyUriEndpoint = XksProxyUriEndpoint, XksProxyUriPath = XksProxyUriPath, XksProxyVpcEndpointServiceName = XksProxyVpcEndpointServiceName, XksProxyVpcEndpointServiceOwner = XksProxyVpcEndpointServiceOwner, XksProxyAuthenticationCredential = XksProxyAuthenticationCredential, XksProxyConnectivity = XksProxyConnectivity)
   output <- .kms$create_custom_key_store_output()
   config <- get_config()
   svc <- .kms$service(config, op)
@@ -332,129 +225,73 @@ kms_create_custom_key_store <- function(CustomKeyStoreName, CloudHsmClusterId = 
 #'
 #' See [https://www.paws-r-sdk.com/docs/kms_create_grant/](https://www.paws-r-sdk.com/docs/kms_create_grant/) for full documentation.
 #'
-#' @param KeyId &#91;required&#93; Identifies the KMS key for the grant. The grant gives principals
-#' permission to use this KMS key.
+#' @param KeyId &#91;required&#93; Identifies the KMS key for the grant. The grant gives principals permission to use this KMS key.
 #' 
-#' Specify the key ID or key ARN of the KMS key. To specify a KMS key in a
-#' different Amazon Web Services account, you must use the key ARN.
+#' Specify the key ID or key ARN of the KMS key. To specify a KMS key in a different Amazon Web Services account, you must use the key ARN.
 #' 
 #' For example:
 #' 
 #' -   Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
-#' -   Key ARN:
-#'     `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
+#' -   Key ARN: `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
-#' To get the key ID and key ARN for a KMS key, use
-#' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
-#' @param GranteePrincipal &#91;required&#93; The identity that gets the permissions specified in the grant.
+#' To get the key ID and key ARN for a KMS key, use [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
+#' @param GranteePrincipal The identity that gets the permissions specified in the grant.
 #' 
-#' To specify the grantee principal, use the Amazon Resource Name (ARN) of
-#' an Amazon Web Services principal. Valid principals include Amazon Web
-#' Services accounts, IAM users, IAM roles, federated users, and assumed
-#' role users. For help with the ARN syntax for a principal, see [IAM
-#' ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns)
-#' in the *Identity and Access Management User Guide* .
-#' @param RetiringPrincipal The principal that has permission to use the
-#' [`retire_grant`][kms_retire_grant] operation to retire the grant.
+#' To specify the grantee principal, use the Amazon Resource Name (ARN) of an Amazon Web Services principal. Valid principals include Amazon Web Services accounts, IAM users, IAM roles, federated users, and assumed role users. For help with the ARN syntax for a principal, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns) in the *Identity and Access Management User Guide* .
 #' 
-#' To specify the principal, use the [Amazon Resource Name
-#' (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
-#' of an Amazon Web Services principal. Valid principals include Amazon Web
-#' Services accounts, IAM users, IAM roles, federated users, and assumed
-#' role users. For help with the ARN syntax for a principal, see [IAM
-#' ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns)
-#' in the *Identity and Access Management User Guide* .
+#' You must specify either `GranteePrincipal` or `GranteeServicePrincipal`, but not both.
+#' @param RetiringPrincipal The principal that has permission to use the [`retire_grant`][kms_retire_grant] operation to retire the grant.
 #' 
-#' The grant determines the retiring principal. Other principals might have
-#' permission to retire the grant or revoke the grant. For details, see
-#' [`revoke_grant`][kms_revoke_grant] and [Retiring and revoking
-#' grants](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant-delete)
-#' in the *Key Management Service Developer Guide*.
+#' To specify the principal, use the [Amazon Resource Name (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html) of an Amazon Web Services principal. Valid principals include Amazon Web Services accounts, IAM users, IAM roles, federated users, and assumed role users. For help with the ARN syntax for a principal, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns) in the *Identity and Access Management User Guide* .
+#' 
+#' The grant determines the retiring principal. Other principals might have permission to retire the grant or revoke the grant. For details, see [`revoke_grant`][kms_revoke_grant] and [Retiring and revoking grants](https://docs.aws.amazon.com/kms/latest/developerguide/grant-delete.html) in the *Key Management Service Developer Guide*.
+#' 
+#' You can specify either `RetiringPrincipal` or `RetiringServicePrincipal`, but not both.
 #' @param Operations &#91;required&#93; A list of operations that the grant permits.
 #' 
-#' This list must include only operations that are permitted in a grant.
-#' Also, the operation must be supported on the KMS key. For example, you
-#' cannot create a grant for a symmetric encryption KMS key that allows the
-#' [`sign`][kms_sign] operation, or a grant for an asymmetric KMS key that
-#' allows the [`generate_data_key`][kms_generate_data_key] operation. If
-#' you try, KMS returns a `ValidationError` exception. For details, see
-#' [Grant
-#' operations](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#terms-grant-operations)
-#' in the *Key Management Service Developer Guide*.
+#' This list must include only operations that are permitted in a grant. Also, the operation must be supported on the KMS key. For example, you cannot create a grant for a symmetric encryption KMS key that allows the [`sign`][kms_sign] operation, or a grant for an asymmetric KMS key that allows the [`generate_data_key`][kms_generate_data_key] operation. If you try, KMS returns a `ValidationError` exception. For details, see [Grant operations](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#terms-grant-operations) in the *Key Management Service Developer Guide*.
 #' @param Constraints Specifies a grant constraint.
 #' 
-#' Do not include confidential or sensitive information in this field. This
-#' field may be displayed in plaintext in CloudTrail logs and other output.
+#' Do not include confidential or sensitive information in this field. This field may be displayed in plaintext in CloudTrail logs and other output.
 #' 
-#' KMS supports the `EncryptionContextEquals` and `EncryptionContextSubset`
-#' grant constraints, which allow the permissions in the grant only when
-#' the encryption context in the request matches
-#' (`EncryptionContextEquals`) or includes (`EncryptionContextSubset`) the
-#' encryption context specified in the constraint.
+#' KMS supports the following grant constraints.
 #' 
-#' The encryption context grant constraints are supported only on [grant
-#' operations](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#terms-grant-operations)
-#' that include an `EncryptionContext` parameter, such as cryptographic
-#' operations on symmetric encryption KMS keys. Grants with grant
-#' constraints can include the [`describe_key`][kms_describe_key] and
-#' [`retire_grant`][kms_retire_grant] operations, but the constraint
-#' doesn't apply to these operations. If a grant with a grant constraint
-#' includes the [`create_grant`][kms_create_grant] operation, the
-#' constraint requires that any grants created with the
-#' [`create_grant`][kms_create_grant] permission have an equally strict or
-#' stricter encryption context constraint.
+#' -   `EncryptionContextEquals` and `EncryptionContextSubset` — These encryption context grant constraints allow the permissions in the grant only when the encryption context in the request matches (`EncryptionContextEquals`) or includes (`EncryptionContextSubset`) the encryption context specified in the constraint.
 #' 
-#' You cannot use an encryption context grant constraint for cryptographic
-#' operations with asymmetric KMS keys or HMAC KMS keys. Operations with
-#' these keys don't support an encryption context.
+#'     Encryption context grant constraints are supported only on [grant operations](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#terms-grant-operations) that include an `EncryptionContext` parameter, such as cryptographic operations on symmetric encryption KMS keys. You cannot use an encryption context grant constraint for cryptographic operations with asymmetric KMS keys or HMAC KMS keys. Operations with these keys don't support an encryption context. Grants with encryption context grant constraints can include the [`describe_key`][kms_describe_key] and [`retire_grant`][kms_retire_grant] operations, but the constraint doesn't apply to these operations. If a grant with an encryption context grant constraint includes the [`create_grant`][kms_create_grant] operation, the constraint requires that any grants created with the [`create_grant`][kms_create_grant] permission have an equally strict or stricter encryption context constraint.
 #' 
-#' Each constraint value can include up to 8 encryption context pairs. The
-#' encryption context value in each constraint cannot exceed 384
-#' characters. For information about grant constraints, see [Using grant
-#' constraints](https://docs.aws.amazon.com/kms/latest/developerguide/create-grant-overview.html#grant-constraints)
-#' in the *Key Management Service Developer Guide*. For more information
-#' about encryption context, see [Encryption
-#' context](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context)
-#' in the *Key Management Service Developer Guide* .
+#'     Each constraint value can include up to 8 encryption context pairs. The encryption context value in each constraint cannot exceed 384 characters. For more information about encryption context, see [Encryption context](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context) in the *Key Management Service Developer Guide* .
+#' 
+#' -   `SourceArn` — This grant constraint allows the permissions in the grant only when the request is made on behalf of a specific Amazon Web Services resource, identified by its [Amazon Resource Name (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html). This is effectively the same as having the [aws:SourceArn](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html#condition-keys-sourcearn) global condition key in the grant. The SourceArn constraint is supported on grants for all types of KMS keys and can also be applied to the [`describe_key`][kms_describe_key] operation when specified in the request. However, it does not apply to [`retire_grant`][kms_retire_grant] operation.
+#' 
+#' For information about grant constraints, see [Using grant constraints](https://docs.aws.amazon.com/kms/latest/developerguide/create-grant-overview.html#grant-constraints) in the *Key Management Service Developer Guide*.
 #' @param GrantTokens A list of grant tokens.
 #' 
-#' Use a grant token when your permission to call this operation comes from
-#' a new grant that has not yet achieved *eventual consistency*. For more
-#' information, see [Grant
-#' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token)
-#' and [Using a grant
-#' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#using-grant-token)
-#' in the *Key Management Service Developer Guide*.
-#' @param Name A friendly name for the grant. Use this value to prevent the unintended
-#' creation of duplicate grants when retrying this request.
+#' Use a grant token when your permission to call this operation comes from a new grant that has not yet achieved *eventual consistency*. For more information, see [Grant token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token) and [Using a grant token](https://docs.aws.amazon.com/kms/latest/developerguide/using-grant-token.html) in the *Key Management Service Developer Guide*.
+#' @param Name A friendly name for the grant. Use this value to prevent the unintended creation of duplicate grants when retrying this request.
 #' 
-#' Do not include confidential or sensitive information in this field. This
-#' field may be displayed in plaintext in CloudTrail logs and other output.
+#' Do not include confidential or sensitive information in this field. This field may be displayed in plaintext in CloudTrail logs and other output.
 #' 
-#' When this value is absent, all [`create_grant`][kms_create_grant]
-#' requests result in a new grant with a unique `GrantId` even if all the
-#' supplied parameters are identical. This can result in unintended
-#' duplicates when you retry the [`create_grant`][kms_create_grant]
-#' request.
+#' When this value is absent, all [`create_grant`][kms_create_grant] requests result in a new grant with a unique `GrantId` even if all the supplied parameters are identical. This can result in unintended duplicates when you retry the [`create_grant`][kms_create_grant] request.
 #' 
-#' When this value is present, you can retry a
-#' [`create_grant`][kms_create_grant] request with identical parameters; if
-#' the grant already exists, the original `GrantId` is returned without
-#' creating a new grant. Note that the returned grant token is unique with
-#' every [`create_grant`][kms_create_grant] request, even when a duplicate
-#' `GrantId` is returned. All grant tokens for the same grant ID can be
-#' used interchangeably.
+#' When this value is present, you can retry a [`create_grant`][kms_create_grant] request with identical parameters; if the grant already exists, the original `GrantId` is returned without creating a new grant. Note that the returned grant token is unique with every [`create_grant`][kms_create_grant] request, even when a duplicate `GrantId` is returned. All grant tokens for the same grant ID can be used interchangeably.
 #' @param DryRun Checks if your request will succeed. `DryRun` is an optional parameter.
 #' 
-#' To learn more about how to use this parameter, see [Testing your KMS API
-#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html)
-#' in the *Key Management Service Developer Guide*.
+#' To learn more about how to use this parameter, see [Testing your permissions](https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html) in the *Key Management Service Developer Guide*.
+#' @param GranteeServicePrincipal The Amazon Web Services [service principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_principal.html#principal-services) that gets the permissions specified in the grant.
+#' 
+#' When you specify a `GranteeServicePrincipal`, you must also specify a `SourceArn` grant constraint. In addition, you must specify either a `RetiringPrincipal` or a `RetiringServicePrincipal`.
+#' 
+#' You must specify either `GranteePrincipal` or `GranteeServicePrincipal`, but not both.
+#' @param RetiringServicePrincipal The Amazon Web Services [service principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_principal.html#principal-services) that has permission to use the [`retire_grant`][kms_retire_grant] operation to retire the grant.
+#' 
+#' You can specify either `RetiringPrincipal` or `RetiringServicePrincipal`, but not both.
 #'
 #' @keywords internal
 #'
 #' @rdname kms_create_grant
-kms_create_grant <- function(KeyId, GranteePrincipal, RetiringPrincipal = NULL, Operations, Constraints = NULL, GrantTokens = NULL, Name = NULL, DryRun = NULL) {
+kms_create_grant <- function(KeyId, GranteePrincipal = NULL, RetiringPrincipal = NULL, Operations, Constraints = NULL, GrantTokens = NULL, Name = NULL, DryRun = NULL, GranteeServicePrincipal = NULL, RetiringServicePrincipal = NULL) {
   op <- new_operation(
     name = "CreateGrant",
     http_method = "POST",
@@ -463,7 +300,7 @@ kms_create_grant <- function(KeyId, GranteePrincipal, RetiringPrincipal = NULL, 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .kms$create_grant_input(KeyId = KeyId, GranteePrincipal = GranteePrincipal, RetiringPrincipal = RetiringPrincipal, Operations = Operations, Constraints = Constraints, GrantTokens = GrantTokens, Name = Name, DryRun = DryRun)
+  input <- .kms$create_grant_input(KeyId = KeyId, GranteePrincipal = GranteePrincipal, RetiringPrincipal = RetiringPrincipal, Operations = Operations, Constraints = Constraints, GrantTokens = GrantTokens, Name = Name, DryRun = DryRun, GranteeServicePrincipal = GranteeServicePrincipal, RetiringServicePrincipal = RetiringServicePrincipal)
   output <- .kms$create_grant_output()
   config <- get_config()
   svc <- .kms$service(config, op)
@@ -485,100 +322,49 @@ kms_create_grant <- function(KeyId, GranteePrincipal, RetiringPrincipal = NULL, 
 #' 
 #' If you provide a key policy, it must meet the following criteria:
 #' 
-#' -   The key policy must allow the calling principal to make a subsequent
-#'     [`put_key_policy`][kms_put_key_policy] request on the KMS key. This
-#'     reduces the risk that the KMS key becomes unmanageable. For more
-#'     information, see [Default key
-#'     policy](https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-default.html#prevent-unmanageable-key)
-#'     in the *Key Management Service Developer Guide*. (To omit this
-#'     condition, set `BypassPolicyLockoutSafetyCheck` to true.)
+#' -   The key policy must allow the calling principal to make a subsequent [`put_key_policy`][kms_put_key_policy] request on the KMS key. This reduces the risk that the KMS key becomes unmanageable. For more information, see [Default key policy](https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-default.html#prevent-unmanageable-key) in the *Key Management Service Developer Guide*. (To omit this condition, set `BypassPolicyLockoutSafetyCheck` to true.)
 #' 
-#' -   Each statement in the key policy must contain one or more
-#'     principals. The principals in the key policy must exist and be
-#'     visible to KMS. When you create a new Amazon Web Services principal,
-#'     you might need to enforce a delay before including the new principal
-#'     in a key policy because the new principal might not be immediately
-#'     visible to KMS. For more information, see [Changes that I make are
-#'     not always immediately
-#'     visible](https://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot.html#troubleshoot_general_eventual-consistency)
-#'     in the *Amazon Web Services Identity and Access Management User
-#'     Guide*.
+#' -   Each statement in the key policy must contain one or more principals. The principals in the key policy must exist and be visible to KMS. When you create a new Amazon Web Services principal, you might need to enforce a delay before including the new principal in a key policy because the new principal might not be immediately visible to KMS. For more information, see [Changes that I make are not always immediately visible](https://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot.html#troubleshoot_general_eventual-consistency) in the *Amazon Web Services Identity and Access Management User Guide*.
 #' 
-#' If you do not provide a key policy, KMS attaches a default key policy to
-#' the KMS key. For more information, see [Default key
-#' policy](https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default)
-#' in the *Key Management Service Developer Guide*.
+#' If either of the required `Resource` or `Action` elements are missing from a key policy statement, the policy statement has no effect. When a key policy statement is missing one of these elements, the KMS console correctly reports an error, but the [`create_key`][kms_create_key] and [`put_key_policy`][kms_put_key_policy] API requests succeed, even though the policy statement is ineffective.
 #' 
-#' The key policy size quota is 32 kilobytes (32768 bytes).
+#' For more information on required key policy elements, see [Elements in a key policy](https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-overview.html#key-policy-elements) in the *Key Management Service Developer Guide*.
 #' 
-#' For help writing and formatting a JSON policy document, see the [IAM
-#' JSON Policy
-#' Reference](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies.html)
-#' in the *Identity and Access Management User Guide* .
-#' @param Description A description of the KMS key. Use a description that helps you decide
-#' whether the KMS key is appropriate for a task. The default value is an
-#' empty string (no description).
+#' If you do not provide a key policy, KMS attaches a default key policy to the KMS key. For more information, see [Default key policy](https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-default.html) in the *Key Management Service Developer Guide*.
 #' 
-#' Do not include confidential or sensitive information in this field. This
-#' field may be displayed in plaintext in CloudTrail logs and other output.
+#' If the key policy exceeds the length constraint, KMS returns a `LimitExceededException`.
 #' 
-#' To set or change the description after the key is created, use
-#' [`update_key_description`][kms_update_key_description].
-#' @param KeyUsage Determines the [cryptographic
-#' operations](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#cryptographic-operations)
-#' for which you can use the KMS key. The default value is
-#' `ENCRYPT_DECRYPT`. This parameter is optional when you are creating a
-#' symmetric encryption KMS key; otherwise, it is required. You can't
-#' change the `KeyUsage` value after the KMS key is created.
+#' For help writing and formatting a JSON policy document, see the [IAM JSON Policy Reference](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies.html) in the *Identity and Access Management User Guide* .
+#' @param Description A description of the KMS key. Use a description that helps you decide whether the KMS key is appropriate for a task. The default value is an empty string (no description).
+#' 
+#' Do not include confidential or sensitive information in this field. This field may be displayed in plaintext in CloudTrail logs and other output.
+#' 
+#' To set or change the description after the key is created, use [`update_key_description`][kms_update_key_description].
+#' @param KeyUsage Determines the [cryptographic operations](https://docs.aws.amazon.com/kms/latest/developerguide/kms-cryptography.html#cryptographic-operations) for which you can use the KMS key. The default value is `ENCRYPT_DECRYPT`. This parameter is optional when you are creating a symmetric encryption KMS key; otherwise, it is required. You can't change the [`KeyUsage`](https://docs.aws.amazon.com/kms/latest/developerguide/create-keys.html#key-usage) value after the KMS key is created. Each KMS key can have only one key usage. This follows key usage best practices according to [NIST SP 800-57 Recommendations for Key Management](https://csrc.nist.gov/pubs/sp/800/57/pt1/r5/final), section 5.2, Key usage.
 #' 
 #' Select only one valid value.
 #' 
-#' -   For symmetric encryption KMS keys, omit the parameter or specify
-#'     `ENCRYPT_DECRYPT`.
+#' -   For symmetric encryption KMS keys, omit the parameter or specify `ENCRYPT_DECRYPT`.
 #' 
 #' -   For HMAC KMS keys (symmetric), specify `GENERATE_VERIFY_MAC`.
 #' 
-#' -   For asymmetric KMS keys with RSA key pairs, specify
-#'     `ENCRYPT_DECRYPT` or `SIGN_VERIFY`.
+#' -   For asymmetric KMS keys with RSA key pairs, specify `ENCRYPT_DECRYPT` or `SIGN_VERIFY`.
 #' 
-#' -   For asymmetric KMS keys with NIST-recommended elliptic curve key
-#'     pairs, specify `SIGN_VERIFY` or `KEY_AGREEMENT`.
+#' -   For asymmetric KMS keys with NIST-standard elliptic curve key pairs, specify `SIGN_VERIFY` or `KEY_AGREEMENT`.
 #' 
-#' -   For asymmetric KMS keys with `ECC_SECG_P256K1` key pairs specify
-#'     `SIGN_VERIFY`.
+#' -   For asymmetric KMS keys with `ECC_SECG_P256K1` key pairs, specify `SIGN_VERIFY`.
 #' 
-#' -   For asymmetric KMS keys with SM2 key pairs (China Regions only),
-#'     specify `ENCRYPT_DECRYPT`, `SIGN_VERIFY`, or `KEY_AGREEMENT`.
+#' -   For asymmetric KMS keys with ML-DSA key pairs, specify `SIGN_VERIFY`.
+#' 
+#' -   For asymmetric KMS keys with SM2 key pairs (China Regions only), specify `ENCRYPT_DECRYPT`, `SIGN_VERIFY`, or `KEY_AGREEMENT`.
 #' @param CustomerMasterKeySpec Instead, use the `KeySpec` parameter.
 #' 
-#' The `KeySpec` and `CustomerMasterKeySpec` parameters work the same way.
-#' Only the names differ. We recommend that you use `KeySpec` parameter in
-#' your code. However, to avoid breaking changes, KMS supports both
-#' parameters.
-#' @param KeySpec Specifies the type of KMS key to create. The default value,
-#' `SYMMETRIC_DEFAULT`, creates a KMS key with a 256-bit AES-GCM key that
-#' is used for encryption and decryption, except in China Regions, where it
-#' creates a 128-bit symmetric key that uses SM4 encryption. For help
-#' choosing a key spec for your KMS key, see [Choosing a KMS key
-#' type](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#symm-asymm-choose)
-#' in the *Key Management Service Developer Guide* .
+#' The `KeySpec` and `CustomerMasterKeySpec` parameters work the same way. Only the names differ. We recommend that you use `KeySpec` parameter in your code. However, to avoid breaking changes, KMS supports both parameters.
+#' @param KeySpec Specifies the type of KMS key to create. The default value, `SYMMETRIC_DEFAULT`, creates a KMS key with a 256-bit AES-GCM key that is used for encryption and decryption, except in China Regions, where it creates a 128-bit symmetric key that uses SM4 encryption. For a detailed description of all supported key specs, see [Key spec reference](https://docs.aws.amazon.com/kms/latest/developerguide/symm-asymm-choose-key-spec.html) in the *Key Management Service Developer Guide* .
 #' 
-#' The `KeySpec` determines whether the KMS key contains a symmetric key or
-#' an asymmetric key pair. It also determines the algorithms that the KMS
-#' key supports. You can't change the `KeySpec` after the KMS key is
-#' created. To further restrict the algorithms that can be used with the
-#' KMS key, use a condition key in its key policy or IAM policy. For more
-#' information, see
-#' [kms:EncryptionAlgorithm](https://docs.aws.amazon.com/kms/latest/developerguide/policy-conditions.html#conditions-kms-encryption-algorithm),
-#' [kms:MacAlgorithm](https://docs.aws.amazon.com/kms/latest/developerguide/policy-conditions.html#conditions-kms-mac-algorithm)
-#' or [kms:Signing
-#' Algorithm](https://docs.aws.amazon.com/kms/latest/developerguide/policy-conditions.html#conditions-kms-signing-algorithm)
-#' in the *Key Management Service Developer Guide* .
+#' The `KeySpec` determines whether the KMS key contains a symmetric key or an asymmetric key pair. It also determines the algorithms that the KMS key supports. You can't change the `KeySpec` after the KMS key is created. To further restrict the algorithms that can be used with the KMS key, use a condition key in its key policy or IAM policy. For more information, see [kms:EncryptionAlgorithm](https://docs.aws.amazon.com/kms/latest/developerguide/conditions-kms.html#conditions-kms-encryption-algorithm), [kms:MacAlgorithm](https://docs.aws.amazon.com/kms/latest/developerguide/conditions-kms.html#conditions-kms-mac-algorithm), [kms:KeyAgreementAlgorithm](https://docs.aws.amazon.com/kms/latest/developerguide/conditions-kms.html#conditions-kms-key-agreement-algorithm), or [kms:SigningAlgorithm](https://docs.aws.amazon.com/kms/latest/developerguide/conditions-kms.html#conditions-kms-signing-algorithm) in the *Key Management Service Developer Guide* .
 #' 
-#' [Amazon Web Services services that are integrated with
-#' KMS](https://aws.amazon.com/kms/features/#AWS_Service_Integration) use
-#' symmetric encryption KMS keys to protect your data. These services do
-#' not support asymmetric KMS keys or HMAC KMS keys.
+#' [Amazon Web Services services that are integrated with KMS](https://aws.amazon.com/kms/features/#AWS_Service_Integration) use symmetric encryption KMS keys to protect your data. These services do not support asymmetric KMS keys or HMAC KMS keys.
 #' 
 #' KMS supports the following key specs for KMS keys:
 #' 
@@ -596,8 +382,7 @@ kms_create_grant <- function(KeyId, GranteePrincipal, RetiringPrincipal = NULL, 
 #' 
 #'     -   `HMAC_512`
 #' 
-#' -   Asymmetric RSA key pairs (encryption and decryption -or- signing and
-#'     verification)
+#' -   Asymmetric RSA key pairs (encryption and decryption -or- signing and verification)
 #' 
 #'     -   `RSA_2048`
 #' 
@@ -605,8 +390,7 @@ kms_create_grant <- function(KeyId, GranteePrincipal, RetiringPrincipal = NULL, 
 #' 
 #'     -   `RSA_4096`
 #' 
-#' -   Asymmetric NIST-recommended elliptic curve key pairs (signing and
-#'     verification -or- deriving shared secrets)
+#' -   Asymmetric NIST-standard elliptic curve key pairs (signing and verification -or- deriving shared secrets)
 #' 
 #'     -   `ECC_NIST_P256` (secp256r1)
 #' 
@@ -614,152 +398,71 @@ kms_create_grant <- function(KeyId, GranteePrincipal, RetiringPrincipal = NULL, 
 #' 
 #'     -   `ECC_NIST_P521` (secp521r1)
 #' 
+#'     -   `ECC_NIST_EDWARDS25519` (ed25519) - signing and verification only
+#' 
+#'         -   **Note:** For ECC_NIST_EDWARDS25519 KMS keys, the ED25519_SHA_512 signing algorithm requires [`MessageType:RAW`](https://docs.aws.amazon.com/kms/latest/APIReference/API_Sign.html#KMS-Sign-request-MessageType) , while ED25519_PH_SHA_512 requires [`MessageType:DIGEST`](https://docs.aws.amazon.com/kms/latest/APIReference/API_Sign.html#KMS-Sign-request-MessageType) . These message types cannot be used interchangeably.
+#' 
 #' -   Other asymmetric elliptic curve key pairs (signing and verification)
 #' 
-#'     -   `ECC_SECG_P256K1` (secp256k1), commonly used for
-#'         cryptocurrencies.
+#'     -   `ECC_SECG_P256K1` (secp256k1), commonly used for cryptocurrencies.
 #' 
-#' -   SM2 key pairs (encryption and decryption -or- signing and
-#'     verification -or- deriving shared secrets)
+#' -   Asymmetric ML-DSA key pairs (signing and verification)
+#' 
+#'     -   `ML_DSA_44`
+#' 
+#'     -   `ML_DSA_65`
+#' 
+#'     -   `ML_DSA_87`
+#' 
+#' -   SM2 key pairs (encryption and decryption -or- signing and verification -or- deriving shared secrets)
 #' 
 #'     -   `SM2` (China Regions only)
-#' @param Origin The source of the key material for the KMS key. You cannot change the
-#' origin after you create the KMS key. The default is `AWS_KMS`, which
-#' means that KMS creates the key material.
+#' @param Origin The source of the key material for the KMS key. You cannot change the origin after you create the KMS key. The default is `AWS_KMS`, which means that KMS creates the key material.
 #' 
-#' To [create a KMS key with no key
-#' material](https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys-create-cmk.html)
-#' (for imported key material), set this value to `EXTERNAL`. For more
-#' information about importing key material into KMS, see [Importing Key
-#' Material](https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html)
-#' in the *Key Management Service Developer Guide*. The `EXTERNAL` origin
-#' value is valid only for symmetric KMS keys.
+#' To [create a KMS key with no key material](https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys-create-cmk.html) (for imported key material), set this value to `EXTERNAL`. For more information about importing key material into KMS, see [Importing Key Material](https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html) in the *Key Management Service Developer Guide*. The `EXTERNAL` origin value is valid only for symmetric KMS keys.
 #' 
-#' To [create a KMS key in an CloudHSM key
-#' store](https://docs.aws.amazon.com/kms/latest/developerguide/create-cmk-keystore.html)
-#' and create its key material in the associated CloudHSM cluster, set this
-#' value to `AWS_CLOUDHSM`. You must also use the `CustomKeyStoreId`
-#' parameter to identify the CloudHSM key store. The `KeySpec` value must
-#' be `SYMMETRIC_DEFAULT`.
+#' To [create a KMS key in an CloudHSM key store](https://docs.aws.amazon.com/kms/latest/developerguide/create-cmk-keystore.html) and create its key material in the associated CloudHSM cluster, set this value to `AWS_CLOUDHSM`. You must also use the `CustomKeyStoreId` parameter to identify the CloudHSM key store. The `KeySpec` value must be `SYMMETRIC_DEFAULT`.
 #' 
-#' To [create a KMS key in an external key
-#' store](https://docs.aws.amazon.com/kms/latest/developerguide/create-xks-keys.html),
-#' set this value to `EXTERNAL_KEY_STORE`. You must also use the
-#' `CustomKeyStoreId` parameter to identify the external key store and the
-#' `XksKeyId` parameter to identify the associated external key. The
-#' `KeySpec` value must be `SYMMETRIC_DEFAULT`.
-#' @param CustomKeyStoreId Creates the KMS key in the specified [custom key
-#' store](https://docs.aws.amazon.com/kms/latest/developerguide/). The
-#' `ConnectionState` of the custom key store must be `CONNECTED`. To find
-#' the CustomKeyStoreID and ConnectionState use the
-#' [`describe_custom_key_stores`][kms_describe_custom_key_stores]
-#' operation.
+#' To [create a KMS key in an external key store](https://docs.aws.amazon.com/kms/latest/developerguide/create-xks-keys.html), set this value to `EXTERNAL_KEY_STORE`. You must also use the `CustomKeyStoreId` parameter to identify the external key store and the `XksKeyId` parameter to identify the associated external key. The `KeySpec` value must be `SYMMETRIC_DEFAULT`.
+#' @param CustomKeyStoreId Creates the KMS key in the specified [custom key store](https://docs.aws.amazon.com/kms/latest/developerguide/key-store-overview.html). The `ConnectionState` of the custom key store must be `CONNECTED`. To find the CustomKeyStoreID and ConnectionState use the [`describe_custom_key_stores`][kms_describe_custom_key_stores] operation.
 #' 
-#' This parameter is valid only for symmetric encryption KMS keys in a
-#' single Region. You cannot create any other type of KMS key in a custom
-#' key store.
+#' This parameter is valid only for symmetric encryption KMS keys in a single Region. You cannot create any other type of KMS key in a custom key store.
 #' 
-#' When you create a KMS key in an CloudHSM key store, KMS generates a
-#' non-exportable 256-bit symmetric key in its associated CloudHSM cluster
-#' and associates it with the KMS key. When you create a KMS key in an
-#' external key store, you must use the `XksKeyId` parameter to specify an
-#' external key that serves as key material for the KMS key.
-#' @param BypassPolicyLockoutSafetyCheck Skips ("bypasses") the key policy lockout safety check. The default
-#' value is false.
+#' When you create a KMS key in an CloudHSM key store, KMS generates a non-exportable 256-bit symmetric key in its associated CloudHSM cluster and associates it with the KMS key. When you create a KMS key in an external key store, you must use the `XksKeyId` parameter to specify an external key that serves as key material for the KMS key.
+#' @param BypassPolicyLockoutSafetyCheck Skips ("bypasses") the key policy lockout safety check. The default value is false.
 #' 
-#' Setting this value to true increases the risk that the KMS key becomes
-#' unmanageable. Do not set this value to true indiscriminately.
+#' Setting this value to true increases the risk that the KMS key becomes unmanageable. Do not set this value to true indiscriminately.
 #' 
-#' For more information, see [Default key
-#' policy](https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-default.html#prevent-unmanageable-key)
-#' in the *Key Management Service Developer Guide*.
+#' For more information, see [Default key policy](https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-default.html#prevent-unmanageable-key) in the *Key Management Service Developer Guide*.
 #' 
-#' Use this parameter only when you intend to prevent the principal that is
-#' making the request from making a subsequent
-#' [`put_key_policy`][kms_put_key_policy] request on the KMS key.
-#' @param Tags Assigns one or more tags to the KMS key. Use this parameter to tag the
-#' KMS key when it is created. To tag an existing KMS key, use the
-#' [`tag_resource`][kms_tag_resource] operation.
+#' Use this parameter only when you intend to prevent the principal that is making the request from making a subsequent [`put_key_policy`][kms_put_key_policy] request on the KMS key.
+#' @param Tags Assigns one or more tags to the KMS key. Use this parameter to tag the KMS key when it is created. To tag an existing KMS key, use the [`tag_resource`][kms_tag_resource] operation.
 #' 
-#' Do not include confidential or sensitive information in this field. This
-#' field may be displayed in plaintext in CloudTrail logs and other output.
+#' Do not include confidential or sensitive information in this field. This field may be displayed in plaintext in CloudTrail logs and other output.
 #' 
-#' Tagging or untagging a KMS key can allow or deny permission to the KMS
-#' key. For details, see [ABAC for
-#' KMS](https://docs.aws.amazon.com/kms/latest/developerguide/abac.html) in
-#' the *Key Management Service Developer Guide*.
+#' Tagging or untagging a KMS key can allow or deny permission to the KMS key. For details, see [ABAC for KMS](https://docs.aws.amazon.com/kms/latest/developerguide/abac.html) in the *Key Management Service Developer Guide*.
 #' 
-#' To use this parameter, you must have
-#' [kms:TagResource](https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html)
-#' permission in an IAM policy.
+#' To use this parameter, you must have [kms:TagResource](https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html) permission in an IAM policy.
 #' 
-#' Each tag consists of a tag key and a tag value. Both the tag key and the
-#' tag value are required, but the tag value can be an empty (null) string.
-#' You cannot have more than one tag on a KMS key with the same tag key. If
-#' you specify an existing tag key with a different tag value, KMS replaces
-#' the current tag value with the specified one.
+#' Each tag consists of a tag key and a tag value. Both the tag key and the tag value are required, but the tag value can be an empty (null) string. You cannot have more than one tag on a KMS key with the same tag key. If you specify an existing tag key with a different tag value, KMS replaces the current tag value with the specified one.
 #' 
-#' When you add tags to an Amazon Web Services resource, Amazon Web
-#' Services generates a cost allocation report with usage and costs
-#' aggregated by tags. Tags can also be used to control access to a KMS
-#' key. For details, see [Tagging
-#' Keys](https://docs.aws.amazon.com/kms/latest/developerguide/tagging-keys.html).
-#' @param MultiRegion Creates a multi-Region primary key that you can replicate into other
-#' Amazon Web Services Regions. You cannot change this value after you
-#' create the KMS key.
+#' When you add tags to an Amazon Web Services resource, Amazon Web Services generates a cost allocation report with usage and costs aggregated by tags. Tags can also be used to control access to a KMS key. For details, see [Tags in KMS](https://docs.aws.amazon.com/kms/latest/developerguide/tagging-keys.html).
+#' @param MultiRegion Creates a multi-Region primary key that you can replicate into other Amazon Web Services Regions. You cannot change this value after you create the KMS key.
 #' 
-#' For a multi-Region key, set this parameter to `True`. For a
-#' single-Region KMS key, omit this parameter or set it to `False`. The
-#' default value is `False`.
+#' For a multi-Region key, set this parameter to `True`. For a single-Region KMS key, omit this parameter or set it to `False`. The default value is `False`.
 #' 
-#' This operation supports *multi-Region keys*, an KMS feature that lets
-#' you create multiple interoperable KMS keys in different Amazon Web
-#' Services Regions. Because these KMS keys have the same key ID, key
-#' material, and other metadata, you can use them interchangeably to
-#' encrypt data in one Amazon Web Services Region and decrypt it in a
-#' different Amazon Web Services Region without re-encrypting the data or
-#' making a cross-Region call. For more information about multi-Region
-#' keys, see [Multi-Region keys in
-#' KMS](https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-overview.html)
-#' in the *Key Management Service Developer Guide*.
+#' This operation supports *multi-Region keys*, an KMS feature that lets you create multiple interoperable KMS keys in different Amazon Web Services Regions. Because these KMS keys have the same key ID, key material, and other metadata, you can use them interchangeably to encrypt data in one Amazon Web Services Region and decrypt it in a different Amazon Web Services Region without re-encrypting the data or making a cross-Region call. For more information about multi-Region keys, see [Multi-Region keys in KMS](https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-overview.html) in the *Key Management Service Developer Guide*.
 #' 
-#' This value creates a *primary key*, not a replica. To create a *replica
-#' key*, use the [`replicate_key`][kms_replicate_key] operation.
+#' This value creates a *primary key*, not a replica. To create a *replica key*, use the [`replicate_key`][kms_replicate_key] operation.
 #' 
-#' You can create a symmetric or asymmetric multi-Region key, and you can
-#' create a multi-Region key with imported key material. However, you
-#' cannot create a multi-Region key in a custom key store.
-#' @param XksKeyId Identifies the [external
-#' key](https://docs.aws.amazon.com/kms/latest/developerguide/keystore-external.html#concept-external-key)
-#' that serves as key material for the KMS key in an [external key
-#' store](https://docs.aws.amazon.com/kms/latest/developerguide/keystore-external.html).
-#' Specify the ID that the [external key store
-#' proxy](https://docs.aws.amazon.com/kms/latest/developerguide/keystore-external.html#concept-xks-proxy)
-#' uses to refer to the external key. For help, see the documentation for
-#' your external key store proxy.
+#' You can create a symmetric or asymmetric multi-Region key, and you can create a multi-Region key with imported key material. However, you cannot create a multi-Region key in a custom key store.
+#' @param XksKeyId Identifies the [external key](https://docs.aws.amazon.com/kms/latest/developerguide/keystore-external.html#concept-external-key) that serves as key material for the KMS key in an [external key store](https://docs.aws.amazon.com/kms/latest/developerguide/keystore-external.html). Specify the ID that the [external key store proxy](https://docs.aws.amazon.com/kms/latest/developerguide/keystore-external.html#concept-xks-proxy) uses to refer to the external key. For help, see the documentation for your external key store proxy.
 #' 
-#' This parameter is required for a KMS key with an `Origin` value of
-#' `EXTERNAL_KEY_STORE`. It is not valid for KMS keys with any other
-#' `Origin` value.
+#' This parameter is required for a KMS key with an `Origin` value of `EXTERNAL_KEY_STORE`. It is not valid for KMS keys with any other `Origin` value.
 #' 
-#' The external key must be an existing 256-bit AES symmetric encryption
-#' key hosted outside of Amazon Web Services in an external key manager
-#' associated with the external key store specified by the
-#' `CustomKeyStoreId` parameter. This key must be enabled and configured to
-#' perform encryption and decryption. Each KMS key in an external key store
-#' must use a different external key. For details, see Requirements for a
-#' KMS key in an external key store in the *Key Management Service
-#' Developer Guide*.
+#' The external key must be an existing 256-bit AES symmetric encryption key hosted outside of Amazon Web Services in an external key manager associated with the external key store specified by the `CustomKeyStoreId` parameter. This key must be enabled and configured to perform encryption and decryption. Each KMS key in an external key store must use a different external key. For details, see [Requirements for a KMS key in an external key store](https://docs.aws.amazon.com/kms/latest/developerguide/create-xks-keys.html#xks-key-requirements) in the *Key Management Service Developer Guide*.
 #' 
-#' Each KMS key in an external key store is associated two backing keys.
-#' One is key material that KMS generates. The other is the external key
-#' specified by this parameter. When you use the KMS key in an external key
-#' store to encrypt data, the encryption operation is performed first by
-#' KMS using the KMS key material, and then by the external key manager
-#' using the specified external key, a process known as *double
-#' encryption*. For details, see [Double
-#' encryption](https://docs.aws.amazon.com/kms/latest/developerguide/keystore-external.html#concept-double-encryption)
-#' in the *Key Management Service Developer Guide*.
+#' Each KMS key in an external key store is associated two backing keys. One is key material that KMS generates. The other is the external key specified by this parameter. When you use the KMS key in an external key store to encrypt data, the encryption operation is performed first by KMS using the KMS key material, and then by the external key manager using the specified external key, a process known as *double encryption*. For details, see [Double encryption](https://docs.aws.amazon.com/kms/latest/developerguide/keystore-external.html#concept-double-encryption) in the *Key Management Service Developer Guide*.
 #'
 #' @keywords internal
 #'
@@ -791,109 +494,59 @@ kms_create_key <- function(Policy = NULL, Description = NULL, KeyUsage = NULL, C
 #'
 #' See [https://www.paws-r-sdk.com/docs/kms_decrypt/](https://www.paws-r-sdk.com/docs/kms_decrypt/) for full documentation.
 #'
-#' @param CiphertextBlob &#91;required&#93; Ciphertext to be decrypted. The blob includes metadata.
-#' @param EncryptionContext Specifies the encryption context to use when decrypting the data. An
-#' encryption context is valid only for [cryptographic
-#' operations](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#cryptographic-operations)
-#' with a symmetric encryption KMS key. The standard asymmetric encryption
-#' algorithms and HMAC algorithms that KMS uses do not support an
-#' encryption context.
+#' @param CiphertextBlob Ciphertext to be decrypted. The blob includes metadata.
 #' 
-#' An *encryption context* is a collection of non-secret key-value pairs
-#' that represent additional authenticated data. When you use an encryption
-#' context to encrypt data, you must specify the same (an exact
-#' case-sensitive match) encryption context to decrypt the data. An
-#' encryption context is supported only on operations with symmetric
-#' encryption KMS keys. On operations with symmetric encryption KMS keys,
-#' an encryption context is optional, but it is strongly recommended.
+#' This parameter is required in all cases except when `DryRun` is `true` and `DryRunModifiers` is set to `IGNORE_CIPHERTEXT`.
+#' @param EncryptionContext Specifies the encryption context to use when decrypting the data. An encryption context is valid only for [cryptographic operations](https://docs.aws.amazon.com/kms/latest/developerguide/kms-cryptography.html#cryptographic-operations) with a symmetric encryption KMS key. The standard asymmetric encryption algorithms and HMAC algorithms that KMS uses do not support an encryption context.
 #' 
-#' For more information, see [Encryption
-#' context](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context)
-#' in the *Key Management Service Developer Guide*.
+#' An *encryption context* is a collection of non-secret key-value pairs that represent additional authenticated data. When you use an encryption context to encrypt data, you must specify the same (an exact case-sensitive match) encryption context to decrypt the data. An encryption context is supported only on operations with symmetric encryption KMS keys. On operations with symmetric encryption KMS keys, an encryption context is optional, but it is strongly recommended.
+#' 
+#' For more information, see [Encryption context](https://docs.aws.amazon.com/kms/latest/developerguide/encrypt_context.html) in the *Key Management Service Developer Guide*.
 #' @param GrantTokens A list of grant tokens.
 #' 
-#' Use a grant token when your permission to call this operation comes from
-#' a new grant that has not yet achieved *eventual consistency*. For more
-#' information, see [Grant
-#' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token)
-#' and [Using a grant
-#' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#using-grant-token)
-#' in the *Key Management Service Developer Guide*.
+#' Use a grant token when your permission to call this operation comes from a new grant that has not yet achieved *eventual consistency*. For more information, see [Grant token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token) and [Using a grant token](https://docs.aws.amazon.com/kms/latest/developerguide/using-grant-token.html) in the *Key Management Service Developer Guide*.
 #' @param KeyId Specifies the KMS key that KMS uses to decrypt the ciphertext.
 #' 
-#' Enter a key ID of the KMS key that was used to encrypt the ciphertext.
-#' If you identify a different KMS key, the [`decrypt`][kms_decrypt]
-#' operation throws an `IncorrectKeyException`.
+#' Enter a key ID of the KMS key that was used to encrypt the ciphertext. If you identify a different KMS key, the [`decrypt`][kms_decrypt] operation throws an `IncorrectKeyException`.
 #' 
-#' This parameter is required only when the ciphertext was encrypted under
-#' an asymmetric KMS key. If you used a symmetric encryption KMS key, KMS
-#' can get the KMS key from metadata that it adds to the symmetric
-#' ciphertext blob. However, it is always recommended as a best practice.
-#' This practice ensures that you use the KMS key that you intend.
+#' This parameter is required only when the ciphertext was encrypted under an asymmetric KMS key or when `DryRun` is `true` and `DryRunModifiers` is set to `IGNORE_CIPHERTEXT`. If you used a symmetric encryption KMS key, KMS can get the KMS key from metadata that it adds to the symmetric ciphertext blob. However, it is always recommended as a best practice. This practice ensures that you use the KMS key that you intend.
 #' 
-#' To specify a KMS key, use its key ID, key ARN, alias name, or alias ARN.
-#' When using an alias name, prefix it with `"alias/"`. To specify a KMS
-#' key in a different Amazon Web Services account, you must use the key ARN
-#' or alias ARN.
+#' To specify a KMS key, use its key ID, key ARN, alias name, or alias ARN. When using an alias name, prefix it with `"alias/"`. To specify a KMS key in a different Amazon Web Services account, you should use the key ARN or alias ARN.
 #' 
 #' For example:
 #' 
 #' -   Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
-#' -   Key ARN:
-#'     `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
+#' -   Key ARN: `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
 #' -   Alias name: `alias/ExampleAlias`
 #' 
 #' -   Alias ARN: `arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias`
 #' 
-#' To get the key ID and key ARN for a KMS key, use
-#' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key]. To
-#' get the alias name and alias ARN, use
-#' [`list_aliases`][kms_list_aliases].
-#' @param EncryptionAlgorithm Specifies the encryption algorithm that will be used to decrypt the
-#' ciphertext. Specify the same algorithm that was used to encrypt the
-#' data. If you specify a different algorithm, the [`decrypt`][kms_decrypt]
-#' operation fails.
+#' To get the key ID and key ARN for a KMS key, use [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key]. To get the alias name and alias ARN, use [`list_aliases`][kms_list_aliases].
+#' @param EncryptionAlgorithm Specifies the encryption algorithm that will be used to decrypt the ciphertext. Specify the same algorithm that was used to encrypt the data. If you specify a different algorithm, the [`decrypt`][kms_decrypt] operation fails.
 #' 
-#' This parameter is required only when the ciphertext was encrypted under
-#' an asymmetric KMS key. The default value, `SYMMETRIC_DEFAULT`,
-#' represents the only supported algorithm that is valid for symmetric
-#' encryption KMS keys.
-#' @param Recipient A signed [attestation
-#' document](https://docs.aws.amazon.com/enclaves/latest/user/nitro-enclave-concepts.html#term-attestdoc)
-#' from an Amazon Web Services Nitro enclave and the encryption algorithm
-#' to use with the enclave's public key. The only valid encryption
-#' algorithm is `RSAES_OAEP_SHA_256`.
+#' This parameter is required only when the ciphertext was encrypted under an asymmetric KMS key. The default value, `SYMMETRIC_DEFAULT`, represents the only supported algorithm that is valid for symmetric encryption KMS keys.
+#' @param Recipient A signed [attestation document](https://docs.aws.amazon.com/enclaves/latest/user/nitro-enclave-concepts.html#term-attestdoc) from an Amazon Web Services Nitro enclave or NitroTPM, and the encryption algorithm to use with the public key in the attestation document. The only valid encryption algorithm is `RSAES_OAEP_SHA_256`.
 #' 
-#' This parameter only supports attestation documents for Amazon Web
-#' Services Nitro Enclaves. To include this parameter, use the [Amazon Web
-#' Services Nitro Enclaves
-#' SDK](https://docs.aws.amazon.com/enclaves/latest/user/developing-applications.html#sdk)
-#' or any Amazon Web Services SDK.
+#' This parameter supports the [Amazon Web Services Nitro Enclaves SDK](https://docs.aws.amazon.com/enclaves/latest/user/developing-applications.html#sdk) or any Amazon Web Services SDK for Amazon Web Services Nitro Enclaves. It supports any Amazon Web Services SDK for Amazon Web Services NitroTPM.
 #' 
-#' When you use this parameter, instead of returning the plaintext data,
-#' KMS encrypts the plaintext data with the public key in the attestation
-#' document, and returns the resulting ciphertext in the
-#' `CiphertextForRecipient` field in the response. This ciphertext can be
-#' decrypted only with the private key in the enclave. The `Plaintext`
-#' field in the response is null or empty.
+#' When you use this parameter, instead of returning the plaintext data, KMS encrypts the plaintext data with the public key in the attestation document, and returns the resulting ciphertext in the `CiphertextForRecipient` field in the response. This ciphertext can be decrypted only with the private key in the attested environment. The `Plaintext` field in the response is null or empty.
 #' 
-#' For information about the interaction between KMS and Amazon Web
-#' Services Nitro Enclaves, see [How Amazon Web Services Nitro Enclaves
-#' uses
-#' KMS](https://docs.aws.amazon.com/kms/latest/developerguide/services-nitro-enclaves.html)
-#' in the *Key Management Service Developer Guide*.
+#' For information about the interaction between KMS and Amazon Web Services Nitro Enclaves or Amazon Web Services NitroTPM, see [Cryptographic attestation support in KMS](https://docs.aws.amazon.com/kms/latest/developerguide/cryptographic-attestation.html) in the *Key Management Service Developer Guide*.
 #' @param DryRun Checks if your request will succeed. `DryRun` is an optional parameter.
 #' 
-#' To learn more about how to use this parameter, see [Testing your KMS API
-#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html)
-#' in the *Key Management Service Developer Guide*.
+#' To learn more about how to use this parameter, see [Testing your permissions](https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html) in the *Key Management Service Developer Guide*.
+#' @param DryRunModifiers Specifies the modifiers to apply to the dry run operation. `DryRunModifiers` is an optional parameter that only applies when `DryRun` is set to `true`.
+#' 
+#' When set to `IGNORE_CIPHERTEXT`, KMS performs only authorization validation without ciphertext validation. This allows you to test permissions without requiring a valid ciphertext blob.
+#' 
+#' To learn more about how to use this parameter, see [Testing your permissions](https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html) in the *Key Management Service Developer Guide*.
 #'
 #' @keywords internal
 #'
 #' @rdname kms_decrypt
-kms_decrypt <- function(CiphertextBlob, EncryptionContext = NULL, GrantTokens = NULL, KeyId = NULL, EncryptionAlgorithm = NULL, Recipient = NULL, DryRun = NULL) {
+kms_decrypt <- function(CiphertextBlob = NULL, EncryptionContext = NULL, GrantTokens = NULL, KeyId = NULL, EncryptionAlgorithm = NULL, Recipient = NULL, DryRun = NULL, DryRunModifiers = NULL) {
   op <- new_operation(
     name = "Decrypt",
     http_method = "POST",
@@ -902,7 +555,7 @@ kms_decrypt <- function(CiphertextBlob, EncryptionContext = NULL, GrantTokens = 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .kms$decrypt_input(CiphertextBlob = CiphertextBlob, EncryptionContext = EncryptionContext, GrantTokens = GrantTokens, KeyId = KeyId, EncryptionAlgorithm = EncryptionAlgorithm, Recipient = Recipient, DryRun = DryRun)
+  input <- .kms$decrypt_input(CiphertextBlob = CiphertextBlob, EncryptionContext = EncryptionContext, GrantTokens = GrantTokens, KeyId = KeyId, EncryptionAlgorithm = EncryptionAlgorithm, Recipient = Recipient, DryRun = DryRun, DryRunModifiers = DryRunModifiers)
   output <- .kms$decrypt_output()
   config <- get_config()
   svc <- .kms$service(config, op)
@@ -919,8 +572,7 @@ kms_decrypt <- function(CiphertextBlob, EncryptionContext = NULL, GrantTokens = 
 #'
 #' See [https://www.paws-r-sdk.com/docs/kms_delete_alias/](https://www.paws-r-sdk.com/docs/kms_delete_alias/) for full documentation.
 #'
-#' @param AliasName &#91;required&#93; The alias to be deleted. The alias name must begin with `alias/`
-#' followed by the alias name, such as `alias/ExampleAlias`.
+#' @param AliasName &#91;required&#93; The alias to be deleted. The alias name must begin with `alias/` followed by the alias name, such as `alias/ExampleAlias`.
 #'
 #' @keywords internal
 #'
@@ -947,14 +599,11 @@ kms_delete_alias <- function(AliasName) {
 #' Deletes a custom key store
 #'
 #' @description
-#' Deletes a [custom key store](https://docs.aws.amazon.com/kms/latest/developerguide/). This operation does not affect any backing elements of the custom key store. It does not delete the CloudHSM cluster that is associated with an CloudHSM key store, or affect any users or keys in the cluster. For an external key store, it does not affect the external key store proxy, external key manager, or any external keys.
+#' Deletes a [custom key store](https://docs.aws.amazon.com/kms/latest/developerguide/key-store-overview.html). This operation does not affect any backing elements of the custom key store. It does not delete the CloudHSM cluster that is associated with an CloudHSM key store, or affect any users or keys in the cluster. For an external key store, it does not affect the external key store proxy, external key manager, or any external keys.
 #'
 #' See [https://www.paws-r-sdk.com/docs/kms_delete_custom_key_store/](https://www.paws-r-sdk.com/docs/kms_delete_custom_key_store/) for full documentation.
 #'
-#' @param CustomKeyStoreId &#91;required&#93; Enter the ID of the custom key store you want to delete. To find the ID
-#' of a custom key store, use the
-#' [`describe_custom_key_stores`][kms_describe_custom_key_stores]
-#' operation.
+#' @param CustomKeyStoreId &#91;required&#93; Enter the ID of the custom key store you want to delete. To find the ID of a custom key store, use the [`describe_custom_key_stores`][kms_describe_custom_key_stores] operation.
 #'
 #' @keywords internal
 #'
@@ -985,8 +634,7 @@ kms_delete_custom_key_store <- function(CustomKeyStoreId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/kms_delete_imported_key_material/](https://www.paws-r-sdk.com/docs/kms_delete_imported_key_material/) for full documentation.
 #'
-#' @param KeyId &#91;required&#93; Identifies the KMS key from which you are deleting imported key
-#' material. The `Origin` of the KMS key must be `EXTERNAL`.
+#' @param KeyId &#91;required&#93; Identifies the KMS key from which you are deleting imported key material. The `Origin` of the KMS key must be `EXTERNAL`.
 #' 
 #' Specify the key ID or key ARN of the KMS key.
 #' 
@@ -994,16 +642,19 @@ kms_delete_custom_key_store <- function(CustomKeyStoreId) {
 #' 
 #' -   Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
-#' -   Key ARN:
-#'     `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
+#' -   Key ARN: `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
-#' To get the key ID and key ARN for a KMS key, use
-#' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
+#' To get the key ID and key ARN for a KMS key, use [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
+#' @param KeyMaterialId Identifies the imported key material you are deleting.
+#' 
+#' If no KeyMaterialId is specified, KMS deletes the current key material.
+#' 
+#' To get the list of key material IDs associated with a KMS key, use [`list_key_rotations`][kms_list_key_rotations].
 #'
 #' @keywords internal
 #'
 #' @rdname kms_delete_imported_key_material
-kms_delete_imported_key_material <- function(KeyId) {
+kms_delete_imported_key_material <- function(KeyId, KeyMaterialId = NULL) {
   op <- new_operation(
     name = "DeleteImportedKeyMaterial",
     http_method = "POST",
@@ -1012,7 +663,7 @@ kms_delete_imported_key_material <- function(KeyId) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .kms$delete_imported_key_material_input(KeyId = KeyId)
+  input <- .kms$delete_imported_key_material_input(KeyId = KeyId, KeyMaterialId = KeyMaterialId)
   output <- .kms$delete_imported_key_material_output()
   config <- get_config()
   svc <- .kms$service(config, op)
@@ -1029,95 +680,44 @@ kms_delete_imported_key_material <- function(KeyId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/kms_derive_shared_secret/](https://www.paws-r-sdk.com/docs/kms_derive_shared_secret/) for full documentation.
 #'
-#' @param KeyId &#91;required&#93; Identifies an asymmetric NIST-recommended ECC or SM2 (China Regions
-#' only) KMS key. KMS uses the private key in the specified key pair to
-#' derive the shared secret. The key usage of the KMS key must be
-#' `KEY_AGREEMENT`. To find the `KeyUsage` of a KMS key, use the
-#' [`describe_key`][kms_describe_key] operation.
+#' @param KeyId &#91;required&#93; Identifies an asymmetric NIST-standard ECC or SM2 (China Regions only) KMS key. KMS uses the private key in the specified key pair to derive the shared secret. The key usage of the KMS key must be `KEY_AGREEMENT`. To find the `KeyUsage` of a KMS key, use the [`describe_key`][kms_describe_key] operation.
 #' 
-#' To specify a KMS key, use its key ID, key ARN, alias name, or alias ARN.
-#' When using an alias name, prefix it with `"alias/"`. To specify a KMS
-#' key in a different Amazon Web Services account, you must use the key ARN
-#' or alias ARN.
+#' To specify a KMS key, use its key ID, key ARN, alias name, or alias ARN. When using an alias name, prefix it with `"alias/"`. To specify a KMS key in a different Amazon Web Services account, you must use the key ARN or alias ARN.
 #' 
 #' For example:
 #' 
 #' -   Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
-#' -   Key ARN:
-#'     `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
+#' -   Key ARN: `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
 #' -   Alias name: `alias/ExampleAlias`
 #' 
 #' -   Alias ARN: `arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias`
 #' 
-#' To get the key ID and key ARN for a KMS key, use
-#' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key]. To
-#' get the alias name and alias ARN, use
-#' [`list_aliases`][kms_list_aliases].
-#' @param KeyAgreementAlgorithm &#91;required&#93; Specifies the key agreement algorithm used to derive the shared secret.
-#' The only valid value is `ECDH`.
-#' @param PublicKey &#91;required&#93; Specifies the public key in your peer's NIST-recommended elliptic curve
-#' (ECC) or SM2 (China Regions only) key pair.
+#' To get the key ID and key ARN for a KMS key, use [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key]. To get the alias name and alias ARN, use [`list_aliases`][kms_list_aliases].
+#' @param KeyAgreementAlgorithm &#91;required&#93; Specifies the key agreement algorithm used to derive the shared secret. The only valid value is `ECDH`.
+#' @param PublicKey &#91;required&#93; Specifies the public key in your peer's NIST-standard elliptic curve (ECC) or SM2 (China Regions only) key pair.
 #' 
-#' The public key must be a DER-encoded X.509 public key, also known as
-#' `SubjectPublicKeyInfo` (SPKI), as defined in [RFC
-#' 5280](https://datatracker.ietf.org/doc/html/rfc5280).
+#' The public key must be a DER-encoded X.509 public key, also known as `SubjectPublicKeyInfo` (SPKI), as defined in [RFC 5280](https://datatracker.ietf.org/doc/html/rfc5280).
 #' 
-#' [`get_public_key`][kms_get_public_key] returns the public key of an
-#' asymmetric KMS key pair in the required DER-encoded format.
+#' [`get_public_key`][kms_get_public_key] returns the public key of an asymmetric KMS key pair in the required DER-encoded format.
 #' 
-#' If you use [Amazon Web Services CLI version
-#' 1](https://docs.aws.amazon.com/cli/v1/userguide/cli-chap-welcome.html),
-#' you must provide the DER-encoded X.509 public key in a file. Otherwise,
-#' the Amazon Web Services CLI Base64-encodes the public key a second time,
-#' resulting in a `ValidationException`.
+#' If you use [Amazon Web Services CLI version 1](https://docs.aws.amazon.com/cli/v1/userguide/cli-chap-welcome.html), you must provide the DER-encoded X.509 public key in a file. Otherwise, the Amazon Web Services CLI Base64-encodes the public key a second time, resulting in a `ValidationException`.
 #' 
-#' You can specify the public key as binary data in a file using fileb
-#' (`fileb://<path-to-file>`) or in-line using a Base64 encoded string.
+#' You can specify the public key as binary data in a file using fileb (`fileb://<path-to-file>`) or in-line using a Base64 encoded string.
 #' @param GrantTokens A list of grant tokens.
 #' 
-#' Use a grant token when your permission to call this operation comes from
-#' a new grant that has not yet achieved *eventual consistency*. For more
-#' information, see [Grant
-#' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token)
-#' and [Using a grant
-#' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#using-grant-token)
-#' in the *Key Management Service Developer Guide*.
+#' Use a grant token when your permission to call this operation comes from a new grant that has not yet achieved *eventual consistency*. For more information, see [Grant token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token) and [Using a grant token](https://docs.aws.amazon.com/kms/latest/developerguide/using-grant-token.html) in the *Key Management Service Developer Guide*.
 #' @param DryRun Checks if your request will succeed. `DryRun` is an optional parameter.
 #' 
-#' To learn more about how to use this parameter, see [Testing your KMS API
-#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html)
-#' in the *Key Management Service Developer Guide*.
-#' @param Recipient A signed [attestation
-#' document](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/#term-attestdoc)
-#' from an Amazon Web Services Nitro enclave and the encryption algorithm
-#' to use with the enclave's public key. The only valid encryption
-#' algorithm is `RSAES_OAEP_SHA_256`.
+#' To learn more about how to use this parameter, see [Testing your permissions](https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html) in the *Key Management Service Developer Guide*.
+#' @param Recipient A signed [attestation document](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/#term-attestdoc) from an Amazon Web Services Nitro enclave or NitroTPM, and the encryption algorithm to use with the public key in the attestation document. The only valid encryption algorithm is `RSAES_OAEP_SHA_256`.
 #' 
-#' This parameter only supports attestation documents for Amazon Web
-#' Services Nitro Enclaves. To call DeriveSharedSecret for an Amazon Web
-#' Services Nitro Enclaves, use the [Amazon Web Services Nitro Enclaves
-#' SDK](https://docs.aws.amazon.com/enclaves/latest/user/developing-applications.html#sdk)
-#' to generate the attestation document and then use the Recipient
-#' parameter from any Amazon Web Services SDK to provide the attestation
-#' document for the enclave.
+#' This parameter only supports attestation documents for Amazon Web Services Nitro Enclaves or Amazon Web Services NitroTPM. To call DeriveSharedSecret generate an attestation document use either [Amazon Web Services Nitro Enclaves SDK](https://docs.aws.amazon.com/enclaves/latest/user/developing-applications.html#sdk) for an Amazon Web Services Nitro Enclaves or [Amazon Web Services NitroTPM tools](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/attestation-get-doc.html) for Amazon Web Services NitroTPM. Then use the Recipient parameter from any Amazon Web Services SDK to provide the attestation document for the attested environment.
 #' 
-#' When you use this parameter, instead of returning a plaintext copy of
-#' the shared secret, KMS encrypts the plaintext shared secret under the
-#' public key in the attestation document, and returns the resulting
-#' ciphertext in the `CiphertextForRecipient` field in the response. This
-#' ciphertext can be decrypted only with the private key in the enclave.
-#' The `CiphertextBlob` field in the response contains the encrypted shared
-#' secret derived from the KMS key specified by the `KeyId` parameter and
-#' public key specified by the `PublicKey` parameter. The `SharedSecret`
-#' field in the response is null or empty.
+#' When you use this parameter, instead of returning a plaintext copy of the shared secret, KMS encrypts the plaintext shared secret under the public key in the attestation document, and returns the resulting ciphertext in the `CiphertextForRecipient` field in the response. This ciphertext can be decrypted only with the private key in the attested environment. The `CiphertextBlob` field in the response contains the encrypted shared secret derived from the KMS key specified by the `KeyId` parameter and public key specified by the `PublicKey` parameter. The `SharedSecret` field in the response is null or empty.
 #' 
-#' For information about the interaction between KMS and Amazon Web
-#' Services Nitro Enclaves, see [How Amazon Web Services Nitro Enclaves
-#' uses
-#' KMS](https://docs.aws.amazon.com/kms/latest/developerguide/services-nitro-enclaves.html)
-#' in the *Key Management Service Developer Guide*.
+#' For information about the interaction between KMS and Amazon Web Services Nitro Enclaves or Amazon Web Services NitroTPM, see [Cryptographic attestation support in KMS](https://docs.aws.amazon.com/kms/latest/developerguide/cryptographic-attestation.html) in the *Key Management Service Developer Guide*.
 #'
 #' @keywords internal
 #'
@@ -1144,30 +744,18 @@ kms_derive_shared_secret <- function(KeyId, KeyAgreementAlgorithm, PublicKey, Gr
 #' Gets information about custom key stores in the account and Region
 #'
 #' @description
-#' Gets information about [custom key stores](https://docs.aws.amazon.com/kms/latest/developerguide/) in the account and Region.
+#' Gets information about [custom key stores](https://docs.aws.amazon.com/kms/latest/developerguide/key-store-overview.html) in the account and Region.
 #'
 #' See [https://www.paws-r-sdk.com/docs/kms_describe_custom_key_stores/](https://www.paws-r-sdk.com/docs/kms_describe_custom_key_stores/) for full documentation.
 #'
-#' @param CustomKeyStoreId Gets only information about the specified custom key store. Enter the
-#' key store ID.
+#' @param CustomKeyStoreId Gets only information about the specified custom key store. Enter the key store ID.
 #' 
-#' By default, this operation gets information about all custom key stores
-#' in the account and Region. To limit the output to a particular custom
-#' key store, provide either the `CustomKeyStoreId` or `CustomKeyStoreName`
-#' parameter, but not both.
-#' @param CustomKeyStoreName Gets only information about the specified custom key store. Enter the
-#' friendly name of the custom key store.
+#' By default, this operation gets information about all custom key stores in the account and Region. To limit the output to a particular custom key store, provide either the `CustomKeyStoreId` or `CustomKeyStoreName` parameter, but not both.
+#' @param CustomKeyStoreName Gets only information about the specified custom key store. Enter the friendly name of the custom key store.
 #' 
-#' By default, this operation gets information about all custom key stores
-#' in the account and Region. To limit the output to a particular custom
-#' key store, provide either the `CustomKeyStoreId` or `CustomKeyStoreName`
-#' parameter, but not both.
-#' @param Limit Use this parameter to specify the maximum number of items to return.
-#' When this value is present, KMS does not return more than the specified
-#' number of items, but it might return fewer.
-#' @param Marker Use this parameter in a subsequent request after you receive a response
-#' with truncated results. Set it to the value of `NextMarker` from the
-#' truncated response you just received.
+#' By default, this operation gets information about all custom key stores in the account and Region. To limit the output to a particular custom key store, provide either the `CustomKeyStoreId` or `CustomKeyStoreName` parameter, but not both.
+#' @param Limit Use this parameter to specify the maximum number of items to return. When this value is present, KMS does not return more than the specified number of items, but it might return fewer.
+#' @param Marker Use this parameter in a subsequent request after you receive a response with truncated results. Set it to the value of `NextMarker` from the truncated response you just received.
 #'
 #' @keywords internal
 #'
@@ -1194,47 +782,30 @@ kms_describe_custom_key_stores <- function(CustomKeyStoreId = NULL, CustomKeySto
 #' Provides detailed information about a KMS key
 #'
 #' @description
-#' Provides detailed information about a KMS key. You can run [`describe_key`][kms_describe_key] on a [customer managed key](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-cmk) or an [Amazon Web Services managed key](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk).
+#' Provides detailed information about a KMS key. You can run [`describe_key`][kms_describe_key] on a [customer managed key](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-mgn-key) or an [Amazon Web Services managed key](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-key).
 #'
 #' See [https://www.paws-r-sdk.com/docs/kms_describe_key/](https://www.paws-r-sdk.com/docs/kms_describe_key/) for full documentation.
 #'
 #' @param KeyId &#91;required&#93; Describes the specified KMS key.
 #' 
-#' If you specify a predefined Amazon Web Services alias (an Amazon Web
-#' Services alias with no key ID), KMS associates the alias with an [Amazon
-#' Web Services managed
-#' key](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html##aws-managed-cmk)
-#' and returns its `KeyId` and `Arn` in the response.
+#' If you specify a predefined Amazon Web Services alias (an Amazon Web Services alias with no key ID), KMS associates the alias with an [Amazon Web Services managed key](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-key) and returns its `KeyId` and `Arn` in the response.
 #' 
-#' To specify a KMS key, use its key ID, key ARN, alias name, or alias ARN.
-#' When using an alias name, prefix it with `"alias/"`. To specify a KMS
-#' key in a different Amazon Web Services account, you must use the key ARN
-#' or alias ARN.
+#' To specify a KMS key, use its key ID, key ARN, alias name, or alias ARN. When using an alias name, prefix it with `"alias/"`. To specify a KMS key in a different Amazon Web Services account, you must use the key ARN or alias ARN.
 #' 
 #' For example:
 #' 
 #' -   Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
-#' -   Key ARN:
-#'     `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
+#' -   Key ARN: `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
 #' -   Alias name: `alias/ExampleAlias`
 #' 
 #' -   Alias ARN: `arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias`
 #' 
-#' To get the key ID and key ARN for a KMS key, use
-#' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key]. To
-#' get the alias name and alias ARN, use
-#' [`list_aliases`][kms_list_aliases].
+#' To get the key ID and key ARN for a KMS key, use [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key]. To get the alias name and alias ARN, use [`list_aliases`][kms_list_aliases].
 #' @param GrantTokens A list of grant tokens.
 #' 
-#' Use a grant token when your permission to call this operation comes from
-#' a new grant that has not yet achieved *eventual consistency*. For more
-#' information, see [Grant
-#' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token)
-#' and [Using a grant
-#' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#using-grant-token)
-#' in the *Key Management Service Developer Guide*.
+#' Use a grant token when your permission to call this operation comes from a new grant that has not yet achieved *eventual consistency*. For more information, see [Grant token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token) and [Using a grant token](https://docs.aws.amazon.com/kms/latest/developerguide/using-grant-token.html) in the *Key Management Service Developer Guide*.
 #'
 #' @keywords internal
 #'
@@ -1261,7 +832,7 @@ kms_describe_key <- function(KeyId, GrantTokens = NULL) {
 #' Sets the state of a KMS key to disabled
 #'
 #' @description
-#' Sets the state of a KMS key to disabled. This change temporarily prevents use of the KMS key for [cryptographic operations](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#cryptographic-operations).
+#' Sets the state of a KMS key to disabled. This change temporarily prevents use of the KMS key for [cryptographic operations](https://docs.aws.amazon.com/kms/latest/developerguide/kms-cryptography.html#cryptographic-operations).
 #'
 #' See [https://www.paws-r-sdk.com/docs/kms_disable_key/](https://www.paws-r-sdk.com/docs/kms_disable_key/) for full documentation.
 #'
@@ -1273,11 +844,9 @@ kms_describe_key <- function(KeyId, GrantTokens = NULL) {
 #' 
 #' -   Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
-#' -   Key ARN:
-#'     `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
+#' -   Key ARN: `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
-#' To get the key ID and key ARN for a KMS key, use
-#' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
+#' To get the key ID and key ARN for a KMS key, use [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
 #'
 #' @keywords internal
 #'
@@ -1305,19 +874,11 @@ kms_disable_key <- function(KeyId) {
 #' symmetric encryption KMS key
 #'
 #' @description
-#' Disables [automatic rotation of the key material](https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html) of the specified symmetric encryption KMS key.
+#' Disables [automatic rotation of the key material](https://docs.aws.amazon.com/kms/latest/developerguide/) of the specified symmetric encryption KMS key.
 #'
 #' See [https://www.paws-r-sdk.com/docs/kms_disable_key_rotation/](https://www.paws-r-sdk.com/docs/kms_disable_key_rotation/) for full documentation.
 #'
-#' @param KeyId &#91;required&#93; Identifies a symmetric encryption KMS key. You cannot enable or disable
-#' automatic rotation of [asymmetric KMS
-#' keys](https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html#asymmetric-cmks),
-#' [HMAC KMS
-#' keys](https://docs.aws.amazon.com/kms/latest/developerguide/hmac.html),
-#' KMS keys with [imported key
-#' material](https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html),
-#' or KMS keys in a [custom key
-#' store](https://docs.aws.amazon.com/kms/latest/developerguide/).
+#' @param KeyId &#91;required&#93; Identifies a symmetric encryption KMS key. You cannot enable or disable automatic rotation of [asymmetric KMS keys](https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html#asymmetric-cmks), [HMAC KMS keys](https://docs.aws.amazon.com/kms/latest/developerguide/hmac.html), KMS keys with [imported key material](https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html), or KMS keys in a [custom key store](https://docs.aws.amazon.com/kms/latest/developerguide/key-store-overview.html).
 #' 
 #' Specify the key ID or key ARN of the KMS key.
 #' 
@@ -1325,11 +886,9 @@ kms_disable_key <- function(KeyId) {
 #' 
 #' -   Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
-#' -   Key ARN:
-#'     `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
+#' -   Key ARN: `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
-#' To get the key ID and key ARN for a KMS key, use
-#' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
+#' To get the key ID and key ARN for a KMS key, use [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
 #'
 #' @keywords internal
 #'
@@ -1356,14 +915,11 @@ kms_disable_key_rotation <- function(KeyId) {
 #' Disconnects the custom key store from its backing key store
 #'
 #' @description
-#' Disconnects the [custom key store](https://docs.aws.amazon.com/kms/latest/developerguide/) from its backing key store. This operation disconnects an CloudHSM key store from its associated CloudHSM cluster or disconnects an external key store from the external key store proxy that communicates with your external key manager.
+#' Disconnects the [custom key store](https://docs.aws.amazon.com/kms/latest/developerguide/key-store-overview.html) from its backing key store. This operation disconnects an CloudHSM key store from its associated CloudHSM cluster or disconnects an external key store from the external key store proxy that communicates with your external key manager.
 #'
 #' See [https://www.paws-r-sdk.com/docs/kms_disconnect_custom_key_store/](https://www.paws-r-sdk.com/docs/kms_disconnect_custom_key_store/) for full documentation.
 #'
-#' @param CustomKeyStoreId &#91;required&#93; Enter the ID of the custom key store you want to disconnect. To find the
-#' ID of a custom key store, use the
-#' [`describe_custom_key_stores`][kms_describe_custom_key_stores]
-#' operation.
+#' @param CustomKeyStoreId &#91;required&#93; Enter the ID of the custom key store you want to disconnect. To find the ID of a custom key store, use the [`describe_custom_key_stores`][kms_describe_custom_key_stores] operation.
 #'
 #' @keywords internal
 #'
@@ -1390,7 +946,7 @@ kms_disconnect_custom_key_store <- function(CustomKeyStoreId) {
 #' Sets the key state of a KMS key to enabled
 #'
 #' @description
-#' Sets the key state of a KMS key to enabled. This allows you to use the KMS key for [cryptographic operations](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#cryptographic-operations).
+#' Sets the key state of a KMS key to enabled. This allows you to use the KMS key for [cryptographic operations](https://docs.aws.amazon.com/kms/latest/developerguide/kms-cryptography.html#cryptographic-operations).
 #'
 #' See [https://www.paws-r-sdk.com/docs/kms_enable_key/](https://www.paws-r-sdk.com/docs/kms_enable_key/) for full documentation.
 #'
@@ -1402,11 +958,9 @@ kms_disconnect_custom_key_store <- function(CustomKeyStoreId) {
 #' 
 #' -   Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
-#' -   Key ARN:
-#'     `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
+#' -   Key ARN: `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
-#' To get the key ID and key ARN for a KMS key, use
-#' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
+#' To get the key ID and key ARN for a KMS key, use [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
 #'
 #' @keywords internal
 #'
@@ -1434,22 +988,11 @@ kms_enable_key <- function(KeyId) {
 #' symmetric encryption KMS key
 #'
 #' @description
-#' Enables [automatic rotation of the key material](https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html#rotating-keys-enable-disable) of the specified symmetric encryption KMS key.
+#' Enables [automatic rotation of the key material](https://docs.aws.amazon.com/kms/latest/developerguide/) of the specified symmetric encryption KMS key.
 #'
 #' See [https://www.paws-r-sdk.com/docs/kms_enable_key_rotation/](https://www.paws-r-sdk.com/docs/kms_enable_key_rotation/) for full documentation.
 #'
-#' @param KeyId &#91;required&#93; Identifies a symmetric encryption KMS key. You cannot enable automatic
-#' rotation of [asymmetric KMS
-#' keys](https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html),
-#' [HMAC KMS
-#' keys](https://docs.aws.amazon.com/kms/latest/developerguide/hmac.html),
-#' KMS keys with [imported key
-#' material](https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html),
-#' or KMS keys in a [custom key
-#' store](https://docs.aws.amazon.com/kms/latest/developerguide/). To
-#' enable or disable automatic rotation of a set of related [multi-Region
-#' keys](https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-update.html#multi-region-rotate),
-#' set the property on the primary key.
+#' @param KeyId &#91;required&#93; Identifies a symmetric encryption KMS key. You cannot enable automatic rotation of [asymmetric KMS keys](https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html), [HMAC KMS keys](https://docs.aws.amazon.com/kms/latest/developerguide/hmac.html), KMS keys with [imported key material](https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html), or KMS keys in a [custom key store](https://docs.aws.amazon.com/kms/latest/developerguide/key-store-overview.html). To enable or disable automatic rotation of a set of related [multi-Region keys](https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html#multi-region-rotate), set the property on the primary key.
 #' 
 #' Specify the key ID or key ARN of the KMS key.
 #' 
@@ -1457,22 +1000,14 @@ kms_enable_key <- function(KeyId) {
 #' 
 #' -   Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
-#' -   Key ARN:
-#'     `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
+#' -   Key ARN: `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
-#' To get the key ID and key ARN for a KMS key, use
-#' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
-#' @param RotationPeriodInDays Use this parameter to specify a custom period of time between each
-#' rotation date. If no value is specified, the default value is 365 days.
+#' To get the key ID and key ARN for a KMS key, use [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
+#' @param RotationPeriodInDays Use this parameter to specify a custom period of time between each rotation date. If no value is specified, the default value is 365 days.
 #' 
-#' The rotation period defines the number of days after you enable
-#' automatic key rotation that KMS will rotate your key material, and the
-#' number of days between each automatic rotation thereafter.
+#' The rotation period defines the number of days after you enable automatic key rotation that KMS will rotate your key material, and the number of days between each automatic rotation thereafter.
 #' 
-#' You can use the
-#' [`kms:RotationPeriodInDays`](https://docs.aws.amazon.com/kms/latest/developerguide/conditions-kms.html#conditions-kms-rotation-period-in-days)
-#' condition key to further constrain the values that principals can
-#' specify in the `RotationPeriodInDays` parameter.
+#' You can use the [`kms:RotationPeriodInDays`](https://docs.aws.amazon.com/kms/latest/developerguide/conditions-kms.html#conditions-kms-rotation-period-in-days) condition key to further constrain the values that principals can specify in the `RotationPeriodInDays` parameter.
 #'
 #' @keywords internal
 #'
@@ -1503,76 +1038,40 @@ kms_enable_key_rotation <- function(KeyId, RotationPeriodInDays = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/kms_encrypt/](https://www.paws-r-sdk.com/docs/kms_encrypt/) for full documentation.
 #'
-#' @param KeyId &#91;required&#93; Identifies the KMS key to use in the encryption operation. The KMS key
-#' must have a `KeyUsage` of `ENCRYPT_DECRYPT`. To find the `KeyUsage` of a
-#' KMS key, use the [`describe_key`][kms_describe_key] operation.
+#' @param KeyId &#91;required&#93; Identifies the KMS key to use in the encryption operation. The KMS key must have a `KeyUsage` of `ENCRYPT_DECRYPT`. To find the `KeyUsage` of a KMS key, use the [`describe_key`][kms_describe_key] operation.
 #' 
-#' To specify a KMS key, use its key ID, key ARN, alias name, or alias ARN.
-#' When using an alias name, prefix it with `"alias/"`. To specify a KMS
-#' key in a different Amazon Web Services account, you must use the key ARN
-#' or alias ARN.
+#' To specify a KMS key, use its key ID, key ARN, alias name, or alias ARN. When using an alias name, prefix it with `"alias/"`. To specify a KMS key in a different Amazon Web Services account, you must use the key ARN or alias ARN.
 #' 
 #' For example:
 #' 
 #' -   Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
-#' -   Key ARN:
-#'     `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
+#' -   Key ARN: `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
 #' -   Alias name: `alias/ExampleAlias`
 #' 
 #' -   Alias ARN: `arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias`
 #' 
-#' To get the key ID and key ARN for a KMS key, use
-#' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key]. To
-#' get the alias name and alias ARN, use
-#' [`list_aliases`][kms_list_aliases].
+#' To get the key ID and key ARN for a KMS key, use [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key]. To get the alias name and alias ARN, use [`list_aliases`][kms_list_aliases].
 #' @param Plaintext &#91;required&#93; Data to be encrypted.
-#' @param EncryptionContext Specifies the encryption context that will be used to encrypt the data.
-#' An encryption context is valid only for [cryptographic
-#' operations](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#cryptographic-operations)
-#' with a symmetric encryption KMS key. The standard asymmetric encryption
-#' algorithms and HMAC algorithms that KMS uses do not support an
-#' encryption context.
+#' @param EncryptionContext Specifies the encryption context that will be used to encrypt the data. An encryption context is valid only for [cryptographic operations](https://docs.aws.amazon.com/kms/latest/developerguide/kms-cryptography.html#cryptographic-operations) with a symmetric encryption KMS key. The standard asymmetric encryption algorithms and HMAC algorithms that KMS uses do not support an encryption context.
 #' 
-#' Do not include confidential or sensitive information in this field. This
-#' field may be displayed in plaintext in CloudTrail logs and other output.
+#' Do not include confidential or sensitive information in this field. This field may be displayed in plaintext in CloudTrail logs and other output.
 #' 
-#' An *encryption context* is a collection of non-secret key-value pairs
-#' that represent additional authenticated data. When you use an encryption
-#' context to encrypt data, you must specify the same (an exact
-#' case-sensitive match) encryption context to decrypt the data. An
-#' encryption context is supported only on operations with symmetric
-#' encryption KMS keys. On operations with symmetric encryption KMS keys,
-#' an encryption context is optional, but it is strongly recommended.
+#' An *encryption context* is a collection of non-secret key-value pairs that represent additional authenticated data. When you use an encryption context to encrypt data, you must specify the same (an exact case-sensitive match) encryption context to decrypt the data. An encryption context is supported only on operations with symmetric encryption KMS keys. On operations with symmetric encryption KMS keys, an encryption context is optional, but it is strongly recommended.
 #' 
-#' For more information, see [Encryption
-#' context](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context)
-#' in the *Key Management Service Developer Guide*.
+#' For more information, see [Encryption context](https://docs.aws.amazon.com/kms/latest/developerguide/encrypt_context.html) in the *Key Management Service Developer Guide*.
 #' @param GrantTokens A list of grant tokens.
 #' 
-#' Use a grant token when your permission to call this operation comes from
-#' a new grant that has not yet achieved *eventual consistency*. For more
-#' information, see [Grant
-#' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token)
-#' and [Using a grant
-#' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#using-grant-token)
-#' in the *Key Management Service Developer Guide*.
-#' @param EncryptionAlgorithm Specifies the encryption algorithm that KMS will use to encrypt the
-#' plaintext message. The algorithm must be compatible with the KMS key
-#' that you specify.
+#' Use a grant token when your permission to call this operation comes from a new grant that has not yet achieved *eventual consistency*. For more information, see [Grant token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token) and [Using a grant token](https://docs.aws.amazon.com/kms/latest/developerguide/using-grant-token.html) in the *Key Management Service Developer Guide*.
+#' @param EncryptionAlgorithm Specifies the encryption algorithm that KMS will use to encrypt the plaintext message. The algorithm must be compatible with the KMS key that you specify.
 #' 
-#' This parameter is required only for asymmetric KMS keys. The default
-#' value, `SYMMETRIC_DEFAULT`, is the algorithm used for symmetric
-#' encryption KMS keys. If you are using an asymmetric KMS key, we
-#' recommend RSAES_OAEP_SHA_256.
+#' This parameter is required only for asymmetric KMS keys. The default value, `SYMMETRIC_DEFAULT`, is the algorithm used for symmetric encryption KMS keys. If you are using an asymmetric KMS key, we recommend RSAES_OAEP_SHA_256.
 #' 
 #' The SM2PKE algorithm is only available in China Regions.
 #' @param DryRun Checks if your request will succeed. `DryRun` is an optional parameter.
 #' 
-#' To learn more about how to use this parameter, see [Testing your KMS API
-#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html)
-#' in the *Key Management Service Developer Guide*.
+#' To learn more about how to use this parameter, see [Testing your permissions](https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html) in the *Key Management Service Developer Guide*.
 #'
 #' @keywords internal
 #'
@@ -1603,102 +1102,47 @@ kms_encrypt <- function(KeyId, Plaintext, EncryptionContext = NULL, GrantTokens 
 #'
 #' See [https://www.paws-r-sdk.com/docs/kms_generate_data_key/](https://www.paws-r-sdk.com/docs/kms_generate_data_key/) for full documentation.
 #'
-#' @param KeyId &#91;required&#93; Specifies the symmetric encryption KMS key that encrypts the data key.
-#' You cannot specify an asymmetric KMS key or a KMS key in a custom key
-#' store. To get the type and origin of your KMS key, use the
-#' [`describe_key`][kms_describe_key] operation.
+#' @param KeyId &#91;required&#93; Specifies the symmetric encryption KMS key that encrypts the data key. You cannot specify an asymmetric KMS key or a KMS key in a custom key store. To get the type and origin of your KMS key, use the [`describe_key`][kms_describe_key] operation.
 #' 
-#' To specify a KMS key, use its key ID, key ARN, alias name, or alias ARN.
-#' When using an alias name, prefix it with `"alias/"`. To specify a KMS
-#' key in a different Amazon Web Services account, you must use the key ARN
-#' or alias ARN.
+#' To specify a KMS key, use its key ID, key ARN, alias name, or alias ARN. When using an alias name, prefix it with `"alias/"`. To specify a KMS key in a different Amazon Web Services account, you must use the key ARN or alias ARN.
 #' 
 #' For example:
 #' 
 #' -   Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
-#' -   Key ARN:
-#'     `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
+#' -   Key ARN: `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
 #' -   Alias name: `alias/ExampleAlias`
 #' 
 #' -   Alias ARN: `arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias`
 #' 
-#' To get the key ID and key ARN for a KMS key, use
-#' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key]. To
-#' get the alias name and alias ARN, use
-#' [`list_aliases`][kms_list_aliases].
-#' @param EncryptionContext Specifies the encryption context that will be used when encrypting the
-#' data key.
+#' To get the key ID and key ARN for a KMS key, use [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key]. To get the alias name and alias ARN, use [`list_aliases`][kms_list_aliases].
+#' @param EncryptionContext Specifies the encryption context that will be used when encrypting the data key.
 #' 
-#' Do not include confidential or sensitive information in this field. This
-#' field may be displayed in plaintext in CloudTrail logs and other output.
+#' Do not include confidential or sensitive information in this field. This field may be displayed in plaintext in CloudTrail logs and other output.
 #' 
-#' An *encryption context* is a collection of non-secret key-value pairs
-#' that represent additional authenticated data. When you use an encryption
-#' context to encrypt data, you must specify the same (an exact
-#' case-sensitive match) encryption context to decrypt the data. An
-#' encryption context is supported only on operations with symmetric
-#' encryption KMS keys. On operations with symmetric encryption KMS keys,
-#' an encryption context is optional, but it is strongly recommended.
+#' An *encryption context* is a collection of non-secret key-value pairs that represent additional authenticated data. When you use an encryption context to encrypt data, you must specify the same (an exact case-sensitive match) encryption context to decrypt the data. An encryption context is supported only on operations with symmetric encryption KMS keys. On operations with symmetric encryption KMS keys, an encryption context is optional, but it is strongly recommended.
 #' 
-#' For more information, see [Encryption
-#' context](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context)
-#' in the *Key Management Service Developer Guide*.
-#' @param NumberOfBytes Specifies the length of the data key in bytes. For example, use the
-#' value 64 to generate a 512-bit data key (64 bytes is 512 bits). For
-#' 128-bit (16-byte) and 256-bit (32-byte) data keys, use the `KeySpec`
-#' parameter.
+#' For more information, see [Encryption context](https://docs.aws.amazon.com/kms/latest/developerguide/encrypt_context.html) in the *Key Management Service Developer Guide*.
+#' @param NumberOfBytes Specifies the length of the data key in bytes. For example, use the value 64 to generate a 512-bit data key (64 bytes is 512 bits). For 128-bit (16-byte) and 256-bit (32-byte) data keys, use the `KeySpec` parameter.
 #' 
-#' You must specify either the `KeySpec` or the `NumberOfBytes` parameter
-#' (but not both) in every [`generate_data_key`][kms_generate_data_key]
-#' request.
-#' @param KeySpec Specifies the length of the data key. Use `AES_128` to generate a
-#' 128-bit symmetric key, or `AES_256` to generate a 256-bit symmetric key.
+#' You must specify either the `KeySpec` or the `NumberOfBytes` parameter (but not both) in every [`generate_data_key`][kms_generate_data_key] request.
+#' @param KeySpec Specifies the length of the data key. Use `AES_128` to generate a 128-bit symmetric key, or `AES_256` to generate a 256-bit symmetric key.
 #' 
-#' You must specify either the `KeySpec` or the `NumberOfBytes` parameter
-#' (but not both) in every [`generate_data_key`][kms_generate_data_key]
-#' request.
+#' You must specify either the `KeySpec` or the `NumberOfBytes` parameter (but not both) in every [`generate_data_key`][kms_generate_data_key] request.
 #' @param GrantTokens A list of grant tokens.
 #' 
-#' Use a grant token when your permission to call this operation comes from
-#' a new grant that has not yet achieved *eventual consistency*. For more
-#' information, see [Grant
-#' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token)
-#' and [Using a grant
-#' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#using-grant-token)
-#' in the *Key Management Service Developer Guide*.
-#' @param Recipient A signed [attestation
-#' document](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/#term-attestdoc)
-#' from an Amazon Web Services Nitro enclave and the encryption algorithm
-#' to use with the enclave's public key. The only valid encryption
-#' algorithm is `RSAES_OAEP_SHA_256`.
+#' Use a grant token when your permission to call this operation comes from a new grant that has not yet achieved *eventual consistency*. For more information, see [Grant token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token) and [Using a grant token](https://docs.aws.amazon.com/kms/latest/developerguide/using-grant-token.html) in the *Key Management Service Developer Guide*.
+#' @param Recipient A signed [attestation document](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/#term-attestdoc) from an Amazon Web Services Nitro enclave or NitroTPM, and the encryption algorithm to use with the public key in the attestation document. The only valid encryption algorithm is `RSAES_OAEP_SHA_256`.
 #' 
-#' This parameter only supports attestation documents for Amazon Web
-#' Services Nitro Enclaves. To include this parameter, use the [Amazon Web
-#' Services Nitro Enclaves
-#' SDK](https://docs.aws.amazon.com/enclaves/latest/user/developing-applications.html#sdk)
-#' or any Amazon Web Services SDK.
+#' This parameter supports the [Amazon Web Services Nitro Enclaves SDK](https://docs.aws.amazon.com/enclaves/latest/user/developing-applications.html#sdk) or any Amazon Web Services SDK for Amazon Web Services Nitro Enclaves. It supports any Amazon Web Services SDK for Amazon Web Services NitroTPM.
 #' 
-#' When you use this parameter, instead of returning the plaintext data
-#' key, KMS encrypts the plaintext data key under the public key in the
-#' attestation document, and returns the resulting ciphertext in the
-#' `CiphertextForRecipient` field in the response. This ciphertext can be
-#' decrypted only with the private key in the enclave. The `CiphertextBlob`
-#' field in the response contains a copy of the data key encrypted under
-#' the KMS key specified by the `KeyId` parameter. The `Plaintext` field in
-#' the response is null or empty.
+#' When you use this parameter, instead of returning the plaintext data key, KMS encrypts the plaintext data key under the public key in the attestation document, and returns the resulting ciphertext in the `CiphertextForRecipient` field in the response. This ciphertext can be decrypted only with the private key in the enclave. The `CiphertextBlob` field in the response contains a copy of the data key encrypted under the KMS key specified by the `KeyId` parameter. The `Plaintext` field in the response is null or empty.
 #' 
-#' For information about the interaction between KMS and Amazon Web
-#' Services Nitro Enclaves, see [How Amazon Web Services Nitro Enclaves
-#' uses
-#' KMS](https://docs.aws.amazon.com/kms/latest/developerguide/services-nitro-enclaves.html)
-#' in the *Key Management Service Developer Guide*.
+#' For information about the interaction between KMS and Amazon Web Services Nitro Enclaves or Amazon Web Services NitroTPM, see [Cryptographic attestation support in KMS](https://docs.aws.amazon.com/kms/latest/developerguide/cryptographic-attestation.html) in the *Key Management Service Developer Guide*.
 #' @param DryRun Checks if your request will succeed. `DryRun` is an optional parameter.
 #' 
-#' To learn more about how to use this parameter, see [Testing your KMS API
-#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html)
-#' in the *Key Management Service Developer Guide*.
+#' To learn more about how to use this parameter, see [Testing your permissions](https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html) in the *Key Management Service Developer Guide*.
 #'
 #' @keywords internal
 #'
@@ -1729,98 +1173,44 @@ kms_generate_data_key <- function(KeyId, EncryptionContext = NULL, NumberOfBytes
 #'
 #' See [https://www.paws-r-sdk.com/docs/kms_generate_data_key_pair/](https://www.paws-r-sdk.com/docs/kms_generate_data_key_pair/) for full documentation.
 #'
-#' @param EncryptionContext Specifies the encryption context that will be used when encrypting the
-#' private key in the data key pair.
+#' @param EncryptionContext Specifies the encryption context that will be used when encrypting the private key in the data key pair.
 #' 
-#' Do not include confidential or sensitive information in this field. This
-#' field may be displayed in plaintext in CloudTrail logs and other output.
+#' Do not include confidential or sensitive information in this field. This field may be displayed in plaintext in CloudTrail logs and other output.
 #' 
-#' An *encryption context* is a collection of non-secret key-value pairs
-#' that represent additional authenticated data. When you use an encryption
-#' context to encrypt data, you must specify the same (an exact
-#' case-sensitive match) encryption context to decrypt the data. An
-#' encryption context is supported only on operations with symmetric
-#' encryption KMS keys. On operations with symmetric encryption KMS keys,
-#' an encryption context is optional, but it is strongly recommended.
+#' An *encryption context* is a collection of non-secret key-value pairs that represent additional authenticated data. When you use an encryption context to encrypt data, you must specify the same (an exact case-sensitive match) encryption context to decrypt the data. An encryption context is supported only on operations with symmetric encryption KMS keys. On operations with symmetric encryption KMS keys, an encryption context is optional, but it is strongly recommended.
 #' 
-#' For more information, see [Encryption
-#' context](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context)
-#' in the *Key Management Service Developer Guide*.
-#' @param KeyId &#91;required&#93; Specifies the symmetric encryption KMS key that encrypts the private key
-#' in the data key pair. You cannot specify an asymmetric KMS key or a KMS
-#' key in a custom key store. To get the type and origin of your KMS key,
-#' use the [`describe_key`][kms_describe_key] operation.
+#' For more information, see [Encryption context](https://docs.aws.amazon.com/kms/latest/developerguide/encrypt_context.html) in the *Key Management Service Developer Guide*.
+#' @param KeyId &#91;required&#93; Specifies the symmetric encryption KMS key that encrypts the private key in the data key pair. You cannot specify an asymmetric KMS key or a KMS key in a custom key store. To get the type and origin of your KMS key, use the [`describe_key`][kms_describe_key] operation.
 #' 
-#' To specify a KMS key, use its key ID, key ARN, alias name, or alias ARN.
-#' When using an alias name, prefix it with `"alias/"`. To specify a KMS
-#' key in a different Amazon Web Services account, you must use the key ARN
-#' or alias ARN.
+#' To specify a KMS key, use its key ID, key ARN, alias name, or alias ARN. When using an alias name, prefix it with `"alias/"`. To specify a KMS key in a different Amazon Web Services account, you must use the key ARN or alias ARN.
 #' 
 #' For example:
 #' 
 #' -   Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
-#' -   Key ARN:
-#'     `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
+#' -   Key ARN: `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
 #' -   Alias name: `alias/ExampleAlias`
 #' 
 #' -   Alias ARN: `arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias`
 #' 
-#' To get the key ID and key ARN for a KMS key, use
-#' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key]. To
-#' get the alias name and alias ARN, use
-#' [`list_aliases`][kms_list_aliases].
+#' To get the key ID and key ARN for a KMS key, use [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key]. To get the alias name and alias ARN, use [`list_aliases`][kms_list_aliases].
 #' @param KeyPairSpec &#91;required&#93; Determines the type of data key pair that is generated.
 #' 
-#' The KMS rule that restricts the use of asymmetric RSA and SM2 KMS keys
-#' to encrypt and decrypt or to sign and verify (but not both), and the
-#' rule that permits you to use ECC KMS keys only to sign and verify, are
-#' not effective on data key pairs, which are used outside of KMS. The SM2
-#' key spec is only available in China Regions.
+#' The KMS rule that restricts the use of asymmetric RSA and SM2 KMS keys to encrypt and decrypt or to sign and verify (but not both), the rule that permits you to use ECC KMS keys only to sign and verify, and the rule that permits you to use ML-DSA key pairs to sign and verify only are not effective on data key pairs, which are used outside of KMS. The SM2 key spec is only available in China Regions.
 #' @param GrantTokens A list of grant tokens.
 #' 
-#' Use a grant token when your permission to call this operation comes from
-#' a new grant that has not yet achieved *eventual consistency*. For more
-#' information, see [Grant
-#' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token)
-#' and [Using a grant
-#' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#using-grant-token)
-#' in the *Key Management Service Developer Guide*.
-#' @param Recipient A signed [attestation
-#' document](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/#term-attestdoc)
-#' from an Amazon Web Services Nitro enclave and the encryption algorithm
-#' to use with the enclave's public key. The only valid encryption
-#' algorithm is `RSAES_OAEP_SHA_256`.
+#' Use a grant token when your permission to call this operation comes from a new grant that has not yet achieved *eventual consistency*. For more information, see [Grant token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token) and [Using a grant token](https://docs.aws.amazon.com/kms/latest/developerguide/using-grant-token.html) in the *Key Management Service Developer Guide*.
+#' @param Recipient A signed [attestation document](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/#term-attestdoc) from an Amazon Web Services Nitro enclave or NitroTPM, and the encryption algorithm to use with the public key in the attestation document. The only valid encryption algorithm is `RSAES_OAEP_SHA_256`.
 #' 
-#' This parameter only supports attestation documents for Amazon Web
-#' Services Nitro Enclaves. To call DeriveSharedSecret for an Amazon Web
-#' Services Nitro Enclaves, use the [Amazon Web Services Nitro Enclaves
-#' SDK](https://docs.aws.amazon.com/enclaves/latest/user/developing-applications.html#sdk)
-#' to generate the attestation document and then use the Recipient
-#' parameter from any Amazon Web Services SDK to provide the attestation
-#' document for the enclave.
+#' This parameter only supports attestation documents for Amazon Web Services Nitro Enclaves or Amazon Web Services NitroTPM. To call GenerateDataKeyPair generate an attestation document use either [Amazon Web Services Nitro Enclaves SDK](https://docs.aws.amazon.com/enclaves/latest/user/developing-applications.html#sdk) for an Amazon Web Services Nitro Enclaves or [Amazon Web Services NitroTPM tools](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/attestation-get-doc.html) for Amazon Web Services NitroTPM. Then use the Recipient parameter from any Amazon Web Services SDK to provide the attestation document for the attested environment.
 #' 
-#' When you use this parameter, instead of returning a plaintext copy of
-#' the private data key, KMS encrypts the plaintext private data key under
-#' the public key in the attestation document, and returns the resulting
-#' ciphertext in the `CiphertextForRecipient` field in the response. This
-#' ciphertext can be decrypted only with the private key in the enclave.
-#' The `CiphertextBlob` field in the response contains a copy of the
-#' private data key encrypted under the KMS key specified by the `KeyId`
-#' parameter. The `PrivateKeyPlaintext` field in the response is null or
-#' empty.
+#' When you use this parameter, instead of returning a plaintext copy of the private data key, KMS encrypts the plaintext private data key under the public key in the attestation document, and returns the resulting ciphertext in the `CiphertextForRecipient` field in the response. This ciphertext can be decrypted only with the private key in the attested environment. The `CiphertextBlob` field in the response contains a copy of the private data key encrypted under the KMS key specified by the `KeyId` parameter. The `PrivateKeyPlaintext` field in the response is null or empty.
 #' 
-#' For information about the interaction between KMS and Amazon Web
-#' Services Nitro Enclaves, see [How Amazon Web Services Nitro Enclaves
-#' uses
-#' KMS](https://docs.aws.amazon.com/kms/latest/developerguide/services-nitro-enclaves.html)
-#' in the *Key Management Service Developer Guide*.
+#' For information about the interaction between KMS and Amazon Web Services Nitro Enclaves or Amazon Web Services NitroTPM, see [Cryptographic attestation support in KMS](https://docs.aws.amazon.com/kms/latest/developerguide/cryptographic-attestation.html) in the *Key Management Service Developer Guide*.
 #' @param DryRun Checks if your request will succeed. `DryRun` is an optional parameter.
 #' 
-#' To learn more about how to use this parameter, see [Testing your KMS API
-#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html)
-#' in the *Key Management Service Developer Guide*.
+#' To learn more about how to use this parameter, see [Testing your permissions](https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html) in the *Key Management Service Developer Guide*.
 #'
 #' @keywords internal
 #'
@@ -1851,69 +1241,37 @@ kms_generate_data_key_pair <- function(EncryptionContext = NULL, KeyId, KeyPairS
 #'
 #' See [https://www.paws-r-sdk.com/docs/kms_generate_data_key_pair_without_plaintext/](https://www.paws-r-sdk.com/docs/kms_generate_data_key_pair_without_plaintext/) for full documentation.
 #'
-#' @param EncryptionContext Specifies the encryption context that will be used when encrypting the
-#' private key in the data key pair.
+#' @param EncryptionContext Specifies the encryption context that will be used when encrypting the private key in the data key pair.
 #' 
-#' Do not include confidential or sensitive information in this field. This
-#' field may be displayed in plaintext in CloudTrail logs and other output.
+#' Do not include confidential or sensitive information in this field. This field may be displayed in plaintext in CloudTrail logs and other output.
 #' 
-#' An *encryption context* is a collection of non-secret key-value pairs
-#' that represent additional authenticated data. When you use an encryption
-#' context to encrypt data, you must specify the same (an exact
-#' case-sensitive match) encryption context to decrypt the data. An
-#' encryption context is supported only on operations with symmetric
-#' encryption KMS keys. On operations with symmetric encryption KMS keys,
-#' an encryption context is optional, but it is strongly recommended.
+#' An *encryption context* is a collection of non-secret key-value pairs that represent additional authenticated data. When you use an encryption context to encrypt data, you must specify the same (an exact case-sensitive match) encryption context to decrypt the data. An encryption context is supported only on operations with symmetric encryption KMS keys. On operations with symmetric encryption KMS keys, an encryption context is optional, but it is strongly recommended.
 #' 
-#' For more information, see [Encryption
-#' context](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context)
-#' in the *Key Management Service Developer Guide*.
-#' @param KeyId &#91;required&#93; Specifies the symmetric encryption KMS key that encrypts the private key
-#' in the data key pair. You cannot specify an asymmetric KMS key or a KMS
-#' key in a custom key store. To get the type and origin of your KMS key,
-#' use the [`describe_key`][kms_describe_key] operation.
+#' For more information, see [Encryption context](https://docs.aws.amazon.com/kms/latest/developerguide/encrypt_context.html) in the *Key Management Service Developer Guide*.
+#' @param KeyId &#91;required&#93; Specifies the symmetric encryption KMS key that encrypts the private key in the data key pair. You cannot specify an asymmetric KMS key or a KMS key in a custom key store. To get the type and origin of your KMS key, use the [`describe_key`][kms_describe_key] operation.
 #' 
-#' To specify a KMS key, use its key ID, key ARN, alias name, or alias ARN.
-#' When using an alias name, prefix it with `"alias/"`. To specify a KMS
-#' key in a different Amazon Web Services account, you must use the key ARN
-#' or alias ARN.
+#' To specify a KMS key, use its key ID, key ARN, alias name, or alias ARN. When using an alias name, prefix it with `"alias/"`. To specify a KMS key in a different Amazon Web Services account, you must use the key ARN or alias ARN.
 #' 
 #' For example:
 #' 
 #' -   Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
-#' -   Key ARN:
-#'     `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
+#' -   Key ARN: `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
 #' -   Alias name: `alias/ExampleAlias`
 #' 
 #' -   Alias ARN: `arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias`
 #' 
-#' To get the key ID and key ARN for a KMS key, use
-#' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key]. To
-#' get the alias name and alias ARN, use
-#' [`list_aliases`][kms_list_aliases].
+#' To get the key ID and key ARN for a KMS key, use [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key]. To get the alias name and alias ARN, use [`list_aliases`][kms_list_aliases].
 #' @param KeyPairSpec &#91;required&#93; Determines the type of data key pair that is generated.
 #' 
-#' The KMS rule that restricts the use of asymmetric RSA and SM2 KMS keys
-#' to encrypt and decrypt or to sign and verify (but not both), and the
-#' rule that permits you to use ECC KMS keys only to sign and verify, are
-#' not effective on data key pairs, which are used outside of KMS. The SM2
-#' key spec is only available in China Regions.
+#' The KMS rule that restricts the use of asymmetric RSA and SM2 KMS keys to encrypt and decrypt or to sign and verify (but not both), the rule that permits you to use ECC KMS keys only to sign and verify, and the rule that permits you to use ML-DSA key pairs to sign and verify only are not effective on data key pairs, which are used outside of KMS. The SM2 key spec is only available in China Regions.
 #' @param GrantTokens A list of grant tokens.
 #' 
-#' Use a grant token when your permission to call this operation comes from
-#' a new grant that has not yet achieved *eventual consistency*. For more
-#' information, see [Grant
-#' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token)
-#' and [Using a grant
-#' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#using-grant-token)
-#' in the *Key Management Service Developer Guide*.
+#' Use a grant token when your permission to call this operation comes from a new grant that has not yet achieved *eventual consistency*. For more information, see [Grant token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token) and [Using a grant token](https://docs.aws.amazon.com/kms/latest/developerguide/using-grant-token.html) in the *Key Management Service Developer Guide*.
 #' @param DryRun Checks if your request will succeed. `DryRun` is an optional parameter.
 #' 
-#' To learn more about how to use this parameter, see [Testing your KMS API
-#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html)
-#' in the *Key Management Service Developer Guide*.
+#' To learn more about how to use this parameter, see [Testing your permissions](https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html) in the *Key Management Service Developer Guide*.
 #'
 #' @keywords internal
 #'
@@ -1944,68 +1302,36 @@ kms_generate_data_key_pair_without_plaintext <- function(EncryptionContext = NUL
 #'
 #' See [https://www.paws-r-sdk.com/docs/kms_generate_data_key_without_plaintext/](https://www.paws-r-sdk.com/docs/kms_generate_data_key_without_plaintext/) for full documentation.
 #'
-#' @param KeyId &#91;required&#93; Specifies the symmetric encryption KMS key that encrypts the data key.
-#' You cannot specify an asymmetric KMS key or a KMS key in a custom key
-#' store. To get the type and origin of your KMS key, use the
-#' [`describe_key`][kms_describe_key] operation.
+#' @param KeyId &#91;required&#93; Specifies the symmetric encryption KMS key that encrypts the data key. You cannot specify an asymmetric KMS key or a KMS key in a custom key store. To get the type and origin of your KMS key, use the [`describe_key`][kms_describe_key] operation.
 #' 
-#' To specify a KMS key, use its key ID, key ARN, alias name, or alias ARN.
-#' When using an alias name, prefix it with `"alias/"`. To specify a KMS
-#' key in a different Amazon Web Services account, you must use the key ARN
-#' or alias ARN.
+#' To specify a KMS key, use its key ID, key ARN, alias name, or alias ARN. When using an alias name, prefix it with `"alias/"`. To specify a KMS key in a different Amazon Web Services account, you must use the key ARN or alias ARN.
 #' 
 #' For example:
 #' 
 #' -   Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
-#' -   Key ARN:
-#'     `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
+#' -   Key ARN: `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
 #' -   Alias name: `alias/ExampleAlias`
 #' 
 #' -   Alias ARN: `arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias`
 #' 
-#' To get the key ID and key ARN for a KMS key, use
-#' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key]. To
-#' get the alias name and alias ARN, use
-#' [`list_aliases`][kms_list_aliases].
-#' @param EncryptionContext Specifies the encryption context that will be used when encrypting the
-#' data key.
+#' To get the key ID and key ARN for a KMS key, use [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key]. To get the alias name and alias ARN, use [`list_aliases`][kms_list_aliases].
+#' @param EncryptionContext Specifies the encryption context that will be used when encrypting the data key.
 #' 
-#' Do not include confidential or sensitive information in this field. This
-#' field may be displayed in plaintext in CloudTrail logs and other output.
+#' Do not include confidential or sensitive information in this field. This field may be displayed in plaintext in CloudTrail logs and other output.
 #' 
-#' An *encryption context* is a collection of non-secret key-value pairs
-#' that represent additional authenticated data. When you use an encryption
-#' context to encrypt data, you must specify the same (an exact
-#' case-sensitive match) encryption context to decrypt the data. An
-#' encryption context is supported only on operations with symmetric
-#' encryption KMS keys. On operations with symmetric encryption KMS keys,
-#' an encryption context is optional, but it is strongly recommended.
+#' An *encryption context* is a collection of non-secret key-value pairs that represent additional authenticated data. When you use an encryption context to encrypt data, you must specify the same (an exact case-sensitive match) encryption context to decrypt the data. An encryption context is supported only on operations with symmetric encryption KMS keys. On operations with symmetric encryption KMS keys, an encryption context is optional, but it is strongly recommended.
 #' 
-#' For more information, see [Encryption
-#' context](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context)
-#' in the *Key Management Service Developer Guide*.
-#' @param KeySpec The length of the data key. Use `AES_128` to generate a 128-bit
-#' symmetric key, or `AES_256` to generate a 256-bit symmetric key.
-#' @param NumberOfBytes The length of the data key in bytes. For example, use the value 64 to
-#' generate a 512-bit data key (64 bytes is 512 bits). For common key
-#' lengths (128-bit and 256-bit symmetric keys), we recommend that you use
-#' the `KeySpec` field instead of this one.
+#' For more information, see [Encryption context](https://docs.aws.amazon.com/kms/latest/developerguide/encrypt_context.html) in the *Key Management Service Developer Guide*.
+#' @param KeySpec The length of the data key. Use `AES_128` to generate a 128-bit symmetric key, or `AES_256` to generate a 256-bit symmetric key.
+#' @param NumberOfBytes The length of the data key in bytes. For example, use the value 64 to generate a 512-bit data key (64 bytes is 512 bits). For common key lengths (128-bit and 256-bit symmetric keys), we recommend that you use the `KeySpec` field instead of this one.
 #' @param GrantTokens A list of grant tokens.
 #' 
-#' Use a grant token when your permission to call this operation comes from
-#' a new grant that has not yet achieved *eventual consistency*. For more
-#' information, see [Grant
-#' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token)
-#' and [Using a grant
-#' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#using-grant-token)
-#' in the *Key Management Service Developer Guide*.
+#' Use a grant token when your permission to call this operation comes from a new grant that has not yet achieved *eventual consistency*. For more information, see [Grant token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token) and [Using a grant token](https://docs.aws.amazon.com/kms/latest/developerguide/using-grant-token.html) in the *Key Management Service Developer Guide*.
 #' @param DryRun Checks if your request will succeed. `DryRun` is an optional parameter.
 #' 
-#' To learn more about how to use this parameter, see [Testing your KMS API
-#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html)
-#' in the *Key Management Service Developer Guide*.
+#' To learn more about how to use this parameter, see [Testing your permissions](https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html) in the *Key Management Service Developer Guide*.
 #'
 #' @keywords internal
 #'
@@ -2039,36 +1365,19 @@ kms_generate_data_key_without_plaintext <- function(KeyId, EncryptionContext = N
 #'
 #' @param Message &#91;required&#93; The message to be hashed. Specify a message of up to 4,096 bytes.
 #' 
-#' [`generate_mac`][kms_generate_mac] and [`verify_mac`][kms_verify_mac] do
-#' not provide special handling for message digests. If you generate an
-#' HMAC for a hash digest of a message, you must verify the HMAC of the
-#' same hash digest.
-#' @param KeyId &#91;required&#93; The HMAC KMS key to use in the operation. The MAC algorithm computes the
-#' HMAC for the message and the key as described in [RFC
-#' 2104](https://datatracker.ietf.org/doc/html/rfc2104).
+#' [`generate_mac`][kms_generate_mac] and [`verify_mac`][kms_verify_mac] do not provide special handling for message digests. If you generate an HMAC for a hash digest of a message, you must verify the HMAC of the same hash digest.
+#' @param KeyId &#91;required&#93; The HMAC KMS key to use in the operation. The MAC algorithm computes the HMAC for the message and the key as described in [RFC 2104](https://datatracker.ietf.org/doc/html/rfc2104).
 #' 
-#' To identify an HMAC KMS key, use the [`describe_key`][kms_describe_key]
-#' operation and see the `KeySpec` field in the response.
+#' To identify an HMAC KMS key, use the [`describe_key`][kms_describe_key] operation and see the `KeySpec` field in the response.
 #' @param MacAlgorithm &#91;required&#93; The MAC algorithm used in the operation.
 #' 
-#' The algorithm must be compatible with the HMAC KMS key that you specify.
-#' To find the MAC algorithms that your HMAC KMS key supports, use the
-#' [`describe_key`][kms_describe_key] operation and see the `MacAlgorithms`
-#' field in the [`describe_key`][kms_describe_key] response.
+#' The algorithm must be compatible with the HMAC KMS key that you specify. To find the MAC algorithms that your HMAC KMS key supports, use the [`describe_key`][kms_describe_key] operation and see the `MacAlgorithms` field in the [`describe_key`][kms_describe_key] response.
 #' @param GrantTokens A list of grant tokens.
 #' 
-#' Use a grant token when your permission to call this operation comes from
-#' a new grant that has not yet achieved *eventual consistency*. For more
-#' information, see [Grant
-#' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token)
-#' and [Using a grant
-#' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#using-grant-token)
-#' in the *Key Management Service Developer Guide*.
+#' Use a grant token when your permission to call this operation comes from a new grant that has not yet achieved *eventual consistency*. For more information, see [Grant token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token) and [Using a grant token](https://docs.aws.amazon.com/kms/latest/developerguide/using-grant-token.html) in the *Key Management Service Developer Guide*.
 #' @param DryRun Checks if your request will succeed. `DryRun` is an optional parameter.
 #' 
-#' To learn more about how to use this parameter, see [Testing your KMS API
-#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html)
-#' in the *Key Management Service Developer Guide*.
+#' To learn more about how to use this parameter, see [Testing your permissions](https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html) in the *Key Management Service Developer Guide*.
 #'
 #' @keywords internal
 #'
@@ -2100,40 +1409,16 @@ kms_generate_mac <- function(Message, KeyId, MacAlgorithm, GrantTokens = NULL, D
 #' See [https://www.paws-r-sdk.com/docs/kms_generate_random/](https://www.paws-r-sdk.com/docs/kms_generate_random/) for full documentation.
 #'
 #' @param NumberOfBytes The length of the random byte string. This parameter is required.
-#' @param CustomKeyStoreId Generates the random byte string in the CloudHSM cluster that is
-#' associated with the specified CloudHSM key store. To find the ID of a
-#' custom key store, use the
-#' [`describe_custom_key_stores`][kms_describe_custom_key_stores]
-#' operation.
+#' @param CustomKeyStoreId Generates the random byte string in the CloudHSM cluster that is associated with the specified CloudHSM key store. To find the ID of a custom key store, use the [`describe_custom_key_stores`][kms_describe_custom_key_stores] operation.
 #' 
-#' External key store IDs are not valid for this parameter. If you specify
-#' the ID of an external key store,
-#' [`generate_random`][kms_generate_random] throws an
-#' `UnsupportedOperationException`.
-#' @param Recipient A signed [attestation
-#' document](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/#term-attestdoc)
-#' from an Amazon Web Services Nitro enclave and the encryption algorithm
-#' to use with the enclave's public key. The only valid encryption
-#' algorithm is `RSAES_OAEP_SHA_256`.
+#' External key store IDs are not valid for this parameter. If you specify the ID of an external key store, [`generate_random`][kms_generate_random] throws an `UnsupportedOperationException`.
+#' @param Recipient A signed [attestation document](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/#term-attestdoc) from an Amazon Web Services Nitro enclave or NitroTPM, and the encryption algorithm to use with the public key in the attestation document. The only valid encryption algorithm is `RSAES_OAEP_SHA_256`.
 #' 
-#' This parameter only supports attestation documents for Amazon Web
-#' Services Nitro Enclaves. To include this parameter, use the [Amazon Web
-#' Services Nitro Enclaves
-#' SDK](https://docs.aws.amazon.com/enclaves/latest/user/developing-applications.html#sdk)
-#' or any Amazon Web Services SDK.
+#' This parameter supports the [Amazon Web Services Nitro Enclaves SDK](https://docs.aws.amazon.com/enclaves/latest/user/developing-applications.html#sdk) or any Amazon Web Services SDK for Amazon Web Services Nitro Enclaves. It supports any Amazon Web Services SDK for Amazon Web Services NitroTPM.
 #' 
-#' When you use this parameter, instead of returning plaintext bytes, KMS
-#' encrypts the plaintext bytes under the public key in the attestation
-#' document, and returns the resulting ciphertext in the
-#' `CiphertextForRecipient` field in the response. This ciphertext can be
-#' decrypted only with the private key in the enclave. The `Plaintext`
-#' field in the response is null or empty.
+#' When you use this parameter, instead of returning plaintext bytes, KMS encrypts the plaintext bytes under the public key in the attestation document, and returns the resulting ciphertext in the `CiphertextForRecipient` field in the response. This ciphertext can be decrypted only with the private key in the attested environment. The `Plaintext` field in the response is null or empty.
 #' 
-#' For information about the interaction between KMS and Amazon Web
-#' Services Nitro Enclaves, see [How Amazon Web Services Nitro Enclaves
-#' uses
-#' KMS](https://docs.aws.amazon.com/kms/latest/developerguide/services-nitro-enclaves.html)
-#' in the *Key Management Service Developer Guide*.
+#' For information about the interaction between KMS and Amazon Web Services Nitro Enclaves or Amazon Web Services NitroTPM, see [Cryptographic attestation support in KMS](https://docs.aws.amazon.com/kms/latest/developerguide/cryptographic-attestation.html) in the *Key Management Service Developer Guide*.
 #'
 #' @keywords internal
 #'
@@ -2157,6 +1442,49 @@ kms_generate_random <- function(NumberOfBytes = NULL, CustomKeyStoreId = NULL, R
 }
 .kms$operations$generate_random <- kms_generate_random
 
+#' Returns usage information about the last successful cryptographic
+#' operation performed with a specified KMS key, including the operation
+#' type, timestamp, and associated CloudTrail event ID
+#'
+#' @description
+#' Returns usage information about the last successful cryptographic operation performed with a specified KMS key, including the operation type, timestamp, and associated CloudTrail event ID.
+#'
+#' See [https://www.paws-r-sdk.com/docs/kms_get_key_last_usage/](https://www.paws-r-sdk.com/docs/kms_get_key_last_usage/) for full documentation.
+#'
+#' @param KeyId &#91;required&#93; Identifies the KMS key to get usage information for. To specify a KMS key, use its key ID or key ARN. Alias names are not supported.
+#' 
+#' Specify the key ID or key ARN of the KMS key.
+#' 
+#' For example:
+#' 
+#' -   Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
+#' 
+#' -   Key ARN: `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
+#' 
+#' To get the key ID and key ARN for a KMS key, use [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
+#'
+#' @keywords internal
+#'
+#' @rdname kms_get_key_last_usage
+kms_get_key_last_usage <- function(KeyId) {
+  op <- new_operation(
+    name = "GetKeyLastUsage",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .kms$get_key_last_usage_input(KeyId = KeyId)
+  output <- .kms$get_key_last_usage_output()
+  config <- get_config()
+  svc <- .kms$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kms$operations$get_key_last_usage <- kms_get_key_last_usage
+
 #' Gets a key policy attached to the specified KMS key
 #'
 #' @description
@@ -2172,15 +1500,10 @@ kms_generate_random <- function(NumberOfBytes = NULL, CustomKeyStoreId = NULL, R
 #' 
 #' -   Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
-#' -   Key ARN:
-#'     `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
+#' -   Key ARN: `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
-#' To get the key ID and key ARN for a KMS key, use
-#' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
-#' @param PolicyName Specifies the name of the key policy. If no policy name is specified,
-#' the default value is `default`. The only valid name is `default`. To get
-#' the names of key policies, use
-#' [`list_key_policies`][kms_list_key_policies].
+#' To get the key ID and key ARN for a KMS key, use [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
+#' @param PolicyName Specifies the name of the key policy. If no policy name is specified, the default value is `default`. The only valid name is `default`. To get the names of key policies, use [`list_key_policies`][kms_list_key_policies].
 #'
 #' @keywords internal
 #'
@@ -2210,24 +1533,21 @@ kms_get_key_policy <- function(KeyId, PolicyName = NULL) {
 #' rotation date
 #'
 #' @description
-#' Provides detailed information about the rotation status for a KMS key, including whether [automatic rotation of the key material](https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html) is enabled for the specified KMS key, the [rotation period](https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html#rotation-period), and the next scheduled rotation date.
+#' Provides detailed information about the rotation status for a KMS key, including whether [automatic rotation of the key material](https://docs.aws.amazon.com/kms/latest/developerguide/) is enabled for the specified KMS key, the [rotation period](https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html#rotation-period), and the next scheduled rotation date.
 #'
 #' See [https://www.paws-r-sdk.com/docs/kms_get_key_rotation_status/](https://www.paws-r-sdk.com/docs/kms_get_key_rotation_status/) for full documentation.
 #'
 #' @param KeyId &#91;required&#93; Gets the rotation status for the specified KMS key.
 #' 
-#' Specify the key ID or key ARN of the KMS key. To specify a KMS key in a
-#' different Amazon Web Services account, you must use the key ARN.
+#' Specify the key ID or key ARN of the KMS key. To specify a KMS key in a different Amazon Web Services account, you must use the key ARN.
 #' 
 #' For example:
 #' 
 #' -   Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
-#' -   Key ARN:
-#'     `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
+#' -   Key ARN: `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
-#' To get the key ID and key ARN for a KMS key, use
-#' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
+#' To get the key ID and key ARN for a KMS key, use [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
 #'
 #' @keywords internal
 #'
@@ -2259,11 +1579,9 @@ kms_get_key_rotation_status <- function(KeyId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/kms_get_parameters_for_import/](https://www.paws-r-sdk.com/docs/kms_get_parameters_for_import/) for full documentation.
 #'
-#' @param KeyId &#91;required&#93; The identifier of the KMS key that will be associated with the imported
-#' key material. The `Origin` of the KMS key must be `EXTERNAL`.
+#' @param KeyId &#91;required&#93; The identifier of the KMS key that will be associated with the imported key material. The `Origin` of the KMS key must be `EXTERNAL`.
 #' 
-#' All KMS key types are supported, including multi-Region keys. However,
-#' you cannot import key material into a KMS key in a custom key store.
+#' All KMS key types are supported, including multi-Region keys. However, you cannot import key material into a KMS key in a custom key store.
 #' 
 #' Specify the key ID or key ARN of the KMS key.
 #' 
@@ -2271,55 +1589,33 @@ kms_get_key_rotation_status <- function(KeyId) {
 #' 
 #' -   Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
-#' -   Key ARN:
-#'     `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
+#' -   Key ARN: `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
-#' To get the key ID and key ARN for a KMS key, use
-#' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
-#' @param WrappingAlgorithm &#91;required&#93; The algorithm you will use with the RSA public key (`PublicKey`) in the
-#' response to protect your key material during import. For more
-#' information, see [Select a wrapping
-#' algorithm](https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys-get-public-key-and-token.html#select-wrapping-algorithm)
-#' in the *Key Management Service Developer Guide*.
+#' To get the key ID and key ARN for a KMS key, use [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
+#' @param WrappingAlgorithm &#91;required&#93; The algorithm you will use with the RSA public key (`PublicKey`) in the response to protect your key material during import. For more information, see [Select a wrapping algorithm](https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys-get-public-key-and-token.html#select-wrapping-algorithm) in the *Key Management Service Developer Guide*.
 #' 
-#' For RSA_AES wrapping algorithms, you encrypt your key material with an
-#' AES key that you generate, then encrypt your AES key with the RSA public
-#' key from KMS. For RSAES wrapping algorithms, you encrypt your key
-#' material directly with the RSA public key from KMS.
+#' For RSA_AES wrapping algorithms, you encrypt your key material with an AES key that you generate, then encrypt your AES key with the RSA public key from KMS. For RSAES wrapping algorithms, you encrypt your key material directly with the RSA public key from KMS.
 #' 
-#' The wrapping algorithms that you can use depend on the type of key
-#' material that you are importing. To import an RSA private key, you must
-#' use an RSA_AES wrapping algorithm.
+#' The wrapping algorithms that you can use depend on the type of key material that you are importing. To import an RSA private key, you must use an RSA_AES wrapping algorithm.
 #' 
-#' -   **RSA_AES_KEY_WRAP_SHA_256** — Supported for wrapping RSA and ECC
-#'     key material.
+#' -   **RSA_AES_KEY_WRAP_SHA_256** — Supported for wrapping RSA and ECC key material.
 #' 
-#' -   **RSA_AES_KEY_WRAP_SHA_1** — Supported for wrapping RSA and ECC key
-#'     material.
+#' -   **RSA_AES_KEY_WRAP_SHA_1** — Supported for wrapping RSA and ECC key material.
 #' 
-#' -   **RSAES_OAEP_SHA_256** — Supported for all types of key material,
-#'     except RSA key material (private key).
+#' -   **RSAES_OAEP_SHA_256** — Supported for all types of key material, except RSA key material (private key).
 #' 
-#'     You cannot use the RSAES_OAEP_SHA_256 wrapping algorithm with the
-#'     RSA_2048 wrapping key spec to wrap ECC_NIST_P521 key material.
+#'     You cannot use the RSAES_OAEP_SHA_256 wrapping algorithm with the RSA_2048 wrapping key spec to wrap ECC_NIST_P521 key material.
 #' 
-#' -   **RSAES_OAEP_SHA_1** — Supported for all types of key material,
-#'     except RSA key material (private key).
+#' -   **RSAES_OAEP_SHA_1** — Supported for all types of key material, except RSA key material (private key).
 #' 
-#'     You cannot use the RSAES_OAEP_SHA_1 wrapping algorithm with the
-#'     RSA_2048 wrapping key spec to wrap ECC_NIST_P521 key material.
+#'     You cannot use the RSAES_OAEP_SHA_1 wrapping algorithm with the RSA_2048 wrapping key spec to wrap ECC_NIST_P521 key material.
 #' 
-#' -   **RSAES_PKCS1_V1_5** (Deprecated) — As of October 10, 2023, KMS does
-#'     not support the RSAES_PKCS1_V1_5 wrapping algorithm.
-#' @param WrappingKeySpec &#91;required&#93; The type of RSA public key to return in the response. You will use this
-#' wrapping key with the specified wrapping algorithm to protect your key
-#' material during import.
+#' -   **RSAES_PKCS1_V1_5** (Deprecated) — As of October 10, 2023, KMS does not support the RSAES_PKCS1_V1_5 wrapping algorithm.
+#' @param WrappingKeySpec &#91;required&#93; The type of RSA public key to return in the response. You will use this wrapping key with the specified wrapping algorithm to protect your key material during import.
 #' 
 #' Use the longest RSA wrapping key that is practical.
 #' 
-#' You cannot use an RSA_2048 public key to directly wrap an ECC_NIST_P521
-#' private key. Instead, use an RSA_AES wrapping algorithm or choose a
-#' longer RSA public key.
+#' You cannot use an RSA_2048 public key to directly wrap an ECC_NIST_P521 private key. Instead, use an RSA_AES wrapping algorithm or choose a longer RSA public key.
 #'
 #' @keywords internal
 #'
@@ -2352,35 +1648,22 @@ kms_get_parameters_for_import <- function(KeyId, WrappingAlgorithm, WrappingKeyS
 #'
 #' @param KeyId &#91;required&#93; Identifies the asymmetric KMS key that includes the public key.
 #' 
-#' To specify a KMS key, use its key ID, key ARN, alias name, or alias ARN.
-#' When using an alias name, prefix it with `"alias/"`. To specify a KMS
-#' key in a different Amazon Web Services account, you must use the key ARN
-#' or alias ARN.
+#' To specify a KMS key, use its key ID, key ARN, alias name, or alias ARN. When using an alias name, prefix it with `"alias/"`. To specify a KMS key in a different Amazon Web Services account, you must use the key ARN or alias ARN.
 #' 
 #' For example:
 #' 
 #' -   Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
-#' -   Key ARN:
-#'     `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
+#' -   Key ARN: `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
 #' -   Alias name: `alias/ExampleAlias`
 #' 
 #' -   Alias ARN: `arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias`
 #' 
-#' To get the key ID and key ARN for a KMS key, use
-#' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key]. To
-#' get the alias name and alias ARN, use
-#' [`list_aliases`][kms_list_aliases].
+#' To get the key ID and key ARN for a KMS key, use [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key]. To get the alias name and alias ARN, use [`list_aliases`][kms_list_aliases].
 #' @param GrantTokens A list of grant tokens.
 #' 
-#' Use a grant token when your permission to call this operation comes from
-#' a new grant that has not yet achieved *eventual consistency*. For more
-#' information, see [Grant
-#' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token)
-#' and [Using a grant
-#' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#using-grant-token)
-#' in the *Key Management Service Developer Guide*.
+#' Use a grant token when your permission to call this operation comes from a new grant that has not yet achieved *eventual consistency*. For more information, see [Grant token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token) and [Using a grant token](https://docs.aws.amazon.com/kms/latest/developerguide/using-grant-token.html) in the *Key Management Service Developer Guide*.
 #'
 #' @keywords internal
 #'
@@ -2408,24 +1691,13 @@ kms_get_public_key <- function(KeyId, GrantTokens = NULL) {
 #' created without key material
 #'
 #' @description
-#' Imports or reimports key material into an existing KMS key that was created without key material. [`import_key_material`][kms_import_key_material] also sets the expiration model and expiration date of the imported key material.
+#' Imports or reimports key material into an existing KMS key that was created without key material. You can also use this operation to set or update the expiration model and expiration date of the imported key material.
 #'
 #' See [https://www.paws-r-sdk.com/docs/kms_import_key_material/](https://www.paws-r-sdk.com/docs/kms_import_key_material/) for full documentation.
 #'
-#' @param KeyId &#91;required&#93; The identifier of the KMS key that will be associated with the imported
-#' key material. This must be the same KMS key specified in the `KeyID`
-#' parameter of the corresponding
-#' [`get_parameters_for_import`][kms_get_parameters_for_import] request.
-#' The `Origin` of the KMS key must be `EXTERNAL` and its `KeyState` must
-#' be `PendingImport`.
+#' @param KeyId &#91;required&#93; The identifier of the KMS key that will be associated with the imported key material. This must be the same KMS key specified in the `KeyID` parameter of the corresponding [`get_parameters_for_import`][kms_get_parameters_for_import] request. The `Origin` of the KMS key must be `EXTERNAL` and its `KeyState` must be `PendingImport`.
 #' 
-#' The KMS key can be a symmetric encryption KMS key, HMAC KMS key,
-#' asymmetric encryption KMS key, or asymmetric signing KMS key, including
-#' a [multi-Region
-#' key](https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-overview.html)
-#' of any supported type. You cannot perform this operation on a KMS key in
-#' a custom key store, or on a KMS key in a different Amazon Web Services
-#' account.
+#' The KMS key can be a symmetric encryption KMS key, HMAC KMS key, asymmetric encryption KMS key, or asymmetric signing KMS key, including a [multi-Region key](https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-overview.html) of any supported type. You cannot perform this operation on a KMS key in a custom key store, or on a KMS key in a different Amazon Web Services account.
 #' 
 #' Specify the key ID or key ARN of the KMS key.
 #' 
@@ -2433,55 +1705,41 @@ kms_get_public_key <- function(KeyId, GrantTokens = NULL) {
 #' 
 #' -   Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
-#' -   Key ARN:
-#'     `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
+#' -   Key ARN: `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
-#' To get the key ID and key ARN for a KMS key, use
-#' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
-#' @param ImportToken &#91;required&#93; The import token that you received in the response to a previous
-#' [`get_parameters_for_import`][kms_get_parameters_for_import] request. It
-#' must be from the same response that contained the public key that you
-#' used to encrypt the key material.
-#' @param EncryptedKeyMaterial &#91;required&#93; The encrypted key material to import. The key material must be encrypted
-#' under the public wrapping key that
-#' [`get_parameters_for_import`][kms_get_parameters_for_import] returned,
-#' using the wrapping algorithm that you specified in the same
-#' [`get_parameters_for_import`][kms_get_parameters_for_import] request.
-#' @param ValidTo The date and time when the imported key material expires. This parameter
-#' is required when the value of the `ExpirationModel` parameter is
-#' `KEY_MATERIAL_EXPIRES`. Otherwise it is not valid.
+#' To get the key ID and key ARN for a KMS key, use [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
+#' @param ImportToken &#91;required&#93; The import token that you received in the response to a previous [`get_parameters_for_import`][kms_get_parameters_for_import] request. It must be from the same response that contained the public key that you used to encrypt the key material.
+#' @param EncryptedKeyMaterial &#91;required&#93; The encrypted key material to import. The key material must be encrypted under the public wrapping key that [`get_parameters_for_import`][kms_get_parameters_for_import] returned, using the wrapping algorithm that you specified in the same [`get_parameters_for_import`][kms_get_parameters_for_import] request.
+#' @param ValidTo The date and time when the imported key material expires. This parameter is required when the value of the `ExpirationModel` parameter is `KEY_MATERIAL_EXPIRES`. Otherwise it is not valid.
 #' 
-#' The value of this parameter must be a future date and time. The maximum
-#' value is 365 days from the request date.
+#' The value of this parameter must be a future date and time. The maximum value is 365 days from the request date.
 #' 
-#' When the key material expires, KMS deletes the key material from the KMS
-#' key. Without its key material, the KMS key is unusable. To use the KMS
-#' key in cryptographic operations, you must reimport the same key
-#' material.
+#' When the key material expires, KMS deletes the key material from the KMS key. Without its key material, the KMS key is unusable. To use the KMS key in cryptographic operations, you must reimport the same key material.
 #' 
-#' You cannot change the `ExpirationModel` or `ValidTo` values for the
-#' current import after the request completes. To change either value, you
-#' must delete
-#' ([`delete_imported_key_material`][kms_delete_imported_key_material]) and
-#' reimport the key material.
-#' @param ExpirationModel Specifies whether the key material expires. The default is
-#' `KEY_MATERIAL_EXPIRES`. For help with this choice, see [Setting an
-#' expiration
-#' time](https://docs.aws.amazon.com/en_us/kms/latest/developerguide/importing-keys.html#importing-keys-expiration)
-#' in the *Key Management Service Developer Guide*.
+#' You cannot change the `ExpirationModel` or `ValidTo` values for the current import after the request completes. To change either value, you must delete ([`delete_imported_key_material`][kms_delete_imported_key_material]) and reimport the key material.
+#' @param ExpirationModel Specifies whether the key material expires. The default is `KEY_MATERIAL_EXPIRES`. For help with this choice, see [Setting an expiration time](https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys-import-key-material.html#importing-keys-expiration) in the *Key Management Service Developer Guide*.
 #' 
-#' When the value of `ExpirationModel` is `KEY_MATERIAL_EXPIRES`, you must
-#' specify a value for the `ValidTo` parameter. When value is
-#' `KEY_MATERIAL_DOES_NOT_EXPIRE`, you must omit the `ValidTo` parameter.
+#' When the value of `ExpirationModel` is `KEY_MATERIAL_EXPIRES`, you must specify a value for the `ValidTo` parameter. When value is `KEY_MATERIAL_DOES_NOT_EXPIRE`, you must omit the `ValidTo` parameter.
 #' 
-#' You cannot change the `ExpirationModel` or `ValidTo` values for the
-#' current import after the request completes. To change either value, you
-#' must reimport the key material.
+#' You cannot change the `ExpirationModel` or `ValidTo` values for the current import after the request completes. To change either value, you must reimport the key material.
+#' @param ImportType Indicates whether the key material being imported is previously associated with this KMS key or not. This parameter is optional and only usable with symmetric encryption keys. If no key material has ever been imported into the KMS key, and this parameter is omitted, the parameter defaults to `NEW_KEY_MATERIAL`. After the first key material is imported, if this parameter is omitted then the parameter defaults to `EXISTING_KEY_MATERIAL`.
+#' 
+#' For multi-Region keys, you must first import new key material into the primary Region key. You should use the `NEW_KEY_MATERIAL` import type when importing key material into the primary Region key. Then, you can import the same key material into the replica Region key. The import type for the replica Region key should be `EXISTING_KEY_MATERIAL`.
+#' @param KeyMaterialDescription Description for the key material being imported. This parameter is optional and only usable with symmetric encryption keys. If you do not specify a key material description, KMS retains the value you specified when you last imported the same key material into this KMS key.
+#' @param KeyMaterialId Identifies the key material being imported. This parameter is optional and only usable with symmetric encryption keys. You cannot specify a key material ID with `ImportType` set to `NEW_KEY_MATERIAL`. Whenever you import key material into a symmetric encryption key, KMS assigns a unique identifier to the key material based on the KMS key ID and the imported key material. When you re-import key material with a specified key material ID, KMS:
+#' 
+#' -   Computes the identifier for the key material
+#' 
+#' -   Matches the computed identifier against the specified key material ID
+#' 
+#' -   Verifies that the key material ID is already associated with the KMS key
+#' 
+#' To get the list of key material IDs associated with a KMS key, use [`list_key_rotations`][kms_list_key_rotations].
 #'
 #' @keywords internal
 #'
 #' @rdname kms_import_key_material
-kms_import_key_material <- function(KeyId, ImportToken, EncryptedKeyMaterial, ValidTo = NULL, ExpirationModel = NULL) {
+kms_import_key_material <- function(KeyId, ImportToken, EncryptedKeyMaterial, ValidTo = NULL, ExpirationModel = NULL, ImportType = NULL, KeyMaterialDescription = NULL, KeyMaterialId = NULL) {
   op <- new_operation(
     name = "ImportKeyMaterial",
     http_method = "POST",
@@ -2490,7 +1748,7 @@ kms_import_key_material <- function(KeyId, ImportToken, EncryptedKeyMaterial, Va
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .kms$import_key_material_input(KeyId = KeyId, ImportToken = ImportToken, EncryptedKeyMaterial = EncryptedKeyMaterial, ValidTo = ValidTo, ExpirationModel = ExpirationModel)
+  input <- .kms$import_key_material_input(KeyId = KeyId, ImportToken = ImportToken, EncryptedKeyMaterial = EncryptedKeyMaterial, ValidTo = ValidTo, ExpirationModel = ExpirationModel, ImportType = ImportType, KeyMaterialDescription = KeyMaterialDescription, KeyMaterialId = KeyMaterialId)
   output <- .kms$import_key_material_output()
   config <- get_config()
   svc <- .kms$service(config, op)
@@ -2508,12 +1766,9 @@ kms_import_key_material <- function(KeyId, ImportToken, EncryptedKeyMaterial, Va
 #'
 #' See [https://www.paws-r-sdk.com/docs/kms_list_aliases/](https://www.paws-r-sdk.com/docs/kms_list_aliases/) for full documentation.
 #'
-#' @param KeyId Lists only aliases that are associated with the specified KMS key. Enter
-#' a KMS key in your Amazon Web Services account.
+#' @param KeyId Lists only aliases that are associated with the specified KMS key. Enter a KMS key in your Amazon Web Services account.
 #' 
-#' This parameter is optional. If you omit it,
-#' [`list_aliases`][kms_list_aliases] returns all aliases in the account
-#' and Region.
+#' This parameter is optional. If you omit it, [`list_aliases`][kms_list_aliases] returns all aliases in the account and Region.
 #' 
 #' Specify the key ID or key ARN of the KMS key.
 #' 
@@ -2521,20 +1776,13 @@ kms_import_key_material <- function(KeyId, ImportToken, EncryptedKeyMaterial, Va
 #' 
 #' -   Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
-#' -   Key ARN:
-#'     `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
+#' -   Key ARN: `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
-#' To get the key ID and key ARN for a KMS key, use
-#' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
-#' @param Limit Use this parameter to specify the maximum number of items to return.
-#' When this value is present, KMS does not return more than the specified
-#' number of items, but it might return fewer.
+#' To get the key ID and key ARN for a KMS key, use [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
+#' @param Limit Use this parameter to specify the maximum number of items to return. When this value is present, KMS does not return more than the specified number of items, but it might return fewer.
 #' 
-#' This value is optional. If you include a value, it must be between 1 and
-#' 100, inclusive. If you do not include a value, it defaults to 50.
-#' @param Marker Use this parameter in a subsequent request after you receive a response
-#' with truncated results. Set it to the value of `NextMarker` from the
-#' truncated response you just received.
+#' This value is optional. If you include a value, it must be between 1 and 100, inclusive. If you do not include a value, it defaults to 50.
+#' @param Marker Use this parameter in a subsequent request after you receive a response with truncated results. Set it to the value of `NextMarker` from the truncated response you just received.
 #'
 #' @keywords internal
 #'
@@ -2565,39 +1813,33 @@ kms_list_aliases <- function(KeyId = NULL, Limit = NULL, Marker = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/kms_list_grants/](https://www.paws-r-sdk.com/docs/kms_list_grants/) for full documentation.
 #'
-#' @param Limit Use this parameter to specify the maximum number of items to return.
-#' When this value is present, KMS does not return more than the specified
-#' number of items, but it might return fewer.
+#' @param Limit Use this parameter to specify the maximum number of items to return. When this value is present, KMS does not return more than the specified number of items, but it might return fewer.
 #' 
-#' This value is optional. If you include a value, it must be between 1 and
-#' 100, inclusive. If you do not include a value, it defaults to 50.
-#' @param Marker Use this parameter in a subsequent request after you receive a response
-#' with truncated results. Set it to the value of `NextMarker` from the
-#' truncated response you just received.
-#' @param KeyId &#91;required&#93; Returns only grants for the specified KMS key. This parameter is
-#' required.
+#' This value is optional. If you include a value, it must be between 1 and 100, inclusive. If you do not include a value, it defaults to 50.
+#' @param Marker Use this parameter in a subsequent request after you receive a response with truncated results. Set it to the value of `NextMarker` from the truncated response you just received.
+#' @param KeyId &#91;required&#93; Returns only grants for the specified KMS key. This parameter is required.
 #' 
-#' Specify the key ID or key ARN of the KMS key. To specify a KMS key in a
-#' different Amazon Web Services account, you must use the key ARN.
+#' Specify the key ID or key ARN of the KMS key. To specify a KMS key in a different Amazon Web Services account, you must use the key ARN.
 #' 
 #' For example:
 #' 
 #' -   Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
-#' -   Key ARN:
-#'     `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
+#' -   Key ARN: `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
-#' To get the key ID and key ARN for a KMS key, use
-#' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
-#' @param GrantId Returns only the grant with the specified grant ID. The grant ID
-#' uniquely identifies the grant.
-#' @param GranteePrincipal Returns only grants where the specified principal is the grantee
-#' principal for the grant.
+#' To get the key ID and key ARN for a KMS key, use [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
+#' @param GrantId Returns only the grant with the specified grant ID. The grant ID uniquely identifies the grant.
+#' @param GranteePrincipal Returns only grants where the specified principal is the grantee principal for the grant.
+#' 
+#' You can specify either `GranteePrincipal` or `GranteeServicePrincipal`, but not both.
+#' @param GranteeServicePrincipal Returns only grants where the specified Amazon Web Services service principal is the grantee service principal for the grant. This filter is only usable by callers in a service principal.
+#' 
+#' You can specify either `GranteePrincipal` or `GranteeServicePrincipal`, but not both.
 #'
 #' @keywords internal
 #'
 #' @rdname kms_list_grants
-kms_list_grants <- function(Limit = NULL, Marker = NULL, KeyId, GrantId = NULL, GranteePrincipal = NULL) {
+kms_list_grants <- function(Limit = NULL, Marker = NULL, KeyId, GrantId = NULL, GranteePrincipal = NULL, GranteeServicePrincipal = NULL) {
   op <- new_operation(
     name = "ListGrants",
     http_method = "POST",
@@ -2606,7 +1848,7 @@ kms_list_grants <- function(Limit = NULL, Marker = NULL, KeyId, GrantId = NULL, 
     paginator = list(limit_key = "Limit", input_token = "Marker", output_token = "NextMarker", more_results = "Truncated", result_key = "Grants"),
     stream_api = FALSE
   )
-  input <- .kms$list_grants_input(Limit = Limit, Marker = Marker, KeyId = KeyId, GrantId = GrantId, GranteePrincipal = GranteePrincipal)
+  input <- .kms$list_grants_input(Limit = Limit, Marker = Marker, KeyId = KeyId, GrantId = GrantId, GranteePrincipal = GranteePrincipal, GranteeServicePrincipal = GranteeServicePrincipal)
   output <- .kms$list_grants_output()
   config <- get_config()
   svc <- .kms$service(config, op)
@@ -2631,22 +1873,15 @@ kms_list_grants <- function(Limit = NULL, Marker = NULL, KeyId, GrantId = NULL, 
 #' 
 #' -   Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
-#' -   Key ARN:
-#'     `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
+#' -   Key ARN: `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
-#' To get the key ID and key ARN for a KMS key, use
-#' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
-#' @param Limit Use this parameter to specify the maximum number of items to return.
-#' When this value is present, KMS does not return more than the specified
-#' number of items, but it might return fewer.
+#' To get the key ID and key ARN for a KMS key, use [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
+#' @param Limit Use this parameter to specify the maximum number of items to return. When this value is present, KMS does not return more than the specified number of items, but it might return fewer.
 #' 
-#' This value is optional. If you include a value, it must be between 1 and
-#' 1000, inclusive. If you do not include a value, it defaults to 100.
+#' This value is optional. If you include a value, it must be between 1 and 1000, inclusive. If you do not include a value, it defaults to 100.
 #' 
 #' Only one policy can be attached to a key.
-#' @param Marker Use this parameter in a subsequent request after you receive a response
-#' with truncated results. Set it to the value of `NextMarker` from the
-#' truncated response you just received.
+#' @param Marker Use this parameter in a subsequent request after you receive a response with truncated results. Set it to the value of `NextMarker` from the truncated response you just received.
 #'
 #' @keywords internal
 #'
@@ -2670,11 +1905,11 @@ kms_list_key_policies <- function(KeyId, Limit = NULL, Marker = NULL) {
 }
 .kms$operations$list_key_policies <- kms_list_key_policies
 
-#' Returns information about all completed key material rotations for the
+#' Returns information about the key materials associated with the
 #' specified KMS key
 #'
 #' @description
-#' Returns information about all completed key material rotations for the specified KMS key.
+#' Returns information about the key materials associated with the specified KMS key. You can use the optional `IncludeKeyMaterial` parameter to control which key materials are included in the response.
 #'
 #' See [https://www.paws-r-sdk.com/docs/kms_list_key_rotations/](https://www.paws-r-sdk.com/docs/kms_list_key_rotations/) for full documentation.
 #'
@@ -2686,25 +1921,19 @@ kms_list_key_policies <- function(KeyId, Limit = NULL, Marker = NULL) {
 #' 
 #' -   Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
-#' -   Key ARN:
-#'     `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
+#' -   Key ARN: `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
-#' To get the key ID and key ARN for a KMS key, use
-#' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
-#' @param Limit Use this parameter to specify the maximum number of items to return.
-#' When this value is present, KMS does not return more than the specified
-#' number of items, but it might return fewer.
+#' To get the key ID and key ARN for a KMS key, use [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
+#' @param IncludeKeyMaterial Use this optional parameter to control which key materials associated with this key are listed in the response. The default value of this parameter is `ROTATIONS_ONLY`. If you omit this parameter, KMS returns information on the key materials created by automatic or on-demand key rotation. When you specify a value of `ALL_KEY_MATERIAL`, KMS adds the first key material and any imported key material pending rotation to the response. This parameter can only be used with KMS keys that support automatic or on-demand key rotation.
+#' @param Limit Use this parameter to specify the maximum number of items to return. When this value is present, KMS does not return more than the specified number of items, but it might return fewer.
 #' 
-#' This value is optional. If you include a value, it must be between 1 and
-#' 1000, inclusive. If you do not include a value, it defaults to 100.
-#' @param Marker Use this parameter in a subsequent request after you receive a response
-#' with truncated results. Set it to the value of `NextMarker` from the
-#' truncated response you just received.
+#' This value is optional. If you include a value, it must be between 1 and 1000, inclusive. If you do not include a value, it defaults to 100.
+#' @param Marker Use this parameter in a subsequent request after you receive a response with truncated results. Set it to the value of `NextMarker` from the truncated response you just received.
 #'
 #' @keywords internal
 #'
 #' @rdname kms_list_key_rotations
-kms_list_key_rotations <- function(KeyId, Limit = NULL, Marker = NULL) {
+kms_list_key_rotations <- function(KeyId, IncludeKeyMaterial = NULL, Limit = NULL, Marker = NULL) {
   op <- new_operation(
     name = "ListKeyRotations",
     http_method = "POST",
@@ -2713,7 +1942,7 @@ kms_list_key_rotations <- function(KeyId, Limit = NULL, Marker = NULL) {
     paginator = list(input_token = "Marker", limit_key = "Limit", more_results = "Truncated", output_token = "NextMarker", result_key = "Rotations"),
     stream_api = FALSE
   )
-  input <- .kms$list_key_rotations_input(KeyId = KeyId, Limit = Limit, Marker = Marker)
+  input <- .kms$list_key_rotations_input(KeyId = KeyId, IncludeKeyMaterial = IncludeKeyMaterial, Limit = Limit, Marker = Marker)
   output <- .kms$list_key_rotations_output()
   config <- get_config()
   svc <- .kms$service(config, op)
@@ -2731,15 +1960,10 @@ kms_list_key_rotations <- function(KeyId, Limit = NULL, Marker = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/kms_list_keys/](https://www.paws-r-sdk.com/docs/kms_list_keys/) for full documentation.
 #'
-#' @param Limit Use this parameter to specify the maximum number of items to return.
-#' When this value is present, KMS does not return more than the specified
-#' number of items, but it might return fewer.
+#' @param Limit Use this parameter to specify the maximum number of items to return. When this value is present, KMS does not return more than the specified number of items, but it might return fewer.
 #' 
-#' This value is optional. If you include a value, it must be between 1 and
-#' 1000, inclusive. If you do not include a value, it defaults to 100.
-#' @param Marker Use this parameter in a subsequent request after you receive a response
-#' with truncated results. Set it to the value of `NextMarker` from the
-#' truncated response you just received.
+#' This value is optional. If you include a value, it must be between 1 and 1000, inclusive. If you do not include a value, it defaults to 100.
+#' @param Marker Use this parameter in a subsequent request after you receive a response with truncated results. Set it to the value of `NextMarker` from the truncated response you just received.
 #'
 #' @keywords internal
 #'
@@ -2778,23 +2002,15 @@ kms_list_keys <- function(Limit = NULL, Marker = NULL) {
 #' 
 #' -   Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
-#' -   Key ARN:
-#'     `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
+#' -   Key ARN: `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
-#' To get the key ID and key ARN for a KMS key, use
-#' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
-#' @param Limit Use this parameter to specify the maximum number of items to return.
-#' When this value is present, KMS does not return more than the specified
-#' number of items, but it might return fewer.
+#' To get the key ID and key ARN for a KMS key, use [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
+#' @param Limit Use this parameter to specify the maximum number of items to return. When this value is present, KMS does not return more than the specified number of items, but it might return fewer.
 #' 
-#' This value is optional. If you include a value, it must be between 1 and
-#' 50, inclusive. If you do not include a value, it defaults to 50.
-#' @param Marker Use this parameter in a subsequent request after you receive a response
-#' with truncated results. Set it to the value of `NextMarker` from the
-#' truncated response you just received.
+#' This value is optional. If you include a value, it must be between 1 and 50, inclusive. If you do not include a value, it defaults to 50.
+#' @param Marker Use this parameter in a subsequent request after you receive a response with truncated results. Set it to the value of `NextMarker` from the truncated response you just received.
 #' 
-#' Do not attempt to construct this value. Use only the value of
-#' `NextMarker` from the truncated response you just received.
+#' Do not attempt to construct this value. Use only the value of `NextMarker` from the truncated response you just received.
 #'
 #' @keywords internal
 #'
@@ -2819,37 +2035,31 @@ kms_list_resource_tags <- function(KeyId, Limit = NULL, Marker = NULL) {
 .kms$operations$list_resource_tags <- kms_list_resource_tags
 
 #' Returns information about all grants in the Amazon Web Services account
-#' and Region that have the specified retiring principal
+#' and Region that have the specified retiring principal or retiring
+#' service principal
 #'
 #' @description
-#' Returns information about all grants in the Amazon Web Services account and Region that have the specified retiring principal.
+#' Returns information about all grants in the Amazon Web Services account and Region that have the specified retiring principal or retiring service principal.
 #'
 #' See [https://www.paws-r-sdk.com/docs/kms_list_retirable_grants/](https://www.paws-r-sdk.com/docs/kms_list_retirable_grants/) for full documentation.
 #'
-#' @param Limit Use this parameter to specify the maximum number of items to return.
-#' When this value is present, KMS does not return more than the specified
-#' number of items, but it might return fewer.
+#' @param Limit Use this parameter to specify the maximum number of items to return. When this value is present, KMS does not return more than the specified number of items, but it might return fewer.
 #' 
-#' This value is optional. If you include a value, it must be between 1 and
-#' 100, inclusive. If you do not include a value, it defaults to 50.
-#' @param Marker Use this parameter in a subsequent request after you receive a response
-#' with truncated results. Set it to the value of `NextMarker` from the
-#' truncated response you just received.
-#' @param RetiringPrincipal &#91;required&#93; The retiring principal for which to list grants. Enter a principal in
-#' your Amazon Web Services account.
+#' This value is optional. If you include a value, it must be between 1 and 100, inclusive. If you do not include a value, it defaults to 50.
+#' @param Marker Use this parameter in a subsequent request after you receive a response with truncated results. Set it to the value of `NextMarker` from the truncated response you just received.
+#' @param RetiringPrincipal The retiring principal for which to list grants. Enter a principal in your Amazon Web Services account.
 #' 
-#' To specify the retiring principal, use the [Amazon Resource Name
-#' (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
-#' of an Amazon Web Services principal. Valid principals include Amazon Web
-#' Services accounts, IAM users, IAM roles, federated users, and assumed
-#' role users. For help with the ARN syntax for a principal, see [IAM
-#' ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns)
-#' in the *Identity and Access Management User Guide* .
+#' To specify the retiring principal, use the [Amazon Resource Name (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html) of an Amazon Web Services principal. Valid principals include Amazon Web Services accounts, IAM users, IAM roles, federated users, and assumed role users. For help with the ARN syntax for a principal, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns) in the *Identity and Access Management User Guide* .
+#' 
+#' You must specify either `RetiringPrincipal` or `RetiringServicePrincipal`, but not both.
+#' @param RetiringServicePrincipal The retiring service principal for which to list grants. This filter is only usable by callers in a service principal.
+#' 
+#' You must specify either `RetiringPrincipal` or `RetiringServicePrincipal`, but not both.
 #'
 #' @keywords internal
 #'
 #' @rdname kms_list_retirable_grants
-kms_list_retirable_grants <- function(Limit = NULL, Marker = NULL, RetiringPrincipal) {
+kms_list_retirable_grants <- function(Limit = NULL, Marker = NULL, RetiringPrincipal = NULL, RetiringServicePrincipal = NULL) {
   op <- new_operation(
     name = "ListRetirableGrants",
     http_method = "POST",
@@ -2858,7 +2068,7 @@ kms_list_retirable_grants <- function(Limit = NULL, Marker = NULL, RetiringPrinc
     paginator = list(input_token = "Marker", limit_key = "Limit", more_results = "Truncated", output_token = "NextMarker", result_key = "Grants"),
     stream_api = FALSE
   )
-  input <- .kms$list_retirable_grants_input(Limit = Limit, Marker = Marker, RetiringPrincipal = RetiringPrincipal)
+  input <- .kms$list_retirable_grants_input(Limit = Limit, Marker = Marker, RetiringPrincipal = RetiringPrincipal, RetiringServicePrincipal = RetiringServicePrincipal)
   output <- .kms$list_retirable_grants_output()
   config <- get_config()
   svc <- .kms$service(config, op)
@@ -2883,66 +2093,40 @@ kms_list_retirable_grants <- function(Limit = NULL, Marker = NULL, RetiringPrinc
 #' 
 #' -   Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
-#' -   Key ARN:
-#'     `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
+#' -   Key ARN: `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
-#' To get the key ID and key ARN for a KMS key, use
-#' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
-#' @param PolicyName The name of the key policy. If no policy name is specified, the default
-#' value is `default`. The only valid value is `default`.
+#' To get the key ID and key ARN for a KMS key, use [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
+#' @param PolicyName The name of the key policy. If no policy name is specified, the default value is `default`. The only valid value is `default`.
 #' @param Policy &#91;required&#93; The key policy to attach to the KMS key.
 #' 
 #' The key policy must meet the following criteria:
 #' 
-#' -   The key policy must allow the calling principal to make a subsequent
-#'     [`put_key_policy`][kms_put_key_policy] request on the KMS key. This
-#'     reduces the risk that the KMS key becomes unmanageable. For more
-#'     information, see [Default key
-#'     policy](https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-default.html#prevent-unmanageable-key)
-#'     in the *Key Management Service Developer Guide*. (To omit this
-#'     condition, set `BypassPolicyLockoutSafetyCheck` to true.)
+#' -   The key policy must allow the calling principal to make a subsequent [`put_key_policy`][kms_put_key_policy] request on the KMS key. This reduces the risk that the KMS key becomes unmanageable. For more information, see [Default key policy](https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-default.html#prevent-unmanageable-key) in the *Key Management Service Developer Guide*. (To omit this condition, set `BypassPolicyLockoutSafetyCheck` to true.)
 #' 
-#' -   Each statement in the key policy must contain one or more
-#'     principals. The principals in the key policy must exist and be
-#'     visible to KMS. When you create a new Amazon Web Services principal,
-#'     you might need to enforce a delay before including the new principal
-#'     in a key policy because the new principal might not be immediately
-#'     visible to KMS. For more information, see [Changes that I make are
-#'     not always immediately
-#'     visible](https://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot.html#troubleshoot_general_eventual-consistency)
-#'     in the *Amazon Web Services Identity and Access Management User
-#'     Guide*.
+#' -   Each statement in the key policy must contain one or more principals. The principals in the key policy must exist and be visible to KMS. When you create a new Amazon Web Services principal, you might need to enforce a delay before including the new principal in a key policy because the new principal might not be immediately visible to KMS. For more information, see [Changes that I make are not always immediately visible](https://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot.html#troubleshoot_general_eventual-consistency) in the *Amazon Web Services Identity and Access Management User Guide*.
+#' 
+#' If either of the required `Resource` or `Action` elements are missing from a key policy statement, the policy statement has no effect. When a key policy statement is missing one of these elements, the KMS console correctly reports an error, but the [`put_key_policy`][kms_put_key_policy] API request succeeds, even though the policy statement is ineffective.
+#' 
+#' For more information on required key policy elements, see [Elements in a key policy](https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-overview.html#key-policy-elements) in the *Key Management Service Developer Guide*.
 #' 
 #' A key policy document can include only the following characters:
 #' 
-#' -   Printable ASCII characters from the space character (``U+0020``)
-#'     through the end of the ASCII character range.
+#' -   Printable ASCII characters from the space character (``U+0020``) through the end of the ASCII character range.
 #' 
-#' -   Printable characters in the Basic Latin and Latin-1 Supplement
-#'     character set (through ``U+00FF``).
+#' -   Printable characters in the Basic Latin and Latin-1 Supplement character set (through ``U+00FF``).
 #' 
-#' -   The tab (``U+0009``), line feed (``U+000A``), and carriage return
-#'     (``U+000D``) special characters
+#' -   The tab (``U+0009``), line feed (``U+000A``), and carriage return (``U+000D``) special characters
 #' 
-#' For information about key policies, see [Key policies in
-#' KMS](https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html)
-#' in the *Key Management Service Developer Guide*.For help writing and
-#' formatting a JSON policy document, see the [IAM JSON Policy
-#' Reference](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies.html)
-#' in the *Identity and Access Management User Guide* .
-#' @param BypassPolicyLockoutSafetyCheck Skips ("bypasses") the key policy lockout safety check. The default
-#' value is false.
+#' If the key policy exceeds the length constraint, KMS returns a `LimitExceededException`.
 #' 
-#' Setting this value to true increases the risk that the KMS key becomes
-#' unmanageable. Do not set this value to true indiscriminately.
+#' For information about key policies, see [Key policies in KMS](https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html) in the *Key Management Service Developer Guide*.For help writing and formatting a JSON policy document, see the [IAM JSON Policy Reference](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies.html) in the *Identity and Access Management User Guide* .
+#' @param BypassPolicyLockoutSafetyCheck Skips ("bypasses") the key policy lockout safety check. The default value is false.
 #' 
-#' For more information, see [Default key
-#' policy](https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-default.html#prevent-unmanageable-key)
-#' in the *Key Management Service Developer Guide*.
+#' Setting this value to true increases the risk that the KMS key becomes unmanageable. Do not set this value to true indiscriminately.
 #' 
-#' Use this parameter only when you intend to prevent the principal that is
-#' making the request from making a subsequent
-#' [`put_key_policy`][kms_put_key_policy] request on the KMS key.
+#' For more information, see [Default key policy](https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-default.html#prevent-unmanageable-key) in the *Key Management Service Developer Guide*.
+#' 
+#' Use this parameter only when you intend to prevent the principal that is making the request from making a subsequent [`put_key_policy`][kms_put_key_policy] request on the KMS key.
 #'
 #' @keywords internal
 #'
@@ -2969,139 +2153,85 @@ kms_put_key_policy <- function(KeyId, PolicyName = NULL, Policy, BypassPolicyLoc
 #' Decrypts ciphertext and then reencrypts it entirely within KMS
 #'
 #' @description
-#' Decrypts ciphertext and then reencrypts it entirely within KMS. You can use this operation to change the KMS key under which data is encrypted, such as when you [manually rotate](https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html#rotate-keys-manually) a KMS key or change the KMS key that protects a ciphertext. You can also use it to reencrypt ciphertext under the same KMS key, such as to change the [encryption context](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context) of a ciphertext.
+#' Decrypts ciphertext and then reencrypts it entirely within KMS. You can use this operation to change the KMS key under which data is encrypted, such as when you [manually rotate](https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys-manually.html) a KMS key or change the KMS key that protects a ciphertext. You can also use it to reencrypt ciphertext under the same KMS key, such as to change the [encryption context](https://docs.aws.amazon.com/kms/latest/developerguide/encrypt_context.html) of a ciphertext.
 #'
 #' See [https://www.paws-r-sdk.com/docs/kms_re_encrypt/](https://www.paws-r-sdk.com/docs/kms_re_encrypt/) for full documentation.
 #'
-#' @param CiphertextBlob &#91;required&#93; Ciphertext of the data to reencrypt.
-#' @param SourceEncryptionContext Specifies the encryption context to use to decrypt the ciphertext. Enter
-#' the same encryption context that was used to encrypt the ciphertext.
+#' @param CiphertextBlob Ciphertext of the data to reencrypt.
 #' 
-#' An *encryption context* is a collection of non-secret key-value pairs
-#' that represent additional authenticated data. When you use an encryption
-#' context to encrypt data, you must specify the same (an exact
-#' case-sensitive match) encryption context to decrypt the data. An
-#' encryption context is supported only on operations with symmetric
-#' encryption KMS keys. On operations with symmetric encryption KMS keys,
-#' an encryption context is optional, but it is strongly recommended.
+#' This parameter is required in all cases except when `DryRun` is `true` and `DryRunModifiers` is set to `IGNORE_CIPHERTEXT`.
+#' @param SourceEncryptionContext Specifies the encryption context to use to decrypt the ciphertext. Enter the same encryption context that was used to encrypt the ciphertext.
 #' 
-#' For more information, see [Encryption
-#' context](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context)
-#' in the *Key Management Service Developer Guide*.
-#' @param SourceKeyId Specifies the KMS key that KMS will use to decrypt the ciphertext before
-#' it is re-encrypted.
+#' An *encryption context* is a collection of non-secret key-value pairs that represent additional authenticated data. When you use an encryption context to encrypt data, you must specify the same (an exact case-sensitive match) encryption context to decrypt the data. An encryption context is supported only on operations with symmetric encryption KMS keys. On operations with symmetric encryption KMS keys, an encryption context is optional, but it is strongly recommended.
 #' 
-#' Enter a key ID of the KMS key that was used to encrypt the ciphertext.
-#' If you identify a different KMS key, the [`re_encrypt`][kms_re_encrypt]
-#' operation throws an `IncorrectKeyException`.
+#' For more information, see [Encryption context](https://docs.aws.amazon.com/kms/latest/developerguide/encrypt_context.html) in the *Key Management Service Developer Guide*.
+#' @param SourceKeyId Specifies the KMS key that KMS will use to decrypt the ciphertext before it is re-encrypted.
 #' 
-#' This parameter is required only when the ciphertext was encrypted under
-#' an asymmetric KMS key. If you used a symmetric encryption KMS key, KMS
-#' can get the KMS key from metadata that it adds to the symmetric
-#' ciphertext blob. However, it is always recommended as a best practice.
-#' This practice ensures that you use the KMS key that you intend.
+#' Enter a key ID of the KMS key that was used to encrypt the ciphertext. If you identify a different KMS key, the [`re_encrypt`][kms_re_encrypt] operation throws an `IncorrectKeyException`.
 #' 
-#' To specify a KMS key, use its key ID, key ARN, alias name, or alias ARN.
-#' When using an alias name, prefix it with `"alias/"`. To specify a KMS
-#' key in a different Amazon Web Services account, you must use the key ARN
-#' or alias ARN.
+#' This parameter is required only when the ciphertext was encrypted under an asymmetric KMS key or when `DryRun` is `true` and `DryRunModifiers` is set to `IGNORE_CIPHERTEXT`. If you used a symmetric encryption KMS key, KMS can get the KMS key from metadata that it adds to the symmetric ciphertext blob. However, it is always recommended as a best practice. This practice ensures that you use the KMS key that you intend.
+#' 
+#' To specify a KMS key, use its key ID, key ARN, alias name, or alias ARN. When using an alias name, prefix it with `"alias/"`. To specify a KMS key in a different Amazon Web Services account, you should use the key ARN or alias ARN.
 #' 
 #' For example:
 #' 
 #' -   Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
-#' -   Key ARN:
-#'     `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
+#' -   Key ARN: `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
 #' -   Alias name: `alias/ExampleAlias`
 #' 
 #' -   Alias ARN: `arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias`
 #' 
-#' To get the key ID and key ARN for a KMS key, use
-#' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key]. To
-#' get the alias name and alias ARN, use
-#' [`list_aliases`][kms_list_aliases].
-#' @param DestinationKeyId &#91;required&#93; A unique identifier for the KMS key that is used to reencrypt the data.
-#' Specify a symmetric encryption KMS key or an asymmetric KMS key with a
-#' `KeyUsage` value of `ENCRYPT_DECRYPT`. To find the `KeyUsage` value of a
-#' KMS key, use the [`describe_key`][kms_describe_key] operation.
+#' To get the key ID and key ARN for a KMS key, use [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key]. To get the alias name and alias ARN, use [`list_aliases`][kms_list_aliases].
+#' @param DestinationKeyId &#91;required&#93; A unique identifier for the KMS key that is used to reencrypt the data. Specify a symmetric encryption KMS key or an asymmetric KMS key with a `KeyUsage` value of `ENCRYPT_DECRYPT`. To find the `KeyUsage` value of a KMS key, use the [`describe_key`][kms_describe_key] operation.
 #' 
-#' To specify a KMS key, use its key ID, key ARN, alias name, or alias ARN.
-#' When using an alias name, prefix it with `"alias/"`. To specify a KMS
-#' key in a different Amazon Web Services account, you must use the key ARN
-#' or alias ARN.
+#' To specify a KMS key, use its key ID, key ARN, alias name, or alias ARN. When using an alias name, prefix it with `"alias/"`. To specify a KMS key in a different Amazon Web Services account, you must use the key ARN or alias ARN.
 #' 
 #' For example:
 #' 
 #' -   Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
-#' -   Key ARN:
-#'     `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
+#' -   Key ARN: `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
 #' -   Alias name: `alias/ExampleAlias`
 #' 
 #' -   Alias ARN: `arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias`
 #' 
-#' To get the key ID and key ARN for a KMS key, use
-#' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key]. To
-#' get the alias name and alias ARN, use
-#' [`list_aliases`][kms_list_aliases].
+#' To get the key ID and key ARN for a KMS key, use [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key]. To get the alias name and alias ARN, use [`list_aliases`][kms_list_aliases].
 #' @param DestinationEncryptionContext Specifies that encryption context to use when the reencrypting the data.
 #' 
-#' Do not include confidential or sensitive information in this field. This
-#' field may be displayed in plaintext in CloudTrail logs and other output.
+#' Do not include confidential or sensitive information in this field. This field may be displayed in plaintext in CloudTrail logs and other output.
 #' 
-#' A destination encryption context is valid only when the destination KMS
-#' key is a symmetric encryption KMS key. The standard ciphertext format
-#' for asymmetric KMS keys does not include fields for metadata.
+#' A destination encryption context is valid only when the destination KMS key is a symmetric encryption KMS key. The standard ciphertext format for asymmetric KMS keys does not include fields for metadata.
 #' 
-#' An *encryption context* is a collection of non-secret key-value pairs
-#' that represent additional authenticated data. When you use an encryption
-#' context to encrypt data, you must specify the same (an exact
-#' case-sensitive match) encryption context to decrypt the data. An
-#' encryption context is supported only on operations with symmetric
-#' encryption KMS keys. On operations with symmetric encryption KMS keys,
-#' an encryption context is optional, but it is strongly recommended.
+#' An *encryption context* is a collection of non-secret key-value pairs that represent additional authenticated data. When you use an encryption context to encrypt data, you must specify the same (an exact case-sensitive match) encryption context to decrypt the data. An encryption context is supported only on operations with symmetric encryption KMS keys. On operations with symmetric encryption KMS keys, an encryption context is optional, but it is strongly recommended.
 #' 
-#' For more information, see [Encryption
-#' context](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context)
-#' in the *Key Management Service Developer Guide*.
-#' @param SourceEncryptionAlgorithm Specifies the encryption algorithm that KMS will use to decrypt the
-#' ciphertext before it is reencrypted. The default value,
-#' `SYMMETRIC_DEFAULT`, represents the algorithm used for symmetric
-#' encryption KMS keys.
+#' For more information, see [Encryption context](https://docs.aws.amazon.com/kms/latest/developerguide/encrypt_context.html) in the *Key Management Service Developer Guide*.
+#' @param SourceEncryptionAlgorithm Specifies the encryption algorithm that KMS will use to decrypt the ciphertext before it is reencrypted. The default value, `SYMMETRIC_DEFAULT`, represents the algorithm used for symmetric encryption KMS keys.
 #' 
-#' Specify the same algorithm that was used to encrypt the ciphertext. If
-#' you specify a different algorithm, the decrypt attempt fails.
+#' Specify the same algorithm that was used to encrypt the ciphertext. If you specify a different algorithm, the decrypt attempt fails.
 #' 
-#' This parameter is required only when the ciphertext was encrypted under
-#' an asymmetric KMS key.
-#' @param DestinationEncryptionAlgorithm Specifies the encryption algorithm that KMS will use to reecrypt the
-#' data after it has decrypted it. The default value, `SYMMETRIC_DEFAULT`,
-#' represents the encryption algorithm used for symmetric encryption KMS
-#' keys.
+#' This parameter is required only when the ciphertext was encrypted under an asymmetric KMS key.
+#' @param DestinationEncryptionAlgorithm Specifies the encryption algorithm that KMS will use to reecrypt the data after it has decrypted it. The default value, `SYMMETRIC_DEFAULT`, represents the encryption algorithm used for symmetric encryption KMS keys.
 #' 
-#' This parameter is required only when the destination KMS key is an
-#' asymmetric KMS key.
+#' This parameter is required only when the destination KMS key is an asymmetric KMS key.
 #' @param GrantTokens A list of grant tokens.
 #' 
-#' Use a grant token when your permission to call this operation comes from
-#' a new grant that has not yet achieved *eventual consistency*. For more
-#' information, see [Grant
-#' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token)
-#' and [Using a grant
-#' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#using-grant-token)
-#' in the *Key Management Service Developer Guide*.
+#' Use a grant token when your permission to call this operation comes from a new grant that has not yet achieved *eventual consistency*. For more information, see [Grant token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token) and [Using a grant token](https://docs.aws.amazon.com/kms/latest/developerguide/using-grant-token.html) in the *Key Management Service Developer Guide*.
 #' @param DryRun Checks if your request will succeed. `DryRun` is an optional parameter.
 #' 
-#' To learn more about how to use this parameter, see [Testing your KMS API
-#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html)
-#' in the *Key Management Service Developer Guide*.
+#' To learn more about how to use this parameter, see [Testing your permissions](https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html) in the *Key Management Service Developer Guide*.
+#' @param DryRunModifiers Specifies the modifiers to apply to the dry run operation. `DryRunModifiers` is an optional parameter that only applies when `DryRun` is set to `true`.
+#' 
+#' When set to `IGNORE_CIPHERTEXT`, KMS performs only authorization validation without ciphertext validation. This allows you to test permissions without requiring a valid ciphertext blob.
+#' 
+#' To learn more about how to use this parameter, see [Testing your permissions](https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html) in the *Key Management Service Developer Guide*.
 #'
 #' @keywords internal
 #'
 #' @rdname kms_re_encrypt
-kms_re_encrypt <- function(CiphertextBlob, SourceEncryptionContext = NULL, SourceKeyId = NULL, DestinationKeyId, DestinationEncryptionContext = NULL, SourceEncryptionAlgorithm = NULL, DestinationEncryptionAlgorithm = NULL, GrantTokens = NULL, DryRun = NULL) {
+kms_re_encrypt <- function(CiphertextBlob = NULL, SourceEncryptionContext = NULL, SourceKeyId = NULL, DestinationKeyId, DestinationEncryptionContext = NULL, SourceEncryptionAlgorithm = NULL, DestinationEncryptionAlgorithm = NULL, GrantTokens = NULL, DryRun = NULL, DryRunModifiers = NULL) {
   op <- new_operation(
     name = "ReEncrypt",
     http_method = "POST",
@@ -3110,7 +2240,7 @@ kms_re_encrypt <- function(CiphertextBlob, SourceEncryptionContext = NULL, Sourc
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .kms$re_encrypt_input(CiphertextBlob = CiphertextBlob, SourceEncryptionContext = SourceEncryptionContext, SourceKeyId = SourceKeyId, DestinationKeyId = DestinationKeyId, DestinationEncryptionContext = DestinationEncryptionContext, SourceEncryptionAlgorithm = SourceEncryptionAlgorithm, DestinationEncryptionAlgorithm = DestinationEncryptionAlgorithm, GrantTokens = GrantTokens, DryRun = DryRun)
+  input <- .kms$re_encrypt_input(CiphertextBlob = CiphertextBlob, SourceEncryptionContext = SourceEncryptionContext, SourceKeyId = SourceKeyId, DestinationKeyId = DestinationKeyId, DestinationEncryptionContext = DestinationEncryptionContext, SourceEncryptionAlgorithm = SourceEncryptionAlgorithm, DestinationEncryptionAlgorithm = DestinationEncryptionAlgorithm, GrantTokens = GrantTokens, DryRun = DryRun, DryRunModifiers = DryRunModifiers)
   output <- .kms$re_encrypt_output()
   config <- get_config()
   svc <- .kms$service(config, op)
@@ -3127,10 +2257,7 @@ kms_re_encrypt <- function(CiphertextBlob, SourceEncryptionContext = NULL, Sourc
 #'
 #' See [https://www.paws-r-sdk.com/docs/kms_replicate_key/](https://www.paws-r-sdk.com/docs/kms_replicate_key/) for full documentation.
 #'
-#' @param KeyId &#91;required&#93; Identifies the multi-Region primary key that is being replicated. To
-#' determine whether a KMS key is a multi-Region primary key, use the
-#' [`describe_key`][kms_describe_key] operation to check the value of the
-#' `MultiRegionKeyType` property.
+#' @param KeyId &#91;required&#93; Identifies the multi-Region primary key that is being replicated. To determine whether a KMS key is a multi-Region primary key, use the [`describe_key`][kms_describe_key] operation to check the value of the `MultiRegionKeyType` property.
 #' 
 #' Specify the key ID or key ARN of a multi-Region primary key.
 #' 
@@ -3138,143 +2265,58 @@ kms_re_encrypt <- function(CiphertextBlob, SourceEncryptionContext = NULL, Sourc
 #' 
 #' -   Key ID: `mrk-1234abcd12ab34cd56ef1234567890ab`
 #' 
-#' -   Key ARN:
-#'     `arn:aws:kms:us-east-2:111122223333:key/mrk-1234abcd12ab34cd56ef1234567890ab`
+#' -   Key ARN: `arn:aws:kms:us-east-2:111122223333:key/mrk-1234abcd12ab34cd56ef1234567890ab`
 #' 
-#' To get the key ID and key ARN for a KMS key, use
-#' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
+#' To get the key ID and key ARN for a KMS key, use [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
 #' @param ReplicaRegion &#91;required&#93; The Region ID of the Amazon Web Services Region for this replica key.
 #' 
-#' Enter the Region ID, such as `us-east-1` or `ap-southeast-2`. For a list
-#' of Amazon Web Services Regions in which KMS is supported, see [KMS
-#' service
-#' endpoints](https://docs.aws.amazon.com/general/latest/gr/kms.html#kms_region)
-#' in the *Amazon Web Services General Reference*.
+#' Enter the Region ID, such as `us-east-1` or `ap-southeast-2`. For a list of Amazon Web Services Regions in which KMS is supported, see [KMS service endpoints](https://docs.aws.amazon.com/general/latest/gr/kms.html#kms_region) in the *Amazon Web Services General Reference*.
 #' 
-#' HMAC KMS keys are not supported in all Amazon Web Services Regions. If
-#' you try to replicate an HMAC KMS key in an Amazon Web Services Region in
-#' which HMAC keys are not supported, the
-#' [`replicate_key`][kms_replicate_key] operation returns an
-#' `UnsupportedOperationException`. For a list of Regions in which HMAC KMS
-#' keys are supported, see [HMAC keys in
-#' KMS](https://docs.aws.amazon.com/kms/latest/developerguide/hmac.html) in
-#' the *Key Management Service Developer Guide*.
+#' The replica must be in a different Amazon Web Services Region than its primary key and other replicas of that primary key, but in the same Amazon Web Services partition. KMS must be available in the replica Region. If the Region is not enabled by default, the Amazon Web Services account must be enabled in the Region. For information about Amazon Web Services partitions, see [Amazon Resource Names (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html) in the *Amazon Web Services General Reference*. For information about enabling and disabling Regions, see [Enabling a Region](https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-regions.html#rande-manage-enable) and [Disabling a Region](https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-regions.html#rande-manage-disable) in the *Amazon Web Services General Reference*.
+#' @param Policy The key policy to attach to the KMS key. This parameter is optional. If you do not provide a key policy, KMS attaches the [default key policy](https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-default.html) to the KMS key.
 #' 
-#' The replica must be in a different Amazon Web Services Region than its
-#' primary key and other replicas of that primary key, but in the same
-#' Amazon Web Services partition. KMS must be available in the replica
-#' Region. If the Region is not enabled by default, the Amazon Web Services
-#' account must be enabled in the Region. For information about Amazon Web
-#' Services partitions, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
-#' in the *Amazon Web Services General Reference*. For information about
-#' enabling and disabling Regions, see [Enabling a
-#' Region](https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-regions.html#rande-manage-enable)
-#' and [Disabling a
-#' Region](https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-regions.html#rande-manage-disable)
-#' in the *Amazon Web Services General Reference*.
-#' @param Policy The key policy to attach to the KMS key. This parameter is optional. If
-#' you do not provide a key policy, KMS attaches the [default key
-#' policy](https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default)
-#' to the KMS key.
-#' 
-#' The key policy is not a shared property of multi-Region keys. You can
-#' specify the same key policy or a different key policy for each key in a
-#' set of related multi-Region keys. KMS does not synchronize this
-#' property.
+#' The key policy is not a shared property of multi-Region keys. You can specify the same key policy or a different key policy for each key in a set of related multi-Region keys. KMS does not synchronize this property.
 #' 
 #' If you provide a key policy, it must meet the following criteria:
 #' 
-#' -   The key policy must allow the calling principal to make a subsequent
-#'     [`put_key_policy`][kms_put_key_policy] request on the KMS key. This
-#'     reduces the risk that the KMS key becomes unmanageable. For more
-#'     information, see [Default key
-#'     policy](https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-default.html#prevent-unmanageable-key)
-#'     in the *Key Management Service Developer Guide*. (To omit this
-#'     condition, set `BypassPolicyLockoutSafetyCheck` to true.)
+#' -   The key policy must allow the calling principal to make a subsequent [`put_key_policy`][kms_put_key_policy] request on the KMS key. This reduces the risk that the KMS key becomes unmanageable. For more information, see [Default key policy](https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-default.html#prevent-unmanageable-key) in the *Key Management Service Developer Guide*. (To omit this condition, set `BypassPolicyLockoutSafetyCheck` to true.)
 #' 
-#' -   Each statement in the key policy must contain one or more
-#'     principals. The principals in the key policy must exist and be
-#'     visible to KMS. When you create a new Amazon Web Services principal,
-#'     you might need to enforce a delay before including the new principal
-#'     in a key policy because the new principal might not be immediately
-#'     visible to KMS. For more information, see [Changes that I make are
-#'     not always immediately
-#'     visible](https://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot.html#troubleshoot_general_eventual-consistency)
-#'     in the *Amazon Web Services Identity and Access Management User
-#'     Guide*.
+#' -   Each statement in the key policy must contain one or more principals. The principals in the key policy must exist and be visible to KMS. When you create a new Amazon Web Services principal, you might need to enforce a delay before including the new principal in a key policy because the new principal might not be immediately visible to KMS. For more information, see [Changes that I make are not always immediately visible](https://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot.html#troubleshoot_general_eventual-consistency) in the *Amazon Web Services Identity and Access Management User Guide*.
 #' 
 #' A key policy document can include only the following characters:
 #' 
-#' -   Printable ASCII characters from the space character (``U+0020``)
-#'     through the end of the ASCII character range.
+#' -   Printable ASCII characters from the space character (``U+0020``) through the end of the ASCII character range.
 #' 
-#' -   Printable characters in the Basic Latin and Latin-1 Supplement
-#'     character set (through ``U+00FF``).
+#' -   Printable characters in the Basic Latin and Latin-1 Supplement character set (through ``U+00FF``).
 #' 
-#' -   The tab (``U+0009``), line feed (``U+000A``), and carriage return
-#'     (``U+000D``) special characters
+#' -   The tab (``U+0009``), line feed (``U+000A``), and carriage return (``U+000D``) special characters
 #' 
-#' For information about key policies, see [Key policies in
-#' KMS](https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html)
-#' in the *Key Management Service Developer Guide*. For help writing and
-#' formatting a JSON policy document, see the [IAM JSON Policy
-#' Reference](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies.html)
-#' in the *Identity and Access Management User Guide* .
-#' @param BypassPolicyLockoutSafetyCheck Skips ("bypasses") the key policy lockout safety check. The default
-#' value is false.
+#' For information about key policies, see [Key policies in KMS](https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html) in the *Key Management Service Developer Guide*. For help writing and formatting a JSON policy document, see the [IAM JSON Policy Reference](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies.html) in the *Identity and Access Management User Guide* .
+#' @param BypassPolicyLockoutSafetyCheck Skips ("bypasses") the key policy lockout safety check. The default value is false.
 #' 
-#' Setting this value to true increases the risk that the KMS key becomes
-#' unmanageable. Do not set this value to true indiscriminately.
+#' Setting this value to true increases the risk that the KMS key becomes unmanageable. Do not set this value to true indiscriminately.
 #' 
-#' For more information, see [Default key
-#' policy](https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-default.html#prevent-unmanageable-key)
-#' in the *Key Management Service Developer Guide*.
+#' For more information, see [Default key policy](https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-default.html#prevent-unmanageable-key) in the *Key Management Service Developer Guide*.
 #' 
-#' Use this parameter only when you intend to prevent the principal that is
-#' making the request from making a subsequent
-#' [`put_key_policy`][kms_put_key_policy] request on the KMS key.
-#' @param Description A description of the KMS key. The default value is an empty string (no
-#' description).
+#' Use this parameter only when you intend to prevent the principal that is making the request from making a subsequent [`put_key_policy`][kms_put_key_policy] request on the KMS key.
+#' @param Description A description of the KMS key. The default value is an empty string (no description).
 #' 
-#' Do not include confidential or sensitive information in this field. This
-#' field may be displayed in plaintext in CloudTrail logs and other output.
+#' Do not include confidential or sensitive information in this field. This field may be displayed in plaintext in CloudTrail logs and other output.
 #' 
-#' The description is not a shared property of multi-Region keys. You can
-#' specify the same description or a different description for each key in
-#' a set of related multi-Region keys. KMS does not synchronize this
-#' property.
-#' @param Tags Assigns one or more tags to the replica key. Use this parameter to tag
-#' the KMS key when it is created. To tag an existing KMS key, use the
-#' [`tag_resource`][kms_tag_resource] operation.
+#' The description is not a shared property of multi-Region keys. You can specify the same description or a different description for each key in a set of related multi-Region keys. KMS does not synchronize this property.
+#' @param Tags Assigns one or more tags to the replica key. Use this parameter to tag the KMS key when it is created. To tag an existing KMS key, use the [`tag_resource`][kms_tag_resource] operation.
 #' 
-#' Do not include confidential or sensitive information in this field. This
-#' field may be displayed in plaintext in CloudTrail logs and other output.
+#' Do not include confidential or sensitive information in this field. This field may be displayed in plaintext in CloudTrail logs and other output.
 #' 
-#' Tagging or untagging a KMS key can allow or deny permission to the KMS
-#' key. For details, see [ABAC for
-#' KMS](https://docs.aws.amazon.com/kms/latest/developerguide/abac.html) in
-#' the *Key Management Service Developer Guide*.
+#' Tagging or untagging a KMS key can allow or deny permission to the KMS key. For details, see [ABAC for KMS](https://docs.aws.amazon.com/kms/latest/developerguide/abac.html) in the *Key Management Service Developer Guide*.
 #' 
-#' To use this parameter, you must have
-#' [kms:TagResource](https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html)
-#' permission in an IAM policy.
+#' To use this parameter, you must have [kms:TagResource](https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html) permission in an IAM policy.
 #' 
-#' Tags are not a shared property of multi-Region keys. You can specify the
-#' same tags or different tags for each key in a set of related
-#' multi-Region keys. KMS does not synchronize this property.
+#' Tags are not a shared property of multi-Region keys. You can specify the same tags or different tags for each key in a set of related multi-Region keys. KMS does not synchronize this property.
 #' 
-#' Each tag consists of a tag key and a tag value. Both the tag key and the
-#' tag value are required, but the tag value can be an empty (null) string.
-#' You cannot have more than one tag on a KMS key with the same tag key. If
-#' you specify an existing tag key with a different tag value, KMS replaces
-#' the current tag value with the specified one.
+#' Each tag consists of a tag key and a tag value. Both the tag key and the tag value are required, but the tag value can be an empty (null) string. You cannot have more than one tag on a KMS key with the same tag key. If you specify an existing tag key with a different tag value, KMS replaces the current tag value with the specified one.
 #' 
-#' When you add tags to an Amazon Web Services resource, Amazon Web
-#' Services generates a cost allocation report with usage and costs
-#' aggregated by tags. Tags can also be used to control access to a KMS
-#' key. For details, see [Tagging
-#' Keys](https://docs.aws.amazon.com/kms/latest/developerguide/tagging-keys.html).
+#' When you add tags to an Amazon Web Services resource, Amazon Web Services generates a cost allocation report with usage and costs aggregated by tags. Tags can also be used to control access to a KMS key. For details, see [Tags in KMS](https://docs.aws.amazon.com/kms/latest/developerguide/tagging-keys.html).
 #'
 #' @keywords internal
 #'
@@ -3305,31 +2347,18 @@ kms_replicate_key <- function(KeyId, ReplicaRegion, Policy = NULL, BypassPolicyL
 #'
 #' See [https://www.paws-r-sdk.com/docs/kms_retire_grant/](https://www.paws-r-sdk.com/docs/kms_retire_grant/) for full documentation.
 #'
-#' @param GrantToken Identifies the grant to be retired. You can use a grant token to
-#' identify a new grant even before it has achieved eventual consistency.
+#' @param GrantToken Identifies the grant to be retired. You can use a grant token to identify a new grant even before it has achieved eventual consistency.
 #' 
-#' Only the [`create_grant`][kms_create_grant] operation returns a grant
-#' token. For details, see [Grant
-#' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token)
-#' and [Eventual
-#' consistency](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#terms-eventual-consistency)
-#' in the *Key Management Service Developer Guide*.
-#' @param KeyId The key ARN KMS key associated with the grant. To find the key ARN, use
-#' the [`list_keys`][kms_list_keys] operation.
+#' Only the [`create_grant`][kms_create_grant] operation returns a grant token. For details, see [Grant token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token) and [Eventual consistency](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#terms-eventual-consistency) in the *Key Management Service Developer Guide*.
+#' @param KeyId The key ARN KMS key associated with the grant. To find the key ARN, use the [`list_keys`][kms_list_keys] operation.
 #' 
-#' For example:
-#' `arn:aws:kms:us-east-2:444455556666:key/1234abcd-12ab-34cd-56ef-1234567890ab`
-#' @param GrantId Identifies the grant to retire. To get the grant ID, use
-#' [`create_grant`][kms_create_grant], [`list_grants`][kms_list_grants], or
-#' [`list_retirable_grants`][kms_list_retirable_grants].
+#' For example: `arn:aws:kms:us-east-2:444455556666:key/1234abcd-12ab-34cd-56ef-1234567890ab`
+#' @param GrantId Identifies the grant to retire. To get the grant ID, use [`create_grant`][kms_create_grant], [`list_grants`][kms_list_grants], or [`list_retirable_grants`][kms_list_retirable_grants].
 #' 
-#' -   Grant ID Example -
-#'     0123456789012345678901234567890123456789012345678901234567890123
+#' -   Grant ID Example - 0123456789012345678901234567890123456789012345678901234567890123
 #' @param DryRun Checks if your request will succeed. `DryRun` is an optional parameter.
 #' 
-#' To learn more about how to use this parameter, see [Testing your KMS API
-#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html)
-#' in the *Key Management Service Developer Guide*.
+#' To learn more about how to use this parameter, see [Testing your permissions](https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html) in the *Key Management Service Developer Guide*.
 #'
 #' @keywords internal
 #'
@@ -3356,34 +2385,25 @@ kms_retire_grant <- function(GrantToken = NULL, KeyId = NULL, GrantId = NULL, Dr
 #' Deletes the specified grant
 #'
 #' @description
-#' Deletes the specified grant. You revoke a grant to terminate the permissions that the grant allows. For more information, see [Retiring and revoking grants](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant-delete) in the *Key Management Service Developer Guide* .
+#' Deletes the specified grant. You revoke a grant to terminate the permissions that the grant allows. For more information, see [Retiring and revoking grants](https://docs.aws.amazon.com/kms/latest/developerguide/grant-delete.html) in the *Key Management Service Developer Guide* .
 #'
 #' See [https://www.paws-r-sdk.com/docs/kms_revoke_grant/](https://www.paws-r-sdk.com/docs/kms_revoke_grant/) for full documentation.
 #'
-#' @param KeyId &#91;required&#93; A unique identifier for the KMS key associated with the grant. To get
-#' the key ID and key ARN for a KMS key, use [`list_keys`][kms_list_keys]
-#' or [`describe_key`][kms_describe_key].
+#' @param KeyId &#91;required&#93; A unique identifier for the KMS key associated with the grant. To get the key ID and key ARN for a KMS key, use [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
 #' 
-#' Specify the key ID or key ARN of the KMS key. To specify a KMS key in a
-#' different Amazon Web Services account, you must use the key ARN.
+#' Specify the key ID or key ARN of the KMS key. To specify a KMS key in a different Amazon Web Services account, you must use the key ARN.
 #' 
 #' For example:
 #' 
 #' -   Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
-#' -   Key ARN:
-#'     `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
+#' -   Key ARN: `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
-#' To get the key ID and key ARN for a KMS key, use
-#' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
-#' @param GrantId &#91;required&#93; Identifies the grant to revoke. To get the grant ID, use
-#' [`create_grant`][kms_create_grant], [`list_grants`][kms_list_grants], or
-#' [`list_retirable_grants`][kms_list_retirable_grants].
+#' To get the key ID and key ARN for a KMS key, use [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
+#' @param GrantId &#91;required&#93; Identifies the grant to revoke. To get the grant ID, use [`create_grant`][kms_create_grant], [`list_grants`][kms_list_grants], or [`list_retirable_grants`][kms_list_retirable_grants].
 #' @param DryRun Checks if your request will succeed. `DryRun` is an optional parameter.
 #' 
-#' To learn more about how to use this parameter, see [Testing your KMS API
-#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html)
-#' in the *Key Management Service Developer Guide*.
+#' To learn more about how to use this parameter, see [Testing your permissions](https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html) in the *Key Management Service Developer Guide*.
 #'
 #' @keywords internal
 #'
@@ -3415,18 +2435,7 @@ kms_revoke_grant <- function(KeyId, GrantId, DryRun = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/kms_rotate_key_on_demand/](https://www.paws-r-sdk.com/docs/kms_rotate_key_on_demand/) for full documentation.
 #'
-#' @param KeyId &#91;required&#93; Identifies a symmetric encryption KMS key. You cannot perform on-demand
-#' rotation of [asymmetric KMS
-#' keys](https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html),
-#' [HMAC KMS
-#' keys](https://docs.aws.amazon.com/kms/latest/developerguide/hmac.html),
-#' KMS keys with [imported key
-#' material](https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html),
-#' or KMS keys in a [custom key
-#' store](https://docs.aws.amazon.com/kms/latest/developerguide/). To
-#' perform on-demand rotation of a set of related [multi-Region
-#' keys](https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-update.html#multi-region-rotate),
-#' invoke the on-demand rotation on the primary key.
+#' @param KeyId &#91;required&#93; Identifies a symmetric encryption KMS key. You cannot perform on-demand rotation of [asymmetric KMS keys](https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html), [HMAC KMS keys](https://docs.aws.amazon.com/kms/latest/developerguide/hmac.html), multi-Region KMS keys with [imported key material](https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html), or KMS keys in a [custom key store](https://docs.aws.amazon.com/kms/latest/developerguide/key-store-overview.html). To perform on-demand rotation of a set of related [multi-Region keys](https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html#multi-region-rotate), invoke the on-demand rotation on the primary key.
 #' 
 #' Specify the key ID or key ARN of the KMS key.
 #' 
@@ -3434,11 +2443,9 @@ kms_revoke_grant <- function(KeyId, GrantId, DryRun = NULL) {
 #' 
 #' -   Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
-#' -   Key ARN:
-#'     `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
+#' -   Key ARN: `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
-#' To get the key ID and key ARN for a KMS key, use
-#' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
+#' To get the key ID and key ARN for a KMS key, use [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
 #'
 #' @keywords internal
 #'
@@ -3477,24 +2484,14 @@ kms_rotate_key_on_demand <- function(KeyId) {
 #' 
 #' -   Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
-#' -   Key ARN:
-#'     `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
+#' -   Key ARN: `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
-#' To get the key ID and key ARN for a KMS key, use
-#' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
-#' @param PendingWindowInDays The waiting period, specified in number of days. After the waiting
-#' period ends, KMS deletes the KMS key.
+#' To get the key ID and key ARN for a KMS key, use [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
+#' @param PendingWindowInDays The waiting period, specified in number of days. After the waiting period ends, KMS deletes the KMS key.
 #' 
-#' If the KMS key is a multi-Region primary key with replica keys, the
-#' waiting period begins when the last of its replica keys is deleted.
-#' Otherwise, the waiting period begins immediately.
+#' If the KMS key is a multi-Region primary key with replica keys, the waiting period begins when the last of its replica keys is deleted. Otherwise, the waiting period begins immediately.
 #' 
-#' This value is optional. If you include a value, it must be between 7 and
-#' 30, inclusive. If you do not include a value, it defaults to 30. You can
-#' use the
-#' [`kms:ScheduleKeyDeletionPendingWindowInDays`](https://docs.aws.amazon.com/kms/latest/developerguide/conditions-kms.html#conditions-kms-schedule-key-deletion-pending-window-in-days)
-#' condition key to further constrain the values that principals can
-#' specify in the `PendingWindowInDays` parameter.
+#' This value is optional. If you include a value, it must be between 7 and 30, inclusive. If you do not include a value, it defaults to 30. You can use the [`kms:ScheduleKeyDeletionPendingWindowInDays`](https://docs.aws.amazon.com/kms/latest/developerguide/conditions-kms.html#conditions-kms-schedule-key-deletion-pending-window-in-days) condition key to further constrain the values that principals can specify in the `PendingWindowInDays` parameter.
 #'
 #' @keywords internal
 #'
@@ -3526,92 +2523,64 @@ kms_schedule_key_deletion <- function(KeyId, PendingWindowInDays = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/kms_sign/](https://www.paws-r-sdk.com/docs/kms_sign/) for full documentation.
 #'
-#' @param KeyId &#91;required&#93; Identifies an asymmetric KMS key. KMS uses the private key in the
-#' asymmetric KMS key to sign the message. The `KeyUsage` type of the KMS
-#' key must be `SIGN_VERIFY`. To find the `KeyUsage` of a KMS key, use the
-#' [`describe_key`][kms_describe_key] operation.
+#' @param KeyId &#91;required&#93; Identifies an asymmetric KMS key. KMS uses the private key in the asymmetric KMS key to sign the message. The `KeyUsage` type of the KMS key must be `SIGN_VERIFY`. To find the `KeyUsage` of a KMS key, use the [`describe_key`][kms_describe_key] operation.
 #' 
-#' To specify a KMS key, use its key ID, key ARN, alias name, or alias ARN.
-#' When using an alias name, prefix it with `"alias/"`. To specify a KMS
-#' key in a different Amazon Web Services account, you must use the key ARN
-#' or alias ARN.
+#' To specify a KMS key, use its key ID, key ARN, alias name, or alias ARN. When using an alias name, prefix it with `"alias/"`. To specify a KMS key in a different Amazon Web Services account, you must use the key ARN or alias ARN.
 #' 
 #' For example:
 #' 
 #' -   Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
-#' -   Key ARN:
-#'     `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
+#' -   Key ARN: `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
 #' -   Alias name: `alias/ExampleAlias`
 #' 
 #' -   Alias ARN: `arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias`
 #' 
-#' To get the key ID and key ARN for a KMS key, use
-#' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key]. To
-#' get the alias name and alias ARN, use
-#' [`list_aliases`][kms_list_aliases].
-#' @param Message &#91;required&#93; Specifies the message or message digest to sign. Messages can be 0-4096
-#' bytes. To sign a larger message, provide a message digest.
+#' To get the key ID and key ARN for a KMS key, use [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key]. To get the alias name and alias ARN, use [`list_aliases`][kms_list_aliases].
+#' @param Message &#91;required&#93; Specifies the message or message digest to sign. Messages can be 0-4096 bytes. To sign a larger message, provide a message digest.
 #' 
-#' If you provide a message digest, use the `DIGEST` value of `MessageType`
-#' to prevent the digest from being hashed again while signing.
-#' @param MessageType Tells KMS whether the value of the `Message` parameter should be hashed
-#' as part of the signing algorithm. Use `RAW` for unhashed messages; use
-#' `DIGEST` for message digests, which are already hashed.
+#' If you provide a message digest, use the `DIGEST` value of `MessageType` to prevent the digest from being hashed again while signing.
+#' @param MessageType Tells KMS whether the value of the `Message` parameter should be hashed as part of the signing algorithm. Use `RAW` for unhashed messages; use `DIGEST` for message digests, which are already hashed; use `EXTERNAL_MU` for 64-byte representative \code{u} used in ML-DSA signing as defined in NIST FIPS 204 Section 6.2.
 #' 
-#' When the value of `MessageType` is `RAW`, KMS uses the standard signing
-#' algorithm, which begins with a hash function. When the value is
-#' `DIGEST`, KMS skips the hashing step in the signing algorithm.
+#' When the value of `MessageType` is `RAW`, KMS uses the standard signing algorithm, which begins with a hash function. When the value is `DIGEST`, KMS skips the hashing step in the signing algorithm. When the value is `EXTERNAL_MU` KMS skips the concatenated hashing of the public key hash and the message done in the ML-DSA signing algorithm.
 #' 
-#' Use the `DIGEST` value only when the value of the `Message` parameter is
-#' a message digest. If you use the `DIGEST` value with an unhashed
-#' message, the security of the signing operation can be compromised.
+#' Use the `DIGEST` or `EXTERNAL_MU` value only when the value of the `Message` parameter is a message digest. If you use the `DIGEST` value with an unhashed message, the security of the signing operation can be compromised.
 #' 
-#' When the value of `MessageType`is `DIGEST`, the length of the `Message`
-#' value must match the length of hashed messages for the specified signing
-#' algorithm.
+#' When using ECC_NIST_EDWARDS25519 KMS keys:
 #' 
-#' You can submit a message digest and omit the `MessageType` or specify
-#' `RAW` so the digest is hashed again while signing. However, this can
-#' cause verification failures when verifying with a system that assumes a
-#' single hash.
+#' -   ED25519_SHA_512 signing algorithm requires KMS `MessageType:RAW`
 #' 
-#' The hashing algorithm in that [`sign`][kms_sign] uses is based on the
-#' `SigningAlgorithm` value.
+#' -   ED25519_PH_SHA_512 signing algorithm requires KMS `MessageType:DIGEST`
 #' 
-#' -   Signing algorithms that end in SHA_256 use the SHA_256 hashing
-#'     algorithm.
+#' When you specify the ED25519_PH_SHA_512 signing algorithm with `MessageType:DIGEST`, KMS still performs the SHA-512 prehash described in Step 1 of Section 7.8.1 in FIPS 186-5. This means the input is hashed twice: once by you and once by KMS.
 #' 
-#' -   Signing algorithms that end in SHA_384 use the SHA_384 hashing
-#'     algorithm.
+#' When the value of `MessageType` is `DIGEST`, the length of the `Message` value must match the length of hashed messages for the specified signing algorithm.
 #' 
-#' -   Signing algorithms that end in SHA_512 use the SHA_512 hashing
-#'     algorithm.
+#' When the value of `MessageType` is `EXTERNAL_MU` the length of the `Message` value must be 64 bytes.
 #' 
-#' -   SM2DSA uses the SM3 hashing algorithm. For details, see [Offline
-#'     verification with SM2 key
-#'     pairs](https://docs.aws.amazon.com/kms/latest/developerguide/symm-asymm-choose-key-spec.html#key-spec-sm-offline-verification).
+#' You can submit a message digest and omit the `MessageType` or specify `RAW` so the digest is hashed again while signing. However, this can cause verification failures when verifying with a system that assumes a single hash.
+#' 
+#' The hashing algorithm that [`sign`][kms_sign] uses is based on the `SigningAlgorithm` value.
+#' 
+#' -   Signing algorithms that end in SHA_256 use the SHA_256 hashing algorithm.
+#' 
+#' -   Signing algorithms that end in SHA_384 use the SHA_384 hashing algorithm.
+#' 
+#' -   Signing algorithms that end in SHA_512 use the SHA_512 hashing algorithm.
+#' 
+#' -   Signing algorithms that end in SHAKE_256 use the SHAKE_256 hashing algorithm.
+#' 
+#' -   SM2DSA uses the SM3 hashing algorithm. For details, see [Offline verification with SM2 key pairs](https://docs.aws.amazon.com/kms/latest/developerguide/offline-operations.html#key-spec-sm-offline-verification).
 #' @param GrantTokens A list of grant tokens.
 #' 
-#' Use a grant token when your permission to call this operation comes from
-#' a new grant that has not yet achieved *eventual consistency*. For more
-#' information, see [Grant
-#' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token)
-#' and [Using a grant
-#' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#using-grant-token)
-#' in the *Key Management Service Developer Guide*.
+#' Use a grant token when your permission to call this operation comes from a new grant that has not yet achieved *eventual consistency*. For more information, see [Grant token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token) and [Using a grant token](https://docs.aws.amazon.com/kms/latest/developerguide/using-grant-token.html) in the *Key Management Service Developer Guide*.
 #' @param SigningAlgorithm &#91;required&#93; Specifies the signing algorithm to use when signing the message.
 #' 
-#' Choose an algorithm that is compatible with the type and size of the
-#' specified asymmetric KMS key. When signing with RSA key pairs,
-#' RSASSA-PSS algorithms are preferred. We include RSASSA-PKCS1-v1_5
-#' algorithms for compatibility with existing applications.
+#' Choose an algorithm that is compatible with the type and size of the specified asymmetric KMS key. When signing with RSA key pairs, RSASSA-PSS algorithms are preferred. We include RSASSA-PKCS1-v1_5 algorithms for compatibility with existing applications.
 #' @param DryRun Checks if your request will succeed. `DryRun` is an optional parameter.
 #' 
-#' To learn more about how to use this parameter, see [Testing your KMS API
-#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html)
-#' in the *Key Management Service Developer Guide*.
+#' To learn more about how to use this parameter, see [Testing your permissions](https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html) in the *Key Management Service Developer Guide*.
 #'
 #' @keywords internal
 #'
@@ -3638,7 +2607,7 @@ kms_sign <- function(KeyId, Message, MessageType = NULL, GrantTokens = NULL, Sig
 #' Adds or edits tags on a customer managed key
 #'
 #' @description
-#' Adds or edits tags on a [customer managed key](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-cmk).
+#' Adds or edits tags on a [customer managed key](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-mgn-key).
 #'
 #' See [https://www.paws-r-sdk.com/docs/kms_tag_resource/](https://www.paws-r-sdk.com/docs/kms_tag_resource/) for full documentation.
 #'
@@ -3650,20 +2619,14 @@ kms_sign <- function(KeyId, Message, MessageType = NULL, GrantTokens = NULL, Sig
 #' 
 #' -   Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
-#' -   Key ARN:
-#'     `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
+#' -   Key ARN: `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
-#' To get the key ID and key ARN for a KMS key, use
-#' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
-#' @param Tags &#91;required&#93; One or more tags. Each tag consists of a tag key and a tag value. The
-#' tag value can be an empty (null) string.
+#' To get the key ID and key ARN for a KMS key, use [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
+#' @param Tags &#91;required&#93; One or more tags. Each tag consists of a tag key and a tag value. The tag value can be an empty (null) string.
 #' 
-#' Do not include confidential or sensitive information in this field. This
-#' field may be displayed in plaintext in CloudTrail logs and other output.
+#' Do not include confidential or sensitive information in this field. This field may be displayed in plaintext in CloudTrail logs and other output.
 #' 
-#' You cannot have more than one tag on a KMS key with the same tag key. If
-#' you specify an existing tag key with a different tag value, KMS replaces
-#' the current tag value with the specified one.
+#' You cannot have more than one tag on a KMS key with the same tag key. If you specify an existing tag key with a different tag value, KMS replaces the current tag value with the specified one.
 #'
 #' @keywords internal
 #'
@@ -3690,7 +2653,7 @@ kms_tag_resource <- function(KeyId, Tags) {
 #' Deletes tags from a customer managed key
 #'
 #' @description
-#' Deletes tags from a [customer managed key](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-cmk). To delete a tag, specify the tag key and the KMS key.
+#' Deletes tags from a [customer managed key](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-mgn-key). To delete a tag, specify the tag key and the KMS key.
 #'
 #' See [https://www.paws-r-sdk.com/docs/kms_untag_resource/](https://www.paws-r-sdk.com/docs/kms_untag_resource/) for full documentation.
 #'
@@ -3702,11 +2665,9 @@ kms_tag_resource <- function(KeyId, Tags) {
 #' 
 #' -   Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
-#' -   Key ARN:
-#'     `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
+#' -   Key ARN: `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
-#' To get the key ID and key ARN for a KMS key, use
-#' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
+#' To get the key ID and key ARN for a KMS key, use [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
 #' @param TagKeys &#91;required&#93; One or more tag keys. Specify only the tag keys, not the tag values.
 #'
 #' @keywords internal
@@ -3738,23 +2699,12 @@ kms_untag_resource <- function(KeyId, TagKeys) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/kms_update_alias/](https://www.paws-r-sdk.com/docs/kms_update_alias/) for full documentation.
 #'
-#' @param AliasName &#91;required&#93; Identifies the alias that is changing its KMS key. This value must begin
-#' with `alias/` followed by the alias name, such as `alias/ExampleAlias`.
-#' You cannot use [`update_alias`][kms_update_alias] to change the alias
-#' name.
+#' @param AliasName &#91;required&#93; Identifies the alias that is changing its KMS key. This value must begin with `alias/` followed by the alias name, such as `alias/ExampleAlias`. You cannot use [`update_alias`][kms_update_alias] to change the alias name.
 #' 
-#' Do not include confidential or sensitive information in this field. This
-#' field may be displayed in plaintext in CloudTrail logs and other output.
-#' @param TargetKeyId &#91;required&#93; Identifies the [customer managed
-#' key](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-cmk)
-#' to associate with the alias. You don't have permission to associate an
-#' alias with an [Amazon Web Services managed
-#' key](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk).
+#' Do not include confidential or sensitive information in this field. This field may be displayed in plaintext in CloudTrail logs and other output.
+#' @param TargetKeyId &#91;required&#93; Identifies the [customer managed key](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-mgn-key) to associate with the alias. You don't have permission to associate an alias with an [Amazon Web Services managed key](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-key).
 #' 
-#' The KMS key must be in the same Amazon Web Services account and Region
-#' as the alias. Also, the new target KMS key must be the same type as the
-#' current target KMS key (both symmetric or both asymmetric or both HMAC)
-#' and they must have the same key usage.
+#' The KMS key must be in the same Amazon Web Services account and Region as the alias. Also, the new target KMS key must be the same type as the current target KMS key (both symmetric or both asymmetric or both HMAC) and they must have the same key usage.
 #' 
 #' Specify the key ID or key ARN of the KMS key.
 #' 
@@ -3762,14 +2712,11 @@ kms_untag_resource <- function(KeyId, TagKeys) {
 #' 
 #' -   Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
-#' -   Key ARN:
-#'     `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
+#' -   Key ARN: `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
-#' To get the key ID and key ARN for a KMS key, use
-#' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
+#' To get the key ID and key ARN for a KMS key, use [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
 #' 
-#' To verify that the alias is mapped to the correct KMS key, use
-#' [`list_aliases`][kms_list_aliases].
+#' To verify that the alias is mapped to the correct KMS key, use [`list_aliases`][kms_list_aliases].
 #'
 #' @keywords internal
 #'
@@ -3800,116 +2747,63 @@ kms_update_alias <- function(AliasName, TargetKeyId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/kms_update_custom_key_store/](https://www.paws-r-sdk.com/docs/kms_update_custom_key_store/) for full documentation.
 #'
-#' @param CustomKeyStoreId &#91;required&#93; Identifies the custom key store that you want to update. Enter the ID of
-#' the custom key store. To find the ID of a custom key store, use the
-#' [`describe_custom_key_stores`][kms_describe_custom_key_stores]
-#' operation.
-#' @param NewCustomKeyStoreName Changes the friendly name of the custom key store to the value that you
-#' specify. The custom key store name must be unique in the Amazon Web
-#' Services account.
+#' @param CustomKeyStoreId &#91;required&#93; Identifies the custom key store that you want to update. Enter the ID of the custom key store. To find the ID of a custom key store, use the [`describe_custom_key_stores`][kms_describe_custom_key_stores] operation.
+#' @param NewCustomKeyStoreName Changes the friendly name of the custom key store to the value that you specify. The custom key store name must be unique in the Amazon Web Services account.
 #' 
-#' Do not include confidential or sensitive information in this field. This
-#' field may be displayed in plaintext in CloudTrail logs and other output.
+#' Do not include confidential or sensitive information in this field. This field may be displayed in plaintext in CloudTrail logs and other output.
 #' 
-#' To change this value, an CloudHSM key store must be disconnected. An
-#' external key store can be connected or disconnected.
-#' @param KeyStorePassword Enter the current password of the `kmsuser` crypto user (CU) in the
-#' CloudHSM cluster that is associated with the custom key store. This
-#' parameter is valid only for custom key stores with a
-#' `CustomKeyStoreType` of `AWS_CLOUDHSM`.
+#' To change this value, the custom key store can be connected or disconnected.
+#' @param KeyStorePassword Enter the current password of the `kmsuser` crypto user (CU) in the CloudHSM cluster that is associated with the custom key store. This parameter is valid only for custom key stores with a `CustomKeyStoreType` of `AWS_CLOUDHSM`.
 #' 
-#' This parameter tells KMS the current password of the `kmsuser` crypto
-#' user (CU). It does not set or change the password of any users in the
-#' CloudHSM cluster.
+#' This parameter tells KMS the current password of the `kmsuser` crypto user (CU). It does not set or change the password of any users in the CloudHSM cluster.
 #' 
 #' To change this value, the CloudHSM key store must be disconnected.
-#' @param CloudHsmClusterId Associates the custom key store with a related CloudHSM cluster. This
-#' parameter is valid only for custom key stores with a
-#' `CustomKeyStoreType` of `AWS_CLOUDHSM`.
+#' @param CloudHsmClusterId Associates the custom key store with a related CloudHSM cluster. This parameter is valid only for custom key stores with a `CustomKeyStoreType` of `AWS_CLOUDHSM`.
 #' 
-#' Enter the cluster ID of the cluster that you used to create the custom
-#' key store or a cluster that shares a backup history and has the same
-#' cluster certificate as the original cluster. You cannot use this
-#' parameter to associate a custom key store with an unrelated cluster. In
-#' addition, the replacement cluster must [fulfill the
-#' requirements](https://docs.aws.amazon.com/kms/latest/developerguide/create-keystore.html#before-keystore)
-#' for a cluster associated with a custom key store. To view the cluster
-#' certificate of a cluster, use the
-#' [DescribeClusters](https://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_DescribeClusters.html)
-#' operation.
+#' Enter the cluster ID of the cluster that you used to create the custom key store or a cluster that shares a backup history and has the same cluster certificate as the original cluster. You cannot use this parameter to associate a custom key store with an unrelated cluster. In addition, the replacement cluster must [fulfill the requirements](https://docs.aws.amazon.com/kms/latest/developerguide/create-keystore.html#before-keystore) for a cluster associated with a custom key store. To view the cluster certificate of a cluster, use the [DescribeClusters](https://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_DescribeClusters.html) operation.
 #' 
 #' To change this value, the CloudHSM key store must be disconnected.
-#' @param XksProxyUriEndpoint Changes the URI endpoint that KMS uses to connect to your external key
-#' store proxy (XKS proxy). This parameter is valid only for custom key
-#' stores with a `CustomKeyStoreType` of `EXTERNAL_KEY_STORE`.
+#' @param XksProxyUriEndpoint Changes the URI endpoint that KMS uses to connect to your external key store proxy (XKS proxy). This parameter is valid only for custom key stores with a `CustomKeyStoreType` of `EXTERNAL_KEY_STORE`.
 #' 
-#' For external key stores with an `XksProxyConnectivity` value of
-#' `PUBLIC_ENDPOINT`, the protocol must be HTTPS.
+#' For external key stores with an `XksProxyConnectivity` value of `PUBLIC_ENDPOINT`, the protocol must be HTTPS.
 #' 
-#' For external key stores with an `XksProxyConnectivity` value of
-#' `VPC_ENDPOINT_SERVICE`, specify `https://` followed by the private DNS
-#' name associated with the VPC endpoint service. Each external key store
-#' must use a different private DNS name.
+#' For external key stores with an `XksProxyConnectivity` value of `VPC_ENDPOINT_SERVICE`, specify `https://` followed by the private DNS name associated with the VPC endpoint service. Each external key store must use a different private DNS name.
 #' 
-#' The combined `XksProxyUriEndpoint` and `XksProxyUriPath` values must be
-#' unique in the Amazon Web Services account and Region.
+#' The combined `XksProxyUriEndpoint` and `XksProxyUriPath` values must be unique in the Amazon Web Services account and Region.
 #' 
 #' To change this value, the external key store must be disconnected.
-#' @param XksProxyUriPath Changes the base path to the proxy APIs for this external key store. To
-#' find this value, see the documentation for your external key manager and
-#' external key store proxy (XKS proxy). This parameter is valid only for
-#' custom key stores with a `CustomKeyStoreType` of `EXTERNAL_KEY_STORE`.
+#' @param XksProxyUriPath Changes the base path to the proxy APIs for this external key store. To find this value, see the documentation for your external key manager and external key store proxy (XKS proxy). This parameter is valid only for custom key stores with a `CustomKeyStoreType` of `EXTERNAL_KEY_STORE`.
 #' 
-#' The value must start with `/` and must end with `/kms/xks/v1`, where
-#' `v1` represents the version of the KMS external key store proxy API. You
-#' can include an optional prefix between the required elements such as
-#' `/example/kms/xks/v1`.
+#' The value must start with `/` and must end with `/kms/xks/v1`, where `v1` represents the version of the KMS external key store proxy API. You can include an optional prefix between the required elements such as `/example/kms/xks/v1`.
 #' 
-#' The combined `XksProxyUriEndpoint` and `XksProxyUriPath` values must be
-#' unique in the Amazon Web Services account and Region.
+#' The combined `XksProxyUriEndpoint` and `XksProxyUriPath` values must be unique in the Amazon Web Services account and Region.
 #' 
-#' You can change this value when the external key store is connected or
-#' disconnected.
-#' @param XksProxyVpcEndpointServiceName Changes the name that KMS uses to identify the Amazon VPC endpoint
-#' service for your external key store proxy (XKS proxy). This parameter is
-#' valid when the `CustomKeyStoreType` is `EXTERNAL_KEY_STORE` and the
-#' `XksProxyConnectivity` is `VPC_ENDPOINT_SERVICE`.
+#' You can change this value when the external key store is connected or disconnected.
+#' @param XksProxyVpcEndpointServiceName Changes the name that KMS uses to identify the Amazon VPC endpoint service for your external key store proxy (XKS proxy). This parameter is valid when the `CustomKeyStoreType` is `EXTERNAL_KEY_STORE` and the `XksProxyConnectivity` is `VPC_ENDPOINT_SERVICE`.
 #' 
 #' To change this value, the external key store must be disconnected.
-#' @param XksProxyAuthenticationCredential Changes the credentials that KMS uses to sign requests to the external
-#' key store proxy (XKS proxy). This parameter is valid only for custom key
-#' stores with a `CustomKeyStoreType` of `EXTERNAL_KEY_STORE`.
+#' @param XksProxyVpcEndpointServiceOwner Changes the Amazon Web Services account ID that KMS uses to identify the Amazon VPC endpoint service for your external key store proxy (XKS proxy). This parameter is optional. If not specified, the current Amazon Web Services account ID for the VPC endpoint service will not be updated.
 #' 
-#' You must specify both the `AccessKeyId` and `SecretAccessKey` value in
-#' the authentication credential, even if you are only updating one value.
+#' To change this value, the external key store must be disconnected.
+#' @param XksProxyAuthenticationCredential Changes the credentials that KMS uses to sign requests to the external key store proxy (XKS proxy). This parameter is valid only for custom key stores with a `CustomKeyStoreType` of `EXTERNAL_KEY_STORE`.
 #' 
-#' This parameter doesn't establish or change your authentication
-#' credentials on the proxy. It just tells KMS the credential that you
-#' established with your external key store proxy. For example, if you
-#' rotate the credential on your external key store proxy, you can use this
-#' parameter to update the credential in KMS.
+#' You must specify both the `AccessKeyId` and `SecretAccessKey` value in the authentication credential, even if you are only updating one value.
 #' 
-#' You can change this value when the external key store is connected or
-#' disconnected.
-#' @param XksProxyConnectivity Changes the connectivity setting for the external key store. To indicate
-#' that the external key store proxy uses a Amazon VPC endpoint service to
-#' communicate with KMS, specify `VPC_ENDPOINT_SERVICE`. Otherwise, specify
-#' `PUBLIC_ENDPOINT`.
+#' This parameter doesn't establish or change your authentication credentials on the proxy. It just tells KMS the credential that you established with your external key store proxy. For example, if you rotate the credential on your external key store proxy, you can use this parameter to update the credential in KMS.
 #' 
-#' If you change the `XksProxyConnectivity` to `VPC_ENDPOINT_SERVICE`, you
-#' must also change the `XksProxyUriEndpoint` and add an
-#' `XksProxyVpcEndpointServiceName` value.
+#' You can change this value when the external key store is connected or disconnected.
+#' @param XksProxyConnectivity Changes the connectivity setting for the external key store. To indicate that the external key store proxy uses a Amazon VPC endpoint service to communicate with KMS, specify `VPC_ENDPOINT_SERVICE`. Otherwise, specify `PUBLIC_ENDPOINT`.
 #' 
-#' If you change the `XksProxyConnectivity` to `PUBLIC_ENDPOINT`, you must
-#' also change the `XksProxyUriEndpoint` and specify a null or empty string
-#' for the `XksProxyVpcEndpointServiceName` value.
+#' If you change the `XksProxyConnectivity` to `VPC_ENDPOINT_SERVICE`, you must also change the `XksProxyUriEndpoint` and add an `XksProxyVpcEndpointServiceName` value.
+#' 
+#' If you change the `XksProxyConnectivity` to `PUBLIC_ENDPOINT`, you must also change the `XksProxyUriEndpoint` and specify a null or empty string for the `XksProxyVpcEndpointServiceName` value.
 #' 
 #' To change this value, the external key store must be disconnected.
 #'
 #' @keywords internal
 #'
 #' @rdname kms_update_custom_key_store
-kms_update_custom_key_store <- function(CustomKeyStoreId, NewCustomKeyStoreName = NULL, KeyStorePassword = NULL, CloudHsmClusterId = NULL, XksProxyUriEndpoint = NULL, XksProxyUriPath = NULL, XksProxyVpcEndpointServiceName = NULL, XksProxyAuthenticationCredential = NULL, XksProxyConnectivity = NULL) {
+kms_update_custom_key_store <- function(CustomKeyStoreId, NewCustomKeyStoreName = NULL, KeyStorePassword = NULL, CloudHsmClusterId = NULL, XksProxyUriEndpoint = NULL, XksProxyUriPath = NULL, XksProxyVpcEndpointServiceName = NULL, XksProxyVpcEndpointServiceOwner = NULL, XksProxyAuthenticationCredential = NULL, XksProxyConnectivity = NULL) {
   op <- new_operation(
     name = "UpdateCustomKeyStore",
     http_method = "POST",
@@ -3918,7 +2812,7 @@ kms_update_custom_key_store <- function(CustomKeyStoreId, NewCustomKeyStoreName 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .kms$update_custom_key_store_input(CustomKeyStoreId = CustomKeyStoreId, NewCustomKeyStoreName = NewCustomKeyStoreName, KeyStorePassword = KeyStorePassword, CloudHsmClusterId = CloudHsmClusterId, XksProxyUriEndpoint = XksProxyUriEndpoint, XksProxyUriPath = XksProxyUriPath, XksProxyVpcEndpointServiceName = XksProxyVpcEndpointServiceName, XksProxyAuthenticationCredential = XksProxyAuthenticationCredential, XksProxyConnectivity = XksProxyConnectivity)
+  input <- .kms$update_custom_key_store_input(CustomKeyStoreId = CustomKeyStoreId, NewCustomKeyStoreName = NewCustomKeyStoreName, KeyStorePassword = KeyStorePassword, CloudHsmClusterId = CloudHsmClusterId, XksProxyUriEndpoint = XksProxyUriEndpoint, XksProxyUriPath = XksProxyUriPath, XksProxyVpcEndpointServiceName = XksProxyVpcEndpointServiceName, XksProxyVpcEndpointServiceOwner = XksProxyVpcEndpointServiceOwner, XksProxyAuthenticationCredential = XksProxyAuthenticationCredential, XksProxyConnectivity = XksProxyConnectivity)
   output <- .kms$update_custom_key_store_output()
   config <- get_config()
   svc <- .kms$service(config, op)
@@ -3943,15 +2837,12 @@ kms_update_custom_key_store <- function(CustomKeyStoreId, NewCustomKeyStoreName 
 #' 
 #' -   Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
-#' -   Key ARN:
-#'     `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
+#' -   Key ARN: `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
-#' To get the key ID and key ARN for a KMS key, use
-#' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
+#' To get the key ID and key ARN for a KMS key, use [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
 #' @param Description &#91;required&#93; New description for the KMS key.
 #' 
-#' Do not include confidential or sensitive information in this field. This
-#' field may be displayed in plaintext in CloudTrail logs and other output.
+#' Do not include confidential or sensitive information in this field. This field may be displayed in plaintext in CloudTrail logs and other output.
 #'
 #' @keywords internal
 #'
@@ -3982,8 +2873,7 @@ kms_update_key_description <- function(KeyId, Description) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/kms_update_primary_region/](https://www.paws-r-sdk.com/docs/kms_update_primary_region/) for full documentation.
 #'
-#' @param KeyId &#91;required&#93; Identifies the current primary key. When the operation completes, this
-#' KMS key will be a replica key.
+#' @param KeyId &#91;required&#93; Identifies the current primary key. When the operation completes, this KMS key will be a replica key.
 #' 
 #' Specify the key ID or key ARN of a multi-Region primary key.
 #' 
@@ -3991,17 +2881,12 @@ kms_update_key_description <- function(KeyId, Description) {
 #' 
 #' -   Key ID: `mrk-1234abcd12ab34cd56ef1234567890ab`
 #' 
-#' -   Key ARN:
-#'     `arn:aws:kms:us-east-2:111122223333:key/mrk-1234abcd12ab34cd56ef1234567890ab`
+#' -   Key ARN: `arn:aws:kms:us-east-2:111122223333:key/mrk-1234abcd12ab34cd56ef1234567890ab`
 #' 
-#' To get the key ID and key ARN for a KMS key, use
-#' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
-#' @param PrimaryRegion &#91;required&#93; The Amazon Web Services Region of the new primary key. Enter the Region
-#' ID, such as `us-east-1` or `ap-southeast-2`. There must be an existing
-#' replica key in this Region.
+#' To get the key ID and key ARN for a KMS key, use [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
+#' @param PrimaryRegion &#91;required&#93; The Amazon Web Services Region of the new primary key. Enter the Region ID, such as `us-east-1` or `ap-southeast-2`. There must be an existing replica key in this Region.
 #' 
-#' When the operation completes, the multi-Region key in this Region will
-#' be the primary key.
+#' When the operation completes, the multi-Region key in this Region will be the primary key.
 #'
 #' @keywords internal
 #'
@@ -4032,91 +2917,63 @@ kms_update_primary_region <- function(KeyId, PrimaryRegion) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/kms_verify/](https://www.paws-r-sdk.com/docs/kms_verify/) for full documentation.
 #'
-#' @param KeyId &#91;required&#93; Identifies the asymmetric KMS key that will be used to verify the
-#' signature. This must be the same KMS key that was used to generate the
-#' signature. If you specify a different KMS key, the signature
-#' verification fails.
+#' @param KeyId &#91;required&#93; Identifies the asymmetric KMS key that will be used to verify the signature. This must be the same KMS key that was used to generate the signature. If you specify a different KMS key, the signature verification fails.
 #' 
-#' To specify a KMS key, use its key ID, key ARN, alias name, or alias ARN.
-#' When using an alias name, prefix it with `"alias/"`. To specify a KMS
-#' key in a different Amazon Web Services account, you must use the key ARN
-#' or alias ARN.
+#' To specify a KMS key, use its key ID, key ARN, alias name, or alias ARN. When using an alias name, prefix it with `"alias/"`. To specify a KMS key in a different Amazon Web Services account, you must use the key ARN or alias ARN.
 #' 
 #' For example:
 #' 
 #' -   Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
-#' -   Key ARN:
-#'     `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
+#' -   Key ARN: `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
 #' -   Alias name: `alias/ExampleAlias`
 #' 
 #' -   Alias ARN: `arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias`
 #' 
-#' To get the key ID and key ARN for a KMS key, use
-#' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key]. To
-#' get the alias name and alias ARN, use
-#' [`list_aliases`][kms_list_aliases].
-#' @param Message &#91;required&#93; Specifies the message that was signed. You can submit a raw message of
-#' up to 4096 bytes, or a hash digest of the message. If you submit a
-#' digest, use the `MessageType` parameter with a value of `DIGEST`.
+#' To get the key ID and key ARN for a KMS key, use [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key]. To get the alias name and alias ARN, use [`list_aliases`][kms_list_aliases].
+#' @param Message &#91;required&#93; Specifies the message that was signed. You can submit a raw message of up to 4096 bytes, or a hash digest of the message. If you submit a digest, use the `MessageType` parameter with a value of `DIGEST`.
 #' 
-#' If the message specified here is different from the message that was
-#' signed, the signature verification fails. A message and its hash digest
-#' are considered to be the same message.
-#' @param MessageType Tells KMS whether the value of the `Message` parameter should be hashed
-#' as part of the signing algorithm. Use `RAW` for unhashed messages; use
-#' `DIGEST` for message digests, which are already hashed.
+#' If the message specified here is different from the message that was signed, the signature verification fails. A message and its hash digest are considered to be the same message.
+#' @param MessageType Tells KMS whether the value of the `Message` parameter should be hashed as part of the signing algorithm. Use `RAW` for unhashed messages; use `DIGEST` for message digests, which are already hashed; use `EXTERNAL_MU` for 64-byte representative \code{u} used in ML-DSA signing as defined in NIST FIPS 204 Section 6.2.
 #' 
-#' When the value of `MessageType` is `RAW`, KMS uses the standard signing
-#' algorithm, which begins with a hash function. When the value is
-#' `DIGEST`, KMS skips the hashing step in the signing algorithm.
+#' When the value of `MessageType` is `RAW`, KMS uses the standard signing algorithm, which begins with a hash function. When the value is `DIGEST`, KMS skips the hashing step in the signing algorithm. When the value is `EXTERNAL_MU` KMS skips the concatenated hashing of the public key hash and the message done in the ML-DSA signing algorithm.
 #' 
-#' Use the `DIGEST` value only when the value of the `Message` parameter is
-#' a message digest. If you use the `DIGEST` value with an unhashed
-#' message, the security of the verification operation can be compromised.
+#' Use the `DIGEST` or `EXTERNAL_MU` value only when the value of the `Message` parameter is a message digest. If you use the `DIGEST` value with an unhashed message, the security of the signing operation can be compromised.
 #' 
-#' When the value of `MessageType`is `DIGEST`, the length of the `Message`
-#' value must match the length of hashed messages for the specified signing
-#' algorithm.
+#' When using ECC_NIST_EDWARDS25519 KMS keys:
 #' 
-#' You can submit a message digest and omit the `MessageType` or specify
-#' `RAW` so the digest is hashed again while signing. However, if the
-#' signed message is hashed once while signing, but twice while verifying,
-#' verification fails, even when the message hasn't changed.
+#' -   ED25519_SHA_512 signing algorithm requires KMS `MessageType:RAW`
 #' 
-#' The hashing algorithm in that [`verify`][kms_verify] uses is based on
-#' the `SigningAlgorithm` value.
+#' -   ED25519_PH_SHA_512 signing algorithm requires KMS `MessageType:DIGEST`
 #' 
-#' -   Signing algorithms that end in SHA_256 use the SHA_256 hashing
-#'     algorithm.
+#' When you specify the ED25519_PH_SHA_512 signing algorithm with `MessageType:DIGEST`, KMS still performs the SHA-512 prehash described in Step 1 of Section 7.8.1 in FIPS 186-5. This means the input is hashed twice: once by you and once by KMS.
 #' 
-#' -   Signing algorithms that end in SHA_384 use the SHA_384 hashing
-#'     algorithm.
+#' When the value of `MessageType` is `DIGEST`, the length of the `Message` value must match the length of hashed messages for the specified signing algorithm.
 #' 
-#' -   Signing algorithms that end in SHA_512 use the SHA_512 hashing
-#'     algorithm.
+#' When the value of `MessageType` is `EXTERNAL_MU` the length of the `Message` value must be 64 bytes.
 #' 
-#' -   SM2DSA uses the SM3 hashing algorithm. For details, see [Offline
-#'     verification with SM2 key
-#'     pairs](https://docs.aws.amazon.com/kms/latest/developerguide/symm-asymm-choose-key-spec.html#key-spec-sm-offline-verification).
+#' You can submit a message digest and omit the `MessageType` or specify `RAW` so the digest is hashed again while signing. However, if the signed message is hashed once while signing, but twice while verifying, verification fails, even when the message hasn't changed.
+#' 
+#' The hashing algorithm that [`verify`][kms_verify] uses is based on the `SigningAlgorithm` value.
+#' 
+#' -   Signing algorithms that end in SHA_256 use the SHA_256 hashing algorithm.
+#' 
+#' -   Signing algorithms that end in SHA_384 use the SHA_384 hashing algorithm.
+#' 
+#' -   Signing algorithms that end in SHA_512 use the SHA_512 hashing algorithm.
+#' 
+#' -   Signing algorithms that end in SHAKE_256 use the SHAKE_256 hashing algorithm.
+#' 
+#' -   SM2DSA uses the SM3 hashing algorithm. For details, see [Offline verification with SM2 key pairs](https://docs.aws.amazon.com/kms/latest/developerguide/offline-operations.html#key-spec-sm-offline-verification).
 #' @param Signature &#91;required&#93; The signature that the [`sign`][kms_sign] operation generated.
-#' @param SigningAlgorithm &#91;required&#93; The signing algorithm that was used to sign the message. If you submit a
-#' different algorithm, the signature verification fails.
+#' @param SigningAlgorithm &#91;required&#93; The signing algorithm that was used to sign the message. If you submit a different algorithm, the signature verification fails.
 #' @param GrantTokens A list of grant tokens.
 #' 
-#' Use a grant token when your permission to call this operation comes from
-#' a new grant that has not yet achieved *eventual consistency*. For more
-#' information, see [Grant
-#' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token)
-#' and [Using a grant
-#' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#using-grant-token)
-#' in the *Key Management Service Developer Guide*.
+#' Use a grant token when your permission to call this operation comes from a new grant that has not yet achieved *eventual consistency*. For more information, see [Grant token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token) and [Using a grant token](https://docs.aws.amazon.com/kms/latest/developerguide/using-grant-token.html) in the *Key Management Service Developer Guide*.
 #' @param DryRun Checks if your request will succeed. `DryRun` is an optional parameter.
 #' 
-#' To learn more about how to use this parameter, see [Testing your KMS API
-#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html)
-#' in the *Key Management Service Developer Guide*.
+#' To learn more about how to use this parameter, see [Testing your permissions](https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html) in the *Key Management Service Developer Guide*.
 #'
 #' @keywords internal
 #'
@@ -4148,39 +3005,20 @@ kms_verify <- function(KeyId, Message, MessageType = NULL, Signature, SigningAlg
 #'
 #' See [https://www.paws-r-sdk.com/docs/kms_verify_mac/](https://www.paws-r-sdk.com/docs/kms_verify_mac/) for full documentation.
 #'
-#' @param Message &#91;required&#93; The message that will be used in the verification. Enter the same
-#' message that was used to generate the HMAC.
+#' @param Message &#91;required&#93; The message that will be used in the verification. Enter the same message that was used to generate the HMAC.
 #' 
-#' [`generate_mac`][kms_generate_mac] and [`verify_mac`][kms_verify_mac] do
-#' not provide special handling for message digests. If you generated an
-#' HMAC for a hash digest of a message, you must verify the HMAC for the
-#' same hash digest.
+#' [`generate_mac`][kms_generate_mac] and [`verify_mac`][kms_verify_mac] do not provide special handling for message digests. If you generated an HMAC for a hash digest of a message, you must verify the HMAC for the same hash digest.
 #' @param KeyId &#91;required&#93; The KMS key that will be used in the verification.
 #' 
-#' Enter a key ID of the KMS key that was used to generate the HMAC. If you
-#' identify a different KMS key, the [`verify_mac`][kms_verify_mac]
-#' operation fails.
-#' @param MacAlgorithm &#91;required&#93; The MAC algorithm that will be used in the verification. Enter the same
-#' MAC algorithm that was used to compute the HMAC. This algorithm must be
-#' supported by the HMAC KMS key identified by the `KeyId` parameter.
-#' @param Mac &#91;required&#93; The HMAC to verify. Enter the HMAC that was generated by the
-#' [`generate_mac`][kms_generate_mac] operation when you specified the same
-#' message, HMAC KMS key, and MAC algorithm as the values specified in this
-#' request.
+#' Enter a key ID of the KMS key that was used to generate the HMAC. If you identify a different KMS key, the [`verify_mac`][kms_verify_mac] operation fails.
+#' @param MacAlgorithm &#91;required&#93; The MAC algorithm that will be used in the verification. Enter the same MAC algorithm that was used to compute the HMAC. This algorithm must be supported by the HMAC KMS key identified by the `KeyId` parameter.
+#' @param Mac &#91;required&#93; The HMAC to verify. Enter the HMAC that was generated by the [`generate_mac`][kms_generate_mac] operation when you specified the same message, HMAC KMS key, and MAC algorithm as the values specified in this request.
 #' @param GrantTokens A list of grant tokens.
 #' 
-#' Use a grant token when your permission to call this operation comes from
-#' a new grant that has not yet achieved *eventual consistency*. For more
-#' information, see [Grant
-#' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token)
-#' and [Using a grant
-#' token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#using-grant-token)
-#' in the *Key Management Service Developer Guide*.
+#' Use a grant token when your permission to call this operation comes from a new grant that has not yet achieved *eventual consistency*. For more information, see [Grant token](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token) and [Using a grant token](https://docs.aws.amazon.com/kms/latest/developerguide/using-grant-token.html) in the *Key Management Service Developer Guide*.
 #' @param DryRun Checks if your request will succeed. `DryRun` is an optional parameter.
 #' 
-#' To learn more about how to use this parameter, see [Testing your KMS API
-#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html)
-#' in the *Key Management Service Developer Guide*.
+#' To learn more about how to use this parameter, see [Testing your permissions](https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html) in the *Key Management Service Developer Guide*.
 #'
 #' @keywords internal
 #'

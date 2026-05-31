@@ -16,8 +16,7 @@ accessanalyzer_update_archive_rule(
 
 \item{ruleName}{[required] The name of the rule to update.}
 
-\item{filter}{[required] A filter to match for the rules to update. Only rules that match the
-filter are updated.}
+\item{filter}{[required] A filter to match for the rules to update. Only rules that match the filter are updated.}
 
 \item{clientToken}{A client token.}
 }

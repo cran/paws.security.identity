@@ -16,8 +16,7 @@ macie2_list_findings(
 
 \item{maxResults}{The maximum number of items to include in each page of the response.}
 
-\item{nextToken}{The nextToken string that specifies which page of results to return in a
-paginated response.}
+\item{nextToken}{The nextToken string that specifies which page of results to return in a paginated response.}
 
 \item{sortCriteria}{The criteria to use to sort the results.}
 }

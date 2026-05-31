@@ -11,21 +11,12 @@ NULL
 #'
 #' See [https://www.paws-r-sdk.com/docs/secretsmanager_batch_get_secret_value/](https://www.paws-r-sdk.com/docs/secretsmanager_batch_get_secret_value/) for full documentation.
 #'
-#' @param SecretIdList The ARN or names of the secrets to retrieve. You must include `Filters`
-#' or `SecretIdList`, but not both.
-#' @param Filters The filters to choose which secrets to retrieve. You must include
-#' `Filters` or `SecretIdList`, but not both.
+#' @param SecretIdList The ARN or names of the secrets to retrieve. You must include `Filters` or `SecretIdList`, but not both.
+#' @param Filters The filters to choose which secrets to retrieve. You must include `Filters` or `SecretIdList`, but not both.
 #' @param MaxResults The number of results to include in the response.
 #' 
-#' If there are more results available, in the response, Secrets Manager
-#' includes `NextToken`. To get the next results, call
-#' [`batch_get_secret_value`][secretsmanager_batch_get_secret_value] again
-#' with the value from `NextToken`. To use this parameter, you must also
-#' use the `Filters` parameter.
-#' @param NextToken A token that indicates where the output should continue from, if a
-#' previous call did not show all results. To get the next results, call
-#' [`batch_get_secret_value`][secretsmanager_batch_get_secret_value] again
-#' with this value.
+#' If there are more results available, in the response, Secrets Manager includes `NextToken`. To get the next results, call [`batch_get_secret_value`][secretsmanager_batch_get_secret_value] again with the value from `NextToken`. To use this parameter, you must also use the `Filters` parameter.
+#' @param NextToken A token that indicates where the output should continue from, if a previous call did not show all results. To get the next results, call [`batch_get_secret_value`][secretsmanager_batch_get_secret_value] again with this value.
 #'
 #' @keywords internal
 #'
@@ -59,9 +50,7 @@ secretsmanager_batch_get_secret_value <- function(SecretIdList = NULL, Filters =
 #'
 #' @param SecretId &#91;required&#93; The ARN or name of the secret.
 #' 
-#' For an ARN, we recommend that you specify a complete ARN rather than a
-#' partial ARN. See [Finding a secret from a partial
-#' ARN](https://docs.aws.amazon.com/secretsmanager/latest/userguide/troubleshoot.html#ARN_secretnamehyphen).
+#' For an ARN, we recommend that you specify a complete ARN rather than a partial ARN. See [Finding a secret from a partial ARN](https://docs.aws.amazon.com/secretsmanager/latest/userguide/troubleshoot.html#ARN_secretnamehyphen).
 #'
 #' @keywords internal
 #'
@@ -94,127 +83,65 @@ secretsmanager_cancel_rotate_secret <- function(SecretId) {
 #'
 #' @param Name &#91;required&#93; The name of the new secret.
 #' 
-#' The secret name can contain ASCII letters, numbers, and the following
-#' characters: /_+=.@@-
+#' The secret name can contain ASCII letters, numbers, and the following characters: /_+=.@@-
 #' 
-#' Do not end your secret name with a hyphen followed by six characters. If
-#' you do so, you risk confusion and unexpected results when searching for
-#' a secret by partial ARN. Secrets Manager automatically adds a hyphen and
-#' six random characters after the secret name at the end of the ARN.
-#' @param ClientRequestToken If you include `SecretString` or `SecretBinary`, then Secrets Manager
-#' creates an initial version for the secret, and this parameter specifies
-#' the unique identifier for the new version.
+#' Do not end your secret name with a hyphen followed by six characters. If you do so, you risk confusion and unexpected results when searching for a secret by partial ARN. Secrets Manager automatically adds a hyphen and six random characters after the secret name at the end of the ARN.
+#' @param ClientRequestToken If you include `SecretString` or `SecretBinary`, then Secrets Manager creates an initial version for the secret, and this parameter specifies the unique identifier for the new version.
 #' 
-#' If you use the Amazon Web Services CLI or one of the Amazon Web Services
-#' SDKs to call this operation, then you can leave this parameter empty.
-#' The CLI or SDK generates a random UUID for you and includes it as the
-#' value for this parameter in the request.
+#' If you use the Amazon Web Services CLI or one of the Amazon Web Services SDKs to call this operation, then you can leave this parameter empty. The CLI or SDK generates a random UUID for you and includes it as the value for this parameter in the request.
 #' 
-#' If you generate a raw HTTP request to the Secrets Manager service
-#' endpoint, then you must generate a `ClientRequestToken` and include it
-#' in the request.
+#' If you generate a raw HTTP request to the Secrets Manager service endpoint, then you must generate a `ClientRequestToken` and include it in the request.
 #' 
-#' This value helps ensure idempotency. Secrets Manager uses this value to
-#' prevent the accidental creation of duplicate versions if there are
-#' failures and retries during a rotation. We recommend that you generate a
-#' [UUID-type](https://en.wikipedia.org/wiki/Universally_unique_identifier)
-#' value to ensure uniqueness of your versions within the specified secret.
+#' This value helps ensure idempotency. Secrets Manager uses this value to prevent the accidental creation of duplicate versions if there are failures and retries during a rotation. We recommend that you generate a [UUID-type](https://en.wikipedia.org/wiki/Universally_unique_identifier) value to ensure uniqueness of your versions within the specified secret.
 #' 
-#' -   If the `ClientRequestToken` value isn't already associated with a
-#'     version of the secret then a new version of the secret is created.
+#' -   If the `ClientRequestToken` value isn't already associated with a version of the secret then a new version of the secret is created.
 #' 
-#' -   If a version with this value already exists and the version
-#'     `SecretString` and `SecretBinary` values are the same as those in
-#'     the request, then the request is ignored.
+#' -   If a version with this value already exists and the version `SecretString` and `SecretBinary` values are the same as those in the request, then the request is ignored.
 #' 
-#' -   If a version with this value already exists and that version's
-#'     `SecretString` and `SecretBinary` values are different from those in
-#'     the request, then the request fails because you cannot modify an
-#'     existing version. Instead, use
-#'     [`put_secret_value`][secretsmanager_put_secret_value] to create a
-#'     new version.
+#' -   If a version with this value already exists and that version's `SecretString` and `SecretBinary` values are different from those in the request, then the request fails because you cannot modify an existing version. Instead, use [`put_secret_value`][secretsmanager_put_secret_value] to create a new version.
 #' 
 #' This value becomes the `VersionId` of the new version.
 #' @param Description The description of the secret.
-#' @param KmsKeyId The ARN, key ID, or alias of the KMS key that Secrets Manager uses to
-#' encrypt the secret value in the secret. An alias is always prefixed by
-#' `alias/`, for example `alias/aws/secretsmanager`. For more information,
-#' see [About
-#' aliases](https://docs.aws.amazon.com/kms/latest/developerguide/kms-alias.html#alias-about).
+#' @param KmsKeyId The ARN, key ID, or alias of the KMS key that Secrets Manager uses to encrypt the secret value in the secret. An alias is always prefixed by `alias/`, for example `alias/aws/secretsmanager`. For more information, see [About aliases](https://docs.aws.amazon.com/kms/latest/developerguide/kms-alias.html).
 #' 
-#' To use a KMS key in a different account, use the key ARN or the alias
-#' ARN.
+#' To use a KMS key in a different account, use the key ARN or the alias ARN.
 #' 
-#' If you don't specify this value, then Secrets Manager uses the key
-#' `aws/secretsmanager`. If that key doesn't yet exist, then Secrets
-#' Manager creates it for you automatically the first time it encrypts the
-#' secret value.
+#' If you don't specify this value, then Secrets Manager uses the key `aws/secretsmanager`. If that key doesn't yet exist, then Secrets Manager creates it for you automatically the first time it encrypts the secret value.
 #' 
-#' If the secret is in a different Amazon Web Services account from the
-#' credentials calling the API, then you can't use `aws/secretsmanager` to
-#' encrypt the secret, and you must create and use a customer managed KMS
-#' key.
-#' @param SecretBinary The binary data to encrypt and store in the new version of the secret.
-#' We recommend that you store your binary data in a file and then pass the
-#' contents of the file as a parameter.
+#' If the secret is in a different Amazon Web Services account from the credentials calling the API, then you can't use `aws/secretsmanager` to encrypt the secret, and you must create and use a customer managed KMS key.
+#' @param SecretBinary The binary data to encrypt and store in the new version of the secret. We recommend that you store your binary data in a file and then pass the contents of the file as a parameter.
 #' 
 #' Either `SecretString` or `SecretBinary` must have a value, but not both.
 #' 
 #' This parameter is not available in the Secrets Manager console.
 #' 
-#' Sensitive: This field contains sensitive information, so the service
-#' does not include it in CloudTrail log entries. If you create your own
-#' log entries, you must also avoid logging the information in this field.
-#' @param SecretString The text data to encrypt and store in this new version of the secret. We
-#' recommend you use a JSON structure of key/value pairs for your secret
-#' value.
+#' Sensitive: This field contains sensitive information, so the service does not include it in CloudTrail log entries. If you create your own log entries, you must also avoid logging the information in this field.
+#' @param SecretString The text data to encrypt and store in this new version of the secret. We recommend you use a JSON structure of key/value pairs for your secret value.
 #' 
 #' Either `SecretString` or `SecretBinary` must have a value, but not both.
 #' 
-#' If you create a secret by using the Secrets Manager console then Secrets
-#' Manager puts the protected secret text in only the `SecretString`
-#' parameter. The Secrets Manager console stores the information as a JSON
-#' structure of key/value pairs that a Lambda rotation function can parse.
+#' If you create a secret by using the Secrets Manager console then Secrets Manager puts the protected secret text in only the `SecretString` parameter. The Secrets Manager console stores the information as a JSON structure of key/value pairs that a Lambda rotation function can parse.
 #' 
-#' Sensitive: This field contains sensitive information, so the service
-#' does not include it in CloudTrail log entries. If you create your own
-#' log entries, you must also avoid logging the information in this field.
-#' @param Tags A list of tags to attach to the secret. Each tag is a key and value pair
-#' of strings in a JSON text string, for example:
+#' Sensitive: This field contains sensitive information, so the service does not include it in CloudTrail log entries. If you create your own log entries, you must also avoid logging the information in this field.
+#' @param Tags A list of tags to attach to the secret. Each tag is a key and value pair of strings in a JSON text string, for example:
 #' 
 #' `[{"Key":"CostCenter","Value":"12345"},{"Key":"environment","Value":"production"}]`
 #' 
-#' Secrets Manager tag key names are case sensitive. A tag with the key
-#' "ABC" is a different tag from one with key "abc".
+#' Secrets Manager tag key names are case sensitive. A tag with the key "ABC" is a different tag from one with key "abc".
 #' 
-#' If you check tags in permissions policies as part of your security
-#' strategy, then adding or removing a tag can change permissions. If the
-#' completion of this operation would result in you losing your permissions
-#' for this secret, then Secrets Manager blocks the operation and returns
-#' an `Access Denied` error. For more information, see [Control access to
-#' secrets using
-#' tags](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_iam-policies.html#tag-secrets-abac)
-#' and [Limit access to identities with tags that match secrets'
-#' tags](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_iam-policies.html#auth-and-access_tags2).
+#' If you check tags in permissions policies as part of your security strategy, then adding or removing a tag can change permissions. If the completion of this operation would result in you losing your permissions for this secret, then Secrets Manager blocks the operation and returns an `Access Denied` error. For more information, see [Control access to secrets using tags](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_iam-policies.html#tag-secrets-abac) and [Limit access to identities with tags that match secrets' tags](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_iam-policies.html#auth-and-access_tags2).
 #' 
-#' For information about how to format a JSON parameter for the various
-#' command line tool environments, see [Using JSON for
-#' Parameters](https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters.html#cli-using-param-json).
-#' If your command-line tool or SDK requires quotation marks around the
-#' parameter, you should use single quotes to avoid confusion with the
-#' double quotes required in the JSON text.
+#' For information about how to format a JSON parameter for the various command line tool environments, see [Using JSON for Parameters](https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters.html#cli-using-param-json). If your command-line tool or SDK requires quotation marks around the parameter, you should use single quotes to avoid confusion with the double quotes required in the JSON text.
 #' 
-#' For tag quotas and naming restrictions, see [Service quotas for
-#' Tagging](https://docs.aws.amazon.com/general/latest/gr/arg.html#taged-reference-quotas)
-#' in the *Amazon Web Services General Reference guide*.
+#' For tag quotas and naming restrictions, see [Service quotas for Tagging](https://docs.aws.amazon.com/general/latest/gr/arg.html#taged-reference-quotas) in the *Amazon Web Services General Reference guide*.
 #' @param AddReplicaRegions A list of Regions and KMS keys to replicate secrets.
-#' @param ForceOverwriteReplicaSecret Specifies whether to overwrite a secret with the same name in the
-#' destination Region. By default, secrets aren't overwritten.
+#' @param ForceOverwriteReplicaSecret Specifies whether to overwrite a secret with the same name in the destination Region. By default, secrets aren't overwritten.
+#' @param Type The exact string that identifies the partner that holds the external secret. For more information, see [Using Secrets Manager managed external secrets](https://docs.aws.amazon.com/secretsmanager/latest/userguide/managed-external-secrets.html).
 #'
 #' @keywords internal
 #'
 #' @rdname secretsmanager_create_secret
-secretsmanager_create_secret <- function(Name, ClientRequestToken = NULL, Description = NULL, KmsKeyId = NULL, SecretBinary = NULL, SecretString = NULL, Tags = NULL, AddReplicaRegions = NULL, ForceOverwriteReplicaSecret = NULL) {
+secretsmanager_create_secret <- function(Name, ClientRequestToken = NULL, Description = NULL, KmsKeyId = NULL, SecretBinary = NULL, SecretString = NULL, Tags = NULL, AddReplicaRegions = NULL, ForceOverwriteReplicaSecret = NULL, Type = NULL) {
   op <- new_operation(
     name = "CreateSecret",
     http_method = "POST",
@@ -223,7 +150,7 @@ secretsmanager_create_secret <- function(Name, ClientRequestToken = NULL, Descri
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .secretsmanager$create_secret_input(Name = Name, ClientRequestToken = ClientRequestToken, Description = Description, KmsKeyId = KmsKeyId, SecretBinary = SecretBinary, SecretString = SecretString, Tags = Tags, AddReplicaRegions = AddReplicaRegions, ForceOverwriteReplicaSecret = ForceOverwriteReplicaSecret)
+  input <- .secretsmanager$create_secret_input(Name = Name, ClientRequestToken = ClientRequestToken, Description = Description, KmsKeyId = KmsKeyId, SecretBinary = SecretBinary, SecretString = SecretString, Tags = Tags, AddReplicaRegions = AddReplicaRegions, ForceOverwriteReplicaSecret = ForceOverwriteReplicaSecret, Type = Type)
   output <- .secretsmanager$create_secret_output()
   config <- get_config()
   svc <- .secretsmanager$service(config, op)
@@ -240,12 +167,9 @@ secretsmanager_create_secret <- function(Name, ClientRequestToken = NULL, Descri
 #'
 #' See [https://www.paws-r-sdk.com/docs/secretsmanager_delete_resource_policy/](https://www.paws-r-sdk.com/docs/secretsmanager_delete_resource_policy/) for full documentation.
 #'
-#' @param SecretId &#91;required&#93; The ARN or name of the secret to delete the attached resource-based
-#' policy for.
+#' @param SecretId &#91;required&#93; The ARN or name of the secret to delete the attached resource-based policy for.
 #' 
-#' For an ARN, we recommend that you specify a complete ARN rather than a
-#' partial ARN. See [Finding a secret from a partial
-#' ARN](https://docs.aws.amazon.com/secretsmanager/latest/userguide/troubleshoot.html#ARN_secretnamehyphen).
+#' For an ARN, we recommend that you specify a complete ARN rather than a partial ARN. See [Finding a secret from a partial ARN](https://docs.aws.amazon.com/secretsmanager/latest/userguide/troubleshoot.html#ARN_secretnamehyphen).
 #'
 #' @keywords internal
 #'
@@ -278,32 +202,15 @@ secretsmanager_delete_resource_policy <- function(SecretId) {
 #'
 #' @param SecretId &#91;required&#93; The ARN or name of the secret to delete.
 #' 
-#' For an ARN, we recommend that you specify a complete ARN rather than a
-#' partial ARN. See [Finding a secret from a partial
-#' ARN](https://docs.aws.amazon.com/secretsmanager/latest/userguide/troubleshoot.html#ARN_secretnamehyphen).
-#' @param RecoveryWindowInDays The number of days from 7 to 30 that Secrets Manager waits before
-#' permanently deleting the secret. You can't use both this parameter and
-#' `ForceDeleteWithoutRecovery` in the same call. If you don't use either,
-#' then by default Secrets Manager uses a 30 day recovery window.
-#' @param ForceDeleteWithoutRecovery Specifies whether to delete the secret without any recovery window. You
-#' can't use both this parameter and `RecoveryWindowInDays` in the same
-#' call. If you don't use either, then by default Secrets Manager uses a 30
-#' day recovery window.
+#' For an ARN, we recommend that you specify a complete ARN rather than a partial ARN. See [Finding a secret from a partial ARN](https://docs.aws.amazon.com/secretsmanager/latest/userguide/troubleshoot.html#ARN_secretnamehyphen).
+#' @param RecoveryWindowInDays The number of days from 7 to 30 that Secrets Manager waits before permanently deleting the secret. You can't use both this parameter and `ForceDeleteWithoutRecovery` in the same call. If you don't use either, then by default Secrets Manager uses a 30 day recovery window.
+#' @param ForceDeleteWithoutRecovery Specifies whether to delete the secret without any recovery window. You can't use both this parameter and `RecoveryWindowInDays` in the same call. If you don't use either, then by default Secrets Manager uses a 30 day recovery window.
 #' 
-#' Secrets Manager performs the actual deletion with an asynchronous
-#' background process, so there might be a short delay before the secret is
-#' permanently deleted. If you delete a secret and then immediately create
-#' a secret with the same name, use appropriate back off and retry logic.
+#' Secrets Manager performs the actual deletion with an asynchronous background process, so there might be a short delay before the secret is permanently deleted. If you delete a secret and then immediately create a secret with the same name, use appropriate back off and retry logic.
 #' 
-#' If you forcibly delete an already deleted or nonexistent secret, the
-#' operation does not return `ResourceNotFoundException`.
+#' If you forcibly delete an already deleted or nonexistent secret, the operation does not return `ResourceNotFoundException`.
 #' 
-#' Use this parameter with caution. This parameter causes the operation to
-#' skip the normal recovery window before the permanent deletion that
-#' Secrets Manager would normally impose with the `RecoveryWindowInDays`
-#' parameter. If you delete a secret with the `ForceDeleteWithoutRecovery`
-#' parameter, then you have no opportunity to recover the secret. You lose
-#' the secret permanently.
+#' Use this parameter with caution. This parameter causes the operation to skip the normal recovery window before the permanent deletion that Secrets Manager would normally impose with the `RecoveryWindowInDays` parameter. If you delete a secret with the `ForceDeleteWithoutRecovery` parameter, then you have no opportunity to recover the secret. You lose the secret permanently.
 #'
 #' @keywords internal
 #'
@@ -336,9 +243,7 @@ secretsmanager_delete_secret <- function(SecretId, RecoveryWindowInDays = NULL, 
 #'
 #' @param SecretId &#91;required&#93; The ARN or name of the secret.
 #' 
-#' For an ARN, we recommend that you specify a complete ARN rather than a
-#' partial ARN. See [Finding a secret from a partial
-#' ARN](https://docs.aws.amazon.com/secretsmanager/latest/userguide/troubleshoot.html#ARN_secretnamehyphen).
+#' For an ARN, we recommend that you specify a complete ARN rather than a partial ARN. See [Finding a secret from a partial ARN](https://docs.aws.amazon.com/secretsmanager/latest/userguide/troubleshoot.html#ARN_secretnamehyphen).
 #'
 #' @keywords internal
 #'
@@ -369,24 +274,14 @@ secretsmanager_describe_secret <- function(SecretId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/secretsmanager_get_random_password/](https://www.paws-r-sdk.com/docs/secretsmanager_get_random_password/) for full documentation.
 #'
-#' @param PasswordLength The length of the password. If you don't include this parameter, the
-#' default length is 32 characters.
+#' @param PasswordLength The length of the password. If you don't include this parameter, the default length is 32 characters.
 #' @param ExcludeCharacters A string of the characters that you don't want in the password.
-#' @param ExcludeNumbers Specifies whether to exclude numbers from the password. If you don't
-#' include this switch, the password can contain numbers.
-#' @param ExcludePunctuation Specifies whether to exclude the following punctuation characters from
-#' the password:
-#' `` ! \" # $ % & \' ( ) * + , - . / : ; < = > ? @@ [ \ ] ^ _ \` { | } ~ ``.
-#' If you don't include this switch, the password can contain punctuation.
-#' @param ExcludeUppercase Specifies whether to exclude uppercase letters from the password. If you
-#' don't include this switch, the password can contain uppercase letters.
-#' @param ExcludeLowercase Specifies whether to exclude lowercase letters from the password. If you
-#' don't include this switch, the password can contain lowercase letters.
-#' @param IncludeSpace Specifies whether to include the space character. If you include this
-#' switch, the password can contain space characters.
-#' @param RequireEachIncludedType Specifies whether to include at least one upper and lowercase letter,
-#' one number, and one punctuation. If you don't include this switch, the
-#' password contains at least one of every character type.
+#' @param ExcludeNumbers Specifies whether to exclude numbers from the password. If you don't include this switch, the password can contain numbers.
+#' @param ExcludePunctuation Specifies whether to exclude the following punctuation characters from the password: `` ! \" # $ % & \' ( ) * + , - . / : ; < = > ? @@ [ \ ] ^ _ \` { | } ~ ``. If you don't include this switch, the password can contain punctuation.
+#' @param ExcludeUppercase Specifies whether to exclude uppercase letters from the password. If you don't include this switch, the password can contain uppercase letters.
+#' @param ExcludeLowercase Specifies whether to exclude lowercase letters from the password. If you don't include this switch, the password can contain lowercase letters.
+#' @param IncludeSpace Specifies whether to include the space character. If you include this switch, the password can contain space characters.
+#' @param RequireEachIncludedType Specifies whether to include at least one upper and lowercase letter, one number, and one punctuation. If you don't include this switch, the password contains at least one of every character type.
 #'
 #' @keywords internal
 #'
@@ -418,12 +313,9 @@ secretsmanager_get_random_password <- function(PasswordLength = NULL, ExcludeCha
 #'
 #' See [https://www.paws-r-sdk.com/docs/secretsmanager_get_resource_policy/](https://www.paws-r-sdk.com/docs/secretsmanager_get_resource_policy/) for full documentation.
 #'
-#' @param SecretId &#91;required&#93; The ARN or name of the secret to retrieve the attached resource-based
-#' policy for.
+#' @param SecretId &#91;required&#93; The ARN or name of the secret to retrieve the attached resource-based policy for.
 #' 
-#' For an ARN, we recommend that you specify a complete ARN rather than a
-#' partial ARN. See [Finding a secret from a partial
-#' ARN](https://docs.aws.amazon.com/secretsmanager/latest/userguide/troubleshoot.html#ARN_secretnamehyphen).
+#' For an ARN, we recommend that you specify a complete ARN rather than a partial ARN. See [Finding a secret from a partial ARN](https://docs.aws.amazon.com/secretsmanager/latest/userguide/troubleshoot.html#ARN_secretnamehyphen).
 #'
 #' @keywords internal
 #'
@@ -456,28 +348,15 @@ secretsmanager_get_resource_policy <- function(SecretId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/secretsmanager_get_secret_value/](https://www.paws-r-sdk.com/docs/secretsmanager_get_secret_value/) for full documentation.
 #'
-#' @param SecretId &#91;required&#93; The ARN or name of the secret to retrieve. To retrieve a secret from
-#' another account, you must use an ARN.
+#' @param SecretId &#91;required&#93; The ARN or name of the secret to retrieve. To retrieve a secret from another account, you must use an ARN.
 #' 
-#' For an ARN, we recommend that you specify a complete ARN rather than a
-#' partial ARN. See [Finding a secret from a partial
-#' ARN](https://docs.aws.amazon.com/secretsmanager/latest/userguide/troubleshoot.html#ARN_secretnamehyphen).
-#' @param VersionId The unique identifier of the version of the secret to retrieve. If you
-#' include both this parameter and `VersionStage`, the two parameters must
-#' refer to the same secret version. If you don't specify either a
-#' `VersionStage` or `VersionId`, then Secrets Manager returns the
-#' `AWSCURRENT` version.
+#' For an ARN, we recommend that you specify a complete ARN rather than a partial ARN. See [Finding a secret from a partial ARN](https://docs.aws.amazon.com/secretsmanager/latest/userguide/troubleshoot.html#ARN_secretnamehyphen).
+#' @param VersionId The unique identifier of the version of the secret to retrieve. If you include both this parameter and `VersionStage`, the two parameters must refer to the same secret version. If you don't specify either a `VersionStage` or `VersionId`, then Secrets Manager returns the `AWSCURRENT` version.
 #' 
-#' This value is typically a
-#' [UUID-type](https://en.wikipedia.org/wiki/Universally_unique_identifier)
-#' value with 32 hexadecimal digits.
+#' This value is typically a [UUID-type](https://en.wikipedia.org/wiki/Universally_unique_identifier) value with 32 hexadecimal digits.
 #' @param VersionStage The staging label of the version of the secret to retrieve.
 #' 
-#' Secrets Manager uses staging labels to keep track of different versions
-#' during the rotation process. If you include both this parameter and
-#' `VersionId`, the two parameters must refer to the same secret version.
-#' If you don't specify either a `VersionStage` or `VersionId`, Secrets
-#' Manager returns the `AWSCURRENT` version.
+#' Secrets Manager uses staging labels to keep track of different versions during the rotation process. If you include both this parameter and `VersionId`, the two parameters must refer to the same secret version. If you don't specify either a `VersionStage` or `VersionId`, Secrets Manager returns the `AWSCURRENT` version.
 #'
 #' @keywords internal
 #'
@@ -510,23 +389,12 @@ secretsmanager_get_secret_value <- function(SecretId, VersionId = NULL, VersionS
 #'
 #' @param SecretId &#91;required&#93; The ARN or name of the secret whose versions you want to list.
 #' 
-#' For an ARN, we recommend that you specify a complete ARN rather than a
-#' partial ARN. See [Finding a secret from a partial
-#' ARN](https://docs.aws.amazon.com/secretsmanager/latest/userguide/troubleshoot.html#ARN_secretnamehyphen).
+#' For an ARN, we recommend that you specify a complete ARN rather than a partial ARN. See [Finding a secret from a partial ARN](https://docs.aws.amazon.com/secretsmanager/latest/userguide/troubleshoot.html#ARN_secretnamehyphen).
 #' @param MaxResults The number of results to include in the response.
 #' 
-#' If there are more results available, in the response, Secrets Manager
-#' includes `NextToken`. To get the next results, call
-#' [`list_secret_version_ids`][secretsmanager_list_secret_version_ids]
-#' again with the value from `NextToken`.
-#' @param NextToken A token that indicates where the output should continue from, if a
-#' previous call did not show all results. To get the next results, call
-#' [`list_secret_version_ids`][secretsmanager_list_secret_version_ids]
-#' again with this value.
-#' @param IncludeDeprecated Specifies whether to include versions of secrets that don't have any
-#' staging labels attached to them. Versions without staging labels are
-#' considered deprecated and are subject to deletion by Secrets Manager. By
-#' default, versions without staging labels aren't included.
+#' If there are more results available, in the response, Secrets Manager includes `NextToken`. To get the next results, call [`list_secret_version_ids`][secretsmanager_list_secret_version_ids] again with the value from `NextToken`.
+#' @param NextToken A token that indicates where the output should continue from, if a previous call did not show all results. To get the next results, call [`list_secret_version_ids`][secretsmanager_list_secret_version_ids] again with this value.
+#' @param IncludeDeprecated Specifies whether to include versions of secrets that don't have any staging labels attached to them. Versions without staging labels are considered deprecated and are subject to deletion by Secrets Manager. By default, versions without staging labels aren't included.
 #'
 #' @keywords internal
 #'
@@ -558,24 +426,19 @@ secretsmanager_list_secret_version_ids <- function(SecretId, MaxResults = NULL, 
 #'
 #' See [https://www.paws-r-sdk.com/docs/secretsmanager_list_secrets/](https://www.paws-r-sdk.com/docs/secretsmanager_list_secrets/) for full documentation.
 #'
-#' @param IncludePlannedDeletion Specifies whether to include secrets scheduled for deletion. By default,
-#' secrets scheduled for deletion aren't included.
+#' @param IncludePlannedDeletion Specifies whether to include secrets scheduled for deletion. By default, secrets scheduled for deletion aren't included.
 #' @param MaxResults The number of results to include in the response.
 #' 
-#' If there are more results available, in the response, Secrets Manager
-#' includes `NextToken`. To get the next results, call
-#' [`list_secrets`][secretsmanager_list_secrets] again with the value from
-#' `NextToken`.
-#' @param NextToken A token that indicates where the output should continue from, if a
-#' previous call did not show all results. To get the next results, call
-#' [`list_secrets`][secretsmanager_list_secrets] again with this value.
+#' If there are more results available, in the response, Secrets Manager includes `NextToken`. To get the next results, call [`list_secrets`][secretsmanager_list_secrets] again with the value from `NextToken`.
+#' @param NextToken A token that indicates where the output should continue from, if a previous call did not show all results. To get the next results, call [`list_secrets`][secretsmanager_list_secrets] again with this value.
 #' @param Filters The filters to apply to the list of secrets.
 #' @param SortOrder Secrets are listed by `CreatedDate`.
+#' @param SortBy If not specified, secrets are listed by `CreatedDate`.
 #'
 #' @keywords internal
 #'
 #' @rdname secretsmanager_list_secrets
-secretsmanager_list_secrets <- function(IncludePlannedDeletion = NULL, MaxResults = NULL, NextToken = NULL, Filters = NULL, SortOrder = NULL) {
+secretsmanager_list_secrets <- function(IncludePlannedDeletion = NULL, MaxResults = NULL, NextToken = NULL, Filters = NULL, SortOrder = NULL, SortBy = NULL) {
   op <- new_operation(
     name = "ListSecrets",
     http_method = "POST",
@@ -584,7 +447,7 @@ secretsmanager_list_secrets <- function(IncludePlannedDeletion = NULL, MaxResult
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "SecretList"),
     stream_api = FALSE
   )
-  input <- .secretsmanager$list_secrets_input(IncludePlannedDeletion = IncludePlannedDeletion, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters, SortOrder = SortOrder)
+  input <- .secretsmanager$list_secrets_input(IncludePlannedDeletion = IncludePlannedDeletion, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters, SortOrder = SortOrder, SortBy = SortBy)
   output <- .secretsmanager$list_secrets_output()
   config <- get_config()
   svc <- .secretsmanager$service(config, op)
@@ -603,31 +466,17 @@ secretsmanager_list_secrets <- function(IncludePlannedDeletion = NULL, MaxResult
 #'
 #' @param SecretId &#91;required&#93; The ARN or name of the secret to attach the resource-based policy.
 #' 
-#' For an ARN, we recommend that you specify a complete ARN rather than a
-#' partial ARN. See [Finding a secret from a partial
-#' ARN](https://docs.aws.amazon.com/secretsmanager/latest/userguide/troubleshoot.html#ARN_secretnamehyphen).
-#' @param ResourcePolicy &#91;required&#93; A JSON-formatted string for an Amazon Web Services resource-based
-#' policy. For example policies, see [Permissions policy
-#' examples](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_iam-policies.html).
-#' @param BlockPublicPolicy Specifies whether to block resource-based policies that allow broad
-#' access to the secret, for example those that use a wildcard for the
-#' principal. By default, public policies aren't blocked.
+#' For an ARN, we recommend that you specify a complete ARN rather than a partial ARN. See [Finding a secret from a partial ARN](https://docs.aws.amazon.com/secretsmanager/latest/userguide/troubleshoot.html#ARN_secretnamehyphen).
+#' @param ResourcePolicy &#91;required&#93; A JSON-formatted string for an Amazon Web Services resource-based policy. For example policies, see [Permissions policy examples](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_iam-policies.html).
+#' @param BlockPublicPolicy Specifies whether to block resource-based policies that allow broad access to the secret, for example those that use a wildcard for the principal. By default, public policies aren't blocked.
 #' 
-#' Resource policy validation and the BlockPublicPolicy parameter help
-#' protect your resources by preventing public access from being granted
-#' through the resource policies that are directly attached to your
-#' secrets. In addition to using these features, carefully inspect the
-#' following policies to confirm that they do not grant public access:
+#' Resource policy validation and the BlockPublicPolicy parameter help protect your resources by preventing public access from being granted through the resource policies that are directly attached to your secrets. In addition to using these features, carefully inspect the following policies to confirm that they do not grant public access:
 #' 
-#' -   Identity-based policies attached to associated Amazon Web Services
-#'     principals (for example, IAM roles)
+#' -   Identity-based policies attached to associated Amazon Web Services principals (for example, IAM roles)
 #' 
-#' -   Resource-based policies attached to associated Amazon Web Services
-#'     resources (for example, Key Management Service (KMS) keys)
+#' -   Resource-based policies attached to associated Amazon Web Services resources (for example, Key Management Service (KMS) keys)
 #' 
-#' To review permissions to your secrets, see [Determine who has
-#' permissions to your
-#' secrets](https://docs.aws.amazon.com/secretsmanager/latest/userguide/determine-acccess_examine-iam-policies.html).
+#' To review permissions to your secrets, see [Determine who has permissions to your secrets](https://docs.aws.amazon.com/secretsmanager/latest/userguide/determine-acccess_examine-iam-policies.html).
 #'
 #' @keywords internal
 #'
@@ -651,99 +500,56 @@ secretsmanager_put_resource_policy <- function(SecretId, ResourcePolicy, BlockPu
 }
 .secretsmanager$operations$put_resource_policy <- secretsmanager_put_resource_policy
 
-#' Creates a new version with a new encrypted secret value and attaches it
-#' to the secret
+#' Creates a new version of your secret by creating a new encrypted value
+#' and attaching it to the secret
 #'
 #' @description
-#' Creates a new version with a new encrypted secret value and attaches it to the secret. The version can contain a new `SecretString` value or a new `SecretBinary` value.
+#' Creates a new version of your secret by creating a new encrypted value and attaching it to the secret. version can contain a new `SecretString` value or a new `SecretBinary` value.
 #'
 #' See [https://www.paws-r-sdk.com/docs/secretsmanager_put_secret_value/](https://www.paws-r-sdk.com/docs/secretsmanager_put_secret_value/) for full documentation.
 #'
 #' @param SecretId &#91;required&#93; The ARN or name of the secret to add a new version to.
 #' 
-#' For an ARN, we recommend that you specify a complete ARN rather than a
-#' partial ARN. See [Finding a secret from a partial
-#' ARN](https://docs.aws.amazon.com/secretsmanager/latest/userguide/troubleshoot.html#ARN_secretnamehyphen).
+#' For an ARN, we recommend that you specify a complete ARN rather than a partial ARN. See [Finding a secret from a partial ARN](https://docs.aws.amazon.com/secretsmanager/latest/userguide/troubleshoot.html#ARN_secretnamehyphen).
 #' 
-#' If the secret doesn't already exist, use
-#' [`create_secret`][secretsmanager_create_secret] instead.
+#' If the secret doesn't already exist, use [`create_secret`][secretsmanager_create_secret] instead.
 #' @param ClientRequestToken A unique identifier for the new version of the secret.
 #' 
-#' If you use the Amazon Web Services CLI or one of the Amazon Web Services
-#' SDKs to call this operation, then you can leave this parameter empty.
-#' The CLI or SDK generates a random UUID for you and includes it as the
-#' value for this parameter in the request.
+#' If you use the Amazon Web Services CLI or one of the Amazon Web Services SDKs to call this operation, then you can leave this parameter empty. The CLI or SDK generates a random UUID for you and includes it as the value for this parameter in the request.
 #' 
-#' If you generate a raw HTTP request to the Secrets Manager service
-#' endpoint, then you must generate a `ClientRequestToken` and include it
-#' in the request.
+#' If you generate a raw HTTP request to the Secrets Manager service endpoint, then you must generate a `ClientRequestToken` and include it in the request.
 #' 
-#' This value helps ensure idempotency. Secrets Manager uses this value to
-#' prevent the accidental creation of duplicate versions if there are
-#' failures and retries during a rotation. We recommend that you generate a
-#' [UUID-type](https://en.wikipedia.org/wiki/Universally_unique_identifier)
-#' value to ensure uniqueness of your versions within the specified secret.
+#' This value helps ensure idempotency. Secrets Manager uses this value to prevent the accidental creation of duplicate versions if there are failures and retries during a rotation. We recommend that you generate a [UUID-type](https://en.wikipedia.org/wiki/Universally_unique_identifier) value to ensure uniqueness of your versions within the specified secret.
 #' 
-#' -   If the `ClientRequestToken` value isn't already associated with a
-#'     version of the secret then a new version of the secret is created.
+#' -   If the `ClientRequestToken` value isn't already associated with a version of the secret then a new version of the secret is created.
 #' 
-#' -   If a version with this value already exists and that version's
-#'     `SecretString` or `SecretBinary` values are the same as those in the
-#'     request then the request is ignored. The operation is idempotent.
+#' -   If a version with this value already exists and that version's `SecretString` or `SecretBinary` values are the same as those in the request then the request is ignored. The operation is idempotent.
 #' 
-#' -   If a version with this value already exists and the version of the
-#'     `SecretString` and `SecretBinary` values are different from those in
-#'     the request, then the request fails because you can't modify a
-#'     secret version. You can only create new versions to store new secret
-#'     values.
+#' -   If a version with this value already exists and the version of the `SecretString` and `SecretBinary` values are different from those in the request, then the request fails because you can't modify a secret version. You can only create new versions to store new secret values.
 #' 
 #' This value becomes the `VersionId` of the new version.
-#' @param SecretBinary The binary data to encrypt and store in the new version of the secret.
-#' To use this parameter in the command-line tools, we recommend that you
-#' store your binary data in a file and then pass the contents of the file
-#' as a parameter.
+#' @param SecretBinary The binary data to encrypt and store in the new version of the secret. To use this parameter in the command-line tools, we recommend that you store your binary data in a file and then pass the contents of the file as a parameter.
 #' 
 #' You must include `SecretBinary` or `SecretString`, but not both.
 #' 
 #' You can't access this value from the Secrets Manager console.
 #' 
-#' Sensitive: This field contains sensitive information, so the service
-#' does not include it in CloudTrail log entries. If you create your own
-#' log entries, you must also avoid logging the information in this field.
+#' Sensitive: This field contains sensitive information, so the service does not include it in CloudTrail log entries. If you create your own log entries, you must also avoid logging the information in this field.
 #' @param SecretString The text to encrypt and store in the new version of the secret.
 #' 
 #' You must include `SecretBinary` or `SecretString`, but not both.
 #' 
-#' We recommend you create the secret string as JSON key/value pairs, as
-#' shown in the example.
+#' We recommend you create the secret string as JSON key/value pairs, as shown in the example.
 #' 
-#' Sensitive: This field contains sensitive information, so the service
-#' does not include it in CloudTrail log entries. If you create your own
-#' log entries, you must also avoid logging the information in this field.
-#' @param VersionStages A list of staging labels to attach to this version of the secret.
-#' Secrets Manager uses staging labels to track versions of a secret
-#' through the rotation process.
+#' Sensitive: This field contains sensitive information, so the service does not include it in CloudTrail log entries. If you create your own log entries, you must also avoid logging the information in this field.
+#' @param VersionStages A list of staging labels to attach to this version of the secret. Secrets Manager uses staging labels to track versions of a secret through the rotation process.
 #' 
-#' If you specify a staging label that's already associated with a
-#' different version of the same secret, then Secrets Manager removes the
-#' label from the other version and attaches it to this version. If you
-#' specify `AWSCURRENT`, and it is already attached to another version,
-#' then Secrets Manager also moves the staging label `AWSPREVIOUS` to the
-#' version that `AWSCURRENT` was removed from.
+#' If you specify a staging label that's already associated with a different version of the same secret, then Secrets Manager removes the label from the other version and attaches it to this version. If you specify `AWSCURRENT`, and it is already attached to another version, then Secrets Manager also moves the staging label `AWSPREVIOUS` to the version that `AWSCURRENT` was removed from.
 #' 
-#' If you don't include `VersionStages`, then Secrets Manager automatically
-#' moves the staging label `AWSCURRENT` to this version.
-#' @param RotationToken A unique identifier that indicates the source of the request. For
-#' cross-account rotation (when you rotate a secret in one account by using
-#' a Lambda rotation function in another account) and the Lambda rotation
-#' function assumes an IAM role to call Secrets Manager, Secrets Manager
-#' validates the identity with the rotation token. For more information,
-#' see [How rotation
-#' works](https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets.html).
+#' If you don't include `VersionStages`, then Secrets Manager automatically moves the staging label `AWSCURRENT` to this version.
+#' @param RotationToken A unique identifier that indicates the source of the request. Required for secret rotations using an IAM assumed role or cross-account rotation, in which you rotate a secret in one account by using a Lambda rotation function in another account. In both cases, the rotation function assumes an IAM role to call Secrets Manager, and then Secrets Manager validates the identity using the token. For more information, see [How rotation works](https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets.html) and [Rotation by Lambda functions](https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotate-secrets_lambda.html).
 #' 
-#' Sensitive: This field contains sensitive information, so the service
-#' does not include it in CloudTrail log entries. If you create your own
-#' log entries, you must also avoid logging the information in this field.
+#' Sensitive: This field contains sensitive information, so the service does not include it in CloudTrail log entries. If you create your own log entries, you must also avoid logging the information in this field.
 #'
 #' @keywords internal
 #'
@@ -809,8 +615,7 @@ secretsmanager_remove_regions_from_replication <- function(SecretId, RemoveRepli
 #'
 #' @param SecretId &#91;required&#93; The ARN or name of the secret to replicate.
 #' @param AddReplicaRegions &#91;required&#93; A list of Regions in which to replicate the secret.
-#' @param ForceOverwriteReplicaSecret Specifies whether to overwrite a secret with the same name in the
-#' destination Region. By default, secrets aren't overwritten.
+#' @param ForceOverwriteReplicaSecret Specifies whether to overwrite a secret with the same name in the destination Region. By default, secrets aren't overwritten.
 #'
 #' @keywords internal
 #'
@@ -844,9 +649,7 @@ secretsmanager_replicate_secret_to_regions <- function(SecretId, AddReplicaRegio
 #'
 #' @param SecretId &#91;required&#93; The ARN or name of the secret to restore.
 #' 
-#' For an ARN, we recommend that you specify a complete ARN rather than a
-#' partial ARN. See [Finding a secret from a partial
-#' ARN](https://docs.aws.amazon.com/secretsmanager/latest/userguide/troubleshoot.html#ARN_secretnamehyphen).
+#' For an ARN, we recommend that you specify a complete ARN rather than a partial ARN. See [Finding a secret from a partial ARN](https://docs.aws.amazon.com/secretsmanager/latest/userguide/troubleshoot.html#ARN_secretnamehyphen).
 #'
 #' @keywords internal
 #'
@@ -879,53 +682,44 @@ secretsmanager_restore_secret <- function(SecretId) {
 #'
 #' @param SecretId &#91;required&#93; The ARN or name of the secret to rotate.
 #' 
-#' For an ARN, we recommend that you specify a complete ARN rather than a
-#' partial ARN. See [Finding a secret from a partial
-#' ARN](https://docs.aws.amazon.com/secretsmanager/latest/userguide/troubleshoot.html#ARN_secretnamehyphen).
-#' @param ClientRequestToken A unique identifier for the new version of the secret. You only need to
-#' specify this value if you implement your own retry logic and you want to
-#' ensure that Secrets Manager doesn't attempt to create a secret version
-#' twice.
+#' For an ARN, we recommend that you specify a complete ARN rather than a partial ARN. See [Finding a secret from a partial ARN](https://docs.aws.amazon.com/secretsmanager/latest/userguide/troubleshoot.html#ARN_secretnamehyphen).
+#' @param ClientRequestToken A unique identifier for the new version of the secret. You only need to specify this value if you implement your own retry logic and you want to ensure that Secrets Manager doesn't attempt to create a secret version twice.
 #' 
-#' If you use the Amazon Web Services CLI or one of the Amazon Web Services
-#' SDKs to call this operation, then you can leave this parameter empty.
-#' The CLI or SDK generates a random UUID for you and includes it as the
-#' value for this parameter in the request.
+#' If you use the Amazon Web Services CLI or one of the Amazon Web Services SDKs to call this operation, then you can leave this parameter empty. The CLI or SDK generates a random UUID for you and includes it as the value for this parameter in the request.
 #' 
-#' If you generate a raw HTTP request to the Secrets Manager service
-#' endpoint, then you must generate a `ClientRequestToken` and include it
-#' in the request.
+#' If you generate a raw HTTP request to the Secrets Manager service endpoint, then you must generate a `ClientRequestToken` and include it in the request.
 #' 
-#' This value helps ensure idempotency. Secrets Manager uses this value to
-#' prevent the accidental creation of duplicate versions if there are
-#' failures and retries during a rotation. We recommend that you generate a
-#' [UUID-type](https://en.wikipedia.org/wiki/Universally_unique_identifier)
-#' value to ensure uniqueness of your versions within the specified secret.
-#' @param RotationLambdaARN For secrets that use a Lambda rotation function to rotate, the ARN of
-#' the Lambda rotation function.
+#' This value helps ensure idempotency. Secrets Manager uses this value to prevent the accidental creation of duplicate versions if there are failures and retries during a rotation. We recommend that you generate a [UUID-type](https://en.wikipedia.org/wiki/Universally_unique_identifier) value to ensure uniqueness of your versions within the specified secret.
+#' @param RotationLambdaARN For secrets that use a Lambda rotation function to rotate, the ARN of the Lambda rotation function.
 #' 
-#' For secrets that use *managed rotation*, omit this field. For more
-#' information, see [Managed
-#' rotation](https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotate-secrets_managed.html)
-#' in the *Secrets Manager User Guide*.
+#' For secrets that use *managed rotation*, omit this field. For more information, see [Managed rotation](https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotate-secrets_managed.html) in the *Secrets Manager User Guide*.
 #' @param RotationRules A structure that defines the rotation configuration for this secret.
-#' @param RotateImmediately Specifies whether to rotate the secret immediately or wait until the
-#' next scheduled rotation window. The rotation schedule is defined in
-#' RotateSecretRequest$RotationRules.
 #' 
-#' For secrets that use a Lambda rotation function to rotate, if you don't
-#' immediately rotate the secret, Secrets Manager tests the rotation
-#' configuration by running the [`testSecret`
-#' step](https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotate-secrets_lambda-functions.html#rotate-secrets_lambda-functions-code)
-#' of the Lambda rotation function. The test creates an `AWSPENDING`
-#' version of the secret and then removes it.
+#' When changing an existing rotation schedule and setting `RotateImmediately` to `false`:
 #' 
-#' By default, Secrets Manager rotates the secret immediately.
+#' -   If using `AutomaticallyAfterDays` or a `ScheduleExpression` with `rate()`, the previously scheduled rotation might still occur.
+#' 
+#' -   To prevent unintended rotations, use a `ScheduleExpression` with `cron()` for granular control over rotation windows.
+#' @param ExternalSecretRotationMetadata The metadata needed to successfully rotate a managed external secret. A list of key value pairs in JSON format specified by the partner. For more information about the required information, see [Using Secrets Manager managed external secrets](https://docs.aws.amazon.com/secretsmanager/latest/userguide/managed-external-secrets.html)
+#' @param ExternalSecretRotationRoleArn The Amazon Resource Name (ARN) of the role that allows Secrets Manager to rotate a secret held by a third-party partner. For more information, see [Security and permissions](https://docs.aws.amazon.com/secretsmanager/latest/userguide/mes-security.html).
+#' @param RotateImmediately Specifies whether to rotate the secret immediately or wait until the next scheduled rotation window. The rotation schedule is defined in RotateSecretRequest$RotationRules.
+#' 
+#' The default for `RotateImmediately` is `true`. If you don't specify this value, Secrets Manager rotates the secret immediately.
+#' 
+#' If you set `RotateImmediately` to `false`, Secrets Manager tests the rotation configuration by running the [`testSecret` step](https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets.html) of the Lambda rotation function. This test creates an `AWSPENDING` version of the secret and then removes it.
+#' 
+#' When changing an existing rotation schedule and setting `RotateImmediately` to `false`:
+#' 
+#' -   If using `AutomaticallyAfterDays` or a `ScheduleExpression` with `rate()`, the previously scheduled rotation might still occur.
+#' 
+#' -   To prevent unintended rotations, use a `ScheduleExpression` with `cron()` for granular control over rotation windows.
+#' 
+#' Rotation is an asynchronous process. For more information, see [How rotation works](https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets.html).
 #'
 #' @keywords internal
 #'
 #' @rdname secretsmanager_rotate_secret
-secretsmanager_rotate_secret <- function(SecretId, ClientRequestToken = NULL, RotationLambdaARN = NULL, RotationRules = NULL, RotateImmediately = NULL) {
+secretsmanager_rotate_secret <- function(SecretId, ClientRequestToken = NULL, RotationLambdaARN = NULL, RotationRules = NULL, ExternalSecretRotationMetadata = NULL, ExternalSecretRotationRoleArn = NULL, RotateImmediately = NULL) {
   op <- new_operation(
     name = "RotateSecret",
     http_method = "POST",
@@ -934,7 +728,7 @@ secretsmanager_rotate_secret <- function(SecretId, ClientRequestToken = NULL, Ro
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .secretsmanager$rotate_secret_input(SecretId = SecretId, ClientRequestToken = ClientRequestToken, RotationLambdaARN = RotationLambdaARN, RotationRules = RotationRules, RotateImmediately = RotateImmediately)
+  input <- .secretsmanager$rotate_secret_input(SecretId = SecretId, ClientRequestToken = ClientRequestToken, RotationLambdaARN = RotationLambdaARN, RotationRules = RotationRules, ExternalSecretRotationMetadata = ExternalSecretRotationMetadata, ExternalSecretRotationRoleArn = ExternalSecretRotationRoleArn, RotateImmediately = RotateImmediately)
   output <- .secretsmanager$rotate_secret_output()
   config <- get_config()
   svc <- .secretsmanager$service(config, op)
@@ -952,7 +746,7 @@ secretsmanager_rotate_secret <- function(SecretId, ClientRequestToken = NULL, Ro
 #'
 #' See [https://www.paws-r-sdk.com/docs/secretsmanager_stop_replication_to_replica/](https://www.paws-r-sdk.com/docs/secretsmanager_stop_replication_to_replica/) for full documentation.
 #'
-#' @param SecretId &#91;required&#93; The ARN of the primary secret.
+#' @param SecretId &#91;required&#93; The name of the secret or the replica ARN. The replica ARN is the same as the original primary secret ARN expect the Region is changed to the replica Region.
 #'
 #' @keywords internal
 #'
@@ -983,20 +777,12 @@ secretsmanager_stop_replication_to_replica <- function(SecretId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/secretsmanager_tag_resource/](https://www.paws-r-sdk.com/docs/secretsmanager_tag_resource/) for full documentation.
 #'
-#' @param SecretId &#91;required&#93; The identifier for the secret to attach tags to. You can specify either
-#' the Amazon Resource Name (ARN) or the friendly name of the secret.
+#' @param SecretId &#91;required&#93; The identifier for the secret to attach tags to. You can specify either the Amazon Resource Name (ARN) or the friendly name of the secret.
 #' 
-#' For an ARN, we recommend that you specify a complete ARN rather than a
-#' partial ARN. See [Finding a secret from a partial
-#' ARN](https://docs.aws.amazon.com/secretsmanager/latest/userguide/troubleshoot.html#ARN_secretnamehyphen).
-#' @param Tags &#91;required&#93; The tags to attach to the secret as a JSON text string argument. Each
-#' element in the list consists of a `Key` and a `Value`.
+#' For an ARN, we recommend that you specify a complete ARN rather than a partial ARN. See [Finding a secret from a partial ARN](https://docs.aws.amazon.com/secretsmanager/latest/userguide/troubleshoot.html#ARN_secretnamehyphen).
+#' @param Tags &#91;required&#93; The tags to attach to the secret as a JSON text string argument. Each element in the list consists of a `Key` and a `Value`.
 #' 
-#' For storing multiple values, we recommend that you use a JSON text
-#' string argument and specify key/value pairs. For more information, see
-#' [Specifying parameter values for the Amazon Web Services
-#' CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters.html)
-#' in the Amazon Web Services CLI User Guide.
+#' For storing multiple values, we recommend that you use a JSON text string argument and specify key/value pairs. For more information, see [Specifying parameter values for the Amazon Web Services CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters.html) in the Amazon Web Services CLI User Guide.
 #'
 #' @keywords internal
 #'
@@ -1029,19 +815,12 @@ secretsmanager_tag_resource <- function(SecretId, Tags) {
 #'
 #' @param SecretId &#91;required&#93; The ARN or name of the secret.
 #' 
-#' For an ARN, we recommend that you specify a complete ARN rather than a
-#' partial ARN. See [Finding a secret from a partial
-#' ARN](https://docs.aws.amazon.com/secretsmanager/latest/userguide/troubleshoot.html#ARN_secretnamehyphen).
-#' @param TagKeys &#91;required&#93; A list of tag key names to remove from the secret. You don't specify the
-#' value. Both the key and its associated value are removed.
+#' For an ARN, we recommend that you specify a complete ARN rather than a partial ARN. See [Finding a secret from a partial ARN](https://docs.aws.amazon.com/secretsmanager/latest/userguide/troubleshoot.html#ARN_secretnamehyphen).
+#' @param TagKeys &#91;required&#93; A list of tag key names to remove from the secret. You don't specify the value. Both the key and its associated value are removed.
 #' 
 #' This parameter requires a JSON text string argument.
 #' 
-#' For storing multiple values, we recommend that you use a JSON text
-#' string argument and specify key/value pairs. For more information, see
-#' [Specifying parameter values for the Amazon Web Services
-#' CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters.html)
-#' in the Amazon Web Services CLI User Guide.
+#' For storing multiple values, we recommend that you use a JSON text string argument and specify key/value pairs. For more information, see [Specifying parameter values for the Amazon Web Services CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters.html) in the Amazon Web Services CLI User Guide.
 #'
 #' @keywords internal
 #'
@@ -1075,80 +854,40 @@ secretsmanager_untag_resource <- function(SecretId, TagKeys) {
 #'
 #' @param SecretId &#91;required&#93; The ARN or name of the secret.
 #' 
-#' For an ARN, we recommend that you specify a complete ARN rather than a
-#' partial ARN. See [Finding a secret from a partial
-#' ARN](https://docs.aws.amazon.com/secretsmanager/latest/userguide/troubleshoot.html#ARN_secretnamehyphen).
-#' @param ClientRequestToken If you include `SecretString` or `SecretBinary`, then Secrets Manager
-#' creates a new version for the secret, and this parameter specifies the
-#' unique identifier for the new version.
+#' For an ARN, we recommend that you specify a complete ARN rather than a partial ARN. See [Finding a secret from a partial ARN](https://docs.aws.amazon.com/secretsmanager/latest/userguide/troubleshoot.html#ARN_secretnamehyphen).
+#' @param ClientRequestToken If you include `SecretString` or `SecretBinary`, then Secrets Manager creates a new version for the secret, and this parameter specifies the unique identifier for the new version.
 #' 
-#' If you use the Amazon Web Services CLI or one of the Amazon Web Services
-#' SDKs to call this operation, then you can leave this parameter empty.
-#' The CLI or SDK generates a random UUID for you and includes it as the
-#' value for this parameter in the request.
+#' If you use the Amazon Web Services CLI or one of the Amazon Web Services SDKs to call this operation, then you can leave this parameter empty. The CLI or SDK generates a random UUID for you and includes it as the value for this parameter in the request.
 #' 
-#' If you generate a raw HTTP request to the Secrets Manager service
-#' endpoint, then you must generate a `ClientRequestToken` and include it
-#' in the request.
+#' If you generate a raw HTTP request to the Secrets Manager service endpoint, then you must generate a `ClientRequestToken` and include it in the request.
 #' 
-#' This value helps ensure idempotency. Secrets Manager uses this value to
-#' prevent the accidental creation of duplicate versions if there are
-#' failures and retries during a rotation. We recommend that you generate a
-#' [UUID-type](https://en.wikipedia.org/wiki/Universally_unique_identifier)
-#' value to ensure uniqueness of your versions within the specified secret.
+#' This value helps ensure idempotency. Secrets Manager uses this value to prevent the accidental creation of duplicate versions if there are failures and retries during a rotation. We recommend that you generate a [UUID-type](https://en.wikipedia.org/wiki/Universally_unique_identifier) value to ensure uniqueness of your versions within the specified secret.
 #' @param Description The description of the secret.
-#' @param KmsKeyId The ARN, key ID, or alias of the KMS key that Secrets Manager uses to
-#' encrypt new secret versions as well as any existing versions with the
-#' staging labels `AWSCURRENT`, `AWSPENDING`, or `AWSPREVIOUS`. If you
-#' don't have `kms:Encrypt` permission to the new key, Secrets Manager does
-#' not re-encrypt existing secret versions with the new key. For more
-#' information about versions and staging labels, see [Concepts:
-#' Version](https://docs.aws.amazon.com/secretsmanager/latest/userguide/#term_version).
+#' @param KmsKeyId The ARN, key ID, or alias of the KMS key that Secrets Manager uses to encrypt new secret versions as well as any existing versions with the staging labels `AWSCURRENT`, `AWSPENDING`, or `AWSPREVIOUS`. If you don't have `kms:Encrypt` permission to the new key, Secrets Manager does not re-encrypt existing secret versions with the new key. For more information about versions and staging labels, see [Concepts: Version](https://docs.aws.amazon.com/secretsmanager/latest/userguide/#term_version).
 #' 
-#' A key alias is always prefixed by `alias/`, for example
-#' `alias/aws/secretsmanager`. For more information, see [About
-#' aliases](https://docs.aws.amazon.com/kms/latest/developerguide/kms-alias.html#alias-about).
+#' A key alias is always prefixed by `alias/`, for example `alias/aws/secretsmanager`. For more information, see [About aliases](https://docs.aws.amazon.com/kms/latest/developerguide/kms-alias.html).
 #' 
-#' If you set this to an empty string, Secrets Manager uses the Amazon Web
-#' Services managed key `aws/secretsmanager`. If this key doesn't already
-#' exist in your account, then Secrets Manager creates it for you
-#' automatically. All users and roles in the Amazon Web Services account
-#' automatically have access to use `aws/secretsmanager`. Creating
-#' `aws/secretsmanager` can result in a one-time significant delay in
-#' returning the result.
+#' If you set this to an empty string, Secrets Manager uses the Amazon Web Services managed key `aws/secretsmanager`. If this key doesn't already exist in your account, then Secrets Manager creates it for you automatically. All users and roles in the Amazon Web Services account automatically have access to use `aws/secretsmanager`. Creating `aws/secretsmanager` can result in a one-time significant delay in returning the result.
 #' 
-#' You can only use the Amazon Web Services managed key
-#' `aws/secretsmanager` if you call this operation using credentials from
-#' the same Amazon Web Services account that owns the secret. If the secret
-#' is in a different account, then you must use a customer managed key and
-#' provide the ARN of that KMS key in this field. The user making the call
-#' must have permissions to both the secret and the KMS key in their
-#' respective accounts.
-#' @param SecretBinary The binary data to encrypt and store in the new version of the secret.
-#' We recommend that you store your binary data in a file and then pass the
-#' contents of the file as a parameter.
+#' You can only use the Amazon Web Services managed key `aws/secretsmanager` if you call this operation using credentials from the same Amazon Web Services account that owns the secret. If the secret is in a different account, then you must use a customer managed key and provide the ARN of that KMS key in this field. The user making the call must have permissions to both the secret and the KMS key in their respective accounts.
+#' @param SecretBinary The binary data to encrypt and store in the new version of the secret. We recommend that you store your binary data in a file and then pass the contents of the file as a parameter.
 #' 
 #' Either `SecretBinary` or `SecretString` must have a value, but not both.
 #' 
 #' You can't access this parameter in the Secrets Manager console.
 #' 
-#' Sensitive: This field contains sensitive information, so the service
-#' does not include it in CloudTrail log entries. If you create your own
-#' log entries, you must also avoid logging the information in this field.
-#' @param SecretString The text data to encrypt and store in the new version of the secret. We
-#' recommend you use a JSON structure of key/value pairs for your secret
-#' value.
+#' Sensitive: This field contains sensitive information, so the service does not include it in CloudTrail log entries. If you create your own log entries, you must also avoid logging the information in this field.
+#' @param SecretString The text data to encrypt and store in the new version of the secret. We recommend you use a JSON structure of key/value pairs for your secret value.
 #' 
 #' Either `SecretBinary` or `SecretString` must have a value, but not both.
 #' 
-#' Sensitive: This field contains sensitive information, so the service
-#' does not include it in CloudTrail log entries. If you create your own
-#' log entries, you must also avoid logging the information in this field.
+#' Sensitive: This field contains sensitive information, so the service does not include it in CloudTrail log entries. If you create your own log entries, you must also avoid logging the information in this field.
+#' @param Type The exact string that identifies the third-party partner that holds the external secret. For more information, see [Managed external secret partners](https://docs.aws.amazon.com/secretsmanager/latest/userguide/mes-partners.html).
 #'
 #' @keywords internal
 #'
 #' @rdname secretsmanager_update_secret
-secretsmanager_update_secret <- function(SecretId, ClientRequestToken = NULL, Description = NULL, KmsKeyId = NULL, SecretBinary = NULL, SecretString = NULL) {
+secretsmanager_update_secret <- function(SecretId, ClientRequestToken = NULL, Description = NULL, KmsKeyId = NULL, SecretBinary = NULL, SecretString = NULL, Type = NULL) {
   op <- new_operation(
     name = "UpdateSecret",
     http_method = "POST",
@@ -1157,7 +896,7 @@ secretsmanager_update_secret <- function(SecretId, ClientRequestToken = NULL, De
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .secretsmanager$update_secret_input(SecretId = SecretId, ClientRequestToken = ClientRequestToken, Description = Description, KmsKeyId = KmsKeyId, SecretBinary = SecretBinary, SecretString = SecretString)
+  input <- .secretsmanager$update_secret_input(SecretId = SecretId, ClientRequestToken = ClientRequestToken, Description = Description, KmsKeyId = KmsKeyId, SecretBinary = SecretBinary, SecretString = SecretString, Type = Type)
   output <- .secretsmanager$update_secret_output()
   config <- get_config()
   svc <- .secretsmanager$service(config, op)
@@ -1174,24 +913,14 @@ secretsmanager_update_secret <- function(SecretId, ClientRequestToken = NULL, De
 #'
 #' See [https://www.paws-r-sdk.com/docs/secretsmanager_update_secret_version_stage/](https://www.paws-r-sdk.com/docs/secretsmanager_update_secret_version_stage/) for full documentation.
 #'
-#' @param SecretId &#91;required&#93; The ARN or the name of the secret with the version and staging labelsto
-#' modify.
+#' @param SecretId &#91;required&#93; The ARN or the name of the secret with the version and staging labelsto modify.
 #' 
-#' For an ARN, we recommend that you specify a complete ARN rather than a
-#' partial ARN. See [Finding a secret from a partial
-#' ARN](https://docs.aws.amazon.com/secretsmanager/latest/userguide/troubleshoot.html#ARN_secretnamehyphen).
+#' For an ARN, we recommend that you specify a complete ARN rather than a partial ARN. See [Finding a secret from a partial ARN](https://docs.aws.amazon.com/secretsmanager/latest/userguide/troubleshoot.html#ARN_secretnamehyphen).
 #' @param VersionStage &#91;required&#93; The staging label to add to this version.
-#' @param RemoveFromVersionId The ID of the version that the staging label is to be removed from. If
-#' the staging label you are trying to attach to one version is already
-#' attached to a different version, then you must include this parameter
-#' and specify the version that the label is to be removed from. If the
-#' label is attached and you either do not specify this parameter, or the
-#' version ID does not match, then the operation fails.
-#' @param MoveToVersionId The ID of the version to add the staging label to. To remove a label
-#' from a version, then do not specify this parameter.
+#' @param RemoveFromVersionId The ID of the version that the staging label is to be removed from. If the staging label you are trying to attach to one version is already attached to a different version, then you must include this parameter and specify the version that the label is to be removed from. If the label is attached and you either do not specify this parameter, or the version ID does not match, then the operation fails.
+#' @param MoveToVersionId The ID of the version to add the staging label to. To remove a label from a version, then do not specify this parameter.
 #' 
-#' If the staging label is already attached to a different version of the
-#' secret, then you must also specify the `RemoveFromVersionId` parameter.
+#' If the staging label is already attached to a different version of the secret, then you must also specify the `RemoveFromVersionId` parameter.
 #'
 #' @keywords internal
 #'
@@ -1223,13 +952,8 @@ secretsmanager_update_secret_version_stage <- function(SecretId, VersionStage, R
 #'
 #' See [https://www.paws-r-sdk.com/docs/secretsmanager_validate_resource_policy/](https://www.paws-r-sdk.com/docs/secretsmanager_validate_resource_policy/) for full documentation.
 #'
-#' @param SecretId The ARN or name of the secret with the resource-based policy you want to
-#' validate.
-#' @param ResourcePolicy &#91;required&#93; A JSON-formatted string that contains an Amazon Web Services
-#' resource-based policy. The policy in the string identifies who can
-#' access or manage this secret and its versions. For example policies, see
-#' [Permissions policy
-#' examples](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_iam-policies.html).
+#' @param SecretId The ARN or name of the secret with the resource-based policy you want to validate.
+#' @param ResourcePolicy &#91;required&#93; A JSON-formatted string that contains an Amazon Web Services resource-based policy. The policy in the string identifies who can access or manage this secret and its versions. For example policies, see [Permissions policy examples](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_iam-policies.html).
 #'
 #' @keywords internal
 #'

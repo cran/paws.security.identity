@@ -11,8 +11,7 @@ accessanalyzer_list_access_previews(
 )
 }
 \arguments{
-\item{analyzerArn}{[required] The \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources}{ARN of the analyzer}
-used to generate the access preview.}
+\item{analyzerArn}{[required] The \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources}{ARN of the analyzer} used to generate the access preview.}
 
 \item{nextToken}{A token used for pagination of results returned.}
 

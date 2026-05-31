@@ -15,10 +15,9 @@ cleanroomsml_start_audience_export_job(
 \arguments{
 \item{name}{[required] The name of the audience export job.}
 
-\item{audienceGenerationJobArn}{[required] The Amazon Resource Name (ARN) of the audience generation job that you
-want to export.}
+\item{audienceGenerationJobArn}{[required] The Amazon Resource Name (ARN) of the audience generation job that you want to export.}
 
-\item{audienceSize}{[required]}
+\item{audienceSize}{[required] The size of the generated audience. Must match one of the sizes in the configured audience model.}
 
 \item{description}{The description of the audience export job.}
 }

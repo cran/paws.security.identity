@@ -12,15 +12,11 @@ sso_list_account_roles(
 )
 }
 \arguments{
-\item{nextToken}{The page token from the previous response output when you request
-subsequent pages.}
+\item{nextToken}{The page token from the previous response output when you request subsequent pages.}
 
 \item{maxResults}{The number of items that clients can request per page.}
 
-\item{accessToken}{[required] The token issued by the \code{CreateToken} API call. For more information,
-see
-\href{https://docs.aws.amazon.com/singlesignon/latest/OIDCAPIReference/API_CreateToken.html}{CreateToken}
-in the \emph{IAM Identity Center OIDC API Reference Guide}.}
+\item{accessToken}{[required] The token issued by the \code{CreateToken} API call. For more information, see \href{https://docs.aws.amazon.com/singlesignon/latest/OIDCAPIReference/API_CreateToken.html}{CreateToken} in the \emph{IAM Identity Center OIDC API Reference Guide}.}
 
 \item{accountId}{[required] The identifier for the AWS account that is assigned to the user.}
 }

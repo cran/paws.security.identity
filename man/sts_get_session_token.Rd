@@ -12,37 +12,15 @@ sts_get_session_token(
 )
 }
 \arguments{
-\item{DurationSeconds}{The duration, in seconds, that the credentials should remain valid.
-Acceptable durations for IAM user sessions range from 900 seconds (15
-minutes) to 129,600 seconds (36 hours), with 43,200 seconds (12 hours)
-as the default. Sessions for Amazon Web Services account owners are
-restricted to a maximum of 3,600 seconds (one hour). If the duration is
-longer than one hour, the session for Amazon Web Services account owners
-defaults to one hour.}
+\item{DurationSeconds}{The duration, in seconds, that the credentials should remain valid. Acceptable durations for IAM user sessions range from 900 seconds (15 minutes) to 129,600 seconds (36 hours), with 43,200 seconds (12 hours) as the default. Sessions for Amazon Web Services account owners are restricted to a maximum of 3,600 seconds (one hour). If the duration is longer than one hour, the session for Amazon Web Services account owners defaults to one hour.}
 
-\item{SerialNumber}{The identification number of the MFA device that is associated with the
-IAM user who is making the \code{\link[=sts_get_session_token]{get_session_token}}
-call. Specify this value if the IAM user has a policy that requires MFA
-authentication. The value is either the serial number for a hardware
-device (such as \code{GAHT12345678}) or an Amazon Resource Name (ARN) for a
-virtual device (such as \verb{arn:aws:iam::123456789012:mfa/user}). You can
-find the device for an IAM user by going to the Amazon Web Services
-Management Console and viewing the user's security credentials.
+\item{SerialNumber}{The identification number of the MFA device that is associated with the IAM user who is making the \code{\link[=sts_get_session_token]{get_session_token}} call. Specify this value if the IAM user has a policy that requires MFA authentication. The value is either the serial number for a hardware device (such as \code{GAHT12345678}) or an Amazon Resource Name (ARN) for a virtual device (such as \verb{arn:aws:iam::123456789012:mfa/user}). You can find the device for an IAM user by going to the Amazon Web Services Management Console and viewing the user's security credentials.
 
-The regex used to validate this parameter is a string of characters
-consisting of upper- and lower-case alphanumeric characters with no
-spaces. You can also include underscores or any of the following
-characters: =,.@:/-}
+The regex used to validate this parameter is a string of characters consisting of upper- and lower-case alphanumeric characters with no spaces. You can also include underscores or any of the following characters: =,.@:/-}
 
-\item{TokenCode}{The value provided by the MFA device, if MFA is required. If any policy
-requires the IAM user to submit an MFA code, specify this value. If MFA
-authentication is required, the user must provide a code when requesting
-a set of temporary security credentials. A user who fails to provide the
-code receives an "access denied" response when requesting resources that
-require MFA authentication.
+\item{TokenCode}{The value provided by the MFA device, if MFA is required. If any policy requires the IAM user to submit an MFA code, specify this value. If MFA authentication is required, the user must provide a code when requesting a set of temporary security credentials. A user who fails to provide the code receives an "access denied" response when requesting resources that require MFA authentication.
 
-The format for this parameter, as described by its regex pattern, is a
-sequence of six numeric digits.}
+The format for this parameter, as described by its regex pattern, is a sequence of six numeric digits.}
 }
 \description{
 Returns a set of temporary credentials for an Amazon Web Services account or IAM user. The credentials consist of an access key ID, a secret access key, and a security token. Typically, you use \code{\link[=sts_get_session_token]{get_session_token}} if you want to use MFA to protect programmatic calls to specific Amazon Web Services API operations like Amazon EC2 \code{StopInstances}.

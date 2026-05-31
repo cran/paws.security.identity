@@ -17,12 +17,9 @@ directoryservice_register_certificate(
 
 \item{CertificateData}{[required] The certificate PEM string that needs to be registered.}
 
-\item{Type}{The function that the registered certificate performs. Valid values
-include \code{ClientLDAPS} or \code{ClientCertAuth}. The default value is
-\code{ClientLDAPS}.}
+\item{Type}{The function that the registered certificate performs. Valid values include \code{ClientLDAPS} or \code{ClientCertAuth}. The default value is \code{ClientLDAPS}.}
 
-\item{ClientCertAuthSettings}{A \code{ClientCertAuthSettings} object that contains client certificate
-authentication settings.}
+\item{ClientCertAuthSettings}{A \code{ClientCertAuthSettings} object that contains client certificate authentication settings.}
 }
 \description{
 Registers a certificate for a secure LDAP or client certificate authentication.

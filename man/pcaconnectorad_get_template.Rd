@@ -8,8 +8,7 @@ certificates from a private CA}
 pcaconnectorad_get_template(TemplateArn)
 }
 \arguments{
-\item{TemplateArn}{[required] The Amazon Resource Name (ARN) that was returned when you called
-\code{\link[=pcaconnectorad_create_template]{create_template}}.}
+\item{TemplateArn}{[required] The Amazon Resource Name (ARN) that was returned when you called \code{\link[=pcaconnectorad_create_template]{create_template}}.}
 }
 \description{
 Retrieves a certificate template that the connector uses to issue certificates from a private CA.

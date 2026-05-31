@@ -7,10 +7,7 @@
 wafregional_get_rate_based_rule(RuleId)
 }
 \arguments{
-\item{RuleId}{[required] The \code{RuleId} of the RateBasedRule that you want to get. \code{RuleId} is
-returned by
-\code{\link[=wafregional_create_rate_based_rule]{create_rate_based_rule}} and by
-\code{\link[=wafregional_list_rate_based_rules]{list_rate_based_rules}}.}
+\item{RuleId}{[required] The \code{RuleId} of the RateBasedRule that you want to get. \code{RuleId} is returned by \code{\link[=wafregional_create_rate_based_rule]{create_rate_based_rule}} and by \code{\link[=wafregional_list_rate_based_rules]{list_rate_based_rules}}.}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic} in the developer guide.

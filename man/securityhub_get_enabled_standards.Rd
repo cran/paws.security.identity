@@ -11,16 +11,11 @@ securityhub_get_enabled_standards(
 )
 }
 \arguments{
-\item{StandardsSubscriptionArns}{The list of the standards subscription ARNs for the standards to
-retrieve.}
+\item{StandardsSubscriptionArns}{The list of the standards subscription ARNs for the standards to retrieve.}
 
-\item{NextToken}{The token that is required for pagination. On your first call to the
-\code{\link[=securityhub_get_enabled_standards]{get_enabled_standards}} operation,
-set the value of this parameter to \code{NULL}.
+\item{NextToken}{The token that is required for pagination. On your first call to the \code{\link[=securityhub_get_enabled_standards]{get_enabled_standards}} operation, set the value of this parameter to \code{NULL}.
 
-For subsequent calls to the operation, to continue listing data, set the
-value of this parameter to the value returned from the previous
-response.}
+For subsequent calls to the operation, to continue listing data, set the value of this parameter to the value returned from the previous response.}
 
 \item{MaxResults}{The maximum number of results to return in the response.}
 }

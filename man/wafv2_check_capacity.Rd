@@ -8,19 +8,15 @@ scope and set of rules}
 wafv2_check_capacity(Scope, Rules)
 }
 \arguments{
-\item{Scope}{[required] Specifies whether this is for a global resource type, such as a Amazon
-CloudFront distribution.
+\item{Scope}{[required] Specifies whether this is for a global resource type, such as a Amazon CloudFront distribution. For an Amplify application, use \code{CLOUDFRONT}.
 
-To work with CloudFront, you must also specify the Region US East (N.
-Virginia) as follows:
+To work with CloudFront, you must also specify the Region US East (N. Virginia) as follows:
 \itemize{
-\item CLI - Specify the Region when you use the CloudFront scope:
-\code{--scope=CLOUDFRONT --region=us-east-1}.
+\item CLI - Specify the Region when you use the CloudFront scope: \code{--scope=CLOUDFRONT --region=us-east-1}.
 \item API and SDKs - For all calls, use the Region endpoint us-east-1.
 }}
 
-\item{Rules}{[required] An array of Rule that you're configuring to use in a rule group or web
-ACL.}
+\item{Rules}{[required] An array of Rule that you're configuring to use in a rule group or web ACL.}
 }
 \description{
 Returns the web ACL capacity unit (WCU) requirements for a specified scope and set of rules. You can use this to check the capacity requirements for the rules you want to use in a RuleGroup or WebACL.

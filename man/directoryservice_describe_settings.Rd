@@ -16,9 +16,7 @@ directoryservice_describe_settings(
 
 \item{Status}{The status of the directory settings for which to retrieve information.}
 
-\item{NextToken}{The \code{DescribeSettingsResult.NextToken} value from a previous call to
-\code{\link[=directoryservice_describe_settings]{describe_settings}}. Pass null if
-this is the first call.}
+\item{NextToken}{The \code{DescribeSettingsResult.NextToken} value from a previous call to \code{\link[=directoryservice_describe_settings]{describe_settings}}. Pass null if this is the first call.}
 }
 \description{
 Retrieves information about the configurable settings for the specified directory.

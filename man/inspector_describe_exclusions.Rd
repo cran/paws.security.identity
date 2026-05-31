@@ -9,8 +9,7 @@ inspector_describe_exclusions(exclusionArns, locale = NULL)
 \arguments{
 \item{exclusionArns}{[required] The list of ARNs that specify the exclusions that you want to describe.}
 
-\item{locale}{The locale into which you want to translate the exclusion's title,
-description, and recommendation.}
+\item{locale}{The locale into which you want to translate the exclusion's title, description, and recommendation.}
 }
 \description{
 Describes the exclusions that are specified by the exclusions' ARNs.

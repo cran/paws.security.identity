@@ -12,15 +12,11 @@ macie2_accept_invitation(
 )
 }
 \arguments{
-\item{administratorAccountId}{The Amazon Web Services account ID for the account that sent the
-invitation.}
+\item{administratorAccountId}{The Amazon Web Services account ID for the account that sent the invitation.}
 
 \item{invitationId}{[required] The unique identifier for the invitation to accept.}
 
-\item{masterAccount}{(Deprecated) The Amazon Web Services account ID for the account that
-sent the invitation. This property has been replaced by the
-administratorAccountId property and is retained only for backward
-compatibility.}
+\item{masterAccount}{(Deprecated) The Amazon Web Services account ID for the account that sent the invitation. This property has been replaced by the administratorAccountId property and is retained only for backward compatibility.}
 }
 \description{
 Accepts an Amazon Macie membership invitation that was received from a specific account.

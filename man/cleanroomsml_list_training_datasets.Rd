@@ -7,8 +7,7 @@
 cleanroomsml_list_training_datasets(nextToken = NULL, maxResults = NULL)
 }
 \arguments{
-\item{nextToken}{The token value retrieved from a previous call to access the next page
-of results.}
+\item{nextToken}{The token value retrieved from a previous call to access the next page of results.}
 
 \item{maxResults}{The maximum size of the results that is returned per call.}
 }

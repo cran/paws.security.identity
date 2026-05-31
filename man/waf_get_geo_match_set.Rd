@@ -7,10 +7,7 @@
 waf_get_geo_match_set(GeoMatchSetId)
 }
 \arguments{
-\item{GeoMatchSetId}{[required] The \code{GeoMatchSetId} of the GeoMatchSet that you want to get.
-\code{GeoMatchSetId} is returned by
-\code{\link[=waf_create_geo_match_set]{create_geo_match_set}} and by
-\code{\link[=waf_list_geo_match_sets]{list_geo_match_sets}}.}
+\item{GeoMatchSetId}{[required] The \code{GeoMatchSetId} of the GeoMatchSet that you want to get. \code{GeoMatchSetId} is returned by \code{\link[=waf_create_geo_match_set]{create_geo_match_set}} and by \code{\link[=waf_list_geo_match_sets]{list_geo_match_sets}}.}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic} in the developer guide.

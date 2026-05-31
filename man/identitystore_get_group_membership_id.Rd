@@ -11,9 +11,7 @@ identitystore_get_group_membership_id(IdentityStoreId, GroupId, MemberId)
 
 \item{GroupId}{[required] The identifier for a group in the identity store.}
 
-\item{MemberId}{[required] An object that contains the identifier of a group member. Setting the
-\code{UserID} field to the specific identifier for a user indicates that the
-user is a member of the group.}
+\item{MemberId}{[required] An object that contains the identifier of a group member. Setting the \code{UserID} field to the specific identifier for a user indicates that the user is a member of the group.}
 }
 \description{
 Retrieves the \code{MembershipId} in an identity store.

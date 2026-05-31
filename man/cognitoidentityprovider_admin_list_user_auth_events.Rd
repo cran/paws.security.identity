@@ -13,25 +13,13 @@ cognitoidentityprovider_admin_list_user_auth_events(
 )
 }
 \arguments{
-\item{UserPoolId}{[required] The Id of the user pool that contains the user profile with the logged
-events.}
+\item{UserPoolId}{[required] The Id of the user pool that contains the user profile with the logged events.}
 
-\item{Username}{[required] The username of the user that you want to query or modify. The value of
-this parameter is typically your user's username, but it can be any of
-their alias attributes. If \code{username} isn't an alias attribute in your
-user pool, this value must be the \code{sub} of a local user or the username
-of a user from a third-party IdP.}
+\item{Username}{[required] The name of the user that you want to query or modify. The value of this parameter is typically your user's username, but it can be any of their alias attributes. If \code{username} isn't an alias attribute in your user pool, this value must be the \code{sub} of a local user or the username of a user from a third-party IdP.}
 
-\item{MaxResults}{The maximum number of authentication events to return. Returns 60 events
-if you set \code{MaxResults} to 0, or if you don't include a \code{MaxResults}
-parameter.}
+\item{MaxResults}{The maximum number of authentication events to return. Returns 60 events if you set \code{MaxResults} to 0, or if you don't include a \code{MaxResults} parameter.}
 
-\item{NextToken}{This API operation returns a limited number of results. The pagination
-token is an identifier that you can present in an additional API request
-with the same parameters. When you include the pagination token, Amazon
-Cognito returns the next set of items after the current list. Subsequent
-requests return a new pagination token. By use of this token, you can
-paginate through the full list of items.}
+\item{NextToken}{This API operation returns a limited number of results. The pagination token is an identifier that you can present in an additional API request with the same parameters. When you include the pagination token, Amazon Cognito returns the next set of items after the current list. Subsequent requests return a new pagination token. By use of this token, you can paginate through the full list of items.}
 }
 \description{
 Requests a history of user activity and any risks detected as part of Amazon Cognito threat protection. For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pool-settings-adaptive-authentication.html#user-pool-settings-adaptive-authentication-event-user-history}{Viewing user event history}.

@@ -10,13 +10,9 @@ detective_get_members(GraphArn, AccountIds)
 \arguments{
 \item{GraphArn}{[required] The ARN of the behavior graph for which to request the member details.}
 
-\item{AccountIds}{[required] The list of Amazon Web Services account identifiers for the member
-account for which to return member details. You can request details for
-up to 50 member accounts at a time.
+\item{AccountIds}{[required] The list of Amazon Web Services account identifiers for the member account for which to return member details. You can request details for up to 50 member accounts at a time.
 
-You cannot use \code{\link[=detective_get_members]{get_members}} to retrieve
-information about member accounts that were removed from the behavior
-graph.}
+You cannot use \code{\link[=detective_get_members]{get_members}} to retrieve information about member accounts that were removed from the behavior graph.}
 }
 \description{
 Returns the membership details for specified member accounts for a behavior graph.

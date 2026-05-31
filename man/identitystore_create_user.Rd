@@ -18,50 +18,52 @@ identitystore_create_user(
   Title = NULL,
   PreferredLanguage = NULL,
   Locale = NULL,
-  Timezone = NULL
+  Timezone = NULL,
+  Photos = NULL,
+  Website = NULL,
+  Birthdate = NULL,
+  Roles = NULL,
+  Extensions = NULL
 )
 }
 \arguments{
 \item{IdentityStoreId}{[required] The globally unique identifier for the identity store.}
 
-\item{UserName}{A unique string used to identify the user. The length limit is 128
-characters. This value can consist of letters, accented characters,
-symbols, numbers, and punctuation. This value is specified at the time
-the user is created and stored as an attribute of the user object in the
-identity store. \code{Administrator} and \code{AWSAdministrators} are reserved
-names and can't be used for users or groups.}
+\item{UserName}{A unique string used to identify the user. The length limit is 128 characters. This value can consist of letters, accented characters, symbols, numbers, and punctuation. This value is specified at the time the user is created and stored as an attribute of the user object in the identity store. \code{Administrator} and \code{AWSAdministrators} are reserved names and can't be used for users or groups.}
 
-\item{Name}{An object containing the name of the user.}
+\item{Name}{An object containing the name of the user. When used in IAM Identity Center, this parameter is required.}
 
-\item{DisplayName}{A string containing the name of the user. This value is typically
-formatted for display when the user is referenced. For example, "John
-Doe."}
+\item{DisplayName}{A string containing the name of the user. This value is typically formatted for display when the user is referenced. For example, "John Doe." When used in IAM Identity Center, this parameter is required.}
 
 \item{NickName}{A string containing an alternate name for the user.}
 
 \item{ProfileUrl}{A string containing a URL that might be associated with the user.}
 
-\item{Emails}{A list of \code{Email} objects containing email addresses associated with the
-user.}
+\item{Emails}{A list of \code{Email} objects containing email addresses associated with the user.}
 
-\item{Addresses}{A list of \code{Address} objects containing addresses associated with the
-user.}
+\item{Addresses}{A list of \code{Address} objects containing addresses associated with the user.}
 
-\item{PhoneNumbers}{A list of \code{PhoneNumber} objects containing phone numbers associated with
-the user.}
+\item{PhoneNumbers}{A list of \code{PhoneNumber} objects containing phone numbers associated with the user.}
 
-\item{UserType}{A string indicating the type of user. Possible values are left
-unspecified. The value can vary based on your specific use case.}
+\item{UserType}{A string indicating the type of user. Possible values are left unspecified. The value can vary based on your specific use case.}
 
-\item{Title}{A string containing the title of the user. Possible values are left
-unspecified. The value can vary based on your specific use case.}
+\item{Title}{A string containing the title of the user. Possible values are left unspecified. The value can vary based on your specific use case.}
 
-\item{PreferredLanguage}{A string containing the preferred language of the user. For example,
-"American English" or "en-us."}
+\item{PreferredLanguage}{A string containing the preferred language of the user. For example, "American English" or "en-us."}
 
 \item{Locale}{A string containing the geographical region or location of the user.}
 
 \item{Timezone}{A string containing the time zone of the user.}
+
+\item{Photos}{A list of photos associated with the user. You can add up to 3 photos per user. Each photo can include a value, type, display name, and primary designation.}
+
+\item{Website}{The user's personal website or blog URL. This field allows users to provide a link to their personal or professional website.}
+
+\item{Birthdate}{The user's birthdate in YYYY-MM-DD format. This field supports standard date format for storing personal information.}
+
+\item{Roles}{A list of \code{Role} objects containing roles associated with the user.}
+
+\item{Extensions}{A map with additional attribute extensions for the user. Each map key corresponds to an extension name, while map values represent extension data in \code{Document} type (not supported by Java V1, Go V1 and older versions of the CLI). \code{aws:identitystore:enterprise} is the only supported extension name.}
 }
 \description{
 Creates a user within the specified identity store.

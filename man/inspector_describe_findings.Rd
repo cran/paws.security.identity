@@ -9,8 +9,7 @@ inspector_describe_findings(findingArns, locale = NULL)
 \arguments{
 \item{findingArns}{[required] The ARN that specifies the finding that you want to describe.}
 
-\item{locale}{The locale into which you want to translate a finding description,
-recommendation, and the short description that identifies the finding.}
+\item{locale}{The locale into which you want to translate a finding description, recommendation, and the short description that identifies the finding.}
 }
 \description{
 Describes the findings that are specified by the ARNs of the findings.

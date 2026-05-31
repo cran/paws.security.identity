@@ -11,13 +11,11 @@ cleanroomsml_list_collaboration_ml_input_channels(
 )
 }
 \arguments{
-\item{nextToken}{The token value retrieved from a previous call to access the next page
-of results.}
+\item{nextToken}{The token value retrieved from a previous call to access the next page of results.}
 
 \item{maxResults}{The maximum number of results to return.}
 
-\item{collaborationIdentifier}{[required] The collaboration ID of the collaboration that contains the ML input
-channels that you want to list.}
+\item{collaborationIdentifier}{[required] The collaboration ID of the collaboration that contains the ML input channels that you want to list.}
 }
 \description{
 Returns a list of the ML input channels in a collaboration.

@@ -15,9 +15,7 @@ securityhub_update_security_control(
 
 \item{Parameters}{[required] An object that specifies which security control parameters to update.}
 
-\item{LastUpdateReason}{The most recent reason for updating the properties of the security
-control. This field accepts alphanumeric characters in addition to white
-spaces, dashes, and underscores.}
+\item{LastUpdateReason}{The most recent reason for updating the properties of the security control. This field accepts alphanumeric characters in addition to white spaces, dashes, and underscores.}
 }
 \description{
 Updates the properties of a security control.

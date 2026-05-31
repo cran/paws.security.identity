@@ -9,8 +9,7 @@ directoryservice_disable_ldaps(DirectoryId, Type)
 \arguments{
 \item{DirectoryId}{[required] The identifier of the directory.}
 
-\item{Type}{[required] The type of LDAP security to enable. Currently only the value \code{Client}
-is supported.}
+\item{Type}{[required] The type of LDAP security to enable. Currently only the value \code{Client} is supported.}
 }
 \description{
 Deactivates LDAP secure calls for the specified directory.

@@ -10,8 +10,7 @@ directoryservice_update_number_of_domain_controllers(
 )
 }
 \arguments{
-\item{DirectoryId}{[required] Identifier of the directory to which the domain controllers will be
-added or removed.}
+\item{DirectoryId}{[required] Identifier of the directory to which the domain controllers will be added or removed.}
 
 \item{DesiredNumber}{[required] The number of domain controllers desired in the directory.}
 }

@@ -9,8 +9,7 @@ detective_batch_get_graph_member_datasources(GraphArn, AccountIds)
 \arguments{
 \item{GraphArn}{[required] The ARN of the behavior graph.}
 
-\item{AccountIds}{[required] The list of Amazon Web Services accounts to get data source package
-information on.}
+\item{AccountIds}{[required] The list of Amazon Web Services accounts to get data source package information on.}
 }
 \description{
 Gets data source package information for the behavior graph.

@@ -7,8 +7,7 @@
 cognitoidentity_list_tags_for_resource(ResourceArn)
 }
 \arguments{
-\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the identity pool that the tags are
-assigned to.}
+\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the identity pool that the tags are assigned to.}
 }
 \description{
 Lists the tags that are assigned to an Amazon Cognito identity pool.

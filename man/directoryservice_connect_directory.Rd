@@ -11,12 +11,12 @@ directoryservice_connect_directory(
   Description = NULL,
   Size,
   ConnectSettings,
-  Tags = NULL
+  Tags = NULL,
+  NetworkType = NULL
 )
 }
 \arguments{
-\item{Name}{[required] The fully qualified name of your self-managed directory, such as
-\code{corp.example.com}.}
+\item{Name}{[required] The fully qualified name of your self-managed directory, such as \code{corp.example.com}.}
 
 \item{ShortName}{The NetBIOS name of your self-managed directory, such as \code{CORP}.}
 
@@ -26,10 +26,11 @@ directoryservice_connect_directory(
 
 \item{Size}{[required] The size of the directory.}
 
-\item{ConnectSettings}{[required] A DirectoryConnectSettings object that contains additional information
-for the operation.}
+\item{ConnectSettings}{[required] A DirectoryConnectSettings object that contains additional information for the operation.}
 
 \item{Tags}{The tags to be assigned to AD Connector.}
+
+\item{NetworkType}{The network type for your directory. The default value is \code{IPv4} or \code{IPv6} based on the provided subnet capabilities.}
 }
 \description{
 Creates an AD Connector to connect to a self-managed directory.

@@ -8,8 +8,7 @@ specific accounts}
 macie2_decline_invitations(accountIds)
 }
 \arguments{
-\item{accountIds}{[required] An array that lists Amazon Web Services account IDs, one for each
-account that sent an invitation to decline.}
+\item{accountIds}{[required] An array that lists Amazon Web Services account IDs, one for each account that sent an invitation to decline.}
 }
 \description{
 Declines Amazon Macie membership invitations that were received from specific accounts.

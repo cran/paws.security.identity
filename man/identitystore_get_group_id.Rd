@@ -9,11 +9,7 @@ identitystore_get_group_id(IdentityStoreId, AlternateIdentifier)
 \arguments{
 \item{IdentityStoreId}{[required] The globally unique identifier for the identity store.}
 
-\item{AlternateIdentifier}{[required] A unique identifier for a user or group that is not the primary
-identifier. This value can be an identifier from an external identity
-provider (IdP) that is associated with the user, the group, or a unique
-attribute. For the unique attribute, the only valid path is
-\code{displayName}.}
+\item{AlternateIdentifier}{[required] A unique identifier for a user or group that is not the primary identifier. This value can be an identifier from an external identity provider (IdP) that is associated with the user, the group, or a unique attribute. For the unique attribute, the only valid path is \code{ displayName}.}
 }
 \description{
 Retrieves \code{GroupId} in an identity store.

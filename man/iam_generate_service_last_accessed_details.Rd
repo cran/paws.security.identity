@@ -9,16 +9,9 @@ Amazon Web Services services}
 iam_generate_service_last_accessed_details(Arn, Granularity = NULL)
 }
 \arguments{
-\item{Arn}{[required] The ARN of the IAM resource (user, group, role, or managed policy) used
-to generate information about when the resource was last used in an
-attempt to access an Amazon Web Services service.}
+\item{Arn}{[required] The ARN of the IAM resource (user, group, role, or managed policy) used to generate information about when the resource was last used in an attempt to access an Amazon Web Services service.}
 
-\item{Granularity}{The level of detail that you want to generate. You can specify whether
-you want to generate information about the last attempt to access
-services or actions. If you specify service-level granularity, this
-operation generates only service data. If you specify action-level
-granularity, it generates service and action data. If you don't include
-this optional parameter, the operation generates service data.}
+\item{Granularity}{The level of detail that you want to generate. You can specify whether you want to generate information about the last attempt to access services or actions. If you specify service-level granularity, this operation generates only service data. If you specify action-level granularity, it generates service and action data. If you don't include this optional parameter, the operation generates service data.}
 }
 \description{
 Generates a report that includes details about when an IAM resource (user, group, role, or policy) was last used in an attempt to access Amazon Web Services services. Recent activity usually appears within four hours. IAM reports activity for at least the last 400 days, or less if your Region began supporting this feature within the last year. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_last-accessed.html#access-advisor_tracking-period}{Regions where data is tracked}. For more information about services and actions for which action last accessed information is displayed, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_last-accessed-action-last-accessed.html}{IAM action last accessed information services and actions}.

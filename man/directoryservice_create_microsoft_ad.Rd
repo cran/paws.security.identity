@@ -11,36 +11,28 @@ directoryservice_create_microsoft_ad(
   Description = NULL,
   VpcSettings,
   Edition = NULL,
-  Tags = NULL
+  Tags = NULL,
+  NetworkType = NULL
 )
 }
 \arguments{
-\item{Name}{[required] The fully qualified domain name for the Managed Microsoft AD directory,
-such as \code{corp.example.com}. This name will resolve inside your VPC only.
-It does not need to be publicly resolvable.}
+\item{Name}{[required] The fully qualified domain name for the Managed Microsoft AD directory, such as \code{corp.example.com}. This name will resolve inside your VPC only. It does not need to be publicly resolvable.}
 
-\item{ShortName}{The NetBIOS name for your domain, such as \code{CORP}. If you don't specify a
-NetBIOS name, it will default to the first part of your directory DNS.
-For example, \code{CORP} for the directory DNS \code{corp.example.com}.}
+\item{ShortName}{The NetBIOS name for your domain, such as \code{CORP}. If you don't specify a NetBIOS name, it will default to the first part of your directory DNS. For example, \code{CORP} for the directory DNS \code{corp.example.com}.}
 
 \item{Password}{[required] The password for the default administrative user named \code{Admin}.
 
-If you need to change the password for the administrator account, you
-can use the
-\code{\link[=directoryservice_reset_user_password]{reset_user_password}} API call.}
+If you need to change the password for the administrator account, you can use the \code{\link[=directoryservice_reset_user_password]{reset_user_password}} API call.}
 
-\item{Description}{A description for the directory. This label will appear on the Amazon
-Web Services console \verb{Directory Details} page after the directory is
-created.}
+\item{Description}{A description for the directory. This label will appear on the Amazon Web Services console \verb{Directory Details} page after the directory is created.}
 
-\item{VpcSettings}{[required] Contains VPC information for the
-\code{\link[=directoryservice_create_directory]{create_directory}} or
-\code{\link[=directoryservice_create_microsoft_ad]{create_microsoft_ad}} operation.}
+\item{VpcSettings}{[required] Contains VPC information for the \code{\link[=directoryservice_create_directory]{create_directory}} or \code{\link[=directoryservice_create_microsoft_ad]{create_microsoft_ad}} operation.}
 
-\item{Edition}{Managed Microsoft AD is available in two editions: \code{Standard} and
-\code{Enterprise}. \code{Enterprise} is the default.}
+\item{Edition}{Managed Microsoft AD is available in two editions: \code{Standard} and \code{Enterprise}. \code{Enterprise} is the default.}
 
 \item{Tags}{The tags to be assigned to the Managed Microsoft AD directory.}
+
+\item{NetworkType}{The network type for your domain. The default value is \code{IPv4} or \code{IPv6} based on the provided subnet capabilities.}
 }
 \description{
 Creates a Microsoft AD directory in the Amazon Web Services Cloud. For more information, see \href{https://docs.aws.amazon.com/directoryservice/latest/admin-guide/directory_microsoft_ad.html}{Managed Microsoft AD} in the \emph{Directory Service Admin Guide}.

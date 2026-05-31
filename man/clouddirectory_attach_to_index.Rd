@@ -7,8 +7,7 @@
 clouddirectory_attach_to_index(DirectoryArn, IndexReference, TargetReference)
 }
 \arguments{
-\item{DirectoryArn}{[required] The Amazon Resource Name (ARN) of the directory where the object and
-index exist.}
+\item{DirectoryArn}{[required] The Amazon Resource Name (ARN) of the directory where the object and index exist.}
 
 \item{IndexReference}{[required] A reference to the index that you are attaching the object to.}
 

@@ -7,8 +7,7 @@
 shield_tag_resource(ResourceARN, Tags)
 }
 \arguments{
-\item{ResourceARN}{[required] The Amazon Resource Name (ARN) of the resource that you want to add or
-update tags for.}
+\item{ResourceARN}{[required] The Amazon Resource Name (ARN) of the resource that you want to add or update tags for.}
 
 \item{Tags}{[required] The tags that you want to modify or add to the resource.}
 }

@@ -11,17 +11,11 @@ macie2_create_invitations(
 )
 }
 \arguments{
-\item{accountIds}{[required] An array that lists Amazon Web Services account IDs, one for each
-account to send the invitation to.}
+\item{accountIds}{[required] An array that lists Amazon Web Services account IDs, one for each account to send the invitation to.}
 
-\item{disableEmailNotification}{Specifies whether to send the invitation as an email message. If this
-value is false, Amazon Macie sends the invitation (as an email message)
-to the email address that you specified for the recipient's account when
-you associated the account with your account. The default value is
-false.}
+\item{disableEmailNotification}{Specifies whether to send the invitation as an email message. If this value is false, Amazon Macie sends the invitation (as an email message) to the email address that you specified for the recipient's account when you associated the account with your account. The default value is false.}
 
-\item{message}{Custom text to include in the email message that contains the
-invitation. The text can contain as many as 80 alphanumeric characters.}
+\item{message}{Custom text to include in the email message that contains the invitation. The text can contain as many as 80 alphanumeric characters.}
 }
 \description{
 Sends an Amazon Macie membership invitation to one or more accounts.

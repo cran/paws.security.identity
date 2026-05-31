@@ -11,13 +11,11 @@ cleanroomsml_list_collaboration_trained_models(
 )
 }
 \arguments{
-\item{nextToken}{The token value retrieved from a previous call to access the next page
-of results.}
+\item{nextToken}{The token value retrieved from a previous call to access the next page of results.}
 
 \item{maxResults}{The maximum size of the results that is returned per call.}
 
-\item{collaborationIdentifier}{[required] The collaboration ID of the collaboration that contains the trained
-models you are interested in.}
+\item{collaborationIdentifier}{[required] The collaboration ID of the collaboration that contains the trained models you are interested in.}
 }
 \description{
 Returns a list of the trained models in a collaboration.

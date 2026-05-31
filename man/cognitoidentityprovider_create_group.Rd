@@ -19,34 +19,16 @@ cognitoidentityprovider_create_group(
 
 \item{Description}{A description of the group that you're creating.}
 
-\item{RoleArn}{The Amazon Resource Name (ARN) for the IAM role that you want to
-associate with the group. A group role primarily declares a preferred
-role for the credentials that you get from an identity pool. Amazon
-Cognito ID tokens have a \code{cognito:preferred_role} claim that presents
-the highest-precedence group that a user belongs to. Both ID and access
-tokens also contain a \code{cognito:groups} claim that list all the groups
-that a user is a member of.}
+\item{RoleArn}{The Amazon Resource Name (ARN) for the IAM role that you want to associate with the group. A group role primarily declares a preferred role for the credentials that you get from an identity pool. Amazon Cognito ID tokens have a \code{cognito:preferred_role} claim that presents the highest-precedence group that a user belongs to. Both ID and access tokens also contain a \code{cognito:groups} claim that list all the groups that a user is a member of.}
 
-\item{Precedence}{A non-negative integer value that specifies the precedence of this group
-relative to the other groups that a user can belong to in the user pool.
-Zero is the highest precedence value. Groups with lower \code{Precedence}
-values take precedence over groups with higher or null \code{Precedence}
-values. If a user belongs to two or more groups, it is the group with
-the lowest precedence value whose role ARN is given in the user's tokens
-for the \code{cognito:roles} and \code{cognito:preferred_role} claims.
+\item{Precedence}{A non-negative integer value that specifies the precedence of this group relative to the other groups that a user can belong to in the user pool. Zero is the highest precedence value. Groups with lower \code{Precedence} values take precedence over groups with higher or null \code{Precedence} values. If a user belongs to two or more groups, it is the group with the lowest precedence value whose role ARN is given in the user's tokens for the \code{cognito:roles} and \code{cognito:preferred_role} claims.
 
-Two groups can have the same \code{Precedence} value. If this happens,
-neither group takes precedence over the other. If two groups with the
-same \code{Precedence} have the same role ARN, that role is used in the
-\code{cognito:preferred_role} claim in tokens for users in each group. If the
-two groups have different role ARNs, the \code{cognito:preferred_role} claim
-isn't set in users' tokens.
+Two groups can have the same \code{Precedence} value. If this happens, neither group takes precedence over the other. If two groups with the same \code{Precedence} have the same role ARN, that role is used in the \code{cognito:preferred_role} claim in tokens for users in each group. If the two groups have different role ARNs, the \code{cognito:preferred_role} claim isn't set in users' tokens.
 
-The default \code{Precedence} value is null. The maximum \code{Precedence} value
-is \code{2^31-1}.}
+The default \code{Precedence} value is null. The maximum \code{Precedence} value is \code{2^31-1}.}
 }
 \description{
-Creates a new group in the specified user pool. For more information about user pool groups see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-user-groups.html}{Adding groups to a user pool}.
+Creates a new group in the specified user pool. For more information about user pool groups, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-user-groups.html}{Adding groups to a user pool}.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_create_group/} for full documentation.
 }

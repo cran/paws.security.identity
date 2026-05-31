@@ -11,19 +11,13 @@ directoryservice_describe_directories(
 )
 }
 \arguments{
-\item{DirectoryIds}{A list of identifiers of the directories for which to obtain the
-information. If this member is null, all directories that belong to the
-current account are returned.
+\item{DirectoryIds}{A list of identifiers of the directories for which to obtain the information. If this member is null, all directories that belong to the current account are returned.
 
 An empty list results in an \code{InvalidParameterException} being thrown.}
 
-\item{NextToken}{The \code{DescribeDirectoriesResult.NextToken} value from a previous call to
-\code{\link[=directoryservice_describe_directories]{describe_directories}}. Pass
-null if this is the first call.}
+\item{NextToken}{The \code{DescribeDirectoriesResult.NextToken} value from a previous call to \code{\link[=directoryservice_describe_directories]{describe_directories}}. Pass null if this is the first call.}
 
-\item{Limit}{The maximum number of items to return. If this value is zero, the
-maximum number of items is specified by the limitations of the
-operation.}
+\item{Limit}{The maximum number of items to return. If this value is zero, the maximum number of items is specified by the limitations of the operation.}
 }
 \description{
 Obtains information about the directories that belong to this account.

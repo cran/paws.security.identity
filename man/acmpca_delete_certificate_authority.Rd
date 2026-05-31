@@ -10,14 +10,11 @@ acmpca_delete_certificate_authority(
 )
 }
 \arguments{
-\item{CertificateAuthorityArn}{[required] The Amazon Resource Name (ARN) that was returned when you called
-\code{\link[=acmpca_create_certificate_authority]{create_certificate_authority}}.
-This must have the following form:
+\item{CertificateAuthorityArn}{[required] The Amazon Resource Name (ARN) that was returned when you called \code{\link[=acmpca_create_certificate_authority]{create_certificate_authority}}. This must have the following form:
 
 \code{arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 }.}
 
-\item{PermanentDeletionTimeInDays}{The number of days to make a CA restorable after it has been deleted.
-This can be anywhere from 7 to 30 days, with 30 being the default.}
+\item{PermanentDeletionTimeInDays}{The number of days to make a CA restorable after it has been deleted. This can be anywhere from 7 to 30 days, with 30 being the default.}
 }
 \description{
 Deletes a private certificate authority (CA). You must provide the Amazon Resource Name (ARN) of the private CA that you want to delete. You can find the ARN by calling the \code{\link[=acmpca_list_certificate_authorities]{list_certificate_authorities}} action.

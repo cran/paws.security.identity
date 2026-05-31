@@ -16,15 +16,9 @@ accessanalyzer_check_no_new_access(
 
 \item{existingPolicyDocument}{[required] The JSON policy document to use as the content for the existing policy.}
 
-\item{policyType}{[required] The type of policy to compare. Identity policies grant permissions to
-IAM principals. Identity policies include managed and inline policies
-for IAM roles, users, and groups.
+\item{policyType}{[required] The type of policy to compare. Identity policies grant permissions to IAM principals. Identity policies include managed and inline policies for IAM roles, users, and groups.
 
-Resource policies grant permissions on Amazon Web Services resources.
-Resource policies include trust policies for IAM roles and bucket
-policies for Amazon S3 buckets. You can provide a generic input such as
-identity policy or resource policy or a specific input such as managed
-policy or Amazon S3 bucket policy.}
+Resource policies grant permissions on Amazon Web Services resources. Resource policies include trust policies for IAM roles and bucket policies for Amazon S3 buckets. You can provide a generic input such as identity policy or resource policy or a specific input such as managed policy or Amazon S3 bucket policy.}
 }
 \description{
 Checks whether new access is allowed for an updated policy when compared to the existing policy.

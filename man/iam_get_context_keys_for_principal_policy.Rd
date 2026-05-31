@@ -11,31 +11,17 @@ iam_get_context_keys_for_principal_policy(
 )
 }
 \arguments{
-\item{PolicySourceArn}{[required] The ARN of a user, group, or role whose policies contain the context
-keys that you want listed. If you specify a user, the list includes
-context keys that are found in all policies that are attached to the
-user. The list also includes all groups that the user is a member of. If
-you pick a group or a role, then it includes only those context keys
-that are found in policies attached to that entity. Note that all
-parameters are shown in unencoded form here for clarity, but must be URL
-encoded to be included as a part of a real HTML request.
+\item{PolicySourceArn}{[required] The ARN of a user, group, or role whose policies contain the context keys that you want listed. If you specify a user, the list includes context keys that are found in all policies that are attached to the user. The list also includes all groups that the user is a member of. If you pick a group or a role, then it includes only those context keys that are found in policies attached to that entity. Note that all parameters are shown in unencoded form here for clarity, but must be URL encoded to be included as a part of a real HTML request.
 
-For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
-in the \emph{Amazon Web Services General Reference}.}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)} in the \emph{Amazon Web Services General Reference}.}
 
-\item{PolicyInputList}{An optional list of additional policies for which you want the list of
-context keys that are referenced.
+\item{PolicyInputList}{An optional list of additional policies for which you want the list of context keys that are referenced.
 
-The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} used to
-validate this parameter is a string of characters consisting of the
-following:
+The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} used to validate this parameter is a string of characters consisting of the following:
 \itemize{
-\item Any printable ASCII character ranging from the space character
-(\code{U+0020}) through the end of the ASCII character range
-\item The printable characters in the Basic Latin and Latin-1 Supplement
-character set (through \verb{U+00FF})
-\item The special characters tab (\code{U+0009}), line feed (\verb{U+000A}), and
-carriage return (\verb{U+000D})
+\item Any printable ASCII character ranging from the space character (\code{U+0020}) through the end of the ASCII character range
+\item The printable characters in the Basic Latin and Latin-1 Supplement character set (through \verb{U+00FF})
+\item The special characters tab (\code{U+0009}), line feed (\verb{U+000A}), and carriage return (\verb{U+000D})
 }}
 }
 \description{

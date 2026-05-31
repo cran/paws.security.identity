@@ -48,13 +48,9 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-This is the \emph{Firewall Manager API Reference}. This guide is for
-developers who need detailed information about the Firewall Manager API
-actions, data types, and errors. For detailed information about Firewall
-Manager features, see the \href{https://docs.aws.amazon.com/waf/latest/developerguide/fms-chapter.html}{Firewall Manager Developer Guide}.
+This is the \emph{Firewall Manager API Reference}. This guide is for developers who need detailed information about the Firewall Manager API actions, data types, and errors. For detailed information about Firewall Manager features, see the \href{https://docs.aws.amazon.com/waf/latest/developerguide/fms-chapter.html}{Firewall Manager Developer Guide}.
 
-Some API actions require explicit resource permissions. For information,
-see the developer guide topic \href{https://docs.aws.amazon.com/waf/latest/developerguide/fms-security_iam_service-with-iam.html#fms-security_iam_service-with-iam-roles-service}{Service roles for Firewall Manager}.
+Some API actions require explicit resource permissions. For information, see the developer guide topic \href{https://docs.aws.amazon.com/waf/latest/developerguide/fms-security_iam_service-with-iam.html#fms-security_iam_service-with-iam-roles-service}{Service roles for Firewall Manager}.
 }
 \section{Service syntax}{
 

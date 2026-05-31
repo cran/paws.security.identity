@@ -7,8 +7,7 @@
 clouddirectory_create_typed_link_facet(SchemaArn, Facet)
 }
 \arguments{
-\item{SchemaArn}{[required] The Amazon Resource Name (ARN) that is associated with the schema. For
-more information, see arns.}
+\item{SchemaArn}{[required] The Amazon Resource Name (ARN) that is associated with the schema. For more information, see arns.}
 
 \item{Facet}{[required] Facet structure that is associated with the typed link facet.}
 }

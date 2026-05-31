@@ -14,93 +14,43 @@ acm_request_certificate(
   Options = NULL,
   CertificateAuthorityArn = NULL,
   Tags = NULL,
-  KeyAlgorithm = NULL
+  KeyAlgorithm = NULL,
+  ManagedBy = NULL
 )
 }
 \arguments{
-\item{DomainName}{[required] Fully qualified domain name (FQDN), such as www.example.com, that you
-want to secure with an ACM certificate. Use an asterisk (*) to create a
-wildcard certificate that protects several sites in the same domain. For
-example, *.example.com protects www.example.com, site.example.com, and
-images.example.com.
+\item{DomainName}{[required] Fully qualified domain name (FQDN), such as www.example.com, that you want to secure with an ACM certificate. Use an asterisk (*) to create a wildcard certificate that protects several sites in the same domain. For example, *.example.com protects www.example.com, site.example.com, and images.example.com.
 
-In compliance with \href{https://datatracker.ietf.org/doc/html/rfc5280}{RFC 5280}, the length of the
-domain name (technically, the Common Name) that you provide cannot
-exceed 64 octets (characters), including periods. To add a longer domain
-name, specify it in the Subject Alternative Name field, which supports
-names up to 253 octets in length.}
+In compliance with \href{https://datatracker.ietf.org/doc/html/rfc5280}{RFC 5280}, the length of the domain name (technically, the Common Name) that you provide cannot exceed 64 octets (characters), including periods. To add a longer domain name, specify it in the Subject Alternative Name field, which supports names up to 253 octets in length.}
 
-\item{ValidationMethod}{The method you want to use if you are requesting a public certificate to
-validate that you own or control domain. You can \href{https://docs.aws.amazon.com/acm/latest/userguide/dns-validation.html}{validate with DNS}
-or \href{https://docs.aws.amazon.com/acm/latest/userguide/email-validation.html}{validate with email}.
-We recommend that you use DNS validation.}
+\item{ValidationMethod}{The method you want to use if you are requesting a public certificate to validate that you own or control domain. You can \href{https://docs.aws.amazon.com/acm/latest/userguide/dns-validation.html}{validate with DNS} or \href{https://docs.aws.amazon.com/acm/latest/userguide/email-validation.html}{validate with email}. We recommend that you use DNS validation.}
 
-\item{SubjectAlternativeNames}{Additional FQDNs to be included in the Subject Alternative Name
-extension of the ACM certificate. For example, add the name
-www.example.net to a certificate for which the \code{DomainName} field is
-www.example.com if users can reach your site by using either name. The
-maximum number of domain names that you can add to an ACM certificate is
-100. However, the initial quota is 10 domain names. If you need more
-than 10 names, you must request a quota increase. For more information,
-see
-\href{https://docs.aws.amazon.com/acm/latest/userguide/acm-limits.html}{Quotas}.
+\item{SubjectAlternativeNames}{Additional FQDNs to be included in the Subject Alternative Name extension of the ACM certificate. For example, add the name www.example.net to a certificate for which the \code{DomainName} field is www.example.com if users can reach your site by using either name. The maximum number of domain names that you can add to an ACM certificate is 100. However, the initial quota is 10 domain names. If you need more than 10 names, you must request a quota increase. For more information, see \href{https://docs.aws.amazon.com/acm/latest/userguide/acm-limits.html}{Quotas}.
 
-The maximum length of a SAN DNS name is 253 octets. The name is made up
-of multiple labels separated by periods. No label can be longer than 63
-octets. Consider the following examples:
+The maximum length of a SAN DNS name is 253 octets. The name is made up of multiple labels separated by periods. No label can be longer than 63 octets. Consider the following examples:
 \itemize{
-\item \verb{(63 octets).(63 octets).(63 octets).(61 octets)} is legal because
-the total length is 253 octets (63+1+63+1+63+1+61) and no label
-exceeds 63 octets.
-\item \verb{(64 octets).(63 octets).(63 octets).(61 octets)} is not legal
-because the total length exceeds 253 octets (64+1+63+1+63+1+61) and
-the first label exceeds 63 octets.
-\item \verb{(63 octets).(63 octets).(63 octets).(62 octets)} is not legal
-because the total length of the DNS name (63+1+63+1+63+1+62) exceeds
-253 octets.
+\item \verb{(63 octets).(63 octets).(63 octets).(61 octets)} is legal because the total length is 253 octets (63+1+63+1+63+1+61) and no label exceeds 63 octets.
+\item \verb{(64 octets).(63 octets).(63 octets).(61 octets)} is not legal because the total length exceeds 253 octets (64+1+63+1+63+1+61) and the first label exceeds 63 octets.
+\item \verb{(63 octets).(63 octets).(63 octets).(62 octets)} is not legal because the total length of the DNS name (63+1+63+1+63+1+62) exceeds 253 octets.
 }}
 
-\item{IdempotencyToken}{Customer chosen string that can be used to distinguish between calls to
-\code{\link[=acm_request_certificate]{request_certificate}}. Idempotency tokens
-time out after one hour. Therefore, if you call
-\code{\link[=acm_request_certificate]{request_certificate}} multiple times with the
-same idempotency token within one hour, ACM recognizes that you are
-requesting only one certificate and will issue only one. If you change
-the idempotency token for each call, ACM recognizes that you are
-requesting multiple certificates.}
+\item{IdempotencyToken}{Customer chosen string that can be used to distinguish between calls to \code{\link[=acm_request_certificate]{request_certificate}}. Idempotency tokens time out after one hour. Therefore, if you call \code{\link[=acm_request_certificate]{request_certificate}} multiple times with the same idempotency token within one hour, ACM recognizes that you are requesting only one certificate and will issue only one. If you change the idempotency token for each call, ACM recognizes that you are requesting multiple certificates.}
 
-\item{DomainValidationOptions}{The domain name that you want ACM to use to send you emails so that you
-can validate domain ownership.}
+\item{DomainValidationOptions}{The domain name that you want ACM to use to send you emails so that you can validate domain ownership.}
 
-\item{Options}{Currently, you can use this parameter to specify whether to add the
-certificate to a certificate transparency log. Certificate transparency
-makes it possible to detect SSL/TLS certificates that have been
-mistakenly or maliciously issued. Certificates that have not been logged
-typically produce an error message in a browser. For more information,
-see \href{https://docs.aws.amazon.com/acm/latest/userguide/acm-bestpractices.html#best-practices-transparency}{Opting Out of Certificate Transparency Logging}.}
+\item{Options}{You can use this parameter to specify whether to add the certificate to a certificate transparency log and export your certificate.
 
-\item{CertificateAuthorityArn}{The Amazon Resource Name (ARN) of the private certificate authority (CA)
-that will be used to issue the certificate. If you do not provide an ARN
-and you are trying to request a private certificate, ACM will attempt to
-issue a public certificate. For more information about private CAs, see
-the \href{https://docs.aws.amazon.com/privateca/latest/userguide/PcaWelcome.html}{Amazon Web Services Private Certificate Authority}
-user guide. The ARN must have the following form:
+Certificate transparency makes it possible to detect SSL/TLS certificates that have been mistakenly or maliciously issued. Certificates that have not been logged typically produce an error message in a browser. For more information, see \href{https://docs.aws.amazon.com/acm/latest/userguide/acm-bestpractices.html#best-practices-transparency}{Opting Out of Certificate Transparency Logging}.
+
+You can export public ACM certificates to use with Amazon Web Services services as well as outside the Amazon Web Services Cloud. For more information, see \href{https://docs.aws.amazon.com/acm/latest/userguide/acm-exportable-certificates.html}{Certificate Manager exportable public certificate}.}
+
+\item{CertificateAuthorityArn}{The Amazon Resource Name (ARN) of the private certificate authority (CA) that will be used to issue the certificate. If you do not provide an ARN and you are trying to request a private certificate, ACM will attempt to issue a public certificate. For more information about private CAs, see the \href{https://docs.aws.amazon.com/privateca/latest/userguide/PcaWelcome.html}{Amazon Web Services Private Certificate Authority} user guide. The ARN must have the following form:
 
 \code{arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012}}
 
 \item{Tags}{One or more resource tags to associate with the certificate.}
 
-\item{KeyAlgorithm}{Specifies the algorithm of the public and private key pair that your
-certificate uses to encrypt data. RSA is the default key algorithm for
-ACM certificates. Elliptic Curve Digital Signature Algorithm (ECDSA)
-keys are smaller, offering security comparable to RSA keys but with
-greater computing efficiency. However, ECDSA is not supported by all
-network clients. Some Amazon Web Services services may require RSA keys,
-or only support ECDSA keys of a particular size, while others allow the
-use of either RSA and ECDSA keys to ensure that compatibility is not
-broken. Check the requirements for the Amazon Web Services service where
-you plan to deploy your certificate. For more information about
-selecting an algorithm, see \href{https://docs.aws.amazon.com/acm/latest/userguide/#algorithms}{Key algorithms}.
+\item{KeyAlgorithm}{Specifies the algorithm of the public and private key pair that your certificate uses to encrypt data. RSA is the default key algorithm for ACM certificates. Elliptic Curve Digital Signature Algorithm (ECDSA) keys are smaller, offering security comparable to RSA keys but with greater computing efficiency. However, ECDSA is not supported by all network clients. Some Amazon Web Services services may require RSA keys, or only support ECDSA keys of a particular size, while others allow the use of either RSA and ECDSA keys to ensure that compatibility is not broken. Check the requirements for the Amazon Web Services service where you plan to deploy your certificate. For more information about selecting an algorithm, see \href{https://docs.aws.amazon.com/acm/latest/userguide/acm-certificate-characteristics.html#algorithms-term}{Key algorithms}.
 
 Algorithms supported for an ACM certificate request include:
 \itemize{
@@ -111,11 +61,11 @@ Algorithms supported for an ACM certificate request include:
 
 Other listed algorithms are for imported certificates only.
 
-When you request a private PKI certificate signed by a CA from Amazon
-Web Services Private CA, the specified signing algorithm family (RSA or
-ECDSA) must match the algorithm family of the CA's secret key.
+When you request a private PKI certificate signed by a CA from Amazon Web Services Private CA, the specified signing algorithm family (RSA or ECDSA) must match the algorithm family of the CA's secret key.
 
 Default: RSA_2048}
+
+\item{ManagedBy}{Identifies the Amazon Web Services service that manages the certificate issued by ACM.}
 }
 \description{
 Requests an ACM certificate for use with other Amazon Web Services services. To request an ACM certificate, you must specify a fully qualified domain name (FQDN) in the \code{DomainName} parameter. You can also specify additional FQDNs in the \code{SubjectAlternativeNames} parameter.

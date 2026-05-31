@@ -7,14 +7,11 @@
 clouddirectory_batch_read(DirectoryArn, Operations, ConsistencyLevel = NULL)
 }
 \arguments{
-\item{DirectoryArn}{[required] The Amazon Resource Name (ARN) that is associated with the Directory.
-For more information, see arns.}
+\item{DirectoryArn}{[required] The Amazon Resource Name (ARN) that is associated with the Directory. For more information, see arns.}
 
 \item{Operations}{[required] A list of operations that are part of the batch.}
 
-\item{ConsistencyLevel}{Represents the manner and timing in which the successful write or update
-of an object is reflected in a subsequent read operation of that same
-object.}
+\item{ConsistencyLevel}{Represents the manner and timing in which the successful write or update of an object is reflected in a subsequent read operation of that same object.}
 }
 \description{
 Performs all the read operations in a batch.

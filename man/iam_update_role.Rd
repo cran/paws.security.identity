@@ -11,24 +11,11 @@ iam_update_role(RoleName, Description = NULL, MaxSessionDuration = NULL)
 
 \item{Description}{The new description that you want to apply to the specified role.}
 
-\item{MaxSessionDuration}{The maximum session duration (in seconds) that you want to set for the
-specified role. If you do not specify a value for this setting, the
-default value of one hour is applied. This setting can have a value from
-1 hour to 12 hours.
+\item{MaxSessionDuration}{The maximum session duration (in seconds) that you want to set for the specified role. If you do not specify a value for this setting, the default value of one hour is applied. This setting can have a value from 1 hour to 12 hours.
 
-Anyone who assumes the role from the CLI or API can use the
-\code{DurationSeconds} API parameter or the \code{duration-seconds} CLI parameter
-to request a longer session. The \code{MaxSessionDuration} setting determines
-the maximum duration that can be requested using the \code{DurationSeconds}
-parameter. If users don't specify a value for the \code{DurationSeconds}
-parameter, their security credentials are valid for one hour by default.
-This applies when you use the \verb{AssumeRole*} API operations or the
-\verb{assume-role*} CLI operations but does not apply when you use those
-operations to create a console URL. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_manage-assume.html}{Using IAM roles}
-in the \emph{IAM User Guide}.
+Anyone who assumes the role from the CLI or API can use the \code{DurationSeconds} API parameter or the \code{duration-seconds} CLI parameter to request a longer session. The \code{MaxSessionDuration} setting determines the maximum duration that can be requested using the \code{DurationSeconds} parameter. If users don't specify a value for the \code{DurationSeconds} parameter, their security credentials are valid for one hour by default. This applies when you use the \verb{AssumeRole*} API operations or the \verb{assume-role*} CLI operations but does not apply when you use those operations to create a console URL. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_manage-assume.html}{Using IAM roles} in the \emph{IAM User Guide}.
 
-IAM role credentials provided by Amazon EC2 instances assigned to the
-role are not subject to the specified maximum session duration.}
+IAM role credentials provided by Amazon EC2 instances assigned to the role are not subject to the specified maximum session duration.}
 }
 \description{
 Updates the description or maximum session duration setting of a role.

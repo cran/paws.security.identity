@@ -16,24 +16,19 @@ guardduty_get_findings_statistics(
 \arguments{
 \item{DetectorId}{[required] The ID of the detector whose findings statistics you want to retrieve.
 
-To find the \code{detectorId} in the current Region, see the Settings page in
-the GuardDuty console, or run the
-\code{\link[=guardduty_list_detectors]{list_detectors}} API.}
+To find the \code{detectorId} in the current Region, see the Settings page in the GuardDuty console, or run the \code{\link[=guardduty_list_detectors]{list_detectors}} API.}
 
 \item{FindingStatisticTypes}{The types of finding statistics to retrieve.}
 
 \item{FindingCriteria}{Represents the criteria that is used for querying findings.}
 
-\item{GroupBy}{Displays the findings statistics grouped by one of the listed valid
-values.}
+\item{GroupBy}{Displays the findings statistics grouped by one of the listed valid values.}
 
-\item{OrderBy}{Displays the sorted findings in the requested order. The default value
-of \code{orderBy} is \code{DESC}.
+\item{OrderBy}{Displays the sorted findings in the requested order. The default value of \code{orderBy} is \code{DESC}.
 
 You can use this parameter only with the \code{groupBy} parameter.}
 
-\item{MaxResults}{The maximum number of results to be returned in the response. The
-default value is 25.
+\item{MaxResults}{The maximum number of results to be returned in the response. The default value is 25.
 
 You can use this parameter only with the \code{groupBy} parameter.}
 }

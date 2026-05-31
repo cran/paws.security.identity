@@ -7,8 +7,7 @@
 cleanroomsml_get_audience_generation_job(audienceGenerationJobArn)
 }
 \arguments{
-\item{audienceGenerationJobArn}{[required] The Amazon Resource Name (ARN) of the audience generation job that you
-are interested in.}
+\item{audienceGenerationJobArn}{[required] The Amazon Resource Name (ARN) of the audience generation job that you are interested in.}
 }
 \description{
 Returns information about an audience generation job.

@@ -8,26 +8,19 @@ descriptions of the rules}
 wafv2_describe_managed_rule_group(VendorName, Name, Scope, VersionName = NULL)
 }
 \arguments{
-\item{VendorName}{[required] The name of the managed rule group vendor. You use this, along with the
-rule group name, to identify a rule group.}
+\item{VendorName}{[required] The name of the managed rule group vendor. You use this, along with the rule group name, to identify a rule group.}
 
-\item{Name}{[required] The name of the managed rule group. You use this, along with the vendor
-name, to identify the rule group.}
+\item{Name}{[required] The name of the managed rule group. You use this, along with the vendor name, to identify the rule group.}
 
-\item{Scope}{[required] Specifies whether this is for a global resource type, such as a Amazon
-CloudFront distribution.
+\item{Scope}{[required] Specifies whether this is for a global resource type, such as a Amazon CloudFront distribution. For an Amplify application, use \code{CLOUDFRONT}.
 
-To work with CloudFront, you must also specify the Region US East (N.
-Virginia) as follows:
+To work with CloudFront, you must also specify the Region US East (N. Virginia) as follows:
 \itemize{
-\item CLI - Specify the Region when you use the CloudFront scope:
-\code{--scope=CLOUDFRONT --region=us-east-1}.
+\item CLI - Specify the Region when you use the CloudFront scope: \code{--scope=CLOUDFRONT --region=us-east-1}.
 \item API and SDKs - For all calls, use the Region endpoint us-east-1.
 }}
 
-\item{VersionName}{The version of the rule group. You can only use a version that is not
-scheduled for expiration. If you don't provide this, WAF uses the
-vendor's default version.}
+\item{VersionName}{The version of the rule group. You can only use a version that is not scheduled for expiration. If you don't provide this, WAF uses the vendor's default version.}
 }
 \description{
 Provides high-level information for a managed rule group, including descriptions of the rules.

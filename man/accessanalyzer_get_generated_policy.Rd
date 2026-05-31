@@ -11,27 +11,15 @@ accessanalyzer_get_generated_policy(
 )
 }
 \arguments{
-\item{jobId}{[required] The \code{JobId} that is returned by the
-\code{\link[=accessanalyzer_start_policy_generation]{start_policy_generation}}
-operation. The \code{JobId} can be used with
-\code{\link[=accessanalyzer_get_generated_policy]{get_generated_policy}} to
-retrieve the generated policies or used with
-\code{\link[=accessanalyzer_cancel_policy_generation]{cancel_policy_generation}} to
-cancel the policy generation request.}
+\item{jobId}{[required] The \code{JobId} that is returned by the \code{\link[=accessanalyzer_start_policy_generation]{start_policy_generation}} operation. The \code{JobId} can be used with \code{\link[=accessanalyzer_get_generated_policy]{get_generated_policy}} to retrieve the generated policies or used with \code{\link[=accessanalyzer_cancel_policy_generation]{cancel_policy_generation}} to cancel the policy generation request.}
 
-\item{includeResourcePlaceholders}{The level of detail that you want to generate. You can specify whether
-to generate policies with placeholders for resource ARNs for actions
-that support resource level granularity in policies.
+\item{includeResourcePlaceholders}{The level of detail that you want to generate. You can specify whether to generate policies with placeholders for resource ARNs for actions that support resource level granularity in policies.
 
-For example, in the resource section of a policy, you can receive a
-placeholder such as \code{"Resource":"arn:aws:s3:::${BucketName}"} instead of
-\code{"*"}.}
+For example, in the resource section of a policy, you can receive a placeholder such as \code{"Resource":"arn:aws:s3:::${BucketName}"} instead of \code{"*"}.}
 
-\item{includeServiceLevelTemplate}{The level of detail that you want to generate. You can specify whether
-to generate service-level policies.
+\item{includeServiceLevelTemplate}{The level of detail that you want to generate. You can specify whether to generate service-level policies.
 
-IAM Access Analyzer uses \code{iam:servicelastaccessed} to identify services
-that have been used recently to create this service-level template.}
+IAM Access Analyzer uses \code{iam:servicelastaccessed} to identify services that have been used recently to create this service-level template.}
 }
 \description{
 Retrieves the policy that was generated using \code{\link[=accessanalyzer_start_policy_generation]{start_policy_generation}}.

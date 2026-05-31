@@ -13,15 +13,11 @@ guardduty_list_findings(
 )
 }
 \arguments{
-\item{DetectorId}{[required] The ID of the detector that specifies the GuardDuty service whose
-findings you want to list.
+\item{DetectorId}{[required] The ID of the detector that specifies the GuardDuty service whose findings you want to list.
 
-To find the \code{detectorId} in the current Region, see the Settings page in
-the GuardDuty console, or run the
-\code{\link[=guardduty_list_detectors]{list_detectors}} API.}
+To find the \code{detectorId} in the current Region, see the Settings page in the GuardDuty console, or run the \code{\link[=guardduty_list_detectors]{list_detectors}} API.}
 
-\item{FindingCriteria}{Represents the criteria used for querying findings. Valid values
-include:
+\item{FindingCriteria}{Represents the criteria used for querying findings. Valid values include:
 \itemize{
 \item JSON field name
 \item accountId
@@ -69,10 +65,7 @@ include:
 \item service.additionalInfo.threatListName
 \item service.archived
 
-When this attribute is set to 'true', only archived findings are
-listed. When it's set to 'false', only unarchived findings are
-listed. When this attribute is not set, all existing findings are
-listed.
+When this attribute is set to 'true', only archived findings are listed. When it's set to 'false', only unarchived findings are listed. When this attribute is not set, all existing findings are listed.
 \item service.ebsVolumeScanDetails.scanId
 \item service.resourceRole
 \item severity
@@ -84,13 +77,9 @@ Type: Timestamp in Unix Epoch millisecond format: 1486685375000
 
 \item{SortCriteria}{Represents the criteria used for sorting findings.}
 
-\item{MaxResults}{You can use this parameter to indicate the maximum number of items you
-want in the response. The default value is 50. The maximum value is 50.}
+\item{MaxResults}{You can use this parameter to indicate the maximum number of items you want in the response. The default value is 50. The maximum value is 50.}
 
-\item{NextToken}{You can use this parameter when paginating results. Set the value of
-this parameter to null on your first call to the list action. For
-subsequent calls to the action, fill nextToken in the request with the
-value of NextToken from the previous response to continue listing data.}
+\item{NextToken}{You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the list action. For subsequent calls to the action, fill nextToken in the request with the value of NextToken from the previous response to continue listing data.}
 }
 \description{
 Lists GuardDuty findings for the specified detector ID.

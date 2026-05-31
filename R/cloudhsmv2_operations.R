@@ -12,10 +12,7 @@ NULL
 #'
 #' @param DestinationRegion &#91;required&#93; The AWS region that will contain your copied CloudHSM cluster backup.
 #' @param BackupId &#91;required&#93; The ID of the backup that will be copied to the destination region.
-#' @param TagList Tags to apply to the destination backup during creation. If you specify
-#' tags, only these tags will be applied to the destination backup. If you
-#' do not specify tags, the service copies tags from the source backup to
-#' the destination backup.
+#' @param TagList Tags to apply to the destination backup during creation. If you specify tags, only these tags will be applied to the destination backup. If you do not specify tags, the service copies tags from the source backup to the destination backup.
 #'
 #' @keywords internal
 #'
@@ -47,25 +44,16 @@ cloudhsmv2_copy_backup_to_region <- function(DestinationRegion, BackupId, TagLis
 #' See [https://www.paws-r-sdk.com/docs/cloudhsmv2_create_cluster/](https://www.paws-r-sdk.com/docs/cloudhsmv2_create_cluster/) for full documentation.
 #'
 #' @param BackupRetentionPolicy A policy that defines how the service retains backups.
-#' @param HsmType &#91;required&#93; The type of HSM to use in the cluster. The allowed values are
-#' `hsm1.medium` and `hsm2m.medium`.
-#' @param SourceBackupId The identifier (ID) or the Amazon Resource Name (ARN) of the cluster
-#' backup to restore. Use this value to restore the cluster from a backup
-#' instead of creating a new cluster. To find the backup ID or ARN, use
-#' [`describe_backups`][cloudhsmv2_describe_backups]. *If using a backup in
-#' another account, the full ARN must be supplied.*
-#' @param SubnetIds &#91;required&#93; The identifiers (IDs) of the subnets where you are creating the cluster.
-#' You must specify at least one subnet. If you specify multiple subnets,
-#' they must meet the following criteria:
+#' @param HsmType &#91;required&#93; The type of HSM to use in the cluster. The allowed values are `hsm1.medium` and `hsm2m.medium`.
+#' @param SourceBackupId The identifier (ID) or the Amazon Resource Name (ARN) of the cluster backup to restore. Use this value to restore the cluster from a backup instead of creating a new cluster. To find the backup ID or ARN, use [`describe_backups`][cloudhsmv2_describe_backups]. *If using a backup in another account, the full ARN must be supplied.*
+#' @param SubnetIds &#91;required&#93; The identifiers (IDs) of the subnets where you are creating the cluster. You must specify at least one subnet. If you specify multiple subnets, they must meet the following criteria:
 #' 
 #' -   All subnets must be in the same virtual private cloud (VPC).
 #' 
 #' -   You can specify only one subnet per Availability Zone.
-#' @param NetworkType The NetworkType to create a cluster with. The allowed values are `IPV4`
-#' and `DUALSTACK`.
+#' @param NetworkType The NetworkType to create a cluster with. The allowed values are `IPV4` and `DUALSTACK`.
 #' @param TagList Tags to apply to the CloudHSM cluster during creation.
-#' @param Mode The mode to use in the cluster. The allowed values are `FIPS` and
-#' `NON_FIPS`.
+#' @param Mode The mode to use in the cluster. The allowed values are `FIPS` and `NON_FIPS`.
 #'
 #' @keywords internal
 #'
@@ -97,15 +85,9 @@ cloudhsmv2_create_cluster <- function(BackupRetentionPolicy = NULL, HsmType, Sou
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudhsmv2_create_hsm/](https://www.paws-r-sdk.com/docs/cloudhsmv2_create_hsm/) for full documentation.
 #'
-#' @param ClusterId &#91;required&#93; The identifier (ID) of the HSM's cluster. To find the cluster ID, use
-#' [`describe_clusters`][cloudhsmv2_describe_clusters].
-#' @param AvailabilityZone &#91;required&#93; The Availability Zone where you are creating the HSM. To find the
-#' cluster's Availability Zones, use
-#' [`describe_clusters`][cloudhsmv2_describe_clusters].
-#' @param IpAddress The HSM's IP address. If you specify an IP address, use an available
-#' address from the subnet that maps to the Availability Zone where you are
-#' creating the HSM. If you don't specify an IP address, one is chosen for
-#' you from that subnet.
+#' @param ClusterId &#91;required&#93; The identifier (ID) of the HSM's cluster. To find the cluster ID, use [`describe_clusters`][cloudhsmv2_describe_clusters].
+#' @param AvailabilityZone &#91;required&#93; The Availability Zone where you are creating the HSM. To find the cluster's Availability Zones, use [`describe_clusters`][cloudhsmv2_describe_clusters].
+#' @param IpAddress The HSM's IP address. If you specify an IP address, use an available address from the subnet that maps to the Availability Zone where you are creating the HSM. If you don't specify an IP address, one is chosen for you from that subnet.
 #'
 #' @keywords internal
 #'
@@ -136,8 +118,7 @@ cloudhsmv2_create_hsm <- function(ClusterId, AvailabilityZone, IpAddress = NULL)
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudhsmv2_delete_backup/](https://www.paws-r-sdk.com/docs/cloudhsmv2_delete_backup/) for full documentation.
 #'
-#' @param BackupId &#91;required&#93; The ID of the backup to be deleted. To find the ID of a backup, use the
-#' [`describe_backups`][cloudhsmv2_describe_backups] operation.
+#' @param BackupId &#91;required&#93; The ID of the backup to be deleted. To find the ID of a backup, use the [`describe_backups`][cloudhsmv2_describe_backups] operation.
 #'
 #' @keywords internal
 #'
@@ -168,8 +149,7 @@ cloudhsmv2_delete_backup <- function(BackupId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudhsmv2_delete_cluster/](https://www.paws-r-sdk.com/docs/cloudhsmv2_delete_cluster/) for full documentation.
 #'
-#' @param ClusterId &#91;required&#93; The identifier (ID) of the cluster that you are deleting. To find the
-#' cluster ID, use [`describe_clusters`][cloudhsmv2_describe_clusters].
+#' @param ClusterId &#91;required&#93; The identifier (ID) of the cluster that you are deleting. To find the cluster ID, use [`describe_clusters`][cloudhsmv2_describe_clusters].
 #'
 #' @keywords internal
 #'
@@ -200,13 +180,10 @@ cloudhsmv2_delete_cluster <- function(ClusterId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudhsmv2_delete_hsm/](https://www.paws-r-sdk.com/docs/cloudhsmv2_delete_hsm/) for full documentation.
 #'
-#' @param ClusterId &#91;required&#93; The identifier (ID) of the cluster that contains the HSM that you are
-#' deleting.
+#' @param ClusterId &#91;required&#93; The identifier (ID) of the cluster that contains the HSM that you are deleting.
 #' @param HsmId The identifier (ID) of the HSM that you are deleting.
-#' @param EniId The identifier (ID) of the elastic network interface (ENI) of the HSM
-#' that you are deleting.
-#' @param EniIp The IP address of the elastic network interface (ENI) of the HSM that
-#' you are deleting.
+#' @param EniId The identifier (ID) of the elastic network interface (ENI) of the HSM that you are deleting.
+#' @param EniIp The IP address of the elastic network interface (ENI) of the HSM that you are deleting.
 #'
 #' @keywords internal
 #'
@@ -237,8 +214,7 @@ cloudhsmv2_delete_hsm <- function(ClusterId, HsmId = NULL, EniId = NULL, EniIp =
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudhsmv2_delete_resource_policy/](https://www.paws-r-sdk.com/docs/cloudhsmv2_delete_resource_policy/) for full documentation.
 #'
-#' @param ResourceArn Amazon Resource Name (ARN) of the resource from which the policy will be
-#' removed.
+#' @param ResourceArn Amazon Resource Name (ARN) of the resource from which the policy will be removed.
 #'
 #' @keywords internal
 #'
@@ -269,45 +245,23 @@ cloudhsmv2_delete_resource_policy <- function(ResourceArn = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudhsmv2_describe_backups/](https://www.paws-r-sdk.com/docs/cloudhsmv2_describe_backups/) for full documentation.
 #'
-#' @param NextToken The `NextToken` value that you received in the previous response. Use
-#' this value to get more backups.
-#' @param MaxResults The maximum number of backups to return in the response. When there are
-#' more backups than the number you specify, the response contains a
-#' `NextToken` value.
+#' @param NextToken The `NextToken` value that you received in the previous response. Use this value to get more backups.
+#' @param MaxResults The maximum number of backups to return in the response. When there are more backups than the number you specify, the response contains a `NextToken` value.
 #' @param Filters One or more filters to limit the items returned in the response.
 #' 
-#' Use the `backupIds` filter to return only the specified backups. Specify
-#' backups by their backup identifier (ID).
+#' Use the `backupIds` filter to return only the specified backups. Specify backups by their backup identifier (ID).
 #' 
-#' Use the `sourceBackupIds` filter to return only the backups created from
-#' a source backup. The `sourceBackupID` of a source backup is returned by
-#' the [`copy_backup_to_region`][cloudhsmv2_copy_backup_to_region]
-#' operation.
+#' Use the `sourceBackupIds` filter to return only the backups created from a source backup. The `sourceBackupID` of a source backup is returned by the [`copy_backup_to_region`][cloudhsmv2_copy_backup_to_region] operation.
 #' 
-#' Use the `clusterIds` filter to return only the backups for the specified
-#' clusters. Specify clusters by their cluster identifier (ID).
+#' Use the `clusterIds` filter to return only the backups for the specified clusters. Specify clusters by their cluster identifier (ID).
 #' 
-#' Use the `states` filter to return only backups that match the specified
-#' state.
+#' Use the `states` filter to return only backups that match the specified state.
 #' 
-#' Use the `neverExpires` filter to return backups filtered by the value in
-#' the `neverExpires` parameter. `True` returns all backups exempt from the
-#' backup retention policy. `False` returns all backups with a backup
-#' retention policy defined at the cluster.
+#' Use the `neverExpires` filter to return backups filtered by the value in the `neverExpires` parameter. `True` returns all backups exempt from the backup retention policy. `False` returns all backups with a backup retention policy defined at the cluster.
 #' @param Shared Describe backups that are shared with you.
 #' 
-#' By default when using this option, the command returns backups that have
-#' been shared using a standard Resource Access Manager resource share. In
-#' order for a backup that was shared using the PutResourcePolicy command
-#' to be returned, the share must be promoted to a standard resource share
-#' using the RAM
-#' [PromoteResourceShareCreatedFromPolicy](https://docs.aws.amazon.com/cli/latest/reference/ram/promote-resource-share-created-from-policy.html)
-#' API operation. For more information about sharing backups, see [Working
-#' with shared
-#' backups](https://docs.aws.amazon.com/cloudhsm/latest/userguide/sharing.html)
-#' in the CloudHSM User Guide.
-#' @param SortAscending Designates whether or not to sort the return backups by ascending
-#' chronological order of generation.
+#' By default when using this option, the command returns backups that have been shared using a standard Resource Access Manager resource share. In order for a backup that was shared using the PutResourcePolicy command to be returned, the share must be promoted to a standard resource share using the RAM [PromoteResourceShareCreatedFromPolicy](https://docs.aws.amazon.com/cli/latest/reference/ram/promote-resource-share-created-from-policy.html) API operation. For more information about sharing backups, see [Working with shared backups](https://docs.aws.amazon.com/cloudhsm/latest/userguide/sharing.html) in the CloudHSM User Guide.
+#' @param SortAscending Designates whether or not to sort the return backups by ascending chronological order of generation.
 #'
 #' @keywords internal
 #'
@@ -340,20 +294,13 @@ cloudhsmv2_describe_backups <- function(NextToken = NULL, MaxResults = NULL, Fil
 #'
 #' @param Filters One or more filters to limit the items returned in the response.
 #' 
-#' Use the `clusterIds` filter to return only the specified clusters.
-#' Specify clusters by their cluster identifier (ID).
+#' Use the `clusterIds` filter to return only the specified clusters. Specify clusters by their cluster identifier (ID).
 #' 
-#' Use the `vpcIds` filter to return only the clusters in the specified
-#' virtual private clouds (VPCs). Specify VPCs by their VPC identifier
-#' (ID).
+#' Use the `vpcIds` filter to return only the clusters in the specified virtual private clouds (VPCs). Specify VPCs by their VPC identifier (ID).
 #' 
-#' Use the `states` filter to return only clusters that match the specified
-#' state.
-#' @param NextToken The `NextToken` value that you received in the previous response. Use
-#' this value to get more clusters.
-#' @param MaxResults The maximum number of clusters to return in the response. When there are
-#' more clusters than the number you specify, the response contains a
-#' `NextToken` value.
+#' Use the `states` filter to return only clusters that match the specified state.
+#' @param NextToken The `NextToken` value that you received in the previous response. Use this value to get more clusters.
+#' @param MaxResults The maximum number of clusters to return in the response. When there are more clusters than the number you specify, the response contains a `NextToken` value.
 #'
 #' @keywords internal
 #'
@@ -384,8 +331,7 @@ cloudhsmv2_describe_clusters <- function(Filters = NULL, NextToken = NULL, MaxRe
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudhsmv2_get_resource_policy/](https://www.paws-r-sdk.com/docs/cloudhsmv2_get_resource_policy/) for full documentation.
 #'
-#' @param ResourceArn Amazon Resource Name (ARN) of the resource to which a policy is
-#' attached.
+#' @param ResourceArn Amazon Resource Name (ARN) of the resource to which a policy is attached.
 #'
 #' @keywords internal
 #'
@@ -417,16 +363,9 @@ cloudhsmv2_get_resource_policy <- function(ResourceArn = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudhsmv2_initialize_cluster/](https://www.paws-r-sdk.com/docs/cloudhsmv2_initialize_cluster/) for full documentation.
 #'
-#' @param ClusterId &#91;required&#93; The identifier (ID) of the cluster that you are claiming. To find the
-#' cluster ID, use [`describe_clusters`][cloudhsmv2_describe_clusters].
-#' @param SignedCert &#91;required&#93; The cluster certificate issued (signed) by your issuing certificate
-#' authority (CA). The certificate must be in PEM format and can contain a
-#' maximum of 5000 characters.
-#' @param TrustAnchor &#91;required&#93; The issuing certificate of the issuing certificate authority (CA) that
-#' issued (signed) the cluster certificate. You must use a self-signed
-#' certificate. The certificate used to sign the HSM CSR must be directly
-#' available, and thus must be the root certificate. The certificate must
-#' be in PEM format and can contain a maximum of 5000 characters.
+#' @param ClusterId &#91;required&#93; The identifier (ID) of the cluster that you are claiming. To find the cluster ID, use [`describe_clusters`][cloudhsmv2_describe_clusters].
+#' @param SignedCert &#91;required&#93; The cluster certificate issued (signed) by your issuing certificate authority (CA). The certificate must be in PEM format and can contain a maximum of 5000 characters.
+#' @param TrustAnchor &#91;required&#93; The issuing certificate of the issuing certificate authority (CA) that issued (signed) the cluster certificate. You must use a self-signed certificate. The certificate used to sign the HSM CSR must be directly available, and thus must be the root certificate. The certificate must be in PEM format and can contain a maximum of 5000 characters.
 #'
 #' @keywords internal
 #'
@@ -457,14 +396,9 @@ cloudhsmv2_initialize_cluster <- function(ClusterId, SignedCert, TrustAnchor) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudhsmv2_list_tags/](https://www.paws-r-sdk.com/docs/cloudhsmv2_list_tags/) for full documentation.
 #'
-#' @param ResourceId &#91;required&#93; The cluster identifier (ID) for the cluster whose tags you are getting.
-#' To find the cluster ID, use
-#' [`describe_clusters`][cloudhsmv2_describe_clusters].
-#' @param NextToken The `NextToken` value that you received in the previous response. Use
-#' this value to get more tags.
-#' @param MaxResults The maximum number of tags to return in the response. When there are
-#' more tags than the number you specify, the response contains a
-#' `NextToken` value.
+#' @param ResourceId &#91;required&#93; The cluster identifier (ID) for the cluster whose tags you are getting. To find the cluster ID, use [`describe_clusters`][cloudhsmv2_describe_clusters].
+#' @param NextToken The `NextToken` value that you received in the previous response. Use this value to get more tags.
+#' @param MaxResults The maximum number of tags to return in the response. When there are more tags than the number you specify, the response contains a `NextToken` value.
 #'
 #' @keywords internal
 #'
@@ -495,12 +429,8 @@ cloudhsmv2_list_tags <- function(ResourceId, NextToken = NULL, MaxResults = NULL
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudhsmv2_modify_backup_attributes/](https://www.paws-r-sdk.com/docs/cloudhsmv2_modify_backup_attributes/) for full documentation.
 #'
-#' @param BackupId &#91;required&#93; The identifier (ID) of the backup to modify. To find the ID of a backup,
-#' use the [`describe_backups`][cloudhsmv2_describe_backups] operation.
-#' @param NeverExpires &#91;required&#93; Specifies whether the service should exempt a backup from the retention
-#' policy for the cluster. `True` exempts a backup from the retention
-#' policy. `False` means the service applies the backup retention policy
-#' defined at the cluster.
+#' @param BackupId &#91;required&#93; The identifier (ID) of the backup to modify. To find the ID of a backup, use the [`describe_backups`][cloudhsmv2_describe_backups] operation.
+#' @param NeverExpires &#91;required&#93; Specifies whether the service should exempt a backup from the retention policy for the cluster. `True` exempts a backup from the retention policy. `False` means the service applies the backup retention policy defined at the cluster.
 #'
 #' @keywords internal
 #'
@@ -533,8 +463,7 @@ cloudhsmv2_modify_backup_attributes <- function(BackupId, NeverExpires) {
 #'
 #' @param HsmType The desired HSM type of the cluster.
 #' @param BackupRetentionPolicy A policy that defines how the service retains backups.
-#' @param ClusterId &#91;required&#93; The identifier (ID) of the cluster that you want to modify. To find the
-#' cluster ID, use [`describe_clusters`][cloudhsmv2_describe_clusters].
+#' @param ClusterId &#91;required&#93; The identifier (ID) of the cluster that you want to modify. To find the cluster ID, use [`describe_clusters`][cloudhsmv2_describe_clusters].
 #'
 #' @keywords internal
 #'
@@ -565,13 +494,10 @@ cloudhsmv2_modify_cluster <- function(HsmType = NULL, BackupRetentionPolicy = NU
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudhsmv2_put_resource_policy/](https://www.paws-r-sdk.com/docs/cloudhsmv2_put_resource_policy/) for full documentation.
 #'
-#' @param ResourceArn Amazon Resource Name (ARN) of the resource to which you want to attach a
-#' policy.
+#' @param ResourceArn Amazon Resource Name (ARN) of the resource to which you want to attach a policy.
 #' @param Policy The policy you want to associate with a resource.
 #' 
-#' For an example policy, see [Working with shared
-#' backups](https://docs.aws.amazon.com/cloudhsm/latest/userguide/sharing.html)
-#' in the CloudHSM User Guide
+#' For an example policy, see [Working with shared backups](https://docs.aws.amazon.com/cloudhsm/latest/userguide/sharing.html) in the CloudHSM User Guide
 #'
 #' @keywords internal
 #'
@@ -603,8 +529,7 @@ cloudhsmv2_put_resource_policy <- function(ResourceArn = NULL, Policy = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudhsmv2_restore_backup/](https://www.paws-r-sdk.com/docs/cloudhsmv2_restore_backup/) for full documentation.
 #'
-#' @param BackupId &#91;required&#93; The ID of the backup to be restored. To find the ID of a backup, use the
-#' [`describe_backups`][cloudhsmv2_describe_backups] operation.
+#' @param BackupId &#91;required&#93; The ID of the backup to be restored. To find the ID of a backup, use the [`describe_backups`][cloudhsmv2_describe_backups] operation.
 #'
 #' @keywords internal
 #'
@@ -635,9 +560,7 @@ cloudhsmv2_restore_backup <- function(BackupId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudhsmv2_tag_resource/](https://www.paws-r-sdk.com/docs/cloudhsmv2_tag_resource/) for full documentation.
 #'
-#' @param ResourceId &#91;required&#93; The cluster identifier (ID) for the cluster that you are tagging. To
-#' find the cluster ID, use
-#' [`describe_clusters`][cloudhsmv2_describe_clusters].
+#' @param ResourceId &#91;required&#93; The cluster identifier (ID) for the cluster that you are tagging. To find the cluster ID, use [`describe_clusters`][cloudhsmv2_describe_clusters].
 #' @param TagList &#91;required&#93; A list of one or more tags.
 #'
 #' @keywords internal
@@ -669,11 +592,8 @@ cloudhsmv2_tag_resource <- function(ResourceId, TagList) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudhsmv2_untag_resource/](https://www.paws-r-sdk.com/docs/cloudhsmv2_untag_resource/) for full documentation.
 #'
-#' @param ResourceId &#91;required&#93; The cluster identifier (ID) for the cluster whose tags you are removing.
-#' To find the cluster ID, use
-#' [`describe_clusters`][cloudhsmv2_describe_clusters].
-#' @param TagKeyList &#91;required&#93; A list of one or more tag keys for the tags that you are removing.
-#' Specify only the tag keys, not the tag values.
+#' @param ResourceId &#91;required&#93; The cluster identifier (ID) for the cluster whose tags you are removing. To find the cluster ID, use [`describe_clusters`][cloudhsmv2_describe_clusters].
+#' @param TagKeyList &#91;required&#93; A list of one or more tag keys for the tags that you are removing. Specify only the tag keys, not the tag values.
 #'
 #' @keywords internal
 #'

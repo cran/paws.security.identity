@@ -7,8 +7,7 @@
 cleanroomsml_list_tags_for_resource(resourceArn)
 }
 \arguments{
-\item{resourceArn}{[required] The Amazon Resource Name (ARN) of the resource that you are interested
-in.}
+\item{resourceArn}{[required] The Amazon Resource Name (ARN) of the resource that you are interested in.}
 }
 \description{
 Returns a list of tags for a provided resource.

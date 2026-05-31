@@ -12,15 +12,13 @@ acmpca_create_certificate_authority_audit_report(
 )
 }
 \arguments{
-\item{CertificateAuthorityArn}{[required] The Amazon Resource Name (ARN) of the CA to be audited. This is of the
-form:
+\item{CertificateAuthorityArn}{[required] The Amazon Resource Name (ARN) of the CA to be audited. This is of the form:
 
 \code{arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 }.}
 
 \item{S3BucketName}{[required] The name of the S3 bucket that will contain the audit report.}
 
-\item{AuditReportResponseFormat}{[required] The format in which to create the report. This can be either \strong{JSON} or
-\strong{CSV}.}
+\item{AuditReportResponseFormat}{[required] The format in which to create the report. This can be either \strong{JSON} or \strong{CSV}.}
 }
 \description{
 Creates an audit report that lists every time that your CA private key is used to issue a certificate. The \code{\link[=acmpca_issue_certificate]{issue_certificate}} and \code{\link[=acmpca_revoke_certificate]{revoke_certificate}} actions use the private key.

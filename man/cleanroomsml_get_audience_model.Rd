@@ -7,8 +7,7 @@
 cleanroomsml_get_audience_model(audienceModelArn)
 }
 \arguments{
-\item{audienceModelArn}{[required] The Amazon Resource Name (ARN) of the audience model that you are
-interested in.}
+\item{audienceModelArn}{[required] The Amazon Resource Name (ARN) of the audience model that you are interested in.}
 }
 \description{
 Returns information about an audience model

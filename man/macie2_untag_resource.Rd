@@ -9,9 +9,7 @@ macie2_untag_resource(resourceArn, tagKeys)
 \arguments{
 \item{resourceArn}{[required] The Amazon Resource Name (ARN) of the resource.}
 
-\item{tagKeys}{[required] One or more tags (keys) to remove from the resource. In an HTTP request
-to remove multiple tags, append the tagKeys parameter and argument for
-each tag to remove, separated by an ampersand (&).}
+\item{tagKeys}{[required] One or more tags (keys) to remove from the resource. In an HTTP request to remove multiple tags, append the tagKeys parameter and argument for each tag to remove, separated by an ampersand (&).}
 }
 \description{
 Removes one or more tags (keys and values) from an Amazon Macie resource.

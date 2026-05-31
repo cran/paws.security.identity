@@ -7,11 +7,9 @@
 macie2_update_classification_scope(id, s3 = NULL)
 }
 \arguments{
-\item{id}{[required] The unique identifier for the Amazon Macie resource that the request
-applies to.}
+\item{id}{[required] The unique identifier for the Amazon Macie resource that the request applies to.}
 
-\item{s3}{The S3 buckets to add or remove from the exclusion list defined by the
-classification scope.}
+\item{s3}{The S3 buckets to add or remove from the exclusion list defined by the classification scope.}
 }
 \description{
 Updates the classification scope settings for an account.

@@ -12,15 +12,11 @@ directoryservice_describe_domain_controllers(
 )
 }
 \arguments{
-\item{DirectoryId}{[required] Identifier of the directory for which to retrieve the domain controller
-information.}
+\item{DirectoryId}{[required] Identifier of the directory for which to retrieve the domain controller information.}
 
-\item{DomainControllerIds}{A list of identifiers for the domain controllers whose information will
-be provided.}
+\item{DomainControllerIds}{A list of identifiers for the domain controllers whose information will be provided.}
 
-\item{NextToken}{The \emph{DescribeDomainControllers.NextToken} value from a previous call to
-\code{\link[=directoryservice_describe_domain_controllers]{describe_domain_controllers}}.
-Pass null if this is the first call.}
+\item{NextToken}{The \emph{DescribeDomainControllers.NextToken} value from a previous call to \code{\link[=directoryservice_describe_domain_controllers]{describe_domain_controllers}}. Pass null if this is the first call.}
 
 \item{Limit}{The maximum number of items to return.}
 }

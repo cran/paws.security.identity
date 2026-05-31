@@ -8,8 +8,7 @@ an instance of IAM Identity Center}
 ssoadmin_describe_trusted_token_issuer(TrustedTokenIssuerArn)
 }
 \arguments{
-\item{TrustedTokenIssuerArn}{[required] Specifies the ARN of the trusted token issuer configuration that you
-want details about.}
+\item{TrustedTokenIssuerArn}{[required] Specifies the ARN of the trusted token issuer configuration that you want details about.}
 }
 \description{
 Retrieves details about a trusted token issuer configuration stored in an instance of IAM Identity Center. Details include the name of the trusted token issuer, the issuer URL, and the path of the source attribute and the destination attribute for a trusted token issuer configuration.

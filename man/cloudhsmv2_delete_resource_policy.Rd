@@ -7,8 +7,7 @@
 cloudhsmv2_delete_resource_policy(ResourceArn = NULL)
 }
 \arguments{
-\item{ResourceArn}{Amazon Resource Name (ARN) of the resource from which the policy will be
-removed.}
+\item{ResourceArn}{Amazon Resource Name (ARN) of the resource from which the policy will be removed.}
 }
 \description{
 Deletes an CloudHSM resource policy. Deleting a resource policy will result in the resource being unshared and removed from any RAM resource shares. Deleting the resource policy attached to a backup will not impact any clusters created from that backup.

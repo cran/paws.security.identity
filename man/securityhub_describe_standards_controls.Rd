@@ -11,18 +11,11 @@ securityhub_describe_standards_controls(
 )
 }
 \arguments{
-\item{StandardsSubscriptionArn}{[required] The ARN of a resource that represents your subscription to a supported
-standard. To get the subscription ARNs of the standards you have
-enabled, use the
-\code{\link[=securityhub_get_enabled_standards]{get_enabled_standards}} operation.}
+\item{StandardsSubscriptionArn}{[required] The ARN of a resource that represents your subscription to a supported standard. To get the subscription ARNs of the standards you have enabled, use the \code{\link[=securityhub_get_enabled_standards]{get_enabled_standards}} operation.}
 
-\item{NextToken}{The token that is required for pagination. On your first call to the
-\code{\link[=securityhub_describe_standards_controls]{describe_standards_controls}}
-operation, set the value of this parameter to \code{NULL}.
+\item{NextToken}{The token that is required for pagination. On your first call to the \code{\link[=securityhub_describe_standards_controls]{describe_standards_controls}} operation, set the value of this parameter to \code{NULL}.
 
-For subsequent calls to the operation, to continue listing data, set the
-value of this parameter to the value returned from the previous
-response.}
+For subsequent calls to the operation, to continue listing data, set the value of this parameter to the value returned from the previous response.}
 
 \item{MaxResults}{The maximum number of security standard controls to return.}
 }

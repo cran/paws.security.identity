@@ -7,9 +7,7 @@
 wafregional_get_change_token_status(ChangeToken)
 }
 \arguments{
-\item{ChangeToken}{[required] The change token for which you want to get the status. This change token
-was previously returned in the
-\code{\link[=wafregional_get_change_token]{get_change_token}} response.}
+\item{ChangeToken}{[required] The change token for which you want to get the status. This change token was previously returned in the \code{\link[=wafregional_get_change_token]{get_change_token}} response.}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic} in the developer guide.

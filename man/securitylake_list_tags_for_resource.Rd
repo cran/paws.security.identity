@@ -10,8 +10,7 @@ Region}
 securitylake_list_tags_for_resource(resourceArn)
 }
 \arguments{
-\item{resourceArn}{[required] The Amazon Resource Name (ARN) of the Amazon Security Lake resource for
-which you want to retrieve the tags.}
+\item{resourceArn}{[required] The Amazon Resource Name (ARN) of the Amazon Security Lake resource for which you want to retrieve the tags.}
 }
 \description{
 Retrieves the tags (keys and values) that are associated with an Amazon Security Lake resource: a subscriber, or the data lake configuration for your Amazon Web Services account in a particular Amazon Web Services Region.

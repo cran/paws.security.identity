@@ -7,20 +7,13 @@
 iam_get_context_keys_for_custom_policy(PolicyInputList)
 }
 \arguments{
-\item{PolicyInputList}{[required] A list of policies for which you want the list of context keys
-referenced in those policies. Each document is specified as a string
-containing the complete, valid JSON text of an IAM policy.
+\item{PolicyInputList}{[required] A list of policies for which you want the list of context keys referenced in those policies. Each document is specified as a string containing the complete, valid JSON text of an IAM policy.
 
-The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} used to
-validate this parameter is a string of characters consisting of the
-following:
+The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} used to validate this parameter is a string of characters consisting of the following:
 \itemize{
-\item Any printable ASCII character ranging from the space character
-(\code{U+0020}) through the end of the ASCII character range
-\item The printable characters in the Basic Latin and Latin-1 Supplement
-character set (through \verb{U+00FF})
-\item The special characters tab (\code{U+0009}), line feed (\verb{U+000A}), and
-carriage return (\verb{U+000D})
+\item Any printable ASCII character ranging from the space character (\code{U+0020}) through the end of the ASCII character range
+\item The printable characters in the Basic Latin and Latin-1 Supplement character set (through \verb{U+00FF})
+\item The special characters tab (\code{U+0009}), line feed (\verb{U+000A}), and carriage return (\verb{U+000D})
 }}
 }
 \description{

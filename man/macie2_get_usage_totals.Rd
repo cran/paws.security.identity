@@ -7,11 +7,7 @@
 macie2_get_usage_totals(timeRange = NULL)
 }
 \arguments{
-\item{timeRange}{The inclusive time period to retrieve the data for. Valid values are:
-MONTH_TO_DATE, for the current calendar month to date; and,
-PAST_30_DAYS, for the preceding 30 days. If you don't specify a value
-for this parameter, Amazon Macie provides aggregated usage data for the
-preceding 30 days.}
+\item{timeRange}{The inclusive time period to retrieve the data for. Valid values are: MONTH_TO_DATE, for the current calendar month to date; and, PAST_30_DAYS, for the preceding 30 days. If you don't specify a value for this parameter, Amazon Macie provides aggregated usage data for the preceding 30 days.}
 }
 \description{
 Retrieves (queries) aggregated usage data for an account.

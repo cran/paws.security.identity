@@ -18,49 +18,27 @@ ram_get_resource_shares(
 )
 }
 \arguments{
-\item{resourceShareArns}{Specifies the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
-of individual resource shares that you want information about.}
+\item{resourceShareArns}{Specifies the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)} of individual resource shares that you want information about.}
 
-\item{resourceShareStatus}{Specifies that you want to retrieve details of only those resource
-shares that have this status.}
+\item{resourceShareStatus}{Specifies that you want to retrieve details of only those resource shares that have this status.}
 
-\item{resourceOwner}{[required] Specifies that you want to retrieve details of only those resource
-shares that match the following:
+\item{resourceOwner}{[required] Specifies that you want to retrieve details of only those resource shares that match the following:
 \itemize{
-\item \strong{\code{SELF}} – resource shares that your account shares with other
-accounts
-\item \strong{\code{OTHER-ACCOUNTS}} – resource shares that other accounts share
-with your account
+\item \strong{\code{SELF}} – resource shares that your account shares with other accounts
+\item \strong{\code{OTHER-ACCOUNTS}} – resource shares that other accounts share with your account
 }}
 
-\item{name}{Specifies the name of an individual resource share that you want to
-retrieve details about.}
+\item{name}{Specifies the name of an individual resource share that you want to retrieve details about.}
 
-\item{tagFilters}{Specifies that you want to retrieve details of only those resource
-shares that match the specified tag keys and values.}
+\item{tagFilters}{Specifies that you want to retrieve details of only those resource shares that match the specified tag keys and values.}
 
-\item{nextToken}{Specifies that you want to receive the next page of results. Valid only
-if you received a \code{NextToken} response in the previous request. If you
-did, it indicates that more output is available. Set this parameter to
-the value provided by the previous call's \code{NextToken} response to
-request the next page of results.}
+\item{nextToken}{Specifies that you want to receive the next page of results. Valid only if you received a \code{NextToken} response in the previous request. If you did, it indicates that more output is available. Set this parameter to the value provided by the previous call's \code{NextToken} response to request the next page of results.}
 
-\item{maxResults}{Specifies the total number of results that you want included on each
-page of the response. If you do not include this parameter, it defaults
-to a value that is specific to the operation. If additional items exist
-beyond the number you specify, the \code{NextToken} response element is
-returned with a value (not null). Include the specified value as the
-\code{NextToken} request parameter in the next call to the operation to get
-the next part of the results. Note that the service might return fewer
-results than the maximum even when there are more results available. You
-should check \code{NextToken} after every operation to ensure that you
-receive all of the results.}
+\item{maxResults}{Specifies the total number of results that you want included on each page of the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the number you specify, the \code{NextToken} response element is returned with a value (not null). Include the specified value as the \code{NextToken} request parameter in the next call to the operation to get the next part of the results. Note that the service might return fewer results than the maximum even when there are more results available. You should check \code{NextToken} after every operation to ensure that you receive all of the results.}
 
-\item{permissionArn}{Specifies that you want to retrieve details of only those resource
-shares that use the managed permission with this \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Name (ARN)}.}
+\item{permissionArn}{Specifies that you want to retrieve details of only those resource shares that use the managed permission with this \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Name (ARN)}.}
 
-\item{permissionVersion}{Specifies that you want to retrieve details for only those resource
-shares that use the specified version of the managed permission.}
+\item{permissionVersion}{Specifies that you want to retrieve details for only those resource shares that use the specified version of the managed permission.}
 }
 \description{
 Retrieves details about the resource shares that you own or that are shared with you.

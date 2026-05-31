@@ -9,17 +9,11 @@ guardduty_list_ip_sets(DetectorId, MaxResults = NULL, NextToken = NULL)
 \arguments{
 \item{DetectorId}{[required] The unique ID of the detector that is associated with IPSet.
 
-To find the \code{detectorId} in the current Region, see the Settings page in
-the GuardDuty console, or run the
-\code{\link[=guardduty_list_detectors]{list_detectors}} API.}
+To find the \code{detectorId} in the current Region, see the Settings page in the GuardDuty console, or run the \code{\link[=guardduty_list_detectors]{list_detectors}} API.}
 
-\item{MaxResults}{You can use this parameter to indicate the maximum number of items you
-want in the response. The default value is 50. The maximum value is 50.}
+\item{MaxResults}{You can use this parameter to indicate the maximum number of items you want in the response. The default value is 50. The maximum value is 50.}
 
-\item{NextToken}{You can use this parameter when paginating results. Set the value of
-this parameter to null on your first call to the list action. For
-subsequent calls to the action, fill nextToken in the request with the
-value of NextToken from the previous response to continue listing data.}
+\item{NextToken}{You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the list action. For subsequent calls to the action, fill nextToken in the request with the value of NextToken from the previous response to continue listing data.}
 }
 \description{
 Lists the IPSets of the GuardDuty service specified by the detector ID. If you use this operation from a member account, the IPSets returned are the IPSets from the associated administrator account.

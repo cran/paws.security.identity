@@ -7,10 +7,17 @@
 verifiedpermissions_put_schema(policyStoreId, definition)
 }
 \arguments{
-\item{policyStoreId}{[required] Specifies the ID of the policy store in which to place the schema.}
+\item{policyStoreId}{[required] Specifies the ID of the policy store in which to place the schema.
 
-\item{definition}{[required] Specifies the definition of the schema to be stored. The schema
-definition must be written in Cedar schema JSON.}
+To specify a policy store, use its ID or alias name. When using an alias name, prefix it with \verb{policy-store-alias/}. For example:
+\itemize{
+\item ID: \code{PSEXAMPLEabcdefg111111}
+\item Alias name: \code{policy-store-alias/example-policy-store}
+}
+
+To view aliases, use \code{\link[=verifiedpermissions_list_policy_store_aliases]{list_policy_store_aliases}}.}
+
+\item{definition}{[required] Specifies the definition of the schema to be stored. The schema definition must be written in Cedar schema JSON.}
 }
 \description{
 Creates or updates the policy schema in the specified policy store. The schema is used to validate any Cedar policies and policy templates submitted to the policy store. Any changes to the schema validate only policies and templates submitted after the schema change. Existing policies and templates are not re-evaluated against the changed schema. If you later update a policy, then it is evaluated against the new schema at that time.

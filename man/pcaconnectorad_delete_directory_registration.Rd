@@ -7,8 +7,7 @@
 pcaconnectorad_delete_directory_registration(DirectoryRegistrationArn)
 }
 \arguments{
-\item{DirectoryRegistrationArn}{[required] The Amazon Resource Name (ARN) that was returned when you called
-\code{\link[=pcaconnectorad_create_directory_registration]{create_directory_registration}}.}
+\item{DirectoryRegistrationArn}{[required] The Amazon Resource Name (ARN) that was returned when you called \code{\link[=pcaconnectorad_create_directory_registration]{create_directory_registration}}.}
 }
 \description{
 Deletes a directory registration. Deleting a directory registration deauthorizes Amazon Web Services Private CA with the directory.

@@ -15,70 +15,35 @@ acmpca_create_certificate_authority(
 )
 }
 \arguments{
-\item{CertificateAuthorityConfiguration}{[required] Name and bit size of the private key algorithm, the name of the signing
-algorithm, and X.500 certificate subject information.}
+\item{CertificateAuthorityConfiguration}{[required] Name and bit size of the private key algorithm, the name of the signing algorithm, and X.500 certificate subject information.}
 
-\item{RevocationConfiguration}{Contains information to enable support for Online Certificate Status
-Protocol (OCSP), certificate revocation list (CRL), both protocols, or
-neither. By default, both certificate validation mechanisms are
-disabled.
+\item{RevocationConfiguration}{Contains information to enable support for Online Certificate Status Protocol (OCSP), certificate revocation list (CRL), both protocols, or neither. By default, both certificate validation mechanisms are disabled.
 
 The following requirements apply to revocation configurations.
 \itemize{
-\item A configuration disabling CRLs or OCSP must contain only the
-\code{Enabled=False} parameter, and will fail if other parameters such as
-\code{CustomCname} or \code{ExpirationInDays} are included.
-\item In a CRL configuration, the \code{S3BucketName} parameter must conform to
-\href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html}{Amazon S3 bucket naming rules}.
-\item A configuration containing a custom Canonical Name (CNAME) parameter
-for CRLs or OCSP must conform to
-\href{https://www.ietf.org/rfc/rfc2396.txt}{RFC2396} restrictions on the
-use of special characters in a CNAME.
-\item In a CRL or OCSP configuration, the value of a CNAME parameter must
-not include a protocol prefix such as "http://" or "https://".
+\item A configuration disabling CRLs or OCSP must contain only the \code{Enabled=False} parameter, and will fail if other parameters such as \code{CustomCname} or \code{ExpirationInDays} are included.
+\item In a CRL configuration, the \code{S3BucketName} parameter must conform to \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html}{Amazon S3 bucket naming rules}.
+\item A configuration containing a custom Canonical Name (CNAME) parameter for CRLs or OCSP must conform to \href{https://www.ietf.org/rfc/rfc2396.txt}{RFC2396} restrictions on the use of special characters in a CNAME.
+\item In a CRL or OCSP configuration, the value of a CNAME parameter must not include a protocol prefix such as "http://" or "https://".
 }
 
-For more information, see the
-\href{https://docs.aws.amazon.com/privateca/latest/APIReference/API_OcspConfiguration.html}{OcspConfiguration}
-and
-\href{https://docs.aws.amazon.com/privateca/latest/APIReference/API_CrlConfiguration.html}{CrlConfiguration}
-types.}
+For more information, see the \href{https://docs.aws.amazon.com/privateca/latest/APIReference/API_OcspConfiguration.html}{OcspConfiguration} and \href{https://docs.aws.amazon.com/privateca/latest/APIReference/API_CrlConfiguration.html}{CrlConfiguration} types.}
 
 \item{CertificateAuthorityType}{[required] The type of the certificate authority.}
 
-\item{IdempotencyToken}{Custom string that can be used to distinguish between calls to the
-\strong{CreateCertificateAuthority} action. Idempotency tokens for
-\strong{CreateCertificateAuthority} time out after five minutes. Therefore,
-if you call \strong{CreateCertificateAuthority} multiple times with the same
-idempotency token within five minutes, Amazon Web Services Private CA
-recognizes that you are requesting only certificate authority and will
-issue only one. If you change the idempotency token for each call,
-Amazon Web Services Private CA recognizes that you are requesting
-multiple certificate authorities.}
+\item{IdempotencyToken}{Custom string that can be used to distinguish between calls to the \strong{CreateCertificateAuthority} action. Idempotency tokens for \strong{CreateCertificateAuthority} time out after five minutes. Therefore, if you call \strong{CreateCertificateAuthority} multiple times with the same idempotency token within five minutes, Amazon Web Services Private CA recognizes that you are requesting only certificate authority and will issue only one. If you change the idempotency token for each call, Amazon Web Services Private CA recognizes that you are requesting multiple certificate authorities.}
 
-\item{KeyStorageSecurityStandard}{Specifies a cryptographic key management compliance standard used for
-handling CA keys.
+\item{KeyStorageSecurityStandard}{Specifies a cryptographic key management compliance standard for handling and protecting CA keys.
 
 Default: FIPS_140_2_LEVEL_3_OR_HIGHER
 
-Some Amazon Web Services Regions do not support the default. When
-creating a CA in these Regions, you must provide
-\code{FIPS_140_2_LEVEL_2_OR_HIGHER} as the argument for
-\code{KeyStorageSecurityStandard}. Failure to do this results in an
-\code{InvalidArgsException} with the message, "A certificate authority cannot
-be created in this region with the specified security standard."
+Some Amazon Web Services Regions don't support the default value. When you create a CA in these Regions, you must use \code{CCPC_LEVEL_1_OR_HIGHER} for the \code{KeyStorageSecurityStandard} parameter. If you don't, the operation returns an \code{InvalidArgsException} with this message: "A certificate authority cannot be created in this region with the specified security standard."
 
-For information about security standard support in various Regions, see
-\href{https://docs.aws.amazon.com/privateca/latest/userguide/data-protection.html#private-keys}{Storage and security compliance of Amazon Web Services Private CA private keys}.}
+For information about security standard support in different Amazon Web Services Regions, see \href{https://docs.aws.amazon.com/privateca/latest/userguide/data-protection.html#private-keys}{Storage and security compliance of Amazon Web Services Private CA private keys}.}
 
-\item{Tags}{Key-value pairs that will be attached to the new private CA. You can
-associate up to 50 tags with a private CA. For information using tags
-with IAM to manage permissions, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_iam-tags.html}{Controlling Access Using IAM Tags}.}
+\item{Tags}{Key-value pairs that will be attached to the new private CA. You can associate up to 50 tags with a private CA. For information using tags with IAM to manage permissions, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_iam-tags.html}{Controlling Access Using IAM Tags}.}
 
-\item{UsageMode}{Specifies whether the CA issues general-purpose certificates that
-typically require a revocation mechanism, or short-lived certificates
-that may optionally omit revocation because they expire quickly.
-Short-lived certificate validity is limited to seven days.
+\item{UsageMode}{Specifies whether the CA issues general-purpose certificates that typically require a revocation mechanism, or short-lived certificates that may optionally omit revocation because they expire quickly. Short-lived certificate validity is limited to seven days.
 
 The default value is GENERAL_PURPOSE.}
 }

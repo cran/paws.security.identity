@@ -7,21 +7,15 @@
 iam_delete_policy_version(PolicyArn, VersionId)
 }
 \arguments{
-\item{PolicyArn}{[required] The Amazon Resource Name (ARN) of the IAM policy from which you want to
-delete a version.
+\item{PolicyArn}{[required] The Amazon Resource Name (ARN) of the IAM policy from which you want to delete a version.
 
-For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
-in the \emph{Amazon Web Services General Reference}.}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)} in the \emph{Amazon Web Services General Reference}.}
 
 \item{VersionId}{[required] The policy version to delete.
 
-This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
-that consists of the lowercase letter 'v' followed by one or two digits,
-and optionally followed by a period '.' and a string of letters and
-digits.
+This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters that consists of the lowercase letter 'v' followed by one or two digits, and optionally followed by a period '.' and a string of letters and digits.
 
-For more information about managed policy versions, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-versioning.html}{Versioning for managed policies}
-in the \emph{IAM User Guide}.}
+For more information about managed policy versions, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-versioning.html}{Versioning for managed policies} in the \emph{IAM User Guide}.}
 }
 \description{
 Deletes the specified version from the specified managed policy.

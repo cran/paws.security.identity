@@ -8,11 +8,9 @@ account for an organization in Organizations}
 macie2_list_organization_admin_accounts(maxResults = NULL, nextToken = NULL)
 }
 \arguments{
-\item{maxResults}{The maximum number of items to include in each page of a paginated
-response.}
+\item{maxResults}{The maximum number of items to include in each page of a paginated response.}
 
-\item{nextToken}{The nextToken string that specifies which page of results to return in a
-paginated response.}
+\item{nextToken}{The nextToken string that specifies which page of results to return in a paginated response.}
 }
 \description{
 Retrieves information about the delegated Amazon Macie administrator account for an organization in Organizations.

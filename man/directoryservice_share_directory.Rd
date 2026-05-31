@@ -14,21 +14,13 @@ directoryservice_share_directory(
 )
 }
 \arguments{
-\item{DirectoryId}{[required] Identifier of the Managed Microsoft AD directory that you want to share
-with other Amazon Web Services accounts.}
+\item{DirectoryId}{[required] Identifier of the Managed Microsoft AD directory that you want to share with other Amazon Web Services accounts.}
 
-\item{ShareNotes}{A directory share request that is sent by the directory owner to the
-directory consumer. The request includes a typed message to help the
-directory consumer administrator determine whether to approve or reject
-the share invitation.}
+\item{ShareNotes}{A directory share request that is sent by the directory owner to the directory consumer. The request includes a typed message to help the directory consumer administrator determine whether to approve or reject the share invitation.}
 
-\item{ShareTarget}{[required] Identifier for the directory consumer account with whom the directory is
-to be shared.}
+\item{ShareTarget}{[required] Identifier for the directory consumer account with whom the directory is to be shared.}
 
-\item{ShareMethod}{[required] The method used when sharing a directory to determine whether the
-directory should be shared within your Amazon Web Services organization
-(\code{ORGANIZATIONS}) or with any Amazon Web Services account by sending a
-directory sharing request (\code{HANDSHAKE}).}
+\item{ShareMethod}{[required] The method used when sharing a directory to determine whether the directory should be shared within your Amazon Web Services organization (\code{ORGANIZATIONS}) or with any Amazon Web Services account by sending a directory sharing request (\code{HANDSHAKE}).}
 }
 \description{
 Shares a specified directory (\code{DirectoryId}) in your Amazon Web Services account (directory owner) with another Amazon Web Services account (directory consumer). With this operation you can use your directory from any Amazon Web Services account and from any Amazon VPC within an Amazon Web Services Region.

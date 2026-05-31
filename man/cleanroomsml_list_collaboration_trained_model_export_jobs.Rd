@@ -8,20 +8,20 @@ cleanroomsml_list_collaboration_trained_model_export_jobs(
   nextToken = NULL,
   maxResults = NULL,
   collaborationIdentifier,
-  trainedModelArn
+  trainedModelArn,
+  trainedModelVersionIdentifier = NULL
 )
 }
 \arguments{
-\item{nextToken}{The token value retrieved from a previous call to access the next page
-of results.}
+\item{nextToken}{The token value retrieved from a previous call to access the next page of results.}
 
 \item{maxResults}{The maximum size of the results that is returned per call.}
 
-\item{collaborationIdentifier}{[required] The collaboration ID of the collaboration that contains the trained
-model export jobs that you are interested in.}
+\item{collaborationIdentifier}{[required] The collaboration ID of the collaboration that contains the trained model export jobs that you are interested in.}
 
-\item{trainedModelArn}{[required] The Amazon Resource Name (ARN) of the trained model that was used to
-create the export jobs that you are interested in.}
+\item{trainedModelArn}{[required] The Amazon Resource Name (ARN) of the trained model that was used to create the export jobs that you are interested in.}
+
+\item{trainedModelVersionIdentifier}{The version identifier of the trained model to filter export jobs by. When specified, only export jobs for this specific version of the trained model are returned.}
 }
 \description{
 Returns a list of the export jobs for a trained model in a collaboration.

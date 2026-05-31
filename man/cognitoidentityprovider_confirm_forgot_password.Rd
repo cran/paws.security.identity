@@ -17,65 +17,33 @@ cognitoidentityprovider_confirm_forgot_password(
 )
 }
 \arguments{
-\item{ClientId}{[required] The ID of the app client where the user wants to reset their password.
-This parameter is an identifier of the client application that users are
-resetting their password from, but this operation resets users'
-passwords for all app clients in the user pool.}
+\item{ClientId}{[required] The ID of the app client where the user wants to reset their password. This parameter is an identifier of the client application that users are resetting their password from, but this operation resets users' irrespective of the app clients they sign in to.}
 
-\item{SecretHash}{A keyed-hash message authentication code (HMAC) calculated using the
-secret key of a user pool client and username plus the client ID in the
-message. For more information about \code{SecretHash}, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/signing-up-users-in-your-app.html#cognito-user-pools-computing-secret-hash}{Computing secret hash values}.}
+\item{SecretHash}{A keyed-hash message authentication code (HMAC) calculated using the secret key of a user pool client and username plus the client ID in the message. For more information about \code{SecretHash}, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/signing-up-users-in-your-app.html#cognito-user-pools-computing-secret-hash}{Computing secret hash values}.}
 
-\item{Username}{[required] The username of the user that you want to query or modify. The value of
-this parameter is typically your user's username, but it can be any of
-their alias attributes. If \code{username} isn't an alias attribute in your
-user pool, this value must be the \code{sub} of a local user or the username
-of a user from a third-party IdP.}
+\item{Username}{[required] The name of the user that you want to query or modify. The value of this parameter is typically your user's username, but it can be any of their alias attributes. If \code{username} isn't an alias attribute in your user pool, this value must be the \code{sub} of a local user or the username of a user from a third-party IdP.}
 
-\item{ConfirmationCode}{[required] The confirmation code that your user pool sent in response to an
-\code{\link[=cognitoidentityprovider_admin_reset_user_password]{admin_reset_user_password}}
-or a \code{\link[=cognitoidentityprovider_forgot_password]{forgot_password}}
-request.}
+\item{ConfirmationCode}{[required] The confirmation code that your user pool delivered when your user requested to reset their password.}
 
 \item{Password}{[required] The new password that your user wants to set.}
 
-\item{AnalyticsMetadata}{The Amazon Pinpoint analytics metadata for collecting metrics for
-\code{\link[=cognitoidentityprovider_confirm_forgot_password]{confirm_forgot_password}}
-calls.}
+\item{AnalyticsMetadata}{Information that supports analytics outcomes with Amazon Pinpoint, including the user's endpoint ID. The endpoint ID is a destination for Amazon Pinpoint push notifications, for example a device identifier, email address, or phone number.}
 
-\item{UserContextData}{Contextual data about your user session, such as the device fingerprint,
-IP address, or location. Amazon Cognito advanced security evaluates the
-risk of an authentication event based on the context that your app
-generates and passes to Amazon Cognito when it makes API requests.
+\item{UserContextData}{Contextual data about your user session like the device fingerprint, IP address, or location. Amazon Cognito threat protection evaluates the risk of an authentication event based on the context that your app generates and passes to Amazon Cognito when it makes API requests.
 
 For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-settings-viewing-threat-protection-app.html}{Collecting data for threat protection in applications}.}
 
-\item{ClientMetadata}{A map of custom key-value pairs that you can provide as input for any
-custom workflows that this action triggers.
+\item{ClientMetadata}{A map of custom key-value pairs that you can provide as input for any custom workflows that this action triggers. You create custom workflows by assigning Lambda functions to user pool triggers.
 
-You create custom workflows by assigning Lambda functions to user pool
-triggers. When you use the ConfirmForgotPassword API action, Amazon
-Cognito invokes the function that is assigned to the \emph{post confirmation}
-trigger. When Amazon Cognito invokes this function, it passes a JSON
-payload, which the function receives as input. This payload contains a
-\code{clientMetadata} attribute, which provides the data that you assigned to
-the ClientMetadata parameter in your ConfirmForgotPassword request. In
-your function code in Lambda, you can process the \code{clientMetadata} value
-to enhance your workflow for your specific needs.
+When Amazon Cognito invokes any of these functions, it passes a JSON payload, which the function receives as input. This payload contains a \code{clientMetadata} attribute that provides the data that you assigned to the ClientMetadata parameter in your request. In your function code, you can process the \code{clientMetadata} value to enhance your workflow for your specific needs.
 
-For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-working-with-lambda-triggers.html}{Customizing user pool Workflows with Lambda Triggers}
-in the \emph{Amazon Cognito Developer Guide}.
+To review the Lambda trigger types that Amazon Cognito invokes at runtime with API requests, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-working-with-lambda-triggers.html#lambda-triggers-by-event}{Connecting API actions to Lambda triggers} in the \emph{Amazon Cognito Developer Guide}.
 
-When you use the \code{ClientMetadata} parameter, note that Amazon Cognito
-won't do the following:
+When you use the \code{ClientMetadata} parameter, note that Amazon Cognito won't do the following:
 \itemize{
-\item Store the \code{ClientMetadata} value. This data is available only to
-Lambda triggers that are assigned to a user pool to support custom
-workflows. If your user pool configuration doesn't include triggers,
-the \code{ClientMetadata} parameter serves no purpose.
+\item Store the \code{ClientMetadata} value. This data is available only to Lambda triggers that are assigned to a user pool to support custom workflows. If your user pool configuration doesn't include triggers, the \code{ClientMetadata} parameter serves no purpose.
 \item Validate the \code{ClientMetadata} value.
-\item Encrypt the \code{ClientMetadata} value. Don't send sensitive information
-in this parameter.
+\item Encrypt the \code{ClientMetadata} value. Don't send sensitive information in this parameter.
 }}
 }
 \description{

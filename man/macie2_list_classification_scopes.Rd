@@ -8,11 +8,9 @@ account}
 macie2_list_classification_scopes(name = NULL, nextToken = NULL)
 }
 \arguments{
-\item{name}{The name of the classification scope to retrieve the unique identifier
-for.}
+\item{name}{The name of the classification scope to retrieve the unique identifier for.}
 
-\item{nextToken}{The nextToken string that specifies which page of results to return in a
-paginated response.}
+\item{nextToken}{The nextToken string that specifies which page of results to return in a paginated response.}
 }
 \description{
 Retrieves a subset of information about the classification scope for an account.

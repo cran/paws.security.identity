@@ -8,8 +8,7 @@ organization}
 guardduty_disable_organization_admin_account(AdminAccountId)
 }
 \arguments{
-\item{AdminAccountId}{[required] The Amazon Web Services Account ID for the organizations account to be
-disabled as a GuardDuty delegated administrator.}
+\item{AdminAccountId}{[required] The Amazon Web Services Account ID for the organizations account to be disabled as a GuardDuty delegated administrator.}
 }
 \description{
 Removes the existing GuardDuty delegated administrator of the organization. Only the organization's management account can run this API operation.

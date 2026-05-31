@@ -8,11 +8,7 @@ store}
 identitystore_describe_group(IdentityStoreId, GroupId)
 }
 \arguments{
-\item{IdentityStoreId}{[required] The globally unique identifier for the identity store, such as
-\code{d-1234567890}. In this example, \verb{d-} is a fixed prefix, and
-\code{1234567890} is a randomly generated string that contains numbers and
-lower case letters. This value is generated at the time that a new
-identity store is created.}
+\item{IdentityStoreId}{[required] The globally unique identifier for the identity store, such as \code{d-1234567890}. In this example, \verb{d-} is a fixed prefix, and \code{1234567890} is a randomly generated string that contains numbers and lower case letters. This value is generated at the time that a new identity store is created.}
 
 \item{GroupId}{[required] The identifier for a group in the identity store.}
 }

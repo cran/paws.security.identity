@@ -9,10 +9,7 @@ corresponding server-side IAM Identity Center sign in session}
 sso_logout(accessToken)
 }
 \arguments{
-\item{accessToken}{[required] The token issued by the \code{CreateToken} API call. For more information,
-see
-\href{https://docs.aws.amazon.com/singlesignon/latest/OIDCAPIReference/API_CreateToken.html}{CreateToken}
-in the \emph{IAM Identity Center OIDC API Reference Guide}.}
+\item{accessToken}{[required] The token issued by the \code{CreateToken} API call. For more information, see \href{https://docs.aws.amazon.com/singlesignon/latest/OIDCAPIReference/API_CreateToken.html}{CreateToken} in the \emph{IAM Identity Center OIDC API Reference Guide}.}
 }
 \description{
 Removes the locally stored SSO tokens from the client-side cache and sends an API call to the IAM Identity Center service to invalidate the corresponding server-side IAM Identity Center sign in session.

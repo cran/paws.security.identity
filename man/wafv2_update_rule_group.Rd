@@ -16,55 +16,31 @@ wafv2_update_rule_group(
 )
 }
 \arguments{
-\item{Name}{[required] The name of the rule group. You cannot change the name of a rule group
-after you create it.}
+\item{Name}{[required] The name of the rule group. You cannot change the name of a rule group after you create it.}
 
-\item{Scope}{[required] Specifies whether this is for a global resource type, such as a Amazon
-CloudFront distribution.
+\item{Scope}{[required] Specifies whether this is for a global resource type, such as a Amazon CloudFront distribution. For an Amplify application, use \code{CLOUDFRONT}.
 
-To work with CloudFront, you must also specify the Region US East (N.
-Virginia) as follows:
+To work with CloudFront, you must also specify the Region US East (N. Virginia) as follows:
 \itemize{
-\item CLI - Specify the Region when you use the CloudFront scope:
-\code{--scope=CLOUDFRONT --region=us-east-1}.
+\item CLI - Specify the Region when you use the CloudFront scope: \code{--scope=CLOUDFRONT --region=us-east-1}.
 \item API and SDKs - For all calls, use the Region endpoint us-east-1.
 }}
 
-\item{Id}{[required] A unique identifier for the rule group. This ID is returned in the
-responses to create and list commands. You provide it to operations like
-update and delete.}
+\item{Id}{[required] A unique identifier for the rule group. This ID is returned in the responses to create and list commands. You provide it to operations like update and delete.}
 
 \item{Description}{A description of the rule group that helps with identification.}
 
-\item{Rules}{The Rule statements used to identify the web requests that you want to
-manage. Each rule includes one top-level statement that WAF uses to
-identify matching web requests, and parameters that govern how WAF
-handles them.}
+\item{Rules}{The Rule statements used to identify the web requests that you want to manage. Each rule includes one top-level statement that WAF uses to identify matching web requests, and parameters that govern how WAF handles them.}
 
-\item{VisibilityConfig}{[required] Defines and enables Amazon CloudWatch metrics and web request sample
-collection.}
+\item{VisibilityConfig}{[required] Defines and enables Amazon CloudWatch metrics and web request sample collection.}
 
-\item{LockToken}{[required] A token used for optimistic locking. WAF returns a token to your \code{get}
-and \code{list} requests, to mark the state of the entity at the time of the
-request. To make changes to the entity associated with the token, you
-provide the token to operations like \code{update} and \code{delete}. WAF uses the
-token to ensure that no changes have been made to the entity since you
-last retrieved it. If a change has been made, the update fails with a
-\code{WAFOptimisticLockException}. If this happens, perform another \code{get},
-and use the new token returned by that operation.}
+\item{LockToken}{[required] A token used for optimistic locking. WAF returns a token to your \code{get} and \code{list} requests, to mark the state of the entity at the time of the request. To make changes to the entity associated with the token, you provide the token to operations like \code{update} and \code{delete}. WAF uses the token to ensure that no changes have been made to the entity since you last retrieved it. If a change has been made, the update fails with a \code{WAFOptimisticLockException}. If this happens, perform another \code{get}, and use the new token returned by that operation.}
 
-\item{CustomResponseBodies}{A map of custom response keys and content bodies. When you create a rule
-with a block action, you can send a custom response to the web request.
-You define these for the rule group, and then use them in the rules that
-you define in the rule group.
+\item{CustomResponseBodies}{A map of custom response keys and content bodies. When you create a rule with a block action, you can send a custom response to the web request. You define these for the rule group, and then use them in the rules that you define in the rule group.
 
-For information about customizing web requests and responses, see
-\href{https://docs.aws.amazon.com/waf/latest/developerguide/waf-custom-request-response.html}{Customizing web requests and responses in WAF}
-in the \emph{WAF Developer Guide}.
+For information about customizing web requests and responses, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/waf-custom-request-response.html}{Customizing web requests and responses in WAF} in the \emph{WAF Developer Guide}.
 
-For information about the limits on count and size for custom request
-and response settings, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/limits.html}{WAF quotas}
-in the \emph{WAF Developer Guide}.}
+For information about the limits on count and size for custom request and response settings, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/limits.html}{WAF quotas} in the \emph{WAF Developer Guide}.}
 }
 \description{
 Updates the specified RuleGroup.

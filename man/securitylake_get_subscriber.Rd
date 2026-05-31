@@ -7,8 +7,7 @@
 securitylake_get_subscriber(subscriberId)
 }
 \arguments{
-\item{subscriberId}{[required] A value created by Amazon Security Lake that uniquely identifies your
-\code{\link[=securitylake_get_subscriber]{get_subscriber}} API request.}
+\item{subscriberId}{[required] A value created by Amazon Security Lake that uniquely identifies your \code{\link[=securitylake_get_subscriber]{get_subscriber}} API request.}
 }
 \description{
 Retrieves the subscription information for the specified subscription ID. You can get information about a specific subscriber.

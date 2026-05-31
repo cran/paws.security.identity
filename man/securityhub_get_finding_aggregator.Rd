@@ -7,9 +7,7 @@
 securityhub_get_finding_aggregator(FindingAggregatorArn)
 }
 \arguments{
-\item{FindingAggregatorArn}{[required] The ARN of the finding aggregator to return details for. To obtain the
-ARN, use
-\code{\link[=securityhub_list_finding_aggregators]{list_finding_aggregators}}.}
+\item{FindingAggregatorArn}{[required] The ARN of the finding aggregator to return details for. To obtain the ARN, use \code{\link[=securityhub_list_finding_aggregators]{list_finding_aggregators}}.}
 }
 \description{
 The \emph{aggregation Region} is now called the \emph{home Region}.

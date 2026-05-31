@@ -8,8 +8,7 @@ administrator}
 inspector2_disassociate_member(accountId)
 }
 \arguments{
-\item{accountId}{[required] The Amazon Web Services account ID of the member account to
-disassociate.}
+\item{accountId}{[required] The Amazon Web Services account ID of the member account to disassociate.}
 }
 \description{
 Disassociates a member account from an Amazon Inspector delegated administrator.

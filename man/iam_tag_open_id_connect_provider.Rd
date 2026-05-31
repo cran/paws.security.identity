@@ -8,15 +8,11 @@ provider}
 iam_tag_open_id_connect_provider(OpenIDConnectProviderArn, Tags)
 }
 \arguments{
-\item{OpenIDConnectProviderArn}{[required] The ARN of the OIDC identity provider in IAM to which you want to add
-tags.
+\item{OpenIDConnectProviderArn}{[required] The ARN of the OIDC identity provider in IAM to which you want to add tags.
 
-This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
-consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: _+=,.@-}
+This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-}
 
-\item{Tags}{[required] The list of tags that you want to attach to the OIDC identity provider
-in IAM. Each tag consists of a key name and an associated value.}
+\item{Tags}{[required] The list of tags that you want to attach to the OIDC identity provider in IAM. Each tag consists of a key name and an associated value.}
 }
 \description{
 Adds one or more tags to an OpenID Connect (OIDC)-compatible identity provider. For more information about these providers, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_oidc.html}{About web identity federation}. If a tag with the same key name already exists, then that tag is overwritten with the new value.

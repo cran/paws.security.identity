@@ -8,8 +8,7 @@ Security Lake source}
 securitylake_delete_aws_log_source(sources)
 }
 \arguments{
-\item{sources}{[required] Specify the natively-supported Amazon Web Services service to remove as
-a source in Security Lake.}
+\item{sources}{[required] Specify the natively-supported Amazon Web Services service to remove as a source in Security Lake.}
 }
 \description{
 Removes a natively supported Amazon Web Services service as an Amazon Security Lake source. You can remove a source for one or more Regions. When you remove the source, Security Lake stops collecting data from that source in the specified Regions and accounts, and subscribers can no longer consume new data from the source. However, subscribers can still consume data that Security Lake collected from the source before removal.

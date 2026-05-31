@@ -7,12 +7,7 @@ NULL
 #' @description
 #' Shield Advanced
 #' 
-#' This is the *Shield Advanced API Reference*. This guide is for
-#' developers who need detailed information about the Shield Advanced API
-#' actions, data types, and errors. For detailed information about WAF and
-#' Shield Advanced features and an overview of how to use the WAF and
-#' Shield Advanced APIs, see the [WAF and Shield Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/).
+#' This is the *Shield Advanced API Reference*. This guide is for developers who need detailed information about the Shield Advanced API actions, data types, and errors. For detailed information about WAF and Shield Advanced features and an overview of how to use the WAF and Shield Advanced APIs, see the [WAF and Shield Developer Guide](https://docs.aws.amazon.com/waf/latest/developerguide/).
 #'
 #' @param
 #' config
@@ -164,7 +159,7 @@ shield <- function(config = list(), credentials = list(), endpoint = NULL, regio
 
 .shield$metadata <- list(
   service_name = "shield",
-  endpoints = list("aws-global" = list(endpoint = "shield.us-east-1.amazonaws.com", global = TRUE, signing_region = "us-east-1"), "us-east-1" = list(endpoint = "shield.us-east-1.amazonaws.com", global = TRUE), "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "shield.us-east-1.amazonaws.com", global = FALSE, signing_region = "us-east-1"), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "shield.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "shield.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "shield.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "shield.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "shield.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "shield.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("aws-global" = list(endpoint = "shield.us-east-1.amazonaws.com", global = TRUE, signing_region = "us-east-1"), "us-east-1" = list(endpoint = "shield.us-east-1.amazonaws.com", global = TRUE), "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "shield.us-east-1.amazonaws.com", global = FALSE, signing_region = "us-east-1"), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "shield.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "shield.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "shield.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "shield.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "shield.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "shield.{region}.csp.hci.ic.gov", global = FALSE), "^eusc\\-(de)\\-\\w+\\-\\d+$" = list(endpoint = "shield.{region}.amazonaws.eu", global = FALSE)),
   service_id = "Shield",
   api_version = "2016-06-02",
   signing_name = "shield",

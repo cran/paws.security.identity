@@ -13,17 +13,13 @@ pcaconnectorad_update_template_group_access_control_entry(
 )
 }
 \arguments{
-\item{AccessRights}{Allow or deny permissions for an Active Directory group to enroll or
-autoenroll certificates for a template.}
+\item{AccessRights}{Allow or deny permissions for an Active Directory group to enroll or autoenroll certificates for a template.}
 
-\item{GroupDisplayName}{Name of the Active Directory group. This name does not need to match the
-group name in Active Directory.}
+\item{GroupDisplayName}{Name of the Active Directory group. This name does not need to match the group name in Active Directory.}
 
-\item{GroupSecurityIdentifier}{[required] Security identifier (SID) of the group object from Active Directory. The
-SID starts with "S-".}
+\item{GroupSecurityIdentifier}{[required] Security identifier (SID) of the group object from Active Directory. The SID starts with "S-".}
 
-\item{TemplateArn}{[required] The Amazon Resource Name (ARN) that was returned when you called
-\code{\link[=pcaconnectorad_create_template]{create_template}}.}
+\item{TemplateArn}{[required] The Amazon Resource Name (ARN) that was returned when you called \code{\link[=pcaconnectorad_create_template]{create_template}}.}
 }
 \description{
 Update a group access control entry you created using \code{\link[=pcaconnectorad_create_template_group_access_control_entry]{create_template_group_access_control_entry}}.

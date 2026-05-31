@@ -8,8 +8,7 @@ the organization}
 securitylake_register_data_lake_delegated_administrator(accountId)
 }
 \arguments{
-\item{accountId}{[required] The Amazon Web Services account ID of the Security Lake delegated
-administrator.}
+\item{accountId}{[required] The Amazon Web Services account ID of the Security Lake delegated administrator.}
 }
 \description{
 Designates the Amazon Security Lake delegated administrator account for the organization. This API can only be called by the organization management account. The organization management account cannot be the delegated administrator account.

@@ -9,9 +9,7 @@ iam_create_account_alias(AccountAlias)
 \arguments{
 \item{AccountAlias}{[required] The account alias to create.
 
-This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
-consisting of lowercase letters, digits, and dashes. You cannot start or
-finish with a dash, nor can you have two dashes in a row.}
+This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters consisting of lowercase letters, digits, and dashes. You cannot start or finish with a dash, nor can you have two dashes in a row.}
 }
 \description{
 Creates an alias for your Amazon Web Services account. For information about using an Amazon Web Services account alias, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/account-alias-create.html}{Creating, deleting, and listing an Amazon Web Services account alias} in the \emph{Amazon Web Services Sign-In User Guide}.

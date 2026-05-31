@@ -12,18 +12,13 @@ directoryservice_describe_trusts(
 )
 }
 \arguments{
-\item{DirectoryId}{The Directory ID of the Amazon Web Services directory that is a part of
-the requested trust relationship.}
+\item{DirectoryId}{The Directory ID of the Amazon Web Services directory that is a part of the requested trust relationship.}
 
-\item{TrustIds}{A list of identifiers of the trust relationships for which to obtain the
-information. If this member is null, all trust relationships that belong
-to the current account are returned.
+\item{TrustIds}{A list of identifiers of the trust relationships for which to obtain the information. If this member is null, all trust relationships that belong to the current account are returned.
 
 An empty list results in an \code{InvalidParameterException} being thrown.}
 
-\item{NextToken}{The \emph{DescribeTrustsResult.NextToken} value from a previous call to
-\code{\link[=directoryservice_describe_trusts]{describe_trusts}}. Pass null if this
-is the first call.}
+\item{NextToken}{The \emph{DescribeTrustsResult.NextToken} value from a previous call to \code{\link[=directoryservice_describe_trusts]{describe_trusts}}. Pass null if this is the first call.}
 
 \item{Limit}{The maximum number of objects to return.}
 }

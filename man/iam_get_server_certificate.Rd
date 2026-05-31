@@ -8,12 +8,9 @@ IAM}
 iam_get_server_certificate(ServerCertificateName)
 }
 \arguments{
-\item{ServerCertificateName}{[required] The name of the server certificate you want to retrieve information
-about.
+\item{ServerCertificateName}{[required] The name of the server certificate you want to retrieve information about.
 
-This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
-consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: _+=,.@-}
+This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-}
 }
 \description{
 Retrieves information about the specified server certificate stored in IAM.

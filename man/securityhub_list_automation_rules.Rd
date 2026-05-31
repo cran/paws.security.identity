@@ -7,13 +7,9 @@
 securityhub_list_automation_rules(NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
-\item{NextToken}{A token to specify where to start paginating the response. This is the
-\code{NextToken} from a previously truncated response. On your first call to
-the \code{\link[=securityhub_list_automation_rules]{list_automation_rules}} API,
-set the value of this parameter to \code{NULL}.}
+\item{NextToken}{A token to specify where to start paginating the response. This is the \code{NextToken} from a previously truncated response. On your first call to the \code{\link[=securityhub_list_automation_rules]{list_automation_rules}} API, set the value of this parameter to \code{NULL}.}
 
-\item{MaxResults}{The maximum number of rules to return in the response. This currently
-ranges from 1 to 100.}
+\item{MaxResults}{The maximum number of rules to return in the response. This currently ranges from 1 to 100.}
 }
 \description{
 A list of automation rules and their metadata for the calling account.

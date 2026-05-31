@@ -8,9 +8,7 @@ Services accounts specified by their account IDs}
 guardduty_delete_invitations(AccountIds)
 }
 \arguments{
-\item{AccountIds}{[required] A list of account IDs of the Amazon Web Services accounts that sent
-invitations to the current member account that you want to delete
-invitations from.}
+\item{AccountIds}{[required] A list of account IDs of the Amazon Web Services accounts that sent invitations to the current member account that you want to delete invitations from.}
 }
 \description{
 Deletes invitations sent to the current member account by Amazon Web Services accounts specified by their account IDs.

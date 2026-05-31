@@ -8,8 +8,7 @@ accounts within your environment}
 inspector2_batch_get_account_status(accountIds = NULL)
 }
 \arguments{
-\item{accountIds}{The 12-digit Amazon Web Services account IDs of the accounts to retrieve
-Amazon Inspector status for.}
+\item{accountIds}{The 12-digit Amazon Web Services account IDs of the accounts to retrieve Amazon Inspector status for.}
 }
 \description{
 Retrieves the Amazon Inspector status of multiple Amazon Web Services accounts within your environment.

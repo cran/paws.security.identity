@@ -11,11 +11,9 @@ macie2_put_findings_publication_configuration(
 )
 }
 \arguments{
-\item{clientToken}{A unique, case-sensitive token that you provide to ensure the
-idempotency of the request.}
+\item{clientToken}{A unique, case-sensitive token that you provide to ensure the idempotency of the request.}
 
-\item{securityHubConfiguration}{The configuration settings that determine which findings to publish to
-Security Hub.}
+\item{securityHubConfiguration}{The configuration settings that determine which findings to publish to Security Hub.}
 }
 \description{
 Updates the configuration settings for publishing findings to Security Hub.

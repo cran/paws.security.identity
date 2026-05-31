@@ -7,8 +7,7 @@
 cloudhsmv2_delete_backup(BackupId)
 }
 \arguments{
-\item{BackupId}{[required] The ID of the backup to be deleted. To find the ID of a backup, use the
-\code{\link[=cloudhsmv2_describe_backups]{describe_backups}} operation.}
+\item{BackupId}{[required] The ID of the backup to be deleted. To find the ID of a backup, use the \code{\link[=cloudhsmv2_describe_backups]{describe_backups}} operation.}
 }
 \description{
 Deletes a specified CloudHSM backup. A backup can be restored up to 7 days after the DeleteBackup request is made. For more information on restoring a backup, see \code{\link[=cloudhsmv2_restore_backup]{restore_backup}}.

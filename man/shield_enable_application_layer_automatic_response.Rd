@@ -10,13 +10,7 @@ shield_enable_application_layer_automatic_response(ResourceArn, Action)
 \arguments{
 \item{ResourceArn}{[required] The ARN (Amazon Resource Name) of the protected resource.}
 
-\item{Action}{[required] Specifies the action setting that Shield Advanced should use in the WAF
-rules that it creates on behalf of the protected resource in response to
-DDoS attacks. You specify this as part of the configuration for the
-automatic application layer DDoS mitigation feature, when you enable or
-update automatic mitigation. Shield Advanced creates the WAF rules in a
-Shield Advanced-managed rule group, inside the web ACL that you have
-associated with the resource.}
+\item{Action}{[required] Specifies the action setting that Shield Advanced should use in the WAF rules that it creates on behalf of the protected resource in response to DDoS attacks. You specify this as part of the configuration for the automatic application layer DDoS mitigation feature, when you enable or update automatic mitigation. Shield Advanced creates the WAF rules in a Shield Advanced-managed rule group, inside the web ACL that you have associated with the resource.}
 }
 \description{
 Enable the Shield Advanced automatic application layer DDoS mitigation for the protected resource.

@@ -10,18 +10,13 @@ iam_update_access_key(UserName = NULL, AccessKeyId, Status)
 \arguments{
 \item{UserName}{The name of the user whose key you want to update.
 
-This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
-consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: _+=,.@-}
+This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-}
 
 \item{AccessKeyId}{[required] The access key ID of the secret access key you want to update.
 
-This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
-that can consist of any upper or lowercased letter or digit.}
+This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters that can consist of any upper or lowercased letter or digit.}
 
-\item{Status}{[required] The status you want to assign to the secret access key. \code{Active} means
-that the key can be used for programmatic calls to Amazon Web Services,
-while \code{Inactive} means that the key cannot be used.}
+\item{Status}{[required] The status you want to assign to the secret access key. \code{Active} means that the key can be used for programmatic calls to Amazon Web Services, while \code{Inactive} means that the key cannot be used.}
 }
 \description{
 Changes the status of the specified access key from Active to Inactive, or vice versa. This operation can be used to disable a user's key as part of a key rotation workflow.

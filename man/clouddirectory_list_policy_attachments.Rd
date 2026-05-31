@@ -13,19 +13,15 @@ clouddirectory_list_policy_attachments(
 )
 }
 \arguments{
-\item{DirectoryArn}{[required] The Amazon Resource Name (ARN) that is associated with the Directory
-where objects reside. For more information, see arns.}
+\item{DirectoryArn}{[required] The Amazon Resource Name (ARN) that is associated with the Directory where objects reside. For more information, see arns.}
 
 \item{PolicyReference}{[required] The reference that identifies the policy object.}
 
 \item{NextToken}{The pagination token.}
 
-\item{MaxResults}{The maximum number of items to be retrieved in a single call. This is an
-approximate number.}
+\item{MaxResults}{The maximum number of items to be retrieved in a single call. This is an approximate number.}
 
-\item{ConsistencyLevel}{Represents the manner and timing in which the successful write or update
-of an object is reflected in a subsequent read operation of that same
-object.}
+\item{ConsistencyLevel}{Represents the manner and timing in which the successful write or update of an object is reflected in a subsequent read operation of that same object.}
 }
 \description{
 Returns all of the \code{ObjectIdentifiers} to which a given policy is attached.

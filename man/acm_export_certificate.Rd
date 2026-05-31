@@ -3,30 +3,25 @@
 \name{acm_export_certificate}
 \alias{acm_export_certificate}
 \title{Exports a private certificate issued by a private certificate authority
-(CA) for use anywhere}
+(CA) or a public certificate for use anywhere}
 \usage{
 acm_export_certificate(CertificateArn, Passphrase)
 }
 \arguments{
-\item{CertificateArn}{[required] An Amazon Resource Name (ARN) of the issued certificate. This must be of
-the form:
+\item{CertificateArn}{[required] An Amazon Resource Name (ARN) of the issued certificate. This must be of the form:
 
 \code{arn:aws:acm:region:account:certificate/12345678-1234-1234-1234-123456789012}}
 
 \item{Passphrase}{[required] Passphrase to associate with the encrypted exported private key.
 
-When creating your passphrase, you can use any ASCII character except
-#, $, or \%.
+When creating your passphrase, you can use any ASCII character except #, $, or \%.
 
-If you want to later decrypt the private key, you must have the
-passphrase. You can use the following OpenSSL command to decrypt a
-private key. After entering the command, you are prompted for the
-passphrase.
+If you want to later decrypt the private key, you must have the passphrase. You can use the following OpenSSL command to decrypt a private key. After entering the command, you are prompted for the passphrase.
 
 \verb{openssl rsa -in encrypted_key.pem -out decrypted_key.pem}}
 }
 \description{
-Exports a private certificate issued by a private certificate authority (CA) for use anywhere. The exported file contains the certificate, the certificate chain, and the encrypted private 2048-bit RSA key associated with the public key that is embedded in the certificate. For security, you must assign a passphrase for the private key when exporting it.
+Exports a private certificate issued by a private certificate authority (CA) or a public certificate for use anywhere. The exported file contains the certificate, the certificate chain, and the encrypted private key associated with the public key that is embedded in the certificate. For security, you must assign a passphrase for the private key when exporting it.
 
 See \url{https://www.paws-r-sdk.com/docs/acm_export_certificate/} for full documentation.
 }

@@ -9,11 +9,9 @@ your Amazon Web Services account}
 directoryservice_create_log_subscription(DirectoryId, LogGroupName)
 }
 \arguments{
-\item{DirectoryId}{[required] Identifier of the directory to which you want to subscribe and receive
-real-time logs to your specified CloudWatch log group.}
+\item{DirectoryId}{[required] Identifier of the directory to which you want to subscribe and receive real-time logs to your specified CloudWatch log group.}
 
-\item{LogGroupName}{[required] The name of the CloudWatch log group where the real-time domain
-controller logs are forwarded.}
+\item{LogGroupName}{[required] The name of the CloudWatch log group where the real-time domain controller logs are forwarded.}
 }
 \description{
 Creates a subscription to forward real-time Directory Service domain controller security logs to the specified Amazon CloudWatch log group in your Amazon Web Services account.

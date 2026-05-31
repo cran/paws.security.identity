@@ -12,14 +12,11 @@ macie2_list_resource_profile_detections(
 )
 }
 \arguments{
-\item{maxResults}{The maximum number of items to include in each page of a paginated
-response.}
+\item{maxResults}{The maximum number of items to include in each page of a paginated response.}
 
-\item{nextToken}{The nextToken string that specifies which page of results to return in a
-paginated response.}
+\item{nextToken}{The nextToken string that specifies which page of results to return in a paginated response.}
 
-\item{resourceArn}{[required] The Amazon Resource Name (ARN) of the S3 bucket that the request applies
-to.}
+\item{resourceArn}{[required] The Amazon Resource Name (ARN) of the S3 bucket that the request applies to.}
 }
 \description{
 Retrieves information about the types and amount of sensitive data that Amazon Macie found in an S3 bucket.

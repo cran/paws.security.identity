@@ -7,9 +7,7 @@
 fms_tag_resource(ResourceArn, TagList)
 }
 \arguments{
-\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the resource to return tags for. The
-Firewall Manager resources that support tagging are policies,
-applications lists, and protocols lists.}
+\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the resource to return tags for. The Firewall Manager resources that support tagging are policies, applications lists, and protocols lists.}
 
 \item{TagList}{[required] The tags to add to the resource.}
 }

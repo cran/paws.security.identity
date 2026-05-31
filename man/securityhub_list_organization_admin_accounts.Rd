@@ -2,24 +2,23 @@
 % Please edit documentation in R/securityhub_operations.R
 \name{securityhub_list_organization_admin_accounts}
 \alias{securityhub_list_organization_admin_accounts}
-\title{Lists the Security Hub administrator accounts}
+\title{Lists the Security Hub CSPM administrator accounts}
 \usage{
 securityhub_list_organization_admin_accounts(
   MaxResults = NULL,
-  NextToken = NULL
+  NextToken = NULL,
+  Feature = NULL
 )
 }
 \arguments{
 \item{MaxResults}{The maximum number of items to return in the response.}
 
-\item{NextToken}{The token that is required for pagination. On your first call to the
-\code{\link[=securityhub_list_organization_admin_accounts]{list_organization_admin_accounts}}
-operation, set the value of this parameter to \code{NULL}. For subsequent
-calls to the operation, to continue listing data, set the value of this
-parameter to the value returned from the previous response.}
+\item{NextToken}{The token that is required for pagination. On your first call to the \code{\link[=securityhub_list_organization_admin_accounts]{list_organization_admin_accounts}} operation, set the value of this parameter to \code{NULL}. For subsequent calls to the operation, to continue listing data, set the value of this parameter to the value returned from the previous response.}
+
+\item{Feature}{The feature where the delegated administrator account is listed. Defaults to Security Hub CSPM if not specified.}
 }
 \description{
-Lists the Security Hub administrator accounts. Can only be called by the organization management account.
+Lists the Security Hub CSPM administrator accounts. Can only be called by the organization management account.
 
 See \url{https://www.paws-r-sdk.com/docs/securityhub_list_organization_admin_accounts/} for full documentation.
 }

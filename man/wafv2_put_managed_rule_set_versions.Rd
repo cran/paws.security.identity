@@ -15,41 +15,25 @@ wafv2_put_managed_rule_set_versions(
 )
 }
 \arguments{
-\item{Name}{[required] The name of the managed rule set. You use this, along with the rule set
-ID, to identify the rule set.
+\item{Name}{[required] The name of the managed rule set. You use this, along with the rule set ID, to identify the rule set.
 
-This name is assigned to the corresponding managed rule group, which
-your customers can access and use.}
+This name is assigned to the corresponding managed rule group, which your customers can access and use.}
 
-\item{Scope}{[required] Specifies whether this is for a global resource type, such as a Amazon
-CloudFront distribution.
+\item{Scope}{[required] Specifies whether this is for a global resource type, such as a Amazon CloudFront distribution. For an Amplify application, use \code{CLOUDFRONT}.
 
-To work with CloudFront, you must also specify the Region US East (N.
-Virginia) as follows:
+To work with CloudFront, you must also specify the Region US East (N. Virginia) as follows:
 \itemize{
-\item CLI - Specify the Region when you use the CloudFront scope:
-\code{--scope=CLOUDFRONT --region=us-east-1}.
+\item CLI - Specify the Region when you use the CloudFront scope: \code{--scope=CLOUDFRONT --region=us-east-1}.
 \item API and SDKs - For all calls, use the Region endpoint us-east-1.
 }}
 
-\item{Id}{[required] A unique identifier for the managed rule set. The ID is returned in the
-responses to commands like \code{list}. You provide it to operations like
-\code{get} and \code{update}.}
+\item{Id}{[required] A unique identifier for the managed rule set. The ID is returned in the responses to commands like \code{list}. You provide it to operations like \code{get} and \code{update}.}
 
-\item{LockToken}{[required] A token used for optimistic locking. WAF returns a token to your \code{get}
-and \code{list} requests, to mark the state of the entity at the time of the
-request. To make changes to the entity associated with the token, you
-provide the token to operations like \code{update} and \code{delete}. WAF uses the
-token to ensure that no changes have been made to the entity since you
-last retrieved it. If a change has been made, the update fails with a
-\code{WAFOptimisticLockException}. If this happens, perform another \code{get},
-and use the new token returned by that operation.}
+\item{LockToken}{[required] A token used for optimistic locking. WAF returns a token to your \code{get} and \code{list} requests, to mark the state of the entity at the time of the request. To make changes to the entity associated with the token, you provide the token to operations like \code{update} and \code{delete}. WAF uses the token to ensure that no changes have been made to the entity since you last retrieved it. If a change has been made, the update fails with a \code{WAFOptimisticLockException}. If this happens, perform another \code{get}, and use the new token returned by that operation.}
 
-\item{RecommendedVersion}{The version of the named managed rule group that you'd like your
-customers to choose, from among your version offerings.}
+\item{RecommendedVersion}{The version of the named managed rule group that you'd like your customers to choose, from among your version offerings.}
 
-\item{VersionsToPublish}{The versions of the named managed rule group that you want to offer to
-your customers.}
+\item{VersionsToPublish}{The versions of the named managed rule group that you want to offer to your customers.}
 }
 \description{
 Defines the versions of your managed rule set that you are offering to the customers. Customers see your offerings as managed rule groups with versioning.

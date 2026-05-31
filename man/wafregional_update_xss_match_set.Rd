@@ -7,17 +7,11 @@
 wafregional_update_xss_match_set(XssMatchSetId, ChangeToken, Updates)
 }
 \arguments{
-\item{XssMatchSetId}{[required] The \code{XssMatchSetId} of the \code{XssMatchSet} that you want to update.
-\code{XssMatchSetId} is returned by
-\code{\link[=wafregional_create_xss_match_set]{create_xss_match_set}} and by
-\code{\link[=wafregional_list_xss_match_sets]{list_xss_match_sets}}.}
+\item{XssMatchSetId}{[required] The \code{XssMatchSetId} of the \code{XssMatchSet} that you want to update. \code{XssMatchSetId} is returned by \code{\link[=wafregional_create_xss_match_set]{create_xss_match_set}} and by \code{\link[=wafregional_list_xss_match_sets]{list_xss_match_sets}}.}
 
-\item{ChangeToken}{[required] The value returned by the most recent call to
-\code{\link[=wafregional_get_change_token]{get_change_token}}.}
+\item{ChangeToken}{[required] The value returned by the most recent call to \code{\link[=wafregional_get_change_token]{get_change_token}}.}
 
-\item{Updates}{[required] An array of \code{XssMatchSetUpdate} objects that you want to insert into or
-delete from an XssMatchSet. For more information, see the applicable
-data types:
+\item{Updates}{[required] An array of \code{XssMatchSetUpdate} objects that you want to insert into or delete from an XssMatchSet. For more information, see the applicable data types:
 \itemize{
 \item XssMatchSetUpdate: Contains \code{Action} and \code{XssMatchTuple}
 \item XssMatchTuple: Contains \code{FieldToMatch} and \code{TextTransformation}

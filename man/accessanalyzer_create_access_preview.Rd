@@ -12,14 +12,9 @@ accessanalyzer_create_access_preview(
 )
 }
 \arguments{
-\item{analyzerArn}{[required] The \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources}{ARN of the account analyzer}
-used to generate the access preview. You can only create an access
-preview for analyzers with an \code{Account} type and \code{Active} status.}
+\item{analyzerArn}{[required] The \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources}{ARN of the account analyzer} used to generate the access preview. You can only create an access preview for analyzers with an \code{Account} type and \code{Active} status.}
 
-\item{configurations}{[required] Access control configuration for your resource that is used to generate
-the access preview. The access preview includes findings for external
-access allowed to the resource with the proposed access control
-configuration. The configuration must contain exactly one element.}
+\item{configurations}{[required] Access control configuration for your resource that is used to generate the access preview. The access preview includes findings for external access allowed to the resource with the proposed access control configuration. The configuration must contain exactly one element.}
 
 \item{clientToken}{A client token.}
 }

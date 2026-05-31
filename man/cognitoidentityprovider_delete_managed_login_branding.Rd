@@ -12,8 +12,7 @@ cognitoidentityprovider_delete_managed_login_branding(
 \arguments{
 \item{ManagedLoginBrandingId}{[required] The ID of the managed login branding style that you want to delete.}
 
-\item{UserPoolId}{[required] The ID of the user pool that contains the managed login branding style
-that you want to delete.}
+\item{UserPoolId}{[required] The ID of the user pool that contains the managed login branding style that you want to delete.}
 }
 \description{
 Deletes a managed login branding style. When you delete a style, you delete the branding association for an app client. When an app client doesn't have a style assigned, your managed login pages for that app client are nonfunctional until you create a new style or switch the domain branding version.

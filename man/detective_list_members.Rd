@@ -7,16 +7,11 @@
 detective_list_members(GraphArn, NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
-\item{GraphArn}{[required] The ARN of the behavior graph for which to retrieve the list of member
-accounts.}
+\item{GraphArn}{[required] The ARN of the behavior graph for which to retrieve the list of member accounts.}
 
-\item{NextToken}{For requests to retrieve the next page of member account results, the
-pagination token that was returned with the previous page of results.
-The initial request does not include a pagination token.}
+\item{NextToken}{For requests to retrieve the next page of member account results, the pagination token that was returned with the previous page of results. The initial request does not include a pagination token.}
 
-\item{MaxResults}{The maximum number of member accounts to include in the response. The
-total must be less than the overall limit on the number of results to
-return, which is currently 200.}
+\item{MaxResults}{The maximum number of member accounts to include in the response. The total must be less than the overall limit on the number of results to return, which is currently 200.}
 }
 \description{
 Retrieves the list of member accounts for a behavior graph.

@@ -10,8 +10,7 @@ securitylake_create_data_lake_organization_configuration(
 )
 }
 \arguments{
-\item{autoEnableNewAccount}{Enable Security Lake with the specified configuration settings, to begin
-collecting security data for new accounts in your organization.}
+\item{autoEnableNewAccount}{Enable Security Lake with the specified configuration settings, to begin collecting security data for new accounts in your organization.}
 }
 \description{
 Automatically enables Amazon Security Lake for new member accounts in your organization. Security Lake is not automatically enabled for any existing member accounts in your organization.

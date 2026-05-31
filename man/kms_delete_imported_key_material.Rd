@@ -4,23 +4,26 @@
 \alias{kms_delete_imported_key_material}
 \title{Deletes key material that was previously imported}
 \usage{
-kms_delete_imported_key_material(KeyId)
+kms_delete_imported_key_material(KeyId, KeyMaterialId = NULL)
 }
 \arguments{
-\item{KeyId}{[required] Identifies the KMS key from which you are deleting imported key
-material. The \code{Origin} of the KMS key must be \code{EXTERNAL}.
+\item{KeyId}{[required] Identifies the KMS key from which you are deleting imported key material. The \code{Origin} of the KMS key must be \code{EXTERNAL}.
 
 Specify the key ID or key ARN of the KMS key.
 
 For example:
 \itemize{
 \item Key ID: \verb{1234abcd-12ab-34cd-56ef-1234567890ab}
-\item Key ARN:
-\verb{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
+\item Key ARN: \verb{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
 }
 
-To get the key ID and key ARN for a KMS key, use
-\code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
+To get the key ID and key ARN for a KMS key, use \code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
+
+\item{KeyMaterialId}{Identifies the imported key material you are deleting.
+
+If no KeyMaterialId is specified, KMS deletes the current key material.
+
+To get the list of key material IDs associated with a KMS key, use \code{\link[=kms_list_key_rotations]{list_key_rotations}}.}
 }
 \description{
 Deletes key material that was previously imported. This operation makes the specified KMS key temporarily unusable. To restore the usability of the KMS key, reimport the same key material. For more information about importing key material into KMS, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html}{Importing Key Material} in the \emph{Key Management Service Developer Guide}.

@@ -7,8 +7,7 @@
 pcaconnectorad_list_tags_for_resource(ResourceArn)
 }
 \arguments{
-\item{ResourceArn}{[required] The Amazon Resource Name (ARN) that was returned when you created the
-resource.}
+\item{ResourceArn}{[required] The Amazon Resource Name (ARN) that was returned when you created the resource.}
 }
 \description{
 Lists the tags, if any, that are associated with your resource.

@@ -7,11 +7,9 @@
 clouddirectory_detach_object(DirectoryArn, ParentReference, LinkName)
 }
 \arguments{
-\item{DirectoryArn}{[required] The Amazon Resource Name (ARN) that is associated with the Directory
-where objects reside. For more information, see arns.}
+\item{DirectoryArn}{[required] The Amazon Resource Name (ARN) that is associated with the Directory where objects reside. For more information, see arns.}
 
-\item{ParentReference}{[required] The parent reference from which the object with the specified link name
-is detached.}
+\item{ParentReference}{[required] The parent reference from which the object with the specified link name is detached.}
 
 \item{LinkName}{[required] The link name associated with the object that needs to be detached.}
 }

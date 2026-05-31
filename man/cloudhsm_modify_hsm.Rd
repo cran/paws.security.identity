@@ -16,25 +16,20 @@ cloudhsm_modify_hsm(
 \arguments{
 \item{HsmArn}{[required] The ARN of the HSM to modify.}
 
-\item{SubnetId}{The new identifier of the subnet that the HSM is in. The new subnet must
-be in the same Availability Zone as the current subnet.}
+\item{SubnetId}{The new identifier of the subnet that the HSM is in. The new subnet must be in the same Availability Zone as the current subnet.}
 
-\item{EniIp}{The new IP address for the elastic network interface (ENI) attached to
-the HSM.
+\item{EniIp}{The new IP address for the elastic network interface (ENI) attached to the HSM.
 
-If the HSM is moved to a different subnet, and an IP address is not
-specified, an IP address will be randomly chosen from the CIDR range of
-the new subnet.}
+If the HSM is moved to a different subnet, and an IP address is not specified, an IP address will be randomly chosen from the CIDR range of the new subnet.}
 
 \item{IamRoleArn}{The new IAM role ARN.}
 
 \item{ExternalId}{The new external ID.}
 
-\item{SyslogIp}{The new IP address for the syslog monitoring server. The AWS CloudHSM
-service only supports one syslog monitoring server.}
+\item{SyslogIp}{The new IP address for the syslog monitoring server. The AWS CloudHSM service only supports one syslog monitoring server.}
 }
 \description{
-This is documentation for \strong{AWS CloudHSM Classic}. For more information, see \href{https://aws.amazon.com/cloudhsm/faqs/}{AWS CloudHSM Classic FAQs}, the AWS CloudHSM Classic User Guide, and the \href{https://docs.aws.amazon.com/cloudhsm/classic/APIReference/}{AWS CloudHSM Classic API Reference}.
+This is documentation for \strong{AWS CloudHSM Classic}. For more information, see \href{https://aws.amazon.com/cloudhsm/faqs/}{AWS CloudHSM Classic FAQs}, the AWS CloudHSM Classic User Guide, and the AWS CloudHSM Classic API Reference.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudhsm_modify_hsm/} for full documentation.
 }

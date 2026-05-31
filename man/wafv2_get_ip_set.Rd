@@ -7,23 +7,17 @@
 wafv2_get_ip_set(Name, Scope, Id)
 }
 \arguments{
-\item{Name}{[required] The name of the IP set. You cannot change the name of an \code{IPSet} after
-you create it.}
+\item{Name}{[required] The name of the IP set. You cannot change the name of an \code{IPSet} after you create it.}
 
-\item{Scope}{[required] Specifies whether this is for a global resource type, such as a Amazon
-CloudFront distribution.
+\item{Scope}{[required] Specifies whether this is for a global resource type, such as a Amazon CloudFront distribution. For an Amplify application, use \code{CLOUDFRONT}.
 
-To work with CloudFront, you must also specify the Region US East (N.
-Virginia) as follows:
+To work with CloudFront, you must also specify the Region US East (N. Virginia) as follows:
 \itemize{
-\item CLI - Specify the Region when you use the CloudFront scope:
-\code{--scope=CLOUDFRONT --region=us-east-1}.
+\item CLI - Specify the Region when you use the CloudFront scope: \code{--scope=CLOUDFRONT --region=us-east-1}.
 \item API and SDKs - For all calls, use the Region endpoint us-east-1.
 }}
 
-\item{Id}{[required] A unique identifier for the set. This ID is returned in the responses to
-create and list commands. You provide it to operations like update and
-delete.}
+\item{Id}{[required] A unique identifier for the set. This ID is returned in the responses to create and list commands. You provide it to operations like update and delete.}
 }
 \description{
 Retrieves the specified IPSet.

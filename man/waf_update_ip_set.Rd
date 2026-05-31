@@ -7,15 +7,11 @@
 waf_update_ip_set(IPSetId, ChangeToken, Updates)
 }
 \arguments{
-\item{IPSetId}{[required] The \code{IPSetId} of the IPSet that you want to update. \code{IPSetId} is
-returned by \code{\link[=waf_create_ip_set]{create_ip_set}} and by
-\code{\link[=waf_list_ip_sets]{list_ip_sets}}.}
+\item{IPSetId}{[required] The \code{IPSetId} of the IPSet that you want to update. \code{IPSetId} is returned by \code{\link[=waf_create_ip_set]{create_ip_set}} and by \code{\link[=waf_list_ip_sets]{list_ip_sets}}.}
 
-\item{ChangeToken}{[required] The value returned by the most recent call to
-\code{\link[=waf_get_change_token]{get_change_token}}.}
+\item{ChangeToken}{[required] The value returned by the most recent call to \code{\link[=waf_get_change_token]{get_change_token}}.}
 
-\item{Updates}{[required] An array of \code{IPSetUpdate} objects that you want to insert into or delete
-from an IPSet. For more information, see the applicable data types:
+\item{Updates}{[required] An array of \code{IPSetUpdate} objects that you want to insert into or delete from an IPSet. For more information, see the applicable data types:
 \itemize{
 \item IPSetUpdate: Contains \code{Action} and \code{IPSetDescriptor}
 \item IPSetDescriptor: Contains \code{Type} and \code{Value}

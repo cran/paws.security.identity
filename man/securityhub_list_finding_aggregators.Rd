@@ -8,11 +8,9 @@ returns the Amazon Resource Name (ARN) of the finding aggregator}
 securityhub_list_finding_aggregators(NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
-\item{NextToken}{The token returned with the previous set of results. Identifies the next
-set of results to return.}
+\item{NextToken}{The token returned with the previous set of results. Identifies the next set of results to return.}
 
-\item{MaxResults}{The maximum number of results to return. This operation currently only
-returns a single result.}
+\item{MaxResults}{The maximum number of results to return. This operation currently only returns a single result.}
 }
 \description{
 If cross-Region aggregation is enabled, then \code{\link[=securityhub_list_finding_aggregators]{list_finding_aggregators}} returns the Amazon Resource Name (ARN) of the finding aggregator. You can run this operation from any Amazon Web Services Region.

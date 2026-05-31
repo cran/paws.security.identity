@@ -13,10 +13,13 @@ cleanroomsml_create_trained_model(
   environment = NULL,
   resourceConfig,
   stoppingCondition = NULL,
+  incrementalTrainingDataChannels = NULL,
   dataChannels,
+  trainingInputMode = NULL,
   description = NULL,
   kmsKeyArn = NULL,
-  tags = NULL
+  tags = NULL,
+  mlModelTrainingPayerAccountId = NULL
 )
 }
 \arguments{
@@ -26,8 +29,7 @@ cleanroomsml_create_trained_model(
 
 \item{configuredModelAlgorithmAssociationArn}{[required] The associated configured model algorithm used to train this model.}
 
-\item{hyperparameters}{Algorithm-specific parameters that influence the quality of the model.
-You set hyperparameters before you start the learning process.}
+\item{hyperparameters}{Algorithm-specific parameters that influence the quality of the model. You set hyperparameters before you start the learning process.}
 
 \item{environment}{The environment variables to set in the Docker container.}
 
@@ -35,40 +37,41 @@ You set hyperparameters before you start the learning process.}
 
 \item{stoppingCondition}{The criteria that is used to stop model training.}
 
-\item{dataChannels}{[required] Defines the data channels that are used as input for the trained model
-request.}
+\item{incrementalTrainingDataChannels}{Specifies the incremental training data channels for the trained model.
+
+Incremental training allows you to create a new trained model with updates without retraining from scratch. You can specify up to one incremental training data channel that references a previously trained model and its version.
+
+Limit: Maximum of 20 channels total (including both \code{incrementalTrainingDataChannels} and \code{dataChannels}).}
+
+\item{dataChannels}{[required] Defines the data channels that are used as input for the trained model request.
+
+Limit: Maximum of 20 channels total (including both \code{dataChannels} and \code{incrementalTrainingDataChannels}).}
+
+\item{trainingInputMode}{The input mode for accessing the training data. This parameter determines how the training data is made available to the training algorithm. Valid values are:
+\itemize{
+\item \code{File} - The training data is downloaded to the training instance and made available as files.
+\item \code{FastFile} - The training data is streamed directly from Amazon S3 to the training algorithm, providing faster access for large datasets.
+\item \code{Pipe} - The training data is streamed to the training algorithm using named pipes, which can improve performance for certain algorithms.
+}}
 
 \item{description}{The description of the trained model.}
 
-\item{kmsKeyArn}{The Amazon Resource Name (ARN) of the KMS key. This key is used to
-encrypt and decrypt customer-owned data in the trained ML model and the
-associated data.}
+\item{kmsKeyArn}{The Amazon Resource Name (ARN) of the KMS key. This key is used to encrypt and decrypt customer-owned data in the trained ML model and the associated data.}
 
-\item{tags}{The optional metadata that you apply to the resource to help you
-categorize and organize them. Each tag consists of a key and an optional
-value, both of which you define.
+\item{tags}{The optional metadata that you apply to the resource to help you categorize and organize them. Each tag consists of a key and an optional value, both of which you define.
 
 The following basic restrictions apply to tags:
 \itemize{
 \item Maximum number of tags per resource - 50.
-\item For each resource, each tag key must be unique, and each tag key can
-have only one value.
+\item For each resource, each tag key must be unique, and each tag key can have only one value.
 \item Maximum key length - 128 Unicode characters in UTF-8.
 \item Maximum value length - 256 Unicode characters in UTF-8.
-\item If your tagging schema is used across multiple services and
-resources, remember that other services may have restrictions on
-allowed characters. Generally allowed characters are: letters,
-numbers, and spaces representable in UTF-8, and the following
-characters: + - = . _ : / @.
+\item If your tagging schema is used across multiple services and resources, remember that other services may have restrictions on allowed characters. Generally allowed characters are: letters, numbers, and spaces representable in UTF-8, and the following characters: + - = . _ : / @.
 \item Tag keys and values are case sensitive.
-\item Do not use aws:, AWS:, or any upper or lowercase combination of such
-as a prefix for keys as it is reserved for AWS use. You cannot edit
-or delete tag keys with this prefix. Values can have this prefix. If
-a tag value has aws as its prefix but the key does not, then Clean
-Rooms ML considers it to be a user tag and will count against the
-limit of 50 tags. Tags with only the key prefix of aws do not count
-against your tags per resource limit.
+\item Do not use aws:, AWS:, or any upper or lowercase combination of such as a prefix for keys as it is reserved for AWS use. You cannot edit or delete tag keys with this prefix. Values can have this prefix. If a tag value has aws as its prefix but the key does not, then Clean Rooms ML considers it to be a user tag and will count against the limit of 50 tags. Tags with only the key prefix of aws do not count against your tags per resource limit.
 }}
+
+\item{mlModelTrainingPayerAccountId}{The account ID of the member that is responsible for paying for model training costs.}
 }
 \description{
 Creates a trained model from an associated configured model algorithm using data from any member of the collaboration.

@@ -7,8 +7,7 @@
 cleanroomsml_delete_ml_configuration(membershipIdentifier)
 }
 \arguments{
-\item{membershipIdentifier}{[required] The membership ID of the of the member that is deleting the ML modeling
-configuration.}
+\item{membershipIdentifier}{[required] The membership ID of the of the member that is deleting the ML modeling configuration.}
 }
 \description{
 Deletes a ML modeling configuration.

@@ -13,12 +13,9 @@ accessanalyzer_update_findings(
 )
 }
 \arguments{
-\item{analyzerArn}{[required] The \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources}{ARN of the analyzer}
-that generated the findings to update.}
+\item{analyzerArn}{[required] The \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources}{ARN of the analyzer} that generated the findings to update.}
 
-\item{status}{[required] The state represents the action to take to update the finding Status.
-Use \code{ARCHIVE} to change an Active finding to an Archived finding. Use
-\code{ACTIVE} to change an Archived finding to an Active finding.}
+\item{status}{[required] The state represents the action to take to update the finding Status. Use \code{ARCHIVE} to change an Active finding to an Archived finding. Use \code{ACTIVE} to change an Archived finding to an Active finding.}
 
 \item{ids}{The IDs of the findings to update.}
 

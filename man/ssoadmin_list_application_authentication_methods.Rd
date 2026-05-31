@@ -11,14 +11,9 @@ ssoadmin_list_application_authentication_methods(
 )
 }
 \arguments{
-\item{ApplicationArn}{[required] Specifies the ARN of the application with the authentication methods you
-want to list.}
+\item{ApplicationArn}{[required] Specifies the ARN of the application with the authentication methods you want to list.}
 
-\item{NextToken}{Specifies that you want to receive the next page of results. Valid only
-if you received a \code{NextToken} response in the previous request. If you
-did, it indicates that more output is available. Set this parameter to
-the value provided by the previous call's \code{NextToken} response to
-request the next page of results.}
+\item{NextToken}{Specifies that you want to receive the next page of results. Valid only if you received a \code{NextToken} response in the previous request. If you did, it indicates that more output is available. Set this parameter to the value provided by the previous call's \code{NextToken} response to request the next page of results.}
 }
 \description{
 Lists all of the authentication methods supported by the specified application.

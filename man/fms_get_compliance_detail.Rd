@@ -8,12 +8,9 @@ account}
 fms_get_compliance_detail(PolicyId, MemberAccount)
 }
 \arguments{
-\item{PolicyId}{[required] The ID of the policy that you want to get the details for. \code{PolicyId} is
-returned by \code{\link[=fms_put_policy]{put_policy}} and by
-\code{\link[=fms_list_policies]{list_policies}}.}
+\item{PolicyId}{[required] The ID of the policy that you want to get the details for. \code{PolicyId} is returned by \code{\link[=fms_put_policy]{put_policy}} and by \code{\link[=fms_list_policies]{list_policies}}.}
 
-\item{MemberAccount}{[required] The Amazon Web Services account that owns the resources that you want to
-get the details for.}
+\item{MemberAccount}{[required] The Amazon Web Services account that owns the resources that you want to get the details for.}
 }
 \description{
 Returns detailed compliance information about the specified member account. Details include resources that are in and out of compliance with the specified policy.

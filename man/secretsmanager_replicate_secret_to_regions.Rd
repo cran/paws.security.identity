@@ -15,8 +15,7 @@ secretsmanager_replicate_secret_to_regions(
 
 \item{AddReplicaRegions}{[required] A list of Regions in which to replicate the secret.}
 
-\item{ForceOverwriteReplicaSecret}{Specifies whether to overwrite a secret with the same name in the
-destination Region. By default, secrets aren't overwritten.}
+\item{ForceOverwriteReplicaSecret}{Specifies whether to overwrite a secret with the same name in the destination Region. By default, secrets aren't overwritten.}
 }
 \description{
 Replicates the secret to a new Regions. See \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/replicate-secrets.html}{Multi-Region secrets}.

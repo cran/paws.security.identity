@@ -13,8 +13,7 @@ accessanalyzer_get_finding_recommendation(
 )
 }
 \arguments{
-\item{analyzerArn}{[required] The \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources}{ARN of the analyzer}
-used to generate the finding recommendation.}
+\item{analyzerArn}{[required] The \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources}{ARN of the analyzer} used to generate the finding recommendation.}
 
 \item{id}{[required] The unique ID for the finding recommendation.}
 

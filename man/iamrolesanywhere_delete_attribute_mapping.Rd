@@ -6,18 +6,17 @@
 profile}
 \usage{
 iamrolesanywhere_delete_attribute_mapping(
-  certificateField,
   profileId,
+  certificateField,
   specifiers = NULL
 )
 }
 \arguments{
-\item{certificateField}{[required] Fields (x509Subject, x509Issuer and x509SAN) within X.509 certificates.}
-
 \item{profileId}{[required] The unique identifier of the profile.}
 
-\item{specifiers}{A list of specifiers of a certificate field; for example, CN, OU, UID
-from a Subject.}
+\item{certificateField}{[required] Fields (x509Subject, x509Issuer and x509SAN) within X.509 certificates.}
+
+\item{specifiers}{A list of specifiers of a certificate field; for example, CN, OU, UID from a Subject.}
 }
 \description{
 Delete an entry from the attribute mapping rules enforced by a given profile.

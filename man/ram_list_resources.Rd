@@ -17,55 +17,31 @@ ram_list_resources(
 )
 }
 \arguments{
-\item{resourceOwner}{[required] Specifies that you want to list only the resource shares that match the
-following:
+\item{resourceOwner}{[required] Specifies that you want to list only the resource shares that match the following:
 \itemize{
 \item \strong{\code{SELF}} – resources that your account shares with other accounts
-\item \strong{\code{OTHER-ACCOUNTS}} – resources that other accounts share with your
-account
+\item \strong{\code{OTHER-ACCOUNTS}} – resources that other accounts share with your account
 }}
 
-\item{principal}{Specifies that you want to list only the resource shares that are
-associated with the specified principal.}
+\item{principal}{Specifies that you want to list only the resource shares that are associated with the specified principal.}
 
-\item{resourceType}{Specifies that you want to list only the resource shares that include
-resources of the specified resource type.
+\item{resourceType}{Specifies that you want to list only the resource shares that include resources of the specified resource type.
 
-For valid values, query the
-\code{\link[=ram_list_resource_types]{list_resource_types}} operation.}
+For valid values, query the \code{\link[=ram_list_resource_types]{list_resource_types}} operation.}
 
-\item{resourceArns}{Specifies that you want to list only the resource shares that include
-resources with the specified \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}.}
+\item{resourceArns}{Specifies that you want to list only the resource shares that include resources with the specified \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}.}
 
-\item{resourceShareArns}{Specifies that you want to list only resources in the resource shares
-identified by the specified \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}.}
+\item{resourceShareArns}{Specifies that you want to list only resources in the resource shares identified by the specified \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}.}
 
-\item{nextToken}{Specifies that you want to receive the next page of results. Valid only
-if you received a \code{NextToken} response in the previous request. If you
-did, it indicates that more output is available. Set this parameter to
-the value provided by the previous call's \code{NextToken} response to
-request the next page of results.}
+\item{nextToken}{Specifies that you want to receive the next page of results. Valid only if you received a \code{NextToken} response in the previous request. If you did, it indicates that more output is available. Set this parameter to the value provided by the previous call's \code{NextToken} response to request the next page of results.}
 
-\item{maxResults}{Specifies the total number of results that you want included on each
-page of the response. If you do not include this parameter, it defaults
-to a value that is specific to the operation. If additional items exist
-beyond the number you specify, the \code{NextToken} response element is
-returned with a value (not null). Include the specified value as the
-\code{NextToken} request parameter in the next call to the operation to get
-the next part of the results. Note that the service might return fewer
-results than the maximum even when there are more results available. You
-should check \code{NextToken} after every operation to ensure that you
-receive all of the results.}
+\item{maxResults}{Specifies the total number of results that you want included on each page of the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the number you specify, the \code{NextToken} response element is returned with a value (not null). Include the specified value as the \code{NextToken} request parameter in the next call to the operation to get the next part of the results. Note that the service might return fewer results than the maximum even when there are more results available. You should check \code{NextToken} after every operation to ensure that you receive all of the results.}
 
-\item{resourceRegionScope}{Specifies that you want the results to include only resources that have
-the specified scope.
+\item{resourceRegionScope}{Specifies that you want the results to include only resources that have the specified scope.
 \itemize{
-\item \code{ALL} – the results include both global and regional resources or
-resource types.
-\item \code{GLOBAL} – the results include only global resources or resource
-types.
-\item \code{REGIONAL} – the results include only regional resources or resource
-types.
+\item \code{ALL} – the results include both global and regional resources or resource types.
+\item \code{GLOBAL} – the results include only global resources or resource types.
+\item \code{REGIONAL} – the results include only regional resources or resource types.
 }
 
 The default value is \code{ALL}.}

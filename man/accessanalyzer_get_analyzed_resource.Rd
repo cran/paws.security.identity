@@ -7,8 +7,7 @@
 accessanalyzer_get_analyzed_resource(analyzerArn, resourceArn)
 }
 \arguments{
-\item{analyzerArn}{[required] The \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources}{ARN of the analyzer}
-to retrieve information from.}
+\item{analyzerArn}{[required] The \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources}{ARN of the analyzer} to retrieve information from.}
 
 \item{resourceArn}{[required] The ARN of the resource to retrieve information about.}
 }

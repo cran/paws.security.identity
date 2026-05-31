@@ -7,8 +7,7 @@
 cleanroomsml_get_configured_model_algorithm(configuredModelAlgorithmArn)
 }
 \arguments{
-\item{configuredModelAlgorithmArn}{[required] The Amazon Resource Name (ARN) of the configured model algorithm that
-you want to return information about.}
+\item{configuredModelAlgorithmArn}{[required] The Amazon Resource Name (ARN) of the configured model algorithm that you want to return information about.}
 }
 \description{
 Returns information about a configured model algorithm.

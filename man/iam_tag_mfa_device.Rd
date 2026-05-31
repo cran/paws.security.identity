@@ -8,16 +8,11 @@
 iam_tag_mfa_device(SerialNumber, Tags)
 }
 \arguments{
-\item{SerialNumber}{[required] The unique identifier for the IAM virtual MFA device to which you want
-to add tags. For virtual MFA devices, the serial number is the same as
-the ARN.
+\item{SerialNumber}{[required] The unique identifier for the IAM virtual MFA device to which you want to add tags. For virtual MFA devices, the serial number is the same as the ARN.
 
-This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
-consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: _+=,.@-}
+This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-}
 
-\item{Tags}{[required] The list of tags that you want to attach to the IAM virtual MFA device.
-Each tag consists of a key name and an associated value.}
+\item{Tags}{[required] The list of tags that you want to attach to the IAM virtual MFA device. Each tag consists of a key name and an associated value.}
 }
 \description{
 Adds one or more tags to an IAM virtual multi-factor authentication (MFA) device. If a tag with the same key name already exists, then that tag is overwritten with the new value.

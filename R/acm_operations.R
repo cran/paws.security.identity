@@ -10,13 +10,11 @@ NULL
 #'
 #' See [https://www.paws-r-sdk.com/docs/acm_add_tags_to_certificate/](https://www.paws-r-sdk.com/docs/acm_add_tags_to_certificate/) for full documentation.
 #'
-#' @param CertificateArn &#91;required&#93; String that contains the ARN of the ACM certificate to which the tag is
-#' to be applied. This must be of the form:
+#' @param CertificateArn &#91;required&#93; String that contains the ARN of the ACM certificate to which the tag is to be applied. This must be of the form:
 #' 
 #' `arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012`
 #' 
-#' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html).
+#' For more information about ARNs, see [Amazon Resource Names (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html).
 #' @param Tags &#91;required&#93; The key-value pair that defines the tag. The tag value is optional.
 #'
 #' @keywords internal
@@ -44,17 +42,15 @@ acm_add_tags_to_certificate <- function(CertificateArn, Tags) {
 #' Deletes a certificate and its associated private key
 #'
 #' @description
-#' Deletes a certificate and its associated private key. If this action succeeds, the certificate no longer appears in the list that can be displayed by calling the [`list_certificates`][acm_list_certificates] action or be retrieved by calling the [`get_certificate`][acm_get_certificate] action. The certificate will not be available for use by Amazon Web Services services integrated with ACM.
+#' Deletes a certificate and its associated private key. If this action succeeds, the certificate is not available for use by Amazon Web Services services integrated with ACM. Deleting a certificate is eventually consistent. The may be a short delay before the certificate no longer appears in the list that can be displayed by calling the [`list_certificates`][acm_list_certificates] action or be retrieved by calling the [`get_certificate`][acm_get_certificate] action.
 #'
 #' See [https://www.paws-r-sdk.com/docs/acm_delete_certificate/](https://www.paws-r-sdk.com/docs/acm_delete_certificate/) for full documentation.
 #'
-#' @param CertificateArn &#91;required&#93; String that contains the ARN of the ACM certificate to be deleted. This
-#' must be of the form:
+#' @param CertificateArn &#91;required&#93; String that contains the ARN of the ACM certificate to be deleted. This must be of the form:
 #' 
 #' `arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012`
 #' 
-#' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html).
+#' For more information about ARNs, see [Amazon Resource Names (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html).
 #'
 #' @keywords internal
 #'
@@ -85,13 +81,11 @@ acm_delete_certificate <- function(CertificateArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/acm_describe_certificate/](https://www.paws-r-sdk.com/docs/acm_describe_certificate/) for full documentation.
 #'
-#' @param CertificateArn &#91;required&#93; The Amazon Resource Name (ARN) of the ACM certificate. The ARN must have
-#' the following form:
+#' @param CertificateArn &#91;required&#93; The Amazon Resource Name (ARN) of the ACM certificate. The ARN must have the following form:
 #' 
 #' `arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012`
 #' 
-#' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html).
+#' For more information about ARNs, see [Amazon Resource Names (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html).
 #'
 #' @keywords internal
 #'
@@ -116,26 +110,21 @@ acm_describe_certificate <- function(CertificateArn) {
 .acm$operations$describe_certificate <- acm_describe_certificate
 
 #' Exports a private certificate issued by a private certificate authority
-#' (CA) for use anywhere
+#' (CA) or a public certificate for use anywhere
 #'
 #' @description
-#' Exports a private certificate issued by a private certificate authority (CA) for use anywhere. The exported file contains the certificate, the certificate chain, and the encrypted private 2048-bit RSA key associated with the public key that is embedded in the certificate. For security, you must assign a passphrase for the private key when exporting it.
+#' Exports a private certificate issued by a private certificate authority (CA) or a public certificate for use anywhere. The exported file contains the certificate, the certificate chain, and the encrypted private key associated with the public key that is embedded in the certificate. For security, you must assign a passphrase for the private key when exporting it.
 #'
 #' See [https://www.paws-r-sdk.com/docs/acm_export_certificate/](https://www.paws-r-sdk.com/docs/acm_export_certificate/) for full documentation.
 #'
-#' @param CertificateArn &#91;required&#93; An Amazon Resource Name (ARN) of the issued certificate. This must be of
-#' the form:
+#' @param CertificateArn &#91;required&#93; An Amazon Resource Name (ARN) of the issued certificate. This must be of the form:
 #' 
 #' `arn:aws:acm:region:account:certificate/12345678-1234-1234-1234-123456789012`
 #' @param Passphrase &#91;required&#93; Passphrase to associate with the encrypted exported private key.
 #' 
-#' When creating your passphrase, you can use any ASCII character except
-#' #, $, or %.
+#' When creating your passphrase, you can use any ASCII character except #, $, or %.
 #' 
-#' If you want to later decrypt the private key, you must have the
-#' passphrase. You can use the following OpenSSL command to decrypt a
-#' private key. After entering the command, you are prompted for the
-#' passphrase.
+#' If you want to later decrypt the private key, you must have the passphrase. You can use the following OpenSSL command to decrypt a private key. After entering the command, you are prompted for the passphrase.
 #' 
 #' `openssl rsa -in encrypted_key.pem -out decrypted_key.pem`
 #'
@@ -204,8 +193,7 @@ acm_get_account_configuration <- function() {
 #' 
 #' `arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012`
 #' 
-#' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html).
+#' For more information about ARNs, see [Amazon Resource Names (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html).
 #'
 #' @keywords internal
 #'
@@ -237,10 +225,7 @@ acm_get_certificate <- function(CertificateArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/acm_import_certificate/](https://www.paws-r-sdk.com/docs/acm_import_certificate/) for full documentation.
 #'
-#' @param CertificateArn The [Amazon Resource Name
-#' (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
-#' of an imported certificate to replace. To import a new certificate, omit
-#' this field.
+#' @param CertificateArn The [Amazon Resource Name (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html) of an imported certificate to replace. To import a new certificate, omit this field.
 #' @param Certificate &#91;required&#93; The certificate to import.
 #' @param PrivateKey &#91;required&#93; The private key that matches the public key in the certificate.
 #' @param CertificateChain The PEM encoded certificate chain.
@@ -273,25 +258,16 @@ acm_import_certificate <- function(CertificateArn = NULL, Certificate, PrivateKe
 #' Retrieves a list of certificate ARNs and domain names
 #'
 #' @description
-#' Retrieves a list of certificate ARNs and domain names. By default, the API returns RSA_2048 certificates. To return all certificates in the account, include the `keyType` filter with the values `[RSA_1024, RSA_2048, RSA_3072, RSA_4096, EC_prime256v1, EC_secp384r1, EC_secp521r1]`.
+#' Retrieves a list of certificate ARNs and domain names. You can request that only certificates that match a specific status be listed. You can also filter by specific attributes of the certificate. Default filtering returns only `RSA_2048` certificates. For more information, see Filters.
 #'
 #' See [https://www.paws-r-sdk.com/docs/acm_list_certificates/](https://www.paws-r-sdk.com/docs/acm_list_certificates/) for full documentation.
 #'
 #' @param CertificateStatuses Filter the certificate list by status value.
-#' @param Includes Filter the certificate list. For more information, see the Filters
-#' structure.
-#' @param NextToken Use this parameter only when paginating results and only in a subsequent
-#' request after you receive a response with truncated results. Set it to
-#' the value of `NextToken` from the response you just received.
-#' @param MaxItems Use this parameter when paginating results to specify the maximum number
-#' of items to return in the response. If additional items exist beyond the
-#' number you specify, the `NextToken` element is sent in the response. Use
-#' this `NextToken` value in a subsequent request to retrieve additional
-#' items.
-#' @param SortBy Specifies the field to sort results by. If you specify `SortBy`, you
-#' must also specify `SortOrder`.
-#' @param SortOrder Specifies the order of sorted results. If you specify `SortOrder`, you
-#' must also specify `SortBy`.
+#' @param Includes Filter the certificate list. For more information, see the Filters structure.
+#' @param NextToken Use this parameter only when paginating results and only in a subsequent request after you receive a response with truncated results. Set it to the value of `NextToken` from the response you just received.
+#' @param MaxItems Use this parameter when paginating results to specify the maximum number of items to return in the response. If additional items exist beyond the number you specify, the `NextToken` element is sent in the response. Use this `NextToken` value in a subsequent request to retrieve additional items.
+#' @param SortBy Specifies the field to sort results by. If you specify `SortBy`, you must also specify `SortOrder`.
+#' @param SortOrder Specifies the order of sorted results. If you specify `SortOrder`, you must also specify `SortBy`.
 #'
 #' @keywords internal
 #'
@@ -322,13 +298,11 @@ acm_list_certificates <- function(CertificateStatuses = NULL, Includes = NULL, N
 #'
 #' See [https://www.paws-r-sdk.com/docs/acm_list_tags_for_certificate/](https://www.paws-r-sdk.com/docs/acm_list_tags_for_certificate/) for full documentation.
 #'
-#' @param CertificateArn &#91;required&#93; String that contains the ARN of the ACM certificate for which you want
-#' to list the tags. This must have the following form:
+#' @param CertificateArn &#91;required&#93; String that contains the ARN of the ACM certificate for which you want to list the tags. This must have the following form:
 #' 
 #' `arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012`
 #' 
-#' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html).
+#' For more information about ARNs, see [Amazon Resource Names (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html).
 #'
 #' @keywords internal
 #'
@@ -360,13 +334,7 @@ acm_list_tags_for_certificate <- function(CertificateArn) {
 #' See [https://www.paws-r-sdk.com/docs/acm_put_account_configuration/](https://www.paws-r-sdk.com/docs/acm_put_account_configuration/) for full documentation.
 #'
 #' @param ExpiryEvents Specifies expiration events associated with an account.
-#' @param IdempotencyToken &#91;required&#93; Customer-chosen string used to distinguish between calls to
-#' [`put_account_configuration`][acm_put_account_configuration].
-#' Idempotency tokens time out after one hour. If you call
-#' [`put_account_configuration`][acm_put_account_configuration] multiple
-#' times with the same unexpired idempotency token, ACM treats it as the
-#' same request and returns the original result. If you change the
-#' idempotency token for each call, ACM treats each call as a new request.
+#' @param IdempotencyToken &#91;required&#93; Customer-chosen string used to distinguish between calls to [`put_account_configuration`][acm_put_account_configuration]. Idempotency tokens time out after one hour. If you call [`put_account_configuration`][acm_put_account_configuration] multiple times with the same unexpired idempotency token, ACM treats it as the same request and returns the original result. If you change the idempotency token for each call, ACM treats each call as a new request.
 #'
 #' @keywords internal
 #'
@@ -397,13 +365,11 @@ acm_put_account_configuration <- function(ExpiryEvents = NULL, IdempotencyToken)
 #'
 #' See [https://www.paws-r-sdk.com/docs/acm_remove_tags_from_certificate/](https://www.paws-r-sdk.com/docs/acm_remove_tags_from_certificate/) for full documentation.
 #'
-#' @param CertificateArn &#91;required&#93; String that contains the ARN of the ACM Certificate with one or more
-#' tags that you want to remove. This must be of the form:
+#' @param CertificateArn &#91;required&#93; String that contains the ARN of the ACM Certificate with one or more tags that you want to remove. This must be of the form:
 #' 
 #' `arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012`
 #' 
-#' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html).
+#' For more information about ARNs, see [Amazon Resource Names (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html).
 #' @param Tags &#91;required&#93; The key-value pair that defines the tag to remove.
 #'
 #' @keywords internal
@@ -431,17 +397,15 @@ acm_remove_tags_from_certificate <- function(CertificateArn, Tags) {
 #' Renews an eligible ACM certificate
 #'
 #' @description
-#' Renews an eligible ACM certificate. At this time, only exported private certificates can be renewed with this operation. In order to renew your Amazon Web Services Private CA certificates with ACM, you must first [grant the ACM service principal permission to do so](https://docs.aws.amazon.com/privateca/latest/userguide/). For more information, see [Testing Managed Renewal](https://docs.aws.amazon.com/acm/latest/userguide/) in the ACM User Guide.
+#' Renews an [eligible ACM certificate](https://docs.aws.amazon.com/acm/latest/userguide/managed-renewal.html). In order to renew your Amazon Web Services Private CA certificates with ACM, you must first [grant the ACM service principal permission to do so](https://docs.aws.amazon.com/privateca/latest/userguide/assign-permissions.html#PcaPermissions). For more information, see [Testing Managed Renewal](https://docs.aws.amazon.com/acm/latest/userguide/managed-renewal.html) in the ACM User Guide.
 #'
 #' See [https://www.paws-r-sdk.com/docs/acm_renew_certificate/](https://www.paws-r-sdk.com/docs/acm_renew_certificate/) for full documentation.
 #'
-#' @param CertificateArn &#91;required&#93; String that contains the ARN of the ACM certificate to be renewed. This
-#' must be of the form:
+#' @param CertificateArn &#91;required&#93; String that contains the ARN of the ACM certificate to be renewed. This must be of the form:
 #' 
 #' `arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012`
 #' 
-#' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html).
+#' For more information about ARNs, see [Amazon Resource Names (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html).
 #'
 #' @keywords internal
 #'
@@ -473,88 +437,31 @@ acm_renew_certificate <- function(CertificateArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/acm_request_certificate/](https://www.paws-r-sdk.com/docs/acm_request_certificate/) for full documentation.
 #'
-#' @param DomainName &#91;required&#93; Fully qualified domain name (FQDN), such as www.example.com, that you
-#' want to secure with an ACM certificate. Use an asterisk (*) to create a
-#' wildcard certificate that protects several sites in the same domain. For
-#' example, *.example.com protects www.example.com, site.example.com, and
-#' images.example.com.
+#' @param DomainName &#91;required&#93; Fully qualified domain name (FQDN), such as www.example.com, that you want to secure with an ACM certificate. Use an asterisk (*) to create a wildcard certificate that protects several sites in the same domain. For example, *.example.com protects www.example.com, site.example.com, and images.example.com.
 #' 
-#' In compliance with [RFC
-#' 5280](https://datatracker.ietf.org/doc/html/rfc5280), the length of the
-#' domain name (technically, the Common Name) that you provide cannot
-#' exceed 64 octets (characters), including periods. To add a longer domain
-#' name, specify it in the Subject Alternative Name field, which supports
-#' names up to 253 octets in length.
-#' @param ValidationMethod The method you want to use if you are requesting a public certificate to
-#' validate that you own or control domain. You can [validate with
-#' DNS](https://docs.aws.amazon.com/acm/latest/userguide/dns-validation.html)
-#' or [validate with
-#' email](https://docs.aws.amazon.com/acm/latest/userguide/email-validation.html).
-#' We recommend that you use DNS validation.
-#' @param SubjectAlternativeNames Additional FQDNs to be included in the Subject Alternative Name
-#' extension of the ACM certificate. For example, add the name
-#' www.example.net to a certificate for which the `DomainName` field is
-#' www.example.com if users can reach your site by using either name. The
-#' maximum number of domain names that you can add to an ACM certificate is
-#' 100. However, the initial quota is 10 domain names. If you need more
-#' than 10 names, you must request a quota increase. For more information,
-#' see
-#' [Quotas](https://docs.aws.amazon.com/acm/latest/userguide/acm-limits.html).
+#' In compliance with [RFC 5280](https://datatracker.ietf.org/doc/html/rfc5280), the length of the domain name (technically, the Common Name) that you provide cannot exceed 64 octets (characters), including periods. To add a longer domain name, specify it in the Subject Alternative Name field, which supports names up to 253 octets in length.
+#' @param ValidationMethod The method you want to use if you are requesting a public certificate to validate that you own or control domain. You can [validate with DNS](https://docs.aws.amazon.com/acm/latest/userguide/dns-validation.html) or [validate with email](https://docs.aws.amazon.com/acm/latest/userguide/email-validation.html). We recommend that you use DNS validation.
+#' @param SubjectAlternativeNames Additional FQDNs to be included in the Subject Alternative Name extension of the ACM certificate. For example, add the name www.example.net to a certificate for which the `DomainName` field is www.example.com if users can reach your site by using either name. The maximum number of domain names that you can add to an ACM certificate is 100. However, the initial quota is 10 domain names. If you need more than 10 names, you must request a quota increase. For more information, see [Quotas](https://docs.aws.amazon.com/acm/latest/userguide/acm-limits.html).
 #' 
-#' The maximum length of a SAN DNS name is 253 octets. The name is made up
-#' of multiple labels separated by periods. No label can be longer than 63
-#' octets. Consider the following examples:
+#' The maximum length of a SAN DNS name is 253 octets. The name is made up of multiple labels separated by periods. No label can be longer than 63 octets. Consider the following examples:
 #' 
-#' -   `(63 octets).(63 octets).(63 octets).(61 octets)` is legal because
-#'     the total length is 253 octets (63+1+63+1+63+1+61) and no label
-#'     exceeds 63 octets.
+#' -   `(63 octets).(63 octets).(63 octets).(61 octets)` is legal because the total length is 253 octets (63+1+63+1+63+1+61) and no label exceeds 63 octets.
 #' 
-#' -   `(64 octets).(63 octets).(63 octets).(61 octets)` is not legal
-#'     because the total length exceeds 253 octets (64+1+63+1+63+1+61) and
-#'     the first label exceeds 63 octets.
+#' -   `(64 octets).(63 octets).(63 octets).(61 octets)` is not legal because the total length exceeds 253 octets (64+1+63+1+63+1+61) and the first label exceeds 63 octets.
 #' 
-#' -   `(63 octets).(63 octets).(63 octets).(62 octets)` is not legal
-#'     because the total length of the DNS name (63+1+63+1+63+1+62) exceeds
-#'     253 octets.
-#' @param IdempotencyToken Customer chosen string that can be used to distinguish between calls to
-#' [`request_certificate`][acm_request_certificate]. Idempotency tokens
-#' time out after one hour. Therefore, if you call
-#' [`request_certificate`][acm_request_certificate] multiple times with the
-#' same idempotency token within one hour, ACM recognizes that you are
-#' requesting only one certificate and will issue only one. If you change
-#' the idempotency token for each call, ACM recognizes that you are
-#' requesting multiple certificates.
-#' @param DomainValidationOptions The domain name that you want ACM to use to send you emails so that you
-#' can validate domain ownership.
-#' @param Options Currently, you can use this parameter to specify whether to add the
-#' certificate to a certificate transparency log. Certificate transparency
-#' makes it possible to detect SSL/TLS certificates that have been
-#' mistakenly or maliciously issued. Certificates that have not been logged
-#' typically produce an error message in a browser. For more information,
-#' see [Opting Out of Certificate Transparency
-#' Logging](https://docs.aws.amazon.com/acm/latest/userguide/acm-bestpractices.html#best-practices-transparency).
-#' @param CertificateAuthorityArn The Amazon Resource Name (ARN) of the private certificate authority (CA)
-#' that will be used to issue the certificate. If you do not provide an ARN
-#' and you are trying to request a private certificate, ACM will attempt to
-#' issue a public certificate. For more information about private CAs, see
-#' the [Amazon Web Services Private Certificate
-#' Authority](https://docs.aws.amazon.com/privateca/latest/userguide/PcaWelcome.html)
-#' user guide. The ARN must have the following form:
+#' -   `(63 octets).(63 octets).(63 octets).(62 octets)` is not legal because the total length of the DNS name (63+1+63+1+63+1+62) exceeds 253 octets.
+#' @param IdempotencyToken Customer chosen string that can be used to distinguish between calls to [`request_certificate`][acm_request_certificate]. Idempotency tokens time out after one hour. Therefore, if you call [`request_certificate`][acm_request_certificate] multiple times with the same idempotency token within one hour, ACM recognizes that you are requesting only one certificate and will issue only one. If you change the idempotency token for each call, ACM recognizes that you are requesting multiple certificates.
+#' @param DomainValidationOptions The domain name that you want ACM to use to send you emails so that you can validate domain ownership.
+#' @param Options You can use this parameter to specify whether to add the certificate to a certificate transparency log and export your certificate.
+#' 
+#' Certificate transparency makes it possible to detect SSL/TLS certificates that have been mistakenly or maliciously issued. Certificates that have not been logged typically produce an error message in a browser. For more information, see [Opting Out of Certificate Transparency Logging](https://docs.aws.amazon.com/acm/latest/userguide/acm-bestpractices.html#best-practices-transparency).
+#' 
+#' You can export public ACM certificates to use with Amazon Web Services services as well as outside the Amazon Web Services Cloud. For more information, see [Certificate Manager exportable public certificate](https://docs.aws.amazon.com/acm/latest/userguide/acm-exportable-certificates.html).
+#' @param CertificateAuthorityArn The Amazon Resource Name (ARN) of the private certificate authority (CA) that will be used to issue the certificate. If you do not provide an ARN and you are trying to request a private certificate, ACM will attempt to issue a public certificate. For more information about private CAs, see the [Amazon Web Services Private Certificate Authority](https://docs.aws.amazon.com/privateca/latest/userguide/PcaWelcome.html) user guide. The ARN must have the following form:
 #' 
 #' `arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012`
 #' @param Tags One or more resource tags to associate with the certificate.
-#' @param KeyAlgorithm Specifies the algorithm of the public and private key pair that your
-#' certificate uses to encrypt data. RSA is the default key algorithm for
-#' ACM certificates. Elliptic Curve Digital Signature Algorithm (ECDSA)
-#' keys are smaller, offering security comparable to RSA keys but with
-#' greater computing efficiency. However, ECDSA is not supported by all
-#' network clients. Some Amazon Web Services services may require RSA keys,
-#' or only support ECDSA keys of a particular size, while others allow the
-#' use of either RSA and ECDSA keys to ensure that compatibility is not
-#' broken. Check the requirements for the Amazon Web Services service where
-#' you plan to deploy your certificate. For more information about
-#' selecting an algorithm, see [Key
-#' algorithms](https://docs.aws.amazon.com/acm/latest/userguide/#algorithms).
+#' @param KeyAlgorithm Specifies the algorithm of the public and private key pair that your certificate uses to encrypt data. RSA is the default key algorithm for ACM certificates. Elliptic Curve Digital Signature Algorithm (ECDSA) keys are smaller, offering security comparable to RSA keys but with greater computing efficiency. However, ECDSA is not supported by all network clients. Some Amazon Web Services services may require RSA keys, or only support ECDSA keys of a particular size, while others allow the use of either RSA and ECDSA keys to ensure that compatibility is not broken. Check the requirements for the Amazon Web Services service where you plan to deploy your certificate. For more information about selecting an algorithm, see [Key algorithms](https://docs.aws.amazon.com/acm/latest/userguide/acm-certificate-characteristics.html#algorithms-term).
 #' 
 #' Algorithms supported for an ACM certificate request include:
 #' 
@@ -566,16 +473,15 @@ acm_renew_certificate <- function(CertificateArn) {
 #' 
 #' Other listed algorithms are for imported certificates only.
 #' 
-#' When you request a private PKI certificate signed by a CA from Amazon
-#' Web Services Private CA, the specified signing algorithm family (RSA or
-#' ECDSA) must match the algorithm family of the CA's secret key.
+#' When you request a private PKI certificate signed by a CA from Amazon Web Services Private CA, the specified signing algorithm family (RSA or ECDSA) must match the algorithm family of the CA's secret key.
 #' 
 #' Default: RSA_2048
+#' @param ManagedBy Identifies the Amazon Web Services service that manages the certificate issued by ACM.
 #'
 #' @keywords internal
 #'
 #' @rdname acm_request_certificate
-acm_request_certificate <- function(DomainName, ValidationMethod = NULL, SubjectAlternativeNames = NULL, IdempotencyToken = NULL, DomainValidationOptions = NULL, Options = NULL, CertificateAuthorityArn = NULL, Tags = NULL, KeyAlgorithm = NULL) {
+acm_request_certificate <- function(DomainName, ValidationMethod = NULL, SubjectAlternativeNames = NULL, IdempotencyToken = NULL, DomainValidationOptions = NULL, Options = NULL, CertificateAuthorityArn = NULL, Tags = NULL, KeyAlgorithm = NULL, ManagedBy = NULL) {
   op <- new_operation(
     name = "RequestCertificate",
     http_method = "POST",
@@ -584,7 +490,7 @@ acm_request_certificate <- function(DomainName, ValidationMethod = NULL, Subject
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .acm$request_certificate_input(DomainName = DomainName, ValidationMethod = ValidationMethod, SubjectAlternativeNames = SubjectAlternativeNames, IdempotencyToken = IdempotencyToken, DomainValidationOptions = DomainValidationOptions, Options = Options, CertificateAuthorityArn = CertificateAuthorityArn, Tags = Tags, KeyAlgorithm = KeyAlgorithm)
+  input <- .acm$request_certificate_input(DomainName = DomainName, ValidationMethod = ValidationMethod, SubjectAlternativeNames = SubjectAlternativeNames, IdempotencyToken = IdempotencyToken, DomainValidationOptions = DomainValidationOptions, Options = Options, CertificateAuthorityArn = CertificateAuthorityArn, Tags = Tags, KeyAlgorithm = KeyAlgorithm, ManagedBy = ManagedBy)
   output <- .acm$request_certificate_output()
   config <- get_config()
   svc <- .acm$service(config, op)
@@ -601,23 +507,11 @@ acm_request_certificate <- function(DomainName, ValidationMethod = NULL, Subject
 #'
 #' See [https://www.paws-r-sdk.com/docs/acm_resend_validation_email/](https://www.paws-r-sdk.com/docs/acm_resend_validation_email/) for full documentation.
 #'
-#' @param CertificateArn &#91;required&#93; String that contains the ARN of the requested certificate. The
-#' certificate ARN is generated and returned by the
-#' [`request_certificate`][acm_request_certificate] action as soon as the
-#' request is made. By default, using this parameter causes email to be
-#' sent to all top-level domains you specified in the certificate request.
-#' The ARN must be of the form:
+#' @param CertificateArn &#91;required&#93; String that contains the ARN of the requested certificate. The certificate ARN is generated and returned by the [`request_certificate`][acm_request_certificate] action as soon as the request is made. By default, using this parameter causes email to be sent to all top-level domains you specified in the certificate request. The ARN must be of the form:
 #' 
 #' `arn:aws:acm:us-east-1:123456789012:certificate/12345678-1234-1234-1234-123456789012`
-#' @param Domain &#91;required&#93; The fully qualified domain name (FQDN) of the certificate that needs to
-#' be validated.
-#' @param ValidationDomain &#91;required&#93; The base validation domain that will act as the suffix of the email
-#' addresses that are used to send the emails. This must be the same as the
-#' `Domain` value or a superdomain of the `Domain` value. For example, if
-#' you requested a certificate for `site.subdomain.example.com` and specify
-#' a **ValidationDomain** of `subdomain.example.com`, ACM sends email to
-#' the domain registrant, technical contact, and administrative contact in
-#' WHOIS and the following five addresses:
+#' @param Domain &#91;required&#93; The fully qualified domain name (FQDN) of the certificate that needs to be validated.
+#' @param ValidationDomain &#91;required&#93; The base validation domain that will act as the suffix of the email addresses that are used to send the emails. This must be the same as the `Domain` value or a superdomain of the `Domain` value. For example, if you requested a certificate for `site.subdomain.example.com` and specify a **ValidationDomain** of `subdomain.example.com`, ACM sends email to the the following five addresses:
 #' 
 #' -   admin@@subdomain.example.com
 #' 
@@ -651,22 +545,86 @@ acm_resend_validation_email <- function(CertificateArn, Domain, ValidationDomain
 }
 .acm$operations$resend_validation_email <- acm_resend_validation_email
 
+#' Revokes a public ACM certificate
+#'
+#' @description
+#' Revokes a public ACM certificate. You can only revoke certificates that have been previously exported.
+#'
+#' See [https://www.paws-r-sdk.com/docs/acm_revoke_certificate/](https://www.paws-r-sdk.com/docs/acm_revoke_certificate/) for full documentation.
+#'
+#' @param CertificateArn &#91;required&#93; The Amazon Resource Name (ARN) of the public or private certificate that will be revoked. The ARN must have the following form:
+#' 
+#' `arn:aws:acm:region:account:certificate/12345678-1234-1234-1234-123456789012`
+#' @param RevocationReason &#91;required&#93; Specifies why you revoked the certificate.
+#'
+#' @keywords internal
+#'
+#' @rdname acm_revoke_certificate
+acm_revoke_certificate <- function(CertificateArn, RevocationReason) {
+  op <- new_operation(
+    name = "RevokeCertificate",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .acm$revoke_certificate_input(CertificateArn = CertificateArn, RevocationReason = RevocationReason)
+  output <- .acm$revoke_certificate_output()
+  config <- get_config()
+  svc <- .acm$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.acm$operations$revoke_certificate <- acm_revoke_certificate
+
+#' Retrieves a list of certificates matching search criteria
+#'
+#' @description
+#' Retrieves a list of certificates matching search criteria. You can filter certificates by X.509 attributes and ACM specific properties like certificate status, type and renewal eligibility. This operation provides more flexible filtering than [`list_certificates`][acm_list_certificates] by supporting complex filter statements.
+#'
+#' See [https://www.paws-r-sdk.com/docs/acm_search_certificates/](https://www.paws-r-sdk.com/docs/acm_search_certificates/) for full documentation.
+#'
+#' @param FilterStatement A filter statement that defines the search criteria. You can combine multiple filters using AND, OR, and NOT logical operators to create complex queries.
+#' @param MaxResults The maximum number of results to return in the response. Default is 100.
+#' @param NextToken Use this parameter only when paginating results and only in a subsequent request after you receive a response with truncated results. Set it to the value of `NextToken` from the response you just received.
+#' @param SortBy Specifies the field to sort results by. Valid values are CREATED_AT, NOT_AFTER, STATUS, RENEWAL_STATUS, EXPORTED, IN_USE, NOT_BEFORE, KEY_ALGORITHM, TYPE, CERTIFICATE_ARN, COMMON_NAME, REVOKED_AT, RENEWAL_ELIGIBILITY, ISSUED_AT, MANAGED_BY, EXPORT_OPTION, VALIDATION_METHOD, and IMPORTED_AT.
+#' @param SortOrder Specifies the order of sorted results. Valid values are ASCENDING or DESCENDING.
+#'
+#' @keywords internal
+#'
+#' @rdname acm_search_certificates
+acm_search_certificates <- function(FilterStatement = NULL, MaxResults = NULL, NextToken = NULL, SortBy = NULL, SortOrder = NULL) {
+  op <- new_operation(
+    name = "SearchCertificates",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Results"),
+    stream_api = FALSE
+  )
+  input <- .acm$search_certificates_input(FilterStatement = FilterStatement, MaxResults = MaxResults, NextToken = NextToken, SortBy = SortBy, SortOrder = SortOrder)
+  output <- .acm$search_certificates_output()
+  config <- get_config()
+  svc <- .acm$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.acm$operations$search_certificates <- acm_search_certificates
+
 #' Updates a certificate
 #'
 #' @description
-#' Updates a certificate. Currently, you can use this function to specify whether to opt in to or out of recording your certificate in a certificate transparency log. For more information, see [Opting Out of Certificate Transparency Logging](https://docs.aws.amazon.com/acm/latest/userguide/acm-bestpractices.html#best-practices-transparency).
+#' Updates a certificate. You can use this function to specify whether to opt in to or out of recording your certificate in a certificate transparency log and exporting. For more information, see [Opting Out of Certificate Transparency Logging](https://docs.aws.amazon.com/acm/latest/userguide/acm-bestpractices.html#best-practices-transparency) and [Certificate Manager Exportable Managed Certificates](https://docs.aws.amazon.com/acm/latest/userguide/acm-exportable-certificates.html).
 #'
 #' See [https://www.paws-r-sdk.com/docs/acm_update_certificate_options/](https://www.paws-r-sdk.com/docs/acm_update_certificate_options/) for full documentation.
 #'
 #' @param CertificateArn &#91;required&#93; ARN of the requested certificate to update. This must be of the form:
 #' 
 #' `arn:aws:acm:us-east-1:account:certificate/12345678-1234-1234-1234-123456789012 `
-#' @param Options &#91;required&#93; Use to update the options for your certificate. Currently, you can
-#' specify whether to add your certificate to a transparency log.
-#' Certificate transparency makes it possible to detect SSL/TLS
-#' certificates that have been mistakenly or maliciously issued.
-#' Certificates that have not been logged typically produce an error
-#' message in a browser.
+#' @param Options &#91;required&#93; Use to update the options for your certificate. Currently, you can specify whether to add your certificate to a transparency log or export your certificate. Certificate transparency makes it possible to detect SSL/TLS certificates that have been mistakenly or maliciously issued. Certificates that have not been logged typically produce an error message in a browser.
 #'
 #' @keywords internal
 #'

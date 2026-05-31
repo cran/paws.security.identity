@@ -14,26 +14,16 @@ Specify the key ID or key ARN of the KMS key.
 For example:
 \itemize{
 \item Key ID: \verb{1234abcd-12ab-34cd-56ef-1234567890ab}
-\item Key ARN:
-\verb{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
+\item Key ARN: \verb{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
 }
 
-To get the key ID and key ARN for a KMS key, use
-\code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
+To get the key ID and key ARN for a KMS key, use \code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
 
-\item{PendingWindowInDays}{The waiting period, specified in number of days. After the waiting
-period ends, KMS deletes the KMS key.
+\item{PendingWindowInDays}{The waiting period, specified in number of days. After the waiting period ends, KMS deletes the KMS key.
 
-If the KMS key is a multi-Region primary key with replica keys, the
-waiting period begins when the last of its replica keys is deleted.
-Otherwise, the waiting period begins immediately.
+If the KMS key is a multi-Region primary key with replica keys, the waiting period begins when the last of its replica keys is deleted. Otherwise, the waiting period begins immediately.
 
-This value is optional. If you include a value, it must be between 7 and
-30, inclusive. If you do not include a value, it defaults to 30. You can
-use the
-\href{https://docs.aws.amazon.com/kms/latest/developerguide/conditions-kms.html#conditions-kms-schedule-key-deletion-pending-window-in-days}{\code{kms:ScheduleKeyDeletionPendingWindowInDays}}
-condition key to further constrain the values that principals can
-specify in the \code{PendingWindowInDays} parameter.}
+This value is optional. If you include a value, it must be between 7 and 30, inclusive. If you do not include a value, it defaults to 30. You can use the \href{https://docs.aws.amazon.com/kms/latest/developerguide/conditions-kms.html#conditions-kms-schedule-key-deletion-pending-window-in-days}{\code{kms:ScheduleKeyDeletionPendingWindowInDays}} condition key to further constrain the values that principals can specify in the \code{PendingWindowInDays} parameter.}
 }
 \description{
 Schedules the deletion of a KMS key. By default, KMS applies a waiting period of 30 days, but you can specify a waiting period of 7-30 days. When this operation is successful, the key state of the KMS key changes to \code{PendingDeletion} and the key can't be used in any cryptographic operations. It remains in this state for the duration of the waiting period. Before the waiting period ends, you can use \code{\link[=kms_cancel_key_deletion]{cancel_key_deletion}} to cancel the deletion of the KMS key. After the waiting period ends, KMS deletes the KMS key, its key material, and all KMS data associated with it, including all aliases that refer to it.

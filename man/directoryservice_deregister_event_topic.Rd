@@ -8,11 +8,9 @@ SNS topic}
 directoryservice_deregister_event_topic(DirectoryId, TopicName)
 }
 \arguments{
-\item{DirectoryId}{[required] The Directory ID to remove as a publisher. This directory will no longer
-send messages to the specified Amazon SNS topic.}
+\item{DirectoryId}{[required] The Directory ID to remove as a publisher. This directory will no longer send messages to the specified Amazon SNS topic.}
 
-\item{TopicName}{[required] The name of the Amazon SNS topic from which to remove the directory as a
-publisher.}
+\item{TopicName}{[required] The name of the Amazon SNS topic from which to remove the directory as a publisher.}
 }
 \description{
 Removes the specified directory as a publisher to the specified Amazon SNS topic.

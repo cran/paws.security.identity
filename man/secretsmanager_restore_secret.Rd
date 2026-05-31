@@ -10,8 +10,7 @@ secretsmanager_restore_secret(SecretId)
 \arguments{
 \item{SecretId}{[required] The ARN or name of the secret to restore.
 
-For an ARN, we recommend that you specify a complete ARN rather than a
-partial ARN. See \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/troubleshoot.html#ARN_secretnamehyphen}{Finding a secret from a partial ARN}.}
+For an ARN, we recommend that you specify a complete ARN rather than a partial ARN. See \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/troubleshoot.html#ARN_secretnamehyphen}{Finding a secret from a partial ARN}.}
 }
 \description{
 Cancels the scheduled deletion of a secret by removing the \code{DeletedDate} time stamp. You can access a secret again after it has been restored.

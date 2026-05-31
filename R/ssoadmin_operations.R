@@ -3,6 +3,38 @@
 #' @include ssoadmin_service.R
 NULL
 
+#' Adds a Region to an IAM Identity Center instance
+#'
+#' @description
+#' Adds a Region to an IAM Identity Center instance. This operation initiates an asynchronous workflow to replicate the IAM Identity Center instance to the target Region. The Region status is set to ADDING at first and changes to ACTIVE when the workflow completes.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ssoadmin_add_region/](https://www.paws-r-sdk.com/docs/ssoadmin_add_region/) for full documentation.
+#'
+#' @param InstanceArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM Identity Center instance to replicate to the target Region.
+#' @param RegionName &#91;required&#93; The name of the Amazon Web Services Region to add to the IAM Identity Center instance. The Region name must be 1-32 characters long and follow the pattern of Amazon Web Services Region names (for example, us-east-1).
+#'
+#' @keywords internal
+#'
+#' @rdname ssoadmin_add_region
+ssoadmin_add_region <- function(InstanceArn, RegionName) {
+  op <- new_operation(
+    name = "AddRegion",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ssoadmin$add_region_input(InstanceArn = InstanceArn, RegionName = RegionName)
+  output <- .ssoadmin$add_region_output()
+  config <- get_config()
+  svc <- .ssoadmin$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ssoadmin$operations$add_region <- ssoadmin_add_region
+
 #' Attaches the specified customer managed policy to the specified
 #' PermissionSet
 #'
@@ -11,17 +43,14 @@ NULL
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssoadmin_attach_customer_managed_policy_reference_to_permission_set/](https://www.paws-r-sdk.com/docs/ssoadmin_attach_customer_managed_policy_reference_to_permission_set/) for full documentation.
 #'
-#' @param CustomerManagedPolicyReference &#91;required&#93; Specifies the name and path of a customer managed policy. You must have
-#' an IAM policy that matches the name and path in each Amazon Web Services
-#' account where you want to deploy your permission set.
-#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
-#' will be executed.
+#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation will be executed.
 #' @param PermissionSetArn &#91;required&#93; The ARN of the `PermissionSet`.
+#' @param CustomerManagedPolicyReference &#91;required&#93; Specifies the name and path of a customer managed policy. You must have an IAM policy that matches the name and path in each Amazon Web Services account where you want to deploy your permission set.
 #'
 #' @keywords internal
 #'
 #' @rdname ssoadmin_attac_custo_manag_polic_refer_to_permi_set
-ssoadmin_attach_customer_managed_policy_reference_to_permission_set <- function(CustomerManagedPolicyReference, InstanceArn, PermissionSetArn) {
+ssoadmin_attach_customer_managed_policy_reference_to_permission_set <- function(InstanceArn, PermissionSetArn, CustomerManagedPolicyReference) {
   op <- new_operation(
     name = "AttachCustomerManagedPolicyReferenceToPermissionSet",
     http_method = "POST",
@@ -30,7 +59,7 @@ ssoadmin_attach_customer_managed_policy_reference_to_permission_set <- function(
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ssoadmin$attach_customer_managed_policy_reference_to_permission_set_input(CustomerManagedPolicyReference = CustomerManagedPolicyReference, InstanceArn = InstanceArn, PermissionSetArn = PermissionSetArn)
+  input <- .ssoadmin$attach_customer_managed_policy_reference_to_permission_set_input(InstanceArn = InstanceArn, PermissionSetArn = PermissionSetArn, CustomerManagedPolicyReference = CustomerManagedPolicyReference)
   output <- .ssoadmin$attach_customer_managed_policy_reference_to_permission_set_output()
   config <- get_config()
   svc <- .ssoadmin$service(config, op)
@@ -47,19 +76,14 @@ ssoadmin_attach_customer_managed_policy_reference_to_permission_set <- function(
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssoadmin_attach_managed_policy_to_permission_set/](https://www.paws-r-sdk.com/docs/ssoadmin_attach_managed_policy_to_permission_set/) for full documentation.
 #'
-#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
-#' will be executed. For more information about ARNs, see Amazon Resource
-#' Names (ARNs) and Amazon Web Services Service Namespaces in the *Amazon
-#' Web Services General Reference*.
-#' @param ManagedPolicyArn &#91;required&#93; The Amazon Web Services managed policy ARN to be attached to a
-#' permission set.
-#' @param PermissionSetArn &#91;required&#93; The ARN of the PermissionSet that the managed policy should be attached
-#' to.
+#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation will be executed. For more information about ARNs, see Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces in the *Amazon Web Services General Reference*.
+#' @param PermissionSetArn &#91;required&#93; The ARN of the PermissionSet that the managed policy should be attached to.
+#' @param ManagedPolicyArn &#91;required&#93; The Amazon Web Services managed policy ARN to be attached to a permission set.
 #'
 #' @keywords internal
 #'
 #' @rdname ssoadmin_attach_managed_policy_to_permission_set
-ssoadmin_attach_managed_policy_to_permission_set <- function(InstanceArn, ManagedPolicyArn, PermissionSetArn) {
+ssoadmin_attach_managed_policy_to_permission_set <- function(InstanceArn, PermissionSetArn, ManagedPolicyArn) {
   op <- new_operation(
     name = "AttachManagedPolicyToPermissionSet",
     http_method = "POST",
@@ -68,7 +92,7 @@ ssoadmin_attach_managed_policy_to_permission_set <- function(InstanceArn, Manage
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ssoadmin$attach_managed_policy_to_permission_set_input(InstanceArn = InstanceArn, ManagedPolicyArn = ManagedPolicyArn, PermissionSetArn = PermissionSetArn)
+  input <- .ssoadmin$attach_managed_policy_to_permission_set_input(InstanceArn = InstanceArn, PermissionSetArn = PermissionSetArn, ManagedPolicyArn = ManagedPolicyArn)
   output <- .ssoadmin$attach_managed_policy_to_permission_set_output()
   config <- get_config()
   svc <- .ssoadmin$service(config, op)
@@ -86,26 +110,17 @@ ssoadmin_attach_managed_policy_to_permission_set <- function(InstanceArn, Manage
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssoadmin_create_account_assignment/](https://www.paws-r-sdk.com/docs/ssoadmin_create_account_assignment/) for full documentation.
 #'
-#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
-#' will be executed. For more information about ARNs, see Amazon Resource
-#' Names (ARNs) and Amazon Web Services Service Namespaces in the *Amazon
-#' Web Services General Reference*.
-#' @param PermissionSetArn &#91;required&#93; The ARN of the permission set that the admin wants to grant the
-#' principal access to.
-#' @param PrincipalId &#91;required&#93; An identifier for an object in IAM Identity Center, such as a user or
-#' group. PrincipalIds are GUIDs (For example,
-#' f81d4fae-7dec-11d0-a765-00a0c91e6bf6). For more information about
-#' PrincipalIds in IAM Identity Center, see the IAM Identity Center
-#' Identity Store API Reference.
-#' @param PrincipalType &#91;required&#93; The entity type for which the assignment will be created.
-#' @param TargetId &#91;required&#93; TargetID is an Amazon Web Services account identifier, (For example,
-#' 123456789012).
+#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation will be executed. For more information about ARNs, see Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces in the *Amazon Web Services General Reference*.
+#' @param TargetId &#91;required&#93; TargetID is an Amazon Web Services account identifier, (For example, 123456789012).
 #' @param TargetType &#91;required&#93; The entity type for which the assignment will be created.
+#' @param PermissionSetArn &#91;required&#93; The ARN of the permission set that the admin wants to grant the principal access to.
+#' @param PrincipalType &#91;required&#93; The entity type for which the assignment will be created.
+#' @param PrincipalId &#91;required&#93; An identifier for an object in IAM Identity Center, such as a user or group. PrincipalIds are GUIDs (For example, f81d4fae-7dec-11d0-a765-00a0c91e6bf6). For more information about PrincipalIds in IAM Identity Center, see the IAM Identity Center Identity Store API Reference.
 #'
 #' @keywords internal
 #'
 #' @rdname ssoadmin_create_account_assignment
-ssoadmin_create_account_assignment <- function(InstanceArn, PermissionSetArn, PrincipalId, PrincipalType, TargetId, TargetType) {
+ssoadmin_create_account_assignment <- function(InstanceArn, TargetId, TargetType, PermissionSetArn, PrincipalType, PrincipalId) {
   op <- new_operation(
     name = "CreateAccountAssignment",
     http_method = "POST",
@@ -114,7 +129,7 @@ ssoadmin_create_account_assignment <- function(InstanceArn, PermissionSetArn, Pr
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ssoadmin$create_account_assignment_input(InstanceArn = InstanceArn, PermissionSetArn = PermissionSetArn, PrincipalId = PrincipalId, PrincipalType = PrincipalType, TargetId = TargetId, TargetType = TargetType)
+  input <- .ssoadmin$create_account_assignment_input(InstanceArn = InstanceArn, TargetId = TargetId, TargetType = TargetType, PermissionSetArn = PermissionSetArn, PrincipalType = PrincipalType, PrincipalId = PrincipalId)
   output <- .ssoadmin$create_account_assignment_output()
   config <- get_config()
   svc <- .ssoadmin$service(config, op)
@@ -124,44 +139,30 @@ ssoadmin_create_account_assignment <- function(InstanceArn, PermissionSetArn, Pr
 }
 .ssoadmin$operations$create_account_assignment <- ssoadmin_create_account_assignment
 
-#' Creates an application in IAM Identity Center for the given application
-#' provider
+#' Creates an OAuth 2
 #'
 #' @description
-#' Creates an application in IAM Identity Center for the given application provider.
+#' Creates an OAuth 2.0 customer managed application in IAM Identity Center for the given application provider.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssoadmin_create_application/](https://www.paws-r-sdk.com/docs/ssoadmin_create_application/) for full documentation.
 #'
+#' @param InstanceArn &#91;required&#93; The ARN of the instance of IAM Identity Center under which the operation will run. For more information about ARNs, see Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces in the *Amazon Web Services General Reference*.
 #' @param ApplicationProviderArn &#91;required&#93; The ARN of the application provider under which the operation will run.
-#' @param ClientToken Specifies a unique, case-sensitive ID that you provide to ensure the
-#' idempotency of the request. This lets you safely retry the request
-#' without accidentally performing the same operation a second time.
-#' Passing the same value to a later call to an operation requires that you
-#' also pass the same value for all other parameters. We recommend that you
-#' use a [UUID type of
-#' value](https://en.wikipedia.org/wiki/Universally_unique_identifier).
-#' 
-#' If you don't provide this value, then Amazon Web Services generates a
-#' random one for you.
-#' 
-#' If you retry the operation with the same `ClientToken`, but with
-#' different parameters, the retry fails with an
-#' `IdempotentParameterMismatch` error.
-#' @param Description The description of the .
-#' @param InstanceArn &#91;required&#93; The ARN of the instance of IAM Identity Center under which the operation
-#' will run. For more information about ARNs, see Amazon Resource Names
-#' (ARNs) and Amazon Web Services Service Namespaces in the *Amazon Web
-#' Services General Reference*.
 #' @param Name &#91;required&#93; The name of the .
-#' @param PortalOptions A structure that describes the options for the portal associated with an
-#' application.
-#' @param Status Specifies whether the application is enabled or disabled.
+#' @param Description The description of the .
+#' @param PortalOptions A structure that describes the options for the portal associated with an application.
 #' @param Tags Specifies tags to be attached to the application.
+#' @param Status Specifies whether the application is enabled or disabled.
+#' @param ClientToken Specifies a unique, case-sensitive ID that you provide to ensure the idempotency of the request. This lets you safely retry the request without accidentally performing the same operation a second time. Passing the same value to a later call to an operation requires that you also pass the same value for all other parameters. We recommend that you use a [UUID type of value](https://en.wikipedia.org/wiki/Universally_unique_identifier).
+#' 
+#' If you don't provide this value, then Amazon Web Services generates a random one for you.
+#' 
+#' If you retry the operation with the same `ClientToken`, but with different parameters, the retry fails with an `IdempotentParameterMismatch` error.
 #'
 #' @keywords internal
 #'
 #' @rdname ssoadmin_create_application
-ssoadmin_create_application <- function(ApplicationProviderArn, ClientToken = NULL, Description = NULL, InstanceArn, Name, PortalOptions = NULL, Status = NULL, Tags = NULL) {
+ssoadmin_create_application <- function(InstanceArn, ApplicationProviderArn, Name, Description = NULL, PortalOptions = NULL, Tags = NULL, Status = NULL, ClientToken = NULL) {
   op <- new_operation(
     name = "CreateApplication",
     http_method = "POST",
@@ -170,7 +171,7 @@ ssoadmin_create_application <- function(ApplicationProviderArn, ClientToken = NU
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ssoadmin$create_application_input(ApplicationProviderArn = ApplicationProviderArn, ClientToken = ClientToken, Description = Description, InstanceArn = InstanceArn, Name = Name, PortalOptions = PortalOptions, Status = Status, Tags = Tags)
+  input <- .ssoadmin$create_application_input(InstanceArn = InstanceArn, ApplicationProviderArn = ApplicationProviderArn, Name = Name, Description = Description, PortalOptions = PortalOptions, Tags = Tags, Status = Status, ClientToken = ClientToken)
   output <- .ssoadmin$create_application_output()
   config <- get_config()
   svc <- .ssoadmin$service(config, op)
@@ -187,12 +188,8 @@ ssoadmin_create_application <- function(ApplicationProviderArn, ClientToken = NU
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssoadmin_create_application_assignment/](https://www.paws-r-sdk.com/docs/ssoadmin_create_application_assignment/) for full documentation.
 #'
-#' @param ApplicationArn &#91;required&#93; The ARN of the application provider under which the operation will run.
-#' @param PrincipalId &#91;required&#93; An identifier for an object in IAM Identity Center, such as a user or
-#' group. PrincipalIds are GUIDs (For example,
-#' f81d4fae-7dec-11d0-a765-00a0c91e6bf6). For more information about
-#' PrincipalIds in IAM Identity Center, see the IAM Identity Center
-#' Identity Store API Reference.
+#' @param ApplicationArn &#91;required&#93; The ARN of the application for which the assignment is created.
+#' @param PrincipalId &#91;required&#93; An identifier for an object in IAM Identity Center, such as a user or group. PrincipalIds are GUIDs (For example, f81d4fae-7dec-11d0-a765-00a0c91e6bf6). For more information about PrincipalIds in IAM Identity Center, see the [IAM Identity Center Identity Store API Reference](https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/).
 #' @param PrincipalType &#91;required&#93; The entity type for which the assignment will be created.
 #'
 #' @keywords internal
@@ -226,27 +223,18 @@ ssoadmin_create_application_assignment <- function(ApplicationArn, PrincipalId, 
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssoadmin_create_instance/](https://www.paws-r-sdk.com/docs/ssoadmin_create_instance/) for full documentation.
 #'
-#' @param ClientToken Specifies a unique, case-sensitive ID that you provide to ensure the
-#' idempotency of the request. This lets you safely retry the request
-#' without accidentally performing the same operation a second time.
-#' Passing the same value to a later call to an operation requires that you
-#' also pass the same value for all other parameters. We recommend that you
-#' use a [UUID type of
-#' value](https://en.wikipedia.org/wiki/Universally_unique_identifier).
-#' 
-#' If you don't provide this value, then Amazon Web Services generates a
-#' random one for you.
-#' 
-#' If you retry the operation with the same `ClientToken`, but with
-#' different parameters, the retry fails with an
-#' `IdempotentParameterMismatch` error.
 #' @param Name The name of the instance of IAM Identity Center.
+#' @param ClientToken Specifies a unique, case-sensitive ID that you provide to ensure the idempotency of the request. This lets you safely retry the request without accidentally performing the same operation a second time. Passing the same value to a later call to an operation requires that you also pass the same value for all other parameters. We recommend that you use a [UUID type of value](https://en.wikipedia.org/wiki/Universally_unique_identifier).
+#' 
+#' If you don't provide this value, then Amazon Web Services generates a random one for you.
+#' 
+#' If you retry the operation with the same `ClientToken`, but with different parameters, the retry fails with an `IdempotentParameterMismatch` error.
 #' @param Tags Specifies tags to be attached to the instance of IAM Identity Center.
 #'
 #' @keywords internal
 #'
 #' @rdname ssoadmin_create_instance
-ssoadmin_create_instance <- function(ClientToken = NULL, Name = NULL, Tags = NULL) {
+ssoadmin_create_instance <- function(Name = NULL, ClientToken = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateInstance",
     http_method = "POST",
@@ -255,7 +243,7 @@ ssoadmin_create_instance <- function(ClientToken = NULL, Name = NULL, Tags = NUL
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ssoadmin$create_instance_input(ClientToken = ClientToken, Name = Name, Tags = Tags)
+  input <- .ssoadmin$create_instance_input(Name = Name, ClientToken = ClientToken, Tags = Tags)
   output <- .ssoadmin$create_instance_output()
   config <- get_config()
   svc <- .ssoadmin$service(config, op)
@@ -273,20 +261,13 @@ ssoadmin_create_instance <- function(ClientToken = NULL, Name = NULL, Tags = NUL
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssoadmin_create_instance_access_control_attribute_configuration/](https://www.paws-r-sdk.com/docs/ssoadmin_create_instance_access_control_attribute_configuration/) for full documentation.
 #'
-#' @param InstanceAccessControlAttributeConfiguration &#91;required&#93; Specifies the IAM Identity Center identity store attributes to add to
-#' your ABAC configuration. When using an external identity provider as an
-#' identity source, you can pass attributes through the SAML assertion.
-#' Doing so provides an alternative to configuring attributes from the IAM
-#' Identity Center identity store. If a SAML assertion passes any of these
-#' attributes, IAM Identity Center will replace the attribute value with
-#' the value from the IAM Identity Center identity store.
-#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
-#' will be executed.
+#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation will be executed.
+#' @param InstanceAccessControlAttributeConfiguration &#91;required&#93; Specifies the IAM Identity Center identity store attributes to add to your ABAC configuration. When using an external identity provider as an identity source, you can pass attributes through the SAML assertion. Doing so provides an alternative to configuring attributes from the IAM Identity Center identity store. If a SAML assertion passes any of these attributes, IAM Identity Center will replace the attribute value with the value from the IAM Identity Center identity store.
 #'
 #' @keywords internal
 #'
 #' @rdname ssoadmin_create_instanc_access_control_attribu_configu
-ssoadmin_create_instance_access_control_attribute_configuration <- function(InstanceAccessControlAttributeConfiguration, InstanceArn) {
+ssoadmin_create_instance_access_control_attribute_configuration <- function(InstanceArn, InstanceAccessControlAttributeConfiguration) {
   op <- new_operation(
     name = "CreateInstanceAccessControlAttributeConfiguration",
     http_method = "POST",
@@ -295,7 +276,7 @@ ssoadmin_create_instance_access_control_attribute_configuration <- function(Inst
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ssoadmin$create_instance_access_control_attribute_configuration_input(InstanceAccessControlAttributeConfiguration = InstanceAccessControlAttributeConfiguration, InstanceArn = InstanceArn)
+  input <- .ssoadmin$create_instance_access_control_attribute_configuration_input(InstanceArn = InstanceArn, InstanceAccessControlAttributeConfiguration = InstanceAccessControlAttributeConfiguration)
   output <- .ssoadmin$create_instance_access_control_attribute_configuration_output()
   config <- get_config()
   svc <- .ssoadmin$service(config, op)
@@ -312,22 +293,17 @@ ssoadmin_create_instance_access_control_attribute_configuration <- function(Inst
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssoadmin_create_permission_set/](https://www.paws-r-sdk.com/docs/ssoadmin_create_permission_set/) for full documentation.
 #'
-#' @param Description The description of the PermissionSet.
-#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
-#' will be executed. For more information about ARNs, see Amazon Resource
-#' Names (ARNs) and Amazon Web Services Service Namespaces in the *Amazon
-#' Web Services General Reference*.
 #' @param Name &#91;required&#93; The name of the PermissionSet.
-#' @param RelayState Used to redirect users within the application during the federation
-#' authentication process.
-#' @param SessionDuration The length of time that the application user sessions are valid in the
-#' ISO-8601 standard.
+#' @param Description The description of the PermissionSet.
+#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation will be executed. For more information about ARNs, see Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces in the *Amazon Web Services General Reference*.
+#' @param SessionDuration The length of time that the application user sessions are valid in the ISO-8601 standard.
+#' @param RelayState Used to redirect users within the application during the federation authentication process.
 #' @param Tags The tags to attach to the new PermissionSet.
 #'
 #' @keywords internal
 #'
 #' @rdname ssoadmin_create_permission_set
-ssoadmin_create_permission_set <- function(Description = NULL, InstanceArn, Name, RelayState = NULL, SessionDuration = NULL, Tags = NULL) {
+ssoadmin_create_permission_set <- function(Name, Description = NULL, InstanceArn, SessionDuration = NULL, RelayState = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreatePermissionSet",
     http_method = "POST",
@@ -336,7 +312,7 @@ ssoadmin_create_permission_set <- function(Description = NULL, InstanceArn, Name
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ssoadmin$create_permission_set_input(Description = Description, InstanceArn = InstanceArn, Name = Name, RelayState = RelayState, SessionDuration = SessionDuration, Tags = Tags)
+  input <- .ssoadmin$create_permission_set_input(Name = Name, Description = Description, InstanceArn = InstanceArn, SessionDuration = SessionDuration, RelayState = RelayState, Tags = Tags)
   output <- .ssoadmin$create_permission_set_output()
   config <- get_config()
   svc <- .ssoadmin$service(config, op)
@@ -354,34 +330,21 @@ ssoadmin_create_permission_set <- function(Description = NULL, InstanceArn, Name
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssoadmin_create_trusted_token_issuer/](https://www.paws-r-sdk.com/docs/ssoadmin_create_trusted_token_issuer/) for full documentation.
 #'
-#' @param ClientToken Specifies a unique, case-sensitive ID that you provide to ensure the
-#' idempotency of the request. This lets you safely retry the request
-#' without accidentally performing the same operation a second time.
-#' Passing the same value to a later call to an operation requires that you
-#' also pass the same value for all other parameters. We recommend that you
-#' use a [UUID type of
-#' value.](https://en.wikipedia.org/wiki/Universally_unique_identifier).
-#' 
-#' If you don't provide this value, then Amazon Web Services generates a
-#' random one for you.
-#' 
-#' If you retry the operation with the same `ClientToken`, but with
-#' different parameters, the retry fails with an
-#' `IdempotentParameterMismatch` error.
-#' @param InstanceArn &#91;required&#93; Specifies the ARN of the instance of IAM Identity Center to contain the
-#' new trusted token issuer configuration.
+#' @param InstanceArn &#91;required&#93; Specifies the ARN of the instance of IAM Identity Center to contain the new trusted token issuer configuration.
 #' @param Name &#91;required&#93; Specifies the name of the new trusted token issuer configuration.
-#' @param Tags Specifies tags to be attached to the new trusted token issuer
-#' configuration.
-#' @param TrustedTokenIssuerConfiguration &#91;required&#93; Specifies settings that apply to the new trusted token issuer
-#' configuration. The settings that are available depend on what
-#' `TrustedTokenIssuerType` you specify.
 #' @param TrustedTokenIssuerType &#91;required&#93; Specifies the type of the new trusted token issuer.
+#' @param TrustedTokenIssuerConfiguration &#91;required&#93; Specifies settings that apply to the new trusted token issuer configuration. The settings that are available depend on what `TrustedTokenIssuerType` you specify.
+#' @param ClientToken Specifies a unique, case-sensitive ID that you provide to ensure the idempotency of the request. This lets you safely retry the request without accidentally performing the same operation a second time. Passing the same value to a later call to an operation requires that you also pass the same value for all other parameters. We recommend that you use a [UUID type of value.](https://en.wikipedia.org/wiki/Universally_unique_identifier).
+#' 
+#' If you don't provide this value, then Amazon Web Services generates a random one for you.
+#' 
+#' If you retry the operation with the same `ClientToken`, but with different parameters, the retry fails with an `IdempotentParameterMismatch` error.
+#' @param Tags Specifies tags to be attached to the new trusted token issuer configuration.
 #'
 #' @keywords internal
 #'
 #' @rdname ssoadmin_create_trusted_token_issuer
-ssoadmin_create_trusted_token_issuer <- function(ClientToken = NULL, InstanceArn, Name, Tags = NULL, TrustedTokenIssuerConfiguration, TrustedTokenIssuerType) {
+ssoadmin_create_trusted_token_issuer <- function(InstanceArn, Name, TrustedTokenIssuerType, TrustedTokenIssuerConfiguration, ClientToken = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateTrustedTokenIssuer",
     http_method = "POST",
@@ -390,7 +353,7 @@ ssoadmin_create_trusted_token_issuer <- function(ClientToken = NULL, InstanceArn
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ssoadmin$create_trusted_token_issuer_input(ClientToken = ClientToken, InstanceArn = InstanceArn, Name = Name, Tags = Tags, TrustedTokenIssuerConfiguration = TrustedTokenIssuerConfiguration, TrustedTokenIssuerType = TrustedTokenIssuerType)
+  input <- .ssoadmin$create_trusted_token_issuer_input(InstanceArn = InstanceArn, Name = Name, TrustedTokenIssuerType = TrustedTokenIssuerType, TrustedTokenIssuerConfiguration = TrustedTokenIssuerConfiguration, ClientToken = ClientToken, Tags = Tags)
   output <- .ssoadmin$create_trusted_token_issuer_output()
   config <- get_config()
   svc <- .ssoadmin$service(config, op)
@@ -408,25 +371,17 @@ ssoadmin_create_trusted_token_issuer <- function(ClientToken = NULL, InstanceArn
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssoadmin_delete_account_assignment/](https://www.paws-r-sdk.com/docs/ssoadmin_delete_account_assignment/) for full documentation.
 #'
-#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
-#' will be executed. For more information about ARNs, see Amazon Resource
-#' Names (ARNs) and Amazon Web Services Service Namespaces in the *Amazon
-#' Web Services General Reference*.
-#' @param PermissionSetArn &#91;required&#93; The ARN of the permission set that will be used to remove access.
-#' @param PrincipalId &#91;required&#93; An identifier for an object in IAM Identity Center, such as a user or
-#' group. PrincipalIds are GUIDs (For example,
-#' f81d4fae-7dec-11d0-a765-00a0c91e6bf6). For more information about
-#' PrincipalIds in IAM Identity Center, see the IAM Identity Center
-#' Identity Store API Reference.
-#' @param PrincipalType &#91;required&#93; The entity type for which the assignment will be deleted.
-#' @param TargetId &#91;required&#93; TargetID is an Amazon Web Services account identifier, (For example,
-#' 123456789012).
+#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation will be executed. For more information about ARNs, see Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces in the *Amazon Web Services General Reference*.
+#' @param TargetId &#91;required&#93; TargetID is an Amazon Web Services account identifier, (For example, 123456789012).
 #' @param TargetType &#91;required&#93; The entity type for which the assignment will be deleted.
+#' @param PermissionSetArn &#91;required&#93; The ARN of the permission set that will be used to remove access.
+#' @param PrincipalType &#91;required&#93; The entity type for which the assignment will be deleted.
+#' @param PrincipalId &#91;required&#93; An identifier for an object in IAM Identity Center, such as a user or group. PrincipalIds are GUIDs (For example, f81d4fae-7dec-11d0-a765-00a0c91e6bf6). For more information about PrincipalIds in IAM Identity Center, see the IAM Identity Center Identity Store API Reference.
 #'
 #' @keywords internal
 #'
 #' @rdname ssoadmin_delete_account_assignment
-ssoadmin_delete_account_assignment <- function(InstanceArn, PermissionSetArn, PrincipalId, PrincipalType, TargetId, TargetType) {
+ssoadmin_delete_account_assignment <- function(InstanceArn, TargetId, TargetType, PermissionSetArn, PrincipalType, PrincipalId) {
   op <- new_operation(
     name = "DeleteAccountAssignment",
     http_method = "POST",
@@ -435,7 +390,7 @@ ssoadmin_delete_account_assignment <- function(InstanceArn, PermissionSetArn, Pr
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ssoadmin$delete_account_assignment_input(InstanceArn = InstanceArn, PermissionSetArn = PermissionSetArn, PrincipalId = PrincipalId, PrincipalType = PrincipalType, TargetId = TargetId, TargetType = TargetType)
+  input <- .ssoadmin$delete_account_assignment_input(InstanceArn = InstanceArn, TargetId = TargetId, TargetType = TargetType, PermissionSetArn = PermissionSetArn, PrincipalType = PrincipalType, PrincipalId = PrincipalId)
   output <- .ssoadmin$delete_account_assignment_output()
   config <- get_config()
   svc <- .ssoadmin$service(config, op)
@@ -452,9 +407,7 @@ ssoadmin_delete_account_assignment <- function(InstanceArn, PermissionSetArn, Pr
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssoadmin_delete_application/](https://www.paws-r-sdk.com/docs/ssoadmin_delete_application/) for full documentation.
 #'
-#' @param ApplicationArn &#91;required&#93; Specifies the ARN of the application. For more information about ARNs,
-#' see Amazon Resource Names (ARNs) and Amazon Web Services Service
-#' Namespaces in the *Amazon Web Services General Reference*.
+#' @param ApplicationArn &#91;required&#93; Specifies the ARN of the application. For more information about ARNs, see Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces in the *Amazon Web Services General Reference*.
 #'
 #' @keywords internal
 #'
@@ -519,11 +472,7 @@ ssoadmin_delete_application_access_scope <- function(ApplicationArn, Scope) {
 #' See [https://www.paws-r-sdk.com/docs/ssoadmin_delete_application_assignment/](https://www.paws-r-sdk.com/docs/ssoadmin_delete_application_assignment/) for full documentation.
 #'
 #' @param ApplicationArn &#91;required&#93; Specifies the ARN of the application.
-#' @param PrincipalId &#91;required&#93; An identifier for an object in IAM Identity Center, such as a user or
-#' group. PrincipalIds are GUIDs (For example,
-#' f81d4fae-7dec-11d0-a765-00a0c91e6bf6). For more information about
-#' PrincipalIds in IAM Identity Center, see the IAM Identity Center
-#' Identity Store API Reference.
+#' @param PrincipalId &#91;required&#93; An identifier for an object in IAM Identity Center, such as a user or group. PrincipalIds are GUIDs (For example, f81d4fae-7dec-11d0-a765-00a0c91e6bf6). For more information about PrincipalIds in IAM Identity Center, see the [IAM Identity Center Identity Store API Reference](https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/).
 #' @param PrincipalType &#91;required&#93; The entity type for which the assignment will be deleted.
 #'
 #' @keywords internal
@@ -555,8 +504,7 @@ ssoadmin_delete_application_assignment <- function(ApplicationArn, PrincipalId, 
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssoadmin_delete_application_authentication_method/](https://www.paws-r-sdk.com/docs/ssoadmin_delete_application_authentication_method/) for full documentation.
 #'
-#' @param ApplicationArn &#91;required&#93; Specifies the ARN of the application with the authentication method to
-#' delete.
+#' @param ApplicationArn &#91;required&#93; Specifies the ARN of the application with the authentication method to delete.
 #' @param AuthenticationMethodType &#91;required&#93; Specifies the authentication method type to delete from the application.
 #'
 #' @keywords internal
@@ -620,10 +568,7 @@ ssoadmin_delete_application_grant <- function(ApplicationArn, GrantType) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssoadmin_delete_inline_policy_from_permission_set/](https://www.paws-r-sdk.com/docs/ssoadmin_delete_inline_policy_from_permission_set/) for full documentation.
 #'
-#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
-#' will be executed. For more information about ARNs, see Amazon Resource
-#' Names (ARNs) and Amazon Web Services Service Namespaces in the *Amazon
-#' Web Services General Reference*.
+#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation will be executed. For more information about ARNs, see Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces in the *Amazon Web Services General Reference*.
 #' @param PermissionSetArn &#91;required&#93; The ARN of the permission set that will be used to remove access.
 #'
 #' @keywords internal
@@ -655,8 +600,7 @@ ssoadmin_delete_inline_policy_from_permission_set <- function(InstanceArn, Permi
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssoadmin_delete_instance/](https://www.paws-r-sdk.com/docs/ssoadmin_delete_instance/) for full documentation.
 #'
-#' @param InstanceArn &#91;required&#93; The ARN of the instance of IAM Identity Center under which the operation
-#' will run.
+#' @param InstanceArn &#91;required&#93; The ARN of the instance of IAM Identity Center under which the operation will run.
 #'
 #' @keywords internal
 #'
@@ -689,8 +633,7 @@ ssoadmin_delete_instance <- function(InstanceArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssoadmin_delete_instance_access_control_attribute_configuration/](https://www.paws-r-sdk.com/docs/ssoadmin_delete_instance_access_control_attribute_configuration/) for full documentation.
 #'
-#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
-#' will be executed.
+#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation will be executed.
 #'
 #' @keywords internal
 #'
@@ -721,10 +664,7 @@ ssoadmin_delete_instance_access_control_attribute_configuration <- function(Inst
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssoadmin_delete_permission_set/](https://www.paws-r-sdk.com/docs/ssoadmin_delete_permission_set/) for full documentation.
 #'
-#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
-#' will be executed. For more information about ARNs, see Amazon Resource
-#' Names (ARNs) and Amazon Web Services Service Namespaces in the *Amazon
-#' Web Services General Reference*.
+#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation will be executed. For more information about ARNs, see Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces in the *Amazon Web Services General Reference*.
 #' @param PermissionSetArn &#91;required&#93; The ARN of the permission set that should be deleted.
 #'
 #' @keywords internal
@@ -756,8 +696,7 @@ ssoadmin_delete_permission_set <- function(InstanceArn, PermissionSetArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssoadmin_delete_permissions_boundary_from_permission_set/](https://www.paws-r-sdk.com/docs/ssoadmin_delete_permissions_boundary_from_permission_set/) for full documentation.
 #'
-#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
-#' will be executed.
+#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation will be executed.
 #' @param PermissionSetArn &#91;required&#93; The ARN of the `PermissionSet`.
 #'
 #' @keywords internal
@@ -821,16 +760,13 @@ ssoadmin_delete_trusted_token_issuer <- function(TrustedTokenIssuerArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssoadmin_describe_account_assignment_creation_status/](https://www.paws-r-sdk.com/docs/ssoadmin_describe_account_assignment_creation_status/) for full documentation.
 #'
+#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation will be executed. For more information about ARNs, see Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces in the *Amazon Web Services General Reference*.
 #' @param AccountAssignmentCreationRequestId &#91;required&#93; The identifier that is used to track the request operation progress.
-#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
-#' will be executed. For more information about ARNs, see Amazon Resource
-#' Names (ARNs) and Amazon Web Services Service Namespaces in the *Amazon
-#' Web Services General Reference*.
 #'
 #' @keywords internal
 #'
 #' @rdname ssoadmin_describe_account_assignment_creation_status
-ssoadmin_describe_account_assignment_creation_status <- function(AccountAssignmentCreationRequestId, InstanceArn) {
+ssoadmin_describe_account_assignment_creation_status <- function(InstanceArn, AccountAssignmentCreationRequestId) {
   op <- new_operation(
     name = "DescribeAccountAssignmentCreationStatus",
     http_method = "POST",
@@ -839,7 +775,7 @@ ssoadmin_describe_account_assignment_creation_status <- function(AccountAssignme
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ssoadmin$describe_account_assignment_creation_status_input(AccountAssignmentCreationRequestId = AccountAssignmentCreationRequestId, InstanceArn = InstanceArn)
+  input <- .ssoadmin$describe_account_assignment_creation_status_input(InstanceArn = InstanceArn, AccountAssignmentCreationRequestId = AccountAssignmentCreationRequestId)
   output <- .ssoadmin$describe_account_assignment_creation_status_output()
   config <- get_config()
   svc <- .ssoadmin$service(config, op)
@@ -856,16 +792,13 @@ ssoadmin_describe_account_assignment_creation_status <- function(AccountAssignme
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssoadmin_describe_account_assignment_deletion_status/](https://www.paws-r-sdk.com/docs/ssoadmin_describe_account_assignment_deletion_status/) for full documentation.
 #'
+#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation will be executed. For more information about ARNs, see Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces in the *Amazon Web Services General Reference*.
 #' @param AccountAssignmentDeletionRequestId &#91;required&#93; The identifier that is used to track the request operation progress.
-#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
-#' will be executed. For more information about ARNs, see Amazon Resource
-#' Names (ARNs) and Amazon Web Services Service Namespaces in the *Amazon
-#' Web Services General Reference*.
 #'
 #' @keywords internal
 #'
 #' @rdname ssoadmin_describe_account_assignment_deletion_status
-ssoadmin_describe_account_assignment_deletion_status <- function(AccountAssignmentDeletionRequestId, InstanceArn) {
+ssoadmin_describe_account_assignment_deletion_status <- function(InstanceArn, AccountAssignmentDeletionRequestId) {
   op <- new_operation(
     name = "DescribeAccountAssignmentDeletionStatus",
     http_method = "POST",
@@ -874,7 +807,7 @@ ssoadmin_describe_account_assignment_deletion_status <- function(AccountAssignme
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ssoadmin$describe_account_assignment_deletion_status_input(AccountAssignmentDeletionRequestId = AccountAssignmentDeletionRequestId, InstanceArn = InstanceArn)
+  input <- .ssoadmin$describe_account_assignment_deletion_status_input(InstanceArn = InstanceArn, AccountAssignmentDeletionRequestId = AccountAssignmentDeletionRequestId)
   output <- .ssoadmin$describe_account_assignment_deletion_status_output()
   config <- get_config()
   svc <- .ssoadmin$service(config, op)
@@ -892,9 +825,7 @@ ssoadmin_describe_account_assignment_deletion_status <- function(AccountAssignme
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssoadmin_describe_application/](https://www.paws-r-sdk.com/docs/ssoadmin_describe_application/) for full documentation.
 #'
-#' @param ApplicationArn &#91;required&#93; Specifies the ARN of the application. For more information about ARNs,
-#' see Amazon Resource Names (ARNs) and Amazon Web Services Service
-#' Namespaces in the *Amazon Web Services General Reference*.
+#' @param ApplicationArn &#91;required&#93; Specifies the ARN of the application. For more information about ARNs, see Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces in the *Amazon Web Services General Reference*.
 #'
 #' @keywords internal
 #'
@@ -925,14 +856,8 @@ ssoadmin_describe_application <- function(ApplicationArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssoadmin_describe_application_assignment/](https://www.paws-r-sdk.com/docs/ssoadmin_describe_application_assignment/) for full documentation.
 #'
-#' @param ApplicationArn &#91;required&#93; Specifies the ARN of the application. For more information about ARNs,
-#' see Amazon Resource Names (ARNs) and Amazon Web Services Service
-#' Namespaces in the *Amazon Web Services General Reference*.
-#' @param PrincipalId &#91;required&#93; An identifier for an object in IAM Identity Center, such as a user or
-#' group. PrincipalIds are GUIDs (For example,
-#' f81d4fae-7dec-11d0-a765-00a0c91e6bf6). For more information about
-#' PrincipalIds in IAM Identity Center, see the IAM Identity Center
-#' Identity Store API Reference.
+#' @param ApplicationArn &#91;required&#93; Specifies the ARN of the application. For more information about ARNs, see Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces in the *Amazon Web Services General Reference*.
+#' @param PrincipalId &#91;required&#93; An identifier for an object in IAM Identity Center, such as a user or group. PrincipalIds are GUIDs (For example, f81d4fae-7dec-11d0-a765-00a0c91e6bf6). For more information about PrincipalIds in IAM Identity Center, see the [IAM Identity Center Identity Store API Reference](https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/).
 #' @param PrincipalType &#91;required&#93; The entity type for which the assignment will be created.
 #'
 #' @keywords internal
@@ -966,8 +891,7 @@ ssoadmin_describe_application_assignment <- function(ApplicationArn, PrincipalId
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssoadmin_describe_application_provider/](https://www.paws-r-sdk.com/docs/ssoadmin_describe_application_provider/) for full documentation.
 #'
-#' @param ApplicationProviderArn &#91;required&#93; Specifies the ARN of the application provider for which you want
-#' details.
+#' @param ApplicationProviderArn &#91;required&#93; Specifies the ARN of the application provider for which you want details.
 #'
 #' @keywords internal
 #'
@@ -998,8 +922,7 @@ ssoadmin_describe_application_provider <- function(ApplicationProviderArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssoadmin_describe_instance/](https://www.paws-r-sdk.com/docs/ssoadmin_describe_instance/) for full documentation.
 #'
-#' @param InstanceArn &#91;required&#93; The ARN of the instance of IAM Identity Center under which the operation
-#' will run.
+#' @param InstanceArn &#91;required&#93; The ARN of the instance of IAM Identity Center under which the operation will run.
 #'
 #' @keywords internal
 #'
@@ -1032,8 +955,7 @@ ssoadmin_describe_instance <- function(InstanceArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssoadmin_describe_instance_access_control_attribute_configuration/](https://www.paws-r-sdk.com/docs/ssoadmin_describe_instance_access_control_attribute_configuration/) for full documentation.
 #'
-#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
-#' will be executed.
+#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation will be executed.
 #'
 #' @keywords internal
 #'
@@ -1064,10 +986,7 @@ ssoadmin_describe_instance_access_control_attribute_configuration <- function(In
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssoadmin_describe_permission_set/](https://www.paws-r-sdk.com/docs/ssoadmin_describe_permission_set/) for full documentation.
 #'
-#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
-#' will be executed. For more information about ARNs, see Amazon Resource
-#' Names (ARNs) and Amazon Web Services Service Namespaces in the *Amazon
-#' Web Services General Reference*.
+#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation will be executed. For more information about ARNs, see Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces in the *Amazon Web Services General Reference*.
 #' @param PermissionSetArn &#91;required&#93; The ARN of the permission set.
 #'
 #' @keywords internal
@@ -1099,13 +1018,8 @@ ssoadmin_describe_permission_set <- function(InstanceArn, PermissionSetArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssoadmin_describe_permission_set_provisioning_status/](https://www.paws-r-sdk.com/docs/ssoadmin_describe_permission_set_provisioning_status/) for full documentation.
 #'
-#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
-#' will be executed. For more information about ARNs, see Amazon Resource
-#' Names (ARNs) and Amazon Web Services Service Namespaces in the *Amazon
-#' Web Services General Reference*.
-#' @param ProvisionPermissionSetRequestId &#91;required&#93; The identifier that is provided by the
-#' [`provision_permission_set`][ssoadmin_provision_permission_set] call to
-#' retrieve the current status of the provisioning workflow.
+#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation will be executed. For more information about ARNs, see Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces in the *Amazon Web Services General Reference*.
+#' @param ProvisionPermissionSetRequestId &#91;required&#93; The identifier that is provided by the [`provision_permission_set`][ssoadmin_provision_permission_set] call to retrieve the current status of the provisioning workflow.
 #'
 #' @keywords internal
 #'
@@ -1129,6 +1043,39 @@ ssoadmin_describe_permission_set_provisioning_status <- function(InstanceArn, Pr
 }
 .ssoadmin$operations$describe_permission_set_provisioning_status <- ssoadmin_describe_permission_set_provisioning_status
 
+#' Retrieves details about a specific Region enabled in an IAM Identity
+#' Center instance
+#'
+#' @description
+#' Retrieves details about a specific Region enabled in an IAM Identity Center instance. Details include the Region name, current status (ACTIVE, ADDING, or REMOVING), the date when the Region was added, and whether it is the primary Region. The request must be made from one of the enabled Regions of the IAM Identity Center instance.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ssoadmin_describe_region/](https://www.paws-r-sdk.com/docs/ssoadmin_describe_region/) for full documentation.
+#'
+#' @param InstanceArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM Identity Center instance.
+#' @param RegionName &#91;required&#93; The name of the Amazon Web Services Region to retrieve information about. The Region name must be 1-32 characters long and follow the pattern of Amazon Web Services Region names (for example, us-east-1).
+#'
+#' @keywords internal
+#'
+#' @rdname ssoadmin_describe_region
+ssoadmin_describe_region <- function(InstanceArn, RegionName) {
+  op <- new_operation(
+    name = "DescribeRegion",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ssoadmin$describe_region_input(InstanceArn = InstanceArn, RegionName = RegionName)
+  output <- .ssoadmin$describe_region_output()
+  config <- get_config()
+  svc <- .ssoadmin$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ssoadmin$operations$describe_region <- ssoadmin_describe_region
+
 #' Retrieves details about a trusted token issuer configuration stored in
 #' an instance of IAM Identity Center
 #'
@@ -1137,8 +1084,7 @@ ssoadmin_describe_permission_set_provisioning_status <- function(InstanceArn, Pr
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssoadmin_describe_trusted_token_issuer/](https://www.paws-r-sdk.com/docs/ssoadmin_describe_trusted_token_issuer/) for full documentation.
 #'
-#' @param TrustedTokenIssuerArn &#91;required&#93; Specifies the ARN of the trusted token issuer configuration that you
-#' want details about.
+#' @param TrustedTokenIssuerArn &#91;required&#93; Specifies the ARN of the trusted token issuer configuration that you want details about.
 #'
 #' @keywords internal
 #'
@@ -1170,17 +1116,14 @@ ssoadmin_describe_trusted_token_issuer <- function(TrustedTokenIssuerArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssoadmin_detach_customer_managed_policy_reference_from_permission_set/](https://www.paws-r-sdk.com/docs/ssoadmin_detach_customer_managed_policy_reference_from_permission_set/) for full documentation.
 #'
-#' @param CustomerManagedPolicyReference &#91;required&#93; Specifies the name and path of a customer managed policy. You must have
-#' an IAM policy that matches the name and path in each Amazon Web Services
-#' account where you want to deploy your permission set.
-#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
-#' will be executed.
+#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation will be executed.
 #' @param PermissionSetArn &#91;required&#93; The ARN of the `PermissionSet`.
+#' @param CustomerManagedPolicyReference &#91;required&#93; Specifies the name and path of a customer managed policy. You must have an IAM policy that matches the name and path in each Amazon Web Services account where you want to deploy your permission set.
 #'
 #' @keywords internal
 #'
 #' @rdname ssoadmin_detac_custo_manag_polic_refer_from_permi_set
-ssoadmin_detach_customer_managed_policy_reference_from_permission_set <- function(CustomerManagedPolicyReference, InstanceArn, PermissionSetArn) {
+ssoadmin_detach_customer_managed_policy_reference_from_permission_set <- function(InstanceArn, PermissionSetArn, CustomerManagedPolicyReference) {
   op <- new_operation(
     name = "DetachCustomerManagedPolicyReferenceFromPermissionSet",
     http_method = "POST",
@@ -1189,7 +1132,7 @@ ssoadmin_detach_customer_managed_policy_reference_from_permission_set <- functio
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ssoadmin$detach_customer_managed_policy_reference_from_permission_set_input(CustomerManagedPolicyReference = CustomerManagedPolicyReference, InstanceArn = InstanceArn, PermissionSetArn = PermissionSetArn)
+  input <- .ssoadmin$detach_customer_managed_policy_reference_from_permission_set_input(InstanceArn = InstanceArn, PermissionSetArn = PermissionSetArn, CustomerManagedPolicyReference = CustomerManagedPolicyReference)
   output <- .ssoadmin$detach_customer_managed_policy_reference_from_permission_set_output()
   config <- get_config()
   svc <- .ssoadmin$service(config, op)
@@ -1207,18 +1150,14 @@ ssoadmin_detach_customer_managed_policy_reference_from_permission_set <- functio
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssoadmin_detach_managed_policy_from_permission_set/](https://www.paws-r-sdk.com/docs/ssoadmin_detach_managed_policy_from_permission_set/) for full documentation.
 #'
-#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
-#' will be executed. For more information about ARNs, see Amazon Resource
-#' Names (ARNs) and Amazon Web Services Service Namespaces in the *Amazon
-#' Web Services General Reference*.
-#' @param ManagedPolicyArn &#91;required&#93; The Amazon Web Services managed policy ARN to be detached from a
-#' permission set.
+#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation will be executed. For more information about ARNs, see Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces in the *Amazon Web Services General Reference*.
 #' @param PermissionSetArn &#91;required&#93; The ARN of the PermissionSet from which the policy should be detached.
+#' @param ManagedPolicyArn &#91;required&#93; The Amazon Web Services managed policy ARN to be detached from a permission set.
 #'
 #' @keywords internal
 #'
 #' @rdname ssoadmin_detach_managed_policy_from_permission_set
-ssoadmin_detach_managed_policy_from_permission_set <- function(InstanceArn, ManagedPolicyArn, PermissionSetArn) {
+ssoadmin_detach_managed_policy_from_permission_set <- function(InstanceArn, PermissionSetArn, ManagedPolicyArn) {
   op <- new_operation(
     name = "DetachManagedPolicyFromPermissionSet",
     http_method = "POST",
@@ -1227,7 +1166,7 @@ ssoadmin_detach_managed_policy_from_permission_set <- function(InstanceArn, Mana
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ssoadmin$detach_managed_policy_from_permission_set_input(InstanceArn = InstanceArn, ManagedPolicyArn = ManagedPolicyArn, PermissionSetArn = PermissionSetArn)
+  input <- .ssoadmin$detach_managed_policy_from_permission_set_input(InstanceArn = InstanceArn, PermissionSetArn = PermissionSetArn, ManagedPolicyArn = ManagedPolicyArn)
   output <- .ssoadmin$detach_managed_policy_from_permission_set_output()
   config <- get_config()
   svc <- .ssoadmin$service(config, op)
@@ -1245,10 +1184,8 @@ ssoadmin_detach_managed_policy_from_permission_set <- function(InstanceArn, Mana
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssoadmin_get_application_access_scope/](https://www.paws-r-sdk.com/docs/ssoadmin_get_application_access_scope/) for full documentation.
 #'
-#' @param ApplicationArn &#91;required&#93; Specifies the ARN of the application with the access scope that you want
-#' to retrieve.
-#' @param Scope &#91;required&#93; Specifies the name of the access scope for which you want the authorized
-#' targets.
+#' @param ApplicationArn &#91;required&#93; Specifies the ARN of the application with the access scope that you want to retrieve.
+#' @param Scope &#91;required&#93; Specifies the name of the access scope for which you want the authorized targets.
 #'
 #' @keywords internal
 #'
@@ -1279,9 +1216,7 @@ ssoadmin_get_application_access_scope <- function(ApplicationArn, Scope) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssoadmin_get_application_assignment_configuration/](https://www.paws-r-sdk.com/docs/ssoadmin_get_application_assignment_configuration/) for full documentation.
 #'
-#' @param ApplicationArn &#91;required&#93; Specifies the ARN of the application. For more information about ARNs,
-#' see Amazon Resource Names (ARNs) and Amazon Web Services Service
-#' Namespaces in the *Amazon Web Services General Reference*.
+#' @param ApplicationArn &#91;required&#93; Specifies the ARN of the application. For more information about ARNs, see Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces in the *Amazon Web Services General Reference*.
 #'
 #' @keywords internal
 #'
@@ -1369,6 +1304,38 @@ ssoadmin_get_application_grant <- function(ApplicationArn, GrantType) {
 }
 .ssoadmin$operations$get_application_grant <- ssoadmin_get_application_grant
 
+#' Retrieves the session configuration for an application in IAM Identity
+#' Center
+#'
+#' @description
+#' Retrieves the session configuration for an application in IAM Identity Center.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ssoadmin_get_application_session_configuration/](https://www.paws-r-sdk.com/docs/ssoadmin_get_application_session_configuration/) for full documentation.
+#'
+#' @param ApplicationArn &#91;required&#93; The Amazon Resource Name (ARN) of the application for which to retrieve the session configuration.
+#'
+#' @keywords internal
+#'
+#' @rdname ssoadmin_get_application_session_configuration
+ssoadmin_get_application_session_configuration <- function(ApplicationArn) {
+  op <- new_operation(
+    name = "GetApplicationSessionConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ssoadmin$get_application_session_configuration_input(ApplicationArn = ApplicationArn)
+  output <- .ssoadmin$get_application_session_configuration_output()
+  config <- get_config()
+  svc <- .ssoadmin$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ssoadmin$operations$get_application_session_configuration <- ssoadmin_get_application_session_configuration
+
 #' Obtains the inline policy assigned to the permission set
 #'
 #' @description
@@ -1376,10 +1343,7 @@ ssoadmin_get_application_grant <- function(ApplicationArn, GrantType) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssoadmin_get_inline_policy_for_permission_set/](https://www.paws-r-sdk.com/docs/ssoadmin_get_inline_policy_for_permission_set/) for full documentation.
 #'
-#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
-#' will be executed. For more information about ARNs, see Amazon Resource
-#' Names (ARNs) and Amazon Web Services Service Namespaces in the *Amazon
-#' Web Services General Reference*.
+#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation will be executed. For more information about ARNs, see Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces in the *Amazon Web Services General Reference*.
 #' @param PermissionSetArn &#91;required&#93; The ARN of the permission set.
 #'
 #' @keywords internal
@@ -1411,8 +1375,7 @@ ssoadmin_get_inline_policy_for_permission_set <- function(InstanceArn, Permissio
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssoadmin_get_permissions_boundary_for_permission_set/](https://www.paws-r-sdk.com/docs/ssoadmin_get_permissions_boundary_for_permission_set/) for full documentation.
 #'
-#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
-#' will be executed.
+#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation will be executed.
 #' @param PermissionSetArn &#91;required&#93; The ARN of the `PermissionSet`.
 #'
 #' @keywords internal
@@ -1445,19 +1408,15 @@ ssoadmin_get_permissions_boundary_for_permission_set <- function(InstanceArn, Pe
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssoadmin_list_account_assignment_creation_status/](https://www.paws-r-sdk.com/docs/ssoadmin_list_account_assignment_creation_status/) for full documentation.
 #'
-#' @param Filter Filters results based on the passed attribute value.
-#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
-#' will be executed. For more information about ARNs, see Amazon Resource
-#' Names (ARNs) and Amazon Web Services Service Namespaces in the *Amazon
-#' Web Services General Reference*.
+#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation will be executed. For more information about ARNs, see Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces in the *Amazon Web Services General Reference*.
 #' @param MaxResults The maximum number of results to display for the assignment.
-#' @param NextToken The pagination token for the list API. Initially the value is null. Use
-#' the output of previous API calls to make subsequent calls.
+#' @param NextToken The pagination token for the list API. Initially the value is null. Use the output of previous API calls to make subsequent calls.
+#' @param Filter Filters results based on the passed attribute value.
 #'
 #' @keywords internal
 #'
 #' @rdname ssoadmin_list_account_assignment_creation_status
-ssoadmin_list_account_assignment_creation_status <- function(Filter = NULL, InstanceArn, MaxResults = NULL, NextToken = NULL) {
+ssoadmin_list_account_assignment_creation_status <- function(InstanceArn, MaxResults = NULL, NextToken = NULL, Filter = NULL) {
   op <- new_operation(
     name = "ListAccountAssignmentCreationStatus",
     http_method = "POST",
@@ -1466,7 +1425,7 @@ ssoadmin_list_account_assignment_creation_status <- function(Filter = NULL, Inst
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AccountAssignmentsCreationStatus"),
     stream_api = FALSE
   )
-  input <- .ssoadmin$list_account_assignment_creation_status_input(Filter = Filter, InstanceArn = InstanceArn, MaxResults = MaxResults, NextToken = NextToken)
+  input <- .ssoadmin$list_account_assignment_creation_status_input(InstanceArn = InstanceArn, MaxResults = MaxResults, NextToken = NextToken, Filter = Filter)
   output <- .ssoadmin$list_account_assignment_creation_status_output()
   config <- get_config()
   svc <- .ssoadmin$service(config, op)
@@ -1484,19 +1443,15 @@ ssoadmin_list_account_assignment_creation_status <- function(Filter = NULL, Inst
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssoadmin_list_account_assignment_deletion_status/](https://www.paws-r-sdk.com/docs/ssoadmin_list_account_assignment_deletion_status/) for full documentation.
 #'
-#' @param Filter Filters results based on the passed attribute value.
-#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
-#' will be executed. For more information about ARNs, see Amazon Resource
-#' Names (ARNs) and Amazon Web Services Service Namespaces in the *Amazon
-#' Web Services General Reference*.
+#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation will be executed. For more information about ARNs, see Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces in the *Amazon Web Services General Reference*.
 #' @param MaxResults The maximum number of results to display for the assignment.
-#' @param NextToken The pagination token for the list API. Initially the value is null. Use
-#' the output of previous API calls to make subsequent calls.
+#' @param NextToken The pagination token for the list API. Initially the value is null. Use the output of previous API calls to make subsequent calls.
+#' @param Filter Filters results based on the passed attribute value.
 #'
 #' @keywords internal
 #'
 #' @rdname ssoadmin_list_account_assignment_deletion_status
-ssoadmin_list_account_assignment_deletion_status <- function(Filter = NULL, InstanceArn, MaxResults = NULL, NextToken = NULL) {
+ssoadmin_list_account_assignment_deletion_status <- function(InstanceArn, MaxResults = NULL, NextToken = NULL, Filter = NULL) {
   op <- new_operation(
     name = "ListAccountAssignmentDeletionStatus",
     http_method = "POST",
@@ -1505,7 +1460,7 @@ ssoadmin_list_account_assignment_deletion_status <- function(Filter = NULL, Inst
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AccountAssignmentsDeletionStatus"),
     stream_api = FALSE
   )
-  input <- .ssoadmin$list_account_assignment_deletion_status_input(Filter = Filter, InstanceArn = InstanceArn, MaxResults = MaxResults, NextToken = NextToken)
+  input <- .ssoadmin$list_account_assignment_deletion_status_input(InstanceArn = InstanceArn, MaxResults = MaxResults, NextToken = NextToken, Filter = Filter)
   output <- .ssoadmin$list_account_assignment_deletion_status_output()
   config <- get_config()
   svc <- .ssoadmin$service(config, op)
@@ -1523,21 +1478,16 @@ ssoadmin_list_account_assignment_deletion_status <- function(Filter = NULL, Inst
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssoadmin_list_account_assignments/](https://www.paws-r-sdk.com/docs/ssoadmin_list_account_assignments/) for full documentation.
 #'
-#' @param AccountId &#91;required&#93; The identifier of the Amazon Web Services account from which to list the
-#' assignments.
-#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
-#' will be executed. For more information about ARNs, see Amazon Resource
-#' Names (ARNs) and Amazon Web Services Service Namespaces in the *Amazon
-#' Web Services General Reference*.
-#' @param MaxResults The maximum number of results to display for the assignment.
-#' @param NextToken The pagination token for the list API. Initially the value is null. Use
-#' the output of previous API calls to make subsequent calls.
+#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation will be executed. For more information about ARNs, see Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces in the *Amazon Web Services General Reference*.
+#' @param AccountId &#91;required&#93; The identifier of the Amazon Web Services account from which to list the assignments.
 #' @param PermissionSetArn &#91;required&#93; The ARN of the permission set from which to list assignments.
+#' @param MaxResults The maximum number of results to display for the assignment.
+#' @param NextToken The pagination token for the list API. Initially the value is null. Use the output of previous API calls to make subsequent calls.
 #'
 #' @keywords internal
 #'
 #' @rdname ssoadmin_list_account_assignments
-ssoadmin_list_account_assignments <- function(AccountId, InstanceArn, MaxResults = NULL, NextToken = NULL, PermissionSetArn) {
+ssoadmin_list_account_assignments <- function(InstanceArn, AccountId, PermissionSetArn, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListAccountAssignments",
     http_method = "POST",
@@ -1546,7 +1496,7 @@ ssoadmin_list_account_assignments <- function(AccountId, InstanceArn, MaxResults
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AccountAssignments"),
     stream_api = FALSE
   )
-  input <- .ssoadmin$list_account_assignments_input(AccountId = AccountId, InstanceArn = InstanceArn, MaxResults = MaxResults, NextToken = NextToken, PermissionSetArn = PermissionSetArn)
+  input <- .ssoadmin$list_account_assignments_input(InstanceArn = InstanceArn, AccountId = AccountId, PermissionSetArn = PermissionSetArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssoadmin$list_account_assignments_output()
   config <- get_config()
   svc <- .ssoadmin$service(config, op)
@@ -1560,35 +1510,21 @@ ssoadmin_list_account_assignments <- function(AccountId, InstanceArn, MaxResults
 #' Services accounts that the principal has access to
 #'
 #' @description
-#' Retrieves a list of the IAM Identity Center associated Amazon Web Services accounts that the principal has access to.
+#' Retrieves a list of the IAM Identity Center associated Amazon Web Services accounts that the principal has access to. This action must be called from the management account containing your organization instance of IAM Identity Center. This action is not valid for account instances of IAM Identity Center.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssoadmin_list_account_assignments_for_principal/](https://www.paws-r-sdk.com/docs/ssoadmin_list_account_assignments_for_principal/) for full documentation.
 #'
-#' @param Filter Specifies an Amazon Web Services account ID number. Results are filtered
-#' to only those that match this ID number.
-#' @param InstanceArn &#91;required&#93; Specifies the ARN of the instance of IAM Identity Center that contains
-#' the principal.
-#' @param MaxResults Specifies the total number of results that you want included in each
-#' response. If additional items exist beyond the number you specify, the
-#' `NextToken` response element is returned with a value (not null).
-#' Include the specified value as the `NextToken` request parameter in the
-#' next call to the operation to get the next set of results. Note that the
-#' service might return fewer results than the maximum even when there are
-#' more results available. You should check `NextToken` after every
-#' operation to ensure that you receive all of the results.
-#' @param NextToken Specifies that you want to receive the next page of results. Valid only
-#' if you received a `NextToken` response in the previous request. If you
-#' did, it indicates that more output is available. Set this parameter to
-#' the value provided by the previous call's `NextToken` response to
-#' request the next page of results.
-#' @param PrincipalId &#91;required&#93; Specifies the principal for which you want to retrieve the list of
-#' account assignments.
+#' @param InstanceArn &#91;required&#93; Specifies the ARN of the instance of IAM Identity Center that contains the principal.
+#' @param PrincipalId &#91;required&#93; Specifies the principal for which you want to retrieve the list of account assignments.
 #' @param PrincipalType &#91;required&#93; Specifies the type of the principal.
+#' @param Filter Specifies an Amazon Web Services account ID number. Results are filtered to only those that match this ID number.
+#' @param NextToken Specifies that you want to receive the next page of results. Valid only if you received a `NextToken` response in the previous request. If you did, it indicates that more output is available. Set this parameter to the value provided by the previous call's `NextToken` response to request the next page of results.
+#' @param MaxResults Specifies the total number of results that you want included in each response. If additional items exist beyond the number you specify, the `NextToken` response element is returned with a value (not null). Include the specified value as the `NextToken` request parameter in the next call to the operation to get the next set of results. Note that the service might return fewer results than the maximum even when there are more results available. You should check `NextToken` after every operation to ensure that you receive all of the results.
 #'
 #' @keywords internal
 #'
 #' @rdname ssoadmin_list_account_assignments_for_principal
-ssoadmin_list_account_assignments_for_principal <- function(Filter = NULL, InstanceArn, MaxResults = NULL, NextToken = NULL, PrincipalId, PrincipalType) {
+ssoadmin_list_account_assignments_for_principal <- function(InstanceArn, PrincipalId, PrincipalType, Filter = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListAccountAssignmentsForPrincipal",
     http_method = "POST",
@@ -1597,7 +1533,7 @@ ssoadmin_list_account_assignments_for_principal <- function(Filter = NULL, Insta
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AccountAssignments"),
     stream_api = FALSE
   )
-  input <- .ssoadmin$list_account_assignments_for_principal_input(Filter = Filter, InstanceArn = InstanceArn, MaxResults = MaxResults, NextToken = NextToken, PrincipalId = PrincipalId, PrincipalType = PrincipalType)
+  input <- .ssoadmin$list_account_assignments_for_principal_input(InstanceArn = InstanceArn, PrincipalId = PrincipalId, PrincipalType = PrincipalType, Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ssoadmin$list_account_assignments_for_principal_output()
   config <- get_config()
   svc <- .ssoadmin$service(config, op)
@@ -1615,22 +1551,16 @@ ssoadmin_list_account_assignments_for_principal <- function(Filter = NULL, Insta
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssoadmin_list_accounts_for_provisioned_permission_set/](https://www.paws-r-sdk.com/docs/ssoadmin_list_accounts_for_provisioned_permission_set/) for full documentation.
 #'
-#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
-#' will be executed. For more information about ARNs, see Amazon Resource
-#' Names (ARNs) and Amazon Web Services Service Namespaces in the *Amazon
-#' Web Services General Reference*.
+#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation will be executed. For more information about ARNs, see Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces in the *Amazon Web Services General Reference*.
+#' @param PermissionSetArn &#91;required&#93; The ARN of the PermissionSet from which the associated Amazon Web Services accounts will be listed.
+#' @param ProvisioningStatus The permission set provisioning status for an Amazon Web Services account.
 #' @param MaxResults The maximum number of results to display for the PermissionSet.
-#' @param NextToken The pagination token for the list API. Initially the value is null. Use
-#' the output of previous API calls to make subsequent calls.
-#' @param PermissionSetArn &#91;required&#93; The ARN of the PermissionSet from which the associated Amazon Web
-#' Services accounts will be listed.
-#' @param ProvisioningStatus The permission set provisioning status for an Amazon Web Services
-#' account.
+#' @param NextToken The pagination token for the list API. Initially the value is null. Use the output of previous API calls to make subsequent calls.
 #'
 #' @keywords internal
 #'
 #' @rdname ssoadmin_list_accounts_for_provisioned_permission_set
-ssoadmin_list_accounts_for_provisioned_permission_set <- function(InstanceArn, MaxResults = NULL, NextToken = NULL, PermissionSetArn, ProvisioningStatus = NULL) {
+ssoadmin_list_accounts_for_provisioned_permission_set <- function(InstanceArn, PermissionSetArn, ProvisioningStatus = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListAccountsForProvisionedPermissionSet",
     http_method = "POST",
@@ -1639,7 +1569,7 @@ ssoadmin_list_accounts_for_provisioned_permission_set <- function(InstanceArn, M
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AccountIds"),
     stream_api = FALSE
   )
-  input <- .ssoadmin$list_accounts_for_provisioned_permission_set_input(InstanceArn = InstanceArn, MaxResults = MaxResults, NextToken = NextToken, PermissionSetArn = PermissionSetArn, ProvisioningStatus = ProvisioningStatus)
+  input <- .ssoadmin$list_accounts_for_provisioned_permission_set_input(InstanceArn = InstanceArn, PermissionSetArn = PermissionSetArn, ProvisioningStatus = ProvisioningStatus, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssoadmin$list_accounts_for_provisioned_permission_set_output()
   config <- get_config()
   svc <- .ssoadmin$service(config, op)
@@ -1658,19 +1588,8 @@ ssoadmin_list_accounts_for_provisioned_permission_set <- function(InstanceArn, M
 #' See [https://www.paws-r-sdk.com/docs/ssoadmin_list_application_access_scopes/](https://www.paws-r-sdk.com/docs/ssoadmin_list_application_access_scopes/) for full documentation.
 #'
 #' @param ApplicationArn &#91;required&#93; Specifies the ARN of the application.
-#' @param MaxResults Specifies the total number of results that you want included in each
-#' response. If additional items exist beyond the number you specify, the
-#' `NextToken` response element is returned with a value (not null).
-#' Include the specified value as the `NextToken` request parameter in the
-#' next call to the operation to get the next set of results. Note that the
-#' service might return fewer results than the maximum even when there are
-#' more results available. You should check `NextToken` after every
-#' operation to ensure that you receive all of the results.
-#' @param NextToken Specifies that you want to receive the next page of results. Valid only
-#' if you received a `NextToken` response in the previous request. If you
-#' did, it indicates that more output is available. Set this parameter to
-#' the value provided by the previous call's `NextToken` response to
-#' request the next page of results.
+#' @param MaxResults Specifies the total number of results that you want included in each response. If additional items exist beyond the number you specify, the `NextToken` response element is returned with a value (not null). Include the specified value as the `NextToken` request parameter in the next call to the operation to get the next set of results. Note that the service might return fewer results than the maximum even when there are more results available. You should check `NextToken` after every operation to ensure that you receive all of the results.
+#' @param NextToken Specifies that you want to receive the next page of results. Valid only if you received a `NextToken` response in the previous request. If you did, it indicates that more output is available. Set this parameter to the value provided by the previous call's `NextToken` response to request the next page of results.
 #'
 #' @keywords internal
 #'
@@ -1703,19 +1622,8 @@ ssoadmin_list_application_access_scopes <- function(ApplicationArn, MaxResults =
 #' See [https://www.paws-r-sdk.com/docs/ssoadmin_list_application_assignments/](https://www.paws-r-sdk.com/docs/ssoadmin_list_application_assignments/) for full documentation.
 #'
 #' @param ApplicationArn &#91;required&#93; Specifies the ARN of the application.
-#' @param MaxResults Specifies the total number of results that you want included in each
-#' response. If additional items exist beyond the number you specify, the
-#' `NextToken` response element is returned with a value (not null).
-#' Include the specified value as the `NextToken` request parameter in the
-#' next call to the operation to get the next set of results. Note that the
-#' service might return fewer results than the maximum even when there are
-#' more results available. You should check `NextToken` after every
-#' operation to ensure that you receive all of the results.
-#' @param NextToken Specifies that you want to receive the next page of results. Valid only
-#' if you received a `NextToken` response in the previous request. If you
-#' did, it indicates that more output is available. Set this parameter to
-#' the value provided by the previous call's `NextToken` response to
-#' request the next page of results.
+#' @param MaxResults Specifies the total number of results that you want included in each response. If additional items exist beyond the number you specify, the `NextToken` response element is returned with a value (not null). Include the specified value as the `NextToken` request parameter in the next call to the operation to get the next set of results. Note that the service might return fewer results than the maximum even when there are more results available. You should check `NextToken` after every operation to ensure that you receive all of the results.
+#' @param NextToken Specifies that you want to receive the next page of results. Valid only if you received a `NextToken` response in the previous request. If you did, it indicates that more output is available. Set this parameter to the value provided by the previous call's `NextToken` response to request the next page of results.
 #'
 #' @keywords internal
 #'
@@ -1742,36 +1650,21 @@ ssoadmin_list_application_assignments <- function(ApplicationArn, MaxResults = N
 #' Lists the applications to which a specified principal is assigned
 #'
 #' @description
-#' Lists the applications to which a specified principal is assigned.
+#' Lists the applications to which a specified principal is assigned. You must provide a filter when calling this action from a member account against your organization instance of IAM Identity Center. A filter is not required when called from the management account against an organization instance of IAM Identity Center, or from a member account against an account instance of IAM Identity Center in the same account.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssoadmin_list_application_assignments_for_principal/](https://www.paws-r-sdk.com/docs/ssoadmin_list_application_assignments_for_principal/) for full documentation.
 #'
-#' @param Filter Filters the output to include only assignments associated with the
-#' application that has the specified ARN.
-#' @param InstanceArn &#91;required&#93; Specifies the instance of IAM Identity Center that contains principal
-#' and applications.
-#' @param MaxResults Specifies the total number of results that you want included in each
-#' response. If additional items exist beyond the number you specify, the
-#' `NextToken` response element is returned with a value (not null).
-#' Include the specified value as the `NextToken` request parameter in the
-#' next call to the operation to get the next set of results. Note that the
-#' service might return fewer results than the maximum even when there are
-#' more results available. You should check `NextToken` after every
-#' operation to ensure that you receive all of the results.
-#' @param NextToken Specifies that you want to receive the next page of results. Valid only
-#' if you received a `NextToken` response in the previous request. If you
-#' did, it indicates that more output is available. Set this parameter to
-#' the value provided by the previous call's `NextToken` response to
-#' request the next page of results.
-#' @param PrincipalId &#91;required&#93; Specifies the unique identifier of the principal for which you want to
-#' retrieve its assignments.
-#' @param PrincipalType &#91;required&#93; Specifies the type of the principal for which you want to retrieve its
-#' assignments.
+#' @param InstanceArn &#91;required&#93; Specifies the instance of IAM Identity Center that contains principal and applications.
+#' @param PrincipalId &#91;required&#93; Specifies the unique identifier of the principal for which you want to retrieve its assignments.
+#' @param PrincipalType &#91;required&#93; Specifies the type of the principal for which you want to retrieve its assignments.
+#' @param Filter Filters the output to include only assignments associated with the application that has the specified ARN.
+#' @param NextToken Specifies that you want to receive the next page of results. Valid only if you received a `NextToken` response in the previous request. If you did, it indicates that more output is available. Set this parameter to the value provided by the previous call's `NextToken` response to request the next page of results.
+#' @param MaxResults Specifies the total number of results that you want included in each response. If additional items exist beyond the number you specify, the `NextToken` response element is returned with a value (not null). Include the specified value as the `NextToken` request parameter in the next call to the operation to get the next set of results. Note that the service might return fewer results than the maximum even when there are more results available. You should check `NextToken` after every operation to ensure that you receive all of the results.
 #'
 #' @keywords internal
 #'
 #' @rdname ssoadmin_list_application_assignments_for_principal
-ssoadmin_list_application_assignments_for_principal <- function(Filter = NULL, InstanceArn, MaxResults = NULL, NextToken = NULL, PrincipalId, PrincipalType) {
+ssoadmin_list_application_assignments_for_principal <- function(InstanceArn, PrincipalId, PrincipalType, Filter = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListApplicationAssignmentsForPrincipal",
     http_method = "POST",
@@ -1780,7 +1673,7 @@ ssoadmin_list_application_assignments_for_principal <- function(Filter = NULL, I
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ApplicationAssignments"),
     stream_api = FALSE
   )
-  input <- .ssoadmin$list_application_assignments_for_principal_input(Filter = Filter, InstanceArn = InstanceArn, MaxResults = MaxResults, NextToken = NextToken, PrincipalId = PrincipalId, PrincipalType = PrincipalType)
+  input <- .ssoadmin$list_application_assignments_for_principal_input(InstanceArn = InstanceArn, PrincipalId = PrincipalId, PrincipalType = PrincipalType, Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ssoadmin$list_application_assignments_for_principal_output()
   config <- get_config()
   svc <- .ssoadmin$service(config, op)
@@ -1798,13 +1691,8 @@ ssoadmin_list_application_assignments_for_principal <- function(Filter = NULL, I
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssoadmin_list_application_authentication_methods/](https://www.paws-r-sdk.com/docs/ssoadmin_list_application_authentication_methods/) for full documentation.
 #'
-#' @param ApplicationArn &#91;required&#93; Specifies the ARN of the application with the authentication methods you
-#' want to list.
-#' @param NextToken Specifies that you want to receive the next page of results. Valid only
-#' if you received a `NextToken` response in the previous request. If you
-#' did, it indicates that more output is available. Set this parameter to
-#' the value provided by the previous call's `NextToken` response to
-#' request the next page of results.
+#' @param ApplicationArn &#91;required&#93; Specifies the ARN of the application with the authentication methods you want to list.
+#' @param NextToken Specifies that you want to receive the next page of results. Valid only if you received a `NextToken` response in the previous request. If you did, it indicates that more output is available. Set this parameter to the value provided by the previous call's `NextToken` response to request the next page of results.
 #'
 #' @keywords internal
 #'
@@ -1836,11 +1724,7 @@ ssoadmin_list_application_authentication_methods <- function(ApplicationArn, Nex
 #' See [https://www.paws-r-sdk.com/docs/ssoadmin_list_application_grants/](https://www.paws-r-sdk.com/docs/ssoadmin_list_application_grants/) for full documentation.
 #'
 #' @param ApplicationArn &#91;required&#93; Specifies the ARN of the application whose grants you want to list.
-#' @param NextToken Specifies that you want to receive the next page of results. Valid only
-#' if you received a `NextToken` response in the previous request. If you
-#' did, it indicates that more output is available. Set this parameter to
-#' the value provided by the previous call's `NextToken` response to
-#' request the next page of results.
+#' @param NextToken Specifies that you want to receive the next page of results. Valid only if you received a `NextToken` response in the previous request. If you did, it indicates that more output is available. Set this parameter to the value provided by the previous call's `NextToken` response to request the next page of results.
 #'
 #' @keywords internal
 #'
@@ -1872,19 +1756,8 @@ ssoadmin_list_application_grants <- function(ApplicationArn, NextToken = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssoadmin_list_application_providers/](https://www.paws-r-sdk.com/docs/ssoadmin_list_application_providers/) for full documentation.
 #'
-#' @param MaxResults Specifies the total number of results that you want included in each
-#' response. If additional items exist beyond the number you specify, the
-#' `NextToken` response element is returned with a value (not null).
-#' Include the specified value as the `NextToken` request parameter in the
-#' next call to the operation to get the next set of results. Note that the
-#' service might return fewer results than the maximum even when there are
-#' more results available. You should check `NextToken` after every
-#' operation to ensure that you receive all of the results.
-#' @param NextToken Specifies that you want to receive the next page of results. Valid only
-#' if you received a `NextToken` response in the previous request. If you
-#' did, it indicates that more output is available. Set this parameter to
-#' the value provided by the previous call's `NextToken` response to
-#' request the next page of results.
+#' @param MaxResults Specifies the total number of results that you want included in each response. If additional items exist beyond the number you specify, the `NextToken` response element is returned with a value (not null). Include the specified value as the `NextToken` request parameter in the next call to the operation to get the next set of results. Note that the service might return fewer results than the maximum even when there are more results available. You should check `NextToken` after every operation to ensure that you receive all of the results.
+#' @param NextToken Specifies that you want to receive the next page of results. Valid only if you received a `NextToken` response in the previous request. If you did, it indicates that more output is available. Set this parameter to the value provided by the previous call's `NextToken` response to request the next page of results.
 #'
 #' @keywords internal
 #'
@@ -1912,33 +1785,19 @@ ssoadmin_list_application_providers <- function(MaxResults = NULL, NextToken = N
 #' Center
 #'
 #' @description
-#' Lists all applications associated with the instance of IAM Identity Center. When listing applications for an instance in the management account, member accounts must use the `applicationAccount` parameter to filter the list to only applications created from that account.
+#' Lists all applications associated with the instance of IAM Identity Center. When listing applications for an organization instance in the management account, member accounts must use the `applicationAccount` parameter to filter the list to only applications created from that account. When listing applications for an account instance in the same member account, a filter is not required.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssoadmin_list_applications/](https://www.paws-r-sdk.com/docs/ssoadmin_list_applications/) for full documentation.
 #'
+#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center application under which the operation will run. For more information about ARNs, see Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces in the *Amazon Web Services General Reference*.
+#' @param MaxResults Specifies the total number of results that you want included in each response. If additional items exist beyond the number you specify, the `NextToken` response element is returned with a value (not null). Include the specified value as the `NextToken` request parameter in the next call to the operation to get the next set of results. Note that the service might return fewer results than the maximum even when there are more results available. You should check `NextToken` after every operation to ensure that you receive all of the results.
+#' @param NextToken Specifies that you want to receive the next page of results. Valid only if you received a `NextToken` response in the previous request. If you did, it indicates that more output is available. Set this parameter to the value provided by the previous call's `NextToken` response to request the next page of results.
 #' @param Filter Filters response results.
-#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center application under which the operation
-#' will run. For more information about ARNs, see Amazon Resource Names
-#' (ARNs) and Amazon Web Services Service Namespaces in the *Amazon Web
-#' Services General Reference*.
-#' @param MaxResults Specifies the total number of results that you want included in each
-#' response. If additional items exist beyond the number you specify, the
-#' `NextToken` response element is returned with a value (not null).
-#' Include the specified value as the `NextToken` request parameter in the
-#' next call to the operation to get the next set of results. Note that the
-#' service might return fewer results than the maximum even when there are
-#' more results available. You should check `NextToken` after every
-#' operation to ensure that you receive all of the results.
-#' @param NextToken Specifies that you want to receive the next page of results. Valid only
-#' if you received a `NextToken` response in the previous request. If you
-#' did, it indicates that more output is available. Set this parameter to
-#' the value provided by the previous call's `NextToken` response to
-#' request the next page of results.
 #'
 #' @keywords internal
 #'
 #' @rdname ssoadmin_list_applications
-ssoadmin_list_applications <- function(Filter = NULL, InstanceArn, MaxResults = NULL, NextToken = NULL) {
+ssoadmin_list_applications <- function(InstanceArn, MaxResults = NULL, NextToken = NULL, Filter = NULL) {
   op <- new_operation(
     name = "ListApplications",
     http_method = "POST",
@@ -1947,7 +1806,7 @@ ssoadmin_list_applications <- function(Filter = NULL, InstanceArn, MaxResults = 
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Applications"),
     stream_api = FALSE
   )
-  input <- .ssoadmin$list_applications_input(Filter = Filter, InstanceArn = InstanceArn, MaxResults = MaxResults, NextToken = NextToken)
+  input <- .ssoadmin$list_applications_input(InstanceArn = InstanceArn, MaxResults = MaxResults, NextToken = NextToken, Filter = Filter)
   output <- .ssoadmin$list_applications_output()
   config <- get_config()
   svc <- .ssoadmin$service(config, op)
@@ -1965,17 +1824,15 @@ ssoadmin_list_applications <- function(Filter = NULL, InstanceArn, MaxResults = 
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssoadmin_list_customer_managed_policy_references_in_permission_set/](https://www.paws-r-sdk.com/docs/ssoadmin_list_customer_managed_policy_references_in_permission_set/) for full documentation.
 #'
-#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
-#' will be executed.
-#' @param MaxResults The maximum number of results to display for the list call.
-#' @param NextToken The pagination token for the list API. Initially the value is null. Use
-#' the output of previous API calls to make subsequent calls.
+#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation will be executed.
 #' @param PermissionSetArn &#91;required&#93; The ARN of the `PermissionSet`.
+#' @param MaxResults The maximum number of results to display for the list call.
+#' @param NextToken The pagination token for the list API. Initially the value is null. Use the output of previous API calls to make subsequent calls.
 #'
 #' @keywords internal
 #'
 #' @rdname ssoadmin_list_custo_manag_polic_refer_in_permi_set
-ssoadmin_list_customer_managed_policy_references_in_permission_set <- function(InstanceArn, MaxResults = NULL, NextToken = NULL, PermissionSetArn) {
+ssoadmin_list_customer_managed_policy_references_in_permission_set <- function(InstanceArn, PermissionSetArn, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListCustomerManagedPolicyReferencesInPermissionSet",
     http_method = "POST",
@@ -1984,7 +1841,7 @@ ssoadmin_list_customer_managed_policy_references_in_permission_set <- function(I
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "CustomerManagedPolicyReferences"),
     stream_api = FALSE
   )
-  input <- .ssoadmin$list_customer_managed_policy_references_in_permission_set_input(InstanceArn = InstanceArn, MaxResults = MaxResults, NextToken = NextToken, PermissionSetArn = PermissionSetArn)
+  input <- .ssoadmin$list_customer_managed_policy_references_in_permission_set_input(InstanceArn = InstanceArn, PermissionSetArn = PermissionSetArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssoadmin$list_customer_managed_policy_references_in_permission_set_output()
   config <- get_config()
   svc <- .ssoadmin$service(config, op)
@@ -2004,8 +1861,7 @@ ssoadmin_list_customer_managed_policy_references_in_permission_set <- function(I
 #' See [https://www.paws-r-sdk.com/docs/ssoadmin_list_instances/](https://www.paws-r-sdk.com/docs/ssoadmin_list_instances/) for full documentation.
 #'
 #' @param MaxResults The maximum number of results to display for the instance.
-#' @param NextToken The pagination token for the list API. Initially the value is null. Use
-#' the output of previous API calls to make subsequent calls.
+#' @param NextToken The pagination token for the list API. Initially the value is null. Use the output of previous API calls to make subsequent calls.
 #'
 #' @keywords internal
 #'
@@ -2037,19 +1893,15 @@ ssoadmin_list_instances <- function(MaxResults = NULL, NextToken = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssoadmin_list_managed_policies_in_permission_set/](https://www.paws-r-sdk.com/docs/ssoadmin_list_managed_policies_in_permission_set/) for full documentation.
 #'
-#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
-#' will be executed. For more information about ARNs, see Amazon Resource
-#' Names (ARNs) and Amazon Web Services Service Namespaces in the *Amazon
-#' Web Services General Reference*.
-#' @param MaxResults The maximum number of results to display for the PermissionSet.
-#' @param NextToken The pagination token for the list API. Initially the value is null. Use
-#' the output of previous API calls to make subsequent calls.
+#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation will be executed. For more information about ARNs, see Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces in the *Amazon Web Services General Reference*.
 #' @param PermissionSetArn &#91;required&#93; The ARN of the PermissionSet whose managed policies will be listed.
+#' @param MaxResults The maximum number of results to display for the PermissionSet.
+#' @param NextToken The pagination token for the list API. Initially the value is null. Use the output of previous API calls to make subsequent calls.
 #'
 #' @keywords internal
 #'
 #' @rdname ssoadmin_list_managed_policies_in_permission_set
-ssoadmin_list_managed_policies_in_permission_set <- function(InstanceArn, MaxResults = NULL, NextToken = NULL, PermissionSetArn) {
+ssoadmin_list_managed_policies_in_permission_set <- function(InstanceArn, PermissionSetArn, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListManagedPoliciesInPermissionSet",
     http_method = "POST",
@@ -2058,7 +1910,7 @@ ssoadmin_list_managed_policies_in_permission_set <- function(InstanceArn, MaxRes
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AttachedManagedPolicies"),
     stream_api = FALSE
   )
-  input <- .ssoadmin$list_managed_policies_in_permission_set_input(InstanceArn = InstanceArn, MaxResults = MaxResults, NextToken = NextToken, PermissionSetArn = PermissionSetArn)
+  input <- .ssoadmin$list_managed_policies_in_permission_set_input(InstanceArn = InstanceArn, PermissionSetArn = PermissionSetArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssoadmin$list_managed_policies_in_permission_set_output()
   config <- get_config()
   svc <- .ssoadmin$service(config, op)
@@ -2076,19 +1928,15 @@ ssoadmin_list_managed_policies_in_permission_set <- function(InstanceArn, MaxRes
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssoadmin_list_permission_set_provisioning_status/](https://www.paws-r-sdk.com/docs/ssoadmin_list_permission_set_provisioning_status/) for full documentation.
 #'
-#' @param Filter Filters results based on the passed attribute value.
-#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
-#' will be executed. For more information about ARNs, see Amazon Resource
-#' Names (ARNs) and Amazon Web Services Service Namespaces in the *Amazon
-#' Web Services General Reference*.
+#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation will be executed. For more information about ARNs, see Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces in the *Amazon Web Services General Reference*.
 #' @param MaxResults The maximum number of results to display for the assignment.
-#' @param NextToken The pagination token for the list API. Initially the value is null. Use
-#' the output of previous API calls to make subsequent calls.
+#' @param NextToken The pagination token for the list API. Initially the value is null. Use the output of previous API calls to make subsequent calls.
+#' @param Filter Filters results based on the passed attribute value.
 #'
 #' @keywords internal
 #'
 #' @rdname ssoadmin_list_permission_set_provisioning_status
-ssoadmin_list_permission_set_provisioning_status <- function(Filter = NULL, InstanceArn, MaxResults = NULL, NextToken = NULL) {
+ssoadmin_list_permission_set_provisioning_status <- function(InstanceArn, MaxResults = NULL, NextToken = NULL, Filter = NULL) {
   op <- new_operation(
     name = "ListPermissionSetProvisioningStatus",
     http_method = "POST",
@@ -2097,7 +1945,7 @@ ssoadmin_list_permission_set_provisioning_status <- function(Filter = NULL, Inst
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "PermissionSetsProvisioningStatus"),
     stream_api = FALSE
   )
-  input <- .ssoadmin$list_permission_set_provisioning_status_input(Filter = Filter, InstanceArn = InstanceArn, MaxResults = MaxResults, NextToken = NextToken)
+  input <- .ssoadmin$list_permission_set_provisioning_status_input(InstanceArn = InstanceArn, MaxResults = MaxResults, NextToken = NextToken, Filter = Filter)
   output <- .ssoadmin$list_permission_set_provisioning_status_output()
   config <- get_config()
   svc <- .ssoadmin$service(config, op)
@@ -2114,18 +1962,14 @@ ssoadmin_list_permission_set_provisioning_status <- function(Filter = NULL, Inst
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssoadmin_list_permission_sets/](https://www.paws-r-sdk.com/docs/ssoadmin_list_permission_sets/) for full documentation.
 #'
-#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
-#' will be executed. For more information about ARNs, see Amazon Resource
-#' Names (ARNs) and Amazon Web Services Service Namespaces in the *Amazon
-#' Web Services General Reference*.
+#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation will be executed. For more information about ARNs, see Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces in the *Amazon Web Services General Reference*.
+#' @param NextToken The pagination token for the list API. Initially the value is null. Use the output of previous API calls to make subsequent calls.
 #' @param MaxResults The maximum number of results to display for the assignment.
-#' @param NextToken The pagination token for the list API. Initially the value is null. Use
-#' the output of previous API calls to make subsequent calls.
 #'
 #' @keywords internal
 #'
 #' @rdname ssoadmin_list_permission_sets
-ssoadmin_list_permission_sets <- function(InstanceArn, MaxResults = NULL, NextToken = NULL) {
+ssoadmin_list_permission_sets <- function(InstanceArn, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListPermissionSets",
     http_method = "POST",
@@ -2134,7 +1978,7 @@ ssoadmin_list_permission_sets <- function(InstanceArn, MaxResults = NULL, NextTo
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "PermissionSets"),
     stream_api = FALSE
   )
-  input <- .ssoadmin$list_permission_sets_input(InstanceArn = InstanceArn, MaxResults = MaxResults, NextToken = NextToken)
+  input <- .ssoadmin$list_permission_sets_input(InstanceArn = InstanceArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ssoadmin$list_permission_sets_output()
   config <- get_config()
   svc <- .ssoadmin$service(config, op)
@@ -2152,21 +1996,16 @@ ssoadmin_list_permission_sets <- function(InstanceArn, MaxResults = NULL, NextTo
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssoadmin_list_permission_sets_provisioned_to_account/](https://www.paws-r-sdk.com/docs/ssoadmin_list_permission_sets_provisioned_to_account/) for full documentation.
 #'
-#' @param AccountId &#91;required&#93; The identifier of the Amazon Web Services account from which to list the
-#' assignments.
-#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
-#' will be executed. For more information about ARNs, see Amazon Resource
-#' Names (ARNs) and Amazon Web Services Service Namespaces in the *Amazon
-#' Web Services General Reference*.
-#' @param MaxResults The maximum number of results to display for the assignment.
-#' @param NextToken The pagination token for the list API. Initially the value is null. Use
-#' the output of previous API calls to make subsequent calls.
+#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation will be executed. For more information about ARNs, see Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces in the *Amazon Web Services General Reference*.
+#' @param AccountId &#91;required&#93; The identifier of the Amazon Web Services account from which to list the assignments.
 #' @param ProvisioningStatus The status object for the permission set provisioning operation.
+#' @param MaxResults The maximum number of results to display for the assignment.
+#' @param NextToken The pagination token for the list API. Initially the value is null. Use the output of previous API calls to make subsequent calls.
 #'
 #' @keywords internal
 #'
 #' @rdname ssoadmin_list_permission_sets_provisioned_to_account
-ssoadmin_list_permission_sets_provisioned_to_account <- function(AccountId, InstanceArn, MaxResults = NULL, NextToken = NULL, ProvisioningStatus = NULL) {
+ssoadmin_list_permission_sets_provisioned_to_account <- function(InstanceArn, AccountId, ProvisioningStatus = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListPermissionSetsProvisionedToAccount",
     http_method = "POST",
@@ -2175,7 +2014,7 @@ ssoadmin_list_permission_sets_provisioned_to_account <- function(AccountId, Inst
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "PermissionSets"),
     stream_api = FALSE
   )
-  input <- .ssoadmin$list_permission_sets_provisioned_to_account_input(AccountId = AccountId, InstanceArn = InstanceArn, MaxResults = MaxResults, NextToken = NextToken, ProvisioningStatus = ProvisioningStatus)
+  input <- .ssoadmin$list_permission_sets_provisioned_to_account_input(InstanceArn = InstanceArn, AccountId = AccountId, ProvisioningStatus = ProvisioningStatus, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssoadmin$list_permission_sets_provisioned_to_account_output()
   config <- get_config()
   svc <- .ssoadmin$service(config, op)
@@ -2185,6 +2024,40 @@ ssoadmin_list_permission_sets_provisioned_to_account <- function(AccountId, Inst
 }
 .ssoadmin$operations$list_permission_sets_provisioned_to_account <- ssoadmin_list_permission_sets_provisioned_to_account
 
+#' Lists all enabled Regions of an IAM Identity Center instance, including
+#' those that are being added or removed
+#'
+#' @description
+#' Lists all enabled Regions of an IAM Identity Center instance, including those that are being added or removed. This operation returns Regions with ACTIVE, ADDING, or REMOVING status.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ssoadmin_list_regions/](https://www.paws-r-sdk.com/docs/ssoadmin_list_regions/) for full documentation.
+#'
+#' @param InstanceArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM Identity Center instance.
+#' @param MaxResults The maximum number of results to return in a single call. Default is 100.
+#' @param NextToken The pagination token for the list API. Initially the value is null. Use the output of previous API calls to make subsequent calls.
+#'
+#' @keywords internal
+#'
+#' @rdname ssoadmin_list_regions
+ssoadmin_list_regions <- function(InstanceArn, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListRegions",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Regions"),
+    stream_api = FALSE
+  )
+  input <- .ssoadmin$list_regions_input(InstanceArn = InstanceArn, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .ssoadmin$list_regions_output()
+  config <- get_config()
+  svc <- .ssoadmin$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ssoadmin$operations$list_regions <- ssoadmin_list_regions
+
 #' Lists the tags that are attached to a specified resource
 #'
 #' @description
@@ -2192,18 +2065,14 @@ ssoadmin_list_permission_sets_provisioned_to_account <- function(AccountId, Inst
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssoadmin_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/ssoadmin_list_tags_for_resource/) for full documentation.
 #'
-#' @param InstanceArn The ARN of the IAM Identity Center instance under which the operation
-#' will be executed. For more information about ARNs, see Amazon Resource
-#' Names (ARNs) and Amazon Web Services Service Namespaces in the *Amazon
-#' Web Services General Reference*.
-#' @param NextToken The pagination token for the list API. Initially the value is null. Use
-#' the output of previous API calls to make subsequent calls.
+#' @param InstanceArn The ARN of the IAM Identity Center instance under which the operation will be executed. For more information about ARNs, see Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces in the *Amazon Web Services General Reference*.
 #' @param ResourceArn &#91;required&#93; The ARN of the resource with the tags to be listed.
+#' @param NextToken The pagination token for the list API. Initially the value is null. Use the output of previous API calls to make subsequent calls.
 #'
 #' @keywords internal
 #'
 #' @rdname ssoadmin_list_tags_for_resource
-ssoadmin_list_tags_for_resource <- function(InstanceArn = NULL, NextToken = NULL, ResourceArn) {
+ssoadmin_list_tags_for_resource <- function(InstanceArn = NULL, ResourceArn, NextToken = NULL) {
   op <- new_operation(
     name = "ListTagsForResource",
     http_method = "POST",
@@ -2212,7 +2081,7 @@ ssoadmin_list_tags_for_resource <- function(InstanceArn = NULL, NextToken = NULL
     paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Tags"),
     stream_api = FALSE
   )
-  input <- .ssoadmin$list_tags_for_resource_input(InstanceArn = InstanceArn, NextToken = NextToken, ResourceArn = ResourceArn)
+  input <- .ssoadmin$list_tags_for_resource_input(InstanceArn = InstanceArn, ResourceArn = ResourceArn, NextToken = NextToken)
   output <- .ssoadmin$list_tags_for_resource_output()
   config <- get_config()
   svc <- .ssoadmin$service(config, op)
@@ -2230,21 +2099,9 @@ ssoadmin_list_tags_for_resource <- function(InstanceArn = NULL, NextToken = NULL
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssoadmin_list_trusted_token_issuers/](https://www.paws-r-sdk.com/docs/ssoadmin_list_trusted_token_issuers/) for full documentation.
 #'
-#' @param InstanceArn &#91;required&#93; Specifies the ARN of the instance of IAM Identity Center with the
-#' trusted token issuer configurations that you want to list.
-#' @param MaxResults Specifies the total number of results that you want included in each
-#' response. If additional items exist beyond the number you specify, the
-#' `NextToken` response element is returned with a value (not null).
-#' Include the specified value as the `NextToken` request parameter in the
-#' next call to the operation to get the next set of results. Note that the
-#' service might return fewer results than the maximum even when there are
-#' more results available. You should check `NextToken` after every
-#' operation to ensure that you receive all of the results.
-#' @param NextToken Specifies that you want to receive the next page of results. Valid only
-#' if you received a `NextToken` response in the previous request. If you
-#' did, it indicates that more output is available. Set this parameter to
-#' the value provided by the previous call's `NextToken` response to
-#' request the next page of results.
+#' @param InstanceArn &#91;required&#93; Specifies the ARN of the instance of IAM Identity Center with the trusted token issuer configurations that you want to list.
+#' @param MaxResults Specifies the total number of results that you want included in each response. If additional items exist beyond the number you specify, the `NextToken` response element is returned with a value (not null). Include the specified value as the `NextToken` request parameter in the next call to the operation to get the next set of results. Note that the service might return fewer results than the maximum even when there are more results available. You should check `NextToken` after every operation to ensure that you receive all of the results.
+#' @param NextToken Specifies that you want to receive the next page of results. Valid only if you received a `NextToken` response in the previous request. If you did, it indicates that more output is available. Set this parameter to the value provided by the previous call's `NextToken` response to request the next page of results.
 #'
 #' @keywords internal
 #'
@@ -2276,13 +2133,9 @@ ssoadmin_list_trusted_token_issuers <- function(InstanceArn, MaxResults = NULL, 
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssoadmin_provision_permission_set/](https://www.paws-r-sdk.com/docs/ssoadmin_provision_permission_set/) for full documentation.
 #'
-#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
-#' will be executed. For more information about ARNs, see Amazon Resource
-#' Names (ARNs) and Amazon Web Services Service Namespaces in the *Amazon
-#' Web Services General Reference*.
+#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation will be executed. For more information about ARNs, see Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces in the *Amazon Web Services General Reference*.
 #' @param PermissionSetArn &#91;required&#93; The ARN of the permission set.
-#' @param TargetId TargetID is an Amazon Web Services account identifier, (For example,
-#' 123456789012).
+#' @param TargetId TargetID is an Amazon Web Services account identifier, (For example, 123456789012).
 #' @param TargetType &#91;required&#93; The entity type for which the assignment will be created.
 #'
 #' @keywords internal
@@ -2315,17 +2168,14 @@ ssoadmin_provision_permission_set <- function(InstanceArn, PermissionSetArn, Tar
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssoadmin_put_application_access_scope/](https://www.paws-r-sdk.com/docs/ssoadmin_put_application_access_scope/) for full documentation.
 #'
-#' @param ApplicationArn &#91;required&#93; Specifies the ARN of the application with the access scope with the
-#' targets to add or update.
-#' @param AuthorizedTargets Specifies an array list of ARNs that represent the authorized targets
-#' for this access scope.
-#' @param Scope &#91;required&#93; Specifies the name of the access scope to be associated with the
-#' specified targets.
+#' @param Scope &#91;required&#93; Specifies the name of the access scope to be associated with the specified targets.
+#' @param AuthorizedTargets Specifies an array list of ARNs that represent the authorized targets for this access scope.
+#' @param ApplicationArn &#91;required&#93; Specifies the ARN of the application with the access scope with the targets to add or update.
 #'
 #' @keywords internal
 #'
 #' @rdname ssoadmin_put_application_access_scope
-ssoadmin_put_application_access_scope <- function(ApplicationArn, AuthorizedTargets = NULL, Scope) {
+ssoadmin_put_application_access_scope <- function(Scope, AuthorizedTargets = NULL, ApplicationArn) {
   op <- new_operation(
     name = "PutApplicationAccessScope",
     http_method = "POST",
@@ -2334,7 +2184,7 @@ ssoadmin_put_application_access_scope <- function(ApplicationArn, AuthorizedTarg
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ssoadmin$put_application_access_scope_input(ApplicationArn = ApplicationArn, AuthorizedTargets = AuthorizedTargets, Scope = Scope)
+  input <- .ssoadmin$put_application_access_scope_input(Scope = Scope, AuthorizedTargets = AuthorizedTargets, ApplicationArn = ApplicationArn)
   output <- .ssoadmin$put_application_access_scope_output()
   config <- get_config()
   svc <- .ssoadmin$service(config, op)
@@ -2351,14 +2201,8 @@ ssoadmin_put_application_access_scope <- function(ApplicationArn, AuthorizedTarg
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssoadmin_put_application_assignment_configuration/](https://www.paws-r-sdk.com/docs/ssoadmin_put_application_assignment_configuration/) for full documentation.
 #'
-#' @param ApplicationArn &#91;required&#93; Specifies the ARN of the application. For more information about ARNs,
-#' see Amazon Resource Names (ARNs) and Amazon Web Services Service
-#' Namespaces in the *Amazon Web Services General Reference*.
-#' @param AssignmentRequired &#91;required&#93; If `AssignmentsRequired` is `true` (default value), users don’t have
-#' access to the application unless an assignment is created using the
-#' [CreateApplicationAssignment
-#' API](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_CreateApplicationAssignment.html).
-#' If `false`, all users have access to the application.
+#' @param ApplicationArn &#91;required&#93; Specifies the ARN of the application. For more information about ARNs, see Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces in the *Amazon Web Services General Reference*.
+#' @param AssignmentRequired &#91;required&#93; If `AssignmentsRequired` is `true` (default value), users don’t have access to the application unless an assignment is created using the [CreateApplicationAssignment API](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_CreateApplicationAssignment.html). If `false`, all users have access to the application.
 #'
 #' @keywords internal
 #'
@@ -2389,18 +2233,14 @@ ssoadmin_put_application_assignment_configuration <- function(ApplicationArn, As
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssoadmin_put_application_authentication_method/](https://www.paws-r-sdk.com/docs/ssoadmin_put_application_authentication_method/) for full documentation.
 #'
-#' @param ApplicationArn &#91;required&#93; Specifies the ARN of the application with the authentication method to
-#' add or update.
-#' @param AuthenticationMethod &#91;required&#93; Specifies a structure that describes the authentication method to add or
-#' update. The structure type you provide is determined by the
-#' `AuthenticationMethodType` parameter.
-#' @param AuthenticationMethodType &#91;required&#93; Specifies the type of the authentication method that you want to add or
-#' update.
+#' @param ApplicationArn &#91;required&#93; Specifies the ARN of the application with the authentication method to add or update.
+#' @param AuthenticationMethodType &#91;required&#93; Specifies the type of the authentication method that you want to add or update.
+#' @param AuthenticationMethod &#91;required&#93; Specifies a structure that describes the authentication method to add or update. The structure type you provide is determined by the `AuthenticationMethodType` parameter.
 #'
 #' @keywords internal
 #'
 #' @rdname ssoadmin_put_application_authentication_method
-ssoadmin_put_application_authentication_method <- function(ApplicationArn, AuthenticationMethod, AuthenticationMethodType) {
+ssoadmin_put_application_authentication_method <- function(ApplicationArn, AuthenticationMethodType, AuthenticationMethod) {
   op <- new_operation(
     name = "PutApplicationAuthenticationMethod",
     http_method = "POST",
@@ -2409,7 +2249,7 @@ ssoadmin_put_application_authentication_method <- function(ApplicationArn, Authe
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ssoadmin$put_application_authentication_method_input(ApplicationArn = ApplicationArn, AuthenticationMethod = AuthenticationMethod, AuthenticationMethodType = AuthenticationMethodType)
+  input <- .ssoadmin$put_application_authentication_method_input(ApplicationArn = ApplicationArn, AuthenticationMethodType = AuthenticationMethodType, AuthenticationMethod = AuthenticationMethod)
   output <- .ssoadmin$put_application_authentication_method_output()
   config <- get_config()
   svc <- .ssoadmin$service(config, op)
@@ -2419,21 +2259,21 @@ ssoadmin_put_application_authentication_method <- function(ApplicationArn, Authe
 }
 .ssoadmin$operations$put_application_authentication_method <- ssoadmin_put_application_authentication_method
 
-#' Adds a grant to an application
+#' Creates a configuration for an application to use grants
 #'
 #' @description
-#' Adds a grant to an application.
+#' Creates a configuration for an application to use grants. Conceptually grants are authorization to request actions related to tokens. This configuration will be used when parties are requesting and receiving tokens during the trusted identity propagation process. For more information on the IAM Identity Center supported grant workflows, see [SAML 2.0 and OAuth 2.0](https://docs.aws.amazon.com/singlesignon/latest/userguide/customermanagedapps-saml2-oauth2.html).
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssoadmin_put_application_grant/](https://www.paws-r-sdk.com/docs/ssoadmin_put_application_grant/) for full documentation.
 #'
 #' @param ApplicationArn &#91;required&#93; Specifies the ARN of the application to update.
-#' @param Grant &#91;required&#93; Specifies a structure that describes the grant to update.
 #' @param GrantType &#91;required&#93; Specifies the type of grant to update.
+#' @param Grant &#91;required&#93; Specifies a structure that describes the grant to update.
 #'
 #' @keywords internal
 #'
 #' @rdname ssoadmin_put_application_grant
-ssoadmin_put_application_grant <- function(ApplicationArn, Grant, GrantType) {
+ssoadmin_put_application_grant <- function(ApplicationArn, GrantType, Grant) {
   op <- new_operation(
     name = "PutApplicationGrant",
     http_method = "POST",
@@ -2442,7 +2282,7 @@ ssoadmin_put_application_grant <- function(ApplicationArn, Grant, GrantType) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ssoadmin$put_application_grant_input(ApplicationArn = ApplicationArn, Grant = Grant, GrantType = GrantType)
+  input <- .ssoadmin$put_application_grant_input(ApplicationArn = ApplicationArn, GrantType = GrantType, Grant = Grant)
   output <- .ssoadmin$put_application_grant_output()
   config <- get_config()
   svc <- .ssoadmin$service(config, op)
@@ -2452,6 +2292,39 @@ ssoadmin_put_application_grant <- function(ApplicationArn, Grant, GrantType) {
 }
 .ssoadmin$operations$put_application_grant <- ssoadmin_put_application_grant
 
+#' Updates the session configuration for an application in IAM Identity
+#' Center
+#'
+#' @description
+#' Updates the session configuration for an application in IAM Identity Center.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ssoadmin_put_application_session_configuration/](https://www.paws-r-sdk.com/docs/ssoadmin_put_application_session_configuration/) for full documentation.
+#'
+#' @param ApplicationArn &#91;required&#93; The Amazon Resource Name (ARN) of the application for which to update the session configuration.
+#' @param UserBackgroundSessionApplicationStatus The status of user background sessions for the application.
+#'
+#' @keywords internal
+#'
+#' @rdname ssoadmin_put_application_session_configuration
+ssoadmin_put_application_session_configuration <- function(ApplicationArn, UserBackgroundSessionApplicationStatus = NULL) {
+  op <- new_operation(
+    name = "PutApplicationSessionConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ssoadmin$put_application_session_configuration_input(ApplicationArn = ApplicationArn, UserBackgroundSessionApplicationStatus = UserBackgroundSessionApplicationStatus)
+  output <- .ssoadmin$put_application_session_configuration_output()
+  config <- get_config()
+  svc <- .ssoadmin$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ssoadmin$operations$put_application_session_configuration <- ssoadmin_put_application_session_configuration
+
 #' Attaches an inline policy to a permission set
 #'
 #' @description
@@ -2459,17 +2332,14 @@ ssoadmin_put_application_grant <- function(ApplicationArn, Grant, GrantType) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssoadmin_put_inline_policy_to_permission_set/](https://www.paws-r-sdk.com/docs/ssoadmin_put_inline_policy_to_permission_set/) for full documentation.
 #'
-#' @param InlinePolicy &#91;required&#93; The inline policy to attach to a PermissionSet.
-#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
-#' will be executed. For more information about ARNs, see Amazon Resource
-#' Names (ARNs) and Amazon Web Services Service Namespaces in the *Amazon
-#' Web Services General Reference*.
+#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation will be executed. For more information about ARNs, see Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces in the *Amazon Web Services General Reference*.
 #' @param PermissionSetArn &#91;required&#93; The ARN of the permission set.
+#' @param InlinePolicy &#91;required&#93; The inline policy to attach to a PermissionSet.
 #'
 #' @keywords internal
 #'
 #' @rdname ssoadmin_put_inline_policy_to_permission_set
-ssoadmin_put_inline_policy_to_permission_set <- function(InlinePolicy, InstanceArn, PermissionSetArn) {
+ssoadmin_put_inline_policy_to_permission_set <- function(InstanceArn, PermissionSetArn, InlinePolicy) {
   op <- new_operation(
     name = "PutInlinePolicyToPermissionSet",
     http_method = "POST",
@@ -2478,7 +2348,7 @@ ssoadmin_put_inline_policy_to_permission_set <- function(InlinePolicy, InstanceA
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ssoadmin$put_inline_policy_to_permission_set_input(InlinePolicy = InlinePolicy, InstanceArn = InstanceArn, PermissionSetArn = PermissionSetArn)
+  input <- .ssoadmin$put_inline_policy_to_permission_set_input(InstanceArn = InstanceArn, PermissionSetArn = PermissionSetArn, InlinePolicy = InlinePolicy)
   output <- .ssoadmin$put_inline_policy_to_permission_set_output()
   config <- get_config()
   svc <- .ssoadmin$service(config, op)
@@ -2496,8 +2366,7 @@ ssoadmin_put_inline_policy_to_permission_set <- function(InlinePolicy, InstanceA
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssoadmin_put_permissions_boundary_to_permission_set/](https://www.paws-r-sdk.com/docs/ssoadmin_put_permissions_boundary_to_permission_set/) for full documentation.
 #'
-#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
-#' will be executed.
+#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation will be executed.
 #' @param PermissionSetArn &#91;required&#93; The ARN of the `PermissionSet`.
 #' @param PermissionsBoundary &#91;required&#93; The permissions boundary that you want to attach to a `PermissionSet`.
 #'
@@ -2523,6 +2392,38 @@ ssoadmin_put_permissions_boundary_to_permission_set <- function(InstanceArn, Per
 }
 .ssoadmin$operations$put_permissions_boundary_to_permission_set <- ssoadmin_put_permissions_boundary_to_permission_set
 
+#' Removes an additional Region from an IAM Identity Center instance
+#'
+#' @description
+#' Removes an additional Region from an IAM Identity Center instance. This operation initiates an asynchronous workflow to clean up IAM Identity Center resources in the specified additional Region. The Region status is set to REMOVING and the Region record is deleted when the workflow completes. The request must be made from the primary Region. The target Region cannot be the primary Region, and no other add or remove Region workflows can be in progress.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ssoadmin_remove_region/](https://www.paws-r-sdk.com/docs/ssoadmin_remove_region/) for full documentation.
+#'
+#' @param InstanceArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM Identity Center instance.
+#' @param RegionName &#91;required&#93; The name of the Amazon Web Services Region to remove from the IAM Identity Center instance. The Region name must be 1-32 characters long and follow the pattern of Amazon Web Services Region names (for example, us-east-1). The primary Region cannot be removed.
+#'
+#' @keywords internal
+#'
+#' @rdname ssoadmin_remove_region
+ssoadmin_remove_region <- function(InstanceArn, RegionName) {
+  op <- new_operation(
+    name = "RemoveRegion",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ssoadmin$remove_region_input(InstanceArn = InstanceArn, RegionName = RegionName)
+  output <- .ssoadmin$remove_region_output()
+  config <- get_config()
+  svc <- .ssoadmin$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ssoadmin$operations$remove_region <- ssoadmin_remove_region
+
 #' Associates a set of tags with a specified resource
 #'
 #' @description
@@ -2530,10 +2431,7 @@ ssoadmin_put_permissions_boundary_to_permission_set <- function(InstanceArn, Per
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssoadmin_tag_resource/](https://www.paws-r-sdk.com/docs/ssoadmin_tag_resource/) for full documentation.
 #'
-#' @param InstanceArn The ARN of the IAM Identity Center instance under which the operation
-#' will be executed. For more information about ARNs, see Amazon Resource
-#' Names (ARNs) and Amazon Web Services Service Namespaces in the *Amazon
-#' Web Services General Reference*.
+#' @param InstanceArn The ARN of the IAM Identity Center instance under which the operation will be executed. For more information about ARNs, see Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces in the *Amazon Web Services General Reference*.
 #' @param ResourceArn &#91;required&#93; The ARN of the resource with the tags to be listed.
 #' @param Tags &#91;required&#93; A set of key-value pairs that are used to manage the resource.
 #'
@@ -2566,10 +2464,7 @@ ssoadmin_tag_resource <- function(InstanceArn = NULL, ResourceArn, Tags) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssoadmin_untag_resource/](https://www.paws-r-sdk.com/docs/ssoadmin_untag_resource/) for full documentation.
 #'
-#' @param InstanceArn The ARN of the IAM Identity Center instance under which the operation
-#' will be executed. For more information about ARNs, see Amazon Resource
-#' Names (ARNs) and Amazon Web Services Service Namespaces in the *Amazon
-#' Web Services General Reference*.
+#' @param InstanceArn The ARN of the IAM Identity Center instance under which the operation will be executed. For more information about ARNs, see Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces in the *Amazon Web Services General Reference*.
 #' @param ResourceArn &#91;required&#93; The ARN of the resource with the tags to be listed.
 #' @param TagKeys &#91;required&#93; The keys of tags that are attached to the resource.
 #'
@@ -2602,19 +2497,16 @@ ssoadmin_untag_resource <- function(InstanceArn = NULL, ResourceArn, TagKeys) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssoadmin_update_application/](https://www.paws-r-sdk.com/docs/ssoadmin_update_application/) for full documentation.
 #'
-#' @param ApplicationArn &#91;required&#93; Specifies the ARN of the application. For more information about ARNs,
-#' see Amazon Resource Names (ARNs) and Amazon Web Services Service
-#' Namespaces in the *Amazon Web Services General Reference*.
-#' @param Description The description of the .
+#' @param ApplicationArn &#91;required&#93; Specifies the ARN of the application. For more information about ARNs, see Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces in the *Amazon Web Services General Reference*.
 #' @param Name Specifies the updated name for the application.
-#' @param PortalOptions A structure that describes the options for the portal associated with an
-#' application.
+#' @param Description The description of the .
 #' @param Status Specifies whether the application is enabled or disabled.
+#' @param PortalOptions A structure that describes the options for the portal associated with an application.
 #'
 #' @keywords internal
 #'
 #' @rdname ssoadmin_update_application
-ssoadmin_update_application <- function(ApplicationArn, Description = NULL, Name = NULL, PortalOptions = NULL, Status = NULL) {
+ssoadmin_update_application <- function(ApplicationArn, Name = NULL, Description = NULL, Status = NULL, PortalOptions = NULL) {
   op <- new_operation(
     name = "UpdateApplication",
     http_method = "POST",
@@ -2623,7 +2515,7 @@ ssoadmin_update_application <- function(ApplicationArn, Description = NULL, Name
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ssoadmin$update_application_input(ApplicationArn = ApplicationArn, Description = Description, Name = Name, PortalOptions = PortalOptions, Status = Status)
+  input <- .ssoadmin$update_application_input(ApplicationArn = ApplicationArn, Name = Name, Description = Description, Status = Status, PortalOptions = PortalOptions)
   output <- .ssoadmin$update_application_output()
   config <- get_config()
   svc <- .ssoadmin$service(config, op)
@@ -2641,16 +2533,14 @@ ssoadmin_update_application <- function(ApplicationArn, Description = NULL, Name
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssoadmin_update_instance/](https://www.paws-r-sdk.com/docs/ssoadmin_update_instance/) for full documentation.
 #'
-#' @param InstanceArn &#91;required&#93; The ARN of the instance of IAM Identity Center under which the operation
-#' will run. For more information about ARNs, see Amazon Resource Names
-#' (ARNs) and Amazon Web Services Service Namespaces in the *Amazon Web
-#' Services General Reference*.
-#' @param Name &#91;required&#93; Updates the instance name.
+#' @param Name Updates the instance name.
+#' @param InstanceArn &#91;required&#93; The ARN of the instance of IAM Identity Center under which the operation will run. For more information about ARNs, see Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces in the *Amazon Web Services General Reference*.
+#' @param EncryptionConfiguration Specifies the encryption configuration for your IAM Identity Center instance. You can use this to configure customer managed KMS keys or Amazon Web Services owned KMS keys for encrypting your instance data.
 #'
 #' @keywords internal
 #'
 #' @rdname ssoadmin_update_instance
-ssoadmin_update_instance <- function(InstanceArn, Name) {
+ssoadmin_update_instance <- function(Name = NULL, InstanceArn, EncryptionConfiguration = NULL) {
   op <- new_operation(
     name = "UpdateInstance",
     http_method = "POST",
@@ -2659,7 +2549,7 @@ ssoadmin_update_instance <- function(InstanceArn, Name) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ssoadmin$update_instance_input(InstanceArn = InstanceArn, Name = Name)
+  input <- .ssoadmin$update_instance_input(Name = Name, InstanceArn = InstanceArn, EncryptionConfiguration = EncryptionConfiguration)
   output <- .ssoadmin$update_instance_output()
   config <- get_config()
   svc <- .ssoadmin$service(config, op)
@@ -2678,14 +2568,13 @@ ssoadmin_update_instance <- function(InstanceArn, Name) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssoadmin_update_instance_access_control_attribute_configuration/](https://www.paws-r-sdk.com/docs/ssoadmin_update_instance_access_control_attribute_configuration/) for full documentation.
 #'
+#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation will be executed.
 #' @param InstanceAccessControlAttributeConfiguration &#91;required&#93; Updates the attributes for your ABAC configuration.
-#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
-#' will be executed.
 #'
 #' @keywords internal
 #'
 #' @rdname ssoadmin_update_instanc_access_control_attribu_configu
-ssoadmin_update_instance_access_control_attribute_configuration <- function(InstanceAccessControlAttributeConfiguration, InstanceArn) {
+ssoadmin_update_instance_access_control_attribute_configuration <- function(InstanceArn, InstanceAccessControlAttributeConfiguration) {
   op <- new_operation(
     name = "UpdateInstanceAccessControlAttributeConfiguration",
     http_method = "POST",
@@ -2694,7 +2583,7 @@ ssoadmin_update_instance_access_control_attribute_configuration <- function(Inst
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ssoadmin$update_instance_access_control_attribute_configuration_input(InstanceAccessControlAttributeConfiguration = InstanceAccessControlAttributeConfiguration, InstanceArn = InstanceArn)
+  input <- .ssoadmin$update_instance_access_control_attribute_configuration_input(InstanceArn = InstanceArn, InstanceAccessControlAttributeConfiguration = InstanceAccessControlAttributeConfiguration)
   output <- .ssoadmin$update_instance_access_control_attribute_configuration_output()
   config <- get_config()
   svc <- .ssoadmin$service(config, op)
@@ -2711,21 +2600,16 @@ ssoadmin_update_instance_access_control_attribute_configuration <- function(Inst
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssoadmin_update_permission_set/](https://www.paws-r-sdk.com/docs/ssoadmin_update_permission_set/) for full documentation.
 #'
-#' @param Description The description of the PermissionSet.
-#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
-#' will be executed. For more information about ARNs, see Amazon Resource
-#' Names (ARNs) and Amazon Web Services Service Namespaces in the *Amazon
-#' Web Services General Reference*.
+#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation will be executed. For more information about ARNs, see Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces in the *Amazon Web Services General Reference*.
 #' @param PermissionSetArn &#91;required&#93; The ARN of the permission set.
-#' @param RelayState Used to redirect users within the application during the federation
-#' authentication process.
-#' @param SessionDuration The length of time that the application user sessions are valid for in
-#' the ISO-8601 standard.
+#' @param Description The description of the PermissionSet.
+#' @param SessionDuration The length of time that the application user sessions are valid for in the ISO-8601 standard.
+#' @param RelayState Used to redirect users within the application during the federation authentication process.
 #'
 #' @keywords internal
 #'
 #' @rdname ssoadmin_update_permission_set
-ssoadmin_update_permission_set <- function(Description = NULL, InstanceArn, PermissionSetArn, RelayState = NULL, SessionDuration = NULL) {
+ssoadmin_update_permission_set <- function(InstanceArn, PermissionSetArn, Description = NULL, SessionDuration = NULL, RelayState = NULL) {
   op <- new_operation(
     name = "UpdatePermissionSet",
     http_method = "POST",
@@ -2734,7 +2618,7 @@ ssoadmin_update_permission_set <- function(Description = NULL, InstanceArn, Perm
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ssoadmin$update_permission_set_input(Description = Description, InstanceArn = InstanceArn, PermissionSetArn = PermissionSetArn, RelayState = RelayState, SessionDuration = SessionDuration)
+  input <- .ssoadmin$update_permission_set_input(InstanceArn = InstanceArn, PermissionSetArn = PermissionSetArn, Description = Description, SessionDuration = SessionDuration, RelayState = RelayState)
   output <- .ssoadmin$update_permission_set_output()
   config <- get_config()
   svc <- .ssoadmin$service(config, op)
@@ -2753,18 +2637,14 @@ ssoadmin_update_permission_set <- function(Description = NULL, InstanceArn, Perm
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssoadmin_update_trusted_token_issuer/](https://www.paws-r-sdk.com/docs/ssoadmin_update_trusted_token_issuer/) for full documentation.
 #'
-#' @param Name Specifies the updated name to be applied to the trusted token issuer
-#' configuration.
-#' @param TrustedTokenIssuerArn &#91;required&#93; Specifies the ARN of the trusted token issuer configuration that you
-#' want to update.
-#' @param TrustedTokenIssuerConfiguration Specifies a structure with settings to apply to the specified trusted
-#' token issuer. The settings that you can provide are determined by the
-#' type of the trusted token issuer that you are updating.
+#' @param TrustedTokenIssuerArn &#91;required&#93; Specifies the ARN of the trusted token issuer configuration that you want to update.
+#' @param Name Specifies the updated name to be applied to the trusted token issuer configuration.
+#' @param TrustedTokenIssuerConfiguration Specifies a structure with settings to apply to the specified trusted token issuer. The settings that you can provide are determined by the type of the trusted token issuer that you are updating.
 #'
 #' @keywords internal
 #'
 #' @rdname ssoadmin_update_trusted_token_issuer
-ssoadmin_update_trusted_token_issuer <- function(Name = NULL, TrustedTokenIssuerArn, TrustedTokenIssuerConfiguration = NULL) {
+ssoadmin_update_trusted_token_issuer <- function(TrustedTokenIssuerArn, Name = NULL, TrustedTokenIssuerConfiguration = NULL) {
   op <- new_operation(
     name = "UpdateTrustedTokenIssuer",
     http_method = "POST",
@@ -2773,7 +2653,7 @@ ssoadmin_update_trusted_token_issuer <- function(Name = NULL, TrustedTokenIssuer
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ssoadmin$update_trusted_token_issuer_input(Name = Name, TrustedTokenIssuerArn = TrustedTokenIssuerArn, TrustedTokenIssuerConfiguration = TrustedTokenIssuerConfiguration)
+  input <- .ssoadmin$update_trusted_token_issuer_input(TrustedTokenIssuerArn = TrustedTokenIssuerArn, Name = Name, TrustedTokenIssuerConfiguration = TrustedTokenIssuerConfiguration)
   output <- .ssoadmin$update_trusted_token_issuer_output()
   config <- get_config()
   svc <- .ssoadmin$service(config, op)

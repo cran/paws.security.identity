@@ -22,9 +22,7 @@ guardduty_create_detector(
 
 \item{DataSources}{Describes which data sources will be enabled for the detector.
 
-There might be regional differences because some data sources might not
-be available in all the Amazon Web Services Regions where GuardDuty is
-presently supported. For more information, see \href{https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html}{Regions and endpoints}.}
+There might be regional differences because some data sources might not be available in all the Amazon Web Services Regions where GuardDuty is presently supported. For more information, see \href{https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html}{Regions and endpoints}.}
 
 \item{Tags}{The tags to be added to a new detector resource.}
 

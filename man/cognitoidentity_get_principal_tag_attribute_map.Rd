@@ -11,8 +11,7 @@ cognitoidentity_get_principal_tag_attribute_map(
 )
 }
 \arguments{
-\item{IdentityPoolId}{[required] You can use this operation to get the ID of the Identity Pool you setup
-attribute mappings for.}
+\item{IdentityPoolId}{[required] You can use this operation to get the ID of the Identity Pool you setup attribute mappings for.}
 
 \item{IdentityProviderName}{[required] You can use this operation to get the provider name.}
 }

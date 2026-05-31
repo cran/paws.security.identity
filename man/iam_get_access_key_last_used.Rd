@@ -9,8 +9,7 @@ iam_get_access_key_last_used(AccessKeyId)
 \arguments{
 \item{AccessKeyId}{[required] The identifier of an access key.
 
-This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
-that can consist of any upper or lowercased letter or digit.}
+This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters that can consist of any upper or lowercased letter or digit.}
 }
 \description{
 Retrieves information about when the specified access key was last used. The information includes the date and time of last use, along with the Amazon Web Services service and Region that were specified in the last request made with that key.

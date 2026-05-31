@@ -13,30 +13,23 @@ verifiedpermissions_list_identity_sources(
 )
 }
 \arguments{
-\item{policyStoreId}{[required] Specifies the ID of the policy store that contains the identity sources
-that you want to list.}
+\item{policyStoreId}{[required] Specifies the ID of the policy store that contains the identity sources that you want to list.
 
-\item{nextToken}{Specifies that you want to receive the next page of results. Valid only
-if you received a \code{NextToken} response in the previous request. If you
-did, it indicates that more output is available. Set this parameter to
-the value provided by the previous call's \code{NextToken} response to
-request the next page of results.}
+To specify a policy store, use its ID or alias name. When using an alias name, prefix it with \verb{policy-store-alias/}. For example:
+\itemize{
+\item ID: \code{PSEXAMPLEabcdefg111111}
+\item Alias name: \code{policy-store-alias/example-policy-store}
+}
 
-\item{maxResults}{Specifies the total number of results that you want included in each
-response. If additional items exist beyond the number you specify, the
-\code{NextToken} response element is returned with a value (not null).
-Include the specified value as the \code{NextToken} request parameter in the
-next call to the operation to get the next set of results. Note that the
-service might return fewer results than the maximum even when there are
-more results available. You should check \code{NextToken} after every
-operation to ensure that you receive all of the results.
+To view aliases, use \code{\link[=verifiedpermissions_list_policy_store_aliases]{list_policy_store_aliases}}.}
 
-If you do not specify this parameter, the operation defaults to 10
-identity sources per response. You can specify a maximum of 50 identity
-sources per response.}
+\item{nextToken}{Specifies that you want to receive the next page of results. Valid only if you received a \code{NextToken} response in the previous request. If you did, it indicates that more output is available. Set this parameter to the value provided by the previous call's \code{NextToken} response to request the next page of results.}
 
-\item{filters}{Specifies characteristics of an identity source that you can use to
-limit the output to matching identity sources.}
+\item{maxResults}{Specifies the total number of results that you want included in each response. If additional items exist beyond the number you specify, the \code{NextToken} response element is returned with a value (not null). Include the specified value as the \code{NextToken} request parameter in the next call to the operation to get the next set of results. Note that the service might return fewer results than the maximum even when there are more results available. You should check \code{NextToken} after every operation to ensure that you receive all of the results.
+
+If you do not specify this parameter, the operation defaults to 10 identity sources per response. You can specify a maximum of 50 identity sources per response.}
+
+\item{filters}{Specifies characteristics of an identity source that you can use to limit the output to matching identity sources.}
 }
 \description{
 Returns a paginated list of all of the identity sources defined in the specified policy store.

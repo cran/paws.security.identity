@@ -9,12 +9,9 @@ iam_tag_instance_profile(InstanceProfileName, Tags)
 \arguments{
 \item{InstanceProfileName}{[required] The name of the IAM instance profile to which you want to add tags.
 
-This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
-consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: _+=,.@-}
+This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-}
 
-\item{Tags}{[required] The list of tags that you want to attach to the IAM instance profile.
-Each tag consists of a key name and an associated value.}
+\item{Tags}{[required] The list of tags that you want to attach to the IAM instance profile. Each tag consists of a key name and an associated value.}
 }
 \description{
 Adds one or more tags to an IAM instance profile. If a tag with the same key name already exists, then that tag is overwritten with the new value.

@@ -8,8 +8,7 @@ ObjectType}
 clouddirectory_get_facet(SchemaArn, Name)
 }
 \arguments{
-\item{SchemaArn}{[required] The Amazon Resource Name (ARN) that is associated with the Facet. For
-more information, see arns.}
+\item{SchemaArn}{[required] The Amazon Resource Name (ARN) that is associated with the Facet. For more information, see arns.}
 
 \item{Name}{[required] The name of the facet to retrieve.}
 }

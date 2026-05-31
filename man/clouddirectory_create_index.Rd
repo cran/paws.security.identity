@@ -15,11 +15,9 @@ clouddirectory_create_index(
 \arguments{
 \item{DirectoryArn}{[required] The ARN of the directory where the index should be created.}
 
-\item{OrderedIndexedAttributeList}{[required] Specifies the attributes that should be indexed on. Currently only a
-single attribute is supported.}
+\item{OrderedIndexedAttributeList}{[required] Specifies the attributes that should be indexed on. Currently only a single attribute is supported.}
 
-\item{IsUnique}{[required] Indicates whether the attribute that is being indexed has unique values
-or not.}
+\item{IsUnique}{[required] Indicates whether the attribute that is being indexed has unique values or not.}
 
 \item{ParentReference}{A reference to the parent object that contains the index object.}
 

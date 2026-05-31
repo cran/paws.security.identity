@@ -10,11 +10,9 @@ cleanroomsml_delete_configured_model_algorithm_association(
 )
 }
 \arguments{
-\item{configuredModelAlgorithmAssociationArn}{[required] The Amazon Resource Name (ARN) of the configured model algorithm
-association that you want to delete.}
+\item{configuredModelAlgorithmAssociationArn}{[required] The Amazon Resource Name (ARN) of the configured model algorithm association that you want to delete.}
 
-\item{membershipIdentifier}{[required] The membership ID of the member that is deleting the configured model
-algorithm association.}
+\item{membershipIdentifier}{[required] The membership ID of the member that is deleting the configured model algorithm association.}
 }
 \description{
 Deletes a configured model algorithm association.

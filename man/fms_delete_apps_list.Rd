@@ -7,10 +7,7 @@
 fms_delete_apps_list(ListId)
 }
 \arguments{
-\item{ListId}{[required] The ID of the applications list that you want to delete. You can
-retrieve this ID from \code{\link[=fms_put_apps_list]{put_apps_list}},
-\code{\link[=fms_list_apps_lists]{list_apps_lists}}, and
-\code{\link[=fms_get_apps_list]{get_apps_list}}.}
+\item{ListId}{[required] The ID of the applications list that you want to delete. You can retrieve this ID from \code{\link[=fms_put_apps_list]{put_apps_list}}, \code{\link[=fms_list_apps_lists]{list_apps_lists}}, and \code{\link[=fms_get_apps_list]{get_apps_list}}.}
 }
 \description{
 Permanently deletes an Firewall Manager applications list.

@@ -11,13 +11,11 @@ cleanroomsml_list_trained_models(
 )
 }
 \arguments{
-\item{nextToken}{The token value retrieved from a previous call to access the next page
-of results.}
+\item{nextToken}{The token value retrieved from a previous call to access the next page of results.}
 
 \item{maxResults}{The maximum size of the results that is returned per call.}
 
-\item{membershipIdentifier}{[required] The membership ID of the member that created the trained models you are
-interested in.}
+\item{membershipIdentifier}{[required] The membership ID of the member that created the trained models you are interested in.}
 }
 \description{
 Returns a list of trained models.

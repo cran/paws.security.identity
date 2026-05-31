@@ -7,8 +7,7 @@
 shield_untag_resource(ResourceARN, TagKeys)
 }
 \arguments{
-\item{ResourceARN}{[required] The Amazon Resource Name (ARN) of the resource that you want to remove
-tags from.}
+\item{ResourceARN}{[required] The Amazon Resource Name (ARN) of the resource that you want to remove tags from.}
 
 \item{TagKeys}{[required] The tag key for each tag that you want to remove from the resource.}
 }

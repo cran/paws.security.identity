@@ -8,25 +8,17 @@ symmetric encryption KMS key}
 kms_rotate_key_on_demand(KeyId)
 }
 \arguments{
-\item{KeyId}{[required] Identifies a symmetric encryption KMS key. You cannot perform on-demand
-rotation of \href{https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html}{asymmetric KMS keys},
-\href{https://docs.aws.amazon.com/kms/latest/developerguide/hmac.html}{HMAC KMS keys},
-KMS keys with \href{https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html}{imported key material},
-or KMS keys in a \href{https://docs.aws.amazon.com/kms/latest/developerguide/}{custom key store}. To
-perform on-demand rotation of a set of related \href{https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-update.html#multi-region-rotate}{multi-Region keys},
-invoke the on-demand rotation on the primary key.
+\item{KeyId}{[required] Identifies a symmetric encryption KMS key. You cannot perform on-demand rotation of \href{https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html}{asymmetric KMS keys}, \href{https://docs.aws.amazon.com/kms/latest/developerguide/hmac.html}{HMAC KMS keys}, multi-Region KMS keys with \href{https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html}{imported key material}, or KMS keys in a \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-store-overview.html}{custom key store}. To perform on-demand rotation of a set of related \href{https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html#multi-region-rotate}{multi-Region keys}, invoke the on-demand rotation on the primary key.
 
 Specify the key ID or key ARN of the KMS key.
 
 For example:
 \itemize{
 \item Key ID: \verb{1234abcd-12ab-34cd-56ef-1234567890ab}
-\item Key ARN:
-\verb{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
+\item Key ARN: \verb{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
 }
 
-To get the key ID and key ARN for a KMS key, use
-\code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
+To get the key ID and key ARN for a KMS key, use \code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
 }
 \description{
 Immediately initiates rotation of the key material of the specified symmetric encryption KMS key.

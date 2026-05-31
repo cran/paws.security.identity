@@ -15,20 +15,15 @@ guardduty_update_detector(
 \arguments{
 \item{DetectorId}{[required] The unique ID of the detector to update.
 
-To find the \code{detectorId} in the current Region, see the Settings page in
-the GuardDuty console, or run the
-\code{\link[=guardduty_list_detectors]{list_detectors}} API.}
+To find the \code{detectorId} in the current Region, see the Settings page in the GuardDuty console, or run the \code{\link[=guardduty_list_detectors]{list_detectors}} API.}
 
 \item{Enable}{Specifies whether the detector is enabled or not enabled.}
 
-\item{FindingPublishingFrequency}{An enum value that specifies how frequently findings are exported, such
-as to CloudWatch Events.}
+\item{FindingPublishingFrequency}{An enum value that specifies how frequently findings are exported, such as to CloudWatch Events.}
 
 \item{DataSources}{Describes which data sources will be updated.
 
-There might be regional differences because some data sources might not
-be available in all the Amazon Web Services Regions where GuardDuty is
-presently supported. For more information, see \href{https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html}{Regions and endpoints}.}
+There might be regional differences because some data sources might not be available in all the Amazon Web Services Regions where GuardDuty is presently supported. For more information, see \href{https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html}{Regions and endpoints}.}
 
 \item{Features}{Provides the features that will be updated for the detector.}
 }

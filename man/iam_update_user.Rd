@@ -7,29 +7,17 @@
 iam_update_user(UserName, NewPath = NULL, NewUserName = NULL)
 }
 \arguments{
-\item{UserName}{[required] Name of the user to update. If you're changing the name of the user,
-this is the original user name.
+\item{UserName}{[required] Name of the user to update. If you're changing the name of the user, this is the original user name.
 
-This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
-consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: _+=,.@-}
+This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-}
 
-\item{NewPath}{New path for the IAM user. Include this parameter only if you're
-changing the user's path.
+\item{NewPath}{New path for the IAM user. Include this parameter only if you're changing the user's path.
 
-This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
-consisting of either a forward slash (/) by itself or a string that must
-begin and end with forward slashes. In addition, it can contain any
-ASCII character from the ! (\code{U+0021}) through the DEL character
-(\verb{U+007F}), including most punctuation characters, digits, and upper and
-lowercased letters.}
+This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (\code{U+0021}) through the DEL character (\verb{U+007F}), including most punctuation characters, digits, and upper and lowercased letters.}
 
-\item{NewUserName}{New name for the user. Include this parameter only if you're changing
-the user's name.
+\item{NewUserName}{New name for the user. Include this parameter only if you're changing the user's name.
 
-IAM user, group, role, and policy names must be unique within the
-account. Names are not distinguished by case. For example, you cannot
-create resources named both "MyResource" and "myresource".}
+IAM user, group, role, and policy names must be unique within the account. Names are not distinguished by case. For example, you cannot create resources named both "MyResource" and "myresource".}
 }
 \description{
 Updates the name and/or the path of the specified IAM user.

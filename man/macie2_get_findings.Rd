@@ -7,9 +7,7 @@
 macie2_get_findings(findingIds, sortCriteria = NULL)
 }
 \arguments{
-\item{findingIds}{[required] An array of strings that lists the unique identifiers for the findings
-to retrieve. You can specify as many as 50 unique identifiers in this
-array.}
+\item{findingIds}{[required] An array of strings that lists the unique identifiers for the findings to retrieve. You can specify as many as 50 unique identifiers in this array.}
 
 \item{sortCriteria}{The criteria for sorting the results of the request.}
 }

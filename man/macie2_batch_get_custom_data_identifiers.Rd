@@ -7,8 +7,7 @@
 macie2_batch_get_custom_data_identifiers(ids = NULL)
 }
 \arguments{
-\item{ids}{An array of custom data identifier IDs, one for each custom data
-identifier to retrieve information about.}
+\item{ids}{An array of custom data identifier IDs, one for each custom data identifier to retrieve information about.}
 }
 \description{
 Retrieves information about one or more custom data identifiers.

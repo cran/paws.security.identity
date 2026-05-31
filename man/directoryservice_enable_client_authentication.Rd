@@ -10,10 +10,7 @@ directoryservice_enable_client_authentication(DirectoryId, Type)
 \arguments{
 \item{DirectoryId}{[required] The identifier of the specified directory.}
 
-\item{Type}{[required] The type of client authentication to enable. Currently only the value
-\code{SmartCard} is supported. Smart card authentication in AD Connector
-requires that you enable Kerberos Constrained Delegation for the Service
-User to the LDAP service in your self-managed AD.}
+\item{Type}{[required] The type of client authentication to enable. Currently only the value \code{SmartCard} is supported. Smart card authentication in AD Connector requires that you enable Kerberos Constrained Delegation for the Service User to the LDAP service in your self-managed AD.}
 }
 \description{
 Enables alternative client authentication methods for the specified directory.

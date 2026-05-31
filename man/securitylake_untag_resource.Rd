@@ -9,11 +9,9 @@ Web Services account in a particular Amazon Web Services Region}
 securitylake_untag_resource(resourceArn, tagKeys)
 }
 \arguments{
-\item{resourceArn}{[required] The Amazon Resource Name (ARN) of the Amazon Security Lake resource to
-remove one or more tags from.}
+\item{resourceArn}{[required] The Amazon Resource Name (ARN) of the Amazon Security Lake resource to remove one or more tags from.}
 
-\item{tagKeys}{[required] A list of one or more tag keys. For each value in the list, specify the
-tag key for a tag to remove from the Amazon Security Lake resource.}
+\item{tagKeys}{[required] A list of one or more tag keys. For each value in the list, specify the tag key for a tag to remove from the Amazon Security Lake resource.}
 }
 \description{
 Removes one or more tags (keys and values) from an Amazon Security Lake resource: a subscriber, or the data lake configuration for your Amazon Web Services account in a particular Amazon Web Services Region.

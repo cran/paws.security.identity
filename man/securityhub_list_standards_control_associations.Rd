@@ -12,20 +12,11 @@ securityhub_list_standards_control_associations(
 )
 }
 \arguments{
-\item{SecurityControlId}{[required] The identifier of the control (identified with \code{SecurityControlId},
-\code{SecurityControlArn}, or a mix of both parameters) that you want to
-determine the enablement status of in each enabled standard.}
+\item{SecurityControlId}{[required] The identifier of the control (identified with \code{SecurityControlId}, \code{SecurityControlArn}, or a mix of both parameters) that you want to determine the enablement status of in each enabled standard.}
 
 \item{NextToken}{Optional pagination parameter.}
 
-\item{MaxResults}{An optional parameter that limits the total results of the API response
-to the specified number. If this parameter isn't provided in the
-request, the results include the first 25 standard and control
-associations. The results also include a \code{NextToken} parameter that you
-can use in a subsequent API call to get the next 25 associations. This
-repeats until all associations for the specified control are returned.
-The number of results is limited by the number of supported Security Hub
-standards that you've enabled in the calling account.}
+\item{MaxResults}{An optional parameter that limits the total results of the API response to the specified number. If this parameter isn't provided in the request, the results include the first 25 standard and control associations. The results also include a \code{NextToken} parameter that you can use in a subsequent API call to get the next 25 associations. This repeats until all associations for the specified control are returned. The number of results is limited by the number of supported Security Hub CSPM standards that you've enabled in the calling account.}
 }
 \description{
 Specifies whether a control is currently enabled or disabled in each enabled standard in the calling account.

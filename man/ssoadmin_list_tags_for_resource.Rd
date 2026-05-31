@@ -6,20 +6,16 @@
 \usage{
 ssoadmin_list_tags_for_resource(
   InstanceArn = NULL,
-  NextToken = NULL,
-  ResourceArn
+  ResourceArn,
+  NextToken = NULL
 )
 }
 \arguments{
-\item{InstanceArn}{The ARN of the IAM Identity Center instance under which the operation
-will be executed. For more information about ARNs, see Amazon Resource
-Names (ARNs) and Amazon Web Services Service Namespaces in the \emph{Amazon
-Web Services General Reference}.}
-
-\item{NextToken}{The pagination token for the list API. Initially the value is null. Use
-the output of previous API calls to make subsequent calls.}
+\item{InstanceArn}{The ARN of the IAM Identity Center instance under which the operation will be executed. For more information about ARNs, see Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces in the \emph{Amazon Web Services General Reference}.}
 
 \item{ResourceArn}{[required] The ARN of the resource with the tags to be listed.}
+
+\item{NextToken}{The pagination token for the list API. Initially the value is null. Use the output of previous API calls to make subsequent calls.}
 }
 \description{
 Lists the tags that are attached to a specified resource.

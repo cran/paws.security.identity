@@ -14,21 +14,15 @@ macie2_get_usage_statistics(
 )
 }
 \arguments{
-\item{filterBy}{An array of objects, one for each condition to use to filter the query
-results. If you specify more than one condition, Amazon Macie uses an
-AND operator to join the conditions.}
+\item{filterBy}{An array of objects, one for each condition to use to filter the query results. If you specify more than one condition, Amazon Macie uses an AND operator to join the conditions.}
 
 \item{maxResults}{The maximum number of items to include in each page of the response.}
 
-\item{nextToken}{The nextToken string that specifies which page of results to return in a
-paginated response.}
+\item{nextToken}{The nextToken string that specifies which page of results to return in a paginated response.}
 
 \item{sortBy}{The criteria to use to sort the query results.}
 
-\item{timeRange}{The inclusive time period to query usage data for. Valid values are:
-MONTH_TO_DATE, for the current calendar month to date; and,
-PAST_30_DAYS, for the preceding 30 days. If you don't specify a value,
-Amazon Macie provides usage data for the preceding 30 days.}
+\item{timeRange}{The inclusive time period to query usage data for. Valid values are: MONTH_TO_DATE, for the current calendar month to date; and, PAST_30_DAYS, for the preceding 30 days. If you don't specify a value, Amazon Macie provides usage data for the preceding 30 days.}
 }
 \description{
 Retrieves (queries) quotas and aggregated usage data for one or more accounts.

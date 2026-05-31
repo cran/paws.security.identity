@@ -14,11 +14,9 @@ pcaconnectorad_create_service_principal_name(
 \arguments{
 \item{ClientToken}{Idempotency token.}
 
-\item{ConnectorArn}{[required] The Amazon Resource Name (ARN) that was returned when you called
-\code{\link[=pcaconnectorad_create_connector]{create_connector}}.}
+\item{ConnectorArn}{[required] The Amazon Resource Name (ARN) that was returned when you called \code{\link[=pcaconnectorad_create_connector]{create_connector}}.}
 
-\item{DirectoryRegistrationArn}{[required] The Amazon Resource Name (ARN) that was returned when you called
-\code{\link[=pcaconnectorad_create_directory_registration]{create_directory_registration}}.}
+\item{DirectoryRegistrationArn}{[required] The Amazon Resource Name (ARN) that was returned when you called \code{\link[=pcaconnectorad_create_directory_registration]{create_directory_registration}}.}
 }
 \description{
 Creates a service principal name (SPN) for the service account in Active Directory. Kerberos authentication uses SPNs to associate a service instance with a service sign-in account.

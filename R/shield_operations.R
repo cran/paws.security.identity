@@ -45,13 +45,9 @@ shield_associate_drt_log_bucket <- function(LogBucket) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/shield_associate_drt_role/](https://www.paws-r-sdk.com/docs/shield_associate_drt_role/) for full documentation.
 #'
-#' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the role the SRT will use to access
-#' your Amazon Web Services account.
+#' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the role the SRT will use to access your Amazon Web Services account.
 #' 
-#' Prior to making the [`associate_drt_role`][shield_associate_drt_role]
-#' request, you must attach the AWSShieldDRTAccessPolicy managed policy to
-#' this role. For more information see Attaching and Detaching IAM
-#' Policies.
+#' Prior to making the [`associate_drt_role`][shield_associate_drt_role] request, you must attach the AWSShieldDRTAccessPolicy managed policy to this role. For more information see Attaching and Detaching IAM Policies.
 #'
 #' @keywords internal
 #'
@@ -83,10 +79,8 @@ shield_associate_drt_role <- function(RoleArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/shield_associate_health_check/](https://www.paws-r-sdk.com/docs/shield_associate_health_check/) for full documentation.
 #'
-#' @param ProtectionId &#91;required&#93; The unique identifier (ID) for the Protection object to add the health
-#' check association to.
-#' @param HealthCheckArn &#91;required&#93; The Amazon Resource Name (ARN) of the health check to associate with the
-#' protection.
+#' @param ProtectionId &#91;required&#93; The unique identifier (ID) for the Protection object to add the health check association to.
+#' @param HealthCheckArn &#91;required&#93; The Amazon Resource Name (ARN) of the health check to associate with the protection.
 #'
 #' @keywords internal
 #'
@@ -118,18 +112,11 @@ shield_associate_health_check <- function(ProtectionId, HealthCheckArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/shield_associate_proactive_engagement_details/](https://www.paws-r-sdk.com/docs/shield_associate_proactive_engagement_details/) for full documentation.
 #'
-#' @param EmergencyContactList &#91;required&#93; A list of email addresses and phone numbers that the Shield Response
-#' Team (SRT) can use to contact you for escalations to the SRT and to
-#' initiate proactive customer support.
+#' @param EmergencyContactList &#91;required&#93; A list of email addresses and phone numbers that the Shield Response Team (SRT) can use to contact you for escalations to the SRT and to initiate proactive customer support.
 #' 
-#' To enable proactive engagement, the contact list must include at least
-#' one phone number.
+#' To enable proactive engagement, the contact list must include at least one phone number.
 #' 
-#' The contacts that you provide here replace any contacts that were
-#' already defined. If you already have contacts defined and want to use
-#' them, retrieve the list using
-#' [`describe_emergency_contact_settings`][shield_describe_emergency_contact_settings]
-#' and then provide it here.
+#' The contacts that you provide here replace any contacts that were already defined. If you already have contacts defined and want to use them, retrieve the list using [`describe_emergency_contact_settings`][shield_describe_emergency_contact_settings] and then provide it here.
 #'
 #' @keywords internal
 #'
@@ -165,24 +152,18 @@ shield_associate_proactive_engagement_details <- function(EmergencyContactList) 
 #' 
 #' The ARN should be in one of the following formats:
 #' 
-#' -   For an Application Load Balancer:
-#'     `arn:aws:elasticloadbalancing:region:account-id:loadbalancer/app/load-balancer-name/load-balancer-id `
+#' -   For an Application Load Balancer: `arn:aws:elasticloadbalancing:region:account-id:loadbalancer/app/load-balancer-name/load-balancer-id `
 #' 
-#' -   For an Elastic Load Balancer (Classic Load Balancer):
-#'     `arn:aws:elasticloadbalancing:region:account-id:loadbalancer/load-balancer-name `
+#' -   For an Elastic Load Balancer (Classic Load Balancer): `arn:aws:elasticloadbalancing:region:account-id:loadbalancer/load-balancer-name `
 #' 
-#' -   For an Amazon CloudFront distribution:
-#'     `arn:aws:cloudfront::account-id:distribution/distribution-id `
+#' -   For an Amazon CloudFront distribution: `arn:aws:cloudfront::account-id:distribution/distribution-id `
 #' 
-#' -   For an Global Accelerator standard accelerator:
-#'     `arn:aws:globalaccelerator::account-id:accelerator/accelerator-id `
+#' -   For an Global Accelerator standard accelerator: `arn:aws:globalaccelerator::account-id:accelerator/accelerator-id `
 #' 
 #' -   For Amazon Route 53: `arn:aws:route53:::hostedzone/hosted-zone-id `
 #' 
-#' -   For an Elastic IP address:
-#'     `arn:aws:ec2:region:account-id:eip-allocation/allocation-id `
-#' @param Tags One or more tag key-value pairs for the Protection object that is
-#' created.
+#' -   For an Elastic IP address: `arn:aws:ec2:region:account-id:eip-allocation/allocation-id `
+#' @param Tags One or more tag key-value pairs for the Protection object that is created.
 #'
 #' @keywords internal
 #'
@@ -214,36 +195,17 @@ shield_create_protection <- function(Name, ResourceArn, Tags = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/shield_create_protection_group/](https://www.paws-r-sdk.com/docs/shield_create_protection_group/) for full documentation.
 #'
-#' @param ProtectionGroupId &#91;required&#93; The name of the protection group. You use this to identify the
-#' protection group in lists and to manage the protection group, for
-#' example to update, delete, or describe it.
-#' @param Aggregation &#91;required&#93; Defines how Shield combines resource data for the group in order to
-#' detect, mitigate, and report events.
+#' @param ProtectionGroupId &#91;required&#93; The name of the protection group. You use this to identify the protection group in lists and to manage the protection group, for example to update, delete, or describe it.
+#' @param Aggregation &#91;required&#93; Defines how Shield combines resource data for the group in order to detect, mitigate, and report events.
 #' 
-#' -   Sum - Use the total traffic across the group. This is a good choice
-#'     for most cases. Examples include Elastic IP addresses for EC2
-#'     instances that scale manually or automatically.
+#' -   Sum - Use the total traffic across the group. This is a good choice for most cases. Examples include Elastic IP addresses for EC2 instances that scale manually or automatically.
 #' 
-#' -   Mean - Use the average of the traffic across the group. This is a
-#'     good choice for resources that share traffic uniformly. Examples
-#'     include accelerators and load balancers.
+#' -   Mean - Use the average of the traffic across the group. This is a good choice for resources that share traffic uniformly. Examples include accelerators and load balancers.
 #' 
-#' -   Max - Use the highest traffic from each resource. This is useful for
-#'     resources that don't share traffic and for resources that share that
-#'     traffic in a non-uniform way. Examples include Amazon CloudFront and
-#'     origin resources for CloudFront distributions.
-#' @param Pattern &#91;required&#93; The criteria to use to choose the protected resources for inclusion in
-#' the group. You can include all resources that have protections, provide
-#' a list of resource Amazon Resource Names (ARNs), or include all
-#' resources of a specified resource type.
-#' @param ResourceType The resource type to include in the protection group. All protected
-#' resources of this type are included in the protection group. Newly
-#' protected resources of this type are automatically added to the group.
-#' You must set this when you set `Pattern` to `BY_RESOURCE_TYPE` and you
-#' must not set it for any other `Pattern` setting.
-#' @param Members The Amazon Resource Names (ARNs) of the resources to include in the
-#' protection group. You must set this when you set `Pattern` to
-#' `ARBITRARY` and you must not set it for any other `Pattern` setting.
+#' -   Max - Use the highest traffic from each resource. This is useful for resources that don't share traffic and for resources that share that traffic in a non-uniform way. Examples include Amazon CloudFront and origin resources for CloudFront distributions.
+#' @param Pattern &#91;required&#93; The criteria to use to choose the protected resources for inclusion in the group. You can include all resources that have protections, provide a list of resource Amazon Resource Names (ARNs), or include all resources of a specified resource type.
+#' @param ResourceType The resource type to include in the protection group. All protected resources of this type are included in the protection group. Newly protected resources of this type are automatically added to the group. You must set this when you set `Pattern` to `BY_RESOURCE_TYPE` and you must not set it for any other `Pattern` setting.
+#' @param Members The Amazon Resource Names (ARNs) of the resources to include in the protection group. You must set this when you set `Pattern` to `ARBITRARY` and you must not set it for any other `Pattern` setting.
 #' @param Tags One or more tag key-value pairs for the protection group.
 #'
 #' @keywords internal
@@ -337,9 +299,7 @@ shield_delete_protection <- function(ProtectionId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/shield_delete_protection_group/](https://www.paws-r-sdk.com/docs/shield_delete_protection_group/) for full documentation.
 #'
-#' @param ProtectionGroupId &#91;required&#93; The name of the protection group. You use this to identify the
-#' protection group in lists and to manage the protection group, for
-#' example to update, delete, or describe it.
+#' @param ProtectionGroupId &#91;required&#93; The name of the protection group. You use this to identify the protection group in lists and to manage the protection group, for example to update, delete, or describe it.
 #'
 #' @keywords internal
 #'
@@ -532,12 +492,8 @@ shield_describe_emergency_contact_settings <- function() {
 #'
 #' See [https://www.paws-r-sdk.com/docs/shield_describe_protection/](https://www.paws-r-sdk.com/docs/shield_describe_protection/) for full documentation.
 #'
-#' @param ProtectionId The unique identifier (ID) for the Protection object to describe. You
-#' must provide either the `ResourceArn` of the protected resource or the
-#' `ProtectionID` of the protection, but not both.
-#' @param ResourceArn The ARN (Amazon Resource Name) of the protected Amazon Web Services
-#' resource. You must provide either the `ResourceArn` of the protected
-#' resource or the `ProtectionID` of the protection, but not both.
+#' @param ProtectionId The unique identifier (ID) for the Protection object to describe. You must provide either the `ResourceArn` of the protected resource or the `ProtectionID` of the protection, but not both.
+#' @param ResourceArn The ARN (Amazon Resource Name) of the protected Amazon Web Services resource. You must provide either the `ResourceArn` of the protected resource or the `ProtectionID` of the protection, but not both.
 #'
 #' @keywords internal
 #'
@@ -568,9 +524,7 @@ shield_describe_protection <- function(ProtectionId = NULL, ResourceArn = NULL) 
 #'
 #' See [https://www.paws-r-sdk.com/docs/shield_describe_protection_group/](https://www.paws-r-sdk.com/docs/shield_describe_protection_group/) for full documentation.
 #'
-#' @param ProtectionGroupId &#91;required&#93; The name of the protection group. You use this to identify the
-#' protection group in lists and to manage the protection group, for
-#' example to update, delete, or describe it.
+#' @param ProtectionGroupId &#91;required&#93; The name of the protection group. You use this to identify the protection group in lists and to manage the protection group, for example to update, delete, or describe it.
 #'
 #' @keywords internal
 #'
@@ -762,10 +716,8 @@ shield_disassociate_drt_role <- function() {
 #'
 #' See [https://www.paws-r-sdk.com/docs/shield_disassociate_health_check/](https://www.paws-r-sdk.com/docs/shield_disassociate_health_check/) for full documentation.
 #'
-#' @param ProtectionId &#91;required&#93; The unique identifier (ID) for the Protection object to remove the
-#' health check association from.
-#' @param HealthCheckArn &#91;required&#93; The Amazon Resource Name (ARN) of the health check that is associated
-#' with the protection.
+#' @param ProtectionId &#91;required&#93; The unique identifier (ID) for the Protection object to remove the health check association from.
+#' @param HealthCheckArn &#91;required&#93; The Amazon Resource Name (ARN) of the health check that is associated with the protection.
 #'
 #' @keywords internal
 #'
@@ -798,13 +750,7 @@ shield_disassociate_health_check <- function(ProtectionId, HealthCheckArn) {
 #' See [https://www.paws-r-sdk.com/docs/shield_enable_application_layer_automatic_response/](https://www.paws-r-sdk.com/docs/shield_enable_application_layer_automatic_response/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The ARN (Amazon Resource Name) of the protected resource.
-#' @param Action &#91;required&#93; Specifies the action setting that Shield Advanced should use in the WAF
-#' rules that it creates on behalf of the protected resource in response to
-#' DDoS attacks. You specify this as part of the configuration for the
-#' automatic application layer DDoS mitigation feature, when you enable or
-#' update automatic mitigation. Shield Advanced creates the WAF rules in a
-#' Shield Advanced-managed rule group, inside the web ACL that you have
-#' associated with the resource.
+#' @param Action &#91;required&#93; Specifies the action setting that Shield Advanced should use in the WAF rules that it creates on behalf of the protected resource in response to DDoS attacks. You specify this as part of the configuration for the automatic application layer DDoS mitigation feature, when you enable or update automatic mitigation. Shield Advanced creates the WAF rules in a Shield Advanced-managed rule group, inside the web ACL that you have associated with the resource.
 #'
 #' @keywords internal
 #'
@@ -900,39 +846,17 @@ shield_get_subscription_state <- function() {
 #'
 #' See [https://www.paws-r-sdk.com/docs/shield_list_attacks/](https://www.paws-r-sdk.com/docs/shield_list_attacks/) for full documentation.
 #'
-#' @param ResourceArns The ARNs (Amazon Resource Names) of the resources that were attacked. If
-#' you leave this blank, all applicable resources for this account will be
-#' included.
-#' @param StartTime The start of the time period for the attacks. This is a `timestamp`
-#' type. The request syntax listing for this call indicates a `number`
-#' type, but you can provide the time in any valid [timestamp
-#' format](https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters-types.html#parameter-type-timestamp)
-#' setting.
-#' @param EndTime The end of the time period for the attacks. This is a `timestamp` type.
-#' The request syntax listing for this call indicates a `number` type, but
-#' you can provide the time in any valid [timestamp
-#' format](https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters-types.html#parameter-type-timestamp)
-#' setting.
-#' @param NextToken When you request a list of objects from Shield Advanced, if the response
-#' does not include all of the remaining available objects, Shield Advanced
-#' includes a `NextToken` value in the response. You can retrieve the next
-#' batch of objects by requesting the list again and providing the token
-#' that was returned by the prior call in your request.
+#' @param ResourceArns The ARNs (Amazon Resource Names) of the resources that were attacked. If you leave this blank, all applicable resources for this account will be included.
+#' @param StartTime The start of the time period for the attacks. This is a `timestamp` type. The request syntax listing for this call indicates a `number` type, but you can provide the time in any valid [timestamp format](https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters-types.html#parameter-type-timestamp) setting.
+#' @param EndTime The end of the time period for the attacks. This is a `timestamp` type. The request syntax listing for this call indicates a `number` type, but you can provide the time in any valid [timestamp format](https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters-types.html#parameter-type-timestamp) setting.
+#' @param NextToken When you request a list of objects from Shield Advanced, if the response does not include all of the remaining available objects, Shield Advanced includes a `NextToken` value in the response. You can retrieve the next batch of objects by requesting the list again and providing the token that was returned by the prior call in your request.
 #' 
-#' You can indicate the maximum number of objects that you want Shield
-#' Advanced to return for a single call with the `MaxResults` setting.
-#' Shield Advanced will not return more than `MaxResults` objects, but may
-#' return fewer, even if more objects are still available.
+#' You can indicate the maximum number of objects that you want Shield Advanced to return for a single call with the `MaxResults` setting. Shield Advanced will not return more than `MaxResults` objects, but may return fewer, even if more objects are still available.
 #' 
-#' Whenever more objects remain that Shield Advanced has not yet returned
-#' to you, the response will include a `NextToken` value.
+#' Whenever more objects remain that Shield Advanced has not yet returned to you, the response will include a `NextToken` value.
 #' 
 #' On your first call to a list operation, leave this setting empty.
-#' @param MaxResults The greatest number of objects that you want Shield Advanced to return
-#' to the list request. Shield Advanced might return fewer objects than you
-#' indicate in this setting, even if more objects are available. If there
-#' are more objects remaining, Shield Advanced will always also return a
-#' `NextToken` value in the response.
+#' @param MaxResults The greatest number of objects that you want Shield Advanced to return to the list request. Shield Advanced might return fewer objects than you indicate in this setting, even if more objects are available. If there are more objects remaining, Shield Advanced will always also return a `NextToken` value in the response.
 #' 
 #' The default setting is 20.
 #'
@@ -965,34 +889,17 @@ shield_list_attacks <- function(ResourceArns = NULL, StartTime = NULL, EndTime =
 #'
 #' See [https://www.paws-r-sdk.com/docs/shield_list_protection_groups/](https://www.paws-r-sdk.com/docs/shield_list_protection_groups/) for full documentation.
 #'
-#' @param NextToken When you request a list of objects from Shield Advanced, if the response
-#' does not include all of the remaining available objects, Shield Advanced
-#' includes a `NextToken` value in the response. You can retrieve the next
-#' batch of objects by requesting the list again and providing the token
-#' that was returned by the prior call in your request.
+#' @param NextToken When you request a list of objects from Shield Advanced, if the response does not include all of the remaining available objects, Shield Advanced includes a `NextToken` value in the response. You can retrieve the next batch of objects by requesting the list again and providing the token that was returned by the prior call in your request.
 #' 
-#' You can indicate the maximum number of objects that you want Shield
-#' Advanced to return for a single call with the `MaxResults` setting.
-#' Shield Advanced will not return more than `MaxResults` objects, but may
-#' return fewer, even if more objects are still available.
+#' You can indicate the maximum number of objects that you want Shield Advanced to return for a single call with the `MaxResults` setting. Shield Advanced will not return more than `MaxResults` objects, but may return fewer, even if more objects are still available.
 #' 
-#' Whenever more objects remain that Shield Advanced has not yet returned
-#' to you, the response will include a `NextToken` value.
+#' Whenever more objects remain that Shield Advanced has not yet returned to you, the response will include a `NextToken` value.
 #' 
 #' On your first call to a list operation, leave this setting empty.
-#' @param MaxResults The greatest number of objects that you want Shield Advanced to return
-#' to the list request. Shield Advanced might return fewer objects than you
-#' indicate in this setting, even if more objects are available. If there
-#' are more objects remaining, Shield Advanced will always also return a
-#' `NextToken` value in the response.
+#' @param MaxResults The greatest number of objects that you want Shield Advanced to return to the list request. Shield Advanced might return fewer objects than you indicate in this setting, even if more objects are available. If there are more objects remaining, Shield Advanced will always also return a `NextToken` value in the response.
 #' 
 #' The default setting is 20.
-#' @param InclusionFilters Narrows the set of protection groups that the call retrieves. You can
-#' retrieve a single protection group by its name and you can retrieve all
-#' protection groups that are configured with specific pattern or
-#' aggregation settings. You can provide up to one criteria per filter
-#' type. Shield Advanced returns the protection groups that exactly match
-#' all of the search criteria that you provide.
+#' @param InclusionFilters Narrows the set of protection groups that the call retrieves. You can retrieve a single protection group by its name and you can retrieve all protection groups that are configured with specific pattern or aggregation settings. You can provide up to one criteria per filter type. Shield Advanced returns the protection groups that exactly match all of the search criteria that you provide.
 #'
 #' @keywords internal
 #'
@@ -1023,34 +930,17 @@ shield_list_protection_groups <- function(NextToken = NULL, MaxResults = NULL, I
 #'
 #' See [https://www.paws-r-sdk.com/docs/shield_list_protections/](https://www.paws-r-sdk.com/docs/shield_list_protections/) for full documentation.
 #'
-#' @param NextToken When you request a list of objects from Shield Advanced, if the response
-#' does not include all of the remaining available objects, Shield Advanced
-#' includes a `NextToken` value in the response. You can retrieve the next
-#' batch of objects by requesting the list again and providing the token
-#' that was returned by the prior call in your request.
+#' @param NextToken When you request a list of objects from Shield Advanced, if the response does not include all of the remaining available objects, Shield Advanced includes a `NextToken` value in the response. You can retrieve the next batch of objects by requesting the list again and providing the token that was returned by the prior call in your request.
 #' 
-#' You can indicate the maximum number of objects that you want Shield
-#' Advanced to return for a single call with the `MaxResults` setting.
-#' Shield Advanced will not return more than `MaxResults` objects, but may
-#' return fewer, even if more objects are still available.
+#' You can indicate the maximum number of objects that you want Shield Advanced to return for a single call with the `MaxResults` setting. Shield Advanced will not return more than `MaxResults` objects, but may return fewer, even if more objects are still available.
 #' 
-#' Whenever more objects remain that Shield Advanced has not yet returned
-#' to you, the response will include a `NextToken` value.
+#' Whenever more objects remain that Shield Advanced has not yet returned to you, the response will include a `NextToken` value.
 #' 
 #' On your first call to a list operation, leave this setting empty.
-#' @param MaxResults The greatest number of objects that you want Shield Advanced to return
-#' to the list request. Shield Advanced might return fewer objects than you
-#' indicate in this setting, even if more objects are available. If there
-#' are more objects remaining, Shield Advanced will always also return a
-#' `NextToken` value in the response.
+#' @param MaxResults The greatest number of objects that you want Shield Advanced to return to the list request. Shield Advanced might return fewer objects than you indicate in this setting, even if more objects are available. If there are more objects remaining, Shield Advanced will always also return a `NextToken` value in the response.
 #' 
 #' The default setting is 20.
-#' @param InclusionFilters Narrows the set of protections that the call retrieves. You can retrieve
-#' a single protection by providing its name or the ARN (Amazon Resource
-#' Name) of its protected resource. You can also retrieve all protections
-#' for a specific resource type. You can provide up to one criteria per
-#' filter type. Shield Advanced returns protections that exactly match all
-#' of the filter criteria that you provide.
+#' @param InclusionFilters Narrows the set of protections that the call retrieves. You can retrieve a single protection by providing its name or the ARN (Amazon Resource Name) of its protected resource. You can also retrieve all protections for a specific resource type. You can provide up to one criteria per filter type. Shield Advanced returns protections that exactly match all of the filter criteria that you provide.
 #'
 #' @keywords internal
 #'
@@ -1081,29 +971,15 @@ shield_list_protections <- function(NextToken = NULL, MaxResults = NULL, Inclusi
 #'
 #' See [https://www.paws-r-sdk.com/docs/shield_list_resources_in_protection_group/](https://www.paws-r-sdk.com/docs/shield_list_resources_in_protection_group/) for full documentation.
 #'
-#' @param ProtectionGroupId &#91;required&#93; The name of the protection group. You use this to identify the
-#' protection group in lists and to manage the protection group, for
-#' example to update, delete, or describe it.
-#' @param NextToken When you request a list of objects from Shield Advanced, if the response
-#' does not include all of the remaining available objects, Shield Advanced
-#' includes a `NextToken` value in the response. You can retrieve the next
-#' batch of objects by requesting the list again and providing the token
-#' that was returned by the prior call in your request.
+#' @param ProtectionGroupId &#91;required&#93; The name of the protection group. You use this to identify the protection group in lists and to manage the protection group, for example to update, delete, or describe it.
+#' @param NextToken When you request a list of objects from Shield Advanced, if the response does not include all of the remaining available objects, Shield Advanced includes a `NextToken` value in the response. You can retrieve the next batch of objects by requesting the list again and providing the token that was returned by the prior call in your request.
 #' 
-#' You can indicate the maximum number of objects that you want Shield
-#' Advanced to return for a single call with the `MaxResults` setting.
-#' Shield Advanced will not return more than `MaxResults` objects, but may
-#' return fewer, even if more objects are still available.
+#' You can indicate the maximum number of objects that you want Shield Advanced to return for a single call with the `MaxResults` setting. Shield Advanced will not return more than `MaxResults` objects, but may return fewer, even if more objects are still available.
 #' 
-#' Whenever more objects remain that Shield Advanced has not yet returned
-#' to you, the response will include a `NextToken` value.
+#' Whenever more objects remain that Shield Advanced has not yet returned to you, the response will include a `NextToken` value.
 #' 
 #' On your first call to a list operation, leave this setting empty.
-#' @param MaxResults The greatest number of objects that you want Shield Advanced to return
-#' to the list request. Shield Advanced might return fewer objects than you
-#' indicate in this setting, even if more objects are available. If there
-#' are more objects remaining, Shield Advanced will always also return a
-#' `NextToken` value in the response.
+#' @param MaxResults The greatest number of objects that you want Shield Advanced to return to the list request. Shield Advanced might return fewer objects than you indicate in this setting, even if more objects are available. If there are more objects remaining, Shield Advanced will always also return a `NextToken` value in the response.
 #' 
 #' The default setting is 20.
 #'
@@ -1168,8 +1044,7 @@ shield_list_tags_for_resource <- function(ResourceARN) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/shield_tag_resource/](https://www.paws-r-sdk.com/docs/shield_tag_resource/) for full documentation.
 #'
-#' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the resource that you want to add or
-#' update tags for.
+#' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the resource that you want to add or update tags for.
 #' @param Tags &#91;required&#93; The tags that you want to modify or add to the resource.
 #'
 #' @keywords internal
@@ -1201,8 +1076,7 @@ shield_tag_resource <- function(ResourceARN, Tags) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/shield_untag_resource/](https://www.paws-r-sdk.com/docs/shield_untag_resource/) for full documentation.
 #'
-#' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the resource that you want to remove
-#' tags from.
+#' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the resource that you want to remove tags from.
 #' @param TagKeys &#91;required&#93; The tag key for each tag that you want to remove from the resource.
 #'
 #' @keywords internal
@@ -1236,13 +1110,7 @@ shield_untag_resource <- function(ResourceARN, TagKeys) {
 #' See [https://www.paws-r-sdk.com/docs/shield_update_application_layer_automatic_response/](https://www.paws-r-sdk.com/docs/shield_update_application_layer_automatic_response/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The ARN (Amazon Resource Name) of the resource.
-#' @param Action &#91;required&#93; Specifies the action setting that Shield Advanced should use in the WAF
-#' rules that it creates on behalf of the protected resource in response to
-#' DDoS attacks. You specify this as part of the configuration for the
-#' automatic application layer DDoS mitigation feature, when you enable or
-#' update automatic mitigation. Shield Advanced creates the WAF rules in a
-#' Shield Advanced-managed rule group, inside the web ACL that you have
-#' associated with the resource.
+#' @param Action &#91;required&#93; Specifies the action setting that Shield Advanced should use in the WAF rules that it creates on behalf of the protected resource in response to DDoS attacks. You specify this as part of the configuration for the automatic application layer DDoS mitigation feature, when you enable or update automatic mitigation. Shield Advanced creates the WAF rules in a Shield Advanced-managed rule group, inside the web ACL that you have associated with the resource.
 #'
 #' @keywords internal
 #'
@@ -1276,13 +1144,9 @@ shield_update_application_layer_automatic_response <- function(ResourceArn, Acti
 #'
 #' See [https://www.paws-r-sdk.com/docs/shield_update_emergency_contact_settings/](https://www.paws-r-sdk.com/docs/shield_update_emergency_contact_settings/) for full documentation.
 #'
-#' @param EmergencyContactList A list of email addresses and phone numbers that the Shield Response
-#' Team (SRT) can use to contact you if you have proactive engagement
-#' enabled, for escalations to the SRT and to initiate proactive customer
-#' support.
+#' @param EmergencyContactList A list of email addresses and phone numbers that the Shield Response Team (SRT) can use to contact you if you have proactive engagement enabled, for escalations to the SRT and to initiate proactive customer support.
 #' 
-#' If you have proactive engagement enabled, the contact list must include
-#' at least one phone number.
+#' If you have proactive engagement enabled, the contact list must include at least one phone number.
 #'
 #' @keywords internal
 #'
@@ -1313,35 +1177,17 @@ shield_update_emergency_contact_settings <- function(EmergencyContactList = NULL
 #'
 #' See [https://www.paws-r-sdk.com/docs/shield_update_protection_group/](https://www.paws-r-sdk.com/docs/shield_update_protection_group/) for full documentation.
 #'
-#' @param ProtectionGroupId &#91;required&#93; The name of the protection group. You use this to identify the
-#' protection group in lists and to manage the protection group, for
-#' example to update, delete, or describe it.
-#' @param Aggregation &#91;required&#93; Defines how Shield combines resource data for the group in order to
-#' detect, mitigate, and report events.
+#' @param ProtectionGroupId &#91;required&#93; The name of the protection group. You use this to identify the protection group in lists and to manage the protection group, for example to update, delete, or describe it.
+#' @param Aggregation &#91;required&#93; Defines how Shield combines resource data for the group in order to detect, mitigate, and report events.
 #' 
-#' -   Sum - Use the total traffic across the group. This is a good choice
-#'     for most cases. Examples include Elastic IP addresses for EC2
-#'     instances that scale manually or automatically.
+#' -   Sum - Use the total traffic across the group. This is a good choice for most cases. Examples include Elastic IP addresses for EC2 instances that scale manually or automatically.
 #' 
-#' -   Mean - Use the average of the traffic across the group. This is a
-#'     good choice for resources that share traffic uniformly. Examples
-#'     include accelerators and load balancers.
+#' -   Mean - Use the average of the traffic across the group. This is a good choice for resources that share traffic uniformly. Examples include accelerators and load balancers.
 #' 
-#' -   Max - Use the highest traffic from each resource. This is useful for
-#'     resources that don't share traffic and for resources that share that
-#'     traffic in a non-uniform way. Examples include Amazon CloudFront
-#'     distributions and origin resources for CloudFront distributions.
-#' @param Pattern &#91;required&#93; The criteria to use to choose the protected resources for inclusion in
-#' the group. You can include all resources that have protections, provide
-#' a list of resource Amazon Resource Names (ARNs), or include all
-#' resources of a specified resource type.
-#' @param ResourceType The resource type to include in the protection group. All protected
-#' resources of this type are included in the protection group. You must
-#' set this when you set `Pattern` to `BY_RESOURCE_TYPE` and you must not
-#' set it for any other `Pattern` setting.
-#' @param Members The Amazon Resource Names (ARNs) of the resources to include in the
-#' protection group. You must set this when you set `Pattern` to
-#' `ARBITRARY` and you must not set it for any other `Pattern` setting.
+#' -   Max - Use the highest traffic from each resource. This is useful for resources that don't share traffic and for resources that share that traffic in a non-uniform way. Examples include Amazon CloudFront distributions and origin resources for CloudFront distributions.
+#' @param Pattern &#91;required&#93; The criteria to use to choose the protected resources for inclusion in the group. You can include all resources that have protections, provide a list of resource Amazon Resource Names (ARNs), or include all resources of a specified resource type.
+#' @param ResourceType The resource type to include in the protection group. All protected resources of this type are included in the protection group. You must set this when you set `Pattern` to `BY_RESOURCE_TYPE` and you must not set it for any other `Pattern` setting.
+#' @param Members The Amazon Resource Names (ARNs) of the resources to include in the protection group. You must set this when you set `Pattern` to `ARBITRARY` and you must not set it for any other `Pattern` setting.
 #'
 #' @keywords internal
 #'
@@ -1372,13 +1218,7 @@ shield_update_protection_group <- function(ProtectionGroupId, Aggregation, Patte
 #'
 #' See [https://www.paws-r-sdk.com/docs/shield_update_subscription/](https://www.paws-r-sdk.com/docs/shield_update_subscription/) for full documentation.
 #'
-#' @param AutoRenew When you initally create a subscription, `AutoRenew` is set to
-#' `ENABLED`. If `ENABLED`, the subscription will be automatically renewed
-#' at the end of the existing subscription period. You can change this by
-#' submitting an [`update_subscription`][shield_update_subscription]
-#' request. If the [`update_subscription`][shield_update_subscription]
-#' request does not included a value for `AutoRenew`, the existing value
-#' for `AutoRenew` remains unchanged.
+#' @param AutoRenew When you initally create a subscription, `AutoRenew` is set to `ENABLED`. If `ENABLED`, the subscription will be automatically renewed at the end of the existing subscription period. You can change this by submitting an [`update_subscription`][shield_update_subscription] request. If the [`update_subscription`][shield_update_subscription] request does not included a value for `AutoRenew`, the existing value for `AutoRenew` remains unchanged.
 #'
 #' @keywords internal
 #'

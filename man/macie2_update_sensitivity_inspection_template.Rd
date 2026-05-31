@@ -13,24 +13,15 @@ macie2_update_sensitivity_inspection_template(
 )
 }
 \arguments{
-\item{description}{A custom description of the template. The description can contain as
-many as 200 characters.}
+\item{description}{A custom description of the template. The description can contain as many as 200 characters.}
 
-\item{excludes}{The managed data identifiers to explicitly exclude (not use) when
-performing automated sensitive data discovery.
+\item{excludes}{The managed data identifiers to explicitly exclude (not use) when performing automated sensitive data discovery.
 
-To exclude an allow list or custom data identifier that's currently
-included by the template, update the values for the
-SensitivityInspectionTemplateIncludes.allowListIds and
-SensitivityInspectionTemplateIncludes.customDataIdentifierIds
-properties, respectively.}
+To exclude an allow list or custom data identifier that's currently included by the template, update the values for the SensitivityInspectionTemplateIncludes.allowListIds and SensitivityInspectionTemplateIncludes.customDataIdentifierIds properties, respectively.}
 
-\item{id}{[required] The unique identifier for the Amazon Macie resource that the request
-applies to.}
+\item{id}{[required] The unique identifier for the Amazon Macie resource that the request applies to.}
 
-\item{includes}{The allow lists, custom data identifiers, and managed data identifiers
-to explicitly include (use) when performing automated sensitive data
-discovery.}
+\item{includes}{The allow lists, custom data identifiers, and managed data identifiers to explicitly include (use) when performing automated sensitive data discovery.}
 }
 \description{
 Updates the settings for the sensitivity inspection template for an account.

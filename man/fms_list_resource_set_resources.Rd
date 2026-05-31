@@ -12,19 +12,11 @@ fms_list_resource_set_resources(
 )
 }
 \arguments{
-\item{Identifier}{[required] A unique identifier for the resource set, used in a request to refer to
-the resource set.}
+\item{Identifier}{[required] A unique identifier for the resource set, used in a request to refer to the resource set.}
 
-\item{MaxResults}{The maximum number of objects that you want Firewall Manager to return
-for this request. If more objects are available, in the response,
-Firewall Manager provides a \code{NextToken} value that you can use in a
-subsequent call to get the next batch of objects.}
+\item{MaxResults}{The maximum number of objects that you want Firewall Manager to return for this request. If more objects are available, in the response, Firewall Manager provides a \code{NextToken} value that you can use in a subsequent call to get the next batch of objects.}
 
-\item{NextToken}{When you request a list of objects with a \code{MaxResults} setting, if the
-number of objects that are still available for retrieval exceeds the
-maximum you requested, Firewall Manager returns a \code{NextToken} value in
-the response. To retrieve the next batch of objects, use the token
-returned from the prior request in your next request.}
+\item{NextToken}{When you request a list of objects with a \code{MaxResults} setting, if the number of objects that are still available for retrieval exceeds the maximum you requested, Firewall Manager returns a \code{NextToken} value in the response. To retrieve the next batch of objects, use the token returned from the prior request in your next request.}
 }
 \description{
 Returns an array of resources that are currently associated to a resource set.

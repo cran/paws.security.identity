@@ -7,42 +7,38 @@
 verifiedpermissions_create_policy_store(
   clientToken = NULL,
   validationSettings,
-  description = NULL
+  description = NULL,
+  deletionProtection = NULL,
+  encryptionSettings = NULL,
+  tags = NULL
 )
 }
 \arguments{
-\item{clientToken}{Specifies a unique, case-sensitive ID that you provide to ensure the
-idempotency of the request. This lets you safely retry the request
-without accidentally performing the same operation a second time.
-Passing the same value to a later call to an operation requires that you
-also pass the same value for all other parameters. We recommend that you
-use a \href{https://en.wikipedia.org/wiki/Universally_unique_identifier}{UUID type of value.}.
+\item{clientToken}{Specifies a unique, case-sensitive ID that you provide to ensure the idempotency of the request. This lets you safely retry the request without accidentally performing the same operation a second time. Passing the same value to a later call to an operation requires that you also pass the same value for all other parameters. We recommend that you use a \href{https://en.wikipedia.org/wiki/Universally_unique_identifier}{UUID type of value.}.
 
-If you don't provide this value, then Amazon Web Services generates a
-random one for you.
+If you don't provide this value, then Amazon Web Services generates a random one for you.
 
-If you retry the operation with the same \code{ClientToken}, but with
-different parameters, the retry fails with an \code{ConflictException} error.
+If you retry the operation with the same \code{ClientToken}, but with different parameters, the retry fails with an \code{ConflictException} error.
 
-Verified Permissions recognizes a \code{ClientToken} for eight hours. After
-eight hours, the next request with the same parameters performs the
-operation again regardless of the value of \code{ClientToken}.}
+Verified Permissions recognizes a \code{ClientToken} for eight hours. After eight hours, the next request with the same parameters performs the operation again regardless of the value of \code{ClientToken}.}
 
 \item{validationSettings}{[required] Specifies the validation setting for this policy store.
 
 Currently, the only valid and required value is \code{Mode}.
 
-We recommend that you turn on \code{STRICT} mode only after you define a
-schema. If a schema doesn't exist, then \code{STRICT} mode causes any policy
-to fail validation, and Verified Permissions rejects the policy. You can
-turn off validation by using the
-\code{\link[=verifiedpermissions_update_policy_store]{update_policy_store}}. Then,
-when you have a schema defined, use
-\code{\link[=verifiedpermissions_update_policy_store]{update_policy_store}} again
-to turn validation back on.}
+We recommend that you turn on \code{STRICT} mode only after you define a schema. If a schema doesn't exist, then \code{STRICT} mode causes any policy to fail validation, and Verified Permissions rejects the policy. You can turn off validation by using the \code{\link[=verifiedpermissions_update_policy_store]{update_policy_store}}. Then, when you have a schema defined, use \code{\link[=verifiedpermissions_update_policy_store]{update_policy_store}} again to turn validation back on.}
 
-\item{description}{Descriptive text that you can provide to help with identification of the
-current policy store.}
+\item{description}{Descriptive text that you can provide to help with identification of the current policy store.}
+
+\item{deletionProtection}{Specifies whether the policy store can be deleted. If enabled, the policy store can't be deleted.
+
+The default state is \code{DISABLED}.}
+
+\item{encryptionSettings}{Specifies the encryption settings used to encrypt the policy store and their child resources. Allows for the ability to use a customer owned KMS key for encryption of data.
+
+This is an optional field to be used when providing a customer-managed KMS key for encryption.}
+
+\item{tags}{The list of key-value pairs to associate with the policy store.}
 }
 \description{
 Creates a policy store. A policy store is a container for policy resources.

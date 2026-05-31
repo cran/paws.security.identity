@@ -14,17 +14,12 @@ Specify the key ID or key ARN of the KMS key.
 For example:
 \itemize{
 \item Key ID: \verb{1234abcd-12ab-34cd-56ef-1234567890ab}
-\item Key ARN:
-\verb{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
+\item Key ARN: \verb{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
 }
 
-To get the key ID and key ARN for a KMS key, use
-\code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
+To get the key ID and key ARN for a KMS key, use \code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
 
-\item{PolicyName}{Specifies the name of the key policy. If no policy name is specified,
-the default value is \code{default}. The only valid name is \code{default}. To get
-the names of key policies, use
-\code{\link[=kms_list_key_policies]{list_key_policies}}.}
+\item{PolicyName}{Specifies the name of the key policy. If no policy name is specified, the default value is \code{default}. The only valid name is \code{default}. To get the names of key policies, use \code{\link[=kms_list_key_policies]{list_key_policies}}.}
 }
 \description{
 Gets a key policy attached to the specified KMS key.

@@ -10,11 +10,9 @@ cleanroomsml_cancel_trained_model_inference_job(
 )
 }
 \arguments{
-\item{membershipIdentifier}{[required] The membership ID of the trained model inference job that you want to
-cancel.}
+\item{membershipIdentifier}{[required] The membership ID of the trained model inference job that you want to cancel.}
 
-\item{trainedModelInferenceJobArn}{[required] The Amazon Resource Name (ARN) of the trained model inference job that
-you want to cancel.}
+\item{trainedModelInferenceJobArn}{[required] The Amazon Resource Name (ARN) of the trained model inference job that you want to cancel.}
 }
 \description{
 Submits a request to cancel a trained model inference job.

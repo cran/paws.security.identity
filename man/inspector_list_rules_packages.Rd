@@ -7,14 +7,9 @@
 inspector_list_rules_packages(nextToken = NULL, maxResults = NULL)
 }
 \arguments{
-\item{nextToken}{You can use this parameter when paginating results. Set the value of
-this parameter to null on your first call to the \strong{ListRulesPackages}
-action. Subsequent calls to the action fill \strong{nextToken} in the request
-with the value of \strong{NextToken} from the previous response to continue
-listing data.}
+\item{nextToken}{You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the \strong{ListRulesPackages} action. Subsequent calls to the action fill \strong{nextToken} in the request with the value of \strong{NextToken} from the previous response to continue listing data.}
 
-\item{maxResults}{You can use this parameter to indicate the maximum number of items you
-want in the response. The default value is 10. The maximum value is 500.}
+\item{maxResults}{You can use this parameter to indicate the maximum number of items you want in the response. The default value is 10. The maximum value is 500.}
 }
 \description{
 Lists all available Amazon Inspector rules packages.

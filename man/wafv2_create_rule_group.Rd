@@ -16,60 +16,35 @@ wafv2_create_rule_group(
 )
 }
 \arguments{
-\item{Name}{[required] The name of the rule group. You cannot change the name of a rule group
-after you create it.}
+\item{Name}{[required] The name of the rule group. You cannot change the name of a rule group after you create it.}
 
-\item{Scope}{[required] Specifies whether this is for a global resource type, such as a Amazon
-CloudFront distribution.
+\item{Scope}{[required] Specifies whether this is for a global resource type, such as a Amazon CloudFront distribution. For an Amplify application, use \code{CLOUDFRONT}.
 
-To work with CloudFront, you must also specify the Region US East (N.
-Virginia) as follows:
+To work with CloudFront, you must also specify the Region US East (N. Virginia) as follows:
 \itemize{
-\item CLI - Specify the Region when you use the CloudFront scope:
-\code{--scope=CLOUDFRONT --region=us-east-1}.
+\item CLI - Specify the Region when you use the CloudFront scope: \code{--scope=CLOUDFRONT --region=us-east-1}.
 \item API and SDKs - For all calls, use the Region endpoint us-east-1.
 }}
 
 \item{Capacity}{[required] The web ACL capacity units (WCUs) required for this rule group.
 
-When you create your own rule group, you define this, and you cannot
-change it after creation. When you add or modify the rules in a rule
-group, WAF enforces this limit. You can check the capacity for a set of
-rules using \code{\link[=wafv2_check_capacity]{check_capacity}}.
+When you create your own rule group, you define this, and you cannot change it after creation. When you add or modify the rules in a rule group, WAF enforces this limit. You can check the capacity for a set of rules using \code{\link[=wafv2_check_capacity]{check_capacity}}.
 
-WAF uses WCUs to calculate and control the operating resources that are
-used to run your rules, rule groups, and web ACLs. WAF calculates
-capacity differently for each rule type, to reflect the relative cost of
-each rule. Simple rules that cost little to run use fewer WCUs than more
-complex rules that use more processing power. Rule group capacity is
-fixed at creation, which helps users plan their web ACL WCU usage when
-they use a rule group. For more information, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/aws-waf-capacity-units.html}{WAF web ACL capacity units (WCU)}
-in the \emph{WAF Developer Guide}.}
+WAF uses WCUs to calculate and control the operating resources that are used to run your rules, rule groups, and web ACLs. WAF calculates capacity differently for each rule type, to reflect the relative cost of each rule. Simple rules that cost little to run use fewer WCUs than more complex rules that use more processing power. Rule group capacity is fixed at creation, which helps users plan their web ACL WCU usage when they use a rule group. For more information, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/aws-waf-capacity-units.html}{WAF web ACL capacity units (WCU)} in the \emph{WAF Developer Guide}.}
 
 \item{Description}{A description of the rule group that helps with identification.}
 
-\item{Rules}{The Rule statements used to identify the web requests that you want to
-manage. Each rule includes one top-level statement that WAF uses to
-identify matching web requests, and parameters that govern how WAF
-handles them.}
+\item{Rules}{The Rule statements used to identify the web requests that you want to manage. Each rule includes one top-level statement that WAF uses to identify matching web requests, and parameters that govern how WAF handles them.}
 
-\item{VisibilityConfig}{[required] Defines and enables Amazon CloudWatch metrics and web request sample
-collection.}
+\item{VisibilityConfig}{[required] Defines and enables Amazon CloudWatch metrics and web request sample collection.}
 
 \item{Tags}{An array of key:value pairs to associate with the resource.}
 
-\item{CustomResponseBodies}{A map of custom response keys and content bodies. When you create a rule
-with a block action, you can send a custom response to the web request.
-You define these for the rule group, and then use them in the rules that
-you define in the rule group.
+\item{CustomResponseBodies}{A map of custom response keys and content bodies. When you create a rule with a block action, you can send a custom response to the web request. You define these for the rule group, and then use them in the rules that you define in the rule group.
 
-For information about customizing web requests and responses, see
-\href{https://docs.aws.amazon.com/waf/latest/developerguide/waf-custom-request-response.html}{Customizing web requests and responses in WAF}
-in the \emph{WAF Developer Guide}.
+For information about customizing web requests and responses, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/waf-custom-request-response.html}{Customizing web requests and responses in WAF} in the \emph{WAF Developer Guide}.
 
-For information about the limits on count and size for custom request
-and response settings, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/limits.html}{WAF quotas}
-in the \emph{WAF Developer Guide}.}
+For information about the limits on count and size for custom request and response settings, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/limits.html}{WAF quotas} in the \emph{WAF Developer Guide}.}
 }
 \description{
 Creates a RuleGroup per the specifications provided.

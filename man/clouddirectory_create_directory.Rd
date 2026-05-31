@@ -9,8 +9,7 @@ clouddirectory_create_directory(Name, SchemaArn)
 \arguments{
 \item{Name}{[required] The name of the Directory. Should be unique per account, per region.}
 
-\item{SchemaArn}{[required] The Amazon Resource Name (ARN) of the published schema that will be
-copied into the data Directory. For more information, see arns.}
+\item{SchemaArn}{[required] The Amazon Resource Name (ARN) of the published schema that will be copied into the data Directory. For more information, see arns.}
 }
 \description{
 Creates a Directory by copying the published schema into the directory. A directory cannot be created without a schema.

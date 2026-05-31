@@ -18,9 +18,7 @@ cognitoidentity_list_identities(
 
 \item{NextToken}{A pagination token.}
 
-\item{HideDisabled}{An optional boolean parameter that allows you to hide disabled
-identities. If omitted, the ListIdentities API will include disabled
-identities in the response.}
+\item{HideDisabled}{An optional boolean parameter that allows you to hide disabled identities. If omitted, the ListIdentities API will include disabled identities in the response.}
 }
 \description{
 Lists the identities in an identity pool.

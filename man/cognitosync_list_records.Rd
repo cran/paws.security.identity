@@ -16,16 +16,11 @@ cognitosync_list_records(
 )
 }
 \arguments{
-\item{IdentityPoolId}{[required] A name-spaced GUID (for example,
-us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
-Cognito. GUID generation is unique within a region.}
+\item{IdentityPoolId}{[required] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.}
 
-\item{IdentityId}{[required] A name-spaced GUID (for example,
-us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
-Cognito. GUID generation is unique within a region.}
+\item{IdentityId}{[required] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.}
 
-\item{DatasetName}{[required] A string of up to 128 characters. Allowed characters are a-z, A-Z, 0-9,
-'_' (underscore), '-' (dash), and '.' (dot).}
+\item{DatasetName}{[required] A string of up to 128 characters. Allowed characters are a-z, A-Z, 0-9, '_' (underscore), '-' (dash), and '.' (dot).}
 
 \item{LastSyncCount}{The last server sync count for this record.}
 

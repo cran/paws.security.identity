@@ -15,11 +15,9 @@ macie2_describe_buckets(
 \arguments{
 \item{criteria}{The criteria to use to filter the query results.}
 
-\item{maxResults}{The maximum number of items to include in each page of the response. The
-default value is 50.}
+\item{maxResults}{The maximum number of items to include in each page of the response. The default value is 50.}
 
-\item{nextToken}{The nextToken string that specifies which page of results to return in a
-paginated response.}
+\item{nextToken}{The nextToken string that specifies which page of results to return in a paginated response.}
 
 \item{sortCriteria}{The criteria to use to sort the query results.}
 }

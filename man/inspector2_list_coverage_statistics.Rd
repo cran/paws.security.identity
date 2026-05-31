@@ -11,15 +11,11 @@ inspector2_list_coverage_statistics(
 )
 }
 \arguments{
-\item{filterCriteria}{An object that contains details on the filters to apply to the coverage
-data for your environment.}
+\item{filterCriteria}{An object that contains details on the filters to apply to the coverage data for your environment.}
 
 \item{groupBy}{The value to group the results by.}
 
-\item{nextToken}{A token to use for paginating results that are returned in the response.
-Set the value of this parameter to null for the first request to a list
-action. For subsequent calls, use the \code{NextToken} value returned from
-the previous request to continue listing results after the first page.}
+\item{nextToken}{A token to use for paginating results that are returned in the response. Set the value of this parameter to null for the first request to a list action. For subsequent calls, use the \code{NextToken} value returned from the previous request to continue listing results after the first page.}
 }
 \description{
 Lists Amazon Inspector coverage statistics for your environment.

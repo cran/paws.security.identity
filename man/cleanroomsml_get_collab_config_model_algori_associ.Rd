@@ -11,11 +11,9 @@ cleanroomsml_get_collaboration_configured_model_algorithm_association(
 )
 }
 \arguments{
-\item{configuredModelAlgorithmAssociationArn}{[required] The Amazon Resource Name (ARN) of the configured model algorithm
-association that you want to return information about.}
+\item{configuredModelAlgorithmAssociationArn}{[required] The Amazon Resource Name (ARN) of the configured model algorithm association that you want to return information about.}
 
-\item{collaborationIdentifier}{[required] The collaboration ID for the collaboration that contains the configured
-model algorithm association that you want to return information about.}
+\item{collaborationIdentifier}{[required] The collaboration ID for the collaboration that contains the configured model algorithm association that you want to return information about.}
 }
 \description{
 Returns information about the configured model algorithm association in a collaboration.

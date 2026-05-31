@@ -7,8 +7,7 @@
 cleanroomsml_get_configured_audience_model_policy(configuredAudienceModelArn)
 }
 \arguments{
-\item{configuredAudienceModelArn}{[required] The Amazon Resource Name (ARN) of the configured audience model that you
-are interested in.}
+\item{configuredAudienceModelArn}{[required] The Amazon Resource Name (ARN) of the configured audience model that you are interested in.}
 }
 \description{
 Returns information about a configured audience model policy.

@@ -48,49 +48,23 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-IAM Identity Center OpenID Connect (OIDC) is a web service that enables
-a client (such as CLI or a native application) to register with IAM
-Identity Center. The service also enables the client to fetch the user’s
-access token upon successful authentication and authorization with IAM
-Identity Center.
+IAM Identity Center OpenID Connect (OIDC) is a web service that enables a client (such as CLI or a native application) to register with IAM Identity Center. The service also enables the client to fetch the user’s access token upon successful authentication and authorization with IAM Identity Center.
 
 \strong{API namespaces}
 
-IAM Identity Center uses the \code{sso} and \code{identitystore} API namespaces.
-IAM Identity Center OpenID Connect uses the \code{sso-oidc} namespace.
+IAM Identity Center uses the \code{sso} and \code{identitystore} API namespaces. IAM Identity Center OpenID Connect uses the \code{sso-oauth} namespace.
 
 \strong{Considerations for using this guide}
 
-Before you begin using this guide, we recommend that you first review
-the following important information about how the IAM Identity Center
-OIDC service works.
+Before you begin using this guide, we recommend that you first review the following important information about how the IAM Identity Center OIDC service works.
 \itemize{
-\item The IAM Identity Center OIDC service currently implements only the
-portions of the OAuth 2.0 Device Authorization Grant standard
-(\href{https://datatracker.ietf.org/doc/html/rfc8628}{https://tools.ietf.org/html/rfc8628})
-that are necessary to enable single sign-on authentication with the
-CLI.
-\item With older versions of the CLI, the service only emits OIDC access
-tokens, so to obtain a new token, users must explicitly
-re-authenticate. To access the OIDC flow that supports token refresh
-and doesn’t require re-authentication, update to the latest CLI
-version (1.27.10 for CLI V1 and 2.9.0 for CLI V2) with support for
-OIDC token refresh and configurable IAM Identity Center session
-durations. For more information, see \href{https://docs.aws.amazon.com/singlesignon/latest/userguide/configure-user-session.html}{Configure Amazon Web Services access portal session duration}
-.
-\item The access tokens provided by this service grant access to all
-Amazon Web Services account entitlements assigned to an IAM Identity
-Center user, not just a particular application.
-\item The documentation in this guide does not describe the mechanism to
-convert the access token into Amazon Web Services Auth (“sigv4”)
-credentials for use with IAM-protected Amazon Web Services service
-endpoints. For more information, see
-\href{https://docs.aws.amazon.com/singlesignon/latest/PortalAPIReference/API_GetRoleCredentials.html}{GetRoleCredentials}
-in the \emph{IAM Identity Center Portal API Reference Guide}.
+\item The IAM Identity Center OIDC service currently implements only the portions of the OAuth 2.0 Device Authorization Grant standard (\href{https://datatracker.ietf.org/doc/html/rfc8628}{https://tools.ietf.org/html/rfc8628}) that are necessary to enable single sign-on authentication with the CLI.
+\item With older versions of the CLI, the service only emits OIDC access tokens, so to obtain a new token, users must explicitly re-authenticate. To access the OIDC flow that supports token refresh and doesn’t require re-authentication, update to the latest CLI version (1.27.10 for CLI V1 and 2.9.0 for CLI V2) with support for OIDC token refresh and configurable IAM Identity Center session durations. For more information, see \href{https://docs.aws.amazon.com/singlesignon/latest/userguide/configure-user-session.html}{Configure Amazon Web Services access portal session duration} .
+\item The access tokens provided by this service grant access to all Amazon Web Services account entitlements assigned to an IAM Identity Center user, not just a particular application.
+\item The documentation in this guide does not describe the mechanism to convert the access token into Amazon Web Services Auth (“sigv4”) credentials for use with IAM-protected Amazon Web Services service endpoints. For more information, see \href{https://docs.aws.amazon.com/singlesignon/latest/PortalAPIReference/API_GetRoleCredentials.html}{GetRoleCredentials} in the \emph{IAM Identity Center Portal API Reference Guide}.
 }
 
-For general information about IAM Identity Center, see \href{https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html}{What is IAM Identity Center?}
-in the \emph{IAM Identity Center User Guide}.
+For general information about IAM Identity Center, see \href{https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html}{What is IAM Identity Center?} in the \emph{IAM Identity Center User Guide}.
 }
 \section{Service syntax}{
 
@@ -132,7 +106,7 @@ in the \emph{IAM Identity Center User Guide}.
 
 \tabular{ll}{
 \link[=ssooidc_create_token]{create_token} \tab Creates and returns access and refresh tokens for clients that are authenticated using client secrets\cr
-\link[=ssooidc_create_token_with_iam]{create_token_with_iam} \tab Creates and returns access and refresh tokens for clients and applications that are authenticated using IAM entities\cr
+\link[=ssooidc_create_token_with_iam]{create_token_with_iam} \tab Creates and returns access and refresh tokens for authorized client applications that are authenticated using any IAM entity, such as a service role or user\cr
 \link[=ssooidc_register_client]{register_client} \tab Registers a public client with IAM Identity Center\cr
 \link[=ssooidc_start_device_authorization]{start_device_authorization} \tab Initiates device authorization by requesting a pair of verification codes from the authorization service
 }

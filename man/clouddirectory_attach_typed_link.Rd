@@ -13,8 +13,7 @@ clouddirectory_attach_typed_link(
 )
 }
 \arguments{
-\item{DirectoryArn}{[required] The Amazon Resource Name (ARN) of the directory where you want to attach
-the typed link.}
+\item{DirectoryArn}{[required] The Amazon Resource Name (ARN) of the directory where you want to attach the typed link.}
 
 \item{SourceObjectReference}{[required] Identifies the source object that the typed link will attach to.}
 

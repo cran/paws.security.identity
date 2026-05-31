@@ -44,13 +44,7 @@ accessanalyzer_apply_archive_rule <- function(analyzerArn, ruleName, clientToken
 #'
 #' See [https://www.paws-r-sdk.com/docs/accessanalyzer_cancel_policy_generation/](https://www.paws-r-sdk.com/docs/accessanalyzer_cancel_policy_generation/) for full documentation.
 #'
-#' @param jobId &#91;required&#93; The `JobId` that is returned by the
-#' [`start_policy_generation`][accessanalyzer_start_policy_generation]
-#' operation. The `JobId` can be used with
-#' [`get_generated_policy`][accessanalyzer_get_generated_policy] to
-#' retrieve the generated policies or used with
-#' [`cancel_policy_generation`][accessanalyzer_cancel_policy_generation] to
-#' cancel the policy generation request.
+#' @param jobId &#91;required&#93; The `JobId` that is returned by the [`start_policy_generation`][accessanalyzer_start_policy_generation] operation. The `JobId` can be used with [`get_generated_policy`][accessanalyzer_get_generated_policy] to retrieve the generated policies or used with [`cancel_policy_generation`][accessanalyzer_cancel_policy_generation] to cancel the policy generation request.
 #'
 #' @keywords internal
 #'
@@ -82,21 +76,10 @@ accessanalyzer_cancel_policy_generation <- function(jobId) {
 #' See [https://www.paws-r-sdk.com/docs/accessanalyzer_check_access_not_granted/](https://www.paws-r-sdk.com/docs/accessanalyzer_check_access_not_granted/) for full documentation.
 #'
 #' @param policyDocument &#91;required&#93; The JSON policy document to use as the content for the policy.
-#' @param access &#91;required&#93; An access object containing the permissions that shouldn't be granted by
-#' the specified policy. If only actions are specified, IAM Access Analyzer
-#' checks for access to peform at least one of the actions on any resource
-#' in the policy. If only resources are specified, then IAM Access Analyzer
-#' checks for access to perform any action on at least one of the
-#' resources. If both actions and resources are specified, IAM Access
-#' Analyzer checks for access to perform at least one of the specified
-#' actions on at least one of the specified resources.
-#' @param policyType &#91;required&#93; The type of policy. Identity policies grant permissions to IAM
-#' principals. Identity policies include managed and inline policies for
-#' IAM roles, users, and groups.
+#' @param access &#91;required&#93; An access object containing the permissions that shouldn't be granted by the specified policy. If only actions are specified, IAM Access Analyzer checks for access to peform at least one of the actions on any resource in the policy. If only resources are specified, then IAM Access Analyzer checks for access to perform any action on at least one of the resources. If both actions and resources are specified, IAM Access Analyzer checks for access to perform at least one of the specified actions on at least one of the specified resources.
+#' @param policyType &#91;required&#93; The type of policy. Identity policies grant permissions to IAM principals. Identity policies include managed and inline policies for IAM roles, users, and groups.
 #' 
-#' Resource policies grant permissions on Amazon Web Services resources.
-#' Resource policies include trust policies for IAM roles and bucket
-#' policies for Amazon S3 buckets.
+#' Resource policies grant permissions on Amazon Web Services resources. Resource policies include trust policies for IAM roles and bucket policies for Amazon S3 buckets.
 #'
 #' @keywords internal
 #'
@@ -130,15 +113,9 @@ accessanalyzer_check_access_not_granted <- function(policyDocument, access, poli
 #'
 #' @param newPolicyDocument &#91;required&#93; The JSON policy document to use as the content for the updated policy.
 #' @param existingPolicyDocument &#91;required&#93; The JSON policy document to use as the content for the existing policy.
-#' @param policyType &#91;required&#93; The type of policy to compare. Identity policies grant permissions to
-#' IAM principals. Identity policies include managed and inline policies
-#' for IAM roles, users, and groups.
+#' @param policyType &#91;required&#93; The type of policy to compare. Identity policies grant permissions to IAM principals. Identity policies include managed and inline policies for IAM roles, users, and groups.
 #' 
-#' Resource policies grant permissions on Amazon Web Services resources.
-#' Resource policies include trust policies for IAM roles and bucket
-#' policies for Amazon S3 buckets. You can provide a generic input such as
-#' identity policy or resource policy or a specific input such as managed
-#' policy or Amazon S3 bucket policy.
+#' Resource policies grant permissions on Amazon Web Services resources. Resource policies include trust policies for IAM roles and bucket policies for Amazon S3 buckets. You can provide a generic input such as identity policy or resource policy or a specific input such as managed policy or Amazon S3 bucket policy.
 #'
 #' @keywords internal
 #'
@@ -171,12 +148,9 @@ accessanalyzer_check_no_new_access <- function(newPolicyDocument, existingPolicy
 #' See [https://www.paws-r-sdk.com/docs/accessanalyzer_check_no_public_access/](https://www.paws-r-sdk.com/docs/accessanalyzer_check_no_public_access/) for full documentation.
 #'
 #' @param policyDocument &#91;required&#93; The JSON policy document to evaluate for public access.
-#' @param resourceType &#91;required&#93; The type of resource to evaluate for public access. For example, to
-#' check for public access to Amazon S3 buckets, you can choose
-#' `AWS::S3::Bucket` for the resource type.
+#' @param resourceType &#91;required&#93; The type of resource to evaluate for public access. For example, to check for public access to Amazon S3 buckets, you can choose `AWS::S3::Bucket` for the resource type.
 #' 
-#' For resource types not supported as valid values, IAM Access Analyzer
-#' will return an error.
+#' For resource types not supported as valid values, IAM Access Analyzer will return an error.
 #'
 #' @keywords internal
 #'
@@ -208,14 +182,8 @@ accessanalyzer_check_no_public_access <- function(policyDocument, resourceType) 
 #'
 #' See [https://www.paws-r-sdk.com/docs/accessanalyzer_create_access_preview/](https://www.paws-r-sdk.com/docs/accessanalyzer_create_access_preview/) for full documentation.
 #'
-#' @param analyzerArn &#91;required&#93; The [ARN of the account
-#' analyzer](https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources)
-#' used to generate the access preview. You can only create an access
-#' preview for analyzers with an `Account` type and `Active` status.
-#' @param configurations &#91;required&#93; Access control configuration for your resource that is used to generate
-#' the access preview. The access preview includes findings for external
-#' access allowed to the resource with the proposed access control
-#' configuration. The configuration must contain exactly one element.
+#' @param analyzerArn &#91;required&#93; The [ARN of the account analyzer](https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources) used to generate the access preview. You can only create an access preview for analyzers with an `Account` type and `Active` status.
+#' @param configurations &#91;required&#93; Access control configuration for your resource that is used to generate the access preview. The access preview includes findings for external access allowed to the resource with the proposed access control configuration. The configuration must contain exactly one element.
 #' @param clientToken A client token.
 #'
 #' @keywords internal
@@ -248,26 +216,15 @@ accessanalyzer_create_access_preview <- function(analyzerArn, configurations, cl
 #' See [https://www.paws-r-sdk.com/docs/accessanalyzer_create_analyzer/](https://www.paws-r-sdk.com/docs/accessanalyzer_create_analyzer/) for full documentation.
 #'
 #' @param analyzerName &#91;required&#93; The name of the analyzer to create.
-#' @param type &#91;required&#93; The type of analyzer to create. Only `ACCOUNT`, `ORGANIZATION`,
-#' `ACCOUNT_UNUSED_ACCESS`, and `ORGANIZATION_UNUSED_ACCESS` analyzers are
-#' supported. You can create only one analyzer per account per Region. You
-#' can create up to 5 analyzers per organization per Region.
-#' @param archiveRules Specifies the archive rules to add for the analyzer. Archive rules
-#' automatically archive findings that meet the criteria you define for the
-#' rule.
-#' @param tags An array of key-value pairs to apply to the analyzer. You can use the
-#' set of Unicode letters, digits, whitespace, `_`, `.`, `/`, `=`, `+`, and
-#' `-`.
+#' @param type &#91;required&#93; The type of analyzer to create. You can create only one analyzer per account per Region. You can create up to 5 analyzers per organization per Region.
+#' @param archiveRules Specifies the archive rules to add for the analyzer. Archive rules automatically archive findings that meet the criteria you define for the rule.
+#' @param tags An array of key-value pairs to apply to the analyzer. You can use the set of Unicode letters, digits, whitespace, `_`, `.`, `/`, `=`, `+`, and `-`.
 #' 
-#' For the tag key, you can specify a value that is 1 to 128 characters in
-#' length and cannot be prefixed with `aws:`.
+#' For the tag key, you can specify a value that is 1 to 128 characters in length and cannot be prefixed with `aws:`.
 #' 
-#' For the tag value, you can specify a value that is 0 to 256 characters
-#' in length.
+#' For the tag value, you can specify a value that is 0 to 256 characters in length.
 #' @param clientToken A client token.
-#' @param configuration Specifies the configuration of the analyzer. If the analyzer is an
-#' unused access analyzer, the specified scope of unused access is used for
-#' the configuration.
+#' @param configuration Specifies the configuration of the analyzer. If the analyzer is an unused access analyzer, the specified scope of unused access is used for the configuration. If the analyzer is an internal access analyzer, the specified internal access analysis rules are used for the configuration.
 #'
 #' @keywords internal
 #'
@@ -325,6 +282,41 @@ accessanalyzer_create_archive_rule <- function(analyzerName, ruleName, filter, c
 }
 .accessanalyzer$operations$create_archive_rule <- accessanalyzer_create_archive_rule
 
+#' Creates a service-linked analyzer managed by an Amazon Web Services
+#' service
+#'
+#' @description
+#' Creates a service-linked analyzer managed by an Amazon Web Services service. This operation can only be invoked by authorized Amazon Web Services services. Direct customer invocation returns `AccessDeniedException`.
+#'
+#' See [https://www.paws-r-sdk.com/docs/accessanalyzer_create_service_linked_analyzer/](https://www.paws-r-sdk.com/docs/accessanalyzer_create_service_linked_analyzer/) for full documentation.
+#'
+#' @param type &#91;required&#93; The type of analyzer to create. Valid values are `ACCOUNT_UNUSED_ACCESS` and `ORGANIZATION_UNUSED_ACCESS`.
+#' @param archiveRules Specifies the archive rules to add for the analyzer. Archive rules automatically archive findings that meet the criteria you define for the rule.
+#' @param clientToken A client token.
+#' @param configuration Specifies the configuration of the analyzer. The specified scope of unused access is used for the configuration.
+#'
+#' @keywords internal
+#'
+#' @rdname accessanalyzer_create_service_linked_analyzer
+accessanalyzer_create_service_linked_analyzer <- function(type, archiveRules = NULL, clientToken = NULL, configuration = NULL) {
+  op <- new_operation(
+    name = "CreateServiceLinkedAnalyzer",
+    http_method = "PUT",
+    http_path = "/service-linked-analyzer",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .accessanalyzer$create_service_linked_analyzer_input(type = type, archiveRules = archiveRules, clientToken = clientToken, configuration = configuration)
+  output <- .accessanalyzer$create_service_linked_analyzer_output()
+  config <- get_config()
+  svc <- .accessanalyzer$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.accessanalyzer$operations$create_service_linked_analyzer <- accessanalyzer_create_service_linked_analyzer
+
 #' Deletes the specified analyzer
 #'
 #' @description
@@ -364,8 +356,7 @@ accessanalyzer_delete_analyzer <- function(analyzerName, clientToken = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/accessanalyzer_delete_archive_rule/](https://www.paws-r-sdk.com/docs/accessanalyzer_delete_archive_rule/) for full documentation.
 #'
-#' @param analyzerName &#91;required&#93; The name of the analyzer that associated with the archive rule to
-#' delete.
+#' @param analyzerName &#91;required&#93; The name of the analyzer that associated with the archive rule to delete.
 #' @param ruleName &#91;required&#93; The name of the rule to delete.
 #' @param clientToken A client token.
 #'
@@ -391,6 +382,38 @@ accessanalyzer_delete_archive_rule <- function(analyzerName, ruleName, clientTok
 }
 .accessanalyzer$operations$delete_archive_rule <- accessanalyzer_delete_archive_rule
 
+#' Deletes a service-linked analyzer
+#'
+#' @description
+#' Deletes a service-linked analyzer. This operation can be invoked by both authorized Amazon Web Services services and customers.
+#'
+#' See [https://www.paws-r-sdk.com/docs/accessanalyzer_delete_service_linked_analyzer/](https://www.paws-r-sdk.com/docs/accessanalyzer_delete_service_linked_analyzer/) for full documentation.
+#'
+#' @param analyzerName &#91;required&#93; The name of the service-linked analyzer to delete. Service-linked analyzer names follow the format `_AccessAnalyzerFor{ServiceName}-{Id}`.
+#' @param clientToken A client token.
+#'
+#' @keywords internal
+#'
+#' @rdname accessanalyzer_delete_service_linked_analyzer
+accessanalyzer_delete_service_linked_analyzer <- function(analyzerName, clientToken = NULL) {
+  op <- new_operation(
+    name = "DeleteServiceLinkedAnalyzer",
+    http_method = "DELETE",
+    http_path = "/service-linked-analyzer/{analyzerName}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .accessanalyzer$delete_service_linked_analyzer_input(analyzerName = analyzerName, clientToken = clientToken)
+  output <- .accessanalyzer$delete_service_linked_analyzer_output()
+  config <- get_config()
+  svc <- .accessanalyzer$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.accessanalyzer$operations$delete_service_linked_analyzer <- accessanalyzer_delete_service_linked_analyzer
+
 #' Creates a recommendation for an unused permissions finding
 #'
 #' @description
@@ -398,9 +421,7 @@ accessanalyzer_delete_archive_rule <- function(analyzerName, ruleName, clientTok
 #'
 #' See [https://www.paws-r-sdk.com/docs/accessanalyzer_generate_finding_recommendation/](https://www.paws-r-sdk.com/docs/accessanalyzer_generate_finding_recommendation/) for full documentation.
 #'
-#' @param analyzerArn &#91;required&#93; The [ARN of the
-#' analyzer](https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources)
-#' used to generate the finding recommendation.
+#' @param analyzerArn &#91;required&#93; The [ARN of the analyzer](https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources) used to generate the finding recommendation.
 #' @param id &#91;required&#93; The unique ID for the finding recommendation.
 #'
 #' @keywords internal
@@ -433,9 +454,7 @@ accessanalyzer_generate_finding_recommendation <- function(analyzerArn, id) {
 #' See [https://www.paws-r-sdk.com/docs/accessanalyzer_get_access_preview/](https://www.paws-r-sdk.com/docs/accessanalyzer_get_access_preview/) for full documentation.
 #'
 #' @param accessPreviewId &#91;required&#93; The unique ID for the access preview.
-#' @param analyzerArn &#91;required&#93; The [ARN of the
-#' analyzer](https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources)
-#' used to generate the access preview.
+#' @param analyzerArn &#91;required&#93; The [ARN of the analyzer](https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources) used to generate the access preview.
 #'
 #' @keywords internal
 #'
@@ -466,9 +485,7 @@ accessanalyzer_get_access_preview <- function(accessPreviewId, analyzerArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/accessanalyzer_get_analyzed_resource/](https://www.paws-r-sdk.com/docs/accessanalyzer_get_analyzed_resource/) for full documentation.
 #'
-#' @param analyzerArn &#91;required&#93; The [ARN of the
-#' analyzer](https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources)
-#' to retrieve information from.
+#' @param analyzerArn &#91;required&#93; The [ARN of the analyzer](https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources) to retrieve information from.
 #' @param resourceArn &#91;required&#93; The ARN of the resource to retrieve information about.
 #'
 #' @keywords internal
@@ -563,9 +580,7 @@ accessanalyzer_get_archive_rule <- function(analyzerName, ruleName) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/accessanalyzer_get_finding/](https://www.paws-r-sdk.com/docs/accessanalyzer_get_finding/) for full documentation.
 #'
-#' @param analyzerArn &#91;required&#93; The [ARN of the
-#' analyzer](https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources)
-#' that generated the finding.
+#' @param analyzerArn &#91;required&#93; The [ARN of the analyzer](https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources) that generated the finding.
 #' @param id &#91;required&#93; The ID of the finding to retrieve.
 #'
 #' @keywords internal
@@ -598,9 +613,7 @@ accessanalyzer_get_finding <- function(analyzerArn, id) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/accessanalyzer_get_finding_recommendation/](https://www.paws-r-sdk.com/docs/accessanalyzer_get_finding_recommendation/) for full documentation.
 #'
-#' @param analyzerArn &#91;required&#93; The [ARN of the
-#' analyzer](https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources)
-#' used to generate the finding recommendation.
+#' @param analyzerArn &#91;required&#93; The [ARN of the analyzer](https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources) used to generate the finding recommendation.
 #' @param id &#91;required&#93; The unique ID for the finding recommendation.
 #' @param maxResults The maximum number of results to return in the response.
 #' @param nextToken A token used for pagination of results returned.
@@ -634,9 +647,7 @@ accessanalyzer_get_finding_recommendation <- function(analyzerArn, id, maxResult
 #'
 #' See [https://www.paws-r-sdk.com/docs/accessanalyzer_get_finding_v2/](https://www.paws-r-sdk.com/docs/accessanalyzer_get_finding_v2/) for full documentation.
 #'
-#' @param analyzerArn &#91;required&#93; The [ARN of the
-#' analyzer](https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources)
-#' that generated the finding.
+#' @param analyzerArn &#91;required&#93; The [ARN of the analyzer](https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources) that generated the finding.
 #' @param id &#91;required&#93; The ID of the finding to retrieve.
 #' @param maxResults The maximum number of results to return in the response.
 #' @param nextToken A token used for pagination of results returned.
@@ -671,9 +682,7 @@ accessanalyzer_get_finding_v2 <- function(analyzerArn, id, maxResults = NULL, ne
 #'
 #' See [https://www.paws-r-sdk.com/docs/accessanalyzer_get_findings_statistics/](https://www.paws-r-sdk.com/docs/accessanalyzer_get_findings_statistics/) for full documentation.
 #'
-#' @param analyzerArn &#91;required&#93; The [ARN of the
-#' analyzer](https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources)
-#' used to generate the statistics.
+#' @param analyzerArn &#91;required&#93; The [ARN of the analyzer](https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources) used to generate the statistics.
 #'
 #' @keywords internal
 #'
@@ -704,25 +713,13 @@ accessanalyzer_get_findings_statistics <- function(analyzerArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/accessanalyzer_get_generated_policy/](https://www.paws-r-sdk.com/docs/accessanalyzer_get_generated_policy/) for full documentation.
 #'
-#' @param jobId &#91;required&#93; The `JobId` that is returned by the
-#' [`start_policy_generation`][accessanalyzer_start_policy_generation]
-#' operation. The `JobId` can be used with
-#' [`get_generated_policy`][accessanalyzer_get_generated_policy] to
-#' retrieve the generated policies or used with
-#' [`cancel_policy_generation`][accessanalyzer_cancel_policy_generation] to
-#' cancel the policy generation request.
-#' @param includeResourcePlaceholders The level of detail that you want to generate. You can specify whether
-#' to generate policies with placeholders for resource ARNs for actions
-#' that support resource level granularity in policies.
+#' @param jobId &#91;required&#93; The `JobId` that is returned by the [`start_policy_generation`][accessanalyzer_start_policy_generation] operation. The `JobId` can be used with [`get_generated_policy`][accessanalyzer_get_generated_policy] to retrieve the generated policies or used with [`cancel_policy_generation`][accessanalyzer_cancel_policy_generation] to cancel the policy generation request.
+#' @param includeResourcePlaceholders The level of detail that you want to generate. You can specify whether to generate policies with placeholders for resource ARNs for actions that support resource level granularity in policies.
 #' 
-#' For example, in the resource section of a policy, you can receive a
-#' placeholder such as `"Resource":"arn:aws:s3:::${BucketName}"` instead of
-#' `"*"`.
-#' @param includeServiceLevelTemplate The level of detail that you want to generate. You can specify whether
-#' to generate service-level policies.
+#' For example, in the resource section of a policy, you can receive a placeholder such as `"Resource":"arn:aws:s3:::${BucketName}"` instead of `"*"`.
+#' @param includeServiceLevelTemplate The level of detail that you want to generate. You can specify whether to generate service-level policies.
 #' 
-#' IAM Access Analyzer uses `iam:servicelastaccessed` to identify services
-#' that have been used recently to create this service-level template.
+#' IAM Access Analyzer uses `iam:servicelastaccessed` to identify services that have been used recently to create this service-level template.
 #'
 #' @keywords internal
 #'
@@ -755,9 +752,7 @@ accessanalyzer_get_generated_policy <- function(jobId, includeResourcePlaceholde
 #' See [https://www.paws-r-sdk.com/docs/accessanalyzer_list_access_preview_findings/](https://www.paws-r-sdk.com/docs/accessanalyzer_list_access_preview_findings/) for full documentation.
 #'
 #' @param accessPreviewId &#91;required&#93; The unique ID for the access preview.
-#' @param analyzerArn &#91;required&#93; The [ARN of the
-#' analyzer](https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources)
-#' used to generate the access.
+#' @param analyzerArn &#91;required&#93; The [ARN of the analyzer](https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources) used to generate the access.
 #' @param filter Criteria to filter the returned findings.
 #' @param nextToken A token used for pagination of results returned.
 #' @param maxResults The maximum number of results to return in the response.
@@ -791,9 +786,7 @@ accessanalyzer_list_access_preview_findings <- function(accessPreviewId, analyze
 #'
 #' See [https://www.paws-r-sdk.com/docs/accessanalyzer_list_access_previews/](https://www.paws-r-sdk.com/docs/accessanalyzer_list_access_previews/) for full documentation.
 #'
-#' @param analyzerArn &#91;required&#93; The [ARN of the
-#' analyzer](https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources)
-#' used to generate the access preview.
+#' @param analyzerArn &#91;required&#93; The [ARN of the analyzer](https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources) used to generate the access preview.
 #' @param nextToken A token used for pagination of results returned.
 #' @param maxResults The maximum number of results to return in the response.
 #'
@@ -827,9 +820,7 @@ accessanalyzer_list_access_previews <- function(analyzerArn, nextToken = NULL, m
 #'
 #' See [https://www.paws-r-sdk.com/docs/accessanalyzer_list_analyzed_resources/](https://www.paws-r-sdk.com/docs/accessanalyzer_list_analyzed_resources/) for full documentation.
 #'
-#' @param analyzerArn &#91;required&#93; The [ARN of the
-#' analyzer](https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources)
-#' to retrieve a list of analyzed resources from.
+#' @param analyzerArn &#91;required&#93; The [ARN of the analyzer](https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources) to retrieve a list of analyzed resources from.
 #' @param resourceType The type of resource.
 #' @param nextToken A token used for pagination of results returned.
 #' @param maxResults The maximum number of results to return in the response.
@@ -929,9 +920,7 @@ accessanalyzer_list_archive_rules <- function(analyzerName, nextToken = NULL, ma
 #'
 #' See [https://www.paws-r-sdk.com/docs/accessanalyzer_list_findings/](https://www.paws-r-sdk.com/docs/accessanalyzer_list_findings/) for full documentation.
 #'
-#' @param analyzerArn &#91;required&#93; The [ARN of the
-#' analyzer](https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources)
-#' to retrieve findings from.
+#' @param analyzerArn &#91;required&#93; The [ARN of the analyzer](https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources) to retrieve findings from.
 #' @param filter A filter to match for the findings to return.
 #' @param sort The sort order for the findings returned.
 #' @param nextToken A token used for pagination of results returned.
@@ -966,13 +955,11 @@ accessanalyzer_list_findings <- function(analyzerArn, filter = NULL, sort = NULL
 #'
 #' See [https://www.paws-r-sdk.com/docs/accessanalyzer_list_findings_v2/](https://www.paws-r-sdk.com/docs/accessanalyzer_list_findings_v2/) for full documentation.
 #'
-#' @param analyzerArn &#91;required&#93; The [ARN of the
-#' analyzer](https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources)
-#' to retrieve findings from.
+#' @param analyzerArn &#91;required&#93; The [ARN of the analyzer](https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources) to retrieve findings from.
 #' @param filter A filter to match for the findings to return.
 #' @param maxResults The maximum number of results to return in the response.
 #' @param nextToken A token used for pagination of results returned.
-#' @param sort 
+#' @param sort The criteria used to sort.
 #'
 #' @keywords internal
 #'
@@ -1003,9 +990,7 @@ accessanalyzer_list_findings_v2 <- function(analyzerArn, filter = NULL, maxResul
 #'
 #' See [https://www.paws-r-sdk.com/docs/accessanalyzer_list_policy_generations/](https://www.paws-r-sdk.com/docs/accessanalyzer_list_policy_generations/) for full documentation.
 #'
-#' @param principalArn The ARN of the IAM entity (user or role) for which you are generating a
-#' policy. Use this with `ListGeneratedPolicies` to filter the results to
-#' only include results for a specific principal.
+#' @param principalArn The ARN of the IAM entity (user or role) for which you are generating a policy. Use this with `ListGeneratedPolicies` to filter the results to only include results for a specific principal.
 #' @param maxResults The maximum number of results to return in the response.
 #' @param nextToken A token used for pagination of results returned.
 #'
@@ -1069,19 +1054,11 @@ accessanalyzer_list_tags_for_resource <- function(resourceArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/accessanalyzer_start_policy_generation/](https://www.paws-r-sdk.com/docs/accessanalyzer_start_policy_generation/) for full documentation.
 #'
-#' @param policyGenerationDetails &#91;required&#93; Contains the ARN of the IAM entity (user or role) for which you are
-#' generating a policy.
-#' @param cloudTrailDetails A `CloudTrailDetails` object that contains details about a `Trail` that
-#' you want to analyze to generate policies.
-#' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
-#' idempotency of the request. Idempotency ensures that an API request
-#' completes only once. With an idempotent request, if the original request
-#' completes successfully, the subsequent retries with the same client
-#' token return the result from the original successful request and they
-#' have no additional effect.
+#' @param policyGenerationDetails &#91;required&#93; Contains the ARN of the IAM entity (user or role) for which you are generating a policy.
+#' @param cloudTrailDetails A `CloudTrailDetails` object that contains details about a `Trail` that you want to analyze to generate policies.
+#' @param clientToken A unique, case-sensitive identifier that you provide to ensure the idempotency of the request. Idempotency ensures that an API request completes only once. With an idempotent request, if the original request completes successfully, the subsequent retries with the same client token return the result from the original successful request and they have no additional effect.
 #' 
-#' If you do not specify a client token, one is automatically generated by
-#' the Amazon Web Services SDK.
+#' If you do not specify a client token, one is automatically generated by the Amazon Web Services SDK.
 #'
 #' @keywords internal
 #'
@@ -1113,13 +1090,9 @@ accessanalyzer_start_policy_generation <- function(policyGenerationDetails, clou
 #'
 #' See [https://www.paws-r-sdk.com/docs/accessanalyzer_start_resource_scan/](https://www.paws-r-sdk.com/docs/accessanalyzer_start_resource_scan/) for full documentation.
 #'
-#' @param analyzerArn &#91;required&#93; The [ARN of the
-#' analyzer](https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources)
-#' to use to scan the policies applied to the specified resource.
+#' @param analyzerArn &#91;required&#93; The [ARN of the analyzer](https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources) to use to scan the policies applied to the specified resource.
 #' @param resourceArn &#91;required&#93; The ARN of the resource to scan.
-#' @param resourceOwnerAccount The Amazon Web Services account ID that owns the resource. For most
-#' Amazon Web Services resources, the owning account is the account in
-#' which the resource was created.
+#' @param resourceOwnerAccount The Amazon Web Services account ID that owns the resource. For most Amazon Web Services resources, the owning account is the account in which the resource was created.
 #'
 #' @keywords internal
 #'
@@ -1215,7 +1188,7 @@ accessanalyzer_untag_resource <- function(resourceArn, tagKeys) {
 #' See [https://www.paws-r-sdk.com/docs/accessanalyzer_update_analyzer/](https://www.paws-r-sdk.com/docs/accessanalyzer_update_analyzer/) for full documentation.
 #'
 #' @param analyzerName &#91;required&#93; The name of the analyzer to modify.
-#' @param configuration 
+#' @param configuration Contains information about the configuration of an analyzer for an Amazon Web Services organization or account.
 #'
 #' @keywords internal
 #'
@@ -1248,8 +1221,7 @@ accessanalyzer_update_analyzer <- function(analyzerName, configuration = NULL) {
 #'
 #' @param analyzerName &#91;required&#93; The name of the analyzer to update the archive rules for.
 #' @param ruleName &#91;required&#93; The name of the rule to update.
-#' @param filter &#91;required&#93; A filter to match for the rules to update. Only rules that match the
-#' filter are updated.
+#' @param filter &#91;required&#93; A filter to match for the rules to update. Only rules that match the filter are updated.
 #' @param clientToken A client token.
 #'
 #' @keywords internal
@@ -1281,12 +1253,8 @@ accessanalyzer_update_archive_rule <- function(analyzerName, ruleName, filter, c
 #'
 #' See [https://www.paws-r-sdk.com/docs/accessanalyzer_update_findings/](https://www.paws-r-sdk.com/docs/accessanalyzer_update_findings/) for full documentation.
 #'
-#' @param analyzerArn &#91;required&#93; The [ARN of the
-#' analyzer](https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources)
-#' that generated the findings to update.
-#' @param status &#91;required&#93; The state represents the action to take to update the finding Status.
-#' Use `ARCHIVE` to change an Active finding to an Archived finding. Use
-#' `ACTIVE` to change an Archived finding to an Active finding.
+#' @param analyzerArn &#91;required&#93; The [ARN of the analyzer](https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources) that generated the findings to update.
+#' @param status &#91;required&#93; The state represents the action to take to update the finding Status. Use `ARCHIVE` to change an Active finding to an Archived finding. Use `ACTIVE` to change an Archived finding to an Active finding.
 #' @param ids The IDs of the findings to update.
 #' @param resourceArn The ARN of the resource identified in the finding.
 #' @param clientToken A client token.
@@ -1324,30 +1292,14 @@ accessanalyzer_update_findings <- function(analyzerArn, status, ids = NULL, reso
 #' @param maxResults The maximum number of results to return in the response.
 #' @param nextToken A token used for pagination of results returned.
 #' @param policyDocument &#91;required&#93; The JSON policy document to use as the content for the policy.
-#' @param policyType &#91;required&#93; The type of policy to validate. Identity policies grant permissions to
-#' IAM principals. Identity policies include managed and inline policies
-#' for IAM roles, users, and groups.
+#' @param policyType &#91;required&#93; The type of policy to validate. Identity policies grant permissions to IAM principals. Identity policies include managed and inline policies for IAM roles, users, and groups.
 #' 
-#' Resource policies grant permissions on Amazon Web Services resources.
-#' Resource policies include trust policies for IAM roles and bucket
-#' policies for Amazon S3 buckets. You can provide a generic input such as
-#' identity policy or resource policy or a specific input such as managed
-#' policy or Amazon S3 bucket policy.
+#' Resource policies grant permissions on Amazon Web Services resources. Resource policies include trust policies for IAM roles and bucket policies for Amazon S3 buckets. You can provide a generic input such as identity policy or resource policy or a specific input such as managed policy or Amazon S3 bucket policy.
 #' 
-#' Service control policies (SCPs) are a type of organization policy
-#' attached to an Amazon Web Services organization, organizational unit
-#' (OU), or an account.
-#' @param validatePolicyResourceType The type of resource to attach to your resource policy. Specify a value
-#' for the policy validation resource type only if the policy type is
-#' `RESOURCE_POLICY`. For example, to validate a resource policy to attach
-#' to an Amazon S3 bucket, you can choose `AWS::S3::Bucket` for the policy
-#' validation resource type.
+#' Service control policies (SCPs) are a type of organization policy attached to an Amazon Web Services organization, organizational unit (OU), or an account.
+#' @param validatePolicyResourceType The type of resource to attach to your resource policy. Specify a value for the policy validation resource type only if the policy type is `RESOURCE_POLICY`. For example, to validate a resource policy to attach to an Amazon S3 bucket, you can choose `AWS::S3::Bucket` for the policy validation resource type.
 #' 
-#' For resource types not supported as valid values, IAM Access Analyzer
-#' runs policy checks that apply to all resource policies. For example, to
-#' validate a resource policy to attach to a KMS key, do not specify a
-#' value for the policy validation resource type and IAM Access Analyzer
-#' will run policy checks that apply to all resource policies.
+#' For resource types not supported as valid values, IAM Access Analyzer runs policy checks that apply to all resource policies. For example, to validate a resource policy to attach to a KMS key, do not specify a value for the policy validation resource type and IAM Access Analyzer will run policy checks that apply to all resource policies.
 #'
 #' @keywords internal
 #'

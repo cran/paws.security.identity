@@ -19,63 +19,43 @@ Specify the key ID or key ARN of the KMS key.
 For example:
 \itemize{
 \item Key ID: \verb{1234abcd-12ab-34cd-56ef-1234567890ab}
-\item Key ARN:
-\verb{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
+\item Key ARN: \verb{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
 }
 
-To get the key ID and key ARN for a KMS key, use
-\code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
+To get the key ID and key ARN for a KMS key, use \code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
 
-\item{PolicyName}{The name of the key policy. If no policy name is specified, the default
-value is \code{default}. The only valid value is \code{default}.}
+\item{PolicyName}{The name of the key policy. If no policy name is specified, the default value is \code{default}. The only valid value is \code{default}.}
 
 \item{Policy}{[required] The key policy to attach to the KMS key.
 
 The key policy must meet the following criteria:
 \itemize{
-\item The key policy must allow the calling principal to make a subsequent
-\code{\link[=kms_put_key_policy]{put_key_policy}} request on the KMS key. This
-reduces the risk that the KMS key becomes unmanageable. For more
-information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-default.html#prevent-unmanageable-key}{Default key policy}
-in the \emph{Key Management Service Developer Guide}. (To omit this
-condition, set \code{BypassPolicyLockoutSafetyCheck} to true.)
-\item Each statement in the key policy must contain one or more
-principals. The principals in the key policy must exist and be
-visible to KMS. When you create a new Amazon Web Services principal,
-you might need to enforce a delay before including the new principal
-in a key policy because the new principal might not be immediately
-visible to KMS. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot.html#troubleshoot_general_eventual-consistency}{Changes that I make are not always immediately visible}
-in the \emph{Amazon Web Services Identity and Access Management User
-Guide}.
+\item The key policy must allow the calling principal to make a subsequent \code{\link[=kms_put_key_policy]{put_key_policy}} request on the KMS key. This reduces the risk that the KMS key becomes unmanageable. For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-default.html#prevent-unmanageable-key}{Default key policy} in the \emph{Key Management Service Developer Guide}. (To omit this condition, set \code{BypassPolicyLockoutSafetyCheck} to true.)
+\item Each statement in the key policy must contain one or more principals. The principals in the key policy must exist and be visible to KMS. When you create a new Amazon Web Services principal, you might need to enforce a delay before including the new principal in a key policy because the new principal might not be immediately visible to KMS. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot.html#troubleshoot_general_eventual-consistency}{Changes that I make are not always immediately visible} in the \emph{Amazon Web Services Identity and Access Management User Guide}.
 }
+
+If either of the required \code{Resource} or \code{Action} elements are missing from a key policy statement, the policy statement has no effect. When a key policy statement is missing one of these elements, the KMS console correctly reports an error, but the \code{\link[=kms_put_key_policy]{put_key_policy}} API request succeeds, even though the policy statement is ineffective.
+
+For more information on required key policy elements, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-overview.html#key-policy-elements}{Elements in a key policy} in the \emph{Key Management Service Developer Guide}.
 
 A key policy document can include only the following characters:
 \itemize{
-\item Printable ASCII characters from the space character (\code{U+0020})
-through the end of the ASCII character range.
-\item Printable characters in the Basic Latin and Latin-1 Supplement
-character set (through \verb{U+00FF}).
-\item The tab (\code{U+0009}), line feed (\verb{U+000A}), and carriage return
-(\verb{U+000D}) special characters
+\item Printable ASCII characters from the space character (\code{U+0020}) through the end of the ASCII character range.
+\item Printable characters in the Basic Latin and Latin-1 Supplement character set (through \verb{U+00FF}).
+\item The tab (\code{U+0009}), line feed (\verb{U+000A}), and carriage return (\verb{U+000D}) special characters
 }
 
-For information about key policies, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html}{Key policies in KMS}
-in the \emph{Key Management Service Developer Guide}.For help writing and
-formatting a JSON policy document, see the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies.html}{IAM JSON Policy Reference}
-in the \emph{Identity and Access Management User Guide} .}
+If the key policy exceeds the length constraint, KMS returns a \code{LimitExceededException}.
 
-\item{BypassPolicyLockoutSafetyCheck}{Skips ("bypasses") the key policy lockout safety check. The default
-value is false.
+For information about key policies, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html}{Key policies in KMS} in the \emph{Key Management Service Developer Guide}.For help writing and formatting a JSON policy document, see the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies.html}{IAM JSON Policy Reference} in the \emph{Identity and Access Management User Guide} .}
 
-Setting this value to true increases the risk that the KMS key becomes
-unmanageable. Do not set this value to true indiscriminately.
+\item{BypassPolicyLockoutSafetyCheck}{Skips ("bypasses") the key policy lockout safety check. The default value is false.
 
-For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-default.html#prevent-unmanageable-key}{Default key policy}
-in the \emph{Key Management Service Developer Guide}.
+Setting this value to true increases the risk that the KMS key becomes unmanageable. Do not set this value to true indiscriminately.
 
-Use this parameter only when you intend to prevent the principal that is
-making the request from making a subsequent
-\code{\link[=kms_put_key_policy]{put_key_policy}} request on the KMS key.}
+For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-default.html#prevent-unmanageable-key}{Default key policy} in the \emph{Key Management Service Developer Guide}.
+
+Use this parameter only when you intend to prevent the principal that is making the request from making a subsequent \code{\link[=kms_put_key_policy]{put_key_policy}} request on the KMS key.}
 }
 \description{
 Attaches a key policy to the specified KMS key.

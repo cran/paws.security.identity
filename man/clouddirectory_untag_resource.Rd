@@ -7,8 +7,7 @@
 clouddirectory_untag_resource(ResourceArn, TagKeys)
 }
 \arguments{
-\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the resource. Tagging is only
-supported for directories.}
+\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the resource. Tagging is only supported for directories.}
 
 \item{TagKeys}{[required] Keys of the tag that need to be removed from the resource.}
 }

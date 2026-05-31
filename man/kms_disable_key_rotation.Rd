@@ -8,26 +8,20 @@ symmetric encryption KMS key}
 kms_disable_key_rotation(KeyId)
 }
 \arguments{
-\item{KeyId}{[required] Identifies a symmetric encryption KMS key. You cannot enable or disable
-automatic rotation of \href{https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html#asymmetric-cmks}{asymmetric KMS keys},
-\href{https://docs.aws.amazon.com/kms/latest/developerguide/hmac.html}{HMAC KMS keys},
-KMS keys with \href{https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html}{imported key material},
-or KMS keys in a \href{https://docs.aws.amazon.com/kms/latest/developerguide/}{custom key store}.
+\item{KeyId}{[required] Identifies a symmetric encryption KMS key. You cannot enable or disable automatic rotation of \href{https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html#asymmetric-cmks}{asymmetric KMS keys}, \href{https://docs.aws.amazon.com/kms/latest/developerguide/hmac.html}{HMAC KMS keys}, KMS keys with \href{https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html}{imported key material}, or KMS keys in a \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-store-overview.html}{custom key store}.
 
 Specify the key ID or key ARN of the KMS key.
 
 For example:
 \itemize{
 \item Key ID: \verb{1234abcd-12ab-34cd-56ef-1234567890ab}
-\item Key ARN:
-\verb{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
+\item Key ARN: \verb{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
 }
 
-To get the key ID and key ARN for a KMS key, use
-\code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
+To get the key ID and key ARN for a KMS key, use \code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
 }
 \description{
-Disables \href{https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html}{automatic rotation of the key material} of the specified symmetric encryption KMS key.
+Disables \href{https://docs.aws.amazon.com/kms/latest/developerguide/}{automatic rotation of the key material} of the specified symmetric encryption KMS key.
 
 See \url{https://www.paws-r-sdk.com/docs/kms_disable_key_rotation/} for full documentation.
 }

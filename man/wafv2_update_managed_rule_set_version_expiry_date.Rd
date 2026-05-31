@@ -14,43 +14,27 @@ wafv2_update_managed_rule_set_version_expiry_date(
 )
 }
 \arguments{
-\item{Name}{[required] The name of the managed rule set. You use this, along with the rule set
-ID, to identify the rule set.
+\item{Name}{[required] The name of the managed rule set. You use this, along with the rule set ID, to identify the rule set.
 
-This name is assigned to the corresponding managed rule group, which
-your customers can access and use.}
+This name is assigned to the corresponding managed rule group, which your customers can access and use.}
 
-\item{Scope}{[required] Specifies whether this is for a global resource type, such as a Amazon
-CloudFront distribution.
+\item{Scope}{[required] Specifies whether this is for a global resource type, such as a Amazon CloudFront distribution. For an Amplify application, use \code{CLOUDFRONT}.
 
-To work with CloudFront, you must also specify the Region US East (N.
-Virginia) as follows:
+To work with CloudFront, you must also specify the Region US East (N. Virginia) as follows:
 \itemize{
-\item CLI - Specify the Region when you use the CloudFront scope:
-\code{--scope=CLOUDFRONT --region=us-east-1}.
+\item CLI - Specify the Region when you use the CloudFront scope: \code{--scope=CLOUDFRONT --region=us-east-1}.
 \item API and SDKs - For all calls, use the Region endpoint us-east-1.
 }}
 
-\item{Id}{[required] A unique identifier for the managed rule set. The ID is returned in the
-responses to commands like \code{list}. You provide it to operations like
-\code{get} and \code{update}.}
+\item{Id}{[required] A unique identifier for the managed rule set. The ID is returned in the responses to commands like \code{list}. You provide it to operations like \code{get} and \code{update}.}
 
-\item{LockToken}{[required] A token used for optimistic locking. WAF returns a token to your \code{get}
-and \code{list} requests, to mark the state of the entity at the time of the
-request. To make changes to the entity associated with the token, you
-provide the token to operations like \code{update} and \code{delete}. WAF uses the
-token to ensure that no changes have been made to the entity since you
-last retrieved it. If a change has been made, the update fails with a
-\code{WAFOptimisticLockException}. If this happens, perform another \code{get},
-and use the new token returned by that operation.}
+\item{LockToken}{[required] A token used for optimistic locking. WAF returns a token to your \code{get} and \code{list} requests, to mark the state of the entity at the time of the request. To make changes to the entity associated with the token, you provide the token to operations like \code{update} and \code{delete}. WAF uses the token to ensure that no changes have been made to the entity since you last retrieved it. If a change has been made, the update fails with a \code{WAFOptimisticLockException}. If this happens, perform another \code{get}, and use the new token returned by that operation.}
 
-\item{VersionToExpire}{[required] The version that you want to remove from your list of offerings for the
-named managed rule group.}
+\item{VersionToExpire}{[required] The version that you want to remove from your list of offerings for the named managed rule group.}
 
 \item{ExpiryTimestamp}{[required] The time that you want the version to expire.
 
-Times are in Coordinated Universal Time (UTC) format. UTC format
-includes the special designator, Z. For example, "2016-09-27T14:50Z".}
+Times are in Coordinated Universal Time (UTC) format. UTC format includes the special designator, Z. For example, "2016-09-27T14:50Z".}
 }
 \description{
 Updates the expiration information for your managed rule set. Use this to initiate the expiration of a managed rule group version. After you initiate expiration for a version, WAF excludes it from the response to \code{\link[=wafv2_list_available_managed_rule_group_versions]{list_available_managed_rule_group_versions}} for the managed rule group.

@@ -10,8 +10,7 @@ detective_update_organization_configuration(GraphArn, AutoEnable = NULL)
 \arguments{
 \item{GraphArn}{[required] The ARN of the organization behavior graph.}
 
-\item{AutoEnable}{Indicates whether to automatically enable new organization accounts as
-member accounts in the organization behavior graph.}
+\item{AutoEnable}{Indicates whether to automatically enable new organization accounts as member accounts in the organization behavior graph.}
 }
 \description{
 Updates the configuration for the Organizations integration in the current Region. Can only be called by the Detective administrator account for the organization.

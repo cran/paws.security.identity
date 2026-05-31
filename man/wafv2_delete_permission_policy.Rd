@@ -7,8 +7,7 @@
 wafv2_delete_permission_policy(ResourceArn)
 }
 \arguments{
-\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the rule group from which you want to
-delete the policy.
+\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the rule group from which you want to delete the policy.
 
 You must be the owner of the rule group to perform this operation.}
 }

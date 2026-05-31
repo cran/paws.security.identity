@@ -7,8 +7,7 @@
 ssoadmin_describe_instance(InstanceArn)
 }
 \arguments{
-\item{InstanceArn}{[required] The ARN of the instance of IAM Identity Center under which the operation
-will run.}
+\item{InstanceArn}{[required] The ARN of the instance of IAM Identity Center under which the operation will run.}
 }
 \description{
 Returns the details of an instance of IAM Identity Center. The status can be one of the following:

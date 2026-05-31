@@ -8,9 +8,7 @@ identity pool}
 cognitosync_describe_identity_pool_usage(IdentityPoolId)
 }
 \arguments{
-\item{IdentityPoolId}{[required] A name-spaced GUID (for example,
-us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
-Cognito. GUID generation is unique within a region.}
+\item{IdentityPoolId}{[required] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.}
 }
 \description{
 Gets usage details (for example, data storage) about a particular identity pool.

@@ -7,11 +7,9 @@
 pcaconnectorad_untag_resource(ResourceArn, TagKeys)
 }
 \arguments{
-\item{ResourceArn}{[required] The Amazon Resource Name (ARN) that was returned when you created the
-resource.}
+\item{ResourceArn}{[required] The Amazon Resource Name (ARN) that was returned when you created the resource.}
 
-\item{TagKeys}{[required] Specifies a list of tag keys that you want to remove from the specified
-resources.}
+\item{TagKeys}{[required] Specifies a list of tag keys that you want to remove from the specified resources.}
 }
 \description{
 Removes one or more tags from your resource.

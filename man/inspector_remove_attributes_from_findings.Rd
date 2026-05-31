@@ -9,11 +9,9 @@ specified key exists}
 inspector_remove_attributes_from_findings(findingArns, attributeKeys)
 }
 \arguments{
-\item{findingArns}{[required] The ARNs that specify the findings that you want to remove attributes
-from.}
+\item{findingArns}{[required] The ARNs that specify the findings that you want to remove attributes from.}
 
-\item{attributeKeys}{[required] The array of attribute keys that you want to remove from specified
-findings.}
+\item{attributeKeys}{[required] The array of attribute keys that you want to remove from specified findings.}
 }
 \description{
 Removes entire attributes (key and value pairs) from the findings that are specified by the ARNs of the findings where an attribute with the specified key exists.

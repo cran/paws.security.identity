@@ -7,16 +7,11 @@
 wafregional_update_regex_pattern_set(RegexPatternSetId, Updates, ChangeToken)
 }
 \arguments{
-\item{RegexPatternSetId}{[required] The \code{RegexPatternSetId} of the RegexPatternSet that you want to update.
-\code{RegexPatternSetId} is returned by
-\code{\link[=wafregional_create_regex_pattern_set]{create_regex_pattern_set}} and
-by \code{\link[=wafregional_list_regex_pattern_sets]{list_regex_pattern_sets}}.}
+\item{RegexPatternSetId}{[required] The \code{RegexPatternSetId} of the RegexPatternSet that you want to update. \code{RegexPatternSetId} is returned by \code{\link[=wafregional_create_regex_pattern_set]{create_regex_pattern_set}} and by \code{\link[=wafregional_list_regex_pattern_sets]{list_regex_pattern_sets}}.}
 
-\item{Updates}{[required] An array of \code{RegexPatternSetUpdate} objects that you want to insert into
-or delete from a RegexPatternSet.}
+\item{Updates}{[required] An array of \code{RegexPatternSetUpdate} objects that you want to insert into or delete from a RegexPatternSet.}
 
-\item{ChangeToken}{[required] The value returned by the most recent call to
-\code{\link[=wafregional_get_change_token]{get_change_token}}.}
+\item{ChangeToken}{[required] The value returned by the most recent call to \code{\link[=wafregional_get_change_token]{get_change_token}}.}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic} in the developer guide.

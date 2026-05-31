@@ -7,8 +7,7 @@
 pcaconnectorad_get_connector(ConnectorArn)
 }
 \arguments{
-\item{ConnectorArn}{[required] The Amazon Resource Name (ARN) that was returned when you called
-\code{\link[=pcaconnectorad_create_connector]{create_connector}}.}
+\item{ConnectorArn}{[required] The Amazon Resource Name (ARN) that was returned when you called \code{\link[=pcaconnectorad_create_connector]{create_connector}}.}
 }
 \description{
 Lists information about your connector. You specify the connector on input by its ARN (Amazon Resource Name).

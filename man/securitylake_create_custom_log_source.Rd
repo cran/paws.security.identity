@@ -15,20 +15,11 @@ securitylake_create_custom_log_source(
 \arguments{
 \item{configuration}{[required] The configuration used for the third-party custom source.}
 
-\item{eventClasses}{The Open Cybersecurity Schema Framework (OCSF) event classes which
-describes the type of data that the custom source will send to Security
-Lake. For the list of supported event classes, see the \href{https://docs.aws.amazon.com/security-lake/latest/userguide/adding-custom-sources.html#ocsf-eventclass}{Amazon Security Lake User Guide}.}
+\item{eventClasses}{The Open Cybersecurity Schema Framework (OCSF) event classes which describes the type of data that the custom source will send to Security Lake. For the list of supported event classes, see the \href{https://docs.aws.amazon.com/security-lake/latest/userguide/adding-custom-sources.html#ocsf-eventclass}{Amazon Security Lake User Guide}.}
 
-\item{sourceName}{[required] Specify the name for a third-party custom source. This must be a
-Regionally unique value. The \code{sourceName} you enter here, is used in the
-\code{LogProviderRole} name which follows the convention
-\verb{AmazonSecurityLake-Provider-\{name of the custom source\}-\{region\}}. You
-must use a \code{CustomLogSource} name that is shorter than or equal to 20
-characters. This ensures that the \code{LogProviderRole} name is below the 64
-character limit.}
+\item{sourceName}{[required] Specify the name for a third-party custom source. This must be a Regionally unique value. The \code{sourceName} you enter here, is used in the \code{LogProviderRole} name which follows the convention \verb{AmazonSecurityLake-Provider-\{name of the custom source\}-\{region\}}. You must use a \code{CustomLogSource} name that is shorter than or equal to 20 characters. This ensures that the \code{LogProviderRole} name is below the 64 character limit.}
 
-\item{sourceVersion}{Specify the source version for the third-party custom source, to limit
-log collection to a specific version of custom data source.}
+\item{sourceVersion}{Specify the source version for the third-party custom source, to limit log collection to a specific version of custom data source.}
 }
 \description{
 Adds a third-party custom source in Amazon Security Lake, from the Amazon Web Services Region where you want to create a custom source. Security Lake can collect logs and events from third-party custom sources. After creating the appropriate IAM role to invoke Glue crawler, use this API to add a custom source name in Security Lake. This operation creates a partition in the Amazon S3 bucket for Security Lake as the target location for log files from the custom source. In addition, this operation also creates an associated Glue table and an Glue crawler.

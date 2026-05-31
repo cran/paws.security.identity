@@ -7,8 +7,7 @@
 securityhub_batch_delete_automation_rules(AutomationRulesArns)
 }
 \arguments{
-\item{AutomationRulesArns}{[required] A list of Amazon Resource Names (ARNs) for the rules that are to be
-deleted.}
+\item{AutomationRulesArns}{[required] A list of Amazon Resource Names (ARNs) for the rules that are to be deleted.}
 }
 \description{
 Deletes one or more automation rules.

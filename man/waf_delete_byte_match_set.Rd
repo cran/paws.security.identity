@@ -7,13 +7,9 @@
 waf_delete_byte_match_set(ByteMatchSetId, ChangeToken)
 }
 \arguments{
-\item{ByteMatchSetId}{[required] The \code{ByteMatchSetId} of the ByteMatchSet that you want to delete.
-\code{ByteMatchSetId} is returned by
-\code{\link[=waf_create_byte_match_set]{create_byte_match_set}} and by
-\code{\link[=waf_list_byte_match_sets]{list_byte_match_sets}}.}
+\item{ByteMatchSetId}{[required] The \code{ByteMatchSetId} of the ByteMatchSet that you want to delete. \code{ByteMatchSetId} is returned by \code{\link[=waf_create_byte_match_set]{create_byte_match_set}} and by \code{\link[=waf_list_byte_match_sets]{list_byte_match_sets}}.}
 
-\item{ChangeToken}{[required] The value returned by the most recent call to
-\code{\link[=waf_get_change_token]{get_change_token}}.}
+\item{ChangeToken}{[required] The value returned by the most recent call to \code{\link[=waf_get_change_token]{get_change_token}}.}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic} in the developer guide.

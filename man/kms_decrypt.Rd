@@ -6,108 +6,70 @@
 following operations:}
 \usage{
 kms_decrypt(
-  CiphertextBlob,
+  CiphertextBlob = NULL,
   EncryptionContext = NULL,
   GrantTokens = NULL,
   KeyId = NULL,
   EncryptionAlgorithm = NULL,
   Recipient = NULL,
-  DryRun = NULL
+  DryRun = NULL,
+  DryRunModifiers = NULL
 )
 }
 \arguments{
-\item{CiphertextBlob}{[required] Ciphertext to be decrypted. The blob includes metadata.}
+\item{CiphertextBlob}{Ciphertext to be decrypted. The blob includes metadata.
 
-\item{EncryptionContext}{Specifies the encryption context to use when decrypting the data. An
-encryption context is valid only for \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#cryptographic-operations}{cryptographic operations}
-with a symmetric encryption KMS key. The standard asymmetric encryption
-algorithms and HMAC algorithms that KMS uses do not support an
-encryption context.
+This parameter is required in all cases except when \code{DryRun} is \code{true} and \code{DryRunModifiers} is set to \code{IGNORE_CIPHERTEXT}.}
 
-An \emph{encryption context} is a collection of non-secret key-value pairs
-that represent additional authenticated data. When you use an encryption
-context to encrypt data, you must specify the same (an exact
-case-sensitive match) encryption context to decrypt the data. An
-encryption context is supported only on operations with symmetric
-encryption KMS keys. On operations with symmetric encryption KMS keys,
-an encryption context is optional, but it is strongly recommended.
+\item{EncryptionContext}{Specifies the encryption context to use when decrypting the data. An encryption context is valid only for \href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-cryptography.html#cryptographic-operations}{cryptographic operations} with a symmetric encryption KMS key. The standard asymmetric encryption algorithms and HMAC algorithms that KMS uses do not support an encryption context.
 
-For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context}{Encryption context}
-in the \emph{Key Management Service Developer Guide}.}
+An \emph{encryption context} is a collection of non-secret key-value pairs that represent additional authenticated data. When you use an encryption context to encrypt data, you must specify the same (an exact case-sensitive match) encryption context to decrypt the data. An encryption context is supported only on operations with symmetric encryption KMS keys. On operations with symmetric encryption KMS keys, an encryption context is optional, but it is strongly recommended.
+
+For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/encrypt_context.html}{Encryption context} in the \emph{Key Management Service Developer Guide}.}
 
 \item{GrantTokens}{A list of grant tokens.
 
-Use a grant token when your permission to call this operation comes from
-a new grant that has not yet achieved \emph{eventual consistency}. For more
-information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token}{Grant token}
-and \href{https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#using-grant-token}{Using a grant token}
-in the \emph{Key Management Service Developer Guide}.}
+Use a grant token when your permission to call this operation comes from a new grant that has not yet achieved \emph{eventual consistency}. For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token}{Grant token} and \href{https://docs.aws.amazon.com/kms/latest/developerguide/using-grant-token.html}{Using a grant token} in the \emph{Key Management Service Developer Guide}.}
 
 \item{KeyId}{Specifies the KMS key that KMS uses to decrypt the ciphertext.
 
-Enter a key ID of the KMS key that was used to encrypt the ciphertext.
-If you identify a different KMS key, the \code{\link[=kms_decrypt]{decrypt}}
-operation throws an \code{IncorrectKeyException}.
+Enter a key ID of the KMS key that was used to encrypt the ciphertext. If you identify a different KMS key, the \code{\link[=kms_decrypt]{decrypt}} operation throws an \code{IncorrectKeyException}.
 
-This parameter is required only when the ciphertext was encrypted under
-an asymmetric KMS key. If you used a symmetric encryption KMS key, KMS
-can get the KMS key from metadata that it adds to the symmetric
-ciphertext blob. However, it is always recommended as a best practice.
-This practice ensures that you use the KMS key that you intend.
+This parameter is required only when the ciphertext was encrypted under an asymmetric KMS key or when \code{DryRun} is \code{true} and \code{DryRunModifiers} is set to \code{IGNORE_CIPHERTEXT}. If you used a symmetric encryption KMS key, KMS can get the KMS key from metadata that it adds to the symmetric ciphertext blob. However, it is always recommended as a best practice. This practice ensures that you use the KMS key that you intend.
 
-To specify a KMS key, use its key ID, key ARN, alias name, or alias ARN.
-When using an alias name, prefix it with \code{"alias/"}. To specify a KMS
-key in a different Amazon Web Services account, you must use the key ARN
-or alias ARN.
+To specify a KMS key, use its key ID, key ARN, alias name, or alias ARN. When using an alias name, prefix it with \code{"alias/"}. To specify a KMS key in a different Amazon Web Services account, you should use the key ARN or alias ARN.
 
 For example:
 \itemize{
 \item Key ID: \verb{1234abcd-12ab-34cd-56ef-1234567890ab}
-\item Key ARN:
-\verb{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
+\item Key ARN: \verb{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
 \item Alias name: \code{alias/ExampleAlias}
 \item Alias ARN: \code{arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias}
 }
 
-To get the key ID and key ARN for a KMS key, use
-\code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}. To
-get the alias name and alias ARN, use
-\code{\link[=kms_list_aliases]{list_aliases}}.}
+To get the key ID and key ARN for a KMS key, use \code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}. To get the alias name and alias ARN, use \code{\link[=kms_list_aliases]{list_aliases}}.}
 
-\item{EncryptionAlgorithm}{Specifies the encryption algorithm that will be used to decrypt the
-ciphertext. Specify the same algorithm that was used to encrypt the
-data. If you specify a different algorithm, the \code{\link[=kms_decrypt]{decrypt}}
-operation fails.
+\item{EncryptionAlgorithm}{Specifies the encryption algorithm that will be used to decrypt the ciphertext. Specify the same algorithm that was used to encrypt the data. If you specify a different algorithm, the \code{\link[=kms_decrypt]{decrypt}} operation fails.
 
-This parameter is required only when the ciphertext was encrypted under
-an asymmetric KMS key. The default value, \code{SYMMETRIC_DEFAULT},
-represents the only supported algorithm that is valid for symmetric
-encryption KMS keys.}
+This parameter is required only when the ciphertext was encrypted under an asymmetric KMS key. The default value, \code{SYMMETRIC_DEFAULT}, represents the only supported algorithm that is valid for symmetric encryption KMS keys.}
 
-\item{Recipient}{A signed \href{https://docs.aws.amazon.com/enclaves/latest/user/nitro-enclave-concepts.html#term-attestdoc}{attestation document}
-from an Amazon Web Services Nitro enclave and the encryption algorithm
-to use with the enclave's public key. The only valid encryption
-algorithm is \code{RSAES_OAEP_SHA_256}.
+\item{Recipient}{A signed \href{https://docs.aws.amazon.com/enclaves/latest/user/nitro-enclave-concepts.html#term-attestdoc}{attestation document} from an Amazon Web Services Nitro enclave or NitroTPM, and the encryption algorithm to use with the public key in the attestation document. The only valid encryption algorithm is \code{RSAES_OAEP_SHA_256}.
 
-This parameter only supports attestation documents for Amazon Web
-Services Nitro Enclaves. To include this parameter, use the \href{https://docs.aws.amazon.com/enclaves/latest/user/developing-applications.html#sdk}{Amazon Web Services Nitro Enclaves SDK}
-or any Amazon Web Services SDK.
+This parameter supports the \href{https://docs.aws.amazon.com/enclaves/latest/user/developing-applications.html#sdk}{Amazon Web Services Nitro Enclaves SDK} or any Amazon Web Services SDK for Amazon Web Services Nitro Enclaves. It supports any Amazon Web Services SDK for Amazon Web Services NitroTPM.
 
-When you use this parameter, instead of returning the plaintext data,
-KMS encrypts the plaintext data with the public key in the attestation
-document, and returns the resulting ciphertext in the
-\code{CiphertextForRecipient} field in the response. This ciphertext can be
-decrypted only with the private key in the enclave. The \code{Plaintext}
-field in the response is null or empty.
+When you use this parameter, instead of returning the plaintext data, KMS encrypts the plaintext data with the public key in the attestation document, and returns the resulting ciphertext in the \code{CiphertextForRecipient} field in the response. This ciphertext can be decrypted only with the private key in the attested environment. The \code{Plaintext} field in the response is null or empty.
 
-For information about the interaction between KMS and Amazon Web
-Services Nitro Enclaves, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/services-nitro-enclaves.html}{How Amazon Web Services Nitro Enclaves uses KMS}
-in the \emph{Key Management Service Developer Guide}.}
+For information about the interaction between KMS and Amazon Web Services Nitro Enclaves or Amazon Web Services NitroTPM, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/cryptographic-attestation.html}{Cryptographic attestation support in KMS} in the \emph{Key Management Service Developer Guide}.}
 
 \item{DryRun}{Checks if your request will succeed. \code{DryRun} is an optional parameter.
 
-To learn more about how to use this parameter, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html}{Testing your KMS API calls}
-in the \emph{Key Management Service Developer Guide}.}
+To learn more about how to use this parameter, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html}{Testing your permissions} in the \emph{Key Management Service Developer Guide}.}
+
+\item{DryRunModifiers}{Specifies the modifiers to apply to the dry run operation. \code{DryRunModifiers} is an optional parameter that only applies when \code{DryRun} is set to \code{true}.
+
+When set to \code{IGNORE_CIPHERTEXT}, KMS performs only authorization validation without ciphertext validation. This allows you to test permissions without requiring a valid ciphertext blob.
+
+To learn more about how to use this parameter, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html}{Testing your permissions} in the \emph{Key Management Service Developer Guide}.}
 }
 \description{
 Decrypts ciphertext that was encrypted by a KMS key using any of the following operations:

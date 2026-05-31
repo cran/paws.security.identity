@@ -7,11 +7,9 @@
 waf_create_size_constraint_set(Name, ChangeToken)
 }
 \arguments{
-\item{Name}{[required] A friendly name or description of the SizeConstraintSet. You can't
-change \code{Name} after you create a \code{SizeConstraintSet}.}
+\item{Name}{[required] A friendly name or description of the SizeConstraintSet. You can't change \code{Name} after you create a \code{SizeConstraintSet}.}
 
-\item{ChangeToken}{[required] The value returned by the most recent call to
-\code{\link[=waf_get_change_token]{get_change_token}}.}
+\item{ChangeToken}{[required] The value returned by the most recent call to \code{\link[=waf_get_change_token]{get_change_token}}.}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic} in the developer guide.

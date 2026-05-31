@@ -7,9 +7,7 @@
 waf_get_ip_set(IPSetId)
 }
 \arguments{
-\item{IPSetId}{[required] The \code{IPSetId} of the IPSet that you want to get. \code{IPSetId} is returned
-by \code{\link[=waf_create_ip_set]{create_ip_set}} and by
-\code{\link[=waf_list_ip_sets]{list_ip_sets}}.}
+\item{IPSetId}{[required] The \code{IPSetId} of the IPSet that you want to get. \code{IPSetId} is returned by \code{\link[=waf_create_ip_set]{create_ip_set}} and by \code{\link[=waf_list_ip_sets]{list_ip_sets}}.}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic} in the developer guide.

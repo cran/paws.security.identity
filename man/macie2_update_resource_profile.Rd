@@ -7,13 +7,9 @@
 macie2_update_resource_profile(resourceArn, sensitivityScoreOverride = NULL)
 }
 \arguments{
-\item{resourceArn}{[required] The Amazon Resource Name (ARN) of the S3 bucket that the request applies
-to.}
+\item{resourceArn}{[required] The Amazon Resource Name (ARN) of the S3 bucket that the request applies to.}
 
-\item{sensitivityScoreOverride}{The new sensitivity score for the bucket. Valid values are: 100, assign
-the maximum score and apply the \emph{Sensitive} label to the bucket; and,
-null (empty), assign a score that Amazon Macie calculates automatically
-after you submit the request.}
+\item{sensitivityScoreOverride}{The new sensitivity score for the bucket. Valid values are: 100, assign the maximum score and apply the \emph{Sensitive} label to the bucket; and, null (empty), assign a score that Amazon Macie calculates automatically after you submit the request.}
 }
 \description{
 Updates the sensitivity score for an S3 bucket.

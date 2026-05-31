@@ -8,8 +8,7 @@ classification results}
 macie2_put_classification_export_configuration(configuration)
 }
 \arguments{
-\item{configuration}{[required] The location to store data classification results in, and the encryption
-settings to use when storing results in that location.}
+\item{configuration}{[required] The location to store data classification results in, and the encryption settings to use when storing results in that location.}
 }
 \description{
 Adds or updates the configuration settings for storing data classification results.

@@ -7,21 +7,14 @@
 wafregional_update_byte_match_set(ByteMatchSetId, ChangeToken, Updates)
 }
 \arguments{
-\item{ByteMatchSetId}{[required] The \code{ByteMatchSetId} of the ByteMatchSet that you want to update.
-\code{ByteMatchSetId} is returned by
-\code{\link[=wafregional_create_byte_match_set]{create_byte_match_set}} and by
-\code{\link[=wafregional_list_byte_match_sets]{list_byte_match_sets}}.}
+\item{ByteMatchSetId}{[required] The \code{ByteMatchSetId} of the ByteMatchSet that you want to update. \code{ByteMatchSetId} is returned by \code{\link[=wafregional_create_byte_match_set]{create_byte_match_set}} and by \code{\link[=wafregional_list_byte_match_sets]{list_byte_match_sets}}.}
 
-\item{ChangeToken}{[required] The value returned by the most recent call to
-\code{\link[=wafregional_get_change_token]{get_change_token}}.}
+\item{ChangeToken}{[required] The value returned by the most recent call to \code{\link[=wafregional_get_change_token]{get_change_token}}.}
 
-\item{Updates}{[required] An array of \code{ByteMatchSetUpdate} objects that you want to insert into or
-delete from a ByteMatchSet. For more information, see the applicable
-data types:
+\item{Updates}{[required] An array of \code{ByteMatchSetUpdate} objects that you want to insert into or delete from a ByteMatchSet. For more information, see the applicable data types:
 \itemize{
 \item ByteMatchSetUpdate: Contains \code{Action} and \code{ByteMatchTuple}
-\item ByteMatchTuple: Contains \code{FieldToMatch}, \code{PositionalConstraint},
-\code{TargetString}, and \code{TextTransformation}
+\item ByteMatchTuple: Contains \code{FieldToMatch}, \code{PositionalConstraint}, \code{TargetString}, and \code{TextTransformation}
 \item FieldToMatch: Contains \code{Data} and \code{Type}
 }}
 }

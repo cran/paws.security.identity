@@ -13,10 +13,7 @@ NULL
 #'
 #' @param roleName &#91;required&#93; The friendly name of the role that is assigned to the user.
 #' @param accountId &#91;required&#93; The identifier for the AWS account that is assigned to the user.
-#' @param accessToken &#91;required&#93; The token issued by the `CreateToken` API call. For more information,
-#' see
-#' [CreateToken](https://docs.aws.amazon.com/singlesignon/latest/OIDCAPIReference/API_CreateToken.html)
-#' in the *IAM Identity Center OIDC API Reference Guide*.
+#' @param accessToken &#91;required&#93; The token issued by the `CreateToken` API call. For more information, see [CreateToken](https://docs.aws.amazon.com/singlesignon/latest/OIDCAPIReference/API_CreateToken.html) in the *IAM Identity Center OIDC API Reference Guide*.
 #'
 #' @keywords internal
 #'
@@ -47,13 +44,9 @@ sso_get_role_credentials <- function(roleName, accountId, accessToken) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/sso_list_account_roles/](https://www.paws-r-sdk.com/docs/sso_list_account_roles/) for full documentation.
 #'
-#' @param nextToken The page token from the previous response output when you request
-#' subsequent pages.
+#' @param nextToken The page token from the previous response output when you request subsequent pages.
 #' @param maxResults The number of items that clients can request per page.
-#' @param accessToken &#91;required&#93; The token issued by the `CreateToken` API call. For more information,
-#' see
-#' [CreateToken](https://docs.aws.amazon.com/singlesignon/latest/OIDCAPIReference/API_CreateToken.html)
-#' in the *IAM Identity Center OIDC API Reference Guide*.
+#' @param accessToken &#91;required&#93; The token issued by the `CreateToken` API call. For more information, see [CreateToken](https://docs.aws.amazon.com/singlesignon/latest/OIDCAPIReference/API_CreateToken.html) in the *IAM Identity Center OIDC API Reference Guide*.
 #' @param accountId &#91;required&#93; The identifier for the AWS account that is assigned to the user.
 #'
 #' @keywords internal
@@ -85,13 +78,9 @@ sso_list_account_roles <- function(nextToken = NULL, maxResults = NULL, accessTo
 #'
 #' See [https://www.paws-r-sdk.com/docs/sso_list_accounts/](https://www.paws-r-sdk.com/docs/sso_list_accounts/) for full documentation.
 #'
-#' @param nextToken (Optional) When requesting subsequent pages, this is the page token from
-#' the previous response output.
+#' @param nextToken (Optional) When requesting subsequent pages, this is the page token from the previous response output.
 #' @param maxResults This is the number of items clients can request per page.
-#' @param accessToken &#91;required&#93; The token issued by the `CreateToken` API call. For more information,
-#' see
-#' [CreateToken](https://docs.aws.amazon.com/singlesignon/latest/OIDCAPIReference/API_CreateToken.html)
-#' in the *IAM Identity Center OIDC API Reference Guide*.
+#' @param accessToken &#91;required&#93; The token issued by the `CreateToken` API call. For more information, see [CreateToken](https://docs.aws.amazon.com/singlesignon/latest/OIDCAPIReference/API_CreateToken.html) in the *IAM Identity Center OIDC API Reference Guide*.
 #'
 #' @keywords internal
 #'
@@ -124,10 +113,7 @@ sso_list_accounts <- function(nextToken = NULL, maxResults = NULL, accessToken) 
 #'
 #' See [https://www.paws-r-sdk.com/docs/sso_logout/](https://www.paws-r-sdk.com/docs/sso_logout/) for full documentation.
 #'
-#' @param accessToken &#91;required&#93; The token issued by the `CreateToken` API call. For more information,
-#' see
-#' [CreateToken](https://docs.aws.amazon.com/singlesignon/latest/OIDCAPIReference/API_CreateToken.html)
-#' in the *IAM Identity Center OIDC API Reference Guide*.
+#' @param accessToken &#91;required&#93; The token issued by the `CreateToken` API call. For more information, see [CreateToken](https://docs.aws.amazon.com/singlesignon/latest/OIDCAPIReference/API_CreateToken.html) in the *IAM Identity Center OIDC API Reference Guide*.
 #'
 #' @keywords internal
 #'

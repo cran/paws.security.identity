@@ -7,13 +7,11 @@
 clouddirectory_attach_policy(DirectoryArn, PolicyReference, ObjectReference)
 }
 \arguments{
-\item{DirectoryArn}{[required] The Amazon Resource Name (ARN) that is associated with the Directory
-where both objects reside. For more information, see arns.}
+\item{DirectoryArn}{[required] The Amazon Resource Name (ARN) that is associated with the Directory where both objects reside. For more information, see arns.}
 
 \item{PolicyReference}{[required] The reference that is associated with the policy object.}
 
-\item{ObjectReference}{[required] The reference that identifies the object to which the policy will be
-attached.}
+\item{ObjectReference}{[required] The reference that identifies the object to which the policy will be attached.}
 }
 \description{
 Attaches a policy object to a regular object. An object can have a limited number of attached policies.

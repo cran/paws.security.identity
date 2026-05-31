@@ -13,29 +13,17 @@ secretsmanager_get_secret_value(
 )
 }
 \arguments{
-\item{SecretId}{[required] The ARN or name of the secret to retrieve. To retrieve a secret from
-another account, you must use an ARN.
+\item{SecretId}{[required] The ARN or name of the secret to retrieve. To retrieve a secret from another account, you must use an ARN.
 
-For an ARN, we recommend that you specify a complete ARN rather than a
-partial ARN. See \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/troubleshoot.html#ARN_secretnamehyphen}{Finding a secret from a partial ARN}.}
+For an ARN, we recommend that you specify a complete ARN rather than a partial ARN. See \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/troubleshoot.html#ARN_secretnamehyphen}{Finding a secret from a partial ARN}.}
 
-\item{VersionId}{The unique identifier of the version of the secret to retrieve. If you
-include both this parameter and \code{VersionStage}, the two parameters must
-refer to the same secret version. If you don't specify either a
-\code{VersionStage} or \code{VersionId}, then Secrets Manager returns the
-\code{AWSCURRENT} version.
+\item{VersionId}{The unique identifier of the version of the secret to retrieve. If you include both this parameter and \code{VersionStage}, the two parameters must refer to the same secret version. If you don't specify either a \code{VersionStage} or \code{VersionId}, then Secrets Manager returns the \code{AWSCURRENT} version.
 
-This value is typically a
-\href{https://en.wikipedia.org/wiki/Universally_unique_identifier}{UUID-type}
-value with 32 hexadecimal digits.}
+This value is typically a \href{https://en.wikipedia.org/wiki/Universally_unique_identifier}{UUID-type} value with 32 hexadecimal digits.}
 
 \item{VersionStage}{The staging label of the version of the secret to retrieve.
 
-Secrets Manager uses staging labels to keep track of different versions
-during the rotation process. If you include both this parameter and
-\code{VersionId}, the two parameters must refer to the same secret version.
-If you don't specify either a \code{VersionStage} or \code{VersionId}, Secrets
-Manager returns the \code{AWSCURRENT} version.}
+Secrets Manager uses staging labels to keep track of different versions during the rotation process. If you include both this parameter and \code{VersionId}, the two parameters must refer to the same secret version. If you don't specify either a \code{VersionStage} or \code{VersionId}, Secrets Manager returns the \code{AWSCURRENT} version.}
 }
 \description{
 Retrieves the contents of the encrypted fields \code{SecretString} or \code{SecretBinary} from the specified version of a secret, whichever contains content.

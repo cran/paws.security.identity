@@ -18,10 +18,7 @@ directoryservice_describe_update_directory(
 
 \item{RegionName}{The name of the Region.}
 
-\item{NextToken}{The \code{DescribeUpdateDirectoryResult}. NextToken value from a previous
-call to
-\code{\link[=directoryservice_describe_update_directory]{describe_update_directory}}.
-Pass null if this is the first call.}
+\item{NextToken}{The \code{DescribeUpdateDirectoryResult}. NextToken value from a previous call to \code{\link[=directoryservice_describe_update_directory]{describe_update_directory}}. Pass null if this is the first call.}
 }
 \description{
 Describes the updates of a directory for a particular update type.

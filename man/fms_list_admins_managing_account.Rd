@@ -8,16 +8,9 @@ account}
 fms_list_admins_managing_account(NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
-\item{NextToken}{When you request a list of objects with a \code{MaxResults} setting, if the
-number of objects that are still available for retrieval exceeds the
-maximum you requested, Firewall Manager returns a \code{NextToken} value in
-the response. To retrieve the next batch of objects, use the token
-returned from the prior request in your next request.}
+\item{NextToken}{When you request a list of objects with a \code{MaxResults} setting, if the number of objects that are still available for retrieval exceeds the maximum you requested, Firewall Manager returns a \code{NextToken} value in the response. To retrieve the next batch of objects, use the token returned from the prior request in your next request.}
 
-\item{MaxResults}{The maximum number of objects that you want Firewall Manager to return
-for this request. If more objects are available, in the response,
-Firewall Manager provides a \code{NextToken} value that you can use in a
-subsequent call to get the next batch of objects.}
+\item{MaxResults}{The maximum number of objects that you want Firewall Manager to return for this request. If more objects are available, in the response, Firewall Manager provides a \code{NextToken} value that you can use in a subsequent call to get the next batch of objects.}
 }
 \description{
 Lists the accounts that are managing the specified Organizations member account. This is useful for any member account so that they can view the accounts who are managing their account. This operation only returns the managing administrators that have the requested account within their AdminScope.

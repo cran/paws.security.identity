@@ -7,8 +7,7 @@
 securityhub_update_findings(Filters, Note = NULL, RecordState = NULL)
 }
 \arguments{
-\item{Filters}{[required] A collection of attributes that specify which findings you want to
-update.}
+\item{Filters}{[required] A collection of attributes that specify which findings you want to update.}
 
 \item{Note}{The updated note for the finding.}
 

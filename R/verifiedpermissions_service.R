@@ -5,72 +5,31 @@ NULL
 #' Amazon Verified Permissions
 #'
 #' @description
-#' Amazon Verified Permissions is a permissions management service from
-#' Amazon Web Services. You can use Verified Permissions to manage
-#' permissions for your application, and authorize user access based on
-#' those permissions. Using Verified Permissions, application developers
-#' can grant access based on information about the users, resources, and
-#' requested actions. You can also evaluate additional information like
-#' group membership, attributes of the resources, and session context, such
-#' as time of request and IP addresses. Verified Permissions manages these
-#' permissions by letting you create and store authorization policies for
-#' your applications, such as consumer-facing web sites and enterprise
-#' business systems.
+#' Amazon Verified Permissions is a permissions management service from Amazon Web Services. You can use Verified Permissions to manage permissions for your application, and authorize user access based on those permissions. Using Verified Permissions, application developers can grant access based on information about the users, resources, and requested actions. You can also evaluate additional information like group membership, attributes of the resources, and session context, such as time of request and IP addresses. Verified Permissions manages these permissions by letting you create and store authorization policies for your applications, such as consumer-facing web sites and enterprise business systems.
 #' 
-#' Verified Permissions uses Cedar as the policy language to express your
-#' permission requirements. Cedar supports both role-based access control
-#' (RBAC) and attribute-based access control (ABAC) authorization models.
+#' Verified Permissions uses Cedar as the policy language to express your permission requirements. Cedar supports both role-based access control (RBAC) and attribute-based access control (ABAC) authorization models.
 #' 
-#' For more information about configuring, administering, and using Amazon
-#' Verified Permissions in your applications, see the [Amazon Verified
-#' Permissions User
-#' Guide](https://docs.aws.amazon.com/verifiedpermissions/latest/userguide/).
+#' For more information about configuring, administering, and using Amazon Verified Permissions in your applications, see the [Amazon Verified Permissions User Guide](https://docs.aws.amazon.com/verifiedpermissions/latest/userguide/).
 #' 
-#' For more information about the Cedar policy language, see the [Cedar
-#' Policy Language Guide](https://docs.cedarpolicy.com/).
+#' For more information about the Cedar policy language, see the [Cedar Policy Language Guide](https://docs.cedarpolicy.com/).
 #' 
-#' When you write Cedar policies that reference principals, resources and
-#' actions, you can define the unique identifiers used for each of those
-#' elements. We strongly recommend that you follow these best practices:
+#' When you write Cedar policies that reference principals, resources and actions, you can define the unique identifiers used for each of those elements. We strongly recommend that you follow these best practices:
 #' 
-#' -   **Use values like universally unique identifiers (UUIDs) for all
-#'     principal and resource identifiers.**
+#' -   **Use values like universally unique identifiers (UUIDs) for all principal and resource identifiers.**
 #' 
-#'     For example, if user `jane` leaves the company, and you later let
-#'     someone else use the name `jane`, then that new user automatically
-#'     gets access to everything granted by policies that still reference
-#'     `User::"jane"`. Cedar can’t distinguish between the new user and the
-#'     old. This applies to both principal and resource identifiers. Always
-#'     use identifiers that are guaranteed unique and never reused to
-#'     ensure that you don’t unintentionally grant access because of the
-#'     presence of an old identifier in a policy.
+#'     For example, if user `jane` leaves the company, and you later let someone else use the name `jane`, then that new user automatically gets access to everything granted by policies that still reference `User::"jane"`. Cedar can’t distinguish between the new user and the old. This applies to both principal and resource identifiers. Always use identifiers that are guaranteed unique and never reused to ensure that you don’t unintentionally grant access because of the presence of an old identifier in a policy.
 #' 
-#'     Where you use a UUID for an entity, we recommend that you follow it
-#'     with the // comment specifier and the ‘friendly’ name of your
-#'     entity. This helps to make your policies easier to understand. For
-#'     example: principal == User::"a1b2c3d4-e5f6-a1b2-c3d4-EXAMPLE11111",
-#'     // alice
+#'     Where you use a UUID for an entity, we recommend that you follow it with the // comment specifier and the ‘friendly’ name of your entity. This helps to make your policies easier to understand. For example: principal == User::"a1b2c3d4-e5f6-a1b2-c3d4-EXAMPLE11111", // alice
 #' 
-#' -   **Do not include personally identifying, confidential, or sensitive
-#'     information as part of the unique identifier for your principals or
-#'     resources.** These identifiers are included in log entries shared in
-#'     CloudTrail trails.
+#' -   **Do not include personally identifying, confidential, or sensitive information as part of the unique identifier for your principals or resources.** These identifiers are included in log entries shared in CloudTrail trails.
 #' 
-#' Several operations return structures that appear similar, but have
-#' different purposes. As new functionality is added to the product, the
-#' structure used in a parameter of one operation might need to change in a
-#' way that wouldn't make sense for the same parameter in a different
-#' operation. To help you understand the purpose of each, the following
-#' naming convention is used for the structures:
+#' Several operations return structures that appear similar, but have different purposes. As new functionality is added to the product, the structure used in a parameter of one operation might need to change in a way that wouldn't make sense for the same parameter in a different operation. To help you understand the purpose of each, the following naming convention is used for the structures:
 #' 
-#' -   Parameter type structures that end in `Detail` are used in `Get`
-#'     operations.
+#' -   Parameter type structures that end in `Detail` are used in `Get` operations.
 #' 
-#' -   Parameter type structures that end in `Item` are used in `List`
-#'     operations.
+#' -   Parameter type structures that end in `Item` are used in `List` operations.
 #' 
-#' -   Parameter type structures that use neither suffix are used in the
-#'     mutating (create and update) operations.
+#' -   Parameter type structures that use neither suffix are used in the mutating (create and update) operations.
 #'
 #' @param
 #' config
@@ -161,23 +120,30 @@ NULL
 #'  \link[=verifiedpermissions_create_identity_source]{create_identity_source} \tab Adds an identity source to a policy store–an Amazon Cognito user pool or OpenID Connect (OIDC) identity provider (IdP)\cr
 #'  \link[=verifiedpermissions_create_policy]{create_policy} \tab Creates a Cedar policy and saves it in the specified policy store\cr
 #'  \link[=verifiedpermissions_create_policy_store]{create_policy_store} \tab Creates a policy store\cr
+#'  \link[=verifiedpermissions_create_policy_store_alias]{create_policy_store_alias} \tab Creates a policy store alias for the specified policy store\cr
 #'  \link[=verifiedpermissions_create_policy_template]{create_policy_template} \tab Creates a policy template\cr
 #'  \link[=verifiedpermissions_delete_identity_source]{delete_identity_source} \tab Deletes an identity source that references an identity provider (IdP) such as Amazon Cognito\cr
 #'  \link[=verifiedpermissions_delete_policy]{delete_policy} \tab Deletes the specified policy from the policy store\cr
 #'  \link[=verifiedpermissions_delete_policy_store]{delete_policy_store} \tab Deletes the specified policy store\cr
+#'  \link[=verifiedpermissions_delete_policy_store_alias]{delete_policy_store_alias} \tab Deletes the specified policy store alias\cr
 #'  \link[=verifiedpermissions_delete_policy_template]{delete_policy_template} \tab Deletes the specified policy template from the policy store\cr
 #'  \link[=verifiedpermissions_get_identity_source]{get_identity_source} \tab Retrieves the details about the specified identity source\cr
 #'  \link[=verifiedpermissions_get_policy]{get_policy} \tab Retrieves information about the specified policy\cr
 #'  \link[=verifiedpermissions_get_policy_store]{get_policy_store} \tab Retrieves details about a policy store\cr
+#'  \link[=verifiedpermissions_get_policy_store_alias]{get_policy_store_alias} \tab Retrieves details about the specified policy store alias\cr
 #'  \link[=verifiedpermissions_get_policy_template]{get_policy_template} \tab Retrieve the details for the specified policy template in the specified policy store\cr
 #'  \link[=verifiedpermissions_get_schema]{get_schema} \tab Retrieve the details for the specified schema in the specified policy store\cr
 #'  \link[=verifiedpermissions_is_authorized]{is_authorized} \tab Makes an authorization decision about a service request described in the parameters\cr
 #'  \link[=verifiedpermissions_is_authorized_with_token]{is_authorized_with_token} \tab Makes an authorization decision about a service request described in the parameters\cr
 #'  \link[=verifiedpermissions_list_identity_sources]{list_identity_sources} \tab Returns a paginated list of all of the identity sources defined in the specified policy store\cr
 #'  \link[=verifiedpermissions_list_policies]{list_policies} \tab Returns a paginated list of all policies stored in the specified policy store\cr
+#'  \link[=verifiedpermissions_list_policy_store_aliases]{list_policy_store_aliases} \tab Returns a paginated list of all policy store aliases in the calling Amazon Web Services account\cr
 #'  \link[=verifiedpermissions_list_policy_stores]{list_policy_stores} \tab Returns a paginated list of all policy stores in the calling Amazon Web Services account\cr
 #'  \link[=verifiedpermissions_list_policy_templates]{list_policy_templates} \tab Returns a paginated list of all policy templates in the specified policy store\cr
+#'  \link[=verifiedpermissions_list_tags_for_resource]{list_tags_for_resource} \tab Returns the tags associated with the specified Amazon Verified Permissions resource\cr
 #'  \link[=verifiedpermissions_put_schema]{put_schema} \tab Creates or updates the policy schema in the specified policy store\cr
+#'  \link[=verifiedpermissions_tag_resource]{tag_resource} \tab Assigns one or more tags (key-value pairs) to the specified Amazon Verified Permissions resource\cr
+#'  \link[=verifiedpermissions_untag_resource]{untag_resource} \tab Removes one or more tags from the specified Amazon Verified Permissions resource\cr
 #'  \link[=verifiedpermissions_update_identity_source]{update_identity_source} \tab Updates the specified identity source to use a new identity provider (IdP), or to change the mapping of identities from the IdP to a different principal entity type\cr
 #'  \link[=verifiedpermissions_update_policy]{update_policy} \tab Modifies a Cedar static policy in the specified policy store\cr
 #'  \link[=verifiedpermissions_update_policy_store]{update_policy_store} \tab Modifies the validation setting for a policy store\cr
@@ -213,7 +179,7 @@ verifiedpermissions <- function(config = list(), credentials = list(), endpoint 
 
 .verifiedpermissions$metadata <- list(
   service_name = "verifiedpermissions",
-  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "verifiedpermissions.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "verifiedpermissions.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "verifiedpermissions.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "verifiedpermissions.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "verifiedpermissions.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "verifiedpermissions.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "verifiedpermissions.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "verifiedpermissions.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "verifiedpermissions.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "verifiedpermissions.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "verifiedpermissions.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "verifiedpermissions.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "verifiedpermissions.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "verifiedpermissions.{region}.csp.hci.ic.gov", global = FALSE), "^eusc\\-(de)\\-\\w+\\-\\d+$" = list(endpoint = "verifiedpermissions.{region}.amazonaws.eu", global = FALSE)),
   service_id = "VerifiedPermissions",
   api_version = "2021-12-01",
   signing_name = "verifiedpermissions",

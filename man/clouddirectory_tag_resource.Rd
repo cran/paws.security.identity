@@ -7,8 +7,7 @@
 clouddirectory_tag_resource(ResourceArn, Tags)
 }
 \arguments{
-\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the resource. Tagging is only
-supported for directories.}
+\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the resource. Tagging is only supported for directories.}
 
 \item{Tags}{[required] A list of tag key-value pairs.}
 }

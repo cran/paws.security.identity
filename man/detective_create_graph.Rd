@@ -8,10 +8,7 @@ account as the administrator account}
 detective_create_graph(Tags = NULL)
 }
 \arguments{
-\item{Tags}{The tags to assign to the new behavior graph. You can add up to 50 tags.
-For each tag, you provide the tag key and the tag value. Each tag key
-can contain up to 128 characters. Each tag value can contain up to 256
-characters.}
+\item{Tags}{The tags to assign to the new behavior graph. You can add up to 50 tags. For each tag, you provide the tag key and the tag value. Each tag key can contain up to 128 characters. Each tag value can contain up to 256 characters.}
 }
 \description{
 Creates a new behavior graph for the calling account, and sets that account as the administrator account. This operation is called by the account that is enabling Detective.

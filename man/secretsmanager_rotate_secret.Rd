@@ -9,55 +9,53 @@ secretsmanager_rotate_secret(
   ClientRequestToken = NULL,
   RotationLambdaARN = NULL,
   RotationRules = NULL,
+  ExternalSecretRotationMetadata = NULL,
+  ExternalSecretRotationRoleArn = NULL,
   RotateImmediately = NULL
 )
 }
 \arguments{
 \item{SecretId}{[required] The ARN or name of the secret to rotate.
 
-For an ARN, we recommend that you specify a complete ARN rather than a
-partial ARN. See \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/troubleshoot.html#ARN_secretnamehyphen}{Finding a secret from a partial ARN}.}
+For an ARN, we recommend that you specify a complete ARN rather than a partial ARN. See \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/troubleshoot.html#ARN_secretnamehyphen}{Finding a secret from a partial ARN}.}
 
-\item{ClientRequestToken}{A unique identifier for the new version of the secret. You only need to
-specify this value if you implement your own retry logic and you want to
-ensure that Secrets Manager doesn't attempt to create a secret version
-twice.
+\item{ClientRequestToken}{A unique identifier for the new version of the secret. You only need to specify this value if you implement your own retry logic and you want to ensure that Secrets Manager doesn't attempt to create a secret version twice.
 
-If you use the Amazon Web Services CLI or one of the Amazon Web Services
-SDKs to call this operation, then you can leave this parameter empty.
-The CLI or SDK generates a random UUID for you and includes it as the
-value for this parameter in the request.
+If you use the Amazon Web Services CLI or one of the Amazon Web Services SDKs to call this operation, then you can leave this parameter empty. The CLI or SDK generates a random UUID for you and includes it as the value for this parameter in the request.
 
-If you generate a raw HTTP request to the Secrets Manager service
-endpoint, then you must generate a \code{ClientRequestToken} and include it
-in the request.
+If you generate a raw HTTP request to the Secrets Manager service endpoint, then you must generate a \code{ClientRequestToken} and include it in the request.
 
-This value helps ensure idempotency. Secrets Manager uses this value to
-prevent the accidental creation of duplicate versions if there are
-failures and retries during a rotation. We recommend that you generate a
-\href{https://en.wikipedia.org/wiki/Universally_unique_identifier}{UUID-type}
-value to ensure uniqueness of your versions within the specified secret.}
+This value helps ensure idempotency. Secrets Manager uses this value to prevent the accidental creation of duplicate versions if there are failures and retries during a rotation. We recommend that you generate a \href{https://en.wikipedia.org/wiki/Universally_unique_identifier}{UUID-type} value to ensure uniqueness of your versions within the specified secret.}
 
-\item{RotationLambdaARN}{For secrets that use a Lambda rotation function to rotate, the ARN of
-the Lambda rotation function.
+\item{RotationLambdaARN}{For secrets that use a Lambda rotation function to rotate, the ARN of the Lambda rotation function.
 
-For secrets that use \emph{managed rotation}, omit this field. For more
-information, see \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotate-secrets_managed.html}{Managed rotation}
-in the \emph{Secrets Manager User Guide}.}
+For secrets that use \emph{managed rotation}, omit this field. For more information, see \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotate-secrets_managed.html}{Managed rotation} in the \emph{Secrets Manager User Guide}.}
 
-\item{RotationRules}{A structure that defines the rotation configuration for this secret.}
+\item{RotationRules}{A structure that defines the rotation configuration for this secret.
 
-\item{RotateImmediately}{Specifies whether to rotate the secret immediately or wait until the
-next scheduled rotation window. The rotation schedule is defined in
-RotateSecretRequest$RotationRules.
+When changing an existing rotation schedule and setting \code{RotateImmediately} to \code{false}:
+\itemize{
+\item If using \code{AutomaticallyAfterDays} or a \code{ScheduleExpression} with \code{rate()}, the previously scheduled rotation might still occur.
+\item To prevent unintended rotations, use a \code{ScheduleExpression} with \code{cron()} for granular control over rotation windows.
+}}
 
-For secrets that use a Lambda rotation function to rotate, if you don't
-immediately rotate the secret, Secrets Manager tests the rotation
-configuration by running the \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotate-secrets_lambda-functions.html#rotate-secrets_lambda-functions-code}{\code{testSecret} step}
-of the Lambda rotation function. The test creates an \code{AWSPENDING}
-version of the secret and then removes it.
+\item{ExternalSecretRotationMetadata}{The metadata needed to successfully rotate a managed external secret. A list of key value pairs in JSON format specified by the partner. For more information about the required information, see \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/managed-external-secrets.html}{Using Secrets Manager managed external secrets}}
 
-By default, Secrets Manager rotates the secret immediately.}
+\item{ExternalSecretRotationRoleArn}{The Amazon Resource Name (ARN) of the role that allows Secrets Manager to rotate a secret held by a third-party partner. For more information, see \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/mes-security.html}{Security and permissions}.}
+
+\item{RotateImmediately}{Specifies whether to rotate the secret immediately or wait until the next scheduled rotation window. The rotation schedule is defined in RotateSecretRequest$RotationRules.
+
+The default for \code{RotateImmediately} is \code{true}. If you don't specify this value, Secrets Manager rotates the secret immediately.
+
+If you set \code{RotateImmediately} to \code{false}, Secrets Manager tests the rotation configuration by running the \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets.html}{\code{testSecret} step} of the Lambda rotation function. This test creates an \code{AWSPENDING} version of the secret and then removes it.
+
+When changing an existing rotation schedule and setting \code{RotateImmediately} to \code{false}:
+\itemize{
+\item If using \code{AutomaticallyAfterDays} or a \code{ScheduleExpression} with \code{rate()}, the previously scheduled rotation might still occur.
+\item To prevent unintended rotations, use a \code{ScheduleExpression} with \code{cron()} for granular control over rotation windows.
+}
+
+Rotation is an asynchronous process. For more information, see \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets.html}{How rotation works}.}
 }
 \description{
 Configures and starts the asynchronous process of rotating the secret. For information about rotation, see \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets.html}{Rotate secrets} in the \emph{Secrets Manager User Guide}. If you include the configuration parameters, the operation sets the values for the secret and then immediately starts a rotation. If you don't include the configuration parameters, the operation starts a rotation with the values already stored in the secret.

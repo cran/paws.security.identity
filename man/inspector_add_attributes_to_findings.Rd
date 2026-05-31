@@ -8,8 +8,7 @@ specified by the ARNs of the findings}
 inspector_add_attributes_to_findings(findingArns, attributes)
 }
 \arguments{
-\item{findingArns}{[required] The ARNs that specify the findings that you want to assign attributes
-to.}
+\item{findingArns}{[required] The ARNs that specify the findings that you want to assign attributes to.}
 
 \item{attributes}{[required] The array of attributes that you want to assign to specified findings.}
 }

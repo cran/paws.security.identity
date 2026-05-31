@@ -15,18 +15,11 @@ directoryservice_describe_client_authentication_settings(
 \arguments{
 \item{DirectoryId}{[required] The identifier of the directory for which to retrieve information.}
 
-\item{Type}{The type of client authentication for which to retrieve information. If
-no type is specified, a list of all client authentication types that are
-supported for the specified directory is retrieved.}
+\item{Type}{The type of client authentication for which to retrieve information. If no type is specified, a list of all client authentication types that are supported for the specified directory is retrieved.}
 
-\item{NextToken}{The \emph{DescribeClientAuthenticationSettingsResult.NextToken} value from a
-previous call to
-\code{\link[=directoryservice_describe_client_authentication_settings]{describe_client_authentication_settings}}.
-Pass null if this is the first call.}
+\item{NextToken}{The \emph{DescribeClientAuthenticationSettingsResult.NextToken} value from a previous call to \code{\link[=directoryservice_describe_client_authentication_settings]{describe_client_authentication_settings}}. Pass null if this is the first call.}
 
-\item{Limit}{The maximum number of items to return. If this value is zero, the
-maximum number of items is specified by the limitations of the
-operation.}
+\item{Limit}{The maximum number of items to return. If this value is zero, the maximum number of items is specified by the limitations of the operation.}
 }
 \description{
 Retrieves information about the type of client authentication for the specified directory, if the type is specified. If no type is specified, information about all client authentication types that are supported for the specified directory is retrieved. Currently, only \code{SmartCard} is supported.

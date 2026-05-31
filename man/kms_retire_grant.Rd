@@ -12,32 +12,22 @@ kms_retire_grant(
 )
 }
 \arguments{
-\item{GrantToken}{Identifies the grant to be retired. You can use a grant token to
-identify a new grant even before it has achieved eventual consistency.
+\item{GrantToken}{Identifies the grant to be retired. You can use a grant token to identify a new grant even before it has achieved eventual consistency.
 
-Only the \code{\link[=kms_create_grant]{create_grant}} operation returns a grant
-token. For details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token}{Grant token}
-and \href{https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#terms-eventual-consistency}{Eventual consistency}
-in the \emph{Key Management Service Developer Guide}.}
+Only the \code{\link[=kms_create_grant]{create_grant}} operation returns a grant token. For details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token}{Grant token} and \href{https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#terms-eventual-consistency}{Eventual consistency} in the \emph{Key Management Service Developer Guide}.}
 
-\item{KeyId}{The key ARN KMS key associated with the grant. To find the key ARN, use
-the \code{\link[=kms_list_keys]{list_keys}} operation.
+\item{KeyId}{The key ARN KMS key associated with the grant. To find the key ARN, use the \code{\link[=kms_list_keys]{list_keys}} operation.
 
-For example:
-\verb{arn:aws:kms:us-east-2:444455556666:key/1234abcd-12ab-34cd-56ef-1234567890ab}}
+For example: \verb{arn:aws:kms:us-east-2:444455556666:key/1234abcd-12ab-34cd-56ef-1234567890ab}}
 
-\item{GrantId}{Identifies the grant to retire. To get the grant ID, use
-\code{\link[=kms_create_grant]{create_grant}}, \code{\link[=kms_list_grants]{list_grants}}, or
-\code{\link[=kms_list_retirable_grants]{list_retirable_grants}}.
+\item{GrantId}{Identifies the grant to retire. To get the grant ID, use \code{\link[=kms_create_grant]{create_grant}}, \code{\link[=kms_list_grants]{list_grants}}, or \code{\link[=kms_list_retirable_grants]{list_retirable_grants}}.
 \itemize{
-\item Grant ID Example -
-0123456789012345678901234567890123456789012345678901234567890123
+\item Grant ID Example - 0123456789012345678901234567890123456789012345678901234567890123
 }}
 
 \item{DryRun}{Checks if your request will succeed. \code{DryRun} is an optional parameter.
 
-To learn more about how to use this parameter, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html}{Testing your KMS API calls}
-in the \emph{Key Management Service Developer Guide}.}
+To learn more about how to use this parameter, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html}{Testing your permissions} in the \emph{Key Management Service Developer Guide}.}
 }
 \description{
 Deletes a grant. Typically, you retire a grant when you no longer need its permissions. To identify the grant to retire, use a \href{https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token}{grant token}, or both the grant ID and a key identifier (key ID or key ARN) of the KMS key. The \code{\link[=kms_create_grant]{create_grant}} operation returns both values.

@@ -11,8 +11,7 @@ securitylake_update_subscriber_notification(configuration, subscriberId)
 \arguments{
 \item{configuration}{[required] The configuration for subscriber notification.}
 
-\item{subscriberId}{[required] The subscription ID for which the subscription notification is
-specified.}
+\item{subscriberId}{[required] The subscription ID for which the subscription notification is specified.}
 }
 \description{
 Updates an existing notification method for the subscription (SQS or HTTPs endpoint) or switches the notification subscription endpoint for a subscriber.

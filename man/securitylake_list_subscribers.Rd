@@ -9,8 +9,7 @@ securitylake_list_subscribers(maxResults = NULL, nextToken = NULL)
 \arguments{
 \item{maxResults}{The maximum number of accounts for which the configuration is displayed.}
 
-\item{nextToken}{If nextToken is returned, there are more results available. You can
-repeat the call using the returned token to retrieve the next page.}
+\item{nextToken}{If nextToken is returned, there are more results available. You can repeat the call using the returned token to retrieve the next page.}
 }
 \description{
 Lists all subscribers for the specific Amazon Security Lake account ID. You can retrieve a list of subscriptions associated with a specific organization or Amazon Web Services account.

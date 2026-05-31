@@ -12,15 +12,11 @@ macie2_enable_macie(
 )
 }
 \arguments{
-\item{clientToken}{A unique, case-sensitive token that you provide to ensure the
-idempotency of the request.}
+\item{clientToken}{A unique, case-sensitive token that you provide to ensure the idempotency of the request.}
 
-\item{findingPublishingFrequency}{Specifies how often to publish updates to policy findings for the
-account. This includes publishing updates to Security Hub and Amazon
-EventBridge (formerly Amazon CloudWatch Events).}
+\item{findingPublishingFrequency}{Specifies how often to publish updates to policy findings for the account. This includes publishing updates to Security Hub and Amazon EventBridge (formerly Amazon CloudWatch Events).}
 
-\item{status}{Specifies the new status for the account. To enable Amazon Macie and
-start all Macie activities for the account, set this value to ENABLED.}
+\item{status}{Specifies the new status for the account. To enable Amazon Macie and start all Macie activities for the account, set this value to ENABLED.}
 }
 \description{
 Enables Amazon Macie and specifies the configuration settings for a Macie account.

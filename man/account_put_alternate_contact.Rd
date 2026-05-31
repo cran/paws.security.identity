@@ -6,48 +6,34 @@
 Services account}
 \usage{
 account_put_alternate_contact(
-  AccountId = NULL,
-  AlternateContactType,
-  EmailAddress,
   Name,
+  Title,
+  EmailAddress,
   PhoneNumber,
-  Title
+  AlternateContactType,
+  AccountId = NULL
 )
 }
 \arguments{
-\item{AccountId}{Specifies the 12 digit account ID number of the Amazon Web Services
-account that you want to access or modify with this operation.
+\item{Name}{[required] Specifies a name for the alternate contact.}
 
-If you do not specify this parameter, it defaults to the Amazon Web
-Services account of the identity used to call the operation.
-
-To use this parameter, the caller must be an identity in the
-\href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#account}{organization's management account}
-or a delegated administrator account, and the specified account ID must
-be a member account in the same organization. The organization must have
-\href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html}{all features enabled},
-and the organization must have \href{https://docs.aws.amazon.com/organizations/latest/userguide/}{trusted access}
-enabled for the Account Management service, and optionally a \href{https://docs.aws.amazon.com/organizations/latest/userguide/}{delegated admin}
-account assigned.
-
-The management account can't specify its own \code{AccountId}; it must call
-the operation in standalone context by not including the \code{AccountId}
-parameter.
-
-To call this operation on an account that is not a member of an
-organization, then don't specify this parameter, and call the operation
-using an identity belonging to the account whose contacts you wish to
-retrieve or modify.}
-
-\item{AlternateContactType}{[required] Specifies which alternate contact you want to create or update.}
+\item{Title}{[required] Specifies a title for the alternate contact.}
 
 \item{EmailAddress}{[required] Specifies an email address for the alternate contact.}
 
-\item{Name}{[required] Specifies a name for the alternate contact.}
-
 \item{PhoneNumber}{[required] Specifies a phone number for the alternate contact.}
 
-\item{Title}{[required] Specifies a title for the alternate contact.}
+\item{AlternateContactType}{[required] Specifies which alternate contact you want to create or update.}
+
+\item{AccountId}{Specifies the 12 digit account ID number of the Amazon Web Services account that you want to access or modify with this operation.
+
+If you do not specify this parameter, it defaults to the Amazon Web Services account of the identity used to call the operation.
+
+To use this parameter, the caller must be an identity in the \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#account}{organization's management account} or a delegated administrator account, and the specified account ID must be a member account in the same organization. The organization must have \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html}{all features enabled}, and the organization must have \href{https://docs.aws.amazon.com/organizations/latest/userguide/services-that-can-integrate-account.html}{trusted access} enabled for the Account Management service, and optionally a \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#delegated-admin}{delegated administrator} account assigned.
+
+The management account can't specify its own \code{AccountId}; it must call the operation in standalone context by not including the \code{AccountId} parameter.
+
+To call this operation on an account that is not a member of an organization, then don't specify this parameter, and call the operation using an identity belonging to the account whose contacts you wish to retrieve or modify.}
 }
 \description{
 Modifies the specified alternate contact attached to an Amazon Web Services account.

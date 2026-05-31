@@ -7,9 +7,7 @@
 waf_get_web_acl(WebACLId)
 }
 \arguments{
-\item{WebACLId}{[required] The \code{WebACLId} of the WebACL that you want to get. \code{WebACLId} is
-returned by \code{\link[=waf_create_web_acl]{create_web_acl}} and by
-\code{\link[=waf_list_web_ac_ls]{list_web_ac_ls}}.}
+\item{WebACLId}{[required] The \code{WebACLId} of the WebACL that you want to get. \code{WebACLId} is returned by \code{\link[=waf_create_web_acl]{create_web_acl}} and by \code{\link[=waf_list_web_ac_ls]{list_web_ac_ls}}.}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic} in the developer guide.

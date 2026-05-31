@@ -7,16 +7,11 @@
 cloudhsmv2_list_tags(ResourceId, NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
-\item{ResourceId}{[required] The cluster identifier (ID) for the cluster whose tags you are getting.
-To find the cluster ID, use
-\code{\link[=cloudhsmv2_describe_clusters]{describe_clusters}}.}
+\item{ResourceId}{[required] The cluster identifier (ID) for the cluster whose tags you are getting. To find the cluster ID, use \code{\link[=cloudhsmv2_describe_clusters]{describe_clusters}}.}
 
-\item{NextToken}{The \code{NextToken} value that you received in the previous response. Use
-this value to get more tags.}
+\item{NextToken}{The \code{NextToken} value that you received in the previous response. Use this value to get more tags.}
 
-\item{MaxResults}{The maximum number of tags to return in the response. When there are
-more tags than the number you specify, the response contains a
-\code{NextToken} value.}
+\item{MaxResults}{The maximum number of tags to return in the response. When there are more tags than the number you specify, the response contains a \code{NextToken} value.}
 }
 \description{
 Gets a list of tags for the specified CloudHSM cluster.

@@ -15,17 +15,11 @@ cognitoidentityprovider_admin_update_device_status(
 \arguments{
 \item{UserPoolId}{[required] The ID of the user pool where you want to change a user's device status.}
 
-\item{Username}{[required] The username of the user that you want to query or modify. The value of
-this parameter is typically your user's username, but it can be any of
-their alias attributes. If \code{username} isn't an alias attribute in your
-user pool, this value must be the \code{sub} of a local user or the username
-of a user from a third-party IdP.}
+\item{Username}{[required] The name of the user that you want to query or modify. The value of this parameter is typically your user's username, but it can be any of their alias attributes. If \code{username} isn't an alias attribute in your user pool, this value must be the \code{sub} of a local user or the username of a user from a third-party IdP.}
 
-\item{DeviceKey}{[required] The unique identifier, or device key, of the device that you want to
-update the status for.}
+\item{DeviceKey}{[required] The unique identifier, or device key, of the device that you want to update the status for.}
 
-\item{DeviceRememberedStatus}{To enable device authentication with the specified device, set to
-\code{remembered}.To disable, set to \code{not_remembered}.}
+\item{DeviceRememberedStatus}{To enable device authentication with the specified device, set to \code{remembered}.To disable, set to \code{not_remembered}.}
 }
 \description{
 Updates the status of a user's device so that it is marked as remembered or not remembered for the purpose of device authentication. Device authentication is a "remember me" mechanism that silently completes sign-in from trusted devices with a device key instead of a user-provided MFA code. This operation changes the status of a device without deleting it, so you can enable it again later. For more information about device authentication, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/amazon-cognito-user-pools-device-tracking.html}{Working with devices}.

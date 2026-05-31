@@ -7,8 +7,7 @@
 cognitoidentityprovider_describe_user_pool_client(UserPoolId, ClientId)
 }
 \arguments{
-\item{UserPoolId}{[required] The ID of the user pool that contains the app client you want to
-describe.}
+\item{UserPoolId}{[required] The ID of the user pool that contains the app client you want to describe.}
 
 \item{ClientId}{[required] The ID of the app client that you want to describe.}
 }

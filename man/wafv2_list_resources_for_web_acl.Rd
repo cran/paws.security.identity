@@ -12,13 +12,9 @@ wafv2_list_resources_for_web_acl(WebACLArn, ResourceType = NULL)
 
 \item{ResourceType}{Retrieves the web ACLs that are used by the specified resource type.
 
-For Amazon CloudFront, don't use this call. Instead, use the CloudFront
-call \code{ListDistributionsByWebACLId}. For information, see
-\href{https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_ListDistributionsByWebACLId.html}{ListDistributionsByWebACLId}
-in the \emph{Amazon CloudFront API Reference}.
+For Amazon CloudFront, don't use this call. Instead, use the CloudFront call \code{ListDistributionsByWebACLId}. For information, see \href{https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_ListDistributionsByWebACLId.html}{ListDistributionsByWebACLId} in the \emph{Amazon CloudFront API Reference}.
 
-If you don't provide a resource type, the call uses the resource type
-\code{APPLICATION_LOAD_BALANCER}.
+If you don't provide a resource type, the call uses the resource type \code{APPLICATION_LOAD_BALANCER}.
 
 Default: \code{APPLICATION_LOAD_BALANCER}}
 }

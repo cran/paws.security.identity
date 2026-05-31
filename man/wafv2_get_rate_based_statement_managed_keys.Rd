@@ -14,32 +14,21 @@ wafv2_get_rate_based_statement_managed_keys(
 )
 }
 \arguments{
-\item{Scope}{[required] Specifies whether this is for a global resource type, such as a Amazon
-CloudFront distribution.
+\item{Scope}{[required] Specifies whether this is for a global resource type, such as a Amazon CloudFront distribution. For an Amplify application, use \code{CLOUDFRONT}.
 
-To work with CloudFront, you must also specify the Region US East (N.
-Virginia) as follows:
+To work with CloudFront, you must also specify the Region US East (N. Virginia) as follows:
 \itemize{
-\item CLI - Specify the Region when you use the CloudFront scope:
-\code{--scope=CLOUDFRONT --region=us-east-1}.
+\item CLI - Specify the Region when you use the CloudFront scope: \code{--scope=CLOUDFRONT --region=us-east-1}.
 \item API and SDKs - For all calls, use the Region endpoint us-east-1.
 }}
 
-\item{WebACLName}{[required] The name of the web ACL. You cannot change the name of a web ACL after
-you create it.}
+\item{WebACLName}{[required] The name of the web ACL. You cannot change the name of a web ACL after you create it.}
 
-\item{WebACLId}{[required] The unique identifier for the web ACL. This ID is returned in the
-responses to create and list commands. You provide it to operations like
-update and delete.}
+\item{WebACLId}{[required] The unique identifier for the web ACL. This ID is returned in the responses to create and list commands. You provide it to operations like update and delete.}
 
-\item{RuleGroupRuleName}{The name of the rule group reference statement in your web ACL. This is
-required only when you have the rate-based rule nested inside a rule
-group.}
+\item{RuleGroupRuleName}{The name of the rule group reference statement in your web ACL. This is required only when you have the rate-based rule nested inside a rule group.}
 
-\item{RuleName}{[required] The name of the rate-based rule to get the keys for. If you have the
-rule defined inside a rule group that you're using in your web ACL, also
-provide the name of the rule group reference statement in the request
-parameter \code{RuleGroupRuleName}.}
+\item{RuleName}{[required] The name of the rate-based rule to get the keys for. If you have the rule defined inside a rule group that you're using in your web ACL, also provide the name of the rule group reference statement in the request parameter \code{RuleGroupRuleName}.}
 }
 \description{
 Retrieves the IP addresses that are currently blocked by a rate-based rule instance. This is only available for rate-based rules that aggregate solely on the IP address or on the forwarded IP address.

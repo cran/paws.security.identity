@@ -11,3 +11,7 @@ test_that("list_aliases", {
 test_that("list_keys", {
   expect_error(svc$list_keys(), NA)
 })
+
+test_that("list_retirable_grants", {
+  expect_error(svc$list_retirable_grants(), NA)
+})

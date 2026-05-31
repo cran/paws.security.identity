@@ -3,7 +3,7 @@
 \name{securityhub_list_members}
 \alias{securityhub_list_members}
 \title{Lists details about all member accounts for the current Security Hub
-administrator account}
+CSPM administrator account}
 \usage{
 securityhub_list_members(
   OnlyAssociated = NULL,
@@ -12,29 +12,20 @@ securityhub_list_members(
 )
 }
 \arguments{
-\item{OnlyAssociated}{Specifies which member accounts to include in the response based on
-their relationship status with the administrator account. The default
-value is \code{TRUE}.
+\item{OnlyAssociated}{Specifies which member accounts to include in the response based on their relationship status with the administrator account. The default value is \code{TRUE}.
 
-If \code{OnlyAssociated} is set to \code{TRUE}, the response includes member
-accounts whose relationship status with the administrator account is set
-to \code{ENABLED}.
+If \code{OnlyAssociated} is set to \code{TRUE}, the response includes member accounts whose relationship status with the administrator account is set to \code{ENABLED}.
 
-If \code{OnlyAssociated} is set to \code{FALSE}, the response includes all
-existing member accounts.}
+If \code{OnlyAssociated} is set to \code{FALSE}, the response includes all existing member accounts.}
 
 \item{MaxResults}{The maximum number of items to return in the response.}
 
-\item{NextToken}{The token that is required for pagination. On your first call to the
-\code{\link[=securityhub_list_members]{list_members}} operation, set the value of
-this parameter to \code{NULL}.
+\item{NextToken}{The token that is required for pagination. On your first call to the \code{\link[=securityhub_list_members]{list_members}} operation, set the value of this parameter to \code{NULL}.
 
-For subsequent calls to the operation, to continue listing data, set the
-value of this parameter to the value returned from the previous
-response.}
+For subsequent calls to the operation, to continue listing data, set the value of this parameter to the value returned from the previous response.}
 }
 \description{
-Lists details about all member accounts for the current Security Hub administrator account.
+Lists details about all member accounts for the current Security Hub CSPM administrator account.
 
 See \url{https://www.paws-r-sdk.com/docs/securityhub_list_members/} for full documentation.
 }

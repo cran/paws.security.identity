@@ -10,13 +10,9 @@ macie2_update_resource_profile_detections(
 )
 }
 \arguments{
-\item{resourceArn}{[required] The Amazon Resource Name (ARN) of the S3 bucket that the request applies
-to.}
+\item{resourceArn}{[required] The Amazon Resource Name (ARN) of the S3 bucket that the request applies to.}
 
-\item{suppressDataIdentifiers}{An array of objects, one for each custom data identifier or managed data
-identifier that detected a type of sensitive data to exclude from the
-bucket's score. To include all sensitive data types in the score, don't
-specify any values for this array.}
+\item{suppressDataIdentifiers}{An array of objects, one for each custom data identifier or managed data identifier that detected a type of sensitive data to exclude from the bucket's score. To include all sensitive data types in the score, don't specify any values for this array.}
 }
 \description{
 Updates the sensitivity scoring settings for an S3 bucket.

@@ -8,8 +8,7 @@ administrator account}
 securityhub_disassociate_members(AccountIds)
 }
 \arguments{
-\item{AccountIds}{[required] The account IDs of the member accounts to disassociate from the
-administrator account.}
+\item{AccountIds}{[required] The account IDs of the member accounts to disassociate from the administrator account.}
 }
 \description{
 Disassociates the specified member accounts from the associated administrator account.

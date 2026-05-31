@@ -15,7 +15,7 @@ NULL
 #' @param ClientToken Idempotency token.
 #' @param DirectoryId &#91;required&#93; The identifier of the Active Directory.
 #' @param Tags Metadata assigned to a connector consisting of a key-value pair.
-#' @param VpcInformation &#91;required&#93; Security group IDs that describe the inbound and outbound rules.
+#' @param VpcInformation &#91;required&#93; Information about your VPC and security groups used with the connector.
 #'
 #' @keywords internal
 #'
@@ -49,8 +49,7 @@ pcaconnectorad_create_connector <- function(CertificateAuthorityArn, ClientToken
 #'
 #' @param ClientToken Idempotency token.
 #' @param DirectoryId &#91;required&#93; The identifier of the Active Directory.
-#' @param Tags Metadata assigned to a directory registration consisting of a key-value
-#' pair.
+#' @param Tags Metadata assigned to a directory registration consisting of a key-value pair.
 #'
 #' @keywords internal
 #'
@@ -83,10 +82,8 @@ pcaconnectorad_create_directory_registration <- function(ClientToken = NULL, Dir
 #' See [https://www.paws-r-sdk.com/docs/pcaconnectorad_create_service_principal_name/](https://www.paws-r-sdk.com/docs/pcaconnectorad_create_service_principal_name/) for full documentation.
 #'
 #' @param ClientToken Idempotency token.
-#' @param ConnectorArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called
-#' [`create_connector`][pcaconnectorad_create_connector].
-#' @param DirectoryRegistrationArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called
-#' [`create_directory_registration`][pcaconnectorad_create_directory_registration].
+#' @param ConnectorArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called [`create_connector`][pcaconnectorad_create_connector].
+#' @param DirectoryRegistrationArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called [`create_directory_registration`][pcaconnectorad_create_directory_registration].
 #'
 #' @keywords internal
 #'
@@ -118,12 +115,8 @@ pcaconnectorad_create_service_principal_name <- function(ClientToken = NULL, Con
 #' See [https://www.paws-r-sdk.com/docs/pcaconnectorad_create_template/](https://www.paws-r-sdk.com/docs/pcaconnectorad_create_template/) for full documentation.
 #'
 #' @param ClientToken Idempotency token.
-#' @param ConnectorArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called
-#' [`create_connector`][pcaconnectorad_create_connector].
-#' @param Definition &#91;required&#93; Template configuration to define the information included in
-#' certificates. Define certificate validity and renewal periods,
-#' certificate request handling and enrollment options, key usage
-#' extensions, application policies, and cryptography settings.
+#' @param ConnectorArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called [`create_connector`][pcaconnectorad_create_connector].
+#' @param Definition &#91;required&#93; Template configuration to define the information included in certificates. Define certificate validity and renewal periods, certificate request handling and enrollment options, key usage extensions, application policies, and cryptography settings.
 #' @param Name &#91;required&#93; Name of the template. The template name must be unique.
 #' @param Tags Metadata assigned to a template consisting of a key-value pair.
 #'
@@ -156,15 +149,11 @@ pcaconnectorad_create_template <- function(ClientToken = NULL, ConnectorArn, Def
 #'
 #' See [https://www.paws-r-sdk.com/docs/pcaconnectorad_create_template_group_access_control_entry/](https://www.paws-r-sdk.com/docs/pcaconnectorad_create_template_group_access_control_entry/) for full documentation.
 #'
-#' @param AccessRights &#91;required&#93; Allow or deny permissions for an Active Directory group to enroll or
-#' autoenroll certificates for a template.
+#' @param AccessRights &#91;required&#93; Allow or deny permissions for an Active Directory group to enroll or autoenroll certificates for a template.
 #' @param ClientToken Idempotency token.
-#' @param GroupDisplayName &#91;required&#93; Name of the Active Directory group. This name does not need to match the
-#' group name in Active Directory.
-#' @param GroupSecurityIdentifier &#91;required&#93; Security identifier (SID) of the group object from Active Directory. The
-#' SID starts with "S-".
-#' @param TemplateArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called
-#' [`create_template`][pcaconnectorad_create_template].
+#' @param GroupDisplayName &#91;required&#93; Name of the Active Directory group. This name does not need to match the group name in Active Directory.
+#' @param GroupSecurityIdentifier &#91;required&#93; Security identifier (SID) of the group object from Active Directory. The SID starts with "S-".
+#' @param TemplateArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called [`create_template`][pcaconnectorad_create_template].
 #'
 #' @keywords internal
 #'
@@ -195,8 +184,7 @@ pcaconnectorad_create_template_group_access_control_entry <- function(AccessRigh
 #'
 #' See [https://www.paws-r-sdk.com/docs/pcaconnectorad_delete_connector/](https://www.paws-r-sdk.com/docs/pcaconnectorad_delete_connector/) for full documentation.
 #'
-#' @param ConnectorArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called
-#' [`create_connector`][pcaconnectorad_create_connector].
+#' @param ConnectorArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called [`create_connector`][pcaconnectorad_create_connector].
 #'
 #' @keywords internal
 #'
@@ -227,8 +215,7 @@ pcaconnectorad_delete_connector <- function(ConnectorArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/pcaconnectorad_delete_directory_registration/](https://www.paws-r-sdk.com/docs/pcaconnectorad_delete_directory_registration/) for full documentation.
 #'
-#' @param DirectoryRegistrationArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called
-#' [`create_directory_registration`][pcaconnectorad_create_directory_registration].
+#' @param DirectoryRegistrationArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called [`create_directory_registration`][pcaconnectorad_create_directory_registration].
 #'
 #' @keywords internal
 #'
@@ -260,10 +247,8 @@ pcaconnectorad_delete_directory_registration <- function(DirectoryRegistrationAr
 #'
 #' See [https://www.paws-r-sdk.com/docs/pcaconnectorad_delete_service_principal_name/](https://www.paws-r-sdk.com/docs/pcaconnectorad_delete_service_principal_name/) for full documentation.
 #'
-#' @param ConnectorArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called
-#' [`create_connector`][pcaconnectorad_create_connector].
-#' @param DirectoryRegistrationArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called
-#' [`create_directory_registration`][pcaconnectorad_create_directory_registration].
+#' @param ConnectorArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called [`create_connector`][pcaconnectorad_create_connector].
+#' @param DirectoryRegistrationArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called [`create_directory_registration`][pcaconnectorad_create_directory_registration].
 #'
 #' @keywords internal
 #'
@@ -294,8 +279,7 @@ pcaconnectorad_delete_service_principal_name <- function(ConnectorArn, Directory
 #'
 #' See [https://www.paws-r-sdk.com/docs/pcaconnectorad_delete_template/](https://www.paws-r-sdk.com/docs/pcaconnectorad_delete_template/) for full documentation.
 #'
-#' @param TemplateArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called
-#' [`create_template`][pcaconnectorad_create_template].
+#' @param TemplateArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called [`create_template`][pcaconnectorad_create_template].
 #'
 #' @keywords internal
 #'
@@ -326,10 +310,8 @@ pcaconnectorad_delete_template <- function(TemplateArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/pcaconnectorad_delete_template_group_access_control_entry/](https://www.paws-r-sdk.com/docs/pcaconnectorad_delete_template_group_access_control_entry/) for full documentation.
 #'
-#' @param GroupSecurityIdentifier &#91;required&#93; Security identifier (SID) of the group object from Active Directory. The
-#' SID starts with "S-".
-#' @param TemplateArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called
-#' [`create_template`][pcaconnectorad_create_template].
+#' @param GroupSecurityIdentifier &#91;required&#93; Security identifier (SID) of the group object from Active Directory. The SID starts with "S-".
+#' @param TemplateArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called [`create_template`][pcaconnectorad_create_template].
 #'
 #' @keywords internal
 #'
@@ -360,8 +342,7 @@ pcaconnectorad_delete_template_group_access_control_entry <- function(GroupSecur
 #'
 #' See [https://www.paws-r-sdk.com/docs/pcaconnectorad_get_connector/](https://www.paws-r-sdk.com/docs/pcaconnectorad_get_connector/) for full documentation.
 #'
-#' @param ConnectorArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called
-#' [`create_connector`][pcaconnectorad_create_connector].
+#' @param ConnectorArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called [`create_connector`][pcaconnectorad_create_connector].
 #'
 #' @keywords internal
 #'
@@ -392,8 +373,7 @@ pcaconnectorad_get_connector <- function(ConnectorArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/pcaconnectorad_get_directory_registration/](https://www.paws-r-sdk.com/docs/pcaconnectorad_get_directory_registration/) for full documentation.
 #'
-#' @param DirectoryRegistrationArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called
-#' [`create_directory_registration`][pcaconnectorad_create_directory_registration].
+#' @param DirectoryRegistrationArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called [`create_directory_registration`][pcaconnectorad_create_directory_registration].
 #'
 #' @keywords internal
 #'
@@ -425,10 +405,8 @@ pcaconnectorad_get_directory_registration <- function(DirectoryRegistrationArn) 
 #'
 #' See [https://www.paws-r-sdk.com/docs/pcaconnectorad_get_service_principal_name/](https://www.paws-r-sdk.com/docs/pcaconnectorad_get_service_principal_name/) for full documentation.
 #'
-#' @param ConnectorArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called
-#' [`create_connector`][pcaconnectorad_create_connector].
-#' @param DirectoryRegistrationArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called
-#' [`create_directory_registration`][pcaconnectorad_create_directory_registration].
+#' @param ConnectorArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called [`create_connector`][pcaconnectorad_create_connector].
+#' @param DirectoryRegistrationArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called [`create_directory_registration`][pcaconnectorad_create_directory_registration].
 #'
 #' @keywords internal
 #'
@@ -460,8 +438,7 @@ pcaconnectorad_get_service_principal_name <- function(ConnectorArn, DirectoryReg
 #'
 #' See [https://www.paws-r-sdk.com/docs/pcaconnectorad_get_template/](https://www.paws-r-sdk.com/docs/pcaconnectorad_get_template/) for full documentation.
 #'
-#' @param TemplateArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called
-#' [`create_template`][pcaconnectorad_create_template].
+#' @param TemplateArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called [`create_template`][pcaconnectorad_create_template].
 #'
 #' @keywords internal
 #'
@@ -492,10 +469,8 @@ pcaconnectorad_get_template <- function(TemplateArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/pcaconnectorad_get_template_group_access_control_entry/](https://www.paws-r-sdk.com/docs/pcaconnectorad_get_template_group_access_control_entry/) for full documentation.
 #'
-#' @param GroupSecurityIdentifier &#91;required&#93; Security identifier (SID) of the group object from Active Directory. The
-#' SID starts with "S-".
-#' @param TemplateArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called
-#' [`create_template`][pcaconnectorad_create_template].
+#' @param GroupSecurityIdentifier &#91;required&#93; Security identifier (SID) of the group object from Active Directory. The SID starts with "S-".
+#' @param TemplateArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called [`create_template`][pcaconnectorad_create_template].
 #'
 #' @keywords internal
 #'
@@ -526,14 +501,8 @@ pcaconnectorad_get_template_group_access_control_entry <- function(GroupSecurity
 #'
 #' See [https://www.paws-r-sdk.com/docs/pcaconnectorad_list_connectors/](https://www.paws-r-sdk.com/docs/pcaconnectorad_list_connectors/) for full documentation.
 #'
-#' @param MaxResults Use this parameter when paginating results to specify the maximum number
-#' of items to return in the response on each page. If additional items
-#' exist beyond the number you specify, the `NextToken` element is sent in
-#' the response. Use this `NextToken` value in a subsequent request to
-#' retrieve additional items.
-#' @param NextToken Use this parameter when paginating results in a subsequent request after
-#' you receive a response with truncated results. Set it to the value of
-#' the `NextToken` parameter from the response you just received.
+#' @param MaxResults Use this parameter when paginating results to specify the maximum number of items to return in the response on each page. If additional items exist beyond the number you specify, the `NextToken` element is sent in the response. Use this `NextToken` value in a subsequent request to retrieve additional items.
+#' @param NextToken Use this parameter when paginating results in a subsequent request after you receive a response with truncated results. Set it to the value of the `NextToken` parameter from the response you just received.
 #'
 #' @keywords internal
 #'
@@ -565,14 +534,8 @@ pcaconnectorad_list_connectors <- function(MaxResults = NULL, NextToken = NULL) 
 #'
 #' See [https://www.paws-r-sdk.com/docs/pcaconnectorad_list_directory_registrations/](https://www.paws-r-sdk.com/docs/pcaconnectorad_list_directory_registrations/) for full documentation.
 #'
-#' @param MaxResults Use this parameter when paginating results to specify the maximum number
-#' of items to return in the response on each page. If additional items
-#' exist beyond the number you specify, the `NextToken` element is sent in
-#' the response. Use this `NextToken` value in a subsequent request to
-#' retrieve additional items.
-#' @param NextToken Use this parameter when paginating results in a subsequent request after
-#' you receive a response with truncated results. Set it to the value of
-#' the `NextToken` parameter from the response you just received.
+#' @param MaxResults Use this parameter when paginating results to specify the maximum number of items to return in the response on each page. If additional items exist beyond the number you specify, the `NextToken` element is sent in the response. Use this `NextToken` value in a subsequent request to retrieve additional items.
+#' @param NextToken Use this parameter when paginating results in a subsequent request after you receive a response with truncated results. Set it to the value of the `NextToken` parameter from the response you just received.
 #'
 #' @keywords internal
 #'
@@ -604,16 +567,9 @@ pcaconnectorad_list_directory_registrations <- function(MaxResults = NULL, NextT
 #'
 #' See [https://www.paws-r-sdk.com/docs/pcaconnectorad_list_service_principal_names/](https://www.paws-r-sdk.com/docs/pcaconnectorad_list_service_principal_names/) for full documentation.
 #'
-#' @param DirectoryRegistrationArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called
-#' [`create_directory_registration`][pcaconnectorad_create_directory_registration].
-#' @param MaxResults Use this parameter when paginating results to specify the maximum number
-#' of items to return in the response on each page. If additional items
-#' exist beyond the number you specify, the `NextToken` element is sent in
-#' the response. Use this `NextToken` value in a subsequent request to
-#' retrieve additional items.
-#' @param NextToken Use this parameter when paginating results in a subsequent request after
-#' you receive a response with truncated results. Set it to the value of
-#' the `NextToken` parameter from the response you just received.
+#' @param DirectoryRegistrationArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called [`create_directory_registration`][pcaconnectorad_create_directory_registration].
+#' @param MaxResults Use this parameter when paginating results to specify the maximum number of items to return in the response on each page. If additional items exist beyond the number you specify, the `NextToken` element is sent in the response. Use this `NextToken` value in a subsequent request to retrieve additional items.
+#' @param NextToken Use this parameter when paginating results in a subsequent request after you receive a response with truncated results. Set it to the value of the `NextToken` parameter from the response you just received.
 #'
 #' @keywords internal
 #'
@@ -644,8 +600,7 @@ pcaconnectorad_list_service_principal_names <- function(DirectoryRegistrationArn
 #'
 #' See [https://www.paws-r-sdk.com/docs/pcaconnectorad_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/pcaconnectorad_list_tags_for_resource/) for full documentation.
 #'
-#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you created the
-#' resource.
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you created the resource.
 #'
 #' @keywords internal
 #'
@@ -676,16 +631,9 @@ pcaconnectorad_list_tags_for_resource <- function(ResourceArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/pcaconnectorad_list_template_group_access_control_entries/](https://www.paws-r-sdk.com/docs/pcaconnectorad_list_template_group_access_control_entries/) for full documentation.
 #'
-#' @param MaxResults Use this parameter when paginating results to specify the maximum number
-#' of items to return in the response on each page. If additional items
-#' exist beyond the number you specify, the `NextToken` element is sent in
-#' the response. Use this `NextToken` value in a subsequent request to
-#' retrieve additional items.
-#' @param NextToken Use this parameter when paginating results in a subsequent request after
-#' you receive a response with truncated results. Set it to the value of
-#' the `NextToken` parameter from the response you just received.
-#' @param TemplateArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called
-#' [`create_template`][pcaconnectorad_create_template].
+#' @param MaxResults Use this parameter when paginating results to specify the maximum number of items to return in the response on each page. If additional items exist beyond the number you specify, the `NextToken` element is sent in the response. Use this `NextToken` value in a subsequent request to retrieve additional items.
+#' @param NextToken Use this parameter when paginating results in a subsequent request after you receive a response with truncated results. Set it to the value of the `NextToken` parameter from the response you just received.
+#' @param TemplateArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called [`create_template`][pcaconnectorad_create_template].
 #'
 #' @keywords internal
 #'
@@ -716,16 +664,9 @@ pcaconnectorad_list_template_group_access_control_entries <- function(MaxResults
 #'
 #' See [https://www.paws-r-sdk.com/docs/pcaconnectorad_list_templates/](https://www.paws-r-sdk.com/docs/pcaconnectorad_list_templates/) for full documentation.
 #'
-#' @param ConnectorArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called
-#' [`create_connector`][pcaconnectorad_create_connector].
-#' @param MaxResults Use this parameter when paginating results to specify the maximum number
-#' of items to return in the response on each page. If additional items
-#' exist beyond the number you specify, the `NextToken` element is sent in
-#' the response. Use this `NextToken` value in a subsequent request to
-#' retrieve additional items.
-#' @param NextToken Use this parameter when paginating results in a subsequent request after
-#' you receive a response with truncated results. Set it to the value of
-#' the `NextToken` parameter from the response you just received.
+#' @param ConnectorArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called [`create_connector`][pcaconnectorad_create_connector].
+#' @param MaxResults Use this parameter when paginating results to specify the maximum number of items to return in the response on each page. If additional items exist beyond the number you specify, the `NextToken` element is sent in the response. Use this `NextToken` value in a subsequent request to retrieve additional items.
+#' @param NextToken Use this parameter when paginating results in a subsequent request after you receive a response with truncated results. Set it to the value of the `NextToken` parameter from the response you just received.
 #'
 #' @keywords internal
 #'
@@ -756,10 +697,8 @@ pcaconnectorad_list_templates <- function(ConnectorArn, MaxResults = NULL, NextT
 #'
 #' See [https://www.paws-r-sdk.com/docs/pcaconnectorad_tag_resource/](https://www.paws-r-sdk.com/docs/pcaconnectorad_tag_resource/) for full documentation.
 #'
-#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you created the
-#' resource.
-#' @param Tags &#91;required&#93; Metadata assigned to a directory registration consisting of a key-value
-#' pair.
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you created the resource.
+#' @param Tags &#91;required&#93; Metadata assigned to a directory registration consisting of a key-value pair.
 #'
 #' @keywords internal
 #'
@@ -790,10 +729,8 @@ pcaconnectorad_tag_resource <- function(ResourceArn, Tags) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/pcaconnectorad_untag_resource/](https://www.paws-r-sdk.com/docs/pcaconnectorad_untag_resource/) for full documentation.
 #'
-#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you created the
-#' resource.
-#' @param TagKeys &#91;required&#93; Specifies a list of tag keys that you want to remove from the specified
-#' resources.
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you created the resource.
+#' @param TagKeys &#91;required&#93; Specifies a list of tag keys that you want to remove from the specified resources.
 #'
 #' @keywords internal
 #'
@@ -825,16 +762,9 @@ pcaconnectorad_untag_resource <- function(ResourceArn, TagKeys) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/pcaconnectorad_update_template/](https://www.paws-r-sdk.com/docs/pcaconnectorad_update_template/) for full documentation.
 #'
-#' @param Definition Template configuration to define the information included in
-#' certificates. Define certificate validity and renewal periods,
-#' certificate request handling and enrollment options, key usage
-#' extensions, application policies, and cryptography settings.
-#' @param ReenrollAllCertificateHolders This setting allows the major version of a template to be increased
-#' automatically. All members of Active Directory groups that are allowed
-#' to enroll with a template will receive a new certificate issued using
-#' that template.
-#' @param TemplateArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called
-#' [`create_template`][pcaconnectorad_create_template].
+#' @param Definition Template configuration to define the information included in certificates. Define certificate validity and renewal periods, certificate request handling and enrollment options, key usage extensions, application policies, and cryptography settings.
+#' @param ReenrollAllCertificateHolders This setting allows the major version of a template to be increased automatically. All members of Active Directory groups that are allowed to enroll with a template will receive a new certificate issued using that template.
+#' @param TemplateArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called [`create_template`][pcaconnectorad_create_template].
 #'
 #' @keywords internal
 #'
@@ -866,14 +796,10 @@ pcaconnectorad_update_template <- function(Definition = NULL, ReenrollAllCertifi
 #'
 #' See [https://www.paws-r-sdk.com/docs/pcaconnectorad_update_template_group_access_control_entry/](https://www.paws-r-sdk.com/docs/pcaconnectorad_update_template_group_access_control_entry/) for full documentation.
 #'
-#' @param AccessRights Allow or deny permissions for an Active Directory group to enroll or
-#' autoenroll certificates for a template.
-#' @param GroupDisplayName Name of the Active Directory group. This name does not need to match the
-#' group name in Active Directory.
-#' @param GroupSecurityIdentifier &#91;required&#93; Security identifier (SID) of the group object from Active Directory. The
-#' SID starts with "S-".
-#' @param TemplateArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called
-#' [`create_template`][pcaconnectorad_create_template].
+#' @param AccessRights Allow or deny permissions for an Active Directory group to enroll or autoenroll certificates for a template.
+#' @param GroupDisplayName Name of the Active Directory group. This name does not need to match the group name in Active Directory.
+#' @param GroupSecurityIdentifier &#91;required&#93; Security identifier (SID) of the group object from Active Directory. The SID starts with "S-".
+#' @param TemplateArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called [`create_template`][pcaconnectorad_create_template].
 #'
 #' @keywords internal
 #'

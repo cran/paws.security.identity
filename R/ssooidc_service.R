@@ -5,55 +5,25 @@ NULL
 #' AWS SSO OIDC
 #'
 #' @description
-#' IAM Identity Center OpenID Connect (OIDC) is a web service that enables
-#' a client (such as CLI or a native application) to register with IAM
-#' Identity Center. The service also enables the client to fetch the user’s
-#' access token upon successful authentication and authorization with IAM
-#' Identity Center.
+#' IAM Identity Center OpenID Connect (OIDC) is a web service that enables a client (such as CLI or a native application) to register with IAM Identity Center. The service also enables the client to fetch the user’s access token upon successful authentication and authorization with IAM Identity Center.
 #' 
 #' **API namespaces**
 #' 
-#' IAM Identity Center uses the `sso` and `identitystore` API namespaces.
-#' IAM Identity Center OpenID Connect uses the `sso-oidc` namespace.
+#' IAM Identity Center uses the `sso` and `identitystore` API namespaces. IAM Identity Center OpenID Connect uses the `sso-oauth` namespace.
 #' 
 #' **Considerations for using this guide**
 #' 
-#' Before you begin using this guide, we recommend that you first review
-#' the following important information about how the IAM Identity Center
-#' OIDC service works.
+#' Before you begin using this guide, we recommend that you first review the following important information about how the IAM Identity Center OIDC service works.
 #' 
-#' -   The IAM Identity Center OIDC service currently implements only the
-#'     portions of the OAuth 2.0 Device Authorization Grant standard
-#'     ([https://tools.ietf.org/html/rfc8628](https://datatracker.ietf.org/doc/html/rfc8628))
-#'     that are necessary to enable single sign-on authentication with the
-#'     CLI.
+#' -   The IAM Identity Center OIDC service currently implements only the portions of the OAuth 2.0 Device Authorization Grant standard ([https://tools.ietf.org/html/rfc8628](https://datatracker.ietf.org/doc/html/rfc8628)) that are necessary to enable single sign-on authentication with the CLI.
 #' 
-#' -   With older versions of the CLI, the service only emits OIDC access
-#'     tokens, so to obtain a new token, users must explicitly
-#'     re-authenticate. To access the OIDC flow that supports token refresh
-#'     and doesn’t require re-authentication, update to the latest CLI
-#'     version (1.27.10 for CLI V1 and 2.9.0 for CLI V2) with support for
-#'     OIDC token refresh and configurable IAM Identity Center session
-#'     durations. For more information, see [Configure Amazon Web Services
-#'     access portal session
-#'     duration](https://docs.aws.amazon.com/singlesignon/latest/userguide/configure-user-session.html)
-#'     .
+#' -   With older versions of the CLI, the service only emits OIDC access tokens, so to obtain a new token, users must explicitly re-authenticate. To access the OIDC flow that supports token refresh and doesn’t require re-authentication, update to the latest CLI version (1.27.10 for CLI V1 and 2.9.0 for CLI V2) with support for OIDC token refresh and configurable IAM Identity Center session durations. For more information, see [Configure Amazon Web Services access portal session duration](https://docs.aws.amazon.com/singlesignon/latest/userguide/configure-user-session.html) .
 #' 
-#' -   The access tokens provided by this service grant access to all
-#'     Amazon Web Services account entitlements assigned to an IAM Identity
-#'     Center user, not just a particular application.
+#' -   The access tokens provided by this service grant access to all Amazon Web Services account entitlements assigned to an IAM Identity Center user, not just a particular application.
 #' 
-#' -   The documentation in this guide does not describe the mechanism to
-#'     convert the access token into Amazon Web Services Auth (“sigv4”)
-#'     credentials for use with IAM-protected Amazon Web Services service
-#'     endpoints. For more information, see
-#'     [GetRoleCredentials](https://docs.aws.amazon.com/singlesignon/latest/PortalAPIReference/API_GetRoleCredentials.html)
-#'     in the *IAM Identity Center Portal API Reference Guide*.
+#' -   The documentation in this guide does not describe the mechanism to convert the access token into Amazon Web Services Auth (“sigv4”) credentials for use with IAM-protected Amazon Web Services service endpoints. For more information, see [GetRoleCredentials](https://docs.aws.amazon.com/singlesignon/latest/PortalAPIReference/API_GetRoleCredentials.html) in the *IAM Identity Center Portal API Reference Guide*.
 #' 
-#' For general information about IAM Identity Center, see [What is IAM
-#' Identity
-#' Center?](https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html)
-#' in the *IAM Identity Center User Guide*.
+#' For general information about IAM Identity Center, see [What is IAM Identity Center?](https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html) in the *IAM Identity Center User Guide*.
 #'
 #' @param
 #' config
@@ -139,7 +109,7 @@ NULL
 #' @section Operations:
 #' \tabular{ll}{
 #'  \link[=ssooidc_create_token]{create_token} \tab Creates and returns access and refresh tokens for clients that are authenticated using client secrets\cr
-#'  \link[=ssooidc_create_token_with_iam]{create_token_with_iam} \tab Creates and returns access and refresh tokens for clients and applications that are authenticated using IAM entities\cr
+#'  \link[=ssooidc_create_token_with_iam]{create_token_with_iam} \tab Creates and returns access and refresh tokens for authorized client applications that are authenticated using any IAM entity, such as a service role or user\cr
 #'  \link[=ssooidc_register_client]{register_client} \tab Registers a public client with IAM Identity Center\cr
 #'  \link[=ssooidc_start_device_authorization]{start_device_authorization} \tab Initiates device authorization by requesting a pair of verification codes from the authorization service
 #' }
@@ -173,7 +143,7 @@ ssooidc <- function(config = list(), credentials = list(), endpoint = NULL, regi
 
 .ssooidc$metadata <- list(
   service_name = "ssooidc",
-  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "oidc.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "oidc.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "oidc.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "oidc.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "oidc.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "oidc.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "oidc.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "oidc.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "oidc.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "oidc.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "oidc.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "oidc.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "oidc.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "oidc.{region}.csp.hci.ic.gov", global = FALSE), "^eusc\\-(de)\\-\\w+\\-\\d+$" = list(endpoint = "oidc.{region}.amazonaws.eu", global = FALSE)),
   service_id = "SSO OIDC",
   api_version = "2019-06-10",
   signing_name = "sso-oauth",

@@ -7,21 +7,11 @@ NULL
 #' @description
 #' Welcome to the *Amazon Web Services Clean Rooms ML API Reference*.
 #' 
-#' Amazon Web Services Clean Rooms ML provides a privacy-enhancing method
-#' for two parties to identify similar users in their data without the need
-#' to share their data with each other. The first party brings the training
-#' data to Clean Rooms so that they can create and configure an audience
-#' model (lookalike model) and associate it with a collaboration. The
-#' second party then brings their seed data to Clean Rooms and generates an
-#' audience (lookalike segment) that resembles the training data.
+#' Amazon Web Services Clean Rooms ML provides a privacy-enhancing method for two parties to identify similar users in their data without the need to share their data with each other. The first party brings the training data to Clean Rooms so that they can create and configure an audience model (lookalike model) and associate it with a collaboration. The second party then brings their seed data to Clean Rooms and generates an audience (lookalike segment) that resembles the training data.
 #' 
-#' To learn more about Amazon Web Services Clean Rooms ML concepts,
-#' procedures, and best practices, see the [Clean Rooms User
-#' Guide](https://docs.aws.amazon.com/clean-rooms/latest/userguide/machine-learning.html).
+#' To learn more about Amazon Web Services Clean Rooms ML concepts, procedures, and best practices, see the [Clean Rooms User Guide](https://docs.aws.amazon.com/clean-rooms/latest/userguide/machine-learning.html).
 #' 
-#' To learn more about SQL commands, functions, and conditions supported in
-#' Clean Rooms, see the [Clean Rooms SQL
-#' Reference](https://docs.aws.amazon.com/clean-rooms/latest/sql-reference/sql-reference.html).
+#' To learn more about SQL commands, functions, and conditions supported in Clean Rooms, see the [Clean Rooms SQL Reference](https://docs.aws.amazon.com/clean-rooms/latest/sql-reference/sql-reference.html).
 #'
 #' @param
 #' config
@@ -123,7 +113,7 @@ NULL
 #'  \link[=cleanroomsml_delete_configured_model_algorithm_association]{delete_configured_model_algorithm_association} \tab Deletes a configured model algorithm association\cr
 #'  \link[=cleanroomsml_delete_ml_configuration]{delete_ml_configuration} \tab Deletes a ML modeling configuration\cr
 #'  \link[=cleanroomsml_delete_ml_input_channel_data]{delete_ml_input_channel_data} \tab Provides the information necessary to delete an ML input channel\cr
-#'  \link[=cleanroomsml_delete_trained_model_output]{delete_trained_model_output} \tab Deletes the output of a trained model\cr
+#'  \link[=cleanroomsml_delete_trained_model_output]{delete_trained_model_output} \tab Deletes the model artifacts stored by the service\cr
 #'  \link[=cleanroomsml_delete_training_dataset]{delete_training_dataset} \tab Specifies a training dataset that you want to delete\cr
 #'  \link[=cleanroomsml_get_audience_generation_job]{get_audience_generation_job} \tab Returns information about an audience generation job\cr
 #'  \link[=cleanroomsml_get_audience_model]{get_audience_model} \tab Returns information about an audience model\cr
@@ -154,6 +144,7 @@ NULL
 #'  \link[=cleanroomsml_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of tags for a provided resource\cr
 #'  \link[=cleanroomsml_list_trained_model_inference_jobs]{list_trained_model_inference_jobs} \tab Returns a list of trained model inference jobs that match the request parameters\cr
 #'  \link[=cleanroomsml_list_trained_models]{list_trained_models} \tab Returns a list of trained models\cr
+#'  \link[=cleanroomsml_list_trained_model_versions]{list_trained_model_versions} \tab Returns a list of trained model versions for a specified trained model\cr
 #'  \link[=cleanroomsml_list_training_datasets]{list_training_datasets} \tab Returns a list of training datasets\cr
 #'  \link[=cleanroomsml_put_configured_audience_model_policy]{put_configured_audience_model_policy} \tab Create or update the resource policy for a configured audience model\cr
 #'  \link[=cleanroomsml_put_ml_configuration]{put_ml_configuration} \tab Assigns information about an ML configuration\cr
@@ -195,7 +186,7 @@ cleanroomsml <- function(config = list(), credentials = list(), endpoint = NULL,
 
 .cleanroomsml$metadata <- list(
   service_name = "cleanroomsml",
-  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "cleanrooms-ml.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "cleanrooms-ml.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "cleanrooms-ml.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "cleanrooms-ml.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "cleanrooms-ml.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "cleanrooms-ml.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "cleanrooms-ml.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "cleanrooms-ml.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "cleanrooms-ml.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "cleanrooms-ml.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "cleanrooms-ml.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "cleanrooms-ml.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "cleanrooms-ml.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "cleanrooms-ml.{region}.csp.hci.ic.gov", global = FALSE), "^eusc\\-(de)\\-\\w+\\-\\d+$" = list(endpoint = "cleanrooms-ml.{region}.amazonaws.eu", global = FALSE)),
   service_id = "CleanRoomsML",
   api_version = "2023-09-06",
   signing_name = "cleanrooms-ml",

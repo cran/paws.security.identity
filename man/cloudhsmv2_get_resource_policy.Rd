@@ -7,8 +7,7 @@
 cloudhsmv2_get_resource_policy(ResourceArn = NULL)
 }
 \arguments{
-\item{ResourceArn}{Amazon Resource Name (ARN) of the resource to which a policy is
-attached.}
+\item{ResourceArn}{Amazon Resource Name (ARN) of the resource to which a policy is attached.}
 }
 \description{
 Retrieves the resource policy document attached to a given resource.

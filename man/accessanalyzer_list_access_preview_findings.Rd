@@ -16,8 +16,7 @@ accessanalyzer_list_access_preview_findings(
 \arguments{
 \item{accessPreviewId}{[required] The unique ID for the access preview.}
 
-\item{analyzerArn}{[required] The \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources}{ARN of the analyzer}
-used to generate the access.}
+\item{analyzerArn}{[required] The \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources}{ARN of the analyzer} used to generate the access.}
 
 \item{filter}{Criteria to filter the returned findings.}
 

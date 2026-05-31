@@ -5,24 +5,23 @@
 \title{Imports the certificate revocation list (CRL)}
 \usage{
 iamrolesanywhere_import_crl(
+  name,
   crlData,
   enabled = NULL,
-  name,
   tags = NULL,
   trustAnchorArn
 )
 }
 \arguments{
+\item{name}{[required] The name of the certificate revocation list (CRL).}
+
 \item{crlData}{[required] The x509 v3 specified certificate revocation list (CRL).}
 
 \item{enabled}{Specifies whether the certificate revocation list (CRL) is enabled.}
 
-\item{name}{[required] The name of the certificate revocation list (CRL).}
-
 \item{tags}{A list of tags to attach to the certificate revocation list (CRL).}
 
-\item{trustAnchorArn}{[required] The ARN of the TrustAnchor the certificate revocation list (CRL) will
-provide revocation for.}
+\item{trustAnchorArn}{[required] The ARN of the TrustAnchor the certificate revocation list (CRL) will provide revocation for.}
 }
 \description{
 Imports the certificate revocation list (CRL). A CRL is a list of certificates that have been revoked by the issuing certificate Authority (CA).In order to be properly imported, a CRL must be in PEM format. IAM Roles Anywhere validates against the CRL before issuing credentials.

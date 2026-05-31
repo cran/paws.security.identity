@@ -12,18 +12,11 @@ iam_update_open_id_connect_provider_thumbprint(
 )
 }
 \arguments{
-\item{OpenIDConnectProviderArn}{[required] The Amazon Resource Name (ARN) of the IAM OIDC provider resource object
-for which you want to update the thumbprint. You can get a list of OIDC
-provider ARNs by using the
-\code{\link[=iam_list_open_id_connect_providers]{list_open_id_connect_providers}}
-operation.
+\item{OpenIDConnectProviderArn}{[required] The Amazon Resource Name (ARN) of the IAM OIDC provider resource object for which you want to update the thumbprint. You can get a list of OIDC provider ARNs by using the \code{\link[=iam_list_open_id_connect_providers]{list_open_id_connect_providers}} operation.
 
-For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
-in the \emph{Amazon Web Services General Reference}.}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)} in the \emph{Amazon Web Services General Reference}.}
 
-\item{ThumbprintList}{[required] A list of certificate thumbprints that are associated with the specified
-IAM OpenID Connect provider. For more information, see
-\code{\link[=iam_create_open_id_connect_provider]{create_open_id_connect_provider}}.}
+\item{ThumbprintList}{[required] A list of certificate thumbprints that are associated with the specified IAM OpenID Connect provider. For more information, see \code{\link[=iam_create_open_id_connect_provider]{create_open_id_connect_provider}}.}
 }
 \description{
 Replaces the existing list of server certificate thumbprints associated with an OpenID Connect (OIDC) provider resource object with a new list of thumbprints.

@@ -8,11 +8,9 @@ for an application}
 ssoadmin_get_application_access_scope(ApplicationArn, Scope)
 }
 \arguments{
-\item{ApplicationArn}{[required] Specifies the ARN of the application with the access scope that you want
-to retrieve.}
+\item{ApplicationArn}{[required] Specifies the ARN of the application with the access scope that you want to retrieve.}
 
-\item{Scope}{[required] Specifies the name of the access scope for which you want the authorized
-targets.}
+\item{Scope}{[required] Specifies the name of the access scope for which you want the authorized targets.}
 }
 \description{
 Retrieves the authorized targets for an IAM Identity Center access scope for an application.

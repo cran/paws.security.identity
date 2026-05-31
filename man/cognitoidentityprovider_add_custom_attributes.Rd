@@ -9,45 +9,35 @@ cognitoidentityprovider_add_custom_attributes(UserPoolId, CustomAttributes)
 \arguments{
 \item{UserPoolId}{[required] The ID of the user pool where you want to add custom attributes.}
 
-\item{CustomAttributes}{[required] An array of custom attribute names and other properties. Sets the
-following characteristics:
+\item{CustomAttributes}{[required] An array of custom attribute names and other properties. Sets the following characteristics:
 
 \strong{AttributeDataType}
 
-The expected data type. Can be a string, a number, a date and time, or a
-boolean.
+The expected data type. Can be a string, a number, a date and time, or a boolean.
 
 \strong{Mutable}
 
-If true, you can grant app clients write access to the attribute value.
-If false, the attribute value can only be set up on sign-up or
-administrator creation of users.
+If true, you can grant app clients write access to the attribute value. If false, the attribute value can only be set up on sign-up or administrator creation of users.
 
 \strong{Name}
 
-The attribute name. For an attribute like \code{custom:myAttribute}, enter
-\code{myAttribute} for this field.
+The attribute name. For an attribute like \code{custom:myAttribute}, enter \code{myAttribute} for this field.
 
 \strong{Required}
 
-When true, users who sign up or are created must set a value for the
-attribute.
+When true, users who sign up or are created must set a value for the attribute.
 
 \strong{NumberAttributeConstraints}
 
-The minimum and maximum length of accepted values for a \code{Number}-type
-attribute.
+The minimum and maximum length of accepted values for a \code{Number}-type attribute.
 
 \strong{StringAttributeConstraints}
 
-The minimum and maximum length of accepted values for a \code{String}-type
-attribute.
+The minimum and maximum length of accepted values for a \code{String}-type attribute.
 
 \strong{DeveloperOnlyAttribute}
 
-This legacy option creates an attribute with a \verb{dev:} prefix. You can
-only set the value of a developer-only attribute with administrative IAM
-credentials.}
+This legacy option creates an attribute with a \verb{dev:} prefix. You can only set the value of a developer-only attribute with administrative IAM credentials.}
 }
 \description{
 Adds additional user attributes to the user pool schema. Custom attributes can be mutable or immutable and have a \verb{custom:} or \verb{dev:} prefix. For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-settings-attributes.html#user-pool-settings-custom-attributes}{Custom attributes}.

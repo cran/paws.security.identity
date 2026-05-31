@@ -12,8 +12,7 @@ accessanalyzer_get_finding_v2(
 )
 }
 \arguments{
-\item{analyzerArn}{[required] The \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources}{ARN of the analyzer}
-that generated the finding.}
+\item{analyzerArn}{[required] The \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources}{ARN of the analyzer} that generated the finding.}
 
 \item{id}{[required] The ID of the finding to retrieve.}
 

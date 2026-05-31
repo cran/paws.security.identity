@@ -7,8 +7,7 @@
 cleanroomsml_delete_configured_audience_model(configuredAudienceModelArn)
 }
 \arguments{
-\item{configuredAudienceModelArn}{[required] The Amazon Resource Name (ARN) of the configured audience model that you
-want to delete.}
+\item{configuredAudienceModelArn}{[required] The Amazon Resource Name (ARN) of the configured audience model that you want to delete.}
 }
 \description{
 Deletes the specified configured audience model. You can't delete a configured audience model if there are any lookalike models that use the configured audience model. If you delete a configured audience model, it will be removed from any collaborations that it is associated to.

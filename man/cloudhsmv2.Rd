@@ -53,8 +53,7 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-For more information about CloudHSM, see
-\href{https://aws.amazon.com/cloudhsm/}{CloudHSM} and the \href{https://docs.aws.amazon.com/cloudhsm/latest/userguide/}{CloudHSM User Guide}.
+For more information about CloudHSM, see \href{https://aws.amazon.com/cloudhsm/}{CloudHSM} and the \href{https://docs.aws.amazon.com/cloudhsm/latest/userguide/}{CloudHSM User Guide}.
 }
 \section{Service syntax}{
 

@@ -8,8 +8,7 @@ assessment run}
 inspector_get_telemetry_metadata(assessmentRunArn)
 }
 \arguments{
-\item{assessmentRunArn}{[required] The ARN that specifies the assessment run that has the telemetry data
-that you want to obtain.}
+\item{assessmentRunArn}{[required] The ARN that specifies the assessment run that has the telemetry data that you want to obtain.}
 }
 \description{
 Information about the data that is collected for the specified assessment run.

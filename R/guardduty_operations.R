@@ -25,7 +25,8 @@ guardduty_accept_administrator_invitation <- function(DetectorId, AdministratorI
     http_path = "/detector/{DetectorId}/administrator",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$accept_administrator_invitation_input(DetectorId = DetectorId, AdministratorId = AdministratorId, InvitationId = InvitationId)
   output <- .guardduty$accept_administrator_invitation_output()
@@ -61,7 +62,8 @@ guardduty_accept_invitation <- function(DetectorId, MasterId, InvitationId) {
     http_path = "/detector/{DetectorId}/master",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$accept_invitation_input(DetectorId = DetectorId, MasterId = MasterId, InvitationId = InvitationId)
   output <- .guardduty$accept_invitation_output()
@@ -96,7 +98,8 @@ guardduty_archive_findings <- function(DetectorId, FindingIds) {
     http_path = "/detector/{DetectorId}/findings/archive",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$archive_findings_input(DetectorId = DetectorId, FindingIds = FindingIds)
   output <- .guardduty$archive_findings_output()
@@ -107,6 +110,79 @@ guardduty_archive_findings <- function(DetectorId, FindingIds) {
   return(response)
 }
 .guardduty$operations$archive_findings <- guardduty_archive_findings
+
+#' Enables a custom detection rule for your account by creating an
+#' association
+#'
+#' @description
+#' Enables a custom detection rule for your account by creating an association. You specify the rule and the mode in which it operates.
+#'
+#' See [https://www.paws-r-sdk.com/docs/guardduty_create_custom_detection_rule_association/](https://www.paws-r-sdk.com/docs/guardduty_create_custom_detection_rule_association/) for full documentation.
+#'
+#' @param RuleId &#91;required&#93; The unique identifier for the custom detection rule.
+#' @param Mode &#91;required&#93; The rule execution mode. Valid values: `LIVE` | `DRY_RUN`.
+#' @param ClientToken A unique, case-sensitive identifier to ensure that the operation completes no more than one time. Maximum 64 characters.
+#' @param Tags The tags to be added to the new custom detection rule association resource.
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_create_custom_detection_rule_association
+guardduty_create_custom_detection_rule_association <- function(RuleId, Mode, ClientToken = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateCustomDetectionRuleAssociation",
+    http_method = "POST",
+    http_path = "/custom-detection-rule/association",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE,
+    http_checksum = NULL
+  )
+  input <- .guardduty$create_custom_detection_rule_association_input(RuleId = RuleId, Mode = Mode, ClientToken = ClientToken, Tags = Tags)
+  output <- .guardduty$create_custom_detection_rule_association_output()
+  config <- get_config()
+  svc <- .guardduty$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$create_custom_detection_rule_association <- guardduty_create_custom_detection_rule_association
+
+#' Creates an organization-level configuration that enables a custom
+#' detection rule across your organization
+#'
+#' @description
+#' Creates an organization-level configuration that enables a custom detection rule across your organization. This operation is available only to the delegated administrator account.
+#'
+#' See [https://www.paws-r-sdk.com/docs/guardduty_create_custom_detection_rule_org_configuration/](https://www.paws-r-sdk.com/docs/guardduty_create_custom_detection_rule_org_configuration/) for full documentation.
+#'
+#' @param RuleId &#91;required&#93; The unique identifier for the custom detection rule.
+#' @param Mode &#91;required&#93; The execution mode of the organization configuration. Valid values: `LIVE` | `DRY_RUN`.
+#' @param IncludeAccountIds The account IDs to include in the organization configuration. Mutually exclusive with `ExcludeAccountIds`.
+#' @param ExcludeAccountIds The account IDs to exclude from the organization configuration. Mutually exclusive with `IncludeAccountIds`.
+#' @param ClientToken A unique, case-sensitive identifier to ensure that the operation completes no more than one time.
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_create_custom_detection_rule_org_configuration
+guardduty_create_custom_detection_rule_org_configuration <- function(RuleId, Mode, IncludeAccountIds = NULL, ExcludeAccountIds = NULL, ClientToken = NULL) {
+  op <- new_operation(
+    name = "CreateCustomDetectionRuleOrgConfiguration",
+    http_method = "POST",
+    http_path = "/custom-detection-rule/org-configuration",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE,
+    http_checksum = NULL
+  )
+  input <- .guardduty$create_custom_detection_rule_org_configuration_input(RuleId = RuleId, Mode = Mode, IncludeAccountIds = IncludeAccountIds, ExcludeAccountIds = ExcludeAccountIds, ClientToken = ClientToken)
+  output <- .guardduty$create_custom_detection_rule_org_configuration_output()
+  config <- get_config()
+  svc <- .guardduty$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$create_custom_detection_rule_org_configuration <- guardduty_create_custom_detection_rule_org_configuration
 
 #' Creates a single GuardDuty detector
 #'
@@ -134,7 +210,8 @@ guardduty_create_detector <- function(Enable, ClientToken = NULL, FindingPublish
     http_path = "/detector",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$create_detector_input(Enable = Enable, ClientToken = ClientToken, FindingPublishingFrequency = FindingPublishingFrequency, DataSources = DataSources, Tags = Tags, Features = Features)
   output <- .guardduty$create_detector_output()
@@ -175,8 +252,6 @@ guardduty_create_detector <- function(Enable, ClientToken = NULL, FindingPublish
 #' -   createdAt
 #' 
 #'     Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
-#' 
-#' -   description
 #' 
 #' -   id
 #' 
@@ -512,10 +587,6 @@ guardduty_create_detector <- function(Enable, ClientToken = NULL, FindingPublish
 #' 
 #' -   resource.rdsDbInstanceDetails.publiclyAccessible
 #' 
-#' -   resource.rdsDbInstanceDetails.tags.key
-#' 
-#' -   resource.rdsDbInstanceDetails.tags.value
-#' 
 #' -   resource.rdsDbInstanceDetails.vpcId
 #' 
 #' -   resource.rdsDbInstanceDetails.vpcSecurityGroups.status
@@ -613,8 +684,6 @@ guardduty_create_detector <- function(Enable, ClientToken = NULL, FindingPublish
 #' -   schemaVersion
 #' 
 #' -   service.action.actionType
-#' 
-#' -   service.action.awsApiCallAction.affectedResources
 #' 
 #' -   service.action.awsApiCallAction.api
 #' 
@@ -903,10 +972,6 @@ guardduty_create_detector <- function(Enable, ClientToken = NULL, FindingPublish
 #' -   service.archived
 #' 
 #' -   service.count
-#' 
-#' -   service.detection.anomaly.profiles
-#' 
-#' -   service.detection.anomaly.unusual.behavior
 #' 
 #' -   service.detection.sequence.actors.id
 #' 
@@ -1480,8 +1545,6 @@ guardduty_create_detector <- function(Enable, ClientToken = NULL, FindingPublish
 #' 
 #'     For more information, see [Findings severity levels](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_findings-severity.html) in the *Amazon GuardDuty User Guide*.
 #' 
-#' -   title
-#' 
 #' -   type
 #' 
 #' -   updatedAt
@@ -1500,7 +1563,8 @@ guardduty_create_filter <- function(DetectorId, Name, Description = NULL, Action
     http_path = "/detector/{DetectorId}/filter",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$create_filter_input(DetectorId = DetectorId, Name = Name, Description = Description, Action = Action, Rank = Rank, FindingCriteria = FindingCriteria, ClientToken = ClientToken, Tags = Tags)
   output <- .guardduty$create_filter_output()
@@ -1543,7 +1607,8 @@ guardduty_create_ip_set <- function(DetectorId, Name, Format, Location, Activate
     http_path = "/detector/{DetectorId}/ipset",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$create_ip_set_input(DetectorId = DetectorId, Name = Name, Format = Format, Location = Location, Activate = Activate, ClientToken = ClientToken, Tags = Tags, ExpectedBucketOwner = ExpectedBucketOwner)
   output <- .guardduty$create_ip_set_output()
@@ -1554,6 +1619,48 @@ guardduty_create_ip_set <- function(DetectorId, Name, Format, Location, Activate
   return(response)
 }
 .guardduty$operations$create_ip_set <- guardduty_create_ip_set
+
+#' This API is currently available as a preview
+#'
+#' @description
+#' This API is currently available as a preview. During the preview, you can initiate up to 10 investigations per account per day, with a total limit of 100 investigations per account. This feature is available in the following Amazon Web Services Regions: US East (N. Virginia), US East (Ohio), US West (Oregon), Canada (Central), Europe (Frankfurt), Europe (Ireland), Europe (London), Europe (Paris), Europe (Stockholm), and Asia Pacific (Tokyo).
+#'
+#' See [https://www.paws-r-sdk.com/docs/guardduty_create_investigation/](https://www.paws-r-sdk.com/docs/guardduty_create_investigation/) for full documentation.
+#'
+#' @param DetectorId &#91;required&#93; The unique ID of the GuardDuty detector for the account in which the investigation is created.
+#' 
+#' To find the `detectorId` in the current Region, see the Settings page in the GuardDuty console, or run the [`list_detectors`][guardduty_list_detectors] API.
+#' @param TriggerPrompt &#91;required&#93; A natural-language description of what to investigate. For example:
+#' 
+#' -   `"Investigate finding 1ab2c3d4e5f6a7b8c9d0e1f2a3b4c5d6 in account 123456789012"`
+#' 
+#' -   `"Analyze findings in account with id 123456789012"`
+#' 
+#' -   `"Analyze findings in my organization"`
+#' @param ClientToken The idempotency token for the create request.
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_create_investigation
+guardduty_create_investigation <- function(DetectorId, TriggerPrompt, ClientToken = NULL) {
+  op <- new_operation(
+    name = "CreateInvestigation",
+    http_method = "POST",
+    http_path = "/detector/{DetectorId}/investigation",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE,
+    http_checksum = NULL
+  )
+  input <- .guardduty$create_investigation_input(DetectorId = DetectorId, TriggerPrompt = TriggerPrompt, ClientToken = ClientToken)
+  output <- .guardduty$create_investigation_output()
+  config <- get_config()
+  svc <- .guardduty$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$create_investigation <- guardduty_create_investigation
 
 #' Creates a new Malware Protection plan for the protected resource
 #'
@@ -1578,7 +1685,8 @@ guardduty_create_malware_protection_plan <- function(ClientToken = NULL, Role, P
     http_path = "/malware-protection-plan",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$create_malware_protection_plan_input(ClientToken = ClientToken, Role = Role, ProtectedResource = ProtectedResource, Actions = Actions, Tags = Tags)
   output <- .guardduty$create_malware_protection_plan_output()
@@ -1613,7 +1721,8 @@ guardduty_create_members <- function(DetectorId, AccountDetails) {
     http_path = "/detector/{DetectorId}/member",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$create_members_input(DetectorId = DetectorId, AccountDetails = AccountDetails)
   output <- .guardduty$create_members_output()
@@ -1651,7 +1760,8 @@ guardduty_create_publishing_destination <- function(DetectorId, DestinationType,
     http_path = "/detector/{DetectorId}/publishingDestination",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$create_publishing_destination_input(DetectorId = DetectorId, DestinationType = DestinationType, DestinationProperties = DestinationProperties, ClientToken = ClientToken, Tags = Tags)
   output <- .guardduty$create_publishing_destination_output()
@@ -1686,7 +1796,8 @@ guardduty_create_sample_findings <- function(DetectorId, FindingTypes = NULL) {
     http_path = "/detector/{DetectorId}/findings/create",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$create_sample_findings_input(DetectorId = DetectorId, FindingTypes = FindingTypes)
   output <- .guardduty$create_sample_findings_output()
@@ -1728,7 +1839,8 @@ guardduty_create_threat_entity_set <- function(DetectorId, Name, Format, Locatio
     http_path = "/detector/{DetectorId}/threatentityset",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$create_threat_entity_set_input(DetectorId = DetectorId, Name = Name, Format = Format, Location = Location, ExpectedBucketOwner = ExpectedBucketOwner, Activate = Activate, ClientToken = ClientToken, Tags = Tags)
   output <- .guardduty$create_threat_entity_set_output()
@@ -1768,7 +1880,8 @@ guardduty_create_threat_intel_set <- function(DetectorId, Name, Format, Location
     http_path = "/detector/{DetectorId}/threatintelset",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$create_threat_intel_set_input(DetectorId = DetectorId, Name = Name, Format = Format, Location = Location, Activate = Activate, ClientToken = ClientToken, Tags = Tags, ExpectedBucketOwner = ExpectedBucketOwner)
   output <- .guardduty$create_threat_intel_set_output()
@@ -1810,7 +1923,8 @@ guardduty_create_trusted_entity_set <- function(DetectorId, Name, Format, Locati
     http_path = "/detector/{DetectorId}/trustedentityset",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$create_trusted_entity_set_input(DetectorId = DetectorId, Name = Name, Format = Format, Location = Location, ExpectedBucketOwner = ExpectedBucketOwner, Activate = Activate, ClientToken = ClientToken, Tags = Tags)
   output <- .guardduty$create_trusted_entity_set_output()
@@ -1842,7 +1956,8 @@ guardduty_decline_invitations <- function(AccountIds) {
     http_path = "/invitation/decline",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$decline_invitations_input(AccountIds = AccountIds)
   output <- .guardduty$decline_invitations_output()
@@ -1853,6 +1968,72 @@ guardduty_decline_invitations <- function(AccountIds) {
   return(response)
 }
 .guardduty$operations$decline_invitations <- guardduty_decline_invitations
+
+#' Disables a custom detection rule by deleting its association
+#'
+#' @description
+#' Disables a custom detection rule by deleting its association. This operation is idempotent.
+#'
+#' See [https://www.paws-r-sdk.com/docs/guardduty_delete_custom_detection_rule_association/](https://www.paws-r-sdk.com/docs/guardduty_delete_custom_detection_rule_association/) for full documentation.
+#'
+#' @param RuleId &#91;required&#93; The unique identifier for the custom detection rule.
+#' @param AssociationId &#91;required&#93; The unique identifier for the association to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_delete_custom_detection_rule_association
+guardduty_delete_custom_detection_rule_association <- function(RuleId, AssociationId) {
+  op <- new_operation(
+    name = "DeleteCustomDetectionRuleAssociation",
+    http_method = "DELETE",
+    http_path = "/custom-detection-rule/rule/{RuleId}/association/{AssociationId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE,
+    http_checksum = NULL
+  )
+  input <- .guardduty$delete_custom_detection_rule_association_input(RuleId = RuleId, AssociationId = AssociationId)
+  output <- .guardduty$delete_custom_detection_rule_association_output()
+  config <- get_config()
+  svc <- .guardduty$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$delete_custom_detection_rule_association <- guardduty_delete_custom_detection_rule_association
+
+#' Deletes the organization-level configuration for a custom detection rule
+#'
+#' @description
+#' Deletes the organization-level configuration for a custom detection rule. This operation is available only to the delegated administrator account.
+#'
+#' See [https://www.paws-r-sdk.com/docs/guardduty_delete_custom_detection_rule_org_configuration/](https://www.paws-r-sdk.com/docs/guardduty_delete_custom_detection_rule_org_configuration/) for full documentation.
+#'
+#' @param RuleId &#91;required&#93; The unique identifier for the custom detection rule.
+#' @param Mode &#91;required&#93; The execution mode of the organization configuration to delete. Valid values: `LIVE` | `DRY_RUN`.
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_delete_custom_detection_rule_org_configuration
+guardduty_delete_custom_detection_rule_org_configuration <- function(RuleId, Mode) {
+  op <- new_operation(
+    name = "DeleteCustomDetectionRuleOrgConfiguration",
+    http_method = "DELETE",
+    http_path = "/custom-detection-rule/org-configuration/{RuleId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE,
+    http_checksum = NULL
+  )
+  input <- .guardduty$delete_custom_detection_rule_org_configuration_input(RuleId = RuleId, Mode = Mode)
+  output <- .guardduty$delete_custom_detection_rule_org_configuration_output()
+  config <- get_config()
+  svc <- .guardduty$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$delete_custom_detection_rule_org_configuration <- guardduty_delete_custom_detection_rule_org_configuration
 
 #' Deletes an Amazon GuardDuty detector that is specified by the detector
 #' ID
@@ -1876,7 +2057,8 @@ guardduty_delete_detector <- function(DetectorId) {
     http_path = "/detector/{DetectorId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$delete_detector_input(DetectorId = DetectorId)
   output <- .guardduty$delete_detector_output()
@@ -1910,7 +2092,8 @@ guardduty_delete_filter <- function(DetectorId, FilterName) {
     http_path = "/detector/{DetectorId}/filter/{FilterName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$delete_filter_input(DetectorId = DetectorId, FilterName = FilterName)
   output <- .guardduty$delete_filter_output()
@@ -1944,7 +2127,8 @@ guardduty_delete_ip_set <- function(DetectorId, IpSetId) {
     http_path = "/detector/{DetectorId}/ipset/{IpSetId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$delete_ip_set_input(DetectorId = DetectorId, IpSetId = IpSetId)
   output <- .guardduty$delete_ip_set_output()
@@ -1976,7 +2160,8 @@ guardduty_delete_invitations <- function(AccountIds) {
     http_path = "/invitation/delete",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$delete_invitations_input(AccountIds = AccountIds)
   output <- .guardduty$delete_invitations_output()
@@ -2008,7 +2193,8 @@ guardduty_delete_malware_protection_plan <- function(MalwareProtectionPlanId) {
     http_path = "/malware-protection-plan/{MalwareProtectionPlanId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$delete_malware_protection_plan_input(MalwareProtectionPlanId = MalwareProtectionPlanId)
   output <- .guardduty$delete_malware_protection_plan_output()
@@ -2043,7 +2229,8 @@ guardduty_delete_members <- function(DetectorId, AccountIds) {
     http_path = "/detector/{DetectorId}/member/delete",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$delete_members_input(DetectorId = DetectorId, AccountIds = AccountIds)
   output <- .guardduty$delete_members_output()
@@ -2077,7 +2264,8 @@ guardduty_delete_publishing_destination <- function(DetectorId, DestinationId) {
     http_path = "/detector/{DetectorId}/publishingDestination/{DestinationId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$delete_publishing_destination_input(DetectorId = DetectorId, DestinationId = DestinationId)
   output <- .guardduty$delete_publishing_destination_output()
@@ -2112,7 +2300,8 @@ guardduty_delete_threat_entity_set <- function(DetectorId, ThreatEntitySetId) {
     http_path = "/detector/{DetectorId}/threatentityset/{ThreatEntitySetId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$delete_threat_entity_set_input(DetectorId = DetectorId, ThreatEntitySetId = ThreatEntitySetId)
   output <- .guardduty$delete_threat_entity_set_output()
@@ -2146,7 +2335,8 @@ guardduty_delete_threat_intel_set <- function(DetectorId, ThreatIntelSetId) {
     http_path = "/detector/{DetectorId}/threatintelset/{ThreatIntelSetId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$delete_threat_intel_set_input(DetectorId = DetectorId, ThreatIntelSetId = ThreatIntelSetId)
   output <- .guardduty$delete_threat_intel_set_output()
@@ -2181,7 +2371,8 @@ guardduty_delete_trusted_entity_set <- function(DetectorId, TrustedEntitySetId) 
     http_path = "/detector/{DetectorId}/trustedentityset/{TrustedEntitySetId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$delete_trusted_entity_set_input(DetectorId = DetectorId, TrustedEntitySetId = TrustedEntitySetId)
   output <- .guardduty$delete_trusted_entity_set_output()
@@ -2218,7 +2409,8 @@ guardduty_describe_malware_scans <- function(DetectorId, NextToken = NULL, MaxRe
     http_path = "/detector/{DetectorId}/malware-scans",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Scans"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$describe_malware_scans_input(DetectorId = DetectorId, NextToken = NextToken, MaxResults = MaxResults, FilterCriteria = FilterCriteria, SortCriteria = SortCriteria)
   output <- .guardduty$describe_malware_scans_output()
@@ -2254,7 +2446,8 @@ guardduty_describe_organization_configuration <- function(DetectorId, MaxResults
     http_path = "/detector/{DetectorId}/admin",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$describe_organization_configuration_input(DetectorId = DetectorId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .guardduty$describe_organization_configuration_output()
@@ -2289,7 +2482,8 @@ guardduty_describe_publishing_destination <- function(DetectorId, DestinationId)
     http_path = "/detector/{DetectorId}/publishingDestination/{DestinationId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$describe_publishing_destination_input(DetectorId = DetectorId, DestinationId = DestinationId)
   output <- .guardduty$describe_publishing_destination_output()
@@ -2321,7 +2515,8 @@ guardduty_disable_organization_admin_account <- function(AdminAccountId) {
     http_path = "/admin/disable",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$disable_organization_admin_account_input(AdminAccountId = AdminAccountId)
   output <- .guardduty$disable_organization_admin_account_output()
@@ -2353,7 +2548,8 @@ guardduty_disassociate_from_administrator_account <- function(DetectorId) {
     http_path = "/detector/{DetectorId}/administrator/disassociate",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$disassociate_from_administrator_account_input(DetectorId = DetectorId)
   output <- .guardduty$disassociate_from_administrator_account_output()
@@ -2385,7 +2581,8 @@ guardduty_disassociate_from_master_account <- function(DetectorId) {
     http_path = "/detector/{DetectorId}/master/disassociate",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$disassociate_from_master_account_input(DetectorId = DetectorId)
   output <- .guardduty$disassociate_from_master_account_output()
@@ -2418,7 +2615,8 @@ guardduty_disassociate_members <- function(DetectorId, AccountIds) {
     http_path = "/detector/{DetectorId}/member/disassociate",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$disassociate_members_input(DetectorId = DetectorId, AccountIds = AccountIds)
   output <- .guardduty$disassociate_members_output()
@@ -2450,7 +2648,8 @@ guardduty_enable_organization_admin_account <- function(AdminAccountId) {
     http_path = "/admin/enable",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$enable_organization_admin_account_input(AdminAccountId = AdminAccountId)
   output <- .guardduty$enable_organization_admin_account_output()
@@ -2482,7 +2681,8 @@ guardduty_get_administrator_account <- function(DetectorId) {
     http_path = "/detector/{DetectorId}/administrator",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$get_administrator_account_input(DetectorId = DetectorId)
   output <- .guardduty$get_administrator_account_output()
@@ -2517,7 +2717,8 @@ guardduty_get_coverage_statistics <- function(DetectorId, FilterCriteria = NULL,
     http_path = "/detector/{DetectorId}/coverage/statistics",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$get_coverage_statistics_input(DetectorId = DetectorId, FilterCriteria = FilterCriteria, StatisticsType = StatisticsType)
   output <- .guardduty$get_coverage_statistics_output()
@@ -2528,6 +2729,105 @@ guardduty_get_coverage_statistics <- function(DetectorId, FilterCriteria = NULL,
   return(response)
 }
 .guardduty$operations$get_coverage_statistics <- guardduty_get_coverage_statistics
+
+#' Returns details for a custom detection rule in GuardDuty, including its
+#' detection logic
+#'
+#' @description
+#' Returns details for a custom detection rule in GuardDuty, including its detection logic.
+#'
+#' See [https://www.paws-r-sdk.com/docs/guardduty_get_custom_detection_rule/](https://www.paws-r-sdk.com/docs/guardduty_get_custom_detection_rule/) for full documentation.
+#'
+#' @param RuleId &#91;required&#93; The unique identifier for the custom detection rule.
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_get_custom_detection_rule
+guardduty_get_custom_detection_rule <- function(RuleId) {
+  op <- new_operation(
+    name = "GetCustomDetectionRule",
+    http_method = "GET",
+    http_path = "/custom-detection-rule/rule/{RuleId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE,
+    http_checksum = NULL
+  )
+  input <- .guardduty$get_custom_detection_rule_input(RuleId = RuleId)
+  output <- .guardduty$get_custom_detection_rule_output()
+  config <- get_config()
+  svc <- .guardduty$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$get_custom_detection_rule <- guardduty_get_custom_detection_rule
+
+#' Returns details for a custom detection rule association
+#'
+#' @description
+#' Returns details for a custom detection rule association.
+#'
+#' See [https://www.paws-r-sdk.com/docs/guardduty_get_custom_detection_rule_association/](https://www.paws-r-sdk.com/docs/guardduty_get_custom_detection_rule_association/) for full documentation.
+#'
+#' @param RuleId &#91;required&#93; The unique identifier for the custom detection rule.
+#' @param AssociationId &#91;required&#93; The unique identifier for the association.
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_get_custom_detection_rule_association
+guardduty_get_custom_detection_rule_association <- function(RuleId, AssociationId) {
+  op <- new_operation(
+    name = "GetCustomDetectionRuleAssociation",
+    http_method = "GET",
+    http_path = "/custom-detection-rule/rule/{RuleId}/association/{AssociationId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE,
+    http_checksum = NULL
+  )
+  input <- .guardduty$get_custom_detection_rule_association_input(RuleId = RuleId, AssociationId = AssociationId)
+  output <- .guardduty$get_custom_detection_rule_association_output()
+  config <- get_config()
+  svc <- .guardduty$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$get_custom_detection_rule_association <- guardduty_get_custom_detection_rule_association
+
+#' Returns the organization-level configuration for a custom detection rule
+#'
+#' @description
+#' Returns the organization-level configuration for a custom detection rule.
+#'
+#' See [https://www.paws-r-sdk.com/docs/guardduty_get_custom_detection_rule_org_configuration/](https://www.paws-r-sdk.com/docs/guardduty_get_custom_detection_rule_org_configuration/) for full documentation.
+#'
+#' @param RuleId &#91;required&#93; The unique identifier for the custom detection rule.
+#' @param Mode &#91;required&#93; The execution mode of the organization configuration to retrieve. Valid values: `LIVE` | `DRY_RUN`.
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_get_custom_detection_rule_org_configuration
+guardduty_get_custom_detection_rule_org_configuration <- function(RuleId, Mode) {
+  op <- new_operation(
+    name = "GetCustomDetectionRuleOrgConfiguration",
+    http_method = "GET",
+    http_path = "/custom-detection-rule/org-configuration/{RuleId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE,
+    http_checksum = NULL
+  )
+  input <- .guardduty$get_custom_detection_rule_org_configuration_input(RuleId = RuleId, Mode = Mode)
+  output <- .guardduty$get_custom_detection_rule_org_configuration_output()
+  config <- get_config()
+  svc <- .guardduty$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$get_custom_detection_rule_org_configuration <- guardduty_get_custom_detection_rule_org_configuration
 
 #' Retrieves a GuardDuty detector specified by the detectorId
 #'
@@ -2550,7 +2850,8 @@ guardduty_get_detector <- function(DetectorId) {
     http_path = "/detector/{DetectorId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$get_detector_input(DetectorId = DetectorId)
   output <- .guardduty$get_detector_output()
@@ -2584,7 +2885,8 @@ guardduty_get_filter <- function(DetectorId, FilterName) {
     http_path = "/detector/{DetectorId}/filter/{FilterName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$get_filter_input(DetectorId = DetectorId, FilterName = FilterName)
   output <- .guardduty$get_filter_output()
@@ -2619,7 +2921,8 @@ guardduty_get_findings <- function(DetectorId, FindingIds, SortCriteria = NULL) 
     http_path = "/detector/{DetectorId}/findings/get",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$get_findings_input(DetectorId = DetectorId, FindingIds = FindingIds, SortCriteria = SortCriteria)
   output <- .guardduty$get_findings_output()
@@ -2661,7 +2964,8 @@ guardduty_get_findings_statistics <- function(DetectorId, FindingStatisticTypes 
     http_path = "/detector/{DetectorId}/findings/statistics",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$get_findings_statistics_input(DetectorId = DetectorId, FindingStatisticTypes = FindingStatisticTypes, FindingCriteria = FindingCriteria, GroupBy = GroupBy, OrderBy = OrderBy, MaxResults = MaxResults)
   output <- .guardduty$get_findings_statistics_output()
@@ -2695,7 +2999,8 @@ guardduty_get_ip_set <- function(DetectorId, IpSetId) {
     http_path = "/detector/{DetectorId}/ipset/{IpSetId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$get_ip_set_input(DetectorId = DetectorId, IpSetId = IpSetId)
   output <- .guardduty$get_ip_set_output()
@@ -2706,6 +3011,41 @@ guardduty_get_ip_set <- function(DetectorId, IpSetId) {
   return(response)
 }
 .guardduty$operations$get_ip_set <- guardduty_get_ip_set
+
+#' This API is currently available as a preview
+#'
+#' @description
+#' This API is currently available as a preview. This feature is available in the following Amazon Web Services Regions: US East (N. Virginia), US East (Ohio), US West (Oregon), Canada (Central), Europe (Frankfurt), Europe (Ireland), Europe (London), Europe (Paris), Europe (Stockholm), and Asia Pacific (Tokyo).
+#'
+#' See [https://www.paws-r-sdk.com/docs/guardduty_get_investigation/](https://www.paws-r-sdk.com/docs/guardduty_get_investigation/) for full documentation.
+#'
+#' @param DetectorId &#91;required&#93; The unique ID of the GuardDuty detector associated with the investigation.
+#' 
+#' To find the `detectorId` in the current Region, see the Settings page in the GuardDuty console, or run the [`list_detectors`][guardduty_list_detectors] API.
+#' @param InvestigationId &#91;required&#93; The unique identifier of the investigation to retrieve.
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_get_investigation
+guardduty_get_investigation <- function(DetectorId, InvestigationId) {
+  op <- new_operation(
+    name = "GetInvestigation",
+    http_method = "GET",
+    http_path = "/detector/{DetectorId}/investigation/{InvestigationId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE,
+    http_checksum = NULL
+  )
+  input <- .guardduty$get_investigation_input(DetectorId = DetectorId, InvestigationId = InvestigationId)
+  output <- .guardduty$get_investigation_output()
+  config <- get_config()
+  svc <- .guardduty$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$get_investigation <- guardduty_get_investigation
 
 #' Returns the count of all GuardDuty membership invitations that were sent
 #' to the current member account except the currently accepted invitation
@@ -2727,7 +3067,8 @@ guardduty_get_invitations_count <- function() {
     http_path = "/invitation/count",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$get_invitations_count_input()
   output <- .guardduty$get_invitations_count_output()
@@ -2759,7 +3100,8 @@ guardduty_get_malware_protection_plan <- function(MalwareProtectionPlanId) {
     http_path = "/malware-protection-plan/{MalwareProtectionPlanId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$get_malware_protection_plan_input(MalwareProtectionPlanId = MalwareProtectionPlanId)
   output <- .guardduty$get_malware_protection_plan_output()
@@ -2790,7 +3132,8 @@ guardduty_get_malware_scan <- function(ScanId) {
     http_path = "/malware-scan/{ScanId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$get_malware_scan_input(ScanId = ScanId)
   output <- .guardduty$get_malware_scan_output()
@@ -2823,7 +3166,8 @@ guardduty_get_malware_scan_settings <- function(DetectorId) {
     http_path = "/detector/{DetectorId}/malware-scan-settings",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$get_malware_scan_settings_input(DetectorId = DetectorId)
   output <- .guardduty$get_malware_scan_settings_output()
@@ -2857,7 +3201,8 @@ guardduty_get_master_account <- function(DetectorId) {
     http_path = "/detector/{DetectorId}/master",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$get_master_account_input(DetectorId = DetectorId)
   output <- .guardduty$get_master_account_output()
@@ -2892,7 +3237,8 @@ guardduty_get_member_detectors <- function(DetectorId, AccountIds) {
     http_path = "/detector/{DetectorId}/member/detector/get",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$get_member_detectors_input(DetectorId = DetectorId, AccountIds = AccountIds)
   output <- .guardduty$get_member_detectors_output()
@@ -2927,7 +3273,8 @@ guardduty_get_members <- function(DetectorId, AccountIds) {
     http_path = "/detector/{DetectorId}/member/get",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$get_members_input(DetectorId = DetectorId, AccountIds = AccountIds)
   output <- .guardduty$get_members_output()
@@ -2959,7 +3306,8 @@ guardduty_get_organization_statistics <- function() {
     http_path = "/organization/statistics",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$get_organization_statistics_input()
   output <- .guardduty$get_organization_statistics_output()
@@ -2994,7 +3342,8 @@ guardduty_get_remaining_free_trial_days <- function(DetectorId, AccountIds) {
     http_path = "/detector/{DetectorId}/freeTrial/daysRemaining",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$get_remaining_free_trial_days_input(DetectorId = DetectorId, AccountIds = AccountIds)
   output <- .guardduty$get_remaining_free_trial_days_output()
@@ -3029,7 +3378,8 @@ guardduty_get_threat_entity_set <- function(DetectorId, ThreatEntitySetId) {
     http_path = "/detector/{DetectorId}/threatentityset/{ThreatEntitySetId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$get_threat_entity_set_input(DetectorId = DetectorId, ThreatEntitySetId = ThreatEntitySetId)
   output <- .guardduty$get_threat_entity_set_output()
@@ -3063,7 +3413,8 @@ guardduty_get_threat_intel_set <- function(DetectorId, ThreatIntelSetId) {
     http_path = "/detector/{DetectorId}/threatintelset/{ThreatIntelSetId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$get_threat_intel_set_input(DetectorId = DetectorId, ThreatIntelSetId = ThreatIntelSetId)
   output <- .guardduty$get_threat_intel_set_output()
@@ -3096,7 +3447,8 @@ guardduty_get_trusted_entity_set <- function(DetectorId, TrustedEntitySetId) {
     http_path = "/detector/{DetectorId}/trustedentityset/{TrustedEntitySetId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$get_trusted_entity_set_input(DetectorId = DetectorId, TrustedEntitySetId = TrustedEntitySetId)
   output <- .guardduty$get_trusted_entity_set_output()
@@ -3135,7 +3487,8 @@ guardduty_get_usage_statistics <- function(DetectorId, UsageStatisticType, Usage
     http_path = "/detector/{DetectorId}/usage/statistics",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$get_usage_statistics_input(DetectorId = DetectorId, UsageStatisticType = UsageStatisticType, UsageCriteria = UsageCriteria, Unit = Unit, MaxResults = MaxResults, NextToken = NextToken)
   output <- .guardduty$get_usage_statistics_output()
@@ -3173,7 +3526,8 @@ guardduty_invite_members <- function(DetectorId, AccountIds, DisableEmailNotific
     http_path = "/detector/{DetectorId}/member/invite",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$invite_members_input(DetectorId = DetectorId, AccountIds = AccountIds, DisableEmailNotification = DisableEmailNotification, Message = Message)
   output <- .guardduty$invite_members_output()
@@ -3210,7 +3564,8 @@ guardduty_list_coverage <- function(DetectorId, NextToken = NULL, MaxResults = N
     http_path = "/detector/{DetectorId}/coverage",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Resources"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$list_coverage_input(DetectorId = DetectorId, NextToken = NextToken, MaxResults = MaxResults, FilterCriteria = FilterCriteria, SortCriteria = SortCriteria)
   output <- .guardduty$list_coverage_output()
@@ -3221,6 +3576,109 @@ guardduty_list_coverage <- function(DetectorId, NextToken = NULL, MaxResults = N
   return(response)
 }
 .guardduty$operations$list_coverage <- guardduty_list_coverage
+
+#' Returns all custom detection rule associations for your account
+#'
+#' @description
+#' Returns all custom detection rule associations for your account. You can filter by rule ID and mode.
+#'
+#' See [https://www.paws-r-sdk.com/docs/guardduty_list_custom_detection_rule_associations/](https://www.paws-r-sdk.com/docs/guardduty_list_custom_detection_rule_associations/) for full documentation.
+#'
+#' @param MaxResults The maximum number of results to return in a single page. Minimum value of 1, maximum value of 100.
+#' @param NextToken A pagination token from a previous response. Use this token to retrieve the next page of results.
+#' @param RuleId The unique identifier for the custom detection rule to filter associations by.
+#' @param Mode The rule execution mode to filter associations by.
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_list_custom_detection_rule_associations
+guardduty_list_custom_detection_rule_associations <- function(MaxResults = NULL, NextToken = NULL, RuleId = NULL, Mode = NULL) {
+  op <- new_operation(
+    name = "ListCustomDetectionRuleAssociations",
+    http_method = "GET",
+    http_path = "/custom-detection-rule/association",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RuleAssociations"),
+    stream_api = FALSE,
+    http_checksum = NULL
+  )
+  input <- .guardduty$list_custom_detection_rule_associations_input(MaxResults = MaxResults, NextToken = NextToken, RuleId = RuleId, Mode = Mode)
+  output <- .guardduty$list_custom_detection_rule_associations_output()
+  config <- get_config()
+  svc <- .guardduty$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$list_custom_detection_rule_associations <- guardduty_list_custom_detection_rule_associations
+
+#' Returns all organization-level configurations for custom detection rules
+#'
+#' @description
+#' Returns all organization-level configurations for custom detection rules. You can filter the results by status.
+#'
+#' See [https://www.paws-r-sdk.com/docs/guardduty_list_custom_detection_rule_org_configurations/](https://www.paws-r-sdk.com/docs/guardduty_list_custom_detection_rule_org_configurations/) for full documentation.
+#'
+#' @param MaxResults The maximum number of results to return in a single page. Minimum value of 1, maximum value of 100.
+#' @param NextToken A pagination token from a previous response. Use this token to retrieve the next page of results.
+#' @param Status The configuration status to filter by.
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_list_custom_detection_rule_org_configurations
+guardduty_list_custom_detection_rule_org_configurations <- function(MaxResults = NULL, NextToken = NULL, Status = NULL) {
+  op <- new_operation(
+    name = "ListCustomDetectionRuleOrgConfigurations",
+    http_method = "GET",
+    http_path = "/custom-detection-rule/org-configuration",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Configurations"),
+    stream_api = FALSE,
+    http_checksum = NULL
+  )
+  input <- .guardduty$list_custom_detection_rule_org_configurations_input(MaxResults = MaxResults, NextToken = NextToken, Status = Status)
+  output <- .guardduty$list_custom_detection_rule_org_configurations_output()
+  config <- get_config()
+  svc <- .guardduty$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$list_custom_detection_rule_org_configurations <- guardduty_list_custom_detection_rule_org_configurations
+
+#' Returns all available custom detection rules in GuardDuty
+#'
+#' @description
+#' Returns all available custom detection rules in GuardDuty. You can filter the results by data source, severity, tactic, technique, and service.
+#'
+#' See [https://www.paws-r-sdk.com/docs/guardduty_list_custom_detection_rules/](https://www.paws-r-sdk.com/docs/guardduty_list_custom_detection_rules/) for full documentation.
+#'
+#' @param MaxResults The maximum number of results to return in a single page. Minimum value of 1, maximum value of 100.
+#' @param NextToken A pagination token from a previous response. Use this token to retrieve the next page of results.
+#' @param Filters A list of filter criteria to apply when listing custom detection rules.
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_list_custom_detection_rules
+guardduty_list_custom_detection_rules <- function(MaxResults = NULL, NextToken = NULL, Filters = NULL) {
+  op <- new_operation(
+    name = "ListCustomDetectionRules",
+    http_method = "POST",
+    http_path = "/custom-detection-rule/rule",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Rules"),
+    stream_api = FALSE,
+    http_checksum = NULL
+  )
+  input <- .guardduty$list_custom_detection_rules_input(MaxResults = MaxResults, NextToken = NextToken, Filters = Filters)
+  output <- .guardduty$list_custom_detection_rules_output()
+  config <- get_config()
+  svc <- .guardduty$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$list_custom_detection_rules <- guardduty_list_custom_detection_rules
 
 #' Lists detectorIds of all the existing Amazon GuardDuty detector
 #' resources
@@ -3243,7 +3701,8 @@ guardduty_list_detectors <- function(MaxResults = NULL, NextToken = NULL) {
     http_path = "/detector",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "DetectorIds"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$list_detectors_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .guardduty$list_detectors_output()
@@ -3278,7 +3737,8 @@ guardduty_list_filters <- function(DetectorId, MaxResults = NULL, NextToken = NU
     http_path = "/detector/{DetectorId}/filter",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "FilterNames"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$list_filters_input(DetectorId = DetectorId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .guardduty$list_filters_output()
@@ -3419,7 +3879,8 @@ guardduty_list_findings <- function(DetectorId, FindingCriteria = NULL, SortCrit
     http_path = "/detector/{DetectorId}/findings",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "FindingIds"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$list_findings_input(DetectorId = DetectorId, FindingCriteria = FindingCriteria, SortCriteria = SortCriteria, MaxResults = MaxResults, NextToken = NextToken)
   output <- .guardduty$list_findings_output()
@@ -3454,7 +3915,8 @@ guardduty_list_ip_sets <- function(DetectorId, MaxResults = NULL, NextToken = NU
     http_path = "/detector/{DetectorId}/ipset",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "IpSetIds"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$list_ip_sets_input(DetectorId = DetectorId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .guardduty$list_ip_sets_output()
@@ -3465,6 +3927,43 @@ guardduty_list_ip_sets <- function(DetectorId, MaxResults = NULL, NextToken = NU
   return(response)
 }
 .guardduty$operations$list_ip_sets <- guardduty_list_ip_sets
+
+#' This API is currently available as a preview
+#'
+#' @description
+#' This API is currently available as a preview. This feature is available in the following Amazon Web Services Regions: US East (N. Virginia), US East (Ohio), US West (Oregon), Canada (Central), Europe (Frankfurt), Europe (Ireland), Europe (London), Europe (Paris), Europe (Stockholm), and Asia Pacific (Tokyo).
+#'
+#' See [https://www.paws-r-sdk.com/docs/guardduty_list_investigations/](https://www.paws-r-sdk.com/docs/guardduty_list_investigations/) for full documentation.
+#'
+#' @param DetectorId &#91;required&#93; The unique ID of the GuardDuty detector whose investigations you want to list.
+#' 
+#' To find the `detectorId` in the current Region, see the Settings page in the GuardDuty console, or run the [`list_detectors`][guardduty_list_detectors] API.
+#' @param SortCriteria Represents the criteria used for sorting investigations.
+#' @param MaxResults You can use this parameter to indicate the maximum number of items you want in the response. The default value is 50.
+#' @param NextToken You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the list action. For subsequent calls to the action, fill nextToken in the request with the value of NextToken from the previous response to continue listing data.
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_list_investigations
+guardduty_list_investigations <- function(DetectorId, SortCriteria = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListInvestigations",
+    http_method = "POST",
+    http_path = "/detector/{DetectorId}/investigation/list",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Investigations"),
+    stream_api = FALSE,
+    http_checksum = NULL
+  )
+  input <- .guardduty$list_investigations_input(DetectorId = DetectorId, SortCriteria = SortCriteria, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .guardduty$list_investigations_output()
+  config <- get_config()
+  svc <- .guardduty$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$list_investigations <- guardduty_list_investigations
 
 #' Lists all GuardDuty membership invitations that were sent to the current
 #' Amazon Web Services account
@@ -3487,7 +3986,8 @@ guardduty_list_invitations <- function(MaxResults = NULL, NextToken = NULL) {
     http_path = "/invitation",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Invitations"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$list_invitations_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .guardduty$list_invitations_output()
@@ -3519,7 +4019,8 @@ guardduty_list_malware_protection_plans <- function(NextToken = NULL) {
     http_path = "/malware-protection-plan",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$list_malware_protection_plans_input(NextToken = NextToken)
   output <- .guardduty$list_malware_protection_plans_output()
@@ -3553,7 +4054,8 @@ guardduty_list_malware_scans <- function(MaxResults = NULL, NextToken = NULL, Fi
     http_path = "/malware-scan",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Scans"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$list_malware_scans_input(MaxResults = MaxResults, NextToken = NextToken, FilterCriteria = FilterCriteria, SortCriteria = SortCriteria)
   output <- .guardduty$list_malware_scans_output()
@@ -3590,7 +4092,8 @@ guardduty_list_members <- function(DetectorId, MaxResults = NULL, NextToken = NU
     http_path = "/detector/{DetectorId}/member",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Members"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$list_members_input(DetectorId = DetectorId, MaxResults = MaxResults, NextToken = NextToken, OnlyAssociated = OnlyAssociated)
   output <- .guardduty$list_members_output()
@@ -3622,7 +4125,8 @@ guardduty_list_organization_admin_accounts <- function(MaxResults = NULL, NextTo
     http_path = "/admin",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AdminAccounts"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$list_organization_admin_accounts_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .guardduty$list_organization_admin_accounts_output()
@@ -3658,7 +4162,8 @@ guardduty_list_publishing_destinations <- function(DetectorId, MaxResults = NULL
     http_path = "/detector/{DetectorId}/publishingDestination",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$list_publishing_destinations_input(DetectorId = DetectorId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .guardduty$list_publishing_destinations_output()
@@ -3689,7 +4194,8 @@ guardduty_list_tags_for_resource <- function(ResourceArn) {
     http_path = "/tags/{ResourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .guardduty$list_tags_for_resource_output()
@@ -3725,7 +4231,8 @@ guardduty_list_threat_entity_sets <- function(DetectorId, MaxResults = NULL, Nex
     http_path = "/detector/{DetectorId}/threatentityset",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ThreatEntitySetIds"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$list_threat_entity_sets_input(DetectorId = DetectorId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .guardduty$list_threat_entity_sets_output()
@@ -3761,7 +4268,8 @@ guardduty_list_threat_intel_sets <- function(DetectorId, MaxResults = NULL, Next
     http_path = "/detector/{DetectorId}/threatintelset",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ThreatIntelSetIds"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$list_threat_intel_sets_input(DetectorId = DetectorId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .guardduty$list_threat_intel_sets_output()
@@ -3797,7 +4305,8 @@ guardduty_list_trusted_entity_sets <- function(DetectorId, MaxResults = NULL, Ne
     http_path = "/detector/{DetectorId}/trustedentityset",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "TrustedEntitySetIds"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$list_trusted_entity_sets_input(DetectorId = DetectorId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .guardduty$list_trusted_entity_sets_output()
@@ -3828,7 +4337,8 @@ guardduty_send_object_malware_scan <- function(S3Object = NULL) {
     http_path = "/object-malware-scan/send",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$send_object_malware_scan_input(S3Object = S3Object)
   output <- .guardduty$send_object_malware_scan_output()
@@ -3861,7 +4371,8 @@ guardduty_start_malware_scan <- function(ResourceArn, ClientToken = NULL, ScanCo
     http_path = "/malware-scan/start",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$start_malware_scan_input(ResourceArn = ResourceArn, ClientToken = ClientToken, ScanConfiguration = ScanConfiguration)
   output <- .guardduty$start_malware_scan_output()
@@ -3895,7 +4406,8 @@ guardduty_start_monitoring_members <- function(DetectorId, AccountIds) {
     http_path = "/detector/{DetectorId}/member/start",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$start_monitoring_members_input(DetectorId = DetectorId, AccountIds = AccountIds)
   output <- .guardduty$start_monitoring_members_output()
@@ -3929,7 +4441,8 @@ guardduty_stop_monitoring_members <- function(DetectorId, AccountIds) {
     http_path = "/detector/{DetectorId}/member/stop",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$stop_monitoring_members_input(DetectorId = DetectorId, AccountIds = AccountIds)
   output <- .guardduty$stop_monitoring_members_output()
@@ -3961,7 +4474,8 @@ guardduty_tag_resource <- function(ResourceArn, Tags) {
     http_path = "/tags/{ResourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .guardduty$tag_resource_output()
@@ -3995,7 +4509,8 @@ guardduty_unarchive_findings <- function(DetectorId, FindingIds) {
     http_path = "/detector/{DetectorId}/findings/unarchive",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$unarchive_findings_input(DetectorId = DetectorId, FindingIds = FindingIds)
   output <- .guardduty$unarchive_findings_output()
@@ -4027,7 +4542,8 @@ guardduty_untag_resource <- function(ResourceArn, TagKeys) {
     http_path = "/tags/{ResourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .guardduty$untag_resource_output()
@@ -4038,6 +4554,76 @@ guardduty_untag_resource <- function(ResourceArn, TagKeys) {
   return(response)
 }
 .guardduty$operations$untag_resource <- guardduty_untag_resource
+
+#' Updates the mode of an existing custom detection rule association
+#'
+#' @description
+#' Updates the mode of an existing custom detection rule association.
+#'
+#' See [https://www.paws-r-sdk.com/docs/guardduty_update_custom_detection_rule_association/](https://www.paws-r-sdk.com/docs/guardduty_update_custom_detection_rule_association/) for full documentation.
+#'
+#' @param RuleId &#91;required&#93; The unique identifier for the custom detection rule.
+#' @param AssociationId &#91;required&#93; The unique identifier for the association to update.
+#' @param Mode &#91;required&#93; The rule execution mode. Valid values: `LIVE` | `DRY_RUN`.
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_update_custom_detection_rule_association
+guardduty_update_custom_detection_rule_association <- function(RuleId, AssociationId, Mode) {
+  op <- new_operation(
+    name = "UpdateCustomDetectionRuleAssociation",
+    http_method = "PUT",
+    http_path = "/custom-detection-rule/rule/{RuleId}/association/{AssociationId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE,
+    http_checksum = NULL
+  )
+  input <- .guardduty$update_custom_detection_rule_association_input(RuleId = RuleId, AssociationId = AssociationId, Mode = Mode)
+  output <- .guardduty$update_custom_detection_rule_association_output()
+  config <- get_config()
+  svc <- .guardduty$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$update_custom_detection_rule_association <- guardduty_update_custom_detection_rule_association
+
+#' Updates the organization-level configuration for a custom detection
+#' rule, including the mode and include/exclude account lists
+#'
+#' @description
+#' Updates the organization-level configuration for a custom detection rule, including the mode and include/exclude account lists.
+#'
+#' See [https://www.paws-r-sdk.com/docs/guardduty_update_custom_detection_rule_org_configuration/](https://www.paws-r-sdk.com/docs/guardduty_update_custom_detection_rule_org_configuration/) for full documentation.
+#'
+#' @param RuleId &#91;required&#93; The unique identifier for the custom detection rule.
+#' @param Mode &#91;required&#93; The execution mode of the organization configuration. Valid values: `LIVE` | `DRY_RUN`.
+#' @param IncludeAccountIds The account IDs to include in the organization configuration. Mutually exclusive with `ExcludeAccountIds`.
+#' @param ExcludeAccountIds The account IDs to exclude from the organization configuration. Mutually exclusive with `IncludeAccountIds`.
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_update_custom_detection_rule_org_configuration
+guardduty_update_custom_detection_rule_org_configuration <- function(RuleId, Mode, IncludeAccountIds = NULL, ExcludeAccountIds = NULL) {
+  op <- new_operation(
+    name = "UpdateCustomDetectionRuleOrgConfiguration",
+    http_method = "PUT",
+    http_path = "/custom-detection-rule/org-configuration/{RuleId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE,
+    http_checksum = NULL
+  )
+  input <- .guardduty$update_custom_detection_rule_org_configuration_input(RuleId = RuleId, Mode = Mode, IncludeAccountIds = IncludeAccountIds, ExcludeAccountIds = ExcludeAccountIds)
+  output <- .guardduty$update_custom_detection_rule_org_configuration_output()
+  config <- get_config()
+  svc <- .guardduty$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$update_custom_detection_rule_org_configuration <- guardduty_update_custom_detection_rule_org_configuration
 
 #' Updates the GuardDuty detector specified by the detector ID
 #'
@@ -4066,7 +4652,8 @@ guardduty_update_detector <- function(DetectorId, Enable = NULL, FindingPublishi
     http_path = "/detector/{DetectorId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$update_detector_input(DetectorId = DetectorId, Enable = Enable, FindingPublishingFrequency = FindingPublishingFrequency, DataSources = DataSources, Features = Features)
   output <- .guardduty$update_detector_output()
@@ -4107,8 +4694,6 @@ guardduty_update_detector <- function(DetectorId, Enable = NULL, FindingPublishi
 #' -   createdAt
 #' 
 #'     Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
-#' 
-#' -   description
 #' 
 #' -   id
 #' 
@@ -4444,10 +5029,6 @@ guardduty_update_detector <- function(DetectorId, Enable = NULL, FindingPublishi
 #' 
 #' -   resource.rdsDbInstanceDetails.publiclyAccessible
 #' 
-#' -   resource.rdsDbInstanceDetails.tags.key
-#' 
-#' -   resource.rdsDbInstanceDetails.tags.value
-#' 
 #' -   resource.rdsDbInstanceDetails.vpcId
 #' 
 #' -   resource.rdsDbInstanceDetails.vpcSecurityGroups.status
@@ -4545,8 +5126,6 @@ guardduty_update_detector <- function(DetectorId, Enable = NULL, FindingPublishi
 #' -   schemaVersion
 #' 
 #' -   service.action.actionType
-#' 
-#' -   service.action.awsApiCallAction.affectedResources
 #' 
 #' -   service.action.awsApiCallAction.api
 #' 
@@ -4835,10 +5414,6 @@ guardduty_update_detector <- function(DetectorId, Enable = NULL, FindingPublishi
 #' -   service.archived
 #' 
 #' -   service.count
-#' 
-#' -   service.detection.anomaly.profiles
-#' 
-#' -   service.detection.anomaly.unusual.behavior
 #' 
 #' -   service.detection.sequence.actors.id
 #' 
@@ -5412,8 +5987,6 @@ guardduty_update_detector <- function(DetectorId, Enable = NULL, FindingPublishi
 #' 
 #'     For more information, see [Findings severity levels](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_findings-severity.html) in the *Amazon GuardDuty User Guide*.
 #' 
-#' -   title
-#' 
 #' -   type
 #' 
 #' -   updatedAt
@@ -5430,7 +6003,8 @@ guardduty_update_filter <- function(DetectorId, FilterName, Description = NULL, 
     http_path = "/detector/{DetectorId}/filter/{FilterName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$update_filter_input(DetectorId = DetectorId, FilterName = FilterName, Description = Description, Action = Action, Rank = Rank, FindingCriteria = FindingCriteria)
   output <- .guardduty$update_filter_output()
@@ -5466,7 +6040,8 @@ guardduty_update_findings_feedback <- function(DetectorId, FindingIds, Feedback,
     http_path = "/detector/{DetectorId}/findings/feedback",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$update_findings_feedback_input(DetectorId = DetectorId, FindingIds = FindingIds, Feedback = Feedback, Comments = Comments)
   output <- .guardduty$update_findings_feedback_output()
@@ -5504,7 +6079,8 @@ guardduty_update_ip_set <- function(DetectorId, IpSetId, Name = NULL, Location =
     http_path = "/detector/{DetectorId}/ipset/{IpSetId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$update_ip_set_input(DetectorId = DetectorId, IpSetId = IpSetId, Name = Name, Location = Location, Activate = Activate, ExpectedBucketOwner = ExpectedBucketOwner)
   output <- .guardduty$update_ip_set_output()
@@ -5538,7 +6114,8 @@ guardduty_update_malware_protection_plan <- function(MalwareProtectionPlanId, Ro
     http_path = "/malware-protection-plan/{MalwareProtectionPlanId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$update_malware_protection_plan_input(MalwareProtectionPlanId = MalwareProtectionPlanId, Role = Role, Actions = Actions, ProtectedResource = ProtectedResource)
   output <- .guardduty$update_malware_protection_plan_output()
@@ -5573,7 +6150,8 @@ guardduty_update_malware_scan_settings <- function(DetectorId, ScanResourceCrite
     http_path = "/detector/{DetectorId}/malware-scan-settings",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$update_malware_scan_settings_input(DetectorId = DetectorId, ScanResourceCriteria = ScanResourceCriteria, EbsSnapshotPreservation = EbsSnapshotPreservation)
   output <- .guardduty$update_malware_scan_settings_output()
@@ -5609,7 +6187,8 @@ guardduty_update_member_detectors <- function(DetectorId, AccountIds, DataSource
     http_path = "/detector/{DetectorId}/member/detector/update",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$update_member_detectors_input(DetectorId = DetectorId, AccountIds = AccountIds, DataSources = DataSources, Features = Features)
   output <- .guardduty$update_member_detectors_output()
@@ -5660,7 +6239,8 @@ guardduty_update_organization_configuration <- function(DetectorId, AutoEnable =
     http_path = "/detector/{DetectorId}/admin",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$update_organization_configuration_input(DetectorId = DetectorId, AutoEnable = AutoEnable, DataSources = DataSources, Features = Features, AutoEnableOrganizationMembers = AutoEnableOrganizationMembers)
   output <- .guardduty$update_organization_configuration_output()
@@ -5696,7 +6276,8 @@ guardduty_update_publishing_destination <- function(DetectorId, DestinationId, D
     http_path = "/detector/{DetectorId}/publishingDestination/{DestinationId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$update_publishing_destination_input(DetectorId = DetectorId, DestinationId = DestinationId, DestinationProperties = DestinationProperties)
   output <- .guardduty$update_publishing_destination_output()
@@ -5737,7 +6318,8 @@ guardduty_update_threat_entity_set <- function(DetectorId, ThreatEntitySetId, Na
     http_path = "/detector/{DetectorId}/threatentityset/{ThreatEntitySetId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$update_threat_entity_set_input(DetectorId = DetectorId, ThreatEntitySetId = ThreatEntitySetId, Name = Name, Location = Location, ExpectedBucketOwner = ExpectedBucketOwner, Activate = Activate)
   output <- .guardduty$update_threat_entity_set_output()
@@ -5775,7 +6357,8 @@ guardduty_update_threat_intel_set <- function(DetectorId, ThreatIntelSetId, Name
     http_path = "/detector/{DetectorId}/threatintelset/{ThreatIntelSetId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$update_threat_intel_set_input(DetectorId = DetectorId, ThreatIntelSetId = ThreatIntelSetId, Name = Name, Location = Location, Activate = Activate, ExpectedBucketOwner = ExpectedBucketOwner)
   output <- .guardduty$update_threat_intel_set_output()
@@ -5816,7 +6399,8 @@ guardduty_update_trusted_entity_set <- function(DetectorId, TrustedEntitySetId, 
     http_path = "/detector/{DetectorId}/trustedentityset/{TrustedEntitySetId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .guardduty$update_trusted_entity_set_input(DetectorId = DetectorId, TrustedEntitySetId = TrustedEntitySetId, Name = Name, Location = Location, ExpectedBucketOwner = ExpectedBucketOwner, Activate = Activate)
   output <- .guardduty$update_trusted_entity_set_output()

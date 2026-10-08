@@ -22,7 +22,8 @@ iam_accept_delegation_request <- function(DelegationRequestId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$accept_delegation_request_input(DelegationRequestId = DelegationRequestId)
   output <- .iam$accept_delegation_request_output()
@@ -33,6 +34,42 @@ iam_accept_delegation_request <- function(DelegationRequestId) {
   return(response)
 }
 .iam$operations$accept_delegation_request <- iam_accept_delegation_request
+
+#' Creates an IAM role from the specified role template
+#'
+#' @description
+#' Creates an IAM role from the specified role template. The new role takes its configuration—including its name, path, trust policy, inline and managed policies, permissions boundary, tags, and maximum session duration—from the role template version that you specify. For more information about roles, see [IAM roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html) in the *IAM User Guide*.
+#'
+#' See [https://www.paws-r-sdk.com/docs/iam_acquire_role/](https://www.paws-r-sdk.com/docs/iam_acquire_role/) for full documentation.
+#'
+#' @param TemplateArn &#91;required&#93; The Amazon Resource Name (ARN) of the role template to create the role from.
+#' 
+#' For more information about ARNs, see [Amazon Resource Names (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html) in the *Amazon Web Services General Reference*.
+#' @param TemplateMinorVersion The minor version of the role template to use. If you do not specify a minor version, the service uses the template's default minor version.
+#' @param ReplacementValues A map of values to substitute for the parameters that are defined in the role template version. Each key is a parameter name from the template, and each value is a structure that contains the replacement values for that parameter.
+#'
+#' @keywords internal
+#'
+#' @rdname iam_acquire_role
+iam_acquire_role <- function(TemplateArn, TemplateMinorVersion = NULL, ReplacementValues = NULL) {
+  op <- new_operation(
+    name = "AcquireRole",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE,
+    http_checksum = NULL
+  )
+  input <- .iam$acquire_role_input(TemplateArn = TemplateArn, TemplateMinorVersion = TemplateMinorVersion, ReplacementValues = ReplacementValues)
+  output <- .iam$acquire_role_output()
+  config <- get_config()
+  svc <- .iam$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.iam$operations$acquire_role <- iam_acquire_role
 
 #' Adds a new client ID (also known as audience) to the list of client IDs
 #' already registered for the specified IAM OpenID Connect (OIDC) provider
@@ -56,7 +93,8 @@ iam_add_client_id_to_open_id_connect_provider <- function(OpenIDConnectProviderA
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$add_client_id_to_open_id_connect_provider_input(OpenIDConnectProviderArn = OpenIDConnectProviderArn, ClientID = ClientID)
   output <- .iam$add_client_id_to_open_id_connect_provider_output()
@@ -92,7 +130,8 @@ iam_add_role_to_instance_profile <- function(InstanceProfileName, RoleName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$add_role_to_instance_profile_input(InstanceProfileName = InstanceProfileName, RoleName = RoleName)
   output <- .iam$add_role_to_instance_profile_output()
@@ -128,7 +167,8 @@ iam_add_user_to_group <- function(GroupName, UserName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$add_user_to_group_input(GroupName = GroupName, UserName = UserName)
   output <- .iam$add_user_to_group_output()
@@ -159,7 +199,8 @@ iam_associate_delegation_request <- function(DelegationRequestId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$associate_delegation_request_input(DelegationRequestId = DelegationRequestId)
   output <- .iam$associate_delegation_request_output()
@@ -195,7 +236,8 @@ iam_attach_group_policy <- function(GroupName, PolicyArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$attach_group_policy_input(GroupName = GroupName, PolicyArn = PolicyArn)
   output <- .iam$attach_group_policy_output()
@@ -231,7 +273,8 @@ iam_attach_role_policy <- function(RoleName, PolicyArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$attach_role_policy_input(RoleName = RoleName, PolicyArn = PolicyArn)
   output <- .iam$attach_role_policy_output()
@@ -267,7 +310,8 @@ iam_attach_user_policy <- function(UserName, PolicyArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$attach_user_policy_input(UserName = UserName, PolicyArn = PolicyArn)
   output <- .iam$attach_user_policy_output()
@@ -301,7 +345,8 @@ iam_change_password <- function(OldPassword, NewPassword) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$change_password_input(OldPassword = OldPassword, NewPassword = NewPassword)
   output <- .iam$change_password_output()
@@ -335,7 +380,8 @@ iam_create_access_key <- function(UserName = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$create_access_key_input(UserName = UserName)
   output <- .iam$create_access_key_output()
@@ -368,7 +414,8 @@ iam_create_account_alias <- function(AccountAlias) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$create_account_alias_input(AccountAlias = AccountAlias)
   output <- .iam$create_account_alias_output()
@@ -425,7 +472,8 @@ iam_create_delegation_request <- function(OwnerAccountId = NULL, Description, Pe
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$create_delegation_request_input(OwnerAccountId = OwnerAccountId, Description = Description, Permissions = Permissions, RequestMessage = RequestMessage, RequestorWorkflowId = RequestorWorkflowId, RedirectUrl = RedirectUrl, NotificationChannel = NotificationChannel, SessionDuration = SessionDuration, OnlySendByOwner = OnlySendByOwner)
   output <- .iam$create_delegation_request_output()
@@ -463,7 +511,8 @@ iam_create_group <- function(Path = NULL, GroupName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$create_group_input(Path = Path, GroupName = GroupName)
   output <- .iam$create_group_output()
@@ -504,7 +553,8 @@ iam_create_instance_profile <- function(InstanceProfileName, Path = NULL, Tags =
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$create_instance_profile_input(InstanceProfileName = InstanceProfileName, Path = Path, Tags = Tags)
   output <- .iam$create_instance_profile_output()
@@ -545,7 +595,8 @@ iam_create_login_profile <- function(UserName = NULL, Password = NULL, PasswordR
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$create_login_profile_input(UserName = UserName, Password = Password, PasswordResetRequired = PasswordResetRequired)
   output <- .iam$create_login_profile_output()
@@ -598,7 +649,8 @@ iam_create_open_id_connect_provider <- function(Url, ClientIDList = NULL, Thumbp
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$create_open_id_connect_provider_input(Url = Url, ClientIDList = ClientIDList, ThumbprintList = ThumbprintList, Tags = Tags)
   output <- .iam$create_open_id_connect_provider_output()
@@ -663,7 +715,8 @@ iam_create_policy <- function(PolicyName, Path = NULL, PolicyDocument, Descripti
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$create_policy_input(PolicyName = PolicyName, Path = Path, PolicyDocument = PolicyDocument, Description = Description, Tags = Tags)
   output <- .iam$create_policy_output()
@@ -714,7 +767,8 @@ iam_create_policy_version <- function(PolicyArn, PolicyDocument, SetAsDefault = 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$create_policy_version_input(PolicyArn = PolicyArn, PolicyDocument = PolicyDocument, SetAsDefault = SetAsDefault)
   output <- .iam$create_policy_version_output()
@@ -779,7 +833,8 @@ iam_create_role <- function(Path = NULL, RoleName, AssumeRolePolicyDocument, Des
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$create_role_input(Path = Path, RoleName = RoleName, AssumeRolePolicyDocument = AssumeRolePolicyDocument, Description = Description, MaxSessionDuration = MaxSessionDuration, PermissionsBoundary = PermissionsBoundary, Tags = Tags)
   output <- .iam$create_role_output()
@@ -821,7 +876,8 @@ iam_create_saml_provider <- function(SAMLMetadataDocument, Name, Tags = NULL, As
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$create_saml_provider_input(SAMLMetadataDocument = SAMLMetadataDocument, Name = Name, Tags = Tags, AssertionEncryptionMode = AssertionEncryptionMode, AddPrivateKey = AddPrivateKey)
   output <- .iam$create_saml_provider_output()
@@ -859,7 +915,8 @@ iam_create_service_linked_role <- function(AWSServiceName, Description = NULL, C
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$create_service_linked_role_input(AWSServiceName = AWSServiceName, Description = Description, CustomSuffix = CustomSuffix)
   output <- .iam$create_service_linked_role_output()
@@ -883,7 +940,9 @@ iam_create_service_linked_role <- function(AWSServiceName, Description = NULL, C
 #' 
 #' This parameter allows (through its [regex pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@@-
 #' @param ServiceName &#91;required&#93; The name of the Amazon Web Services service that is to be associated with the credentials. The service you specify here is the only service that can be accessed using these credentials.
-#' @param CredentialAgeDays The number of days until the service specific credential expires. This field is only valid for Bedrock and CloudWatch Logs API keys and must be a positive integer. When not specified, the credential will not expire.
+#' @param CredentialAgeDays The number of days until the service specific credential expires. This field is only valid for services that support long-term API keys and must be a positive integer. When not specified, the credential will not expire.
+#' 
+#' To see which services support long-term API keys, refer to [API keys for Amazon Web Services services](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_api_keys_for_aws_services.html) in the *IAM User Guide*.
 #'
 #' @keywords internal
 #'
@@ -895,7 +954,8 @@ iam_create_service_specific_credential <- function(UserName, ServiceName, Creden
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$create_service_specific_credential_input(UserName = UserName, ServiceName = ServiceName, CredentialAgeDays = CredentialAgeDays)
   output <- .iam$create_service_specific_credential_output()
@@ -941,7 +1001,8 @@ iam_create_user <- function(Path = NULL, UserName, PermissionsBoundary = NULL, T
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$create_user_input(Path = Path, UserName = UserName, PermissionsBoundary = PermissionsBoundary, Tags = Tags)
   output <- .iam$create_user_output()
@@ -982,7 +1043,8 @@ iam_create_virtual_mfa_device <- function(Path = NULL, VirtualMFADeviceName, Tag
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$create_virtual_mfa_device_input(Path = Path, VirtualMFADeviceName = VirtualMFADeviceName, Tags = Tags)
   output <- .iam$create_virtual_mfa_device_output()
@@ -1021,7 +1083,8 @@ iam_deactivate_mfa_device <- function(UserName = NULL, SerialNumber) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$deactivate_mfa_device_input(UserName = UserName, SerialNumber = SerialNumber)
   output <- .iam$deactivate_mfa_device_output()
@@ -1057,7 +1120,8 @@ iam_delete_access_key <- function(UserName = NULL, AccessKeyId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$delete_access_key_input(UserName = UserName, AccessKeyId = AccessKeyId)
   output <- .iam$delete_access_key_output()
@@ -1090,7 +1154,8 @@ iam_delete_account_alias <- function(AccountAlias) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$delete_account_alias_input(AccountAlias = AccountAlias)
   output <- .iam$delete_account_alias_output()
@@ -1121,7 +1186,8 @@ iam_delete_account_password_policy <- function() {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$delete_account_password_policy_input()
   output <- .iam$delete_account_password_policy_output()
@@ -1154,7 +1220,8 @@ iam_delete_group <- function(GroupName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$delete_group_input(GroupName = GroupName)
   output <- .iam$delete_group_output()
@@ -1191,7 +1258,8 @@ iam_delete_group_policy <- function(GroupName, PolicyName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$delete_group_policy_input(GroupName = GroupName, PolicyName = PolicyName)
   output <- .iam$delete_group_policy_output()
@@ -1224,7 +1292,8 @@ iam_delete_instance_profile <- function(InstanceProfileName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$delete_instance_profile_input(InstanceProfileName = InstanceProfileName)
   output <- .iam$delete_instance_profile_output()
@@ -1260,7 +1329,8 @@ iam_delete_login_profile <- function(UserName = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$delete_login_profile_input(UserName = UserName)
   output <- .iam$delete_login_profile_output()
@@ -1291,7 +1361,8 @@ iam_delete_open_id_connect_provider <- function(OpenIDConnectProviderArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$delete_open_id_connect_provider_input(OpenIDConnectProviderArn = OpenIDConnectProviderArn)
   output <- .iam$delete_open_id_connect_provider_output()
@@ -1324,7 +1395,8 @@ iam_delete_policy <- function(PolicyArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$delete_policy_input(PolicyArn = PolicyArn)
   output <- .iam$delete_policy_output()
@@ -1362,7 +1434,8 @@ iam_delete_policy_version <- function(PolicyArn, VersionId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$delete_policy_version_input(PolicyArn = PolicyArn, VersionId = VersionId)
   output <- .iam$delete_policy_version_output()
@@ -1395,7 +1468,8 @@ iam_delete_role <- function(RoleName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$delete_role_input(RoleName = RoleName)
   output <- .iam$delete_role_output()
@@ -1426,7 +1500,8 @@ iam_delete_role_permissions_boundary <- function(RoleName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$delete_role_permissions_boundary_input(RoleName = RoleName)
   output <- .iam$delete_role_permissions_boundary_output()
@@ -1463,7 +1538,8 @@ iam_delete_role_policy <- function(RoleName, PolicyName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$delete_role_policy_input(RoleName = RoleName, PolicyName = PolicyName)
   output <- .iam$delete_role_policy_output()
@@ -1494,7 +1570,8 @@ iam_delete_saml_provider <- function(SAMLProviderArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$delete_saml_provider_input(SAMLProviderArn = SAMLProviderArn)
   output <- .iam$delete_saml_provider_output()
@@ -1530,7 +1607,8 @@ iam_delete_ssh_public_key <- function(UserName, SSHPublicKeyId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$delete_ssh_public_key_input(UserName = UserName, SSHPublicKeyId = SSHPublicKeyId)
   output <- .iam$delete_ssh_public_key_output()
@@ -1563,7 +1641,8 @@ iam_delete_server_certificate <- function(ServerCertificateName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$delete_server_certificate_input(ServerCertificateName = ServerCertificateName)
   output <- .iam$delete_server_certificate_output()
@@ -1595,7 +1674,8 @@ iam_delete_service_linked_role <- function(RoleName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$delete_service_linked_role_input(RoleName = RoleName)
   output <- .iam$delete_service_linked_role_output()
@@ -1631,7 +1711,8 @@ iam_delete_service_specific_credential <- function(UserName = NULL, ServiceSpeci
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$delete_service_specific_credential_input(UserName = UserName, ServiceSpecificCredentialId = ServiceSpecificCredentialId)
   output <- .iam$delete_service_specific_credential_output()
@@ -1667,7 +1748,8 @@ iam_delete_signing_certificate <- function(UserName = NULL, CertificateId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$delete_signing_certificate_input(UserName = UserName, CertificateId = CertificateId)
   output <- .iam$delete_signing_certificate_output()
@@ -1700,7 +1782,8 @@ iam_delete_user <- function(UserName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$delete_user_input(UserName = UserName)
   output <- .iam$delete_user_output()
@@ -1731,7 +1814,8 @@ iam_delete_user_permissions_boundary <- function(UserName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$delete_user_permissions_boundary_input(UserName = UserName)
   output <- .iam$delete_user_permissions_boundary_output()
@@ -1768,7 +1852,8 @@ iam_delete_user_policy <- function(UserName, PolicyName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$delete_user_policy_input(UserName = UserName, PolicyName = PolicyName)
   output <- .iam$delete_user_policy_output()
@@ -1801,7 +1886,8 @@ iam_delete_virtual_mfa_device <- function(SerialNumber) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$delete_virtual_mfa_device_input(SerialNumber = SerialNumber)
   output <- .iam$delete_virtual_mfa_device_output()
@@ -1837,7 +1923,8 @@ iam_detach_group_policy <- function(GroupName, PolicyArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$detach_group_policy_input(GroupName = GroupName, PolicyArn = PolicyArn)
   output <- .iam$detach_group_policy_output()
@@ -1873,7 +1960,8 @@ iam_detach_role_policy <- function(RoleName, PolicyArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$detach_role_policy_input(RoleName = RoleName, PolicyArn = PolicyArn)
   output <- .iam$detach_role_policy_output()
@@ -1909,7 +1997,8 @@ iam_detach_user_policy <- function(UserName, PolicyArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$detach_user_policy_input(UserName = UserName, PolicyArn = PolicyArn)
   output <- .iam$detach_user_policy_output()
@@ -1941,7 +2030,8 @@ iam_disable_organizations_root_credentials_management <- function() {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$disable_organizations_root_credentials_management_input()
   output <- .iam$disable_organizations_root_credentials_management_output()
@@ -1973,7 +2063,8 @@ iam_disable_organizations_root_sessions <- function() {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$disable_organizations_root_sessions_input()
   output <- .iam$disable_organizations_root_sessions_output()
@@ -2005,7 +2096,8 @@ iam_disable_outbound_web_identity_federation <- function() {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$disable_outbound_web_identity_federation_input()
   output <- .iam$disable_outbound_web_identity_federation_output()
@@ -2052,7 +2144,8 @@ iam_enable_mfa_device <- function(UserName, SerialNumber, AuthenticationCode1, A
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$enable_mfa_device_input(UserName = UserName, SerialNumber = SerialNumber, AuthenticationCode1 = AuthenticationCode1, AuthenticationCode2 = AuthenticationCode2)
   output <- .iam$enable_mfa_device_output()
@@ -2084,7 +2177,8 @@ iam_enable_organizations_root_credentials_management <- function() {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$enable_organizations_root_credentials_management_input()
   output <- .iam$enable_organizations_root_credentials_management_output()
@@ -2116,7 +2210,8 @@ iam_enable_organizations_root_sessions <- function() {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$enable_organizations_root_sessions_input()
   output <- .iam$enable_organizations_root_sessions_output()
@@ -2148,7 +2243,8 @@ iam_enable_outbound_web_identity_federation <- function() {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$enable_outbound_web_identity_federation_input()
   output <- .iam$enable_outbound_web_identity_federation_output()
@@ -2179,7 +2275,8 @@ iam_generate_credential_report <- function() {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$generate_credential_report_input()
   output <- .iam$generate_credential_report_output()
@@ -2213,7 +2310,8 @@ iam_generate_organizations_access_report <- function(EntityPath, OrganizationsPo
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$generate_organizations_access_report_input(EntityPath = EntityPath, OrganizationsPolicyId = OrganizationsPolicyId)
   output <- .iam$generate_organizations_access_report_output()
@@ -2247,7 +2345,8 @@ iam_generate_service_last_accessed_details <- function(Arn, Granularity = NULL) 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$generate_service_last_accessed_details_input(Arn = Arn, Granularity = Granularity)
   output <- .iam$generate_service_last_accessed_details_output()
@@ -2280,7 +2379,8 @@ iam_get_access_key_last_used <- function(AccessKeyId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$get_access_key_last_used_input(AccessKeyId = AccessKeyId)
   output <- .iam$get_access_key_last_used_output()
@@ -2319,7 +2419,8 @@ iam_get_account_authorization_details <- function(Filter = NULL, MaxItems = NULL
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = list("UserDetailList", "GroupDetailList", "RoleDetailList", "Policies")),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$get_account_authorization_details_input(Filter = Filter, MaxItems = MaxItems, Marker = Marker)
   output <- .iam$get_account_authorization_details_output()
@@ -2350,7 +2451,8 @@ iam_get_account_password_policy <- function() {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$get_account_password_policy_input()
   output <- .iam$get_account_password_policy_output()
@@ -2361,6 +2463,39 @@ iam_get_account_password_policy <- function() {
   return(response)
 }
 .iam$operations$get_account_password_policy <- iam_get_account_password_policy
+
+#' Retrieves the account-level properties for the caller's Amazon Web
+#' Services account
+#'
+#' @description
+#' Retrieves the account-level properties for the caller's Amazon Web Services account. Account properties are configuration settings that control account-wide IAM features such as Role Manager.
+#'
+#' See [https://www.paws-r-sdk.com/docs/iam_get_account_properties/](https://www.paws-r-sdk.com/docs/iam_get_account_properties/) for full documentation.
+#'
+
+#'
+#' @keywords internal
+#'
+#' @rdname iam_get_account_properties
+iam_get_account_properties <- function() {
+  op <- new_operation(
+    name = "GetAccountProperties",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE,
+    http_checksum = NULL
+  )
+  input <- .iam$get_account_properties_input()
+  output <- .iam$get_account_properties_output()
+  config <- get_config()
+  svc <- .iam$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.iam$operations$get_account_properties <- iam_get_account_properties
 
 #' Retrieves information about IAM entity usage and IAM quotas in the
 #' Amazon Web Services account
@@ -2382,7 +2517,8 @@ iam_get_account_summary <- function() {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$get_account_summary_input()
   output <- .iam$get_account_summary_output()
@@ -2421,7 +2557,8 @@ iam_get_context_keys_for_custom_policy <- function(PolicyInputList) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$get_context_keys_for_custom_policy_input(PolicyInputList = PolicyInputList)
   output <- .iam$get_context_keys_for_custom_policy_output()
@@ -2464,7 +2601,8 @@ iam_get_context_keys_for_principal_policy <- function(PolicySourceArn, PolicyInp
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$get_context_keys_for_principal_policy_input(PolicySourceArn = PolicySourceArn, PolicyInputList = PolicyInputList)
   output <- .iam$get_context_keys_for_principal_policy_output()
@@ -2495,7 +2633,8 @@ iam_get_credential_report <- function() {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$get_credential_report_input()
   output <- .iam$get_credential_report_output()
@@ -2531,7 +2670,8 @@ iam_get_delegation_request <- function(DelegationRequestId, DelegationPermission
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$get_delegation_request_input(DelegationRequestId = DelegationRequestId, DelegationPermissionCheck = DelegationPermissionCheck)
   output <- .iam$get_delegation_request_output()
@@ -2568,7 +2708,8 @@ iam_get_group <- function(GroupName, Marker = NULL, MaxItems = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Users", non_aggregate_keys = list( "Group")),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$get_group_input(GroupName = GroupName, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$get_group_output()
@@ -2605,7 +2746,8 @@ iam_get_group_policy <- function(GroupName, PolicyName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$get_group_policy_input(GroupName = GroupName, PolicyName = PolicyName)
   output <- .iam$get_group_policy_output()
@@ -2637,7 +2779,8 @@ iam_get_human_readable_summary <- function(EntityArn, Locale = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$get_human_readable_summary_input(EntityArn = EntityArn, Locale = Locale)
   output <- .iam$get_human_readable_summary_output()
@@ -2671,7 +2814,8 @@ iam_get_instance_profile <- function(InstanceProfileName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$get_instance_profile_input(InstanceProfileName = InstanceProfileName)
   output <- .iam$get_instance_profile_output()
@@ -2706,7 +2850,8 @@ iam_get_login_profile <- function(UserName = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$get_login_profile_input(UserName = UserName)
   output <- .iam$get_login_profile_output()
@@ -2738,7 +2883,8 @@ iam_get_mfa_device <- function(SerialNumber, UserName = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$get_mfa_device_input(SerialNumber = SerialNumber, UserName = UserName)
   output <- .iam$get_mfa_device_output()
@@ -2772,7 +2918,8 @@ iam_get_open_id_connect_provider <- function(OpenIDConnectProviderArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$get_open_id_connect_provider_input(OpenIDConnectProviderArn = OpenIDConnectProviderArn)
   output <- .iam$get_open_id_connect_provider_output()
@@ -2810,7 +2957,8 @@ iam_get_organizations_access_report <- function(JobId, MaxItems = NULL, Marker =
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$get_organizations_access_report_input(JobId = JobId, MaxItems = MaxItems, Marker = Marker, SortKey = SortKey)
   output <- .iam$get_organizations_access_report_output()
@@ -2842,7 +2990,8 @@ iam_get_outbound_web_identity_federation_info <- function() {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$get_outbound_web_identity_federation_info_input()
   output <- .iam$get_outbound_web_identity_federation_info_output()
@@ -2877,7 +3026,8 @@ iam_get_policy <- function(PolicyArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$get_policy_input(PolicyArn = PolicyArn)
   output <- .iam$get_policy_output()
@@ -2914,7 +3064,8 @@ iam_get_policy_version <- function(PolicyArn, VersionId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$get_policy_version_input(PolicyArn = PolicyArn, VersionId = VersionId)
   output <- .iam$get_policy_version_output()
@@ -2949,7 +3100,8 @@ iam_get_role <- function(RoleName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$get_role_input(RoleName = RoleName)
   output <- .iam$get_role_output()
@@ -2986,7 +3138,8 @@ iam_get_role_policy <- function(RoleName, PolicyName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$get_role_policy_input(RoleName = RoleName, PolicyName = PolicyName)
   output <- .iam$get_role_policy_output()
@@ -2997,6 +3150,41 @@ iam_get_role_policy <- function(RoleName, PolicyName) {
   return(response)
 }
 .iam$operations$get_role_policy <- iam_get_role_policy
+
+#' Retrieves information about a version of the specified role template
+#'
+#' @description
+#' Retrieves information about a version of the specified role template. Role templates define a reusable configuration—including role name and path patterns, trust policy, inline and managed policies, permissions boundary, tags, and maximum session duration—that you use to create IAM roles with [`acquire_role`][iam_acquire_role].
+#'
+#' See [https://www.paws-r-sdk.com/docs/iam_get_role_template_version/](https://www.paws-r-sdk.com/docs/iam_get_role_template_version/) for full documentation.
+#'
+#' @param TemplateArn &#91;required&#93; The Amazon Resource Name (ARN) of the role template whose version you want to retrieve.
+#' 
+#' For more information about ARNs, see [Amazon Resource Names (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html) in the *Amazon Web Services General Reference*.
+#' @param MinorVersion The minor version of the role template to retrieve. If you do not specify a minor version, the service returns the template's default minor version.
+#'
+#' @keywords internal
+#'
+#' @rdname iam_get_role_template_version
+iam_get_role_template_version <- function(TemplateArn, MinorVersion = NULL) {
+  op <- new_operation(
+    name = "GetRoleTemplateVersion",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE,
+    http_checksum = NULL
+  )
+  input <- .iam$get_role_template_version_input(TemplateArn = TemplateArn, MinorVersion = MinorVersion)
+  output <- .iam$get_role_template_version_output()
+  config <- get_config()
+  svc <- .iam$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.iam$operations$get_role_template_version <- iam_get_role_template_version
 
 #' Returns the SAML provider metadocument that was uploaded when the IAM
 #' SAML provider resource object was created or updated
@@ -3020,7 +3208,8 @@ iam_get_saml_provider <- function(SAMLProviderArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$get_saml_provider_input(SAMLProviderArn = SAMLProviderArn)
   output <- .iam$get_saml_provider_output()
@@ -3057,7 +3246,8 @@ iam_get_ssh_public_key <- function(UserName, SSHPublicKeyId, Encoding) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$get_ssh_public_key_input(UserName = UserName, SSHPublicKeyId = SSHPublicKeyId, Encoding = Encoding)
   output <- .iam$get_ssh_public_key_output()
@@ -3091,7 +3281,8 @@ iam_get_server_certificate <- function(ServerCertificateName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$get_server_certificate_input(ServerCertificateName = ServerCertificateName)
   output <- .iam$get_server_certificate_output()
@@ -3127,7 +3318,8 @@ iam_get_service_last_accessed_details <- function(JobId, MaxItems = NULL, Marker
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$get_service_last_accessed_details_input(JobId = JobId, MaxItems = MaxItems, Marker = Marker)
   output <- .iam$get_service_last_accessed_details_output()
@@ -3167,7 +3359,8 @@ iam_get_service_last_accessed_details_with_entities <- function(JobId, ServiceNa
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$get_service_last_accessed_details_with_entities_input(JobId = JobId, ServiceNamespace = ServiceNamespace, MaxItems = MaxItems, Marker = Marker)
   output <- .iam$get_service_last_accessed_details_with_entities_output()
@@ -3198,7 +3391,8 @@ iam_get_service_linked_role_deletion_status <- function(DeletionTaskId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$get_service_linked_role_deletion_status_input(DeletionTaskId = DeletionTaskId)
   output <- .iam$get_service_linked_role_deletion_status_output()
@@ -3232,7 +3426,8 @@ iam_get_user <- function(UserName = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$get_user_input(UserName = UserName)
   output <- .iam$get_user_output()
@@ -3269,7 +3464,8 @@ iam_get_user_policy <- function(UserName, PolicyName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$get_user_policy_input(UserName = UserName, PolicyName = PolicyName)
   output <- .iam$get_user_policy_output()
@@ -3307,7 +3503,8 @@ iam_list_access_keys <- function(UserName = NULL, Marker = NULL, MaxItems = NULL
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "AccessKeyMetadata"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$list_access_keys_input(UserName = UserName, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_access_keys_output()
@@ -3342,7 +3539,8 @@ iam_list_account_aliases <- function(Marker = NULL, MaxItems = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "AccountAliases"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$list_account_aliases_input(Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_account_aliases_output()
@@ -3382,7 +3580,8 @@ iam_list_attached_group_policies <- function(GroupName, PathPrefix = NULL, Marke
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "AttachedPolicies"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$list_attached_group_policies_input(GroupName = GroupName, PathPrefix = PathPrefix, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_attached_group_policies_output()
@@ -3422,7 +3621,8 @@ iam_list_attached_role_policies <- function(RoleName, PathPrefix = NULL, Marker 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "AttachedPolicies"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$list_attached_role_policies_input(RoleName = RoleName, PathPrefix = PathPrefix, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_attached_role_policies_output()
@@ -3462,7 +3662,8 @@ iam_list_attached_user_policies <- function(UserName, PathPrefix = NULL, Marker 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "AttachedPolicies"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$list_attached_user_policies_input(UserName = UserName, PathPrefix = PathPrefix, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_attached_user_policies_output()
@@ -3497,7 +3698,8 @@ iam_list_delegation_requests <- function(OwnerId = NULL, Marker = NULL, MaxItems
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$list_delegation_requests_input(OwnerId = OwnerId, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_delegation_requests_output()
@@ -3546,7 +3748,8 @@ iam_list_entities_for_policy <- function(PolicyArn, EntityFilter = NULL, PathPre
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = list("PolicyGroups", "PolicyUsers", "PolicyRoles")),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$list_entities_for_policy_input(PolicyArn = PolicyArn, EntityFilter = EntityFilter, PathPrefix = PathPrefix, PolicyUsageFilter = PolicyUsageFilter, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_entities_for_policy_output()
@@ -3584,7 +3787,8 @@ iam_list_group_policies <- function(GroupName, Marker = NULL, MaxItems = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "PolicyNames"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$list_group_policies_input(GroupName = GroupName, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_group_policies_output()
@@ -3621,7 +3825,8 @@ iam_list_groups <- function(PathPrefix = NULL, Marker = NULL, MaxItems = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Groups"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$list_groups_input(PathPrefix = PathPrefix, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_groups_output()
@@ -3658,7 +3863,8 @@ iam_list_groups_for_user <- function(UserName, Marker = NULL, MaxItems = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Groups"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$list_groups_for_user_input(UserName = UserName, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_groups_for_user_output()
@@ -3695,7 +3901,8 @@ iam_list_instance_profile_tags <- function(InstanceProfileName, Marker = NULL, M
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Tags"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$list_instance_profile_tags_input(InstanceProfileName = InstanceProfileName, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_instance_profile_tags_output()
@@ -3732,7 +3939,8 @@ iam_list_instance_profiles <- function(PathPrefix = NULL, Marker = NULL, MaxItem
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "InstanceProfiles"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$list_instance_profiles_input(PathPrefix = PathPrefix, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_instance_profiles_output()
@@ -3769,7 +3977,8 @@ iam_list_instance_profiles_for_role <- function(RoleName, Marker = NULL, MaxItem
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "InstanceProfiles"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$list_instance_profiles_for_role_input(RoleName = RoleName, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_instance_profiles_for_role_output()
@@ -3807,7 +4016,8 @@ iam_list_mfa_device_tags <- function(SerialNumber, Marker = NULL, MaxItems = NUL
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Tags"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$list_mfa_device_tags_input(SerialNumber = SerialNumber, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_mfa_device_tags_output()
@@ -3844,7 +4054,8 @@ iam_list_mfa_devices <- function(UserName = NULL, Marker = NULL, MaxItems = NULL
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "MFADevices"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$list_mfa_devices_input(UserName = UserName, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_mfa_devices_output()
@@ -3882,7 +4093,8 @@ iam_list_open_id_connect_provider_tags <- function(OpenIDConnectProviderArn, Mar
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Tags"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$list_open_id_connect_provider_tags_input(OpenIDConnectProviderArn = OpenIDConnectProviderArn, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_open_id_connect_provider_tags_output()
@@ -3914,7 +4126,8 @@ iam_list_open_id_connect_providers <- function() {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$list_open_id_connect_providers_input()
   output <- .iam$list_open_id_connect_providers_output()
@@ -3945,7 +4158,8 @@ iam_list_organizations_features <- function() {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$list_organizations_features_input()
   output <- .iam$list_organizations_features_output()
@@ -3995,7 +4209,8 @@ iam_list_policies <- function(Scope = NULL, OnlyAttached = NULL, PathPrefix = NU
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Policies"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$list_policies_input(Scope = Scope, OnlyAttached = OnlyAttached, PathPrefix = PathPrefix, PolicyUsageFilter = PolicyUsageFilter, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_policies_output()
@@ -4031,7 +4246,8 @@ iam_list_policies_granting_service_access <- function(Marker = NULL, Arn, Servic
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$list_policies_granting_service_access_input(Marker = Marker, Arn = Arn, ServiceNamespaces = ServiceNamespaces)
   output <- .iam$list_policies_granting_service_access_output()
@@ -4069,7 +4285,8 @@ iam_list_policy_tags <- function(PolicyArn, Marker = NULL, MaxItems = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Tags"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$list_policy_tags_input(PolicyArn = PolicyArn, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_policy_tags_output()
@@ -4108,7 +4325,8 @@ iam_list_policy_versions <- function(PolicyArn, Marker = NULL, MaxItems = NULL) 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Versions"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$list_policy_versions_input(PolicyArn = PolicyArn, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_policy_versions_output()
@@ -4146,7 +4364,8 @@ iam_list_role_policies <- function(RoleName, Marker = NULL, MaxItems = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "PolicyNames"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$list_role_policies_input(RoleName = RoleName, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_role_policies_output()
@@ -4183,7 +4402,8 @@ iam_list_role_tags <- function(RoleName, Marker = NULL, MaxItems = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Tags"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$list_role_tags_input(RoleName = RoleName, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_role_tags_output()
@@ -4220,7 +4440,8 @@ iam_list_roles <- function(PathPrefix = NULL, Marker = NULL, MaxItems = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Roles"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$list_roles_input(PathPrefix = PathPrefix, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_roles_output()
@@ -4258,7 +4479,8 @@ iam_list_saml_provider_tags <- function(SAMLProviderArn, Marker = NULL, MaxItems
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Tags"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$list_saml_provider_tags_input(SAMLProviderArn = SAMLProviderArn, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_saml_provider_tags_output()
@@ -4289,7 +4511,8 @@ iam_list_saml_providers <- function() {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$list_saml_providers_input()
   output <- .iam$list_saml_providers_output()
@@ -4327,7 +4550,8 @@ iam_list_ssh_public_keys <- function(UserName = NULL, Marker = NULL, MaxItems = 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "SSHPublicKeys"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$list_ssh_public_keys_input(UserName = UserName, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_ssh_public_keys_output()
@@ -4364,7 +4588,8 @@ iam_list_server_certificate_tags <- function(ServerCertificateName, Marker = NUL
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Tags"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$list_server_certificate_tags_input(ServerCertificateName = ServerCertificateName, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_server_certificate_tags_output()
@@ -4402,7 +4627,8 @@ iam_list_server_certificates <- function(PathPrefix = NULL, Marker = NULL, MaxIt
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "ServerCertificateMetadataList"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$list_server_certificates_input(PathPrefix = PathPrefix, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_server_certificates_output()
@@ -4418,7 +4644,7 @@ iam_list_server_certificates <- function(PathPrefix = NULL, Marker = NULL, MaxIt
 #' with the specified IAM user
 #'
 #' @description
-#' Returns information about the service-specific credentials associated with the specified IAM user. If none exists, the operation returns an empty list. The service-specific credentials returned by this operation are used only for authenticating the IAM user to a specific service. For more information about using service-specific credentials to authenticate to an Amazon Web Services service, see [Set up service-specific credentials](https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-gc.html) in the CodeCommit User Guide.
+#' Returns information about the service-specific credentials associated with the specified IAM user. If none exists, the operation returns an empty list. The service-specific credentials returned by this operation are used only for authenticating the IAM user to a specific service. For more information about using service-specific credentials to authenticate to an Amazon Web Services service, refer to the following docs:
 #'
 #' See [https://www.paws-r-sdk.com/docs/iam_list_service_specific_credentials/](https://www.paws-r-sdk.com/docs/iam_list_service_specific_credentials/) for full documentation.
 #'
@@ -4440,7 +4666,8 @@ iam_list_service_specific_credentials <- function(UserName = NULL, ServiceName =
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$list_service_specific_credentials_input(UserName = UserName, ServiceName = ServiceName, AllUsers = AllUsers, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_service_specific_credentials_output()
@@ -4478,7 +4705,8 @@ iam_list_signing_certificates <- function(UserName = NULL, Marker = NULL, MaxIte
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Certificates"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$list_signing_certificates_input(UserName = UserName, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_signing_certificates_output()
@@ -4516,7 +4744,8 @@ iam_list_user_policies <- function(UserName, Marker = NULL, MaxItems = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "PolicyNames"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$list_user_policies_input(UserName = UserName, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_user_policies_output()
@@ -4553,7 +4782,8 @@ iam_list_user_tags <- function(UserName, Marker = NULL, MaxItems = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Tags"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$list_user_tags_input(UserName = UserName, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_user_tags_output()
@@ -4590,7 +4820,8 @@ iam_list_users <- function(PathPrefix = NULL, Marker = NULL, MaxItems = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Users"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$list_users_input(PathPrefix = PathPrefix, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_users_output()
@@ -4626,7 +4857,8 @@ iam_list_virtual_mfa_devices <- function(AssignmentStatus = NULL, Marker = NULL,
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "VirtualMFADevices"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$list_virtual_mfa_devices_input(AssignmentStatus = AssignmentStatus, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_virtual_mfa_devices_output()
@@ -4637,6 +4869,43 @@ iam_list_virtual_mfa_devices <- function(AssignmentStatus = NULL, Marker = NULL,
   return(response)
 }
 .iam$operations$list_virtual_mfa_devices <- iam_list_virtual_mfa_devices
+
+#' Sets account-level properties for the caller's Amazon Web Services
+#' account
+#'
+#' @description
+#' Sets account-level properties for the caller's Amazon Web Services account. Account properties are configuration settings that control account-wide IAM features such as Role Manager.
+#'
+#' See [https://www.paws-r-sdk.com/docs/iam_put_account_properties/](https://www.paws-r-sdk.com/docs/iam_put_account_properties/) for full documentation.
+#'
+#' @param Properties &#91;required&#93; A map of property key-value pairs to set. All keys must belong to the same namespace.
+#' 
+#' Each key uses the format `Namespace/PropertyName`. The key must contain exactly one `/` separating the namespace from the property name, and cannot start or end with `/`.
+#' 
+#' The service validates each value based on the property key's expected type. For example, boolean properties expect `true` or `false`.
+#'
+#' @keywords internal
+#'
+#' @rdname iam_put_account_properties
+iam_put_account_properties <- function(Properties) {
+  op <- new_operation(
+    name = "PutAccountProperties",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE,
+    http_checksum = NULL
+  )
+  input <- .iam$put_account_properties_input(Properties = Properties)
+  output <- .iam$put_account_properties_output()
+  config <- get_config()
+  svc <- .iam$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.iam$operations$put_account_properties <- iam_put_account_properties
 
 #' Adds or updates an inline policy document that is embedded in the
 #' specified IAM group
@@ -4674,7 +4943,8 @@ iam_put_group_policy <- function(GroupName, PolicyName, PolicyDocument) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$put_group_policy_input(GroupName = GroupName, PolicyName = PolicyName, PolicyDocument = PolicyDocument)
   output <- .iam$put_group_policy_output()
@@ -4711,7 +4981,8 @@ iam_put_role_permissions_boundary <- function(RoleName, PermissionsBoundary) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$put_role_permissions_boundary_input(RoleName = RoleName, PermissionsBoundary = PermissionsBoundary)
   output <- .iam$put_role_permissions_boundary_output()
@@ -4759,7 +5030,8 @@ iam_put_role_policy <- function(RoleName, PolicyName, PolicyDocument) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$put_role_policy_input(RoleName = RoleName, PolicyName = PolicyName, PolicyDocument = PolicyDocument)
   output <- .iam$put_role_policy_output()
@@ -4796,7 +5068,8 @@ iam_put_user_permissions_boundary <- function(UserName, PermissionsBoundary) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$put_user_permissions_boundary_input(UserName = UserName, PermissionsBoundary = PermissionsBoundary)
   output <- .iam$put_user_permissions_boundary_output()
@@ -4844,7 +5117,8 @@ iam_put_user_policy <- function(UserName, PolicyName, PolicyDocument) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$put_user_policy_input(UserName = UserName, PolicyName = PolicyName, PolicyDocument = PolicyDocument)
   output <- .iam$put_user_policy_output()
@@ -4876,7 +5150,8 @@ iam_reject_delegation_request <- function(DelegationRequestId, Notes = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$reject_delegation_request_input(DelegationRequestId = DelegationRequestId, Notes = Notes)
   output <- .iam$reject_delegation_request_output()
@@ -4912,7 +5187,8 @@ iam_remove_client_id_from_open_id_connect_provider <- function(OpenIDConnectProv
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$remove_client_id_from_open_id_connect_provider_input(OpenIDConnectProviderArn = OpenIDConnectProviderArn, ClientID = ClientID)
   output <- .iam$remove_client_id_from_open_id_connect_provider_output()
@@ -4949,7 +5225,8 @@ iam_remove_role_from_instance_profile <- function(InstanceProfileName, RoleName)
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$remove_role_from_instance_profile_input(InstanceProfileName = InstanceProfileName, RoleName = RoleName)
   output <- .iam$remove_role_from_instance_profile_output()
@@ -4985,7 +5262,8 @@ iam_remove_user_from_group <- function(GroupName, UserName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$remove_user_from_group_input(GroupName = GroupName, UserName = UserName)
   output <- .iam$remove_user_from_group_output()
@@ -5021,7 +5299,8 @@ iam_reset_service_specific_credential <- function(UserName = NULL, ServiceSpecif
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$reset_service_specific_credential_input(UserName = UserName, ServiceSpecificCredentialId = ServiceSpecificCredentialId)
   output <- .iam$reset_service_specific_credential_output()
@@ -5064,7 +5343,8 @@ iam_resync_mfa_device <- function(UserName, SerialNumber, AuthenticationCode1, A
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$resync_mfa_device_input(UserName = UserName, SerialNumber = SerialNumber, AuthenticationCode1 = AuthenticationCode1, AuthenticationCode2 = AuthenticationCode2)
   output <- .iam$resync_mfa_device_output()
@@ -5095,7 +5375,8 @@ iam_send_delegation_token <- function(DelegationRequestId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$send_delegation_token_input(DelegationRequestId = DelegationRequestId)
   output <- .iam$send_delegation_token_output()
@@ -5132,7 +5413,8 @@ iam_set_default_policy_version <- function(PolicyArn, VersionId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$set_default_policy_version_input(PolicyArn = PolicyArn, VersionId = VersionId)
   output <- .iam$set_default_policy_version_output()
@@ -5166,7 +5448,8 @@ iam_set_security_token_service_preferences <- function(GlobalEndpointTokenVersio
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$set_security_token_service_preferences_input(GlobalEndpointTokenVersion = GlobalEndpointTokenVersion)
   output <- .iam$set_security_token_service_preferences_output()
@@ -5209,6 +5492,11 @@ iam_set_security_token_service_preferences <- function(GlobalEndpointTokenVersio
 #' -   The printable characters in the Basic Latin and Latin-1 Supplement character set (through ``U+00FF``)
 #' 
 #' -   The special characters tab (``U+0009``), line feed (``U+000A``), and carriage return (``U+000D``)
+#' @param OrderedOrganizationPolicyInputList An ordered list of service control policies (SCPs) to include in the simulation. Each element represents one level of an Organizations hierarchy, from the organization root to the account.
+#' 
+#' The simulator evaluates SCPs in the order that you provide, consistent with how Organizations enforces SCPs. The first element must represent the organization root, and the last element must represent the account. Any elements between them represent organizational units (OUs) in descending order.
+#' 
+#' Use this parameter to simulate the effect of an SCP hierarchy without calling [`simulate_principal_policy`][iam_simulate_principal_policy].
 #' @param ActionNames &#91;required&#93; A list of names of API operations to evaluate in the simulation. Each operation is evaluated against each resource. Each operation must include the service identifier, such as `iam:CreateUser`. This operation does not support using wildcards (*) in an action name.
 #' @param ResourceArns A list of ARNs of Amazon Web Services resources to include in the simulation. If this parameter is not provided, then the value defaults to `*` (all resources). Each API in the `ActionNames` parameter is evaluated for each resource in this list. The simulation determines the access result (allowed or denied) of each combination and reports it in the response. You can simulate resources that don't exist in your account.
 #' 
@@ -5235,9 +5523,9 @@ iam_set_security_token_service_preferences <- function(GlobalEndpointTokenVersio
 #' @param ResourceOwner An ARN representing the Amazon Web Services account ID that specifies the owner of any simulated resource that does not identify its owner in the resource ARN. Examples of resource ARNs include an S3 bucket or object. If `ResourceOwner` is specified, it is also used as the account owner of any `ResourcePolicy` included in the simulation. If the `ResourceOwner` parameter is not specified, then the owner of the resources and the resource policy defaults to the account of the identity provided in `CallerArn`. This parameter is required only if you specify a resource-based policy and account that owns the resource is different from the account that owns the simulated calling user `CallerArn`.
 #' 
 #' The ARN for an account uses the following syntax: `arn:aws:iam::AWS-account-ID:root`. For example, to represent the account with the 112233445566 ID, use the following ARN: `arn:aws:iam::112233445566-ID:root`.
-#' @param CallerArn The ARN of the IAM user that you want to use as the simulated caller of the API operations. `CallerArn` is required if you include a `ResourcePolicy` so that the policy's `Principal` element has a value to use in evaluating the policy.
+#' @param CallerArn The ARN of the IAM user, group, or role that you want to use as the simulated caller of the API operations. `CallerArn` is required if you include a `ResourcePolicy` so that the policy's `Principal` element has a value to use in evaluating the policy.
 #' 
-#' You can specify only the ARN of an IAM user. You cannot specify the ARN of an assumed role, federated user, or a service principal.
+#' You cannot specify the ARN of an assumed role, federated user, or a service principal.
 #' @param ContextEntries A list of context keys and corresponding values for the simulation to use. Whenever a context key is evaluated in one of the simulated IAM permissions policies, the corresponding value is supplied.
 #' @param ResourceHandlingOption Specifies the type of simulation to run. Different API operations that support resource-based policies require different combinations of resources. By specifying the type of simulation to run, you enable the policy simulator to enforce the presence of the required resources to ensure reliable simulation results. If your simulation does not match one of the following scenarios, then you can omit this parameter. The following list shows each of the supported scenario values and the resources that you must define to run the simulation.
 #' 
@@ -5266,16 +5554,17 @@ iam_set_security_token_service_preferences <- function(GlobalEndpointTokenVersio
 #' @keywords internal
 #'
 #' @rdname iam_simulate_custom_policy
-iam_simulate_custom_policy <- function(PolicyInputList, PermissionsBoundaryPolicyInputList = NULL, ActionNames, ResourceArns = NULL, ResourcePolicy = NULL, ResourceOwner = NULL, CallerArn = NULL, ContextEntries = NULL, ResourceHandlingOption = NULL, MaxItems = NULL, Marker = NULL) {
+iam_simulate_custom_policy <- function(PolicyInputList, PermissionsBoundaryPolicyInputList = NULL, OrderedOrganizationPolicyInputList = NULL, ActionNames, ResourceArns = NULL, ResourcePolicy = NULL, ResourceOwner = NULL, CallerArn = NULL, ContextEntries = NULL, ResourceHandlingOption = NULL, MaxItems = NULL, Marker = NULL) {
   op <- new_operation(
     name = "SimulateCustomPolicy",
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "EvaluationResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
-  input <- .iam$simulate_custom_policy_input(PolicyInputList = PolicyInputList, PermissionsBoundaryPolicyInputList = PermissionsBoundaryPolicyInputList, ActionNames = ActionNames, ResourceArns = ResourceArns, ResourcePolicy = ResourcePolicy, ResourceOwner = ResourceOwner, CallerArn = CallerArn, ContextEntries = ContextEntries, ResourceHandlingOption = ResourceHandlingOption, MaxItems = MaxItems, Marker = Marker)
+  input <- .iam$simulate_custom_policy_input(PolicyInputList = PolicyInputList, PermissionsBoundaryPolicyInputList = PermissionsBoundaryPolicyInputList, OrderedOrganizationPolicyInputList = OrderedOrganizationPolicyInputList, ActionNames = ActionNames, ResourceArns = ResourceArns, ResourcePolicy = ResourcePolicy, ResourceOwner = ResourceOwner, CallerArn = CallerArn, ContextEntries = ContextEntries, ResourceHandlingOption = ResourceHandlingOption, MaxItems = MaxItems, Marker = Marker)
   output <- .iam$simulate_custom_policy_output()
   config <- get_config()
   svc <- .iam$service(config, op)
@@ -5319,6 +5608,11 @@ iam_simulate_custom_policy <- function(PolicyInputList, PermissionsBoundaryPolic
 #' -   The printable characters in the Basic Latin and Latin-1 Supplement character set (through ``U+00FF``)
 #' 
 #' -   The special characters tab (``U+0009``), line feed (``U+000A``), and carriage return (``U+000D``)
+#' @param PolicyExclusionList A list of policies to exclude from the simulation. Use this parameter to test what the simulation result would be if a policy were removed, without changing which policies are actually attached to the principal identified by `PolicySourceArn`.
+#' 
+#' Each entry is a [PolicyIdentifier](https://docs.aws.amazon.com/IAM/latest/APIReference/API_PolicyIdentifier.html) that identifies one or more policies to exclude by policy type, by Amazon Resource Name (ARN), or by the name of an inline policy and the entity it is attached to.
+#' 
+#' Syntactically invalid identifiers, such as malformed ARNs or wildcards in disallowed positions, cause the request to fail with an `InvalidInput` error. Syntactically valid identifiers that don't match any attached policy are ignored. Resource control policies (RCPs) are not supported in this release; identifiers that target RCPs are also ignored.
 #' @param ActionNames &#91;required&#93; A list of names of API operations to evaluate in the simulation. Each operation is evaluated for each resource. Each operation must include the service identifier, such as `iam:CreateUser`.
 #' @param ResourceArns A list of ARNs of Amazon Web Services resources to include in the simulation. If this parameter is not provided, then the value defaults to `*` (all resources). Each API in the `ActionNames` parameter is evaluated for each resource in this list. The simulation determines the access result (allowed or denied) of each combination and reports it in the response. You can simulate resources that don't exist in your account.
 #' 
@@ -5341,11 +5635,11 @@ iam_simulate_custom_policy <- function(PolicyInputList, PermissionsBoundaryPolic
 #' 
 #' Simulation of resource-based policies isn't supported for IAM roles.
 #' @param ResourceOwner An Amazon Web Services account ID that specifies the owner of any simulated resource that does not identify its owner in the resource ARN. Examples of resource ARNs include an S3 bucket or object. If `ResourceOwner` is specified, it is also used as the account owner of any `ResourcePolicy` included in the simulation. If the `ResourceOwner` parameter is not specified, then the owner of the resources and the resource policy defaults to the account of the identity provided in `CallerArn`. This parameter is required only if you specify a resource-based policy and account that owns the resource is different from the account that owns the simulated calling user `CallerArn`.
-#' @param CallerArn The ARN of the IAM user that you want to specify as the simulated caller of the API operations. If you do not specify a `CallerArn`, it defaults to the ARN of the user that you specify in `PolicySourceArn`, if you specified a user. If you include both a `PolicySourceArn` (for example, `arn:aws:iam::123456789012:user/David`) and a `CallerArn` (for example, `arn:aws:iam::123456789012:user/Bob`), the result is that you simulate calling the API operations as Bob, as if Bob had David's policies.
+#' @param CallerArn The ARN of the IAM user, group, or role that you want to specify as the simulated caller of the API operations. If you do not specify a `CallerArn`, it defaults to the ARN of the user, group, or role that you specify in `PolicySourceArn`. If you include both a `PolicySourceArn` (for example, `arn:aws:iam::123456789012:user/David`) and a `CallerArn` (for example, `arn:aws:iam::123456789012:user/Bob`), the result is that you simulate calling the API operations as Bob, as if Bob had David's policies.
 #' 
-#' You can specify only the ARN of an IAM user. You cannot specify the ARN of an assumed role, federated user, or a service principal.
+#' You can specify the ARN of an IAM user, group, or role. You cannot specify the ARN of an assumed role, federated user, or a service principal.
 #' 
-#' `CallerArn` is required if you include a `ResourcePolicy` and the `PolicySourceArn` is not the ARN for an IAM user. This is required so that the resource-based policy's `Principal` element has a value to use in evaluating the policy.
+#' `CallerArn` is required if you include a `ResourcePolicy` and the `PolicySourceArn` is not the ARN for an IAM user, group, or role. This is required so that the resource-based policy's `Principal` element has a value to use in evaluating the policy.
 #' 
 #' For more information about ARNs, see [Amazon Resource Names (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html) in the *Amazon Web Services General Reference*.
 #' @param ContextEntries A list of context keys and corresponding values for the simulation to use. Whenever a context key is evaluated in one of the simulated IAM permissions policies, the corresponding value is supplied.
@@ -5376,16 +5670,17 @@ iam_simulate_custom_policy <- function(PolicyInputList, PermissionsBoundaryPolic
 #' @keywords internal
 #'
 #' @rdname iam_simulate_principal_policy
-iam_simulate_principal_policy <- function(PolicySourceArn, PolicyInputList = NULL, PermissionsBoundaryPolicyInputList = NULL, ActionNames, ResourceArns = NULL, ResourcePolicy = NULL, ResourceOwner = NULL, CallerArn = NULL, ContextEntries = NULL, ResourceHandlingOption = NULL, MaxItems = NULL, Marker = NULL) {
+iam_simulate_principal_policy <- function(PolicySourceArn, PolicyInputList = NULL, PermissionsBoundaryPolicyInputList = NULL, PolicyExclusionList = NULL, ActionNames, ResourceArns = NULL, ResourcePolicy = NULL, ResourceOwner = NULL, CallerArn = NULL, ContextEntries = NULL, ResourceHandlingOption = NULL, MaxItems = NULL, Marker = NULL) {
   op <- new_operation(
     name = "SimulatePrincipalPolicy",
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "EvaluationResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
-  input <- .iam$simulate_principal_policy_input(PolicySourceArn = PolicySourceArn, PolicyInputList = PolicyInputList, PermissionsBoundaryPolicyInputList = PermissionsBoundaryPolicyInputList, ActionNames = ActionNames, ResourceArns = ResourceArns, ResourcePolicy = ResourcePolicy, ResourceOwner = ResourceOwner, CallerArn = CallerArn, ContextEntries = ContextEntries, ResourceHandlingOption = ResourceHandlingOption, MaxItems = MaxItems, Marker = Marker)
+  input <- .iam$simulate_principal_policy_input(PolicySourceArn = PolicySourceArn, PolicyInputList = PolicyInputList, PermissionsBoundaryPolicyInputList = PermissionsBoundaryPolicyInputList, PolicyExclusionList = PolicyExclusionList, ActionNames = ActionNames, ResourceArns = ResourceArns, ResourcePolicy = ResourcePolicy, ResourceOwner = ResourceOwner, CallerArn = CallerArn, ContextEntries = ContextEntries, ResourceHandlingOption = ResourceHandlingOption, MaxItems = MaxItems, Marker = Marker)
   output <- .iam$simulate_principal_policy_output()
   config <- get_config()
   svc <- .iam$service(config, op)
@@ -5417,7 +5712,8 @@ iam_tag_instance_profile <- function(InstanceProfileName, Tags) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$tag_instance_profile_input(InstanceProfileName = InstanceProfileName, Tags = Tags)
   output <- .iam$tag_instance_profile_output()
@@ -5452,7 +5748,8 @@ iam_tag_mfa_device <- function(SerialNumber, Tags) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$tag_mfa_device_input(SerialNumber = SerialNumber, Tags = Tags)
   output <- .iam$tag_mfa_device_output()
@@ -5487,7 +5784,8 @@ iam_tag_open_id_connect_provider <- function(OpenIDConnectProviderArn, Tags) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$tag_open_id_connect_provider_input(OpenIDConnectProviderArn = OpenIDConnectProviderArn, Tags = Tags)
   output <- .iam$tag_open_id_connect_provider_output()
@@ -5521,7 +5819,8 @@ iam_tag_policy <- function(PolicyArn, Tags) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$tag_policy_input(PolicyArn = PolicyArn, Tags = Tags)
   output <- .iam$tag_policy_output()
@@ -5555,7 +5854,8 @@ iam_tag_role <- function(RoleName, Tags) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$tag_role_input(RoleName = RoleName, Tags = Tags)
   output <- .iam$tag_role_output()
@@ -5590,7 +5890,8 @@ iam_tag_saml_provider <- function(SAMLProviderArn, Tags) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$tag_saml_provider_input(SAMLProviderArn = SAMLProviderArn, Tags = Tags)
   output <- .iam$tag_saml_provider_output()
@@ -5624,7 +5925,8 @@ iam_tag_server_certificate <- function(ServerCertificateName, Tags) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$tag_server_certificate_input(ServerCertificateName = ServerCertificateName, Tags = Tags)
   output <- .iam$tag_server_certificate_output()
@@ -5658,7 +5960,8 @@ iam_tag_user <- function(UserName, Tags) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$tag_user_input(UserName = UserName, Tags = Tags)
   output <- .iam$tag_user_output()
@@ -5692,7 +5995,8 @@ iam_untag_instance_profile <- function(InstanceProfileName, TagKeys) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$untag_instance_profile_input(InstanceProfileName = InstanceProfileName, TagKeys = TagKeys)
   output <- .iam$untag_instance_profile_output()
@@ -5727,7 +6031,8 @@ iam_untag_mfa_device <- function(SerialNumber, TagKeys) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$untag_mfa_device_input(SerialNumber = SerialNumber, TagKeys = TagKeys)
   output <- .iam$untag_mfa_device_output()
@@ -5762,7 +6067,8 @@ iam_untag_open_id_connect_provider <- function(OpenIDConnectProviderArn, TagKeys
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$untag_open_id_connect_provider_input(OpenIDConnectProviderArn = OpenIDConnectProviderArn, TagKeys = TagKeys)
   output <- .iam$untag_open_id_connect_provider_output()
@@ -5796,7 +6102,8 @@ iam_untag_policy <- function(PolicyArn, TagKeys) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$untag_policy_input(PolicyArn = PolicyArn, TagKeys = TagKeys)
   output <- .iam$untag_policy_output()
@@ -5830,7 +6137,8 @@ iam_untag_role <- function(RoleName, TagKeys) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$untag_role_input(RoleName = RoleName, TagKeys = TagKeys)
   output <- .iam$untag_role_output()
@@ -5865,7 +6173,8 @@ iam_untag_saml_provider <- function(SAMLProviderArn, TagKeys) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$untag_saml_provider_input(SAMLProviderArn = SAMLProviderArn, TagKeys = TagKeys)
   output <- .iam$untag_saml_provider_output()
@@ -5899,7 +6208,8 @@ iam_untag_server_certificate <- function(ServerCertificateName, TagKeys) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$untag_server_certificate_input(ServerCertificateName = ServerCertificateName, TagKeys = TagKeys)
   output <- .iam$untag_server_certificate_output()
@@ -5933,7 +6243,8 @@ iam_untag_user <- function(UserName, TagKeys) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$untag_user_input(UserName = UserName, TagKeys = TagKeys)
   output <- .iam$untag_user_output()
@@ -5971,7 +6282,8 @@ iam_update_access_key <- function(UserName = NULL, AccessKeyId, Status) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$update_access_key_input(UserName = UserName, AccessKeyId = AccessKeyId, Status = Status)
   output <- .iam$update_access_key_output()
@@ -6032,7 +6344,8 @@ iam_update_account_password_policy <- function(MinimumPasswordLength = NULL, Req
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$update_account_password_policy_input(MinimumPasswordLength = MinimumPasswordLength, RequireSymbols = RequireSymbols, RequireNumbers = RequireNumbers, RequireUppercaseCharacters = RequireUppercaseCharacters, RequireLowercaseCharacters = RequireLowercaseCharacters, AllowUsersToChangePassword = AllowUsersToChangePassword, MaxPasswordAge = MaxPasswordAge, PasswordReusePrevention = PasswordReusePrevention, HardExpiry = HardExpiry)
   output <- .iam$update_account_password_policy_output()
@@ -6076,7 +6389,8 @@ iam_update_assume_role_policy <- function(RoleName, PolicyDocument) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$update_assume_role_policy_input(RoleName = RoleName, PolicyDocument = PolicyDocument)
   output <- .iam$update_assume_role_policy_output()
@@ -6108,7 +6422,8 @@ iam_update_delegation_request <- function(DelegationRequestId, Notes = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$update_delegation_request_input(DelegationRequestId = DelegationRequestId, Notes = Notes)
   output <- .iam$update_delegation_request_output()
@@ -6147,7 +6462,8 @@ iam_update_group <- function(GroupName, NewPath = NULL, NewGroupName = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$update_group_input(GroupName = GroupName, NewPath = NewPath, NewGroupName = NewGroupName)
   output <- .iam$update_group_output()
@@ -6192,7 +6508,8 @@ iam_update_login_profile <- function(UserName, Password = NULL, PasswordResetReq
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$update_login_profile_input(UserName = UserName, Password = Password, PasswordResetRequired = PasswordResetRequired)
   output <- .iam$update_login_profile_output()
@@ -6228,7 +6545,8 @@ iam_update_open_id_connect_provider_thumbprint <- function(OpenIDConnectProvider
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$update_open_id_connect_provider_thumbprint_input(OpenIDConnectProviderArn = OpenIDConnectProviderArn, ThumbprintList = ThumbprintList)
   output <- .iam$update_open_id_connect_provider_thumbprint_output()
@@ -6265,7 +6583,8 @@ iam_update_role <- function(RoleName, Description = NULL, MaxSessionDuration = N
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$update_role_input(RoleName = RoleName, Description = Description, MaxSessionDuration = MaxSessionDuration)
   output <- .iam$update_role_output()
@@ -6297,7 +6616,8 @@ iam_update_role_description <- function(RoleName, Description) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$update_role_description_input(RoleName = RoleName, Description = Description)
   output <- .iam$update_role_description_output()
@@ -6335,7 +6655,8 @@ iam_update_saml_provider <- function(SAMLMetadataDocument = NULL, SAMLProviderAr
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$update_saml_provider_input(SAMLMetadataDocument = SAMLMetadataDocument, SAMLProviderArn = SAMLProviderArn, AssertionEncryptionMode = AssertionEncryptionMode, AddPrivateKey = AddPrivateKey, RemovePrivateKey = RemovePrivateKey)
   output <- .iam$update_saml_provider_output()
@@ -6372,7 +6693,8 @@ iam_update_ssh_public_key <- function(UserName, SSHPublicKeyId, Status) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$update_ssh_public_key_input(UserName = UserName, SSHPublicKeyId = SSHPublicKeyId, Status = Status)
   output <- .iam$update_ssh_public_key_output()
@@ -6412,7 +6734,8 @@ iam_update_server_certificate <- function(ServerCertificateName, NewPath = NULL,
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$update_server_certificate_input(ServerCertificateName = ServerCertificateName, NewPath = NewPath, NewServerCertificateName = NewServerCertificateName)
   output <- .iam$update_server_certificate_output()
@@ -6449,7 +6772,8 @@ iam_update_service_specific_credential <- function(UserName = NULL, ServiceSpeci
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$update_service_specific_credential_input(UserName = UserName, ServiceSpecificCredentialId = ServiceSpecificCredentialId, Status = Status)
   output <- .iam$update_service_specific_credential_output()
@@ -6487,7 +6811,8 @@ iam_update_signing_certificate <- function(UserName = NULL, CertificateId, Statu
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$update_signing_certificate_input(UserName = UserName, CertificateId = CertificateId, Status = Status)
   output <- .iam$update_signing_certificate_output()
@@ -6526,7 +6851,8 @@ iam_update_user <- function(UserName, NewPath = NULL, NewUserName = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$update_user_input(UserName = UserName, NewPath = NewPath, NewUserName = NewUserName)
   output <- .iam$update_user_output()
@@ -6568,7 +6894,8 @@ iam_upload_ssh_public_key <- function(UserName, SSHPublicKeyBody) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$upload_ssh_public_key_input(UserName = UserName, SSHPublicKeyBody = SSHPublicKeyBody)
   output <- .iam$upload_ssh_public_key_output()
@@ -6636,7 +6963,8 @@ iam_upload_server_certificate <- function(Path = NULL, ServerCertificateName, Ce
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$upload_server_certificate_input(Path = Path, ServerCertificateName = ServerCertificateName, CertificateBody = CertificateBody, PrivateKey = PrivateKey, CertificateChain = CertificateChain, Tags = Tags)
   output <- .iam$upload_server_certificate_output()
@@ -6678,7 +7006,8 @@ iam_upload_signing_certificate <- function(UserName = NULL, CertificateBody) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iam$upload_signing_certificate_input(UserName = UserName, CertificateBody = CertificateBody)
   output <- .iam$upload_signing_certificate_output()

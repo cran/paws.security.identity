@@ -1,3 +1,3 @@
-svc <- paws::cloudhsm()
+svc <- paws.security.identity::cloudhsm()
 
 

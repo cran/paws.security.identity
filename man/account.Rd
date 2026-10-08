@@ -24,6 +24,7 @@ account(config = list(), credentials = list(), endpoint = NULL, region = NULL)
 \item{\strong{timeout}: The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 \item{\strong{s3_force_path_style}: Set this to \code{true} to force the request to use path-style addressing, i.e. \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
 \item{\strong{sts_regional_endpoint}: Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
+\item{\strong{use_dual_stack}: Set this to \code{true} to use the dualstack (IPv4 and IPv6) endpoint for a service, where available, falling back to the regular endpoint when it isn't. Defaults to the \code{AWS_USE_DUALSTACK_ENDPOINT} environment variable when unset.}
 }}
 
 \item{credentials}{Optional credentials shorthand for the config parameter
@@ -69,7 +70,8 @@ Operations for Amazon Web Services Account Management
     close_connection = "logical",
     timeout = "numeric",
     s3_force_path_style = "logical",
-    sts_regional_endpoint = "string"
+    sts_regional_endpoint = "string",
+    use_dual_stack = "logical"
   ),
   credentials = list(
     creds = list(
@@ -98,12 +100,15 @@ Operations for Amazon Web Services Account Management
 \link[=account_get_contact_information]{get_contact_information} \tab Retrieves the primary contact information of an Amazon Web Services account\cr
 \link[=account_get_gov_cloud_account_information]{get_gov_cloud_account_information} \tab Retrieves information about the GovCloud account linked to the specified standard account (if it exists) including the GovCloud account ID and state\cr
 \link[=account_get_primary_email]{get_primary_email} \tab Retrieves the primary email address for the specified account\cr
+\link[=account_get_primary_email_update_status]{get_primary_email_update_status} \tab Retrieves the status of the most recent primary email update for the specified account\cr
 \link[=account_get_region_opt_status]{get_region_opt_status} \tab Retrieves the opt-in status of a particular Region\cr
 \link[=account_list_regions]{list_regions} \tab Lists all the Regions for a given account and their respective opt-in statuses\cr
 \link[=account_put_account_name]{put_account_name} \tab Updates the account name of the specified account\cr
 \link[=account_put_alternate_contact]{put_alternate_contact} \tab Modifies the specified alternate contact attached to an Amazon Web Services account\cr
 \link[=account_put_contact_information]{put_contact_information} \tab Updates the primary contact information of an Amazon Web Services account\cr
-\link[=account_start_primary_email_update]{start_primary_email_update} \tab Starts the process to update the primary email address for the specified account
+\link[=account_send_phone_number_verification]{send_phone_number_verification} \tab Sends a one-time passcode to the phone number in the primary contact information of an Amazon Web Services account\cr
+\link[=account_start_primary_email_update]{start_primary_email_update} \tab Starts the process to update the primary email address for the specified account\cr
+\link[=account_verify_phone_number]{verify_phone_number} \tab Verifies the phone number in the primary contact information of an Amazon Web Services account by submitting the one-time passcode that SendPhoneNumberVerification sent to that phone number
 }
 }
 

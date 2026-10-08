@@ -32,7 +32,8 @@ kms_cancel_key_deletion <- function(KeyId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$cancel_key_deletion_input(KeyId = KeyId)
   output <- .kms$cancel_key_deletion_output()
@@ -63,7 +64,8 @@ kms_connect_custom_key_store <- function(CustomKeyStoreId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$connect_custom_key_store_input(CustomKeyStoreId = CustomKeyStoreId)
   output <- .kms$connect_custom_key_store_output()
@@ -113,7 +115,8 @@ kms_create_alias <- function(AliasName, TargetKeyId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$create_alias_input(AliasName = AliasName, TargetKeyId = TargetKeyId)
   output <- .kms$create_alias_output()
@@ -206,7 +209,8 @@ kms_create_custom_key_store <- function(CustomKeyStoreName, CloudHsmClusterId = 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$create_custom_key_store_input(CustomKeyStoreName = CustomKeyStoreName, CloudHsmClusterId = CloudHsmClusterId, TrustAnchorCertificate = TrustAnchorCertificate, KeyStorePassword = KeyStorePassword, CustomKeyStoreType = CustomKeyStoreType, XksProxyUriEndpoint = XksProxyUriEndpoint, XksProxyUriPath = XksProxyUriPath, XksProxyVpcEndpointServiceName = XksProxyVpcEndpointServiceName, XksProxyVpcEndpointServiceOwner = XksProxyVpcEndpointServiceOwner, XksProxyAuthenticationCredential = XksProxyAuthenticationCredential, XksProxyConnectivity = XksProxyConnectivity)
   output <- .kms$create_custom_key_store_output()
@@ -298,7 +302,8 @@ kms_create_grant <- function(KeyId, GranteePrincipal = NULL, RetiringPrincipal =
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$create_grant_input(KeyId = KeyId, GranteePrincipal = GranteePrincipal, RetiringPrincipal = RetiringPrincipal, Operations = Operations, Constraints = Constraints, GrantTokens = GrantTokens, Name = Name, DryRun = DryRun, GranteeServicePrincipal = GranteeServicePrincipal, RetiringServicePrincipal = RetiringServicePrincipal)
   output <- .kms$create_grant_output()
@@ -474,7 +479,8 @@ kms_create_key <- function(Policy = NULL, Description = NULL, KeyUsage = NULL, C
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$create_key_input(Policy = Policy, Description = Description, KeyUsage = KeyUsage, CustomerMasterKeySpec = CustomerMasterKeySpec, KeySpec = KeySpec, Origin = Origin, CustomKeyStoreId = CustomKeyStoreId, BypassPolicyLockoutSafetyCheck = BypassPolicyLockoutSafetyCheck, Tags = Tags, MultiRegion = MultiRegion, XksKeyId = XksKeyId)
   output <- .kms$create_key_output()
@@ -553,7 +559,8 @@ kms_decrypt <- function(CiphertextBlob = NULL, EncryptionContext = NULL, GrantTo
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$decrypt_input(CiphertextBlob = CiphertextBlob, EncryptionContext = EncryptionContext, GrantTokens = GrantTokens, KeyId = KeyId, EncryptionAlgorithm = EncryptionAlgorithm, Recipient = Recipient, DryRun = DryRun, DryRunModifiers = DryRunModifiers)
   output <- .kms$decrypt_output()
@@ -584,7 +591,8 @@ kms_delete_alias <- function(AliasName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$delete_alias_input(AliasName = AliasName)
   output <- .kms$delete_alias_output()
@@ -615,7 +623,8 @@ kms_delete_custom_key_store <- function(CustomKeyStoreId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$delete_custom_key_store_input(CustomKeyStoreId = CustomKeyStoreId)
   output <- .kms$delete_custom_key_store_output()
@@ -661,7 +670,8 @@ kms_delete_imported_key_material <- function(KeyId, KeyMaterialId = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$delete_imported_key_material_input(KeyId = KeyId, KeyMaterialId = KeyMaterialId)
   output <- .kms$delete_imported_key_material_output()
@@ -698,7 +708,7 @@ kms_delete_imported_key_material <- function(KeyId, KeyMaterialId = NULL) {
 #' @param KeyAgreementAlgorithm &#91;required&#93; Specifies the key agreement algorithm used to derive the shared secret. The only valid value is `ECDH`.
 #' @param PublicKey &#91;required&#93; Specifies the public key in your peer's NIST-standard elliptic curve (ECC) or SM2 (China Regions only) key pair.
 #' 
-#' The public key must be a DER-encoded X.509 public key, also known as `SubjectPublicKeyInfo` (SPKI), as defined in [RFC 5280](https://datatracker.ietf.org/doc/html/rfc5280).
+#' The public key must be a DER-encoded X.509 public key, also known as `SubjectPublicKeyInfo` (SPKI), as defined in [RFC 5280](https://www.rfc-editor.org/info/rfc5280/).
 #' 
 #' [`get_public_key`][kms_get_public_key] returns the public key of an asymmetric KMS key pair in the required DER-encoded format.
 #' 
@@ -729,7 +739,8 @@ kms_derive_shared_secret <- function(KeyId, KeyAgreementAlgorithm, PublicKey, Gr
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$derive_shared_secret_input(KeyId = KeyId, KeyAgreementAlgorithm = KeyAgreementAlgorithm, PublicKey = PublicKey, GrantTokens = GrantTokens, DryRun = DryRun, Recipient = Recipient)
   output <- .kms$derive_shared_secret_output()
@@ -767,7 +778,8 @@ kms_describe_custom_key_stores <- function(CustomKeyStoreId = NULL, CustomKeySto
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "Limit", more_results = "Truncated", output_token = "NextMarker", result_key = "CustomKeyStores"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$describe_custom_key_stores_input(CustomKeyStoreId = CustomKeyStoreId, CustomKeyStoreName = CustomKeyStoreName, Limit = Limit, Marker = Marker)
   output <- .kms$describe_custom_key_stores_output()
@@ -817,7 +829,8 @@ kms_describe_key <- function(KeyId, GrantTokens = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$describe_key_input(KeyId = KeyId, GrantTokens = GrantTokens)
   output <- .kms$describe_key_output()
@@ -858,7 +871,8 @@ kms_disable_key <- function(KeyId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$disable_key_input(KeyId = KeyId)
   output <- .kms$disable_key_output()
@@ -900,7 +914,8 @@ kms_disable_key_rotation <- function(KeyId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$disable_key_rotation_input(KeyId = KeyId)
   output <- .kms$disable_key_rotation_output()
@@ -931,7 +946,8 @@ kms_disconnect_custom_key_store <- function(CustomKeyStoreId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$disconnect_custom_key_store_input(CustomKeyStoreId = CustomKeyStoreId)
   output <- .kms$disconnect_custom_key_store_output()
@@ -972,7 +988,8 @@ kms_enable_key <- function(KeyId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$enable_key_input(KeyId = KeyId)
   output <- .kms$enable_key_output()
@@ -1019,7 +1036,8 @@ kms_enable_key_rotation <- function(KeyId, RotationPeriodInDays = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$enable_key_rotation_input(KeyId = KeyId, RotationPeriodInDays = RotationPeriodInDays)
   output <- .kms$enable_key_rotation_output()
@@ -1083,7 +1101,8 @@ kms_encrypt <- function(KeyId, Plaintext, EncryptionContext = NULL, GrantTokens 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$encrypt_input(KeyId = KeyId, Plaintext = Plaintext, EncryptionContext = EncryptionContext, GrantTokens = GrantTokens, EncryptionAlgorithm = EncryptionAlgorithm, DryRun = DryRun)
   output <- .kms$encrypt_output()
@@ -1154,7 +1173,8 @@ kms_generate_data_key <- function(KeyId, EncryptionContext = NULL, NumberOfBytes
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$generate_data_key_input(KeyId = KeyId, EncryptionContext = EncryptionContext, NumberOfBytes = NumberOfBytes, KeySpec = KeySpec, GrantTokens = GrantTokens, Recipient = Recipient, DryRun = DryRun)
   output <- .kms$generate_data_key_output()
@@ -1222,7 +1242,8 @@ kms_generate_data_key_pair <- function(EncryptionContext = NULL, KeyId, KeyPairS
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$generate_data_key_pair_input(EncryptionContext = EncryptionContext, KeyId = KeyId, KeyPairSpec = KeyPairSpec, GrantTokens = GrantTokens, Recipient = Recipient, DryRun = DryRun)
   output <- .kms$generate_data_key_pair_output()
@@ -1283,7 +1304,8 @@ kms_generate_data_key_pair_without_plaintext <- function(EncryptionContext = NUL
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$generate_data_key_pair_without_plaintext_input(EncryptionContext = EncryptionContext, KeyId = KeyId, KeyPairSpec = KeyPairSpec, GrantTokens = GrantTokens, DryRun = DryRun)
   output <- .kms$generate_data_key_pair_without_plaintext_output()
@@ -1343,7 +1365,8 @@ kms_generate_data_key_without_plaintext <- function(KeyId, EncryptionContext = N
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$generate_data_key_without_plaintext_input(KeyId = KeyId, EncryptionContext = EncryptionContext, KeySpec = KeySpec, NumberOfBytes = NumberOfBytes, GrantTokens = GrantTokens, DryRun = DryRun)
   output <- .kms$generate_data_key_without_plaintext_output()
@@ -1389,7 +1412,8 @@ kms_generate_mac <- function(Message, KeyId, MacAlgorithm, GrantTokens = NULL, D
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$generate_mac_input(Message = Message, KeyId = KeyId, MacAlgorithm = MacAlgorithm, GrantTokens = GrantTokens, DryRun = DryRun)
   output <- .kms$generate_mac_output()
@@ -1430,7 +1454,8 @@ kms_generate_random <- function(NumberOfBytes = NULL, CustomKeyStoreId = NULL, R
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$generate_random_input(NumberOfBytes = NumberOfBytes, CustomKeyStoreId = CustomKeyStoreId, Recipient = Recipient)
   output <- .kms$generate_random_output()
@@ -1473,7 +1498,8 @@ kms_get_key_last_usage <- function(KeyId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$get_key_last_usage_input(KeyId = KeyId)
   output <- .kms$get_key_last_usage_output()
@@ -1515,7 +1541,8 @@ kms_get_key_policy <- function(KeyId, PolicyName = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$get_key_policy_input(KeyId = KeyId, PolicyName = PolicyName)
   output <- .kms$get_key_policy_output()
@@ -1559,7 +1586,8 @@ kms_get_key_rotation_status <- function(KeyId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$get_key_rotation_status_input(KeyId = KeyId)
   output <- .kms$get_key_rotation_status_output()
@@ -1627,7 +1655,8 @@ kms_get_parameters_for_import <- function(KeyId, WrappingAlgorithm, WrappingKeyS
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$get_parameters_for_import_input(KeyId = KeyId, WrappingAlgorithm = WrappingAlgorithm, WrappingKeySpec = WrappingKeySpec)
   output <- .kms$get_parameters_for_import_output()
@@ -1675,7 +1704,8 @@ kms_get_public_key <- function(KeyId, GrantTokens = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$get_public_key_input(KeyId = KeyId, GrantTokens = GrantTokens)
   output <- .kms$get_public_key_output()
@@ -1746,7 +1776,8 @@ kms_import_key_material <- function(KeyId, ImportToken, EncryptedKeyMaterial, Va
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$import_key_material_input(KeyId = KeyId, ImportToken = ImportToken, EncryptedKeyMaterial = EncryptedKeyMaterial, ValidTo = ValidTo, ExpirationModel = ExpirationModel, ImportType = ImportType, KeyMaterialDescription = KeyMaterialDescription, KeyMaterialId = KeyMaterialId)
   output <- .kms$import_key_material_output()
@@ -1794,7 +1825,8 @@ kms_list_aliases <- function(KeyId = NULL, Limit = NULL, Marker = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(limit_key = "Limit", input_token = "Marker", output_token = "NextMarker", more_results = "Truncated", result_key = "Aliases"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$list_aliases_input(KeyId = KeyId, Limit = Limit, Marker = Marker)
   output <- .kms$list_aliases_output()
@@ -1846,7 +1878,8 @@ kms_list_grants <- function(Limit = NULL, Marker = NULL, KeyId, GrantId = NULL, 
     http_path = "/",
     host_prefix = "",
     paginator = list(limit_key = "Limit", input_token = "Marker", output_token = "NextMarker", more_results = "Truncated", result_key = "Grants"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$list_grants_input(Limit = Limit, Marker = Marker, KeyId = KeyId, GrantId = GrantId, GranteePrincipal = GranteePrincipal, GranteeServicePrincipal = GranteeServicePrincipal)
   output <- .kms$list_grants_output()
@@ -1893,7 +1926,8 @@ kms_list_key_policies <- function(KeyId, Limit = NULL, Marker = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(limit_key = "Limit", input_token = "Marker", output_token = "NextMarker", more_results = "Truncated", result_key = "PolicyNames"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$list_key_policies_input(KeyId = KeyId, Limit = Limit, Marker = Marker)
   output <- .kms$list_key_policies_output()
@@ -1940,7 +1974,8 @@ kms_list_key_rotations <- function(KeyId, IncludeKeyMaterial = NULL, Limit = NUL
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "Limit", more_results = "Truncated", output_token = "NextMarker", result_key = "Rotations"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$list_key_rotations_input(KeyId = KeyId, IncludeKeyMaterial = IncludeKeyMaterial, Limit = Limit, Marker = Marker)
   output <- .kms$list_key_rotations_output()
@@ -1975,7 +2010,8 @@ kms_list_keys <- function(Limit = NULL, Marker = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(limit_key = "Limit", input_token = "Marker", output_token = "NextMarker", more_results = "Truncated", result_key = "Keys"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$list_keys_input(Limit = Limit, Marker = Marker)
   output <- .kms$list_keys_output()
@@ -2022,7 +2058,8 @@ kms_list_resource_tags <- function(KeyId, Limit = NULL, Marker = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "Limit", more_results = "Truncated", output_token = "NextMarker", result_key = "Tags"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$list_resource_tags_input(KeyId = KeyId, Limit = Limit, Marker = Marker)
   output <- .kms$list_resource_tags_output()
@@ -2066,7 +2103,8 @@ kms_list_retirable_grants <- function(Limit = NULL, Marker = NULL, RetiringPrinc
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "Limit", more_results = "Truncated", output_token = "NextMarker", result_key = "Grants"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$list_retirable_grants_input(Limit = Limit, Marker = Marker, RetiringPrincipal = RetiringPrincipal, RetiringServicePrincipal = RetiringServicePrincipal)
   output <- .kms$list_retirable_grants_output()
@@ -2138,7 +2176,8 @@ kms_put_key_policy <- function(KeyId, PolicyName = NULL, Policy, BypassPolicyLoc
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$put_key_policy_input(KeyId = KeyId, PolicyName = PolicyName, Policy = Policy, BypassPolicyLockoutSafetyCheck = BypassPolicyLockoutSafetyCheck)
   output <- .kms$put_key_policy_output()
@@ -2238,7 +2277,8 @@ kms_re_encrypt <- function(CiphertextBlob = NULL, SourceEncryptionContext = NULL
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$re_encrypt_input(CiphertextBlob = CiphertextBlob, SourceEncryptionContext = SourceEncryptionContext, SourceKeyId = SourceKeyId, DestinationKeyId = DestinationKeyId, DestinationEncryptionContext = DestinationEncryptionContext, SourceEncryptionAlgorithm = SourceEncryptionAlgorithm, DestinationEncryptionAlgorithm = DestinationEncryptionAlgorithm, GrantTokens = GrantTokens, DryRun = DryRun, DryRunModifiers = DryRunModifiers)
   output <- .kms$re_encrypt_output()
@@ -2328,7 +2368,8 @@ kms_replicate_key <- function(KeyId, ReplicaRegion, Policy = NULL, BypassPolicyL
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$replicate_key_input(KeyId = KeyId, ReplicaRegion = ReplicaRegion, Policy = Policy, BypassPolicyLockoutSafetyCheck = BypassPolicyLockoutSafetyCheck, Description = Description, Tags = Tags)
   output <- .kms$replicate_key_output()
@@ -2370,7 +2411,8 @@ kms_retire_grant <- function(GrantToken = NULL, KeyId = NULL, GrantId = NULL, Dr
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$retire_grant_input(GrantToken = GrantToken, KeyId = KeyId, GrantId = GrantId, DryRun = DryRun)
   output <- .kms$retire_grant_output()
@@ -2415,7 +2457,8 @@ kms_revoke_grant <- function(KeyId, GrantId, DryRun = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$revoke_grant_input(KeyId = KeyId, GrantId = GrantId, DryRun = DryRun)
   output <- .kms$revoke_grant_output()
@@ -2457,7 +2500,8 @@ kms_rotate_key_on_demand <- function(KeyId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$rotate_key_on_demand_input(KeyId = KeyId)
   output <- .kms$rotate_key_on_demand_output()
@@ -2503,7 +2547,8 @@ kms_schedule_key_deletion <- function(KeyId, PendingWindowInDays = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$schedule_key_deletion_input(KeyId = KeyId, PendingWindowInDays = PendingWindowInDays)
   output <- .kms$schedule_key_deletion_output()
@@ -2592,7 +2637,8 @@ kms_sign <- function(KeyId, Message, MessageType = NULL, GrantTokens = NULL, Sig
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$sign_input(KeyId = KeyId, Message = Message, MessageType = MessageType, GrantTokens = GrantTokens, SigningAlgorithm = SigningAlgorithm, DryRun = DryRun)
   output <- .kms$sign_output()
@@ -2638,7 +2684,8 @@ kms_tag_resource <- function(KeyId, Tags) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$tag_resource_input(KeyId = KeyId, Tags = Tags)
   output <- .kms$tag_resource_output()
@@ -2680,7 +2727,8 @@ kms_untag_resource <- function(KeyId, TagKeys) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$untag_resource_input(KeyId = KeyId, TagKeys = TagKeys)
   output <- .kms$untag_resource_output()
@@ -2728,7 +2776,8 @@ kms_update_alias <- function(AliasName, TargetKeyId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$update_alias_input(AliasName = AliasName, TargetKeyId = TargetKeyId)
   output <- .kms$update_alias_output()
@@ -2810,7 +2859,8 @@ kms_update_custom_key_store <- function(CustomKeyStoreId, NewCustomKeyStoreName 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$update_custom_key_store_input(CustomKeyStoreId = CustomKeyStoreId, NewCustomKeyStoreName = NewCustomKeyStoreName, KeyStorePassword = KeyStorePassword, CloudHsmClusterId = CloudHsmClusterId, XksProxyUriEndpoint = XksProxyUriEndpoint, XksProxyUriPath = XksProxyUriPath, XksProxyVpcEndpointServiceName = XksProxyVpcEndpointServiceName, XksProxyVpcEndpointServiceOwner = XksProxyVpcEndpointServiceOwner, XksProxyAuthenticationCredential = XksProxyAuthenticationCredential, XksProxyConnectivity = XksProxyConnectivity)
   output <- .kms$update_custom_key_store_output()
@@ -2854,7 +2904,8 @@ kms_update_key_description <- function(KeyId, Description) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$update_key_description_input(KeyId = KeyId, Description = Description)
   output <- .kms$update_key_description_output()
@@ -2898,7 +2949,8 @@ kms_update_primary_region <- function(KeyId, PrimaryRegion) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$update_primary_region_input(KeyId = KeyId, PrimaryRegion = PrimaryRegion)
   output <- .kms$update_primary_region_output()
@@ -2985,7 +3037,8 @@ kms_verify <- function(KeyId, Message, MessageType = NULL, Signature, SigningAlg
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$verify_input(KeyId = KeyId, Message = Message, MessageType = MessageType, Signature = Signature, SigningAlgorithm = SigningAlgorithm, GrantTokens = GrantTokens, DryRun = DryRun)
   output <- .kms$verify_output()
@@ -3030,7 +3083,8 @@ kms_verify_mac <- function(Message, KeyId, MacAlgorithm, Mac, GrantTokens = NULL
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$verify_mac_input(Message = Message, KeyId = KeyId, MacAlgorithm = MacAlgorithm, Mac = Mac, GrantTokens = GrantTokens, DryRun = DryRun)
   output <- .kms$verify_mac_output()

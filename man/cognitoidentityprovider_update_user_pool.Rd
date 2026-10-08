@@ -25,7 +25,10 @@ cognitoidentityprovider_update_user_pool(
   UserPoolAddOns = NULL,
   AccountRecoverySetting = NULL,
   PoolName = NULL,
-  UserPoolTier = NULL
+  UserPoolTier = NULL,
+  KeyConfiguration = NULL,
+  IssuerConfiguration = NULL,
+  AcrConfiguration = NULL
 )
 }
 \arguments{
@@ -80,6 +83,14 @@ For more information, see \href{https://docs.aws.amazon.com/cognito/latest/devel
 \item{PoolName}{The updated name of your user pool.}
 
 \item{UserPoolTier}{The user pool \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-sign-in-feature-plans.html}{feature plan}, or tier. This parameter determines the eligibility of the user pool for features like managed login, access-token customization, and threat protection. Defaults to \code{ESSENTIALS}.}
+
+\item{KeyConfiguration}{The key configuration for the user pool. In secondary regions, this parameter must match the existing configuration and cannot be modified.}
+
+\item{IssuerConfiguration}{The issuer configuration for the user pool. In secondary regions, this parameter must match the existing configuration and cannot be modified.}
+
+\item{AcrConfiguration}{The custom names for the authentication context class reference (ACR) levels in your user pool. This configuration has the same behavior as it does when you create a user pool: you customize only the URI name that Amazon Cognito reports for each of the four fixed ACR levels, and any level that you don't specify keeps its default name. Each name must be unique across all four levels, including default names.
+
+Configuring custom ACR level names requires the Essentials or Plus feature plan. To activate this setting, your user pool must be in the \href{https://docs.aws.amazon.com/cognito/latest/developerguide/feature-plans-features-essentials.html}{Essentials tier} or higher.}
 }
 \description{
 Updates the configuration of a user pool. To avoid setting parameters to Amazon Cognito defaults, construct this API request to pass the existing configuration of your user pool, modified to include the changes that you want to make.

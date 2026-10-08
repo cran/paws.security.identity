@@ -28,7 +28,8 @@ ram_accept_resource_share_invitation <- function(resourceShareInvitationArn, cli
     http_path = "/acceptresourceshareinvitation",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ram$accept_resource_share_invitation_input(resourceShareInvitationArn = resourceShareInvitationArn, clientToken = clientToken)
   output <- .ram$accept_resource_share_invitation_output()
@@ -86,7 +87,8 @@ ram_associate_resource_share <- function(resourceShareArn, resourceArns = NULL, 
     http_path = "/associateresourceshare",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ram$associate_resource_share_input(resourceShareArn = resourceShareArn, resourceArns = resourceArns, principals = principals, clientToken = clientToken, sources = sources)
   output <- .ram$associate_resource_share_output()
@@ -130,7 +132,8 @@ ram_associate_resource_share_permission <- function(resourceShareArn, permission
     http_path = "/associateresourcesharepermission",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ram$associate_resource_share_permission_input(resourceShareArn = resourceShareArn, permissionArn = permissionArn, replace = replace, clientToken = clientToken, permissionVersion = permissionVersion)
   output <- .ram$associate_resource_share_permission_output()
@@ -180,7 +183,8 @@ ram_create_permission <- function(name, resourceType, policyTemplate, clientToke
     http_path = "/createpermission",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ram$create_permission_input(name = name, resourceType = resourceType, policyTemplate = policyTemplate, clientToken = clientToken, tags = tags)
   output <- .ram$create_permission_output()
@@ -225,7 +229,8 @@ ram_create_permission_version <- function(permissionArn, policyTemplate, clientT
     http_path = "/createpermissionversion",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ram$create_permission_version_input(permissionArn = permissionArn, policyTemplate = policyTemplate, clientToken = clientToken)
   output <- .ram$create_permission_version_output()
@@ -284,7 +289,8 @@ ram_create_resource_share <- function(name, resourceArns = NULL, principals = NU
     http_path = "/createresourceshare",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ram$create_resource_share_input(name = name, resourceArns = resourceArns, principals = principals, tags = tags, allowExternalPrincipals = allowExternalPrincipals, clientToken = clientToken, permissionArns = permissionArns, sources = sources, resourceShareConfiguration = resourceShareConfiguration)
   output <- .ram$create_resource_share_output()
@@ -321,7 +327,8 @@ ram_delete_permission <- function(permissionArn, clientToken = NULL) {
     http_path = "/deletepermission",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ram$delete_permission_input(permissionArn = permissionArn, clientToken = clientToken)
   output <- .ram$delete_permission_output()
@@ -364,7 +371,8 @@ ram_delete_permission_version <- function(permissionArn, permissionVersion, clie
     http_path = "/deletepermissionversion",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ram$delete_permission_version_input(permissionArn = permissionArn, permissionVersion = permissionVersion, clientToken = clientToken)
   output <- .ram$delete_permission_version_output()
@@ -400,7 +408,8 @@ ram_delete_resource_share <- function(resourceShareArn, clientToken = NULL) {
     http_path = "/deleteresourceshare",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ram$delete_resource_share_input(resourceShareArn = resourceShareArn, clientToken = clientToken)
   output <- .ram$delete_resource_share_output()
@@ -456,7 +465,8 @@ ram_disassociate_resource_share <- function(resourceShareArn, resourceArns = NUL
     http_path = "/disassociateresourceshare",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ram$disassociate_resource_share_input(resourceShareArn = resourceShareArn, resourceArns = resourceArns, principals = principals, clientToken = clientToken, sources = sources)
   output <- .ram$disassociate_resource_share_output()
@@ -493,7 +503,8 @@ ram_disassociate_resource_share_permission <- function(resourceShareArn, permiss
     http_path = "/disassociateresourcesharepermission",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ram$disassociate_resource_share_permission_input(resourceShareArn = resourceShareArn, permissionArn = permissionArn, clientToken = clientToken)
   output <- .ram$disassociate_resource_share_permission_output()
@@ -524,7 +535,8 @@ ram_enable_sharing_with_aws_organization <- function() {
     http_path = "/enablesharingwithawsorganization",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ram$enable_sharing_with_aws_organization_input()
   output <- .ram$enable_sharing_with_aws_organization_output()
@@ -558,7 +570,8 @@ ram_get_permission <- function(permissionArn, permissionVersion = NULL) {
     http_path = "/getpermission",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ram$get_permission_input(permissionArn = permissionArn, permissionVersion = permissionVersion)
   output <- .ram$get_permission_output()
@@ -593,7 +606,8 @@ ram_get_resource_policies <- function(resourceArns, principal = NULL, nextToken 
     http_path = "/getresourcepolicies",
     host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "policies"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ram$get_resource_policies_input(resourceArns = resourceArns, principal = principal, nextToken = nextToken, maxResults = maxResults)
   output <- .ram$get_resource_policies_output()
@@ -639,7 +653,8 @@ ram_get_resource_share_associations <- function(associationType, resourceShareAr
     http_path = "/getresourceshareassociations",
     host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "resourceShareAssociations"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ram$get_resource_share_associations_input(associationType = associationType, resourceShareArns = resourceShareArns, resourceArn = resourceArn, principal = principal, associationStatus = associationStatus, nextToken = nextToken, maxResults = maxResults)
   output <- .ram$get_resource_share_associations_output()
@@ -674,7 +689,8 @@ ram_get_resource_share_invitations <- function(resourceShareInvitationArns = NUL
     http_path = "/getresourceshareinvitations",
     host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "resourceShareInvitations"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ram$get_resource_share_invitations_input(resourceShareInvitationArns = resourceShareInvitationArns, resourceShareArns = resourceShareArns, nextToken = nextToken, maxResults = maxResults)
   output <- .ram$get_resource_share_invitations_output()
@@ -718,7 +734,8 @@ ram_get_resource_shares <- function(resourceShareArns = NULL, resourceShareStatu
     http_path = "/getresourceshares",
     host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "resourceShares"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ram$get_resource_shares_input(resourceShareArns = resourceShareArns, resourceShareStatus = resourceShareStatus, resourceOwner = resourceOwner, name = name, tagFilters = tagFilters, nextToken = nextToken, maxResults = maxResults, permissionArn = permissionArn, permissionVersion = permissionVersion)
   output <- .ram$get_resource_shares_output()
@@ -761,7 +778,8 @@ ram_list_pending_invitation_resources <- function(resourceShareInvitationArn, ne
     http_path = "/listpendinginvitationresources",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ram$list_pending_invitation_resources_input(resourceShareInvitationArn = resourceShareInvitationArn, nextToken = nextToken, maxResults = maxResults, resourceRegionScope = resourceRegionScope)
   output <- .ram$list_pending_invitation_resources_output()
@@ -802,7 +820,8 @@ ram_list_permission_associations <- function(permissionArn = NULL, permissionVer
     http_path = "/listpermissionassociations",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ram$list_permission_associations_input(permissionArn = permissionArn, permissionVersion = permissionVersion, associationStatus = associationStatus, resourceType = resourceType, featureSet = featureSet, defaultVersion = defaultVersion, nextToken = nextToken, maxResults = maxResults)
   output <- .ram$list_permission_associations_output()
@@ -835,7 +854,8 @@ ram_list_permission_versions <- function(permissionArn, nextToken = NULL, maxRes
     http_path = "/listpermissionversions",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ram$list_permission_versions_input(permissionArn = permissionArn, nextToken = nextToken, maxResults = maxResults)
   output <- .ram$list_permission_versions_output()
@@ -880,7 +900,8 @@ ram_list_permissions <- function(resourceType = NULL, nextToken = NULL, maxResul
     http_path = "/listpermissions",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ram$list_permissions_input(resourceType = resourceType, nextToken = nextToken, maxResults = maxResults, permissionType = permissionType)
   output <- .ram$list_permissions_output()
@@ -940,7 +961,8 @@ ram_list_principals <- function(resourceOwner, resourceArn = NULL, principals = 
     http_path = "/listprincipals",
     host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "principals"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ram$list_principals_input(resourceOwner = resourceOwner, resourceArn = resourceArn, principals = principals, resourceType = resourceType, resourceShareArns = resourceShareArns, nextToken = nextToken, maxResults = maxResults)
   output <- .ram$list_principals_output()
@@ -975,7 +997,8 @@ ram_list_replace_permission_associations_work <- function(workIds = NULL, status
     http_path = "/listreplacepermissionassociationswork",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ram$list_replace_permission_associations_work_input(workIds = workIds, status = status, nextToken = nextToken, maxResults = maxResults)
   output <- .ram$list_replace_permission_associations_work_output()
@@ -1008,7 +1031,8 @@ ram_list_resource_share_permissions <- function(resourceShareArn, nextToken = NU
     http_path = "/listresourcesharepermissions",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ram$list_resource_share_permissions_input(resourceShareArn = resourceShareArn, nextToken = nextToken, maxResults = maxResults)
   output <- .ram$list_resource_share_permissions_output()
@@ -1049,7 +1073,8 @@ ram_list_resource_types <- function(nextToken = NULL, maxResults = NULL, resourc
     http_path = "/listresourcetypes",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ram$list_resource_types_input(nextToken = nextToken, maxResults = maxResults, resourceRegionScope = resourceRegionScope)
   output <- .ram$list_resource_types_output()
@@ -1102,7 +1127,8 @@ ram_list_resources <- function(resourceOwner, principal = NULL, resourceType = N
     http_path = "/listresources",
     host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "resources"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ram$list_resources_input(resourceOwner = resourceOwner, principal = principal, resourceType = resourceType, resourceArns = resourceArns, resourceShareArns = resourceShareArns, nextToken = nextToken, maxResults = maxResults, resourceRegionScope = resourceRegionScope)
   output <- .ram$list_resources_output()
@@ -1138,7 +1164,8 @@ ram_list_source_associations <- function(resourceShareArns = NULL, sourceId = NU
     http_path = "/listsourceassociations",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "sourceAssociations"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ram$list_source_associations_input(resourceShareArns = resourceShareArns, sourceId = sourceId, sourceType = sourceType, associationStatus = associationStatus, nextToken = nextToken, maxResults = maxResults)
   output <- .ram$list_source_associations_output()
@@ -1178,7 +1205,8 @@ ram_promote_permission_created_from_policy <- function(permissionArn, name, clie
     http_path = "/promotepermissioncreatedfrompolicy",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ram$promote_permission_created_from_policy_input(permissionArn = permissionArn, name = name, clientToken = clientToken)
   output <- .ram$promote_permission_created_from_policy_output()
@@ -1212,7 +1240,8 @@ ram_promote_resource_share_created_from_policy <- function(resourceShareArn) {
     http_path = "/promoteresourcesharecreatedfrompolicy",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ram$promote_resource_share_created_from_policy_input(resourceShareArn = resourceShareArn)
   output <- .ram$promote_resource_share_created_from_policy_output()
@@ -1249,7 +1278,8 @@ ram_reject_resource_share_invitation <- function(resourceShareInvitationArn, cli
     http_path = "/rejectresourceshareinvitation",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ram$reject_resource_share_invitation_input(resourceShareInvitationArn = resourceShareInvitationArn, clientToken = clientToken)
   output <- .ram$reject_resource_share_invitation_output()
@@ -1290,7 +1320,8 @@ ram_replace_permission_associations <- function(fromPermissionArn, fromPermissio
     http_path = "/replacepermissionassociations",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ram$replace_permission_associations_input(fromPermissionArn = fromPermissionArn, fromPermissionVersion = fromPermissionVersion, toPermissionArn = toPermissionArn, clientToken = clientToken)
   output <- .ram$replace_permission_associations_output()
@@ -1328,7 +1359,8 @@ ram_set_default_permission_version <- function(permissionArn, permissionVersion,
     http_path = "/setdefaultpermissionversion",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ram$set_default_permission_version_input(permissionArn = permissionArn, permissionVersion = permissionVersion, clientToken = clientToken)
   output <- .ram$set_default_permission_version_output()
@@ -1362,7 +1394,8 @@ ram_tag_resource <- function(resourceShareArn = NULL, tags, resourceArn = NULL) 
     http_path = "/tagresource",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ram$tag_resource_input(resourceShareArn = resourceShareArn, tags = tags, resourceArn = resourceArn)
   output <- .ram$tag_resource_output()
@@ -1396,7 +1429,8 @@ ram_untag_resource <- function(resourceShareArn = NULL, tagKeys, resourceArn = N
     http_path = "/untagresource",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ram$untag_resource_input(resourceShareArn = resourceShareArn, tagKeys = tagKeys, resourceArn = resourceArn)
   output <- .ram$untag_resource_output()
@@ -1434,7 +1468,8 @@ ram_update_resource_share <- function(resourceShareArn, name = NULL, allowExtern
     http_path = "/updateresourceshare",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ram$update_resource_share_input(resourceShareArn = resourceShareArn, name = name, allowExternalPrincipals = allowExternalPrincipals, clientToken = clientToken)
   output <- .ram$update_resource_share_output()

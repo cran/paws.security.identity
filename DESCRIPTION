@@ -1,6 +1,6 @@
 Package: paws.security.identity
 Title: 'Amazon Web Services' Security, Identity, & Compliance Services
-Version: 0.10.0
+Version: 0.11.0
 Authors@R: c(
     person("David", "Kretch", , "david.kretch@gmail.com", role = "aut"),
     person("Adam", "Banker", , "adam.banker39@gmail.com", role = "aut"),
@@ -16,10 +16,11 @@ URL: https://github.com/paws-r/paws,
         https://paws-r.r-universe.dev/paws.security.identity,
         https://www.paws-r-sdk.com
 BugReports: https://github.com/paws-r/paws/issues
-Imports: paws.common (>= 0.8.0)
+Depends: R (>= 3.5.0)
+Imports: paws.common (>= 0.9.0)
 Suggests: testthat
 Encoding: UTF-8
-Config/roxygen2/version: 8.0.0
+Config/roxygen2/version: 8.1.0
 Collate: 'accessanalyzer_service.R' 'accessanalyzer_interfaces.R'
         'accessanalyzer_operations.R' 'account_service.R'
         'account_interfaces.R' 'account_operations.R' 'acm_service.R'
@@ -72,11 +73,11 @@ Collate: 'accessanalyzer_service.R' 'accessanalyzer_interfaces.R'
         'wafregional_interfaces.R' 'wafregional_operations.R'
         'wafv2_service.R' 'wafv2_interfaces.R' 'wafv2_operations.R'
 NeedsCompilation: no
-Packaged: 2026-05-29 22:37:20 UTC; dyfan
+Packaged: 2026-10-07 17:47:46 UTC; Dyfan.Jones
 Author: David Kretch [aut],
   Adam Banker [aut],
   Dyfan Jones [cre],
   Amazon.com, Inc. [cph]
 Maintainer: Dyfan Jones <dyfan.r.jones@gmail.com>
 Repository: CRAN
-Date/Publication: 2026-05-31 05:10:37 UTC
+Date/Publication: 2026-10-08 09:00:02 UTC

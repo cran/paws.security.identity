@@ -48,6 +48,7 @@ NULL
 #' \item{\strong{timeout}: The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}: Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
 #' \item{\strong{sts_regional_endpoint}: Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
+#' \item{\strong{use_dual_stack}: Set this to `true` to use the dualstack (IPv4 and IPv6) endpoint for a service, where available, falling back to the regular endpoint when it isn't. Defaults to the `AWS_USE_DUALSTACK_ENDPOINT` environment variable when unset.}
 #' }
 #' @param
 #' credentials
@@ -86,7 +87,8 @@ NULL
 #'     close_connection = "logical",
 #'     timeout = "numeric",
 #'     s3_force_path_style = "logical",
-#'     sts_regional_endpoint = "string"
+#'     sts_regional_endpoint = "string",
+#'     use_dual_stack = "logical"
 #'   ),
 #'   credentials = list(
 #'     creds = list(
@@ -117,6 +119,7 @@ NULL
 #' @section Operations:
 #' \tabular{ll}{
 #'  \link[=iam_accept_delegation_request]{accept_delegation_request} \tab Accepts a delegation request, granting the requested temporary access\cr
+#'  \link[=iam_acquire_role]{acquire_role} \tab Creates an IAM role from the specified role template\cr
 #'  \link[=iam_add_client_id_to_open_id_connect_provider]{add_client_id_to_open_id_connect_provider} \tab Adds a new client ID (also known as audience) to the list of client IDs already registered for the specified IAM OpenID Connect (OIDC) provider resource\cr
 #'  \link[=iam_add_role_to_instance_profile]{add_role_to_instance_profile} \tab Adds the specified IAM role to the specified instance profile\cr
 #'  \link[=iam_add_user_to_group]{add_user_to_group} \tab Adds the specified user to the specified group\cr
@@ -180,6 +183,7 @@ NULL
 #'  \link[=iam_get_access_key_last_used]{get_access_key_last_used} \tab Retrieves information about when the specified access key was last used\cr
 #'  \link[=iam_get_account_authorization_details]{get_account_authorization_details} \tab Retrieves information about all IAM users, groups, roles, and policies in your Amazon Web Services account, including their relationships to one another\cr
 #'  \link[=iam_get_account_password_policy]{get_account_password_policy} \tab Retrieves the password policy for the Amazon Web Services account\cr
+#'  \link[=iam_get_account_properties]{get_account_properties} \tab Retrieves the account-level properties for the caller's Amazon Web Services account\cr
 #'  \link[=iam_get_account_summary]{get_account_summary} \tab Retrieves information about IAM entity usage and IAM quotas in the Amazon Web Services account\cr
 #'  \link[=iam_get_context_keys_for_custom_policy]{get_context_keys_for_custom_policy} \tab Gets a list of all of the context keys referenced in the input policies\cr
 #'  \link[=iam_get_context_keys_for_principal_policy]{get_context_keys_for_principal_policy} \tab Gets a list of all of the context keys referenced in all the IAM policies that are attached to the specified IAM entity\cr
@@ -198,6 +202,7 @@ NULL
 #'  \link[=iam_get_policy_version]{get_policy_version} \tab Retrieves information about the specified version of the specified managed policy, including the policy document\cr
 #'  \link[=iam_get_role]{get_role} \tab Retrieves information about the specified role, including the role's path, GUID, ARN, and the role's trust policy that grants permission to assume the role\cr
 #'  \link[=iam_get_role_policy]{get_role_policy} \tab Retrieves the specified inline policy document that is embedded with the specified IAM role\cr
+#'  \link[=iam_get_role_template_version]{get_role_template_version} \tab Retrieves information about a version of the specified role template\cr
 #'  \link[=iam_get_saml_provider]{get_saml_provider} \tab Returns the SAML provider metadocument that was uploaded when the IAM SAML provider resource object was created or updated\cr
 #'  \link[=iam_get_server_certificate]{get_server_certificate} \tab Retrieves information about the specified server certificate stored in IAM\cr
 #'  \link[=iam_get_service_last_accessed_details]{get_service_last_accessed_details} \tab Retrieves a service last accessed report that was created using the GenerateServiceLastAccessedDetails operation\cr
@@ -242,6 +247,7 @@ NULL
 #'  \link[=iam_list_users]{list_users} \tab Lists the IAM users that have the specified path prefix\cr
 #'  \link[=iam_list_user_tags]{list_user_tags} \tab Lists the tags that are attached to the specified IAM user\cr
 #'  \link[=iam_list_virtual_mfa_devices]{list_virtual_mfa_devices} \tab Lists the virtual MFA devices defined in the Amazon Web Services account by assignment status\cr
+#'  \link[=iam_put_account_properties]{put_account_properties} \tab Sets account-level properties for the caller's Amazon Web Services account\cr
 #'  \link[=iam_put_group_policy]{put_group_policy} \tab Adds or updates an inline policy document that is embedded in the specified IAM group\cr
 #'  \link[=iam_put_role_permissions_boundary]{put_role_permissions_boundary} \tab Adds or updates the policy that is specified as the IAM role's permissions boundary\cr
 #'  \link[=iam_put_role_policy]{put_role_policy} \tab Adds or updates an inline policy document that is embedded in the specified IAM role\cr
@@ -323,7 +329,7 @@ iam <- function(config = list(), credentials = list(), endpoint = NULL, region =
 
 .iam$metadata <- list(
   service_name = "iam",
-  endpoints = list("aws-global" = list(endpoint = "iam.amazonaws.com", global = TRUE, signing_region = "us-east-1"), "us-east-1" = list(endpoint = "iam.amazonaws.com", global = TRUE), "aws-cn-global" = list(endpoint = "iam.cn-north-1.amazonaws.com.cn", global = TRUE, signing_region = "cn-north-1"), "cn-north-1" = list(endpoint = "iam.cn-north-1.amazonaws.com.cn", global = TRUE), "aws-us-gov-global" = list(endpoint = "iam.us-gov.amazonaws.com", global = TRUE, signing_region = "us-gov-west-1"), "us-gov-west-1" = list(endpoint = "iam.us-gov.amazonaws.com", global = TRUE), "aws-iso-global" = list(endpoint = "iam.us-iso-east-1.c2s.ic.gov", global = TRUE, signing_region = "us-iso-east-1"), "us-iso-east-1" = list(endpoint = "iam.us-iso-east-1.c2s.ic.gov", global = TRUE), "aws-iso-b-global" = list(endpoint = "iam.us-isob-east-1.sc2s.sgov.gov", global = TRUE, signing_region = "us-isob-east-1"), "us-isob-east-1" = list(endpoint = "iam.us-isob-east-1.sc2s.sgov.gov", global = TRUE), "aws-iso-f-global" = list(endpoint = "iam.us-isof-south-1.csp.hci.ic.gov", global = TRUE, signing_region = "us-isof-south-1"), "us-isof-south-1" = list(endpoint = "iam.us-isof-south-1.csp.hci.ic.gov", global = TRUE), "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "iam.amazonaws.com", global = FALSE, signing_region = "us-east-1"), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "iam.cn-north-1.amazonaws.com.cn", global = FALSE, signing_region = "cn-north-1"), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "iam.us-gov.amazonaws.com", global = FALSE, signing_region = "us-gov-west-1"), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "iam.us-iso-east-1.c2s.ic.gov", global = FALSE, signing_region = "us-iso-east-1"), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "iam.us-isob-east-1.sc2s.sgov.gov", global = FALSE, signing_region = "us-isob-east-1"), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "iam.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "iam.us-isof-south-1.csp.hci.ic.gov", global = FALSE, signing_region = "us-isof-south-1"), "^eusc\\-(de)\\-\\w+\\-\\d+$" = list(endpoint = "iam.{region}.amazonaws.eu", global = FALSE)),
+  endpoints = list("aws-global" = list(endpoint = "iam.amazonaws.com", global = TRUE, signing_region = "us-east-1"), "us-east-1" = list(endpoint = "iam.amazonaws.com", global = TRUE), "aws-cn-global" = list(endpoint = "iam.cn-north-1.amazonaws.com.cn", global = TRUE, signing_region = "cn-north-1"), "cn-north-1" = list(endpoint = "iam.cn-north-1.amazonaws.com.cn", global = TRUE), "aws-us-gov-global" = list(endpoint = "iam.us-gov.amazonaws.com", global = TRUE, signing_region = "us-gov-west-1"), "us-gov-west-1" = list(endpoint = "iam.us-gov.amazonaws.com", global = TRUE), "aws-iso-global" = list(endpoint = "iam.us-iso-east-1.c2s.ic.gov", global = TRUE, signing_region = "us-iso-east-1"), "us-iso-east-1" = list(endpoint = "iam.us-iso-east-1.c2s.ic.gov", global = TRUE), "aws-iso-b-global" = list(endpoint = "iam.us-isob-east-1.sc2s.sgov.gov", global = TRUE, signing_region = "us-isob-east-1"), "us-isob-east-1" = list(endpoint = "iam.us-isob-east-1.sc2s.sgov.gov", global = TRUE), "aws-iso-f-global" = list(endpoint = "iam.us-isof-south-1.csp.hci.ic.gov", global = TRUE, signing_region = "us-isof-south-1"), "us-isof-south-1" = list(endpoint = "iam.us-isof-south-1.csp.hci.ic.gov", global = TRUE), "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "iam.amazonaws.com", global = FALSE, signing_region = "us-east-1", dualstack_endpoint = "iam.global.api.aws"), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "iam.cn-north-1.amazonaws.com.cn", global = FALSE, signing_region = "cn-north-1"), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "iam.us-gov.amazonaws.com", global = FALSE, signing_region = "us-gov-west-1"), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "iam.us-iso-east-1.c2s.ic.gov", global = FALSE, signing_region = "us-iso-east-1"), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "iam.us-isob-east-1.sc2s.sgov.gov", global = FALSE, signing_region = "us-isob-east-1"), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "iam.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "iam.us-isof-south-1.csp.hci.ic.gov", global = FALSE, signing_region = "us-isof-south-1"), "^eusc\\-(de)\\-\\w+\\-\\d+$" = list(endpoint = "iam.{region}.amazonaws.eu", global = FALSE)),
   service_id = "IAM",
   api_version = "2010-05-08",
   signing_name = "iam",

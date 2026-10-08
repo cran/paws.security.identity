@@ -1,3 +1,3 @@
-svc <- paws::wafv2()
+svc <- paws.security.identity::wafv2()
 
 

@@ -28,6 +28,8 @@ NULL
 #' -   For an Amazon Web Services Verified Access instance: `arn:partition:ec2:region:account-id:verified-access-instance/instance-id `
 #' 
 #' -   For an Amplify application: `arn:partition:amplify:region:account-id:apps/app-id `
+#' 
+#' -   For an Amazon Bedrock AgentCore Gateway: `arn:partition:bedrock-agentcore:region:account-id:gateway/gateway-id `
 #'
 #' @keywords internal
 #'
@@ -39,7 +41,8 @@ wafv2_associate_web_acl <- function(WebACLArn, ResourceArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafv2$associate_web_acl_input(WebACLArn = WebACLArn, ResourceArn = ResourceArn)
   output <- .wafv2$associate_web_acl_output()
@@ -78,7 +81,8 @@ wafv2_check_capacity <- function(Scope, Rules) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafv2$check_capacity_input(Scope = Scope, Rules = Rules)
   output <- .wafv2$check_capacity_output()
@@ -120,7 +124,8 @@ wafv2_create_api_key <- function(Scope, TokenDomains) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafv2$create_api_key_input(Scope = Scope, TokenDomains = TokenDomains)
   output <- .wafv2$create_api_key_output()
@@ -185,7 +190,8 @@ wafv2_create_ip_set <- function(Name, Scope, Description = NULL, IPAddressVersio
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafv2$create_ip_set_input(Name = Name, Scope = Scope, Description = Description, IPAddressVersion = IPAddressVersion, Addresses = Addresses, Tags = Tags)
   output <- .wafv2$create_ip_set_output()
@@ -228,7 +234,8 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafv2$create_regex_pattern_set_input(Name = Name, Scope = Scope, Description = Description, RegularExpressionList = RegularExpressionList, Tags = Tags)
   output <- .wafv2$create_regex_pattern_set_output()
@@ -269,20 +276,22 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #' For information about customizing web requests and responses, see [Customizing web requests and responses in WAF](https://docs.aws.amazon.com/waf/latest/developerguide/waf-custom-request-response.html) in the *WAF Developer Guide*.
 #' 
 #' For information about the limits on count and size for custom request and response settings, see [WAF quotas](https://docs.aws.amazon.com/waf/latest/developerguide/limits.html) in the *WAF Developer Guide*.
+#' @param MonetizationConfig The monetization configuration for the rule group. Provide this when any rule in the rule group uses the `Monetize` action.
 #'
 #' @keywords internal
 #'
 #' @rdname wafv2_create_rule_group
-wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, Rules = NULL, VisibilityConfig, Tags = NULL, CustomResponseBodies = NULL) {
+wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, Rules = NULL, VisibilityConfig, Tags = NULL, CustomResponseBodies = NULL, MonetizationConfig = NULL) {
   op <- new_operation(
     name = "CreateRuleGroup",
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
-  input <- .wafv2$create_rule_group_input(Name = Name, Scope = Scope, Capacity = Capacity, Description = Description, Rules = Rules, VisibilityConfig = VisibilityConfig, Tags = Tags, CustomResponseBodies = CustomResponseBodies)
+  input <- .wafv2$create_rule_group_input(Name = Name, Scope = Scope, Capacity = Capacity, Description = Description, Rules = Rules, VisibilityConfig = VisibilityConfig, Tags = Tags, CustomResponseBodies = CustomResponseBodies, MonetizationConfig = MonetizationConfig)
   output <- .wafv2$create_rule_group_output()
   config <- get_config()
   svc <- .wafv2$service(config, op)
@@ -336,20 +345,22 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #' For Application Load Balancer and AppSync, the limit is fixed at 8 KB (8,192 bytes).
 #' @param OnSourceDDoSProtectionConfig Specifies the type of DDoS protection to apply to web request data for a web ACL. For most scenarios, it is recommended to use the default protection level, `ACTIVE_UNDER_DDOS`. If a web ACL is associated with multiple Application Load Balancers, the changes you make to DDoS protection in that web ACL will apply to all associated Application Load Balancers.
 #' @param ApplicationConfig Configures the ability for the WAF console to store and retrieve application attributes during the web ACL creation process. Application attributes help WAF give recommendations for protection packs.
+#' @param MonetizationConfig The monetization configuration for the web ACL. Provide this when any rule in the web ACL uses the `Monetize` action.
 #'
 #' @keywords internal
 #'
 #' @rdname wafv2_create_web_acl
-wafv2_create_web_acl <- function(Name, Scope, DefaultAction, Description = NULL, Rules = NULL, VisibilityConfig, DataProtectionConfig = NULL, Tags = NULL, CustomResponseBodies = NULL, CaptchaConfig = NULL, ChallengeConfig = NULL, TokenDomains = NULL, AssociationConfig = NULL, OnSourceDDoSProtectionConfig = NULL, ApplicationConfig = NULL) {
+wafv2_create_web_acl <- function(Name, Scope, DefaultAction, Description = NULL, Rules = NULL, VisibilityConfig, DataProtectionConfig = NULL, Tags = NULL, CustomResponseBodies = NULL, CaptchaConfig = NULL, ChallengeConfig = NULL, TokenDomains = NULL, AssociationConfig = NULL, OnSourceDDoSProtectionConfig = NULL, ApplicationConfig = NULL, MonetizationConfig = NULL) {
   op <- new_operation(
     name = "CreateWebACL",
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
-  input <- .wafv2$create_web_acl_input(Name = Name, Scope = Scope, DefaultAction = DefaultAction, Description = Description, Rules = Rules, VisibilityConfig = VisibilityConfig, DataProtectionConfig = DataProtectionConfig, Tags = Tags, CustomResponseBodies = CustomResponseBodies, CaptchaConfig = CaptchaConfig, ChallengeConfig = ChallengeConfig, TokenDomains = TokenDomains, AssociationConfig = AssociationConfig, OnSourceDDoSProtectionConfig = OnSourceDDoSProtectionConfig, ApplicationConfig = ApplicationConfig)
+  input <- .wafv2$create_web_acl_input(Name = Name, Scope = Scope, DefaultAction = DefaultAction, Description = Description, Rules = Rules, VisibilityConfig = VisibilityConfig, DataProtectionConfig = DataProtectionConfig, Tags = Tags, CustomResponseBodies = CustomResponseBodies, CaptchaConfig = CaptchaConfig, ChallengeConfig = ChallengeConfig, TokenDomains = TokenDomains, AssociationConfig = AssociationConfig, OnSourceDDoSProtectionConfig = OnSourceDDoSProtectionConfig, ApplicationConfig = ApplicationConfig, MonetizationConfig = MonetizationConfig)
   output <- .wafv2$create_web_acl_output()
   config <- get_config()
   svc <- .wafv2$service(config, op)
@@ -385,7 +396,8 @@ wafv2_delete_api_key <- function(Scope, APIKey) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafv2$delete_api_key_input(Scope = Scope, APIKey = APIKey)
   output <- .wafv2$delete_api_key_output()
@@ -418,7 +430,8 @@ wafv2_delete_firewall_manager_rule_groups <- function(WebACLArn, WebACLLockToken
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafv2$delete_firewall_manager_rule_groups_input(WebACLArn = WebACLArn, WebACLLockToken = WebACLLockToken)
   output <- .wafv2$delete_firewall_manager_rule_groups_output()
@@ -458,7 +471,8 @@ wafv2_delete_ip_set <- function(Name, Scope, Id, LockToken) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafv2$delete_ip_set_input(Name = Name, Scope = Scope, Id = Id, LockToken = LockToken)
   output <- .wafv2$delete_ip_set_output()
@@ -499,7 +513,8 @@ wafv2_delete_logging_configuration <- function(ResourceArn, LogType = NULL, LogS
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafv2$delete_logging_configuration_input(ResourceArn = ResourceArn, LogType = LogType, LogScope = LogScope)
   output <- .wafv2$delete_logging_configuration_output()
@@ -532,7 +547,8 @@ wafv2_delete_permission_policy <- function(ResourceArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafv2$delete_permission_policy_input(ResourceArn = ResourceArn)
   output <- .wafv2$delete_permission_policy_output()
@@ -572,7 +588,8 @@ wafv2_delete_regex_pattern_set <- function(Name, Scope, Id, LockToken) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafv2$delete_regex_pattern_set_input(Name = Name, Scope = Scope, Id = Id, LockToken = LockToken)
   output <- .wafv2$delete_regex_pattern_set_output()
@@ -612,7 +629,8 @@ wafv2_delete_rule_group <- function(Name, Scope, Id, LockToken) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafv2$delete_rule_group_input(Name = Name, Scope = Scope, Id = Id, LockToken = LockToken)
   output <- .wafv2$delete_rule_group_output()
@@ -652,7 +670,8 @@ wafv2_delete_web_acl <- function(Name, Scope, Id, LockToken) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafv2$delete_web_acl_input(Name = Name, Scope = Scope, Id = Id, LockToken = LockToken)
   output <- .wafv2$delete_web_acl_output()
@@ -691,7 +710,8 @@ wafv2_describe_all_managed_products <- function(Scope) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafv2$describe_all_managed_products_input(Scope = Scope)
   output <- .wafv2$describe_all_managed_products_output()
@@ -730,7 +750,8 @@ wafv2_describe_managed_products_by_vendor <- function(VendorName, Scope) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafv2$describe_managed_products_by_vendor_input(VendorName = VendorName, Scope = Scope)
   output <- .wafv2$describe_managed_products_by_vendor_output()
@@ -771,7 +792,8 @@ wafv2_describe_managed_rule_group <- function(VendorName, Name, Scope, VersionNa
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafv2$describe_managed_rule_group_input(VendorName = VendorName, Name = Name, Scope = Scope, VersionName = VersionName)
   output <- .wafv2$describe_managed_rule_group_output()
@@ -808,6 +830,8 @@ wafv2_describe_managed_rule_group <- function(VendorName, Name, Scope, VersionNa
 #' -   For an Amazon Web Services Verified Access instance: `arn:partition:ec2:region:account-id:verified-access-instance/instance-id `
 #' 
 #' -   For an Amplify application: `arn:partition:amplify:region:account-id:apps/app-id `
+#' 
+#' -   For an Amazon Bedrock AgentCore Gateway: `arn:partition:bedrock-agentcore:region:account-id:gateway/gateway-id `
 #'
 #' @keywords internal
 #'
@@ -819,7 +843,8 @@ wafv2_disassociate_web_acl <- function(ResourceArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafv2$disassociate_web_acl_input(ResourceArn = ResourceArn)
   output <- .wafv2$disassociate_web_acl_output()
@@ -852,7 +877,8 @@ wafv2_generate_mobile_sdk_release_url <- function(Platform, ReleaseVersion) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafv2$generate_mobile_sdk_release_url_input(Platform = Platform, ReleaseVersion = ReleaseVersion)
   output <- .wafv2$generate_mobile_sdk_release_url_output()
@@ -890,7 +916,8 @@ wafv2_get_decrypted_api_key <- function(Scope, APIKey) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafv2$get_decrypted_api_key_input(Scope = Scope, APIKey = APIKey)
   output <- .wafv2$get_decrypted_api_key_output()
@@ -929,7 +956,8 @@ wafv2_get_ip_set <- function(Name, Scope, Id) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafv2$get_ip_set_input(Name = Name, Scope = Scope, Id = Id)
   output <- .wafv2$get_ip_set_output()
@@ -970,7 +998,8 @@ wafv2_get_logging_configuration <- function(ResourceArn, LogType = NULL, LogScop
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafv2$get_logging_configuration_input(ResourceArn = ResourceArn, LogType = LogType, LogScope = LogScope)
   output <- .wafv2$get_logging_configuration_output()
@@ -1011,7 +1040,8 @@ wafv2_get_managed_rule_set <- function(Name, Scope, Id) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafv2$get_managed_rule_set_input(Name = Name, Scope = Scope, Id = Id)
   output <- .wafv2$get_managed_rule_set_output()
@@ -1044,7 +1074,8 @@ wafv2_get_mobile_sdk_release <- function(Platform, ReleaseVersion) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafv2$get_mobile_sdk_release_input(Platform = Platform, ReleaseVersion = ReleaseVersion)
   output <- .wafv2$get_mobile_sdk_release_output()
@@ -1075,7 +1106,8 @@ wafv2_get_permission_policy <- function(ResourceArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafv2$get_permission_policy_input(ResourceArn = ResourceArn)
   output <- .wafv2$get_permission_policy_output()
@@ -1117,7 +1149,8 @@ wafv2_get_rate_based_statement_managed_keys <- function(Scope, WebACLName, WebAC
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafv2$get_rate_based_statement_managed_keys_input(Scope = Scope, WebACLName = WebACLName, WebACLId = WebACLId, RuleGroupRuleName = RuleGroupRuleName, RuleName = RuleName)
   output <- .wafv2$get_rate_based_statement_managed_keys_output()
@@ -1156,7 +1189,8 @@ wafv2_get_regex_pattern_set <- function(Name, Scope, Id) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafv2$get_regex_pattern_set_input(Name = Name, Scope = Scope, Id = Id)
   output <- .wafv2$get_regex_pattern_set_output()
@@ -1167,6 +1201,123 @@ wafv2_get_regex_pattern_set <- function(Name, Scope, Id) {
   return(response)
 }
 .wafv2$operations$get_regex_pattern_set <- wafv2_get_regex_pattern_set
+
+#' Retrieves ranked monetization statistics
+#'
+#' @description
+#' Retrieves ranked monetization statistics. Use the `StatisticType` parameter to specify the ranking: `TOP_SOURCES_BY_REVENUE` for top sources by revenue, or `TOP_PATHS_BY_REVENUE` for top content paths by revenue. This operation is only available for `CLOUDFRONT` scope. The maximum supported time window is 90 days. When no `CurrencyMode` filter is provided, results default to `REAL`. To retrieve test data, include a `CurrencyMode` filter with the value `TEST`.
+#'
+#' See [https://www.paws-r-sdk.com/docs/wafv2_get_revenue_statistics/](https://www.paws-r-sdk.com/docs/wafv2_get_revenue_statistics/) for full documentation.
+#'
+#' @param StatisticType &#91;required&#93; `TOP_SOURCES_BY_REVENUE` ranks revenue from AI bot traffic, grouped by the dimension you specify in the `GroupBy` parameter (`NAME`, `CATEGORY`, `INTENT`, `ORGANIZATION`, or `WEBACL`); `GroupBy` is required for this statistic type. `TOP_PATHS_BY_REVENUE` ranks revenue by path.
+#' @param TimeWindow &#91;required&#93; The time range for the query. Specify start and end timestamps.
+#' @param Scope &#91;required&#93; Specifies whether this is for a Amazon CloudFront distribution (`CLOUDFRONT`) or for a regional application (`REGIONAL`).
+#' @param Currency &#91;required&#93; The currency for the revenue amounts in the response.
+#' @param GroupBy The dimension to group results by: `NAME`, `CATEGORY`, `INTENT`, `ORGANIZATION`, or `WEBACL`. Required when `StatisticType` is `TOP_SOURCES_BY_REVENUE`. Not required for `TOP_PATHS_BY_REVENUE`, where results are grouped by content path. If `StatisticType` is `TOP_SOURCES_BY_REVENUE` and `GroupBy` is omitted, the request is rejected with a `WAFInvalidParameterException`.
+#' @param Filters Optional filters to narrow the results.
+#' @param NextMarker When you get a paginated response, this marker indicates that additional results are available. Use it in a subsequent request to retrieve the next page of results.
+#' @param Limit The maximum number of results to return.
+#' @param SortBy The field to sort results by: `REVENUE`, `PERCENTAGE`, or `NAME`.
+#' @param SortOrder The sort order: `ASC` for ascending or `DESC` for descending.
+#'
+#' @keywords internal
+#'
+#' @rdname wafv2_get_revenue_statistics
+wafv2_get_revenue_statistics <- function(StatisticType, TimeWindow, Scope, Currency, GroupBy = NULL, Filters = NULL, NextMarker = NULL, Limit = NULL, SortBy = NULL, SortOrder = NULL) {
+  op <- new_operation(
+    name = "GetRevenueStatistics",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE,
+    http_checksum = NULL
+  )
+  input <- .wafv2$get_revenue_statistics_input(StatisticType = StatisticType, TimeWindow = TimeWindow, Scope = Scope, Currency = Currency, GroupBy = GroupBy, Filters = Filters, NextMarker = NextMarker, Limit = Limit, SortBy = SortBy, SortOrder = SortOrder)
+  output <- .wafv2$get_revenue_statistics_output()
+  config <- get_config()
+  svc <- .wafv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wafv2$operations$get_revenue_statistics <- wafv2_get_revenue_statistics
+
+#' Retrieves a summary of monetization revenue for the specified time
+#' window
+#'
+#' @description
+#' Retrieves a summary of monetization revenue for the specified time window. Returns total revenue, revenue by verification tier, total settlements, and total HTTP 402 responses served. This operation is only available for `CLOUDFRONT` scope. The maximum supported time window is 90 days. When no `CurrencyMode` filter is provided, results default to `REAL`. To retrieve test data, include a `CurrencyMode` filter with the value `TEST`.
+#'
+#' See [https://www.paws-r-sdk.com/docs/wafv2_get_revenue_statistics_summary/](https://www.paws-r-sdk.com/docs/wafv2_get_revenue_statistics_summary/) for full documentation.
+#'
+#' @param TimeWindow &#91;required&#93; The time range for the revenue summary query. Specify start and end timestamps.
+#' @param Scope &#91;required&#93; Specifies whether this is for a Amazon CloudFront distribution (`CLOUDFRONT`) or for a regional application (`REGIONAL`). AI bot monetization is only available for `CLOUDFRONT` scope.
+#' @param Currency &#91;required&#93; The currency for the revenue amounts in the response. Currently only `USDC` is supported.
+#' @param Filters Optional filters to narrow the results. You can filter by source name, category, organization, intent, verified status, content path, web ACL ARN, or currency mode.
+#'
+#' @keywords internal
+#'
+#' @rdname wafv2_get_revenue_statistics_summary
+wafv2_get_revenue_statistics_summary <- function(TimeWindow, Scope, Currency, Filters = NULL) {
+  op <- new_operation(
+    name = "GetRevenueStatisticsSummary",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE,
+    http_checksum = NULL
+  )
+  input <- .wafv2$get_revenue_statistics_summary_input(TimeWindow = TimeWindow, Scope = Scope, Currency = Currency, Filters = Filters)
+  output <- .wafv2$get_revenue_statistics_summary_output()
+  config <- get_config()
+  svc <- .wafv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wafv2$operations$get_revenue_statistics_summary <- wafv2_get_revenue_statistics_summary
+
+#' Retrieves time series data for monetization revenue
+#'
+#' @description
+#' Retrieves time series data for monetization revenue. Returns data points aggregated at the specified interval for the given time window. This operation is only available for `CLOUDFRONT` scope. The maximum supported time window is 90 days. When no `CurrencyMode` filter is provided, results default to `REAL`. To retrieve test data, include a `CurrencyMode` filter with the value `TEST`.
+#'
+#' See [https://www.paws-r-sdk.com/docs/wafv2_get_revenue_statistics_time_series/](https://www.paws-r-sdk.com/docs/wafv2_get_revenue_statistics_time_series/) for full documentation.
+#'
+#' @param StatisticType &#91;required&#93; The type of time series data to retrieve: `DATE_HISTOGRAM` for revenue over time, or `PAYMENT_TRAFFIC` for payment traffic patterns.
+#' @param TimeWindow &#91;required&#93; The time range for the query. Specify start and end timestamps.
+#' @param Scope &#91;required&#93; Specifies whether this is for a Amazon CloudFront distribution (`CLOUDFRONT`) or for a regional application (`REGIONAL`).
+#' @param Interval &#91;required&#93; The time interval for aggregating data points: `MINUTELY`, `FIVE_MINUTELY`, `HOURLY`, or `DAILY`.
+#' @param Currency &#91;required&#93; The currency for the amounts in the response.
+#' @param GroupBy The dimension to group results by.
+#' @param Filters Optional filters to narrow the results.
+#' @param Limit The maximum number of data points to return. Minimum: 1. Maximum: 10000.
+#' @param NextMarker When you get a paginated response, this marker indicates that additional results are available.
+#'
+#' @keywords internal
+#'
+#' @rdname wafv2_get_revenue_statistics_time_series
+wafv2_get_revenue_statistics_time_series <- function(StatisticType, TimeWindow, Scope, Interval, Currency, GroupBy = NULL, Filters = NULL, Limit = NULL, NextMarker = NULL) {
+  op <- new_operation(
+    name = "GetRevenueStatisticsTimeSeries",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE,
+    http_checksum = NULL
+  )
+  input <- .wafv2$get_revenue_statistics_time_series_input(StatisticType = StatisticType, TimeWindow = TimeWindow, Scope = Scope, Interval = Interval, Currency = Currency, GroupBy = GroupBy, Filters = Filters, Limit = Limit, NextMarker = NextMarker)
+  output <- .wafv2$get_revenue_statistics_time_series_output()
+  config <- get_config()
+  svc <- .wafv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wafv2$operations$get_revenue_statistics_time_series <- wafv2_get_revenue_statistics_time_series
 
 #' Retrieves the specified RuleGroup
 #'
@@ -1196,7 +1347,8 @@ wafv2_get_rule_group <- function(Name = NULL, Scope = NULL, Id = NULL, ARN = NUL
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafv2$get_rule_group_input(Name = Name, Scope = Scope, Id = Id, ARN = ARN)
   output <- .wafv2$get_rule_group_output()
@@ -1240,7 +1392,8 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafv2$get_sampled_requests_input(WebAclArn = WebAclArn, RuleMetricName = RuleMetricName, Scope = Scope, TimeWindow = TimeWindow, MaxItems = MaxItems)
   output <- .wafv2$get_sampled_requests_output()
@@ -1281,7 +1434,8 @@ wafv2_get_top_path_statistics_by_traffic <- function(WebAclArn, Scope, UriPathPr
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafv2$get_top_path_statistics_by_traffic_input(WebAclArn = WebAclArn, Scope = Scope, UriPathPrefix = UriPathPrefix, TimeWindow = TimeWindow, BotCategory = BotCategory, BotOrganization = BotOrganization, BotName = BotName, Limit = Limit, NumberOfTopTrafficBotsPerPath = NumberOfTopTrafficBotsPerPath, NextMarker = NextMarker)
   output <- .wafv2$get_top_path_statistics_by_traffic_output()
@@ -1321,7 +1475,8 @@ wafv2_get_web_acl <- function(Name = NULL, Scope = NULL, Id = NULL, ARN = NULL) 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafv2$get_web_acl_input(Name = Name, Scope = Scope, Id = Id, ARN = ARN)
   output <- .wafv2$get_web_acl_output()
@@ -1357,6 +1512,8 @@ wafv2_get_web_acl <- function(Name = NULL, Scope = NULL, Id = NULL, ARN = NULL) 
 #' -   For an Amazon Web Services Verified Access instance: `arn:partition:ec2:region:account-id:verified-access-instance/instance-id `
 #' 
 #' -   For an Amplify application: `arn:partition:amplify:region:account-id:apps/app-id `
+#' 
+#' -   For an Amazon Bedrock AgentCore Gateway: `arn:partition:bedrock-agentcore:region:account-id:gateway/gateway-id `
 #'
 #' @keywords internal
 #'
@@ -1368,7 +1525,8 @@ wafv2_get_web_acl_for_resource <- function(ResourceArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafv2$get_web_acl_for_resource_input(ResourceArn = ResourceArn)
   output <- .wafv2$get_web_acl_for_resource_output()
@@ -1408,7 +1566,8 @@ wafv2_list_api_keys <- function(Scope, NextMarker = NULL, Limit = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafv2$list_api_keys_input(Scope = Scope, NextMarker = NextMarker, Limit = Limit)
   output <- .wafv2$list_api_keys_output()
@@ -1450,7 +1609,8 @@ wafv2_list_available_managed_rule_group_versions <- function(VendorName, Name, S
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafv2$list_available_managed_rule_group_versions_input(VendorName = VendorName, Name = Name, Scope = Scope, NextMarker = NextMarker, Limit = Limit)
   output <- .wafv2$list_available_managed_rule_group_versions_output()
@@ -1490,7 +1650,8 @@ wafv2_list_available_managed_rule_groups <- function(Scope, NextMarker = NULL, L
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafv2$list_available_managed_rule_groups_input(Scope = Scope, NextMarker = NextMarker, Limit = Limit)
   output <- .wafv2$list_available_managed_rule_groups_output()
@@ -1530,7 +1691,8 @@ wafv2_list_ip_sets <- function(Scope, NextMarker = NULL, Limit = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafv2$list_ip_sets_input(Scope = Scope, NextMarker = NextMarker, Limit = Limit)
   output <- .wafv2$list_ip_sets_output()
@@ -1576,7 +1738,8 @@ wafv2_list_logging_configurations <- function(Scope, NextMarker = NULL, Limit = 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafv2$list_logging_configurations_input(Scope = Scope, NextMarker = NextMarker, Limit = Limit, LogScope = LogScope)
   output <- .wafv2$list_logging_configurations_output()
@@ -1615,7 +1778,8 @@ wafv2_list_managed_rule_sets <- function(Scope, NextMarker = NULL, Limit = NULL)
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafv2$list_managed_rule_sets_input(Scope = Scope, NextMarker = NextMarker, Limit = Limit)
   output <- .wafv2$list_managed_rule_sets_output()
@@ -1649,7 +1813,8 @@ wafv2_list_mobile_sdk_releases <- function(Platform, NextMarker = NULL, Limit = 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafv2$list_mobile_sdk_releases_input(Platform = Platform, NextMarker = NextMarker, Limit = Limit)
   output <- .wafv2$list_mobile_sdk_releases_output()
@@ -1689,7 +1854,8 @@ wafv2_list_regex_pattern_sets <- function(Scope, NextMarker = NULL, Limit = NULL
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafv2$list_regex_pattern_sets_input(Scope = Scope, NextMarker = NextMarker, Limit = Limit)
   output <- .wafv2$list_regex_pattern_sets_output()
@@ -1728,7 +1894,8 @@ wafv2_list_resources_for_web_acl <- function(WebACLArn, ResourceType = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafv2$list_resources_for_web_acl_input(WebACLArn = WebACLArn, ResourceType = ResourceType)
   output <- .wafv2$list_resources_for_web_acl_output()
@@ -1768,7 +1935,8 @@ wafv2_list_rule_groups <- function(Scope, NextMarker = NULL, Limit = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafv2$list_rule_groups_input(Scope = Scope, NextMarker = NextMarker, Limit = Limit)
   output <- .wafv2$list_rule_groups_output()
@@ -1779,6 +1947,45 @@ wafv2_list_rule_groups <- function(Scope, NextMarker = NULL, Limit = NULL) {
   return(response)
 }
 .wafv2$operations$list_rule_groups <- wafv2_list_rule_groups
+
+#' Retrieves individual settlement transaction records for monetization
+#'
+#' @description
+#' Retrieves individual settlement transaction records for monetization. Each record represents a single payment transaction between a client and your protected resource. This operation is only available for `CLOUDFRONT` scope. The maximum supported time window is 90 days. When no `CurrencyMode` filter is provided, results default to `REAL`. To retrieve test data, include a `CurrencyMode` filter with the value `TEST`.
+#'
+#' See [https://www.paws-r-sdk.com/docs/wafv2_list_settlement_records/](https://www.paws-r-sdk.com/docs/wafv2_list_settlement_records/) for full documentation.
+#'
+#' @param TimeWindow &#91;required&#93; The time range for the query. Specify start and end timestamps.
+#' @param Scope &#91;required&#93; Specifies whether this is for a Amazon CloudFront distribution (`CLOUDFRONT`) or for a regional application (`REGIONAL`).
+#' @param Currency &#91;required&#93; The currency for the amounts in the response.
+#' @param Filters Optional filters to narrow the results. You can filter by payer address, status, source name, network, or other settlement fields.
+#' @param SortBy The field to sort settlement records by: `TIMESTAMP`, `AMOUNT`, `NAME`, or `STATUS`.
+#' @param SortOrder The sort order: `ASC` for ascending or `DESC` for descending.
+#' @param Limit The maximum number of settlement records to return. Minimum: 1. Maximum: 100.
+#' @param NextMarker When you get a paginated response, this marker indicates that additional results are available.
+#'
+#' @keywords internal
+#'
+#' @rdname wafv2_list_settlement_records
+wafv2_list_settlement_records <- function(TimeWindow, Scope, Currency, Filters = NULL, SortBy = NULL, SortOrder = NULL, Limit = NULL, NextMarker = NULL) {
+  op <- new_operation(
+    name = "ListSettlementRecords",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE,
+    http_checksum = NULL
+  )
+  input <- .wafv2$list_settlement_records_input(TimeWindow = TimeWindow, Scope = Scope, Currency = Currency, Filters = Filters, SortBy = SortBy, SortOrder = SortOrder, Limit = Limit, NextMarker = NextMarker)
+  output <- .wafv2$list_settlement_records_output()
+  config <- get_config()
+  svc <- .wafv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wafv2$operations$list_settlement_records <- wafv2_list_settlement_records
 
 #' Retrieves the TagInfoForResource for the specified resource
 #'
@@ -1801,7 +2008,8 @@ wafv2_list_tags_for_resource <- function(NextMarker = NULL, Limit = NULL, Resour
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafv2$list_tags_for_resource_input(NextMarker = NextMarker, Limit = Limit, ResourceARN = ResourceARN)
   output <- .wafv2$list_tags_for_resource_output()
@@ -1841,7 +2049,8 @@ wafv2_list_web_ac_ls <- function(Scope, NextMarker = NULL, Limit = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafv2$list_web_ac_ls_input(Scope = Scope, NextMarker = NextMarker, Limit = Limit)
   output <- .wafv2$list_web_ac_ls_output()
@@ -1873,7 +2082,8 @@ wafv2_put_logging_configuration <- function(LoggingConfiguration) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafv2$put_logging_configuration_input(LoggingConfiguration = LoggingConfiguration)
   output <- .wafv2$put_logging_configuration_output()
@@ -1918,7 +2128,8 @@ wafv2_put_managed_rule_set_versions <- function(Name, Scope, Id, LockToken, Reco
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafv2$put_managed_rule_set_versions_input(Name = Name, Scope = Scope, Id = Id, LockToken = LockToken, RecommendedVersion = RecommendedVersion, VersionsToPublish = VersionsToPublish)
   output <- .wafv2$put_managed_rule_set_versions_output()
@@ -1964,7 +2175,8 @@ wafv2_put_permission_policy <- function(ResourceArn, Policy) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafv2$put_permission_policy_input(ResourceArn = ResourceArn, Policy = Policy)
   output <- .wafv2$put_permission_policy_output()
@@ -1996,7 +2208,8 @@ wafv2_tag_resource <- function(ResourceARN, Tags) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafv2$tag_resource_input(ResourceARN = ResourceARN, Tags = Tags)
   output <- .wafv2$tag_resource_output()
@@ -2028,7 +2241,8 @@ wafv2_untag_resource <- function(ResourceARN, TagKeys) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafv2$untag_resource_input(ResourceARN = ResourceARN, TagKeys = TagKeys)
   output <- .wafv2$untag_resource_output()
@@ -2092,7 +2306,8 @@ wafv2_update_ip_set <- function(Name, Scope, Id, Description = NULL, Addresses, 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafv2$update_ip_set_input(Name = Name, Scope = Scope, Id = Id, Description = Description, Addresses = Addresses, LockToken = LockToken)
   output <- .wafv2$update_ip_set_output()
@@ -2138,7 +2353,8 @@ wafv2_update_managed_rule_set_version_expiry_date <- function(Name, Scope, Id, L
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafv2$update_managed_rule_set_version_expiry_date_input(Name = Name, Scope = Scope, Id = Id, LockToken = LockToken, VersionToExpire = VersionToExpire, ExpiryTimestamp = ExpiryTimestamp)
   output <- .wafv2$update_managed_rule_set_version_expiry_date_output()
@@ -2180,7 +2396,8 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafv2$update_regex_pattern_set_input(Name = Name, Scope = Scope, Id = Id, Description = Description, RegularExpressionList = RegularExpressionList, LockToken = LockToken)
   output <- .wafv2$update_regex_pattern_set_output()
@@ -2217,20 +2434,22 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 #' For information about customizing web requests and responses, see [Customizing web requests and responses in WAF](https://docs.aws.amazon.com/waf/latest/developerguide/waf-custom-request-response.html) in the *WAF Developer Guide*.
 #' 
 #' For information about the limits on count and size for custom request and response settings, see [WAF quotas](https://docs.aws.amazon.com/waf/latest/developerguide/limits.html) in the *WAF Developer Guide*.
+#' @param MonetizationConfig The monetization configuration for the rule group. Provide this when any rule in the rule group uses the `Monetize` action.
 #'
 #' @keywords internal
 #'
 #' @rdname wafv2_update_rule_group
-wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules = NULL, VisibilityConfig, LockToken, CustomResponseBodies = NULL) {
+wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules = NULL, VisibilityConfig, LockToken, CustomResponseBodies = NULL, MonetizationConfig = NULL) {
   op <- new_operation(
     name = "UpdateRuleGroup",
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
-  input <- .wafv2$update_rule_group_input(Name = Name, Scope = Scope, Id = Id, Description = Description, Rules = Rules, VisibilityConfig = VisibilityConfig, LockToken = LockToken, CustomResponseBodies = CustomResponseBodies)
+  input <- .wafv2$update_rule_group_input(Name = Name, Scope = Scope, Id = Id, Description = Description, Rules = Rules, VisibilityConfig = VisibilityConfig, LockToken = LockToken, CustomResponseBodies = CustomResponseBodies, MonetizationConfig = MonetizationConfig)
   output <- .wafv2$update_rule_group_output()
   config <- get_config()
   svc <- .wafv2$service(config, op)
@@ -2291,20 +2510,22 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #' -   If you omit `ApplicationConfig` from the request, all existing entries in the web ACL are retained.
 #' 
 #' -   If you include `ApplicationConfig`, entries must match the existing values exactly. Any attempt to modify existing entries will result in an error.
+#' @param MonetizationConfig The monetization configuration for the web ACL. Provide this when any rule in the web ACL uses the `Monetize` action.
 #'
 #' @keywords internal
 #'
 #' @rdname wafv2_update_web_acl
-wafv2_update_web_acl <- function(Name, Scope, Id, DefaultAction, Description = NULL, Rules = NULL, VisibilityConfig, DataProtectionConfig = NULL, LockToken, CustomResponseBodies = NULL, CaptchaConfig = NULL, ChallengeConfig = NULL, TokenDomains = NULL, AssociationConfig = NULL, OnSourceDDoSProtectionConfig = NULL, ApplicationConfig = NULL) {
+wafv2_update_web_acl <- function(Name, Scope, Id, DefaultAction, Description = NULL, Rules = NULL, VisibilityConfig, DataProtectionConfig = NULL, LockToken, CustomResponseBodies = NULL, CaptchaConfig = NULL, ChallengeConfig = NULL, TokenDomains = NULL, AssociationConfig = NULL, OnSourceDDoSProtectionConfig = NULL, ApplicationConfig = NULL, MonetizationConfig = NULL) {
   op <- new_operation(
     name = "UpdateWebACL",
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
-  input <- .wafv2$update_web_acl_input(Name = Name, Scope = Scope, Id = Id, DefaultAction = DefaultAction, Description = Description, Rules = Rules, VisibilityConfig = VisibilityConfig, DataProtectionConfig = DataProtectionConfig, LockToken = LockToken, CustomResponseBodies = CustomResponseBodies, CaptchaConfig = CaptchaConfig, ChallengeConfig = ChallengeConfig, TokenDomains = TokenDomains, AssociationConfig = AssociationConfig, OnSourceDDoSProtectionConfig = OnSourceDDoSProtectionConfig, ApplicationConfig = ApplicationConfig)
+  input <- .wafv2$update_web_acl_input(Name = Name, Scope = Scope, Id = Id, DefaultAction = DefaultAction, Description = Description, Rules = Rules, VisibilityConfig = VisibilityConfig, DataProtectionConfig = DataProtectionConfig, LockToken = LockToken, CustomResponseBodies = CustomResponseBodies, CaptchaConfig = CaptchaConfig, ChallengeConfig = ChallengeConfig, TokenDomains = TokenDomains, AssociationConfig = AssociationConfig, OnSourceDDoSProtectionConfig = OnSourceDDoSProtectionConfig, ApplicationConfig = ApplicationConfig, MonetizationConfig = MonetizationConfig)
   output <- .wafv2$update_web_acl_output()
   config <- get_config()
   svc <- .wafv2$service(config, op)

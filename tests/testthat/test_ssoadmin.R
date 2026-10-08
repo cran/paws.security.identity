@@ -1,17 +1,21 @@
-svc <- paws::ssoadmin()
+svc <- paws.security.identity::ssoadmin()
 
 test_that("list_application_providers", {
+  skip_on_cran()
   expect_error(svc$list_application_providers(), NA)
 })
 
 test_that("list_application_providers", {
+  skip_on_cran()
   expect_error(svc$list_application_providers(MaxResults = 20), NA)
 })
 
 test_that("list_instances", {
+  skip_on_cran()
   expect_error(svc$list_instances(), NA)
 })
 
 test_that("list_instances", {
+  skip_on_cran()
   expect_error(svc$list_instances(MaxResults = 20), NA)
 })

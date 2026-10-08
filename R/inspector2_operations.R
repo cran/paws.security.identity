@@ -23,7 +23,8 @@ inspector2_associate_member <- function(accountId) {
     http_path = "/members/associate",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .inspector2$associate_member_input(accountId = accountId)
   output <- .inspector2$associate_member_output()
@@ -55,7 +56,8 @@ inspector2_batch_associate_code_security_scan_configuration <- function(associat
     http_path = "/codesecurity/scan-configuration/batch/associate",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .inspector2$batch_associate_code_security_scan_configuration_input(associateConfigurationRequests = associateConfigurationRequests)
   output <- .inspector2$batch_associate_code_security_scan_configuration_output()
@@ -87,7 +89,8 @@ inspector2_batch_disassociate_code_security_scan_configuration <- function(disas
     http_path = "/codesecurity/scan-configuration/batch/disassociate",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .inspector2$batch_disassociate_code_security_scan_configuration_input(disassociateConfigurationRequests = disassociateConfigurationRequests)
   output <- .inspector2$batch_disassociate_code_security_scan_configuration_output()
@@ -119,7 +122,8 @@ inspector2_batch_get_account_status <- function(accountIds = NULL) {
     http_path = "/status/batch/get",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .inspector2$batch_get_account_status_input(accountIds = accountIds)
   output <- .inspector2$batch_get_account_status_output()
@@ -151,7 +155,8 @@ inspector2_batch_get_code_snippet <- function(findingArns) {
     http_path = "/codesnippet/batchget",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .inspector2$batch_get_code_snippet_input(findingArns = findingArns)
   output <- .inspector2$batch_get_code_snippet_output()
@@ -182,7 +187,8 @@ inspector2_batch_get_finding_details <- function(findingArns) {
     http_path = "/findings/details/batch/get",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .inspector2$batch_get_finding_details_input(findingArns = findingArns)
   output <- .inspector2$batch_get_finding_details_output()
@@ -213,7 +219,8 @@ inspector2_batch_get_free_trial_info <- function(accountIds) {
     http_path = "/freetrialinfo/batchget",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .inspector2$batch_get_free_trial_info_input(accountIds = accountIds)
   output <- .inspector2$batch_get_free_trial_info_output()
@@ -245,7 +252,8 @@ inspector2_batch_get_member_ec_2_deep_inspection_status <- function(accountIds =
     http_path = "/ec2deepinspectionstatus/member/batch/get",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .inspector2$batch_get_member_ec_2_deep_inspection_status_input(accountIds = accountIds)
   output <- .inspector2$batch_get_member_ec_2_deep_inspection_status_output()
@@ -277,7 +285,8 @@ inspector2_batch_update_member_ec_2_deep_inspection_status <- function(accountId
     http_path = "/ec2deepinspectionstatus/member/batch/update",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .inspector2$batch_update_member_ec_2_deep_inspection_status_input(accountIds = accountIds)
   output <- .inspector2$batch_update_member_ec_2_deep_inspection_status_output()
@@ -308,7 +317,8 @@ inspector2_cancel_findings_report <- function(reportId) {
     http_path = "/reporting/cancel",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .inspector2$cancel_findings_report_input(reportId = reportId)
   output <- .inspector2$cancel_findings_report_output()
@@ -339,7 +349,8 @@ inspector2_cancel_sbom_export <- function(reportId) {
     http_path = "/sbomexport/cancel",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .inspector2$cancel_sbom_export_input(reportId = reportId)
   output <- .inspector2$cancel_sbom_export_output()
@@ -374,7 +385,8 @@ inspector2_create_cis_scan_configuration <- function(scanName, securityLevel, sc
     http_path = "/cis/scan-configuration/create",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .inspector2$create_cis_scan_configuration_input(scanName = scanName, securityLevel = securityLevel, schedule = schedule, targets = targets, tags = tags)
   output <- .inspector2$create_cis_scan_configuration_output()
@@ -409,7 +421,8 @@ inspector2_create_code_security_integration <- function(name, type, details = NU
     http_path = "/codesecurity/integration/create",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .inspector2$create_code_security_integration_input(name = name, type = type, details = details, tags = tags)
   output <- .inspector2$create_code_security_integration_output()
@@ -446,7 +459,8 @@ inspector2_create_code_security_scan_configuration <- function(name, level, conf
     http_path = "/codesecurity/scan-configuration/create",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .inspector2$create_code_security_scan_configuration_input(name = name, level = level, configuration = configuration, scopeSettings = scopeSettings, tags = tags)
   output <- .inspector2$create_code_security_scan_configuration_output()
@@ -457,6 +471,44 @@ inspector2_create_code_security_scan_configuration <- function(name, level, conf
   return(response)
 }
 .inspector2$operations$create_code_security_scan_configuration <- inspector2_create_code_security_scan_configuration
+
+#' Creates a connector that links an external cloud provider to Amazon
+#' Inspector for vulnerability scanning
+#'
+#' @description
+#' Creates a connector that links an external cloud provider to Amazon Inspector for vulnerability scanning.
+#'
+#' See [https://www.paws-r-sdk.com/docs/inspector2_create_connector/](https://www.paws-r-sdk.com/docs/inspector2_create_connector/) for full documentation.
+#'
+#' @param clientToken A unique, case-sensitive identifier that you provide to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request but does not return an error.
+#' @param name &#91;required&#93; The name of the connector.
+#' @param provider &#91;required&#93; The cloud provider for the connector.
+#' @param description A description of the connector.
+#' @param providerDetail &#91;required&#93; The provider-specific configuration details for the connector.
+#' @param tags The tags to apply to the connector.
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_create_connector
+inspector2_create_connector <- function(clientToken = NULL, name, provider, description = NULL, providerDetail, tags = NULL) {
+  op <- new_operation(
+    name = "CreateConnector",
+    http_method = "POST",
+    http_path = "/connector/create",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE,
+    http_checksum = NULL
+  )
+  input <- .inspector2$create_connector_input(clientToken = clientToken, name = name, provider = provider, description = description, providerDetail = providerDetail, tags = tags)
+  output <- .inspector2$create_connector_output()
+  config <- get_config()
+  svc <- .inspector2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$create_connector <- inspector2_create_connector
 
 #' Creates a filter resource using specified filter criteria
 #'
@@ -482,7 +534,8 @@ inspector2_create_filter <- function(action, description = NULL, filterCriteria,
     http_path = "/filters/create",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .inspector2$create_filter_input(action = action, description = description, filterCriteria = filterCriteria, name = name, tags = tags, reason = reason)
   output <- .inspector2$create_filter_output()
@@ -515,7 +568,8 @@ inspector2_create_findings_report <- function(filterCriteria = NULL, reportForma
     http_path = "/reporting/create",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .inspector2$create_findings_report_input(filterCriteria = filterCriteria, reportFormat = reportFormat, s3Destination = s3Destination)
   output <- .inspector2$create_findings_report_output()
@@ -548,7 +602,8 @@ inspector2_create_sbom_export <- function(resourceFilterCriteria = NULL, reportF
     http_path = "/sbomexport/create",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .inspector2$create_sbom_export_input(resourceFilterCriteria = resourceFilterCriteria, reportFormat = reportFormat, s3Destination = s3Destination)
   output <- .inspector2$create_sbom_export_output()
@@ -579,7 +634,8 @@ inspector2_delete_cis_scan_configuration <- function(scanConfigurationArn) {
     http_path = "/cis/scan-configuration/delete",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .inspector2$delete_cis_scan_configuration_input(scanConfigurationArn = scanConfigurationArn)
   output <- .inspector2$delete_cis_scan_configuration_output()
@@ -610,7 +666,8 @@ inspector2_delete_code_security_integration <- function(integrationArn) {
     http_path = "/codesecurity/integration/delete",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .inspector2$delete_code_security_integration_input(integrationArn = integrationArn)
   output <- .inspector2$delete_code_security_integration_output()
@@ -641,7 +698,8 @@ inspector2_delete_code_security_scan_configuration <- function(scanConfiguration
     http_path = "/codesecurity/scan-configuration/delete",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .inspector2$delete_code_security_scan_configuration_input(scanConfigurationArn = scanConfigurationArn)
   output <- .inspector2$delete_code_security_scan_configuration_output()
@@ -652,6 +710,38 @@ inspector2_delete_code_security_scan_configuration <- function(scanConfiguration
   return(response)
 }
 .inspector2$operations$delete_code_security_scan_configuration <- inspector2_delete_code_security_scan_configuration
+
+#' Deletes a connector from your account
+#'
+#' @description
+#' Deletes a connector from your account.
+#'
+#' See [https://www.paws-r-sdk.com/docs/inspector2_delete_connector/](https://www.paws-r-sdk.com/docs/inspector2_delete_connector/) for full documentation.
+#'
+#' @param connectorArn &#91;required&#93; The Amazon Resource Name (ARN) of the connector to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_delete_connector
+inspector2_delete_connector <- function(connectorArn) {
+  op <- new_operation(
+    name = "DeleteConnector",
+    http_method = "POST",
+    http_path = "/connector/delete",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE,
+    http_checksum = NULL
+  )
+  input <- .inspector2$delete_connector_input(connectorArn = connectorArn)
+  output <- .inspector2$delete_connector_output()
+  config <- get_config()
+  svc <- .inspector2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$delete_connector <- inspector2_delete_connector
 
 #' Deletes a filter resource
 #'
@@ -672,7 +762,8 @@ inspector2_delete_filter <- function(arn) {
     http_path = "/filters/delete",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .inspector2$delete_filter_input(arn = arn)
   output <- .inspector2$delete_filter_output()
@@ -704,7 +795,8 @@ inspector2_describe_organization_configuration <- function() {
     http_path = "/organizationconfiguration/describe",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .inspector2$describe_organization_configuration_input()
   output <- .inspector2$describe_organization_configuration_output()
@@ -737,7 +829,8 @@ inspector2_disable <- function(accountIds = NULL, resourceTypes = NULL) {
     http_path = "/disable",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .inspector2$disable_input(accountIds = accountIds, resourceTypes = resourceTypes)
   output <- .inspector2$disable_output()
@@ -769,7 +862,8 @@ inspector2_disable_delegated_admin_account <- function(delegatedAdminAccountId) 
     http_path = "/delegatedadminaccounts/disable",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .inspector2$disable_delegated_admin_account_input(delegatedAdminAccountId = delegatedAdminAccountId)
   output <- .inspector2$disable_delegated_admin_account_output()
@@ -801,7 +895,8 @@ inspector2_disassociate_member <- function(accountId) {
     http_path = "/members/disassociate",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .inspector2$disassociate_member_input(accountId = accountId)
   output <- .inspector2$disassociate_member_output()
@@ -835,7 +930,8 @@ inspector2_enable <- function(accountIds = NULL, resourceTypes, clientToken = NU
     http_path = "/enable",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .inspector2$enable_input(accountIds = accountIds, resourceTypes = resourceTypes, clientToken = clientToken)
   output <- .inspector2$enable_output()
@@ -868,7 +964,8 @@ inspector2_enable_delegated_admin_account <- function(delegatedAdminAccountId, c
     http_path = "/delegatedadminaccounts/enable",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .inspector2$enable_delegated_admin_account_input(delegatedAdminAccountId = delegatedAdminAccountId, clientToken = clientToken)
   output <- .inspector2$enable_delegated_admin_account_output()
@@ -901,7 +998,8 @@ inspector2_get_cis_scan_report <- function(scanArn, targetAccounts = NULL, repor
     http_path = "/cis/scan/report/get",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .inspector2$get_cis_scan_report_input(scanArn = scanArn, targetAccounts = targetAccounts, reportFormat = reportFormat)
   output <- .inspector2$get_cis_scan_report_output()
@@ -939,7 +1037,8 @@ inspector2_get_cis_scan_result_details <- function(scanArn, targetResourceId, ac
     http_path = "/cis/scan-result/details/get",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "scanResultDetails"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .inspector2$get_cis_scan_result_details_input(scanArn = scanArn, targetResourceId = targetResourceId, accountId = accountId, filterCriteria = filterCriteria, sortBy = sortBy, sortOrder = sortOrder, nextToken = nextToken, maxResults = maxResults)
   output <- .inspector2$get_cis_scan_result_details_output()
@@ -972,7 +1071,8 @@ inspector2_get_clusters_for_image <- function(filter, maxResults = NULL, nextTok
     http_path = "/cluster/get",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "cluster"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .inspector2$get_clusters_for_image_input(filter = filter, maxResults = maxResults, nextToken = nextToken)
   output <- .inspector2$get_clusters_for_image_output()
@@ -1004,7 +1104,8 @@ inspector2_get_code_security_integration <- function(integrationArn, tags = NULL
     http_path = "/codesecurity/integration/get",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .inspector2$get_code_security_integration_input(integrationArn = integrationArn, tags = tags)
   output <- .inspector2$get_code_security_integration_output()
@@ -1036,7 +1137,8 @@ inspector2_get_code_security_scan <- function(resource, scanId) {
     http_path = "/codesecurity/scan/get",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .inspector2$get_code_security_scan_input(resource = resource, scanId = scanId)
   output <- .inspector2$get_code_security_scan_output()
@@ -1067,7 +1169,8 @@ inspector2_get_code_security_scan_configuration <- function(scanConfigurationArn
     http_path = "/codesecurity/scan-configuration/get",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .inspector2$get_code_security_scan_configuration_input(scanConfigurationArn = scanConfigurationArn)
   output <- .inspector2$get_code_security_scan_configuration_output()
@@ -1079,28 +1182,29 @@ inspector2_get_code_security_scan_configuration <- function(scanConfigurationArn
 }
 .inspector2$operations$get_code_security_scan_configuration <- inspector2_get_code_security_scan_configuration
 
-#' Retrieves setting configurations for Inspector scans
+#' Retrieves setting configurations for Amazon Inspector scans
 #'
 #' @description
-#' Retrieves setting configurations for Inspector scans.
+#' Retrieves setting configurations for Amazon Inspector scans. If you specify an `accountId`, this operation returns the scan configuration for that member account. You must be the delegated administrator for the specified member account. If you do not specify an `accountId`, this operation returns your own scan configuration.
 #'
 #' See [https://www.paws-r-sdk.com/docs/inspector2_get_configuration/](https://www.paws-r-sdk.com/docs/inspector2_get_configuration/) for full documentation.
 #'
-
+#' @param accountId The 12-digit Amazon Web Services account ID of the member account whose scan configuration you want to retrieve. When specified, you must be the delegated administrator for this member account. If not specified, the operation returns your own configuration.
 #'
 #' @keywords internal
 #'
 #' @rdname inspector2_get_configuration
-inspector2_get_configuration <- function() {
+inspector2_get_configuration <- function(accountId = NULL) {
   op <- new_operation(
     name = "GetConfiguration",
     http_method = "POST",
     http_path = "/configuration/get",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
-  input <- .inspector2$get_configuration_input()
+  input <- .inspector2$get_configuration_input(accountId = accountId)
   output <- .inspector2$get_configuration_output()
   config <- get_config()
   svc <- .inspector2$service(config, op)
@@ -1130,7 +1234,8 @@ inspector2_get_delegated_admin_account <- function() {
     http_path = "/delegatedadminaccounts/get",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .inspector2$get_delegated_admin_account_input()
   output <- .inspector2$get_delegated_admin_account_output()
@@ -1162,7 +1267,8 @@ inspector2_get_ec_2_deep_inspection_configuration <- function() {
     http_path = "/ec2deepinspectionconfiguration/get",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .inspector2$get_ec_2_deep_inspection_configuration_input()
   output <- .inspector2$get_ec_2_deep_inspection_configuration_output()
@@ -1194,7 +1300,8 @@ inspector2_get_encryption_key <- function(scanType, resourceType) {
     http_path = "/encryptionkey/get",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .inspector2$get_encryption_key_input(scanType = scanType, resourceType = resourceType)
   output <- .inspector2$get_encryption_key_output()
@@ -1225,7 +1332,8 @@ inspector2_get_findings_report_status <- function(reportId = NULL) {
     http_path = "/reporting/status/get",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .inspector2$get_findings_report_status_input(reportId = reportId)
   output <- .inspector2$get_findings_report_status_output()
@@ -1256,7 +1364,8 @@ inspector2_get_member <- function(accountId) {
     http_path = "/members/get",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .inspector2$get_member_input(accountId = accountId)
   output <- .inspector2$get_member_output()
@@ -1287,7 +1396,8 @@ inspector2_get_sbom_export <- function(reportId) {
     http_path = "/sbomexport/get",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .inspector2$get_sbom_export_input(reportId = reportId)
   output <- .inspector2$get_sbom_export_output()
@@ -1320,7 +1430,8 @@ inspector2_list_account_permissions <- function(service = NULL, maxResults = NUL
     http_path = "/accountpermissions/list",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "permissions"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .inspector2$list_account_permissions_input(service = service, maxResults = maxResults, nextToken = nextToken)
   output <- .inspector2$list_account_permissions_output()
@@ -1355,7 +1466,8 @@ inspector2_list_cis_scan_configurations <- function(filterCriteria = NULL, sortB
     http_path = "/cis/scan-configuration/list",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "scanConfigurations"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .inspector2$list_cis_scan_configurations_input(filterCriteria = filterCriteria, sortBy = sortBy, sortOrder = sortOrder, nextToken = nextToken, maxResults = maxResults)
   output <- .inspector2$list_cis_scan_configurations_output()
@@ -1391,7 +1503,8 @@ inspector2_list_cis_scan_results_aggregated_by_checks <- function(scanArn, filte
     http_path = "/cis/scan-result/check/list",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "checkAggregations"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .inspector2$list_cis_scan_results_aggregated_by_checks_input(scanArn = scanArn, filterCriteria = filterCriteria, sortBy = sortBy, sortOrder = sortOrder, nextToken = nextToken, maxResults = maxResults)
   output <- .inspector2$list_cis_scan_results_aggregated_by_checks_output()
@@ -1427,7 +1540,8 @@ inspector2_list_cis_scan_results_aggregated_by_target_resource <- function(scanA
     http_path = "/cis/scan-result/resource/list",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "targetResourceAggregations"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .inspector2$list_cis_scan_results_aggregated_by_target_resource_input(scanArn = scanArn, filterCriteria = filterCriteria, sortBy = sortBy, sortOrder = sortOrder, nextToken = nextToken, maxResults = maxResults)
   output <- .inspector2$list_cis_scan_results_aggregated_by_target_resource_output()
@@ -1463,7 +1577,8 @@ inspector2_list_cis_scans <- function(filterCriteria = NULL, detailLevel = NULL,
     http_path = "/cis/scan/list",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "scans"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .inspector2$list_cis_scans_input(filterCriteria = filterCriteria, detailLevel = detailLevel, sortBy = sortBy, sortOrder = sortOrder, nextToken = nextToken, maxResults = maxResults)
   output <- .inspector2$list_cis_scans_output()
@@ -1495,7 +1610,8 @@ inspector2_list_code_security_integrations <- function(nextToken = NULL, maxResu
     http_path = "/codesecurity/integration/list",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .inspector2$list_code_security_integrations_input(nextToken = nextToken, maxResults = maxResults)
   output <- .inspector2$list_code_security_integrations_output()
@@ -1529,7 +1645,8 @@ inspector2_list_code_security_scan_configuration_associations <- function(scanCo
     http_path = "/codesecurity/scan-configuration/associations/list",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .inspector2$list_code_security_scan_configuration_associations_input(scanConfigurationArn = scanConfigurationArn, nextToken = nextToken, maxResults = maxResults)
   output <- .inspector2$list_code_security_scan_configuration_associations_output()
@@ -1561,7 +1678,8 @@ inspector2_list_code_security_scan_configurations <- function(nextToken = NULL, 
     http_path = "/codesecurity/scan-configuration/list",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .inspector2$list_code_security_scan_configurations_input(nextToken = nextToken, maxResults = maxResults)
   output <- .inspector2$list_code_security_scan_configurations_output()
@@ -1572,6 +1690,74 @@ inspector2_list_code_security_scan_configurations <- function(nextToken = NULL, 
   return(response)
 }
 .inspector2$operations$list_code_security_scan_configurations <- inspector2_list_code_security_scan_configurations
+
+#' Lists scan configurations for Amazon Web Services Config connectors
+#'
+#' @description
+#' Lists scan configurations for Amazon Web Services Config connectors. Results are paginated. Use the `nextToken` parameter to retrieve the next page of results.
+#'
+#' See [https://www.paws-r-sdk.com/docs/inspector2_list_connector_scan_configurations/](https://www.paws-r-sdk.com/docs/inspector2_list_connector_scan_configurations/) for full documentation.
+#'
+#' @param awsConfigConnectorArns The list of Amazon Web Services Config connector ARNs to filter results.
+#' @param maxResults The maximum number of results to return in a single call. Valid range is 1 to 50. To retrieve the remaining results, make another request with the `nextToken` value returned from this request.
+#' @param nextToken A token to use for paginating results. Set this value to null for the first request. For subsequent calls, use the `nextToken` value returned from the previous request.
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_list_connector_scan_configurations
+inspector2_list_connector_scan_configurations <- function(awsConfigConnectorArns = NULL, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListConnectorScanConfigurations",
+    http_method = "POST",
+    http_path = "/connectorscanconfigurations/list",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "scanConfigurations"),
+    stream_api = FALSE,
+    http_checksum = NULL
+  )
+  input <- .inspector2$list_connector_scan_configurations_input(awsConfigConnectorArns = awsConfigConnectorArns, maxResults = maxResults, nextToken = nextToken)
+  output <- .inspector2$list_connector_scan_configurations_output()
+  config <- get_config()
+  svc <- .inspector2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$list_connector_scan_configurations <- inspector2_list_connector_scan_configurations
+
+#' Lists connectors in your account
+#'
+#' @description
+#' Lists connectors in your account. Results are paginated. Use the `nextToken` parameter to retrieve the next page of results.
+#'
+#' See [https://www.paws-r-sdk.com/docs/inspector2_list_connectors/](https://www.paws-r-sdk.com/docs/inspector2_list_connectors/) for full documentation.
+#'
+#' @param maxResults The maximum number of results to return in a single call. To retrieve the remaining results, make another request with the `nextToken` value returned from this request.
+#' @param nextToken A token to use for paginating results. Set this value to null for the first request. For subsequent calls, use the `nextToken` value returned from the previous request.
+#' @param filterCriteria The filter criteria to apply to the list of connectors.
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_list_connectors
+inspector2_list_connectors <- function(maxResults = NULL, nextToken = NULL, filterCriteria = NULL) {
+  op <- new_operation(
+    name = "ListConnectors",
+    http_method = "POST",
+    http_path = "/connector/list",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
+    stream_api = FALSE,
+    http_checksum = NULL
+  )
+  input <- .inspector2$list_connectors_input(maxResults = maxResults, nextToken = nextToken, filterCriteria = filterCriteria)
+  output <- .inspector2$list_connectors_output()
+  config <- get_config()
+  svc <- .inspector2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$list_connectors <- inspector2_list_connectors
 
 #' Lists coverage details for your environment
 #'
@@ -1594,7 +1780,8 @@ inspector2_list_coverage <- function(maxResults = NULL, nextToken = NULL, filter
     http_path = "/coverage/list",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "coveredResources"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .inspector2$list_coverage_input(maxResults = maxResults, nextToken = nextToken, filterCriteria = filterCriteria)
   output <- .inspector2$list_coverage_output()
@@ -1627,7 +1814,8 @@ inspector2_list_coverage_statistics <- function(filterCriteria = NULL, groupBy =
     http_path = "/coverage/statistics/list",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "countsByGroup"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .inspector2$list_coverage_statistics_input(filterCriteria = filterCriteria, groupBy = groupBy, nextToken = nextToken)
   output <- .inspector2$list_coverage_statistics_output()
@@ -1660,7 +1848,8 @@ inspector2_list_delegated_admin_accounts <- function(maxResults = NULL, nextToke
     http_path = "/delegatedadminaccounts/list",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "delegatedAdminAccounts"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .inspector2$list_delegated_admin_accounts_input(maxResults = maxResults, nextToken = nextToken)
   output <- .inspector2$list_delegated_admin_accounts_output()
@@ -1694,7 +1883,8 @@ inspector2_list_filters <- function(arns = NULL, action = NULL, nextToken = NULL
     http_path = "/filters/list",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "filters"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .inspector2$list_filters_input(arns = arns, action = action, nextToken = nextToken, maxResults = maxResults)
   output <- .inspector2$list_filters_output()
@@ -1730,7 +1920,8 @@ inspector2_list_finding_aggregations <- function(aggregationType, nextToken = NU
     http_path = "/findings/aggregation/list",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "responses"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .inspector2$list_finding_aggregations_input(aggregationType = aggregationType, nextToken = nextToken, maxResults = maxResults, accountIds = accountIds, aggregationRequest = aggregationRequest)
   output <- .inspector2$list_finding_aggregations_output()
@@ -1764,7 +1955,8 @@ inspector2_list_findings <- function(maxResults = NULL, nextToken = NULL, filter
     http_path = "/findings/list",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "findings"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .inspector2$list_findings_input(maxResults = maxResults, nextToken = nextToken, filterCriteria = filterCriteria, sortCriteria = sortCriteria)
   output <- .inspector2$list_findings_output()
@@ -1798,7 +1990,8 @@ inspector2_list_members <- function(onlyAssociated = NULL, maxResults = NULL, ne
     http_path = "/members/list",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "members"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .inspector2$list_members_input(onlyAssociated = onlyAssociated, maxResults = maxResults, nextToken = nextToken)
   output <- .inspector2$list_members_output()
@@ -1829,7 +2022,8 @@ inspector2_list_tags_for_resource <- function(resourceArn) {
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .inspector2$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .inspector2$list_tags_for_resource_output()
@@ -1862,7 +2056,8 @@ inspector2_list_usage_totals <- function(maxResults = NULL, nextToken = NULL, ac
     http_path = "/usage/list",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "totals"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .inspector2$list_usage_totals_input(maxResults = maxResults, nextToken = nextToken, accountIds = accountIds)
   output <- .inspector2$list_usage_totals_output()
@@ -1894,7 +2089,8 @@ inspector2_reset_encryption_key <- function(scanType, resourceType) {
     http_path = "/encryptionkey/reset",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .inspector2$reset_encryption_key_input(scanType = scanType, resourceType = resourceType)
   output <- .inspector2$reset_encryption_key_output()
@@ -1926,7 +2122,8 @@ inspector2_search_vulnerabilities <- function(filterCriteria, nextToken = NULL) 
     http_path = "/vulnerabilities/search",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "vulnerabilities"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .inspector2$search_vulnerabilities_input(filterCriteria = filterCriteria, nextToken = nextToken)
   output <- .inspector2$search_vulnerabilities_output()
@@ -1958,7 +2155,8 @@ inspector2_send_cis_session_health <- function(scanJobId, sessionToken) {
     http_path = "/cissession/health/send",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .inspector2$send_cis_session_health_input(scanJobId = scanJobId, sessionToken = sessionToken)
   output <- .inspector2$send_cis_session_health_output()
@@ -1991,7 +2189,8 @@ inspector2_send_cis_session_telemetry <- function(scanJobId, sessionToken, messa
     http_path = "/cissession/telemetry/send",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .inspector2$send_cis_session_telemetry_input(scanJobId = scanJobId, sessionToken = sessionToken, messages = messages)
   output <- .inspector2$send_cis_session_telemetry_output()
@@ -2023,7 +2222,8 @@ inspector2_start_cis_session <- function(scanJobId, message) {
     http_path = "/cissession/start",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .inspector2$start_cis_session_input(scanJobId = scanJobId, message = message)
   output <- .inspector2$start_cis_session_output()
@@ -2055,7 +2255,8 @@ inspector2_start_code_security_scan <- function(clientToken = NULL, resource) {
     http_path = "/codesecurity/scan/start",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .inspector2$start_code_security_scan_input(clientToken = clientToken, resource = resource)
   output <- .inspector2$start_code_security_scan_output()
@@ -2088,7 +2289,8 @@ inspector2_stop_cis_session <- function(scanJobId, sessionToken, message) {
     http_path = "/cissession/stop",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .inspector2$stop_cis_session_input(scanJobId = scanJobId, sessionToken = sessionToken, message = message)
   output <- .inspector2$stop_cis_session_output()
@@ -2120,7 +2322,8 @@ inspector2_tag_resource <- function(resourceArn, tags) {
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .inspector2$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .inspector2$tag_resource_output()
@@ -2152,7 +2355,8 @@ inspector2_untag_resource <- function(resourceArn, tagKeys) {
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .inspector2$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .inspector2$untag_resource_output()
@@ -2187,7 +2391,8 @@ inspector2_update_cis_scan_configuration <- function(scanConfigurationArn, scanN
     http_path = "/cis/scan-configuration/update",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .inspector2$update_cis_scan_configuration_input(scanConfigurationArn = scanConfigurationArn, scanName = scanName, securityLevel = securityLevel, schedule = schedule, targets = targets)
   output <- .inspector2$update_cis_scan_configuration_output()
@@ -2219,7 +2424,8 @@ inspector2_update_code_security_integration <- function(integrationArn, details)
     http_path = "/codesecurity/integration/update",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .inspector2$update_code_security_integration_input(integrationArn = integrationArn, details = details)
   output <- .inspector2$update_code_security_integration_output()
@@ -2251,7 +2457,8 @@ inspector2_update_code_security_scan_configuration <- function(scanConfiguration
     http_path = "/codesecurity/scan-configuration/update",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .inspector2$update_code_security_scan_configuration_input(scanConfigurationArn = scanConfigurationArn, configuration = configuration)
   output <- .inspector2$update_code_security_scan_configuration_output()
@@ -2263,29 +2470,32 @@ inspector2_update_code_security_scan_configuration <- function(scanConfiguration
 }
 .inspector2$operations$update_code_security_scan_configuration <- inspector2_update_code_security_scan_configuration
 
-#' Updates setting configurations for your Amazon Inspector account
+#' Updates the scan configuration for your Amazon Inspector account
 #'
 #' @description
-#' Updates setting configurations for your Amazon Inspector account. When you use this API as an Amazon Inspector delegated administrator this updates the setting for all accounts you manage. Member accounts in an organization cannot update this setting.
+#' Updates the scan configuration for your Amazon Inspector account. If you don't specify an `accountId`, this operation updates the delegated administrator's configuration and propagates it to member accounts that have not been individually configured. If you specify an `accountId`, this operation updates that member account's configuration. Only the delegated administrator can specify an `accountId`; member accounts cannot call this operation.
 #'
 #' See [https://www.paws-r-sdk.com/docs/inspector2_update_configuration/](https://www.paws-r-sdk.com/docs/inspector2_update_configuration/) for full documentation.
 #'
+#' @param accountId The 12-digit Amazon Web Services account ID of the member account whose scan configuration you want to update. When specified, you must be the delegated administrator for this member account. If not specified, the operation updates your own configuration and propagates changes to any member accounts that have not been individually configured.
 #' @param ecrConfiguration Specifies how the ECR automated re-scan will be updated for your environment.
 #' @param ec2Configuration Specifies how the Amazon EC2 automated scan will be updated for your environment.
+#' @param updateConfigurationInheritance Specifies which scan-type configurations to reset to the delegated administrator's inherited values for the targeted member account. Each member of this structure is independently optional. When specified, `ec2Configuration` and `ecrConfiguration` must be absent, and `accountId` must also be present. Only `INHERIT_FROM_ADMIN` is valid for each member. If not specified, the operation uses the `ec2Configuration` and `ecrConfiguration` parameters instead.
 #'
 #' @keywords internal
 #'
 #' @rdname inspector2_update_configuration
-inspector2_update_configuration <- function(ecrConfiguration = NULL, ec2Configuration = NULL) {
+inspector2_update_configuration <- function(accountId = NULL, ecrConfiguration = NULL, ec2Configuration = NULL, updateConfigurationInheritance = NULL) {
   op <- new_operation(
     name = "UpdateConfiguration",
     http_method = "POST",
     http_path = "/configuration/update",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
-  input <- .inspector2$update_configuration_input(ecrConfiguration = ecrConfiguration, ec2Configuration = ec2Configuration)
+  input <- .inspector2$update_configuration_input(accountId = accountId, ecrConfiguration = ecrConfiguration, ec2Configuration = ec2Configuration, updateConfigurationInheritance = updateConfigurationInheritance)
   output <- .inspector2$update_configuration_output()
   config <- get_config()
   svc <- .inspector2$service(config, op)
@@ -2294,6 +2504,75 @@ inspector2_update_configuration <- function(ecrConfiguration = NULL, ec2Configur
   return(response)
 }
 .inspector2$operations$update_configuration <- inspector2_update_configuration
+
+#' Updates the description or provider-specific configuration details of an
+#' existing connector
+#'
+#' @description
+#' Updates the description or provider-specific configuration details of an existing connector.
+#'
+#' See [https://www.paws-r-sdk.com/docs/inspector2_update_connector/](https://www.paws-r-sdk.com/docs/inspector2_update_connector/) for full documentation.
+#'
+#' @param connectorArn &#91;required&#93; The Amazon Resource Name (ARN) of the connector to update.
+#' @param description The updated description of the connector.
+#' @param providerDetail The updated provider-specific configuration details for the connector.
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_update_connector
+inspector2_update_connector <- function(connectorArn, description = NULL, providerDetail = NULL) {
+  op <- new_operation(
+    name = "UpdateConnector",
+    http_method = "POST",
+    http_path = "/connector/update",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE,
+    http_checksum = NULL
+  )
+  input <- .inspector2$update_connector_input(connectorArn = connectorArn, description = description, providerDetail = providerDetail)
+  output <- .inspector2$update_connector_output()
+  config <- get_config()
+  svc <- .inspector2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$update_connector <- inspector2_update_connector
+
+#' Updates scan configuration settings for resources associated with an
+#' Amazon Web Services Config connector
+#'
+#' @description
+#' Updates scan configuration settings for resources associated with an Amazon Web Services Config connector.
+#'
+#' See [https://www.paws-r-sdk.com/docs/inspector2_update_connector_scan_configuration/](https://www.paws-r-sdk.com/docs/inspector2_update_connector_scan_configuration/) for full documentation.
+#'
+#' @param awsConfigConnectorArn &#91;required&#93; The ARN of the Amazon Web Services Config connector.
+#' @param scanConfiguration &#91;required&#93; The scan configuration settings to apply.
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_update_connector_scan_configuration
+inspector2_update_connector_scan_configuration <- function(awsConfigConnectorArn, scanConfiguration) {
+  op <- new_operation(
+    name = "UpdateConnectorScanConfiguration",
+    http_method = "POST",
+    http_path = "/connectorscanconfiguration/update",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE,
+    http_checksum = NULL
+  )
+  input <- .inspector2$update_connector_scan_configuration_input(awsConfigConnectorArn = awsConfigConnectorArn, scanConfiguration = scanConfiguration)
+  output <- .inspector2$update_connector_scan_configuration_output()
+  config <- get_config()
+  svc <- .inspector2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$update_connector_scan_configuration <- inspector2_update_connector_scan_configuration
 
 #' Activates, deactivates Amazon Inspector deep inspection, or updates
 #' custom paths for your account
@@ -2316,7 +2595,8 @@ inspector2_update_ec_2_deep_inspection_configuration <- function(activateDeepIns
     http_path = "/ec2deepinspectionconfiguration/update",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .inspector2$update_ec_2_deep_inspection_configuration_input(activateDeepInspection = activateDeepInspection, packagePaths = packagePaths)
   output <- .inspector2$update_ec_2_deep_inspection_configuration_output()
@@ -2349,7 +2629,8 @@ inspector2_update_encryption_key <- function(kmsKeyId, scanType, resourceType) {
     http_path = "/encryptionkey/update",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .inspector2$update_encryption_key_input(kmsKeyId = kmsKeyId, scanType = scanType, resourceType = resourceType)
   output <- .inspector2$update_encryption_key_output()
@@ -2386,7 +2667,8 @@ inspector2_update_filter <- function(action = NULL, description = NULL, filterCr
     http_path = "/filters/update",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .inspector2$update_filter_input(action = action, description = description, filterCriteria = filterCriteria, name = name, filterArn = filterArn, reason = reason)
   output <- .inspector2$update_filter_output()
@@ -2418,7 +2700,8 @@ inspector2_update_org_ec_2_deep_inspection_configuration <- function(orgPackageP
     http_path = "/ec2deepinspectionconfiguration/org/update",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .inspector2$update_org_ec_2_deep_inspection_configuration_input(orgPackagePaths = orgPackagePaths)
   output <- .inspector2$update_org_ec_2_deep_inspection_configuration_output()
@@ -2449,7 +2732,8 @@ inspector2_update_organization_configuration <- function(autoEnable) {
     http_path = "/organizationconfiguration/update",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .inspector2$update_organization_configuration_input(autoEnable = autoEnable)
   output <- .inspector2$update_organization_configuration_output()

@@ -29,6 +29,7 @@ identitystore(
 \item{\strong{timeout}: The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 \item{\strong{s3_force_path_style}: Set this to \code{true} to force the request to use path-style addressing, i.e. \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
 \item{\strong{sts_regional_endpoint}: Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
+\item{\strong{use_dual_stack}: Set this to \code{true} to use the dualstack (IPv4 and IPv6) endpoint for a service, where available, falling back to the regular endpoint when it isn't. Defaults to the \code{AWS_USE_DUALSTACK_ENDPOINT} environment variable when unset.}
 }}
 
 \item{credentials}{Optional credentials shorthand for the config parameter
@@ -53,11 +54,15 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-The Identity Store service used by IAM Identity Center provides a single place to retrieve all of your identities (users and groups). For more information, see the \href{https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html}{IAM Identity Center User Guide}.
-
-This reference guide describes the identity store operations that you can call programmatically and includes detailed information about data types and errors.
-
 IAM Identity Center uses the \code{sso}, \code{sso-directory}, and \code{identitystore} API namespaces. The \code{sso-directory} and \code{identitystore} namespaces authorize access to data in the Identity Store. Make sure your policies with IAM actions from these two namespaces are consistent to avoid conflicting authorization to the same data.
+
+The Identity Store service used by IAM Identity Center provides a single place to retrieve all of your identities (users and groups). You can use the identity store API operations in this guide to manage your identity data programmatically. The scope of these APIs allows you to create, read, update, delete, and list users, groups, and memberships.
+
+This guide also describes identity store operations that you can call and includes detailed information about data types and errors.
+
+If you use an external identity provider or Active Directory as your identity source, we recommend that you use the \code{Create}, \code{Update}, and \code{Delete} APIs with caution. Because IAM Identity Center doesn't support outbound synchronization, your identity source won't automatically update with the changes that you make to users or groups using these APIs.
+
+Amazon Web Services provides SDKs that consist of libraries and sample code for various programming languages and platforms (Java, Ruby, .Net, iOS, Android, and more). The SDKs provide a convenient way to programmatically access the identity store and other Amazon Web Services services. For more information about the Amazon Web Services SDKs, including how to download and install them, see \href{https://builder.aws.com/build/tools}{Amazon Web Services Builder Center Toolbox}.
 }
 \section{Service syntax}{
 
@@ -78,7 +83,8 @@ IAM Identity Center uses the \code{sso}, \code{sso-directory}, and \code{identit
     close_connection = "logical",
     timeout = "numeric",
     s3_force_path_style = "logical",
-    sts_regional_endpoint = "string"
+    sts_regional_endpoint = "string",
+    use_dual_stack = "logical"
   ),
   credentials = list(
     creds = list(
@@ -106,6 +112,7 @@ IAM Identity Center uses the \code{sso}, \code{sso-directory}, and \code{identit
 \link[=identitystore_delete_user]{delete_user} \tab Deletes a user within an identity store given UserId\cr
 \link[=identitystore_describe_group]{describe_group} \tab Retrieves the group metadata and attributes from GroupId in an identity store\cr
 \link[=identitystore_describe_group_membership]{describe_group_membership} \tab Retrieves membership metadata and attributes from MembershipId in an identity store\cr
+\link[=identitystore_describe_identity_store]{describe_identity_store} \tab Retrieves details about the specified identity store, including its Amazon Resource Name (ARN) and network configuration\cr
 \link[=identitystore_describe_user]{describe_user} \tab Retrieves the user metadata and attributes from the UserId in an identity store\cr
 \link[=identitystore_get_group_id]{get_group_id} \tab Retrieves GroupId in an identity store\cr
 \link[=identitystore_get_group_membership_id]{get_group_membership_id} \tab Retrieves the MembershipId in an identity store\cr
@@ -114,8 +121,10 @@ IAM Identity Center uses the \code{sso}, \code{sso-directory}, and \code{identit
 \link[=identitystore_list_group_memberships]{list_group_memberships} \tab For the specified group in the specified identity store, returns the list of all GroupMembership objects and returns results in paginated form\cr
 \link[=identitystore_list_group_memberships_for_member]{list_group_memberships_for_member} \tab For the specified member in the specified identity store, returns the list of all GroupMembership objects and returns results in paginated form\cr
 \link[=identitystore_list_groups]{list_groups} \tab Lists all groups in the identity store\cr
+\link[=identitystore_list_identity_stores]{list_identity_stores} \tab Lists the identity stores that you have access to\cr
 \link[=identitystore_list_users]{list_users} \tab Lists all users in the identity store\cr
 \link[=identitystore_update_group]{update_group} \tab Updates the specified group metadata and attributes in the specified identity store\cr
+\link[=identitystore_update_identity_store]{update_identity_store} \tab Updates the configuration of the specified identity store, including its network configuration\cr
 \link[=identitystore_update_user]{update_user} \tab Updates the specified user metadata and attributes in the specified identity store
 }
 }

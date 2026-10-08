@@ -1,3 +1,3 @@
-svc <- paws::sts()
+svc <- paws.security.identity::sts()
 
 
